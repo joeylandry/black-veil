@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="2" fill="#171411"/>
+  <path d="M32 5l6 10 12-1-2 12 10 6-9 8 4 12-12 1-9 8-9-8-12-1 4-12-9-8 10-6-2-12 12 1z" fill="none" stroke="#c2a767" stroke-width="1.5"/>
+  <path d="M32 17c-5 6-10 6-12 12 6-2 10 0 12 5-7 0-12 4-13 10 6-3 10-2 13 3 3-5 7-6 13-3-1-6-6-10-13-10 2-5 6-7 12-5-2-6-7-6-12-12z" fill="#8f2636"/>
+  <text x="32" y="39" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="700" fill="#e7ddc7">BV</text>
+</svg>
