@@ -1,81 +1,53 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { DecoDivider } from "@/components/deco-divider";
+import { Masthead } from "@/components/masthead";
 
 export const metadata: Metadata = {
-  title: "Chronology, 1921–1926",
-  description: "The unresolved chronology of The Black Veil inside the documented history of Manchester, New Hampshire.",
+  title: "Our History",
+  description: "A sourced chronology of Manchester and the fictional Black Veil, 1921–1926.",
 };
-
-const years = [
-  {
-    year: "1921",
-    label: "The door opens",
-    fiction: "An invitation-only drinking establishment begins receiving callers somewhere in Manchester. No surviving record agrees on its address. Cassandra ‘Cassie’ Castello is named as proprietress.",
-    history: "National Prohibition was in force. Manchester’s economy and daily rhythm remained dominated by the enormous Amoskeag works along the Merrimack.",
-  },
-  {
-    year: "1922",
-    label: "The strike",
-    fiction: "Later Black Veil papers claim mill hands, labor organizers, managers, businessmen, and policemen crossed the same threshold. No real historical person is named as a patron.",
-    history: "Amoskeag cut wages by 20 percent and lengthened the work week from 48 to 54 hours. The resulting strike lasted nine months and affected the whole city.",
-  },
-  {
-    year: "1923",
-    label: "The whispers",
-    fiction: "The club is linked in rumor to Canadian liquor, gambling, private bargains, and people who should not have been seen together. It avoids permanent closure. No record explains why.",
-    history: "Manchester remained a multilingual immigrant mill city of French-Canadian, Irish, Greek, Jewish, Eastern European, and other communities, while New England textiles entered a difficult decade.",
-  },
-  {
-    year: "1924",
-    label: "The last masquerade",
-    fiction: "Something happens on All Hallows’ Eve. Reports mention a death, an accident, police, no police, fleeing guests, and removed evidence. Cassandra disappears. No body is found. The Black Veil closes.",
-    history: "The streets, boarding houses, streetcars, mills, canals, and neighborhoods in the surrounding record are grounded in period Manchester. The crime and club are fictional.",
-  },
-  {
-    year: "1925",
-    label: "No confirmed activity",
-    fiction: "The rooms appear dormant. Cassandra remains missing. A few alleged sightings contradict one another. Someone continues paying expenses connected to the closed house.",
-    history: "Amoskeag’s postwar competitive troubles continued through the 1920s, years before the company’s final collapse in the 1930s.",
-  },
-  {
-    year: "1926",
-    label: "The envelopes",
-    fiction: "Black invitations suddenly circulate for an All Hallows’ Eve masquerade on October 31. They bear the old seal and no signature. Cassandra has been missing for two years.",
-    history: "Manchester remains the setting: cold river fog, brick millyard, Elm Street traffic, and an industrial city whose divisions make secrecy plausible.",
-  },
-];
 
 export default function AboutPage() {
   return (
-    <div className="chronology-page">
-      <header className="chronology-header">
-        <p className="eyebrow">Collection chronology · Manchester, New Hampshire</p>
-        <h1>1921–1926</h1>
-        <p>The known record separates documented Manchester history from the fictional Black Veil case. It does not settle the case.</p>
-      </header>
-
-      <div className="chronology-key" aria-label="Chronology key">
-        <span><i className="key-history" /> Documented context</span>
-        <span><i className="key-fiction" /> Black Veil fiction</span>
-      </div>
-
-      <section className="chronology-ledger" aria-label="Black Veil chronology">
-        {years.map((item) => (
-          <article key={item.year}>
-            <time>{item.year}</time>
-            <div className="chronology-entry-heading"><span>{item.label}</span><h2>{item.label}</h2></div>
-            <div className="chronology-fact key-history"><strong>Manchester record</strong><p>{item.history}</p></div>
-            <div className="chronology-fact key-fiction"><strong>Black Veil file</strong><p>{item.fiction}</p></div>
-          </article>
-        ))}
+    <div className="page-wrap about-page">
+      <Masthead compact />
+      <section className="history-intro">
+        <p className="eyebrow">A history approved by management</p>
+        <h1>A Manchester house remembered imperfectly.</h1>
+        <p className="lede">
+          The Black Veil and Cassandra Castello are fictional. The mills, strike, river,
+          streets, immigrant communities, and pressures surrounding them belong to Manchester history.
+        </p>
       </section>
-
-      <aside className="central-questions">
-        <p className="eyebrow">Questions withheld from conclusion</p>
-        <h2>Victim or suspect?</h2>
-        <p>What happened in 1924? What happened to Cassandra Castello? Who kept the house’s accounts? Who sent the 1926 invitations?</p>
-        <Link href="/archive" className="button-link button-light">Examine the evidence</Link>
+      <DecoDivider />
+      <section className="history-timeline">
+        <article>
+          <time>1921</time>
+          <div><h2>The first door opens.</h2><p>A fictional private club begins operating somewhere between Elm Street, the river, and the Amoskeag works. Surviving records disagree about its address.</p></div>
+        </article>
+        <article>
+          <time>1922</time>
+          <div><h2>The city walks out.</h2><p>Amoskeag cuts wages by twenty percent and lengthens the work week. The real strike lasts nine months. Later fictional papers claim laborers and owners both passed through The Black Veil.</p></div>
+        </article>
+        <article>
+          <time>1923</time>
+          <div><h2>Whispers follow the river.</h2><p>Prohibition enforcement, Canadian liquor, and private meetings enter the club’s fictional record. No surviving account agrees on who protected the house.</p></div>
+        </article>
+        <article>
+          <time>1924</time>
+          <div><h2>The final masquerade.</h2><p>Something occurs on All Hallows’ Eve. Reports call it murder, accident, disturbance, and rumor. Proprietress Cassandra Castello disappears. No body is found.</p></div>
+        </article>
+        <article>
+          <time>1925–26</time>
+          <div><h2>A closed house keeps its hours.</h2><p>The file thins. Then black envelopes bearing the old insignia begin circulating in Manchester. Cassandra is still missing. The sender is unknown.</p></div>
+        </article>
+      </section>
+      <aside className="quote-panel">
+        <p>“If Cassandra disappeared two years ago, who sent the invitations?”</p>
+        <span>— question entered without signature, October 1926</span>
       </aside>
+      <div className="center-link"><Link href="/archive" className="button-link">Consult the surviving records</Link></div>
     </div>
   );
 }

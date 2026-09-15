@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArtifactInspector } from "@/components/artifact-inspector";
 import { NewspaperArtifact } from "@/components/newspaper-artifact";
+import { TerminalDiscovery } from "@/components/terminal/terminal-discovery";
 import { archiveRecords, getArchiveRecord } from "@/data/archive";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -60,6 +61,7 @@ export default async function ArchiveDocumentPage({ params }: Props) {
               {record.body.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
             </div>
             {record.markings && <div className="record-markings">{record.markings.map((mark) => <span key={mark}>{mark}</span>)}</div>}
+            {record.slug === "the-veil-has-lifted" && <TerminalDiscovery />}
           </article>
         )}
       </div>

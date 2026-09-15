@@ -9,9 +9,9 @@ export function SiteHeader() {
         <span>The Black Veil</span>
       </Link>
       <nav aria-label="Primary navigation">
-        <Link href="/archive">Case file</Link>
-        <Link href="/about">Chronology</Link>
-        <Link href="/guest-ledger">Guest register</Link>
+        <Link href="/archive">Archive</Link>
+        <Link href="/about">Our history</Link>
+        <Link href="/guest-ledger">Guest ledger</Link>
       </nav>
     </header>
   );

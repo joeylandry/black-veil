@@ -28,7 +28,8 @@ npm run build
 - `/archive/[slug]` — physical artifact view, readable transcript, and provenance
 - `/about` — chronology separating real Manchester context from Black Veil fiction
 - `/guest-ledger` — real-name RSVP prototype stored on the visitor’s device
-- `/invitation` — private invitation revealed after a local RSVP
+- `/invitation` — private invitation revealed after archive access and a local RSVP
+- `/black-rose` — restored five-challenge CTF and local score ledger
 - unmatched routes — custom in-world 404
 
 ## Archive system
@@ -50,7 +51,9 @@ Generated images are never described as authentic historical photographs. The re
 
 ## RSVP persistence
 
-RSVPs use a guest’s real name and do not assign a fictional character. `src/lib/rsvp-service.ts` defines the persistence boundary; its current adapter stores the prototype submission only in local storage and the interface says so. Replace it with an approved server-backed implementation before collecting production RSVPs.
+The original archive-to-terminal-to-ledger flow is preserved. The 1926 invitation record contains a hidden seal that opens the simulated archival terminal; solving it unlocks the real-name RSVP, private invitation, and Black Rose trials. The terminal is client-side fiction and never executes commands on the visitor’s device.
+
+RSVPs use a guest’s real name and do not assign a fictional character. `src/lib/rsvp-service.ts` defines the persistence boundary; its current adapter stores the prototype submission only in local storage and the interface says so. CTF progress is also stored locally. Replace these adapters with an approved server-backed implementation before collecting production RSVPs or shared scores.
 
 ## Future private game
 

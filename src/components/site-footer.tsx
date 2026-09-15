@@ -7,9 +7,9 @@ export function SiteFooter() {
       <BlackVeilInsignia />
       <p className="eyebrow">Manchester, New Hampshire · Established 1921</p>
       <div className="footer-links">
-        <Link href="/archive">Case file</Link>
-        <Link href="/about">Chronology</Link>
-        <Link href="/guest-ledger">Guest register</Link>
+        <Link href="/archive">Historical records</Link>
+        <Link href="/about">Management history</Link>
+        <Link href="/guest-ledger">Private ledger</Link>
       </div>
       <p className="fine-print">The Black Veil and Cassandra Castello are fictional. Historical sources are identified in the archive.</p>
     </footer>

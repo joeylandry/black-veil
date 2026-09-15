@@ -3,12 +3,14 @@
 import Link from "next/link";
 import { FormEvent, useMemo, useState } from "react";
 import { eventConfig } from "@/config/event";
+import { InvitationCard } from "./invitation-card";
 import { localRsvpService, RsvpSubmission } from "@/lib/rsvp-service";
 import { useStorageValue } from "@/lib/use-storage-value";
 
 type Errors = Partial<Record<"fullName" | "email" | "attending" | "dress", string>>;
 
 export function GuestLedger() {
+  const accessValue = useStorageValue(eventConfig.storageKeys.puzzleComplete);
   const savedValue = useStorageValue(eventConfig.storageKeys.rsvp);
   const [saved, setSaved] = useState<RsvpSubmission | null>(null);
   const [errors, setErrors] = useState<Errors>({});
@@ -16,6 +18,7 @@ export function GuestLedger() {
     if (!savedValue) return null;
     try { return JSON.parse(savedValue) as RsvpSubmission; } catch { return null; }
   }, [savedValue]);
+  const access = accessValue === undefined ? "checking" : accessValue === "true" ? "open" : "locked";
   const visibleSubmission = saved ?? storedSubmission;
 
   async function submit(event: FormEvent<HTMLFormElement>) {
@@ -48,27 +51,43 @@ export function GuestLedger() {
     setSaved(submission);
   }
 
-  if (savedValue === undefined) {
-    return <div className="ledger-checking" aria-live="polite">Opening the register…</div>;
+  if (access === "checking" || savedValue === undefined) {
+    return <div className="ledger-checking" aria-live="polite">Consulting the private ledger…</div>;
+  }
+
+  if (access === "locked") {
+    return (
+      <section className="ledger-locked">
+        <div className="ledger-lock" aria-hidden="true">BV</div>
+        <p className="eyebrow">Restricted volume · members only</p>
+        <h1>The Guest Register Is Sealed</h1>
+        <p>Your name cannot be entered until the hidden archive grants access. Management has left no public password.</p>
+        <Link href="/archive/the-veil-has-lifted" className="button-link">Examine the impossible record</Link>
+        <small>Begin with the black rose seal.</small>
+      </section>
+    );
   }
 
   if (visibleSubmission) {
     return (
-      <section className="ledger-success">
-        <div className="ledger-success-stamp">Entered</div>
-        <p className="eyebrow">Guest register · October 1926</p>
-        <h1>Your name has been entered<br />upon the guest register.</h1>
-        <p className="registered-name">{visibleSubmission.fullName}</p>
-        <div className="management-found-file">
-          <p>The management of The Black Veil has located your file.</p>
-          <strong>Further correspondence will follow.</strong>
-        </div>
-        <p className="rsvp-storage-note">This prototype entry is stored only on this device and has not yet been transmitted to event management.</p>
-        <div className="ledger-success-actions">
-          <Link href="/invitation" className="button-link">Open your invitation</Link>
-          <Link href="/archive" className="artifact-link">Return to the case file</Link>
-        </div>
-      </section>
+      <div className="ledger-success ledger-success-complete">
+        <header>
+          <div className="ledger-success-stamp">Entered</div>
+          <p className="eyebrow">Guest register · October 1926</p>
+          <h1>Your name has been entered<br />upon the guest register.</h1>
+          <p className="registered-name">{visibleSubmission.fullName}</p>
+          <div className="management-found-file">
+            <p>The management of The Black Veil has located your file.</p>
+            <strong>Further correspondence will follow.</strong>
+          </div>
+          <p className="rsvp-storage-note">This prototype entry is stored only on this device and has not yet been transmitted to event management.</p>
+          <div className="ledger-success-actions">
+            <Link href="/invitation" className="button-link">Open private invitation</Link>
+            <Link href="/black-rose" className="button-link">Enter the Black Rose trials</Link>
+          </div>
+        </header>
+        <InvitationCard fullName={visibleSubmission.fullName} />
+      </div>
     );
   }
 
