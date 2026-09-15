@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { FormEvent, KeyboardEvent, useEffect, useRef, useState } from "react";
 import { eventConfig, EntryMethod } from "@/config/event";
 import { removeStorageValue, setStorageValue, useStorageValue } from "@/lib/use-storage-value";
@@ -31,10 +30,8 @@ export function ArchivalTerminal() {
   const [awaitingPassword, setAwaitingPassword] = useState(false);
   const [authenticated, setAuthenticated] = useState(false);
   const [complete, setComplete] = useState(false);
-  const [entryMethod, setEntryMethod] = useState<EntryMethod>("archive-breached");
   const [progress, setProgress] = useState(0);
   const storedComplete = useStorageValue(eventConfig.storageKeys.puzzleComplete);
-  const storedEntryMethod = useStorageValue(eventConfig.storageKeys.entryMethod);
   const counter = useRef(10);
   const outputRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -58,10 +55,10 @@ export function ArchivalTerminal() {
   function finish(method: EntryMethod) {
     setStorageValue(eventConfig.storageKeys.puzzleComplete, "true");
     setStorageValue(eventConfig.storageKeys.entryMethod, method);
-    setEntryMethod(method);
     setAuthenticated(true);
     setComplete(true);
     setProgress(5);
+    append("system", `ACCESS GRANTED.\n\nTHE OLD WORDS: ${eventConfig.finalPassphrase}\n\nCarry them to the guest register yourself. Management will not ask twice.`);
   }
 
   function acceptCredential() {
@@ -168,7 +165,7 @@ export function ArchivalTerminal() {
       case "mail":
         if (!authenticated) append("error", "mail: /ledger/mail: Permission denied");
         else {
-          append("system", `FROM: management@blackveil.internal\nDATE: OCTOBER 31, 1926 · 11:47 P.M.\nSUBJECT: THE HOUSE RECEIVES AGAIN\n\nKeeper—\n\nBlack envelopes have appeared on Elm Street and the West Side. No hand signed them. The orchestra is below. The river door is unbarred. Tell those who found their way here that admission requires the old words:\n\n${eventConfig.finalPassphrase}\n\nDo not write them where the public may see.\n\nThe doors open once more.`);
+          append("system", `FROM: management@blackveil.internal\nDATE: OCTOBER 31, 1926 · 11:47 P.M.\nSUBJECT: THE HOUSE RECEIVES AGAIN\n\nKeeper—\n\nBlack envelopes have appeared on Elm Street and the West Side. No hand signed them. The orchestra is below. The river door is unbarred. Tell those who found their way here that admission requires the old words.\n\nDo not write them where the public may see.\n\nThe doors open once more.`);
           finish("archive-breached");
         }
         break;
@@ -234,7 +231,6 @@ export function ArchivalTerminal() {
   }
 
   const isComplete = complete || storedComplete === "true";
-  const visibleEntryMethod = complete ? entryMethod : (storedEntryMethod as EntryMethod) || "archive-breached";
 
   return (
     <div className="terminal-and-help">
@@ -242,27 +238,13 @@ export function ArchivalTerminal() {
         <div className="terminal-titlebar"><span aria-hidden="true">● ● ●</span><strong>BLACK VEIL ARCHIVAL SYSTEM</strong><span>TTY 47</span></div>
         <div className="terminal-output" ref={outputRef} aria-live="polite" aria-label="Terminal output">
           {lines.map((line) => <pre key={line.id} className={`line-${line.kind}`}>{line.text}</pre>)}
-          {isComplete && (
-            <div className="access-card">
-              <p>You were not supposed to find this.</p>
-              <h3>The Black Veil opens once more.</h3>
-              <time>{eventConfig.fictionalEventDate}</time>
-              <span>Admission requires the words</span>
-              <strong>{eventConfig.finalPassphrase}</strong>
-              <small>Do not share them. You have been expected.</small>
-              <Link href="/guest-ledger">Enter the guest register</Link>
-              <em>Entry method: {visibleEntryMethod === "archive-breached" ? "archive breached" : "management assisted"}</em>
-            </div>
-          )}
         </div>
-        {!isComplete && (
-          <form className="terminal-form" onSubmit={submit}>
-            <label htmlFor="terminal-command" className="sr-only">Terminal command</label>
-            <span>{awaitingPassword ? "Password:" : `guest@blackveil:${cwd.replace("/black-veil", "~")}$`}</span>
-            <input ref={inputRef} id="terminal-command" autoCapitalize="none" autoComplete="off" autoCorrect="off" spellCheck={false} type={awaitingPassword ? "password" : "text"} value={input} onChange={(event) => setInput(event.target.value)} onKeyDown={keyboardHistory} enterKeyHint="send" />
-            <button type="submit">Run</button>
-          </form>
-        )}
+        <form className="terminal-form" onSubmit={submit}>
+          <label htmlFor="terminal-command" className="sr-only">Terminal command</label>
+          <span>{awaitingPassword ? "Password:" : `guest@blackveil:${cwd.replace("/black-veil", "~")}$`}</span>
+          <input ref={inputRef} id="terminal-command" autoCapitalize="none" autoComplete="off" autoCorrect="off" spellCheck={false} type={awaitingPassword ? "password" : "text"} value={input} onChange={(event) => setInput(event.target.value)} onKeyDown={keyboardHistory} enterKeyHint="send" />
+          <button type="submit">Run</button>
+        </form>
       </div>
       {!isComplete && <HintSystem progress={progress} onRunCommand={outputFor} onAssistedEntry={() => finish("management-assisted")} />}
       <p className="simulation-note">This is a fictional, client-side simulation. It does not execute shell commands or access your device.</p>

@@ -5,21 +5,33 @@ import { FormEvent, useMemo, useState } from "react";
 import { eventConfig } from "@/config/event";
 import { InvitationCard } from "./invitation-card";
 import { localRsvpService, RsvpSubmission } from "@/lib/rsvp-service";
-import { useStorageValue } from "@/lib/use-storage-value";
+import { setStorageValue, useStorageValue } from "@/lib/use-storage-value";
 
 type Errors = Partial<Record<"fullName" | "email" | "attending" | "dress", string>>;
 
 export function GuestLedger() {
-  const accessValue = useStorageValue(eventConfig.storageKeys.puzzleComplete);
+  const accessValue = useStorageValue(eventConfig.storageKeys.registerUnlocked);
   const savedValue = useStorageValue(eventConfig.storageKeys.rsvp);
   const [saved, setSaved] = useState<RsvpSubmission | null>(null);
   const [errors, setErrors] = useState<Errors>({});
+  const [codeInput, setCodeInput] = useState("");
+  const [codeError, setCodeError] = useState(false);
   const storedSubmission = useMemo(() => {
     if (!savedValue) return null;
     try { return JSON.parse(savedValue) as RsvpSubmission; } catch { return null; }
   }, [savedValue]);
   const access = accessValue === undefined ? "checking" : accessValue === "true" ? "open" : "locked";
   const visibleSubmission = saved ?? storedSubmission;
+
+  function submitCode(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (codeInput.trim().toLowerCase() === eventConfig.finalPassphrase.toLowerCase()) {
+      setStorageValue(eventConfig.storageKeys.registerUnlocked, "true");
+      setCodeError(false);
+    } else {
+      setCodeError(true);
+    }
+  }
 
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -61,9 +73,25 @@ export function GuestLedger() {
         <div className="ledger-lock" aria-hidden="true">BV</div>
         <p className="eyebrow">Restricted volume · members only</p>
         <h1>The Guest Register Is Sealed</h1>
-        <p>Your name cannot be entered until the hidden archive grants access. Management has left no public password.</p>
-        <Link href="/archive/the-veil-has-lifted" className="button-link">Examine the impossible record</Link>
-        <small>Begin with the black rose seal.</small>
+        <p>Your name cannot be entered until you give the old words.</p>
+        <form className="ledger-code-form" onSubmit={submitCode}>
+          <label>
+            <span className="sr-only">The old words</span>
+            <input
+              type="text"
+              autoComplete="off"
+              autoCapitalize="none"
+              value={codeInput}
+              onChange={(event) => { setCodeInput(event.target.value); setCodeError(false); }}
+              placeholder="The old words"
+              aria-invalid={codeError}
+              aria-describedby={codeError ? "code-error" : undefined}
+            />
+          </label>
+          <button className="button-link" type="submit">Unseal the register</button>
+        </form>
+        {codeError && <small id="code-error" className="field-error">AUTHENTICATION REFUSED. The register does not recognize you.</small>}
+        <small>Those who have not found the words should begin in the <Link href="/archive">archive</Link>.</small>
       </section>
     );
   }

@@ -29,9 +29,9 @@ export default function Home() {
             <p className="signed">— Manchester, November 1924</p>
           </div>
         </div>
-        <div className="crossed-hours" aria-label="Former opening hours, now cancelled">
-          <span>Former hours</span>
-          <del>Eight in the evening until the last mill whistle</del>
+        <div className="posted-hours" aria-label="Posted hours">
+          <span>Hours</span>
+          <span className="posted-hours-text">Eight in the evening until the last mill whistle</span>
         </div>
       </section>
 
@@ -48,6 +48,16 @@ export default function Home() {
         </Link>
       </section>
 
+      <section className="section latest-records">
+        <div className="section-heading heading-with-link">
+          <div><p className="eyebrow">Selected records · 1921–1926</p><h2>From the archive</h2></div>
+          <Link className="text-link light-link" href="/archive">Explore the full archive <span aria-hidden="true">→</span></Link>
+        </div>
+        <div className="archive-table featured-table">
+          {featured.map((record, index) => <ArchiveEntryCard key={record.slug} record={record} index={index} />)}
+        </div>
+      </section>
+
       <section className="section intro-section">
         <div className="section-heading">
           <p className="eyebrow">The surviving Manchester record</p>
@@ -59,22 +69,12 @@ export default function Home() {
             The Black Veil offered illegal drink and uncommon privacy to people who did not ordinarily share a table.
           </p>
           <p>
-            The archive is assembled from newspapers, photographs, police summaries, invitations, and papers
-            recovered after the closure. Gaps remain. Accounts conflict. One record bears a date two years after
-            the house supposedly closed.
+            Correspondence addressed to the house is still collected, though by whom is not recorded.
+            Those who ask after The Black Veil are told, politely, that it closed in 1924. Those who
+            know the old words are not told this.
           </p>
         </div>
         <DecoDivider />
-      </section>
-
-      <section className="section latest-records">
-        <div className="section-heading heading-with-link">
-          <div><p className="eyebrow">Selected records · 1921–1926</p><h2>From the archive</h2></div>
-          <Link className="text-link light-link" href="/archive">View the complete catalog <span aria-hidden="true">→</span></Link>
-        </div>
-        <div className="archive-table featured-table">
-          {featured.map((record, index) => <ArchiveEntryCard key={record.slug} record={record} index={index} />)}
-        </div>
       </section>
 
       <section className="section notices-grid">

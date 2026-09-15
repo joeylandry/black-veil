@@ -14,6 +14,7 @@ export const eventConfig = {
     entryMethod: "black-veil:entry-method",
     rsvp: "black-veil:rsvp",
     ctfProgress: "black-veil:ctf-progress",
+    registerUnlocked: "black-veil:register-unlocked",
   },
 } as const;
 

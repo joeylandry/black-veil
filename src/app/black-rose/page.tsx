@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { CtfGame } from "@/components/ctf-game";
+import { BlackRoseGate } from "@/components/black-rose-gate";
 
 export const metadata: Metadata = {
   title: "Restricted Postscript",
@@ -8,5 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default function BlackRosePage() {
-  return <div className="page-wrap ctf-page"><CtfGame /></div>;
+  return <div className="page-wrap ctf-page"><BlackRoseGate /></div>;
 }

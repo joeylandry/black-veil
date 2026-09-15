@@ -4,8 +4,8 @@ import { DecoDivider } from "@/components/deco-divider";
 import { Masthead } from "@/components/masthead";
 
 export const metadata: Metadata = {
-  title: "Our History",
-  description: "A sourced chronology of Manchester and the fictional Black Veil, 1921–1926.",
+  title: "About",
+  description: "A chronology of Manchester and The Black Veil, 1921–1926.",
 };
 
 export default function AboutPage() {
@@ -16,23 +16,23 @@ export default function AboutPage() {
         <p className="eyebrow">A history approved by management</p>
         <h1>A Manchester house remembered imperfectly.</h1>
         <p className="lede">
-          The Black Veil and Cassandra Castello are fictional. The mills, strike, river,
-          streets, immigrant communities, and pressures surrounding them belong to Manchester history.
+          Assembled from what survives: newspapers, papers, and the memory of a city that
+          mostly chose not to notice. Gaps remain uncorrected.
         </p>
       </section>
       <DecoDivider />
       <section className="history-timeline">
         <article>
           <time>1921</time>
-          <div><h2>The first door opens.</h2><p>A fictional private club begins operating somewhere between Elm Street, the river, and the Amoskeag works. Surviving records disagree about its address.</p></div>
+          <div><h2>The first door opens.</h2><p>A private club begins operating somewhere between Elm Street, the river, and the Amoskeag works. Surviving records disagree about its address.</p></div>
         </article>
         <article>
           <time>1922</time>
-          <div><h2>The city walks out.</h2><p>Amoskeag cuts wages by twenty percent and lengthens the work week. The real strike lasts nine months. Later fictional papers claim laborers and owners both passed through The Black Veil.</p></div>
+          <div><h2>The city walks out.</h2><p>Amoskeag cuts wages by twenty percent and lengthens the work week. The strike lasts nine months. Later papers claim laborers and owners both passed through The Black Veil.</p></div>
         </article>
         <article>
           <time>1923</time>
-          <div><h2>Whispers follow the river.</h2><p>Prohibition enforcement, Canadian liquor, and private meetings enter the club’s fictional record. No surviving account agrees on who protected the house.</p></div>
+          <div><h2>Whispers follow the river.</h2><p>Prohibition enforcement, Canadian liquor, and private meetings enter the club’s record. No surviving account agrees on who protected the house.</p></div>
         </article>
         <article>
           <time>1924</time>
