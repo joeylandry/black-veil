@@ -23,14 +23,14 @@ export const metadata: Metadata = {
       : "http://localhost:3000",
   ),
   title: {
-    default: "The Black Veil — Established 1921",
+    default: "The Black Veil — Manchester, 1926",
     template: "%s — The Black Veil",
   },
   description:
-    "The surviving public record of The Black Veil, a private house of fine spirits, music, and company established in 1921.",
+    "An invitation, a vanished proprietress, and the surviving Manchester records of The Black Veil, 1921–1926.",
   openGraph: {
-    title: "The Black Veil — Established 1921",
-    description: "Fine spirits. Music. Private company. The public rooms are closed indefinitely.",
+    title: "The Black Veil — Manchester, 1926",
+    description: "Cassandra Castello disappeared after the 1924 masquerade. Two years later, the invitations returned.",
     type: "website",
   },
   twitter: { card: "summary_large_image" },

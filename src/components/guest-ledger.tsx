@@ -3,14 +3,12 @@
 import Link from "next/link";
 import { FormEvent, useMemo, useState } from "react";
 import { eventConfig } from "@/config/event";
-import { InvitationCard } from "./invitation-card";
 import { localRsvpService, RsvpSubmission } from "@/lib/rsvp-service";
 import { useStorageValue } from "@/lib/use-storage-value";
 
 type Errors = Partial<Record<"fullName" | "email" | "attending" | "dress", string>>;
 
 export function GuestLedger() {
-  const accessValue = useStorageValue(eventConfig.storageKeys.puzzleComplete);
   const savedValue = useStorageValue(eventConfig.storageKeys.rsvp);
   const [saved, setSaved] = useState<RsvpSubmission | null>(null);
   const [errors, setErrors] = useState<Errors>({});
@@ -18,7 +16,6 @@ export function GuestLedger() {
     if (!savedValue) return null;
     try { return JSON.parse(savedValue) as RsvpSubmission; } catch { return null; }
   }, [savedValue]);
-  const access = accessValue === undefined ? "checking" : accessValue === "true" ? "open" : "locked";
   const visibleSubmission = saved ?? storedSubmission;
 
   async function submit(event: FormEvent<HTMLFormElement>) {
@@ -31,9 +28,9 @@ export function GuestLedger() {
     const dressAcknowledged = form.get("dressAcknowledged") === "on";
     const nextErrors: Errors = {};
 
-    if (fullName.length < 2) nextErrors.fullName = "Enter the name by which management may know you.";
-    if (!/^\S+@\S+\.\S+$/.test(email)) nextErrors.email = "Enter a valid address for private correspondence.";
-    if (!attending) nextErrors.attending = "Indicate whether a place should be laid.";
+    if (fullName.length < 2) nextErrors.fullName = "Enter the real name management should place on the register.";
+    if (!/^\S+@\S+\.\S+$/.test(email)) nextErrors.email = "Enter a valid address for further correspondence.";
+    if (!attending) nextErrors.attending = "Indicate whether a place should be held.";
     if (!dressAcknowledged) nextErrors.dress = "Acknowledge the house dress requirement.";
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length) return;
@@ -44,57 +41,48 @@ export function GuestLedger() {
       attending,
       note,
       dressAcknowledged,
+      attendanceStatus: attending === "yes" ? "confirmed" : "declined",
       recordedAt: new Date().toISOString(),
     };
     await localRsvpService.save(submission);
     setSaved(submission);
   }
 
-  if (access === "checking") {
-    return <div className="ledger-checking" aria-live="polite">Consulting the private ledger…</div>;
-  }
-
-  if (access === "locked") {
-    return (
-      <section className="ledger-locked">
-        <div className="ledger-lock" aria-hidden="true">BV</div>
-        <p className="eyebrow">Restricted volume · members only</p>
-        <h1>The Guest Ledger Is Sealed</h1>
-        <p>Your name cannot be entered until the archive grants access. Management has left no public password.</p>
-        <Link href="/archive" className="button-link">Return to the historical archive</Link>
-        <small>Begin with the record that should not exist.</small>
-      </section>
-    );
+  if (savedValue === undefined) {
+    return <div className="ledger-checking" aria-live="polite">Opening the register…</div>;
   }
 
   if (visibleSubmission) {
     return (
-      <div className="ledger-success">
-        <header>
-          <p className="eyebrow">Entry no. 47 · {visibleSubmission.attending === "yes" ? "place reserved" : "regrets received"}</p>
-          <h1>Attendance Recorded</h1>
-          <p>This entry is stored on this device for the prototype. It has not yet been delivered to management.</p>
-          <div className="ledger-success-actions">
-            <Link href="/invitation" className="button-link">Open private invitation</Link>
-            <Link href="/black-rose" className="button-link">Enter the Black Rose trials</Link>
-          </div>
-        </header>
-        <InvitationCard fullName={visibleSubmission.fullName} />
-      </div>
+      <section className="ledger-success">
+        <div className="ledger-success-stamp">Entered</div>
+        <p className="eyebrow">Guest register · October 1926</p>
+        <h1>Your name has been entered<br />upon the guest register.</h1>
+        <p className="registered-name">{visibleSubmission.fullName}</p>
+        <div className="management-found-file">
+          <p>The management of The Black Veil has located your file.</p>
+          <strong>Further correspondence will follow.</strong>
+        </div>
+        <p className="rsvp-storage-note">This prototype entry is stored only on this device and has not yet been transmitted to event management.</p>
+        <div className="ledger-success-actions">
+          <Link href="/invitation" className="button-link">Open your invitation</Link>
+          <Link href="/archive" className="artifact-link">Return to the case file</Link>
+        </div>
+      </section>
     );
   }
 
   return (
     <form className="ledger-form" onSubmit={submit} noValidate>
       <header>
-        <p className="eyebrow">Private membership volume · opened by authority</p>
-        <h1>Guest Ledger</h1>
-        <p>Enter one name only. Aliases will be assigned inside.</p>
+        <p className="eyebrow">Private guest register · Manchester · 1926</p>
+        <h1>Enter your name.</h1>
+        <p>Use your real name. A fictional identity will be prepared only after attendance is confirmed.</p>
       </header>
       <div className="ledger-fields">
         <label>
-          <span>Full name</span>
-          <input name="fullName" autoComplete="name" aria-invalid={Boolean(errors.fullName)} aria-describedby={errors.fullName ? "name-error" : undefined} />
+          <span>Full legal or preferred name</span>
+          <input name="fullName" type="text" autoComplete="name" aria-invalid={Boolean(errors.fullName)} aria-describedby={errors.fullName ? "name-error" : undefined} />
           {errors.fullName && <small id="name-error" className="field-error">{errors.fullName}</small>}
         </label>
         <label>
@@ -103,13 +91,13 @@ export function GuestLedger() {
           {errors.email && <small id="email-error" className="field-error">{errors.email}</small>}
         </label>
         <fieldset>
-          <legend>Shall management lay a place?</legend>
+          <legend>Shall management hold a place?</legend>
           <label className="radio-line"><input type="radio" name="attending" value="yes" /> Yes, I shall attend.</label>
-          <label className="radio-line"><input type="radio" name="attending" value="no" /> No, I must send regrets.</label>
+          <label className="radio-line"><input type="radio" name="attending" value="no" /> I must send regrets.</label>
           {errors.attending && <small className="field-error">{errors.attending}</small>}
         </fieldset>
         <label>
-          <span>A note for management <em>optional</em></span>
+          <span>A private note <em>optional</em></span>
           <textarea name="note" rows={4} maxLength={500} />
         </label>
         <label className="checkbox-line">
@@ -118,8 +106,8 @@ export function GuestLedger() {
         </label>
         {errors.dress && <small className="field-error">{errors.dress}</small>}
       </div>
-      <p className="prototype-note">Prototype notice: this submission is saved only in this browser. No permanent RSVP backend is connected yet.</p>
-      <button className="ledger-submit" type="submit">Enter my name in the ledger</button>
+      <p className="prototype-note">Prototype register: submissions remain in this browser until a permanent event backend is connected.</p>
+      <button className="ledger-submit" type="submit">Enter my name upon the register</button>
     </form>
   );
 }

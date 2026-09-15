@@ -1,8 +1,8 @@
 # The Black Veil
 
-The Black Veil is an immersive, in-world pre-party experience for a 1920s Prohibition-era All Hallows’ Eve masquerade. The public site presents a closed speakeasy and its contradictory historical archive. Curious visitors can discover a simulated archival terminal, breach a fictional private ledger, recover the admission passphrase, RSVP locally, and reveal their invitation.
+The Black Veil is an immersive historical-fiction invitation and archive for a real All Hallows’ Eve event. The public story is set in Manchester, New Hampshire, from 1921 to 1926, with fictional proprietor Cassandra “Cassie” Castello at the center of an unresolved 1924 disappearance.
 
-The public copy deliberately never presents the event as a game. The eventual live social-deduction experience is not implemented because its characters and mechanics are still being designed.
+The club, Cassandra, its alleged crimes, and all witness accounts are fictional. Manchester, Prohibition, the Amoskeag industrial setting, the Merrimack River, Elm Street, and the 1922 strike provide documented historical context. Every archive record carries provenance metadata that distinguishes those layers.
 
 ## Development
 
@@ -23,65 +23,48 @@ npm run build
 
 ## Routes
 
-- `/` — closed establishment homepage and archive entry point
-- `/archive` — complete historical catalog
-- `/archive/[slug]` — eleven individual archival documents
-- `/about` — in-world history of the establishment
-- `/guest-ledger` — locally gated RSVP prototype
-- `/invitation` — private invitation, revealed after a local RSVP
-- `/black-rose` — post-RSVP five-flag CTF and challenge leaderboard
+- `/` — 1926 invitation entry and the early Cassandra newspaper hook
+- `/archive` — archive drawers organized by year, 1921–1926
+- `/archive/[slug]` — physical artifact view, readable transcript, and provenance
+- `/about` — chronology separating real Manchester context from Black Veil fiction
+- `/guest-ledger` — real-name RSVP prototype stored on the visitor’s device
+- `/invitation` — private invitation revealed after a local RSVP
 - unmatched routes — custom in-world 404
 
-Metadata, a generated Open Graph image, favicon, robots file, and sitemap are included.
+## Archive system
 
-## Project structure
+`src/data/archive.ts` defines typed newspaper pages, clippings, photographs, police documents, telegrams, notices, invitations, images, catalog numbers, and provenance. Real images include their source institution, item title, source URL, rights statement, and editorial note. Fictional and generated artifacts are explicitly identified internally and in the public source panel.
 
-- `src/config/event.ts` — event dates, time, placeholder location, RSVP deadline, puzzle credential, passphrase, and local storage keys
-- `src/data/archive.ts` — typed archive records and all editable archive lore
-- `src/components/terminal/` — the simulated archival terminal, discovery interaction, and progressive hint system
-- `src/components/guest-ledger.tsx` — local RSVP UI and validation
-- `src/lib/rsvp-service.ts` — persistence interface and prototype localStorage adapter
-- `src/data/ctf.ts` — five challenge dossiers, hints, flags, and point values
-- `src/lib/ctf-service.ts` — CTF submission and score persistence boundary
-- `src/features/game/` — reserved documentation boundary for the future private live-game system
+Important newspaper copy is deterministic HTML/CSS rather than text baked into generated images. This keeps headlines and transcripts readable while preserving a scanned-newspaper appearance. Photographs can be inspected in a native dialog and all newspaper records include a readable transcript.
 
-## Archive terminal
+## Visual assets
 
-The terminal is a finite client-side command parser. It never calls a shell, sends entered commands to a server, uses `eval`, or touches the visitor’s filesystem. Supported story commands include `help`, `ls`, `ls -la`, `pwd`, `whoami`, `cd`, `cat`, `clear`, `history`, `date`, `file`, `strings`, `grep`, `sudo`, `unlock`, and `mail`. Several harmless engineer-curiosity commands have scripted responses.
+- `public/archive/fictional/cassandra-castello-portrait.png` — canonical fictional Cassandra portrait generated from a privately supplied likeness reference
+- `public/archive/fictional/cassandra-society-cigarette-holder.png` — society portrait using the same canonical likeness
+- `public/archive/fictional/cassandra-masquerade-evidence.png` — fictional 1924 masquerade evidence photograph using the same likeness
+- `public/archive/fictional/black-veil-passage.png` — fictional Manchester mill-passage photograph
+- `public/archive/real/elm-street-manchester-c1908.jpg` — Library of Congress, Detroit Publishing Company Collection; no known restrictions
+- `public/archive/real/amoskeag-strike-picket-1922.jpg` — Manchester Historic Association image, public domain in the United States, accessed via Wikimedia Commons
 
-Add a command by extending the `switch` in `src/components/terminal/archival-terminal.tsx`. All output must remain fixed fictional text; do not pass input to a runtime, subprocess, API, or evaluator.
+Generated images are never described as authentic historical photographs. The real Elm Street image is explicitly captioned as context and not as a depiction of The Black Veil.
 
-The intended puzzle sequence is discoverable from the archive itself. Puzzle credentials and the final passphrase are centralized in `src/config/event.ts`; change both there. This is an entertainment puzzle, not a security boundary, so client-side values are inspectable by determined visitors.
+## RSVP persistence
 
-## Hints, assistance, and reset
+RSVPs use a guest’s real name and do not assign a fictional character. `src/lib/rsvp-service.ts` defines the persistence boundary; its current adapter stores the prototype submission only in local storage and the interface says so. Replace it with an approved server-backed implementation before collecting production RSVPs.
 
-The terminal includes three progressively explicit archivist notes, then opt-in guided mode, then an emergency fallback that guarantees admission. Entry method is stored only for flavor and never penalizes assisted guests.
+## Future private game
 
-For development, visit any terminal document URL with `?reset-archive=management` to clear Black Veil puzzle and RSVP localStorage state, then reload without the query string. You can also remove keys prefixed with `black-veil:` in browser developer tools.
+`src/features/game/models.ts` prepares separate real identity, public character, private dossier, faction, relationship, evidence, physical-prop, and dual-investigation result shapes. No attendee roster, alias, murderer, victim, secret, objective, relationship, accusation, or score is published. Final private dossiers must live in authenticated server-side storage so sensitive fields never enter public client bundles.
 
-## Guest Ledger persistence
+The model supports a primary 1926 murder and an optional advanced investigation into Cassandra and the 1924 masquerade without choosing how those mysteries connect.
 
-RSVP validation and success states are complete, but submissions are stored only in the visitor’s browser. The UI says this clearly. To connect permanent storage later, replace the `localRsvpService` adapter in `src/lib/rsvp-service.ts` with a server-backed implementation (for example Vercel Postgres, Supabase, or another approved service) while keeping the `RsvpService` contract.
+## Historical reference links
 
-Do not treat the puzzle-completion localStorage flag as real authorization for future private information.
+- Library of Congress: [Elm Street, Manchester, N.H., circa 1908](https://www.loc.gov/item/2016814350/)
+- New Hampshire Historical Society: [Amoskeag Manufacturing Company primary-source set](https://moose.nhhistory.org/educators/primary-source-sets/source-set-amoskeag-manufacturing-company)
+- Manchester Historic Association: [Catalog and holdings](https://manchesterhistoric.org/catalog-holdings/)
+- City of Manchester: [Municipal Archives and Records](https://www.manchesternh.gov/Departments/City-Clerk/Municipal-Archives-and-Records)
 
-## Black Rose CTF and leaderboard
+## Deliberately unresolved
 
-After RSVP, the invitation and ledger reveal `/black-rose`. It contains five additional flags worth 100–300 points, progressive archivist notes, local flag validation, one-time scoring, and a standings table showing the RSVP name, sealed character identity, solved count, and total points. The final challenge rewards inspecting the restricted page itself.
-
-Like the RSVP prototype, CTF scores are device-local. `src/lib/ctf-service.ts` defines the persistence boundary. Replace its local adapter with server-backed submissions and combine it with the future shared RSVP/character roster to show every confirmed guest across devices. Until that backend and real character assignments exist, the UI intentionally does not fabricate other guests or reveal unfinished identities.
-
-## Future live experience
-
-No murder, victim, characters, evidence graph, scoring, accusations, Sheriff powers, arrest flow, or victory conditions are encoded. `src/features/game/README.md` records a clean future boundary without publishing unfinished rules.
-
-## Deployment
-
-The app is Vercel-compatible and requires no environment variables. Standard production deployment:
-
-```bash
-vercel link
-vercel --prod
-```
-
-The Vercel project should be connected to the GitHub repository so future pushes to `main` can deploy normally. `.env*`, `.vercel`, build output, and dependencies are ignored and must never be committed.
+The public site does not establish what happened during the 1924 masquerade, whether Cassandra was victim or suspect, who reportedly died, what became of Cassandra, who protected the club, who sent the 1926 invitations, who will die in 1926, who will kill them, or how the two mysteries ultimately connect.

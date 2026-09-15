@@ -7,6 +7,7 @@ export type RsvpSubmission = {
   attending: "yes" | "no";
   note: string;
   dressAcknowledged: boolean;
+  attendanceStatus?: "invited" | "confirmed" | "declined" | "waitlisted";
   recordedAt: string;
 };
 

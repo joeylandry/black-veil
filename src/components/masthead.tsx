@@ -8,7 +8,7 @@ export function Masthead({ compact = false }: { compact?: boolean }) {
       <p className="established">Established 1921</p>
       <h1>The Black Veil</h1>
       <DecoDivider compact />
-      <p className="masthead-subtitle">Fine Spirits <span>•</span> Music <span>•</span> Private Company</p>
+      <p className="masthead-subtitle">Manchester, New Hampshire <span>•</span> Invitation Only</p>
     </div>
   );
 }

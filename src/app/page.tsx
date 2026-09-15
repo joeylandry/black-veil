@@ -1,85 +1,78 @@
 import Link from "next/link";
 import { ArchiveEntryCard } from "@/components/archive-entry-card";
-import { ClosureStamp } from "@/components/closure-stamp";
-import { DecoDivider } from "@/components/deco-divider";
-import { InWorldNotice } from "@/components/in-world-notice";
-import { Masthead } from "@/components/masthead";
+import { BlackVeilInsignia } from "@/components/black-veil-insignia";
+import { NewspaperArtifact } from "@/components/newspaper-artifact";
 import { archiveRecords } from "@/data/archive";
 
 export default function Home() {
-  const featured = [archiveRecords[0], archiveRecords[6], archiveRecords[9]];
+  const cassandraFrontPage = archiveRecords.find((record) => record.slug === "murderer-or-murdered")!;
+  const featured = archiveRecords.filter((record) => record.featured && record.slug !== "murderer-or-murdered");
 
   return (
     <>
-      <section className="hero paper-panel">
-        <div className="hero-rule" aria-hidden="true" />
-        <Masthead />
-        <div className="hero-notice">
-          <ClosureStamp />
-          <div className="management-copy">
-            <p className="eyebrow">Notice from the office of management</p>
-            <h2>The house receives no company.</h2>
-            <p>
-              By resolution of the proprietors, ordinary operations ceased following the circumstances
-              surrounding our final All Hallows’ Eve engagement. No tables may be reserved. No memberships
-              will be renewed. Correspondence concerning the night in question will be returned unopened.
-            </p>
-            <p className="signed">— Management, November 1924</p>
+      <section className="home-hero">
+        <div className="mill-window" aria-hidden="true" />
+        <div className="home-hero-copy">
+          <BlackVeilInsignia />
+          <p className="eyebrow">By private invitation · Manchester, New Hampshire</p>
+          <h1>The Black<br />Veil</h1>
+          <p className="hero-established">Established 1921</p>
+          <div className="hero-event-line">
+            <span>All Hallows’ Eve Masquerade</span>
+            <strong>October 31, 1926</strong>
           </div>
+          <p className="hero-tagline">The veil has lifted.</p>
+          <Link className="button-link button-light" href="/guest-ledger">Enter the guest register</Link>
         </div>
-        <div className="crossed-hours" aria-label="Former opening hours, now cancelled">
-          <span>Former hours</span>
-          <del>Eight in the evening until discretion fails</del>
+        <aside className="black-envelope" aria-label="A black invitation envelope">
+          <div className="envelope-flap" aria-hidden="true" />
+          <BlackVeilInsignia />
+          <p>For the person to whom this has been delivered</p>
+          <small>Location disclosed to confirmed guests</small>
+        </aside>
+      </section>
+
+      <section className="home-newspaper-hook" aria-labelledby="cassandra-hook-heading">
+        <div className="hook-copy">
+          <p className="eyebrow">Recovered from the 1924 file</p>
+          <h2 id="cassandra-hook-heading">The house has opened before.</h2>
+          <p>It closed after one masquerade. Its proprietress was never seen again.</p>
+          <p className="hook-question">If Cassandra disappeared two years ago—who sent the invitations?</p>
+          <Link className="artifact-link" href="/archive/murderer-or-murdered">Read the surviving front page <span aria-hidden="true">→</span></Link>
+        </div>
+        <Link className="hero-newspaper-link" href="/archive/murderer-or-murdered" aria-label="Examine the Murderer or Murdered newspaper front page">
+          <NewspaperArtifact record={cassandraFrontPage} compact />
+        </Link>
+      </section>
+
+      <section className="manchester-grounding">
+        <div>
+          <p className="eyebrow">Manchester · 1921–1926</p>
+          <h2>Brick, river, whistle.</h2>
+        </div>
+        <div className="grounding-copy">
+          <p>Beyond the unmarked door: the Merrimack in fog, streetcars on Elm, and the brick miles of Amoskeag. Mill hands and mill owners occupied the same city, seldom the same room.</p>
+          <p>Later papers claimed The Black Veil received both. The claim is fiction. The pressure surrounding it—the strike, Prohibition, industrial decline, immigrant Manchester—is not.</p>
         </div>
       </section>
 
-      <section className="section intro-section">
-        <div className="section-heading">
-          <p className="eyebrow">The surviving public record</p>
-          <h2>A house remembered imperfectly.</h2>
-        </div>
-        <div className="two-column-copy">
-          <p className="drop-cap">
-            Beneath an unmarked street door, The Black Veil once offered music, supper, and uncommon privacy
-            to those who understood the value of all three. Its rooms attracted financiers, actresses,
-            politicians, and several persons who preferred not to be described.
-          </p>
-          <p>
-            The archive has been assembled from newspapers, police property lists, private letters, and
-            papers recovered after the closure. Gaps in the record are regrettable. Contradictions are not
-            our responsibility. Certain catalog cards appear to have been added recently.
-          </p>
-        </div>
-        <DecoDivider />
-      </section>
-
-      <section className="section latest-records">
-        <div className="section-heading heading-with-link">
+      <section className="home-records">
+        <header className="section-heading heading-with-link">
           <div>
-            <p className="eyebrow">Selected records · 1921–1926</p>
-            <h2>From the archive</h2>
+            <p className="eyebrow">Selected holdings · drawers 1921–1926</p>
+            <h2>Three records remain out.</h2>
           </div>
-          <Link className="text-link" href="/archive">View the complete catalog <span aria-hidden="true">→</span></Link>
-        </div>
-        <div className="archive-grid featured-grid">
+          <Link className="artifact-link" href="/archive">Open the full case file <span aria-hidden="true">→</span></Link>
+        </header>
+        <div className="archive-table featured-table">
           {featured.map((record, index) => <ArchiveEntryCard key={record.slug} record={record} index={index} />)}
         </div>
       </section>
 
-      <section className="section notices-grid">
-        <InWorldNotice label="Membership">
-          <h3>Applications remain suspended.</h3>
-          <p>Former members are advised that possession of a key does not constitute permission to enter.</p>
-        </InWorldNotice>
-        <InWorldNotice label="Records office" className="notice-dark">
-          <h3>Catalog irregularity.</h3>
-          <p>One item bears a date later than this archive’s closure. Management considers this impossible.</p>
-          <Link href="/archive" className="text-link light-link">Consult the catalog</Link>
-        </InWorldNotice>
-        <InWorldNotice label="Unclaimed property">
-          <h3>One black silk mask.</h3>
-          <p>Recovered without its owner. Inquiries must include the name under which you entered.</p>
-        </InWorldNotice>
+      <section className="closing-question">
+        <p className="eyebrow">October 1926</p>
+        <h2>Some doors were never meant to reopen.</h2>
+        <Link href="/guest-ledger" className="button-link">Find your name in the register</Link>
       </section>
     </>
   );

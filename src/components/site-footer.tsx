@@ -5,13 +5,13 @@ export function SiteFooter() {
   return (
     <footer className="site-footer">
       <BlackVeilInsignia />
-      <p className="eyebrow">Established 1921 · The public rooms are closed</p>
+      <p className="eyebrow">Manchester, New Hampshire · Established 1921</p>
       <div className="footer-links">
-        <Link href="/archive">Historical records</Link>
-        <Link href="/about">Management history</Link>
-        <Link href="/guest-ledger">Private ledger</Link>
+        <Link href="/archive">Case file</Link>
+        <Link href="/about">Chronology</Link>
+        <Link href="/guest-ledger">Guest register</Link>
       </div>
-      <p className="fine-print">Archive catalog last amended: October 31, 1926 · 11:47 P.M.</p>
+      <p className="fine-print">The Black Veil and Cassandra Castello are fictional. Historical sources are identified in the archive.</p>
     </footer>
   );
 }

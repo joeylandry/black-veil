@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { DecoDivider } from "@/components/deco-divider";
-import { TerminalDiscovery } from "@/components/terminal/terminal-discovery";
+import { ArtifactInspector } from "@/components/artifact-inspector";
+import { NewspaperArtifact } from "@/components/newspaper-artifact";
 import { archiveRecords, getArchiveRecord } from "@/data/archive";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -22,34 +23,75 @@ export default async function ArchiveDocumentPage({ params }: Props) {
   const { slug } = await params;
   const record = getArchiveRecord(slug);
   if (!record) notFound();
+  const index = archiveRecords.findIndex((item) => item.slug === record.slug);
+  const previous = archiveRecords[index - 1];
+  const next = archiveRecords[index + 1];
+  const isNewspaper = record.format === "newspaper" || record.format === "front-page";
 
   return (
-    <div className="page-wrap document-page">
-      <Link href="/archive" className="back-link">← Return to catalog</Link>
-      <article className={`document-sheet document-${record.format} ${record.anomaly ? "document-anomaly" : ""}`}>
-        <header className="document-header">
-          <div className="document-labels">
-            <span>{record.format}</span>
-            <span>Public record · {record.year}</span>
+    <div className="record-room">
+      <div className="record-toolbar">
+        <Link href="/archive">← Return to drawer index</Link>
+        <span>{record.catalogNumber}</span>
+      </div>
+
+      <div className={`record-stage record-stage-${record.format}`}>
+        {isNewspaper ? (
+          <div className="newspaper-scroll" role="region" aria-label="Scrollable newspaper artifact" tabIndex={0}>
+            <NewspaperArtifact record={record} />
           </div>
-          <p className="document-source">{record.source}</p>
-          <time>{record.date}</time>
-          <h1>{record.title}</h1>
-          <DecoDivider compact />
-        </header>
-        <div className="document-body">
+        ) : (
+          <article className={`physical-document physical-document-${record.format}`}>
+            <div className="document-punches" aria-hidden="true"><i /><i /></div>
+            <header>
+              <div><span>{record.format}</span><span>{record.catalogNumber}</span></div>
+              <time>{record.date}</time>
+              <h1>{record.title}</h1>
+              {record.deck && <p>{record.deck}</p>}
+            </header>
+            {record.image && (
+              <figure className="document-photograph">
+                <Image src={record.image.src} alt={record.image.alt} width={record.image.width} height={record.image.height} sizes="(max-width: 800px) 88vw, 760px" />
+                <figcaption>{record.image.caption}</figcaption>
+                <ArtifactInspector {...record.image} title={record.title} />
+              </figure>
+            )}
+            <div className="physical-document-copy">
+              {record.body.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+            </div>
+            {record.markings && <div className="record-markings">{record.markings.map((mark) => <span key={mark}>{mark}</span>)}</div>}
+          </article>
+        )}
+      </div>
+
+      <section className="transcription" aria-labelledby="transcription-heading">
+        <div className="transcription-heading">
+          <p className="eyebrow">Readable transcript</p>
+          <h2 id="transcription-heading">{record.title}</h2>
+          {record.deck && <p>{record.deck}</p>}
+        </div>
+        <div className="transcription-copy">
           {record.body.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
         </div>
-        {record.markings && (
-          <aside className="document-markings" aria-label="Archival markings">
-            {record.markings.map((mark) => <span key={mark}>{mark}</span>)}
-          </aside>
-        )}
-        {record.anomaly && <TerminalDiscovery />}
-      </article>
-      <nav className="document-nav" aria-label="Archive navigation">
-        <Link href="/archive">All records</Link>
-        <Link href="/archive/masquerade-night-desk-note">Related memorandum</Link>
+      </section>
+
+      <aside className={`provenance provenance-${record.provenance.classification}`}>
+        <div>
+          <span>Record classification</span>
+          <strong>{record.provenance.label}</strong>
+        </div>
+        <dl>
+          {record.provenance.sourceInstitution && <div><dt>Source</dt><dd>{record.provenance.sourceInstitution}</dd></div>}
+          {record.provenance.sourceTitle && <div><dt>Item</dt><dd>{record.provenance.sourceTitle}</dd></div>}
+          {record.provenance.rights && <div><dt>Rights</dt><dd>{record.provenance.rights}</dd></div>}
+          {record.provenance.notes && <div><dt>Editorial note</dt><dd>{record.provenance.notes}</dd></div>}
+        </dl>
+        {record.provenance.sourceUrl && <a href={record.provenance.sourceUrl} target="_blank" rel="noreferrer">Open source record ↗</a>}
+      </aside>
+
+      <nav className="record-pagination" aria-label="Adjacent archive records">
+        {previous ? <Link href={`/archive/${previous.slug}`}><span>Previous record</span>{previous.title}</Link> : <span />}
+        {next ? <Link href={`/archive/${next.slug}`}><span>Next record</span>{next.title}</Link> : <span />}
       </nav>
     </div>
   );

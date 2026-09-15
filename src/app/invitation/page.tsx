@@ -3,7 +3,7 @@ import { InvitationGate } from "@/components/invitation-gate";
 
 export const metadata: Metadata = {
   title: "Private Invitation",
-  description: "An invitation from The Black Veil. If it found you, it was meant to.",
+  description: "A black envelope for The Black Veil, Manchester, October 31, 1926.",
 };
 
 export default function InvitationPage() {

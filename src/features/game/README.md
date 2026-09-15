@@ -1,7 +1,7 @@
-# Future private game system
+# Future private game boundary
 
-This folder is reserved for the eventual authenticated, live event experience. No game mechanics are implemented or exposed in the current public site.
+The public application currently contains no attendee roster, assigned aliases, murderer, victim, secrets, relationship graph, evidence ownership, accusation mechanics, or score values.
 
-Likely domain concepts include Player, Character, Relationship, Secret, Objective, Evidence, Possession, Currency, FormalAccusation, SheriffDecision, Arrest, GameState, VictoryEligibility, and VictoryResult. Their rules should be defined only after the live experience is finalized.
+`models.ts` defines only the shape of future data. Final dossier records should live in authenticated server-side storage so private fields never ship in static JavaScript. Real RSVP identity and fictional character identity remain separate records joined by an internal identifier.
 
-Keep future game routes behind a real authorization boundary. The public archive puzzle and its localStorage flag are entertainment state, not authentication.
+The model deliberately supports two linked investigations—Cassandra Castello and the unresolved 1924 masquerade, plus the future 1926 murder—without choosing their connection. Digital archive records may later reference physical props by stable IDs, and an investigation result may independently record theories for both cases and their connection.
