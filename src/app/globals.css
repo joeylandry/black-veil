@@ -235,7 +235,12 @@ img { max-width: 100%; height: auto; }
 .archive-piece h3 a:hover { color: var(--oxblood); }
 .archive-piece-deck { font-weight: 700; line-height: 1.25; }
 .archive-piece-copy > p:not(.archive-piece-deck) { font-size: .92rem; line-height: 1.5; }
-.featured-table .archive-piece { grid-column: span 4; }
+.featured-table { align-items: stretch; }
+.featured-table .archive-piece { grid-column: span 4; margin-top: 0; min-height: 0; padding: 0; color: var(--ink); background: #e8e0ca; border-color: #736d5d; text-align: left; font-family: inherit; transform: none; display: flex; flex-direction: column; }
+.featured-table .archive-piece::before { display: none; }
+.featured-table .archive-piece-image { height: 230px; border: 0; box-shadow: none; }
+.featured-table .archive-piece-copy { display: flex; flex: 1; flex-direction: column; }
+.featured-table .archive-piece-copy .artifact-link { margin-top: auto; padding-top: 1rem; }
 /* Record detail */
 .record-room { min-height: 80vh; padding: clamp(2rem, 5vw, 5rem) clamp(.75rem, 4vw, 4rem) 7rem; background: #766f60; }
 .record-toolbar { max-width: 1180px; margin: 0 auto 1.5rem; display: flex; justify-content: space-between; gap: 1rem; color: #f0e7d1; font-family: var(--font-sans), Arial, sans-serif; font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; }
