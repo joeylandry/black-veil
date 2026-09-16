@@ -59,7 +59,7 @@ export function CtfGame() {
         <BlackVeilInsignia />
         <p className="eyebrow">Restricted postscript · rose clearance</p>
         <h1>The Black Rose Trials</h1>
-        <p>Five irregularities remain across the Manchester record. Findings are rewarded. Careless guesses are remembered.</p>
+        <p>Six irregularities remain across the Manchester record. Findings are rewarded. Careless guesses are remembered.</p>
         <div className="score-seal"><span>Your score</span><strong>{progress.score}</strong><small>of {maxCtfScore} points</small></div>
       </header>
 
