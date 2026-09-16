@@ -74,11 +74,13 @@ export const archiveRecords: ArchiveRecord[] = [
     year: 1921,
     title: "A Door Without an Address",
     deck: "A private house begins receiving callers somewhere between Elm Street and the river.",
-    format: "photograph",
-    excerpt: "An unnumbered service door photographed near the Manchester mill district; three catalog cards give three different locations.",
+    format: "newspaper",
+    masthead: "The Manchester Morning Courier",
+    edition: "City and Vicinity · Page Four",
+    excerpt: "Neighbors along three different streets each insist a private house receiving evening callers stands on their own block; no directory records it and no sign marks the door.",
     body: [
-      "The photograph arrived without a negative or photographer’s mark. The earliest catalog card places the passage near the Amoskeag works. A later hand wrote ‘off Elm’ above it. A third note gives only: river side.",
-      "No surviving city directory lists The Black Veil. By autumn 1921, however, black envelopes were being delivered to mill clerks, attorneys, merchants, reporters, and persons who did not ordinarily share a table.",
+      "A curious item reaches this desk from the mill district, where a private house has lately taken to receiving callers by invitation only, and where no two residents can agree on which door it uses. A clerk at the Amoskeag counting-house places the entrance hard by the mill gates. A milliner on Elm Street insists the same house opens onto her own alley. A bargeman working the towpath allows only that it fronts the river side, and would say nothing further.",
+      "No city directory carries any establishment under the name given to this reporter in confidence: The Black Veil. Yet since the first frost, black envelopes have gone out to mill clerks, attorneys, merchants, and at least one member of the evening press, each bearing an invitation to call at a door that, by every account so far collected, does not officially exist.",
     ],
     image: {
       src: "/archive/fictional/black-veil-passage.png",
@@ -86,6 +88,9 @@ export const archiveRecords: ArchiveRecord[] = [
       caption: "UNIDENTIFIED MILL PASSAGE · Manchester, N.H. · location disputed",
       width: 1536,
       height: 1024,
+      note: [
+        "The photograph accompanying this item arrived at the paper without a negative or photographer’s mark. A clerk’s hand has since annotated it three times: the earliest note places the passage near the Amoskeag works; a later hand wrote ‘off Elm’ above it; a third gives only: river side.",
+      ],
     },
     markings: ["LOCATION DISPUTED", "Received without negative"],
     provenance: {
@@ -95,7 +100,7 @@ export const archiveRecords: ArchiveRecord[] = [
       sourceInstitution: "The Black Veil creative archive",
       sourceTitle: "A Door Without an Address",
       rights: "Original generated image for this project",
-      notes: "Fictional scene informed by Manchester’s brick millyard architecture. It is not an authentic historical photograph.",
+      notes: "Fictional scene informed by Manchester’s brick millyard architecture. It is not an authentic historical photograph. The newspaper item is fictional.",
     },
   },
   {
