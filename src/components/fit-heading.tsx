@@ -7,11 +7,13 @@ export function FitHeading({
   className,
   maxRem = 3,
   minRem = 1.3,
+  as: Tag = "h2",
 }: {
   children: string;
   className?: string;
   maxRem?: number;
   minRem?: number;
+  as?: "h1" | "h2" | "h3";
 }) {
   const ref = useRef<HTMLHeadingElement>(null);
   const [fontSize, setFontSize] = useState<number | null>(null);
@@ -37,8 +39,8 @@ export function FitHeading({
   }, [children, maxRem, minRem]);
 
   return (
-    <h2 ref={ref} className={className} style={fontSize ? { fontSize: `${fontSize}rem` } : undefined}>
+    <Tag ref={ref} className={className} style={fontSize ? { fontSize: `${fontSize}rem` } : undefined}>
       {children}
-    </h2>
+    </Tag>
   );
 }

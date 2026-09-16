@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArtifactInspector } from "@/components/artifact-inspector";
+import { FitHeading } from "@/components/fit-heading";
 import { NewspaperInspector } from "@/components/newspaper-inspector";
 import { TerminalDiscovery } from "@/components/terminal/terminal-discovery";
 import { archiveRecords, getArchiveRecord } from "@/data/archive";
@@ -60,7 +61,7 @@ export default async function ArchiveDocumentPage({ params }: Props) {
             <header>
               <div><span>{record.format}</span><span>{record.catalogNumber}</span></div>
               <time>{record.date}</time>
-              <h1>{record.title}</h1>
+              <FitHeading as="h1" maxRem={6} minRem={2.2}>{record.title}</FitHeading>
               {record.deck && <p>{record.deck}</p>}
             </header>
             {record.image && (

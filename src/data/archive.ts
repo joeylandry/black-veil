@@ -229,12 +229,11 @@ export const archiveRecords: ArchiveRecord[] = [
     year: 1924,
     title: "All Hallows’ Eve Masquerade",
     format: "invitation",
-    excerpt: "A printer’s proof announces supper at midnight and instructs guests to leave their names outside.",
+    excerpt: "The printer’s proof survives without a street number; three location lines were set in the margin and struck before it went to press.",
     body: [
       "THE BLACK VEIL requests the pleasure of its members on All Hallows’ Eve. Masks after ten. Supper at twelve. Admission by black envelope only.",
       "The proof gives no street number. In the printer’s margin, three location lines were set and struck: near the works; off Elm; river entrance.",
     ],
-    markings: ["PROOF — DO NOT CIRCULATE", "Location plate removed"],
     provenance: fictionalArtifact("Fictional 1924 invitation proof created for The Black Veil."),
   },
   {
