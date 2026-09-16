@@ -281,10 +281,6 @@ export const archiveRecords: ArchiveRecord[] = [
         headline: "River fog delays early freight traffic",
         body: "A heavy fog off the Merrimack held morning freight cars at the Amoskeag yard until past seven o’clock.",
       },
-      {
-        headline: "Millyard whistle sounded seven minutes late",
-        body: "Foremen at the Amoskeag works could not account for the delay; the timekeeper’s log was reportedly missing a page.",
-      },
     ],
     markings: ["Clipped from library binding", "Question mark circled in red pencil"],
     provenance: fictionalArtifact("Signature fictional front page. The newspaper, reports, death inquiry, Cassandra Castello, and The Black Veil are fictional."),
