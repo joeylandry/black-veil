@@ -241,7 +241,7 @@ export const archiveRecords: ArchiveRecord[] = [
     date: "November 2, 1924",
     year: 1924,
     title: "Murdered or Murderer",
-    deck: "Black Veil Masquerade Massacre",
+    deck: "Cassandra Castello Missing After Black Veil Masquerade Massacre",
     format: "front-page",
     masthead: "The Manchester Evening Chronicle",
     edition: "Vol. LXVIII · No. 262 · Final City Edition · Two Cents",

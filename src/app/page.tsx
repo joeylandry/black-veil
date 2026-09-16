@@ -35,7 +35,7 @@ export default function Home() {
         <div className="hero-newspaper">
           <div className="newspaper-scroll" role="region" aria-label="Scrollable newspaper artifact" tabIndex={0}>
             <Link className="hero-newspaper-link" href="/archive/murderer-or-murdered" aria-label="Examine the Murderer or Murdered newspaper front page">
-              <NewspaperArtifact record={cassandraFrontPage} compact />
+              <NewspaperArtifact record={cassandraFrontPage} />
             </Link>
           </div>
         </div>
