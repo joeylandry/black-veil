@@ -127,7 +127,14 @@ export const archiveRecords: ArchiveRecord[] = [
       height: 1402,
       focalPoint: "58% 20%",
     },
-    neighboringCopy: ["Street railway winter timetable revised", "Cold weather settles over Merrimack Valley"],
+    neighboringCopy: [
+      "Street railway winter timetable revised",
+      "Cold weather settles over Merrimack Valley",
+      {
+        headline: "Coal Deliveries Running Behind Schedule",
+        body: "Dealers along Canal Street reported orders backed up nearly a week, with teamsters blaming the early cold snap and a shortage of wagons.",
+      },
+    ],
     markings: ["Name underlined in blue pencil", "Clipping lacks page corner"],
     provenance: fictionalArtifact("The newspaper, article, and Cassandra Castello are fictional. The portrait is generated from a privately supplied likeness reference."),
   },
