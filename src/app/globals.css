@@ -176,6 +176,9 @@ img { max-width: 100%; height: auto; }
 .newspaper-copy p:first-child::first-letter { float: left; margin: .04em .08em 0 0; font-size: 3.4rem; line-height: .7; }
 .newspaper-dateline { font-weight: 800; }
 .continued { border-top: 1px solid var(--ink); padding-top: .25rem; font-size: .55rem; font-style: italic; text-align: right; }
+.newspaper-page6 { margin-top: .6rem; padding-top: .5rem; border-top: 1px solid var(--ink); }
+.newspaper-page6 h4 { margin: 0 0 .35rem; font-family: var(--font-display); font-size: 1.1rem; line-height: 1; text-transform: uppercase; }
+.newspaper-page6 p { margin: 0 0 .5rem; }
 .newspaper-photo { margin: 0; align-self: start; border: 1px solid var(--ink); padding: 4px; background: #c8c3b6; }
 .newspaper-photo img { display: block; width: 100%; max-height: 480px; object-fit: cover; filter: grayscale(1) contrast(1.15); mix-blend-mode: multiply; }
 .newspaper-photo figcaption { padding: .32rem .2rem .08rem; font-size: .57rem; line-height: 1.2; font-weight: 700; text-transform: uppercase; }

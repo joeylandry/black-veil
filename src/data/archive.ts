@@ -47,6 +47,7 @@ export type ArchiveRecord = {
   image?: ArchiveImage;
   markings?: string[];
   neighboringCopy?: (string | { headline: string; body: string })[];
+  continuedArticle?: { headline: string; body: string[] };
   provenance: ArchiveProvenance;
   featured?: boolean;
   anomaly?: boolean;
@@ -239,8 +240,8 @@ export const archiveRecords: ArchiveRecord[] = [
     catalogNumber: "BV–24–047",
     date: "November 2, 1924",
     year: 1924,
-    title: "Murderer or Murdered?",
-    deck: "Cassandra Castello missing after Black Veil masquerade",
+    title: "Murdered or Murderer",
+    deck: "Black Veil Masquerade Massacre",
     format: "front-page",
     masthead: "The Manchester Evening Chronicle",
     edition: "Vol. LXVIII · No. 262 · Final City Edition · Two Cents",
@@ -257,6 +258,15 @@ export const archiveRecords: ArchiveRecord[] = [
       caption: "CASSANDRA CASTELLO · proprietress of The Black Veil · photograph date uncertain",
       width: 1122,
       height: 1402,
+    },
+    continuedArticle: {
+      headline: "Inquiry continues into masquerade massacre",
+      body: [
+        "Detectives returned to the shuttered premises of The Black Veil this week, continuing an inquiry into what officials now privately concede was a massacre at the club’s All Hallows’ Eve masquerade two nights past. No official count of the dead has been released.",
+        "Cassandra Castello, the club’s proprietress, was reported missing that same night. Police will not say whether her disappearance is connected to the killings, or whether she is to be considered a victim, a witness, or a suspect.",
+        "The precise number of dead remains unknown. Whatever bodies the scene once held were gone before police arrived, leaving no remains to count and no official toll to publish. Investigators maintain, nonetheless, that a massacre did take place inside the club that night.",
+        "The department has offered no further statement. The Black Veil remains sealed, and its address is still absent from public record.",
+      ],
     },
     neighboringCopy: [
       {
