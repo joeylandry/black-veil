@@ -13,7 +13,6 @@ export default function ArchivePage() {
       <header className="archive-room-header">
         <p className="eyebrow">Public catalog · Box 17</p>
         <h1>Historical Archive</h1>
-        <p>{archiveRecords.length} records survive. Several are incomplete. One should not exist.</p>
         <div className="catalog-note">
           <span>Filed chronologically</span>
           <span>Access class: public</span>
