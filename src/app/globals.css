@@ -165,23 +165,23 @@ img { max-width: 100%; height: auto; }
 .newsprint-fold { position: absolute; top: 0; bottom: 0; left: 49.8%; width: 2px; background: rgba(255,255,255,.28); box-shadow: -2px 0 3px rgba(50,40,25,.09); }
 .newspaper-masthead { text-align: center; border-top: 3px solid var(--ink); border-bottom: 4px double var(--ink); }
 .newspaper-masthead > p { margin: .15rem 0 -.2rem; font-family: var(--font-sans), Arial, sans-serif; font-size: .56rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
-.newspaper-masthead h2 { margin: 0; font-family: "Old English Text MT", UnifrakturCook, Georgia, serif; font-size: 3rem; line-height: 1; font-weight: 700; letter-spacing: -.045em; white-space: nowrap; }
+.newspaper-masthead h2 { margin: 0; font-family: "Old English Text MT", UnifrakturCook, Georgia, serif; font-size: 1.6rem; line-height: 1; font-weight: 700; letter-spacing: -.045em; white-space: nowrap; overflow: hidden; }
 .newspaper-masthead > div { display: flex; justify-content: space-between; padding: .25rem 0; border-top: 1px solid var(--ink); font-size: .62rem; font-weight: 700; text-transform: uppercase; }
 .newspaper-lead { padding: 1rem 0 .8rem; text-align: center; border-bottom: 2px solid var(--ink); }
 .newspaper-kicker { margin: 0 0 .25rem; font-family: var(--font-sans), Arial, sans-serif; font-size: .6rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
 .newspaper-lead h3 { margin: 0; font-family: Impact, "Arial Narrow", var(--font-display); font-size: 5.4rem; line-height: .82; letter-spacing: -.035em; text-transform: uppercase; }
 .newspaper-lead h3.newspaper-headline-banner { font-size: 3.7rem; white-space: nowrap; }
 .newspaper-deck { max-width: 700px; margin: .65rem auto 0; font-family: var(--font-display); font-size: 1.65rem; font-weight: 700; line-height: 1; text-transform: uppercase; }
-.newspaper-columns { display: grid; grid-template-columns: 1fr 1.15fr .82fr; gap: .8rem; padding-top: .9rem; }
-.newspaper-copy { columns: 1; font-size: .73rem; line-height: 1.26; text-align: justify; }
+.newspaper-columns { display: grid; grid-template-columns: 1fr 1.15fr .82fr; gap: .8rem; padding-top: .9rem; align-items: stretch; }
+.newspaper-copy { display: flex; flex-direction: column; columns: 1; font-size: .73rem; line-height: 1.26; text-align: justify; }
 .newspaper-copy p { margin: 0 0 .65rem; }
 .newspaper-copy p:first-child::first-letter { float: left; margin: .04em .08em 0 0; font-size: 3.4rem; line-height: .7; }
 .newspaper-dateline { font-weight: 800; }
-.continued { border-top: 1px solid var(--ink); padding-top: .25rem; font-size: .55rem; font-style: italic; text-align: right; }
+.continued { border-top: 1px solid var(--ink); padding-top: .25rem; margin-top: auto; font-size: .55rem; font-style: italic; text-align: right; }
 .newspaper-page6 { grid-column: 1 / -1; margin-top: .8rem; padding-top: .6rem; border-top: 1px solid var(--ink); columns: 3; column-gap: 1.2rem; font-size: .72rem; line-height: 1.25; text-align: justify; }
 .newspaper-page6 h4 { column-span: all; margin: 0 0 .4rem; font-family: var(--font-display); font-size: 1.4rem; line-height: 1; text-transform: uppercase; }
 .newspaper-page6 p { margin: 0 0 .5rem; }
-.newspaper-photo { margin: 0; align-self: start; border: 1px solid var(--ink); padding: 4px; background: #c8c3b6; }
+.newspaper-photo { display: flex; flex-direction: column; justify-content: flex-end; margin: 0; border: 1px solid var(--ink); padding: 4px; background: #c8c3b6; }
 .newspaper-photo-frame { position: relative; overflow: hidden; }
 .newspaper-photo img { display: block; width: 100%; max-height: 480px; object-fit: cover; filter: grayscale(1) contrast(1.25) brightness(.95) sepia(.1); mix-blend-mode: multiply; }
 .newspaper-photo-frame::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .5; mix-blend-mode: multiply; background-image: radial-gradient(circle, rgba(20,18,12,.85) 1px, transparent 1.4px); background-size: 3px 3px; }
@@ -413,7 +413,6 @@ img { max-width: 100%; height: auto; }
   .record-stage { padding: .35rem; }
   .newspaper-scroll { padding: .45rem; }
   .newspaper-artifact { width: 760px; min-height: 1020px; }
-  .newspaper-masthead h2 { font-size: 2.8rem; }
   .newspaper-lead h3 { font-size: 4.8rem; }
   .newspaper-lead h3.newspaper-headline-banner { font-size: 3.4rem; }
   .physical-document { padding: 3.2rem 1.35rem; }
