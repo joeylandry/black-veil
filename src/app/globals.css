@@ -484,10 +484,10 @@ img { max-width: 100%; height: auto; }
 .deco-divider b { font-size: 1rem; }
 .deco-divider-compact { max-width: 430px; }
 
-.hero-notice { display: grid; grid-template-columns: minmax(250px,.75fr) minmax(300px,1.25fr); align-items: center; gap: clamp(2rem,7vw,7rem); max-width: 1020px; margin: 4rem auto 0; }
+.hero-notice { display: grid; grid-template-columns: minmax(250px,.75fr) minmax(300px,1.25fr); align-items: center; gap: clamp(2rem,7vw,7rem); max-width: 1020px; margin: 4rem auto 0; padding: clamp(1.6rem,3.4vw,2.8rem) clamp(1.6rem,4vw,3.4rem); border: 1px solid var(--ink); background: rgba(244,236,217,.42); box-shadow: 0 0 0 5px var(--paper), 0 0 0 6px var(--ink); }
 .closure-stamp { justify-self: center; width: min(100%,340px); padding: 1rem 1.1rem .8rem; color: var(--oxblood); border: 5px double currentColor; transform: rotate(-5deg); text-align: center; text-transform: uppercase; line-height: 1; opacity: .88; overflow-wrap: break-word; }
 .closure-stamp span { display: block; font-family: var(--font-sans), Arial, sans-serif; font-size: .9rem; letter-spacing: .3em; }
-.closure-stamp strong { display: block; margin: .2rem 0 .55rem; font-family: var(--font-display); font-size: clamp(1.6rem,4.4vw,2.5rem); letter-spacing: -.02em; overflow-wrap: break-word; }
+.closure-stamp strong { display: block; margin: .2rem 0 .55rem; font-family: var(--font-display); font-size: clamp(1.6rem,4.4vw,2.5rem); letter-spacing: -.02em; white-space: nowrap; }
 .closure-stamp small { display: block; padding-top: .55rem; border-top: 1px solid currentColor; font-family: var(--font-sans), Arial, sans-serif; font-size: .6rem; letter-spacing: .2em; }
 .management-copy { padding-left: clamp(1.2rem,3vw,3rem); border-left: 1px solid var(--ink); }
 .management-copy h2, .in-world-notice h3, .history-intro h1 { font-family: var(--font-display); font-weight: 600; line-height: .98; }

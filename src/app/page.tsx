@@ -26,7 +26,7 @@ export default function Home() {
               masquerade of 1924. Cassandra Castello cannot be reached. Correspondence concerning
               the night in question will be returned unopened.
             </p>
-            <p className="signed">— Manchester, November 1924</p>
+            <p className="signed">— November 1, 1924</p>
           </div>
         </div>
         <div className="posted-hours" aria-label="Posted hours">
