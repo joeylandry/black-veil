@@ -252,6 +252,41 @@ export const archiveRecords: ArchiveRecord[] = [
     featured: true,
   },
   {
+    slug: "terror-at-the-black-veil",
+    catalogNumber: "BV–24–046",
+    date: "November 1, 1924",
+    year: 1924,
+    title: "Terror at the Black Veil",
+    deck: "Masked guests flee into Elm Street before dawn; police find the club emptied and silent.",
+    format: "front-page",
+    masthead: "The Manchester Evening Chronicle",
+    edition: "Extra · Vol. LXVIII · No. 261 · One Cent",
+    excerpt: "Neighbors woke before sunrise to screaming and running feet. By the time police reached the club, whatever had happened inside was already over.",
+    body: [
+      "Guests in masquerade dress were seen fleeing a private supper club known as The Black Veil in the hours before dawn yesterday, several still in costume, at least one without shoes. Residents along the nearest streets described screaming, breaking glass, and motorcars departing at speed.",
+      "Patrolmen summoned to the address found the premises locked and dark. Furniture inside had been overturned. Officers would not say whether they found any sign of injury, and the department has not confirmed that a crime occurred at all.",
+      "Cassandra Castello, the club's proprietress, could not be located for comment. Employees reached at their homes either declined to speak or insisted they had left the affair hours before whatever disturbed the neighborhood took place.",
+      "No arrest has been made. No name has been released. This newspaper will publish further particulars as the inquiry, such as it is, proceeds.",
+    ],
+    neighboringCopy: [
+      {
+        headline: "Neighbors report sleepless night on the West Side",
+        body: "Several households along the nearest streets told this paper they remained awake past three o'clock, uncertain whether to summon police themselves.",
+      },
+      {
+        headline: "Coroner's office declines early statement",
+        body: "A clerk said no request for the coroner's services had been logged as of press time, though the line had been busy since sunrise.",
+      },
+      {
+        headline: "All Hallows' Eve trolley service called uneventful elsewhere",
+        body: "Aside from the disturbance reported near the mill district, the Manchester Street Railway described the holiday's late service as routine.",
+      },
+    ],
+    markings: ["EXTRA EDITION — RUSHED TO PRESS", "Second paragraph reset before printing"],
+    provenance: fictionalArtifact("Signature fictional breaking-news front page, filed the morning after the 1924 masquerade. The newspaper, the report, and The Black Veil are fictional."),
+    featured: true,
+  },
+  {
     slug: "murderer-or-murdered",
     catalogNumber: "BV–24–047",
     date: "November 2, 1924",
