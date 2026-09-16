@@ -1,11 +1,11 @@
 import Image from "next/image";
 import { ArchiveRecord } from "@/data/archive";
 
-export function NewspaperArtifact({ record, compact = false }: { record: ArchiveRecord; compact?: boolean }) {
+export function NewspaperArtifact({ record }: { record: ArchiveRecord }) {
   const story = record.body[0] ?? record.excerpt;
 
   return (
-    <article className={`newspaper-artifact ${compact ? "newspaper-artifact-compact" : ""}`} aria-label={`${record.title}, ${record.date}`}>
+    <article className="newspaper-artifact" aria-label={`${record.title}, ${record.date}`}>
       <div className="newsprint-fold" aria-hidden="true" />
       <header className="newspaper-masthead">
         <p>{record.edition ?? "Manchester, New Hampshire"}</p>
@@ -15,16 +15,16 @@ export function NewspaperArtifact({ record, compact = false }: { record: Archive
 
       <section className="newspaper-lead">
         <p className="newspaper-kicker">{record.catalogNumber} · Special report</p>
-        <h3>{record.title}</h3>
+        <h3 className={record.format === "front-page" ? "newspaper-headline-banner" : undefined}>{record.title}</h3>
         {record.deck && <p className="newspaper-deck">{record.deck}</p>}
       </section>
 
       <div className="newspaper-columns">
         <div className="newspaper-copy">
           <p><span className="newspaper-dateline">MANCHESTER, N.H.—</span>{story}</p>
-          {!compact && record.body.slice(1).map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+          {record.body.slice(1).map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
           <p className="continued">Continued on page 6</p>
-          {!compact && record.continuedArticle && (
+          {record.continuedArticle && (
             <div className="newspaper-page6">
               <h4>{record.continuedArticle.headline}</h4>
               {record.continuedArticle.body.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
@@ -39,7 +39,7 @@ export function NewspaperArtifact({ record, compact = false }: { record: Archive
               alt={record.image.alt}
               width={record.image.width}
               height={record.image.height}
-              sizes={compact ? "(max-width: 700px) 72vw, 360px" : "(max-width: 900px) 74vw, 440px"}
+              sizes="(max-width: 900px) 74vw, 440px"
             />
             <figcaption>{record.image.caption}</figcaption>
           </figure>
@@ -47,7 +47,7 @@ export function NewspaperArtifact({ record, compact = false }: { record: Archive
 
         <aside className="newspaper-side" aria-label="Neighboring stories">
           {(record.neighboringCopy ?? ["Cold fog expected along the river", "Street railway notice"])
-            .slice(0, compact ? 2 : 4)
+            .slice(0, 4)
             .map((item) => {
               const headline = typeof item === "string" ? item : item.headline;
               const body = typeof item === "string" ? "Local notices and ordinary city news continued inside this edition." : item.body;
@@ -61,13 +61,11 @@ export function NewspaperArtifact({ record, compact = false }: { record: Archive
         </aside>
       </div>
 
-      {!compact && (
-        <footer className="newspaper-footer-ads" aria-label="Period advertisements">
-          <div><strong>Warm rooms</strong><span>Furnished · respectable · West Side</span></div>
-          <div><strong>Repair while you wait</strong><span>Clocks · typewriters · small machinery</span></div>
-          <div><strong>Last streetcar</strong><span>Consult the winter schedule</span></div>
-        </footer>
-      )}
+      <footer className="newspaper-footer-ads" aria-label="Period advertisements">
+        <div><strong>Warm rooms</strong><span>Furnished · respectable · West Side</span></div>
+        <div><strong>Repair while you wait</strong><span>Clocks · typewriters · small machinery</span></div>
+        <div><strong>Last streetcar</strong><span>Consult the winter schedule</span></div>
+      </footer>
     </article>
   );
 }
