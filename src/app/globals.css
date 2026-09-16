@@ -141,11 +141,7 @@ img { max-width: 100%; height: auto; }
 .black-envelope small { position: relative; font-family: var(--font-sans), Arial, sans-serif; font-size: .65rem; letter-spacing: .12em; text-transform: uppercase; }
 
 /* Newspaper artifact */
-.home-newspaper-hook { display: grid; grid-template-columns: minmax(260px, .72fr) minmax(580px, 1.28fr); align-items: center; gap: clamp(2rem, 6vw, 6rem); padding: clamp(5rem, 9vw, 9rem) clamp(1.25rem, 6vw, 6rem); color: #dcd3bd; background: #181915; overflow: hidden; }
-.hook-copy { position: relative; z-index: 2; max-width: 430px; }
-.hook-copy .eyebrow { color: var(--brass); }
-.hook-copy h2 { margin: .25rem 0 1rem; font-family: var(--font-display); font-size: clamp(3.2rem, 6vw, 6rem); font-weight: 500; line-height: .84; }
-.hook-question { padding: 1.1rem 0 1.1rem 1rem; border-left: 3px solid var(--oxblood); color: #f3ead5; font-style: italic; }
+.hero-newspaper { display: flex; justify-content: center; margin: 3.5rem auto 0; max-width: 1020px; }
 .hero-newspaper-link { display: block; text-decoration: none; transform: rotate(-1.4deg); filter: drop-shadow(18px 22px 20px rgba(0,0,0,.52)); transition: transform .25s ease; }
 .hero-newspaper-link:hover { transform: rotate(-.6deg) translateY(-5px); }
 .newspaper-artifact {
@@ -381,9 +377,6 @@ img { max-width: 100%; height: auto; }
 @media (max-width: 1000px) {
   .home-hero { grid-template-columns: 1fr; }
   .black-envelope { width: min(80%, 480px); }
-  .home-newspaper-hook { grid-template-columns: 1fr; }
-  .hook-copy { max-width: 670px; }
-  .hero-newspaper-link { width: 720px; max-width: none; margin-left: 5%; }
   .chronology-ledger article { grid-template-columns: 90px 1fr 1fr; }
   .chronology-entry-heading { grid-column: span 2; }
   .archive-piece, .archive-piece-featured, .archive-piece-front-page { grid-column: span 6; }
@@ -400,9 +393,6 @@ img { max-width: 100%; height: auto; }
   .home-hero::after { inset: 8px; }
   .home-hero h1 { font-size: clamp(4.7rem, 25vw, 7rem); }
   .black-envelope { width: 100%; padding: 3rem 1.5rem 1.5rem; }
-  .home-newspaper-hook { display: block; padding-right: 0; }
-  .hook-copy { padding-right: 1.25rem; margin-bottom: 3rem; }
-  .hero-newspaper-link { width: 720px; margin-left: 1rem; }
   .newspaper-artifact-compact { transform-origin: left top; }
   .manchester-grounding, .transcription, .provenance { grid-template-columns: 1fr; }
   .grounding-copy { columns: 1; }
@@ -500,8 +490,9 @@ img { max-width: 100%; height: auto; }
 .section { padding-top: clamp(4rem,8vw,7rem); padding-bottom: clamp(4rem,8vw,7rem); }
 .page-wrap { min-height: 70vh; padding-top: clamp(3rem,7vw,6rem); padding-bottom: clamp(4rem,8vw,8rem); }
 .intro-section { background: var(--paper); }
-.intro-section .section-heading { max-width: 760px; text-align: center; }
-.two-column-copy { max-width: 980px; margin: 0 auto; columns: 2; column-gap: clamp(2rem,6vw,6rem); }
+.record-clipping { max-width: 900px; margin: 0 auto; text-align: center; }
+.record-clipping h2 { margin: .3rem 0 1.5rem; padding-bottom: 1.3rem; font-family: Impact, "Arial Narrow", var(--font-display); font-size: clamp(2.6rem,5.6vw,4.6rem); font-weight: 400; line-height: .86; letter-spacing: -.01em; text-transform: uppercase; border-bottom: 3px double var(--ink); }
+.two-column-copy { max-width: 980px; margin: 0 auto; columns: 2; column-gap: clamp(2rem,6vw,6rem); column-rule: 1px solid var(--rule); text-align: justify; }
 .two-column-copy p { margin-top: 0; }
 .drop-cap::first-letter { float: left; margin: .18em .1em 0 0; color: var(--oxblood-dark); font-family: var(--font-display); font-size: 5.5rem; line-height: .68; }
 .latest-records { color: var(--paper); background: var(--charcoal); border-top: 1px solid var(--gold-muted); border-bottom: 1px solid var(--gold-muted); }

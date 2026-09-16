@@ -46,7 +46,7 @@ export type ArchiveRecord = {
   body: string[];
   image?: ArchiveImage;
   markings?: string[];
-  neighboringCopy?: string[];
+  neighboringCopy?: (string | { headline: string; body: string })[];
   provenance: ArchiveProvenance;
   featured?: boolean;
   anomaly?: boolean;
@@ -259,10 +259,22 @@ export const archiveRecords: ArchiveRecord[] = [
       height: 1402,
     },
     neighboringCopy: [
-      "Authorities refuse comment as inquiry widens",
-      "Street railway announces cold-weather schedule",
-      "River fog delays early freight traffic",
-      "Millyard whistle sounded seven minutes late",
+      {
+        headline: "Authorities refuse comment as inquiry widens",
+        body: "The city solicitor’s office declined three separate requests for a statement, referring all questions to the coroner.",
+      },
+      {
+        headline: "Street railway announces cold-weather schedule",
+        body: "The Manchester Street Railway will run reduced service after 9 p.m. beginning Monday, weather permitting.",
+      },
+      {
+        headline: "River fog delays early freight traffic",
+        body: "A heavy fog off the Merrimack held morning freight cars at the Amoskeag yard until past seven o’clock.",
+      },
+      {
+        headline: "Millyard whistle sounded seven minutes late",
+        body: "Foremen at the Amoskeag works could not account for the delay; the timekeeper’s log was reportedly missing a page.",
+      },
     ],
     markings: ["Clipped from library binding", "Question mark circled in red pencil"],
     provenance: fictionalArtifact("Signature fictional front page. The newspaper, reports, death inquiry, Cassandra Castello, and The Black Veil are fictional."),

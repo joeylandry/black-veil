@@ -33,19 +33,13 @@ export default function Home() {
           <span>Hours</span>
           <span className="posted-hours-text">Eight in the evening until the last mill whistle</span>
         </div>
-      </section>
-
-      <section className="home-newspaper-hook" aria-labelledby="cassandra-hook-heading">
-        <div className="hook-copy">
-          <p className="eyebrow">Recovered from the 1924 file</p>
-          <h2 id="cassandra-hook-heading">The house has opened before.</h2>
-          <p>It closed after one masquerade. Its proprietress was never seen again.</p>
-          <p className="hook-question">If Cassandra disappeared two years ago—who sent the invitations?</p>
-          <Link className="artifact-link light-link" href="/archive/murderer-or-murdered">Read the surviving front page <span aria-hidden="true">→</span></Link>
+        <div className="hero-newspaper">
+          <div className="newspaper-scroll" role="region" aria-label="Scrollable newspaper artifact" tabIndex={0}>
+            <Link className="hero-newspaper-link" href="/archive/murderer-or-murdered" aria-label="Examine the Murderer or Murdered newspaper front page">
+              <NewspaperArtifact record={cassandraFrontPage} compact />
+            </Link>
+          </div>
         </div>
-        <Link className="hero-newspaper-link" href="/archive/murderer-or-murdered" aria-label="Examine the Murderer or Murdered newspaper front page">
-          <NewspaperArtifact record={cassandraFrontPage} compact />
-        </Link>
       </section>
 
       <section className="section latest-records">
@@ -59,21 +53,21 @@ export default function Home() {
       </section>
 
       <section className="section intro-section">
-        <div className="section-heading">
-          <p className="eyebrow">The surviving Manchester record</p>
+        <article className="record-clipping">
+          <p className="newspaper-kicker">The surviving Manchester record</p>
           <h2>A house remembered imperfectly.</h2>
-        </div>
-        <div className="two-column-copy">
-          <p className="drop-cap">
-            Somewhere between Elm Street, the Merrimack, and the brick mass of the Amoskeag works,
-            The Black Veil offered illegal drink and uncommon privacy to people who did not ordinarily share a table.
-          </p>
-          <p>
-            Correspondence addressed to the house is still collected, though by whom is not recorded.
-            Those who ask after The Black Veil are told, politely, that it closed in 1924. Those who
-            know the old words are not told this.
-          </p>
-        </div>
+          <div className="two-column-copy">
+            <p className="drop-cap">
+              Somewhere between Elm Street, the Merrimack, and the brick mass of the Amoskeag works,
+              The Black Veil offered illegal drink and uncommon privacy to people who did not ordinarily share a table.
+            </p>
+            <p>
+              Correspondence addressed to the house is still collected, though by whom is not recorded.
+              Those who ask after The Black Veil are told, politely, that it closed in 1924. Those who
+              know the old words are not told this.
+            </p>
+          </div>
+        </article>
         <DecoDivider />
       </section>
 

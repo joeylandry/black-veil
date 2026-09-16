@@ -40,12 +40,18 @@ export function NewspaperArtifact({ record, compact = false }: { record: Archive
         )}
 
         <aside className="newspaper-side" aria-label="Neighboring stories">
-          {(record.neighboringCopy ?? ["Cold fog expected along the river", "Street railway notice"]).slice(0, compact ? 2 : 4).map((headline) => (
-            <div key={headline}>
-              <h4>{headline}</h4>
-              <p>Local notices and ordinary city news continued inside this edition.</p>
-            </div>
-          ))}
+          {(record.neighboringCopy ?? ["Cold fog expected along the river", "Street railway notice"])
+            .slice(0, compact ? 2 : 4)
+            .map((item) => {
+              const headline = typeof item === "string" ? item : item.headline;
+              const body = typeof item === "string" ? "Local notices and ordinary city news continued inside this edition." : item.body;
+              return (
+                <div key={headline}>
+                  <h4>{headline}</h4>
+                  <p>{body}</p>
+                </div>
+              );
+            })}
         </aside>
       </div>
 
