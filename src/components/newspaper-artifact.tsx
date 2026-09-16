@@ -22,7 +22,7 @@ export function NewspaperArtifact({ record, compact = false }: { record: Archive
       <div className="newspaper-columns">
         <div className="newspaper-copy">
           <p><span className="newspaper-dateline">MANCHESTER, N.H.—</span>{story}</p>
-          {!compact && record.body.slice(1, 3).map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+          {!compact && record.body.slice(1).map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
           <p className="continued">Continued on page 6</p>
         </div>
 

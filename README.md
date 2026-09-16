@@ -25,7 +25,7 @@ npm run build
 
 - `/` — 1926 invitation entry and the early Cassandra newspaper hook
 - `/archive` — archive drawers organized by year, 1921–1926
-- `/archive/[slug]` — physical artifact view, readable transcript, and provenance
+- `/archive/[slug]` — full-size physical artifact view with prior/next record navigation
 - `/about` — chronology separating real Manchester context from Black Veil fiction
 - `/guest-ledger` — real-name RSVP prototype stored on the visitor’s device
 - `/invitation` — private invitation revealed after archive access and a local RSVP
@@ -34,9 +34,9 @@ npm run build
 
 ## Archive system
 
-`src/data/archive.ts` defines typed newspaper pages, clippings, photographs, police documents, telegrams, notices, invitations, images, catalog numbers, and provenance. Real images include their source institution, item title, source URL, rights statement, and editorial note. Fictional and generated artifacts are explicitly identified internally and in the public source panel.
+`src/data/archive.ts` defines typed newspaper pages, clippings, photographs, police documents, telegrams, notices, invitations, images, catalog numbers, and provenance. Real images and articles carry a `sourceUrl`, which surfaces on the record page as a "Learn more about this record" link; fictional artifacts do not show a provenance panel.
 
-Important newspaper copy is deterministic HTML/CSS rather than text baked into generated images. This keeps headlines and transcripts readable while preserving a scanned-newspaper appearance. Photographs can be inspected in a native dialog and all newspaper records include a readable transcript.
+Important newspaper copy is deterministic HTML/CSS rather than text baked into generated images. This keeps headlines readable at full size while preserving a scanned-newspaper appearance. Photographs can be inspected in a native dialog.
 
 ## Visual assets
 

@@ -239,8 +239,10 @@ img { max-width: 100%; height: auto; }
 /* Record detail */
 .record-room { min-height: 80vh; padding: clamp(2rem, 5vw, 5rem) clamp(.75rem, 4vw, 4rem) 7rem; background: #766f60; }
 .record-toolbar { max-width: 1180px; margin: 0 auto 1.5rem; display: flex; justify-content: space-between; gap: 1rem; color: #f0e7d1; font-family: var(--font-sans), Arial, sans-serif; font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; }
-.record-stage { max-width: 1180px; margin: 0 auto; padding: clamp(1rem, 4vw, 3rem); background: radial-gradient(circle at 40% 20%, #8e8675, #504b41); border: 1px solid #a3977c; box-shadow: inset 0 0 55px rgba(0,0,0,.35); }
+.record-stage { max-width: 1180px; margin: 0 auto 2rem; padding: clamp(1rem, 4vw, 3rem); background: radial-gradient(circle at 40% 20%, #8e8675, #504b41); border: 1px solid #a3977c; box-shadow: inset 0 0 55px rgba(0,0,0,.35); }
+.record-stage-full { max-width: none; padding: 0; background: none; border: 0; box-shadow: none; }
 .newspaper-scroll { overflow: auto; padding: 1rem; overscroll-behavior: contain; }
+.record-stage-full .newspaper-scroll { padding: 0; }
 .newspaper-scroll .newspaper-artifact { margin: 0 auto; }
 .physical-document { position: relative; max-width: 860px; margin: 0 auto; padding: clamp(2.5rem, 7vw, 6rem); background: var(--paper-light); border: 1px solid #756e5f; box-shadow: 11px 16px 26px rgba(0,0,0,.42); }
 .physical-document::after { content: ""; position: absolute; inset: 14px; pointer-events: none; border: 1px solid rgba(55,50,42,.24); }
@@ -271,21 +273,13 @@ img { max-width: 100%; height: auto; }
 .artifact-dialog-scroll { max-height: 76vh; overflow: auto; text-align: center; }
 .artifact-dialog-scroll img { width: auto; max-width: none; min-width: min(100%, 900px); }
 .artifact-dialog > p { margin: .7rem 0 0; font-family: var(--font-sans), Arial, sans-serif; font-size: .7rem; text-transform: uppercase; }
-.transcription { max-width: 1000px; margin: 4rem auto 0; display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(2rem, 6vw, 6rem); padding: clamp(2rem, 5vw, 4rem); background: #ddd5c0; border: 1px solid #817765; }
-.transcription h2 { margin: .2rem 0 1rem; font-family: var(--font-display); font-size: clamp(2.5rem, 5vw, 4.6rem); line-height: .88; }
-.transcription-copy p:first-child { margin-top: 0; }
-.provenance { max-width: 1000px; margin: 1.5rem auto 0; display: grid; grid-template-columns: .65fr 1.35fr; gap: 2rem; padding: 1.4rem; color: #ded5c0; background: #24251f; border-left: 6px solid var(--oxblood); font-family: var(--font-sans), Arial, sans-serif; font-size: .76rem; }
-.provenance-historical-context { border-left-color: #78866a; }
-.provenance > div:first-child span, .provenance dt { display: block; color: #a9a08e; text-transform: uppercase; letter-spacing: .08em; }
-.provenance > div:first-child strong { display: block; margin-top: .25rem; font-size: 1rem; }
-.provenance dl { margin: 0; }
-.provenance dl div { display: grid; grid-template-columns: 110px 1fr; gap: 1rem; padding: .25rem 0; }
-.provenance dd { margin: 0; }
-.provenance > a { grid-column: 2; }
-.record-pagination { max-width: 1000px; margin: 3rem auto 0; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-.record-pagination a { padding: 1rem; color: #eee5cf; background: #333128; text-decoration: none; border: 1px solid #8b7b5b; font-family: var(--font-display); font-size: 1.2rem; line-height: 1.1; }
-.record-pagination a:last-child { text-align: right; }
-.record-pagination a span { display: block; margin-bottom: .3rem; color: #b2a382; font-family: var(--font-sans), Arial, sans-serif; font-size: .62rem; letter-spacing: .1em; text-transform: uppercase; }
+.record-pagination { max-width: 1180px; margin: 0 auto 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.record-pagination a { display: flex; align-items: center; gap: .8rem; padding: 1rem; color: #eee5cf; background: #333128; text-decoration: none; border: 1px solid #8b7b5b; font-family: var(--font-display); font-size: 1.2rem; line-height: 1.1; }
+.record-pagination a:last-child { justify-content: flex-end; text-align: right; }
+.record-pagination a > span[aria-hidden] { font-size: 1.4rem; color: #b2a382; }
+.record-pagination-copy span { display: block; margin-bottom: .3rem; color: #b2a382; font-family: var(--font-sans), Arial, sans-serif; font-size: .62rem; letter-spacing: .1em; text-transform: uppercase; }
+.record-source-link { max-width: 1180px; margin: 2rem auto 0; text-align: center; }
+.record-source-link a { color: #f0e7d1; font-family: var(--font-sans), Arial, sans-serif; font-size: .78rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; text-decoration: underline; text-underline-offset: .25em; }
 
 /* Chronology */
 .chronology-page { padding: clamp(4rem, 8vw, 8rem) clamp(1.2rem, 6vw, 6rem) 0; background: #d8d4c8; }
@@ -392,7 +386,7 @@ img { max-width: 100%; height: auto; }
   .home-hero h1 { font-size: clamp(4.7rem, 25vw, 7rem); }
   .black-envelope { width: 100%; padding: 3rem 1.5rem 1.5rem; }
   .newspaper-artifact-compact { transform-origin: left top; }
-  .manchester-grounding, .transcription, .provenance { grid-template-columns: 1fr; }
+  .manchester-grounding { grid-template-columns: 1fr; }
   .grounding-copy { columns: 1; }
   .heading-with-link { display: block; }
   .heading-with-link .artifact-link { display: inline-block; margin-top: 1rem; }
@@ -408,11 +402,8 @@ img { max-width: 100%; height: auto; }
   .physical-document::after { inset: 9px; }
   .physical-document header > div { flex-direction: column; gap: .2rem; }
   .physical-document h1 { font-size: clamp(2.8rem, 14vw, 4.6rem); }
-  .transcription { padding: 2rem 1.2rem; gap: 1rem; }
-  .provenance dl div { grid-template-columns: 1fr; gap: .1rem; padding: .45rem 0; }
-  .provenance > a { grid-column: 1; }
   .record-pagination { grid-template-columns: 1fr; }
-  .record-pagination a:last-child { text-align: left; }
+  .record-pagination a:last-child { justify-content: flex-start; text-align: left; }
   .chronology-page { padding-left: 1rem; padding-right: 1rem; }
   .chronology-ledger article { grid-template-columns: 75px 1fr; }
   .chronology-entry-heading { grid-column: auto; }

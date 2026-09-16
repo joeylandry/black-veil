@@ -36,7 +36,22 @@ export default async function ArchiveDocumentPage({ params }: Props) {
         <span>{record.catalogNumber}</span>
       </div>
 
-      <div className={`record-stage record-stage-${record.format}`}>
+      <nav className="record-pagination" aria-label="Adjacent archive records">
+        {previous ? (
+          <Link href={`/archive/${previous.slug}`}>
+            <span aria-hidden="true">←</span>
+            <span className="record-pagination-copy"><span>Previous record</span>{previous.title}</span>
+          </Link>
+        ) : <span />}
+        {next ? (
+          <Link href={`/archive/${next.slug}`}>
+            <span className="record-pagination-copy"><span>Next record</span>{next.title}</span>
+            <span aria-hidden="true">→</span>
+          </Link>
+        ) : <span />}
+      </nav>
+
+      <div className={`record-stage record-stage-${record.format} ${isNewspaper ? "record-stage-full" : ""}`}>
         {isNewspaper ? (
           <div className="newspaper-scroll" role="region" aria-label="Scrollable newspaper artifact" tabIndex={0}>
             <NewspaperArtifact record={record} />
@@ -66,35 +81,11 @@ export default async function ArchiveDocumentPage({ params }: Props) {
         )}
       </div>
 
-      <section className="transcription" aria-labelledby="transcription-heading">
-        <div className="transcription-heading">
-          <p className="eyebrow">Readable transcript</p>
-          <h2 id="transcription-heading">{record.title}</h2>
-          {record.deck && <p>{record.deck}</p>}
-        </div>
-        <div className="transcription-copy">
-          {record.body.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
-        </div>
-      </section>
-
-      <aside className={`provenance provenance-${record.provenance.classification}`}>
-        <div>
-          <span>Record classification</span>
-          <strong>{record.provenance.label}</strong>
-        </div>
-        <dl>
-          {record.provenance.sourceInstitution && <div><dt>Source</dt><dd>{record.provenance.sourceInstitution}</dd></div>}
-          {record.provenance.sourceTitle && <div><dt>Item</dt><dd>{record.provenance.sourceTitle}</dd></div>}
-          {record.provenance.rights && <div><dt>Rights</dt><dd>{record.provenance.rights}</dd></div>}
-          {record.provenance.notes && <div><dt>Editorial note</dt><dd>{record.provenance.notes}</dd></div>}
-        </dl>
-        {record.provenance.sourceUrl && <a href={record.provenance.sourceUrl} target="_blank" rel="noreferrer">Open source record ↗</a>}
-      </aside>
-
-      <nav className="record-pagination" aria-label="Adjacent archive records">
-        {previous ? <Link href={`/archive/${previous.slug}`}><span>Previous record</span>{previous.title}</Link> : <span />}
-        {next ? <Link href={`/archive/${next.slug}`}><span>Next record</span>{next.title}</Link> : <span />}
-      </nav>
+      {record.provenance.sourceUrl && (
+        <p className="record-source-link">
+          <a href={record.provenance.sourceUrl} target="_blank" rel="noreferrer">Learn more about this record ↗</a>
+        </p>
+      )}
     </div>
   );
 }
