@@ -324,6 +324,10 @@ export const archiveRecords: ArchiveRecord[] = [
       "This print, taken during the October 31 masquerade and only now made public, is believed to show Cassandra Castello on the night of her disappearance. No reliable time accompanies the photograph. One witness said she had already left by eleven; another recalled speaking with her after midnight.",
       "The reverse bears two different annotations: ‘last photograph of Cassie’ in pencil and ‘not the last’ in darker ink. Neither hand has been identified.",
     ],
+    columnFiller: {
+      headline: "Have you seen this negative?",
+      body: "The print reproduced above was recovered without its negative. This paper will forward, unopened, any negative or additional print to the family through counsel.",
+    },
     image: {
       src: "/archive/fictional/cassandra-masquerade-evidence.png",
       alt: "Fictional candid photograph of Cassandra Castello among masked guests in a brick mill room",
