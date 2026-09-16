@@ -155,6 +155,8 @@ export const archiveRecords: ArchiveRecord[] = [
     },
     neighboringCopy: [
       { headline: "Street Railway Notice", body: "Local notices and ordinary city news continued inside this edition." },
+      { headline: "Relief Baskets Distributed on the West Side", body: "Strike relief committees reported longer lines at the West Side depot as the walkout entered its sixth month." },
+      { headline: "City Council Declines Special Session", body: "Aldermen voted against convening early to discuss the mill closures, citing ongoing negotiations between Amoskeag and union representatives." },
     ],
     markings: ["HISTORICAL CONTEXT", "Fiction separated in transcript"],
     provenance: {
