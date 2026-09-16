@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { ArchiveRecord } from "@/data/archive";
+import { FitHeading } from "@/components/fit-heading";
 
 export function NewspaperArtifact({ record }: { record: ArchiveRecord }) {
   const story = record.body[0] ?? record.excerpt;
@@ -9,7 +10,7 @@ export function NewspaperArtifact({ record }: { record: ArchiveRecord }) {
       <div className="newsprint-fold" aria-hidden="true" />
       <header className="newspaper-masthead">
         <p>{record.edition ?? "Manchester, New Hampshire"}</p>
-        <h2>{record.masthead ?? "The Manchester Record"}</h2>
+        <FitHeading>{record.masthead ?? "The Manchester Record"}</FitHeading>
         <div><span>{record.date}</span><span>Manchester, New Hampshire</span></div>
       </header>
 
