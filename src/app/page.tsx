@@ -44,7 +44,7 @@ export default function Home() {
 
       <section className="section latest-records">
         <div className="section-heading heading-with-link">
-          <div><p className="eyebrow">Selected records · 1921–1926</p><h2>From the archive</h2></div>
+          <div><h2>Archive only as a sample</h2></div>
           <Link className="text-link light-link" href="/archive">Explore the full archive <span aria-hidden="true">→</span></Link>
         </div>
         <div className="archive-table featured-table">
