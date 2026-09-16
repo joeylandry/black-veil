@@ -210,7 +210,9 @@ export const archiveRecords: ArchiveRecord[] = [
     year: 1924,
     title: "Last Photograph at the Masquerade",
     deck: "Cassandra Castello, photographed inside The Black Veil on the night she disappeared.",
-    format: "photograph",
+    format: "newspaper",
+    masthead: "The Manchester Evening Chronicle",
+    edition: "Coroner's Exhibit · Evidence Photograph",
     excerpt: "The print was recovered without its negative. The clock, window, and face at the right edge have all been cited as evidence.",
     body: [
       "The photograph is believed to show Cassandra Castello during the 1924 masquerade. No reliable time accompanies the print. One witness said she had already left by eleven; another recalled speaking with her after midnight.",
@@ -223,6 +225,18 @@ export const archiveRecords: ArchiveRecord[] = [
       width: 1448,
       height: 1086,
     },
+    neighboringCopy: [
+      {
+        headline: "Coroner declines to date the print",
+        body: "Examiners could not agree whether the photograph was taken before or after the disturbance reported at the club.",
+      },
+      {
+        headline: "Negative never recovered",
+        body: "The print was entered into evidence without the negative that produced it; its origin remains unexplained.",
+      },
+      "Street railway announces cold-weather schedule",
+      "River fog delays early freight traffic",
+    ],
     markings: ["EVIDENCE PRINT 6", "TIME UNVERIFIED", "not the last"],
     provenance: {
       classification: "generated-historical-fiction",
