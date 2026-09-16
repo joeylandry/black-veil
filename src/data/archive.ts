@@ -92,7 +92,13 @@ export const archiveRecords: ArchiveRecord[] = [
         "The photograph accompanying this item arrived at the paper without a negative or photographer’s mark. A clerk’s hand has since annotated it three times: the earliest note places the passage near the Amoskeag works; a later hand wrote ‘off Elm’ above it; a third gives only: river side.",
       ],
     },
-    neighboringCopy: ["Elm Street awning blown down in Tuesday's gale"],
+    neighboringCopy: [
+      "Elm Street awning blown down in Tuesday's gale",
+      {
+        headline: "Amoskeag Gatehouse Reports Missing Ledger Page",
+        body: "A clerk at the counting-house said a single page had gone missing from the visitors' register, though he could not say when, or who had last signed it. The gatehouse superintendent declined to speculate on the matter, saying only that the book would be re-bound before the week was out.",
+      },
+    ],
     markings: ["LOCATION DISPUTED", "Received without negative"],
     provenance: {
       classification: "generated-historical-fiction",
