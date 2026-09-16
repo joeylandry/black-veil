@@ -18,6 +18,7 @@ export function ArchiveEntryCard({ record, index }: { record: ArchiveRecord; ind
             width={record.image.width}
             height={record.image.height}
             sizes="(max-width: 700px) 92vw, (max-width: 1000px) 45vw, 30vw"
+            style={{ objectPosition: record.image.focalPoint ?? "center" }}
           />
         </figure>
       )}

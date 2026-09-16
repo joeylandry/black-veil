@@ -65,7 +65,16 @@ export default async function ArchiveDocumentPage({ params }: Props) {
             </header>
             {record.image && (
               <figure className="document-photograph">
-                <Image src={record.image.src} alt={record.image.alt} width={record.image.width} height={record.image.height} sizes="(max-width: 800px) 88vw, 760px" />
+                <div className="document-photograph-frame">
+                  <Image
+                    src={record.image.src}
+                    alt={record.image.alt}
+                    width={record.image.width}
+                    height={record.image.height}
+                    sizes="(max-width: 800px) 88vw, 760px"
+                    style={{ objectPosition: record.image.focalPoint ?? "center" }}
+                  />
+                </div>
                 <figcaption>{record.image.caption}</figcaption>
                 <ArtifactInspector {...record.image} title={record.title} />
               </figure>

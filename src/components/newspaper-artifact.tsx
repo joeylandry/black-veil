@@ -28,13 +28,16 @@ export function NewspaperArtifact({ record }: { record: ArchiveRecord }) {
 
         {record.image && (
           <figure className="newspaper-photo">
-            <Image
-              src={record.image.src}
-              alt={record.image.alt}
-              width={record.image.width}
-              height={record.image.height}
-              sizes="(max-width: 900px) 74vw, 440px"
-            />
+            <div className="newspaper-photo-frame">
+              <Image
+                src={record.image.src}
+                alt={record.image.alt}
+                width={record.image.width}
+                height={record.image.height}
+                sizes="(max-width: 900px) 74vw, 440px"
+                style={{ objectPosition: record.image.focalPoint ?? "center" }}
+              />
+            </div>
             <figcaption>{record.image.caption}</figcaption>
           </figure>
         )}

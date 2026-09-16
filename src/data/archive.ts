@@ -30,6 +30,8 @@ export type ArchiveImage = {
   caption: string;
   width: number;
   height: number;
+  /** CSS object-position, so a cropped thumbnail still centers on the subject's face. */
+  focalPoint?: string;
 };
 
 export type ArchiveRecord = {
@@ -113,6 +115,7 @@ export const archiveRecords: ArchiveRecord[] = [
       caption: "MISS CASSANDRA CASTELLO · photograph supplied to the society desk",
       width: 1122,
       height: 1402,
+      focalPoint: "58% 20%",
     },
     neighboringCopy: ["Street railway winter timetable revised", "Cold weather settles over Merrimack Valley"],
     markings: ["Name underlined in blue pencil", "Clipping lacks page corner"],
@@ -224,6 +227,7 @@ export const archiveRecords: ArchiveRecord[] = [
       caption: "CASSANDRA CASTELLO · Black Veil masquerade · October 31, 1924 · time unverified",
       width: 1448,
       height: 1086,
+      focalPoint: "54% 25%",
     },
     neighboringCopy: [
       {
@@ -274,6 +278,7 @@ export const archiveRecords: ArchiveRecord[] = [
       caption: "CASSANDRA CASTELLO · proprietress of The Black Veil · photograph date uncertain",
       width: 1122,
       height: 1402,
+      focalPoint: "50% 25%",
     },
     continuedArticle: {
       headline: "Inquiry continues into masquerade massacre",
@@ -372,6 +377,7 @@ export const archiveRecords: ArchiveRecord[] = [
       caption: "CASSIE CASTELLO · photograph published before her disappearance",
       width: 1122,
       height: 1402,
+      focalPoint: "58% 20%",
     },
     markings: ["Reporter’s notes unavailable", "No trace of missing woman"],
     provenance: fictionalArtifact("Fictional retrospective and generated Cassandra photograph."),
