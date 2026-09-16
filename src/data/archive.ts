@@ -157,6 +157,8 @@ export const archiveRecords: ArchiveRecord[] = [
       { headline: "Street Railway Notice", body: "Local notices and ordinary city news continued inside this edition." },
       { headline: "Relief Baskets Distributed on the West Side", body: "Strike relief committees reported longer lines at the West Side depot as the walkout entered its sixth month." },
       { headline: "City Council Declines Special Session", body: "Aldermen voted against convening early to discuss the mill closures, citing ongoing negotiations between Amoskeag and union representatives." },
+      { headline: "Mill Yard Churches Report Full Pews", body: "West Side congregations noted heavier Sunday attendance through the strike, with several pastors devoting sermons to the walkout." },
+      { headline: "Boarding Houses Feel the Pinch", body: "Landladies along Canal Street said rent collections had slowed considerably since the mills went idle in February." },
     ],
     markings: ["HISTORICAL CONTEXT", "Fiction separated in transcript"],
     provenance: {

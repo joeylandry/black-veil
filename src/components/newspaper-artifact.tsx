@@ -54,7 +54,7 @@ export function NewspaperArtifact({ record }: { record: ArchiveRecord }) {
 
         <aside className="newspaper-side" aria-label="Neighboring stories">
           {(record.neighboringCopy ?? ["Cold fog expected along the river", "Street railway notice"])
-            .slice(0, 4)
+            .slice(0, 5)
             .map((item) => {
               const headline = typeof item === "string" ? item : item.headline;
               const body = typeof item === "string" ? "Local notices and ordinary city news continued inside this edition." : item.body;
