@@ -17,3 +17,7 @@ Prompt direction: Using the approved Cassandra portrait as the identity referenc
 ## `black-veil-passage.png`
 
 Prompt direction: Create a cinematic but historically plausible 1920s Manchester mill passage at night: soot-dark brick, iron-framed windows, damp stone, river fog, sparse tungsten light, one discreet black door, and a cold industrial New England mood. No people, signs, text, fantasy effects, or modern objects.
+
+## `terror-at-the-black-veil-raid.png`
+
+Prompt direction: Create a cinematic but historically plausible 1924 newspaper evidence photograph: two Manchester, NH patrolmen in period uniform standing inside the emptied Black Veil supper club just after dawn, one holding a lantern, both with baffled, uneasy expressions. Show overturned chairs and a knocked-over table, dropped masquerade masks and streamers on the floor, an Art Deco stage backdrop, weak grey light through tall windows, no bodies, no blood, no modern objects, no readable text, silver-gelatin grain and archival wear consistent with the rest of the set.

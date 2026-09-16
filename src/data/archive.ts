@@ -268,6 +268,14 @@ export const archiveRecords: ArchiveRecord[] = [
     masthead: "The Manchester Evening Chronicle",
     edition: "Extra · Vol. LXVIII · No. 261 · One Cent",
     excerpt: "Neighbors woke before sunrise to screaming and running feet. By the time police reached the club, whatever had happened inside was already over.",
+    image: {
+      src: "/archive/fictional/terror-at-the-black-veil-raid.png",
+      alt: "Fictional evidence photograph of two patrolmen surveying the overturned, emptied Black Veil supper club",
+      caption: "PATROLMEN INSIDE THE BLACK VEIL · overturned furniture, no arrests · November 1, 1924",
+      width: 1448,
+      height: 1086,
+      focalPoint: "50% 55%",
+    },
     body: [
       "Guests in masquerade dress were seen fleeing a private supper club known as The Black Veil in the hours before dawn yesterday, several still in costume, at least one without shoes. Residents along the nearest streets described screaming, breaking glass, and motorcars departing at speed.",
       "Patrolmen summoned to the address found the premises locked and dark. Furniture inside had been overturned. Officers would not say whether they found any sign of injury, and the department has not confirmed that a crime occurred at all.",
