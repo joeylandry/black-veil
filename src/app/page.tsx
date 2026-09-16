@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { ArchiveEntryCard } from "@/components/archive-entry-card";
 import { ClosureStamp } from "@/components/closure-stamp";
-import { InWorldNotice } from "@/components/in-world-notice";
 import { Masthead } from "@/components/masthead";
 import { NewspaperHeroPreview } from "@/components/newspaper-hero-preview";
 import { archiveRecords } from "@/data/archive";
@@ -45,22 +44,6 @@ export default function Home() {
         <div className="archive-table featured-table">
           {featured.map((record, index) => <ArchiveEntryCard key={record.slug} record={record} index={index} />)}
         </div>
-      </section>
-
-      <section className="section notices-grid">
-        <InWorldNotice label="Membership">
-          <h3>Applications remain suspended.</h3>
-          <p>Former members are advised that possession of a black envelope does not establish who sent it.</p>
-        </InWorldNotice>
-        <InWorldNotice label="Records office" className="notice-dark">
-          <h3>Catalog irregularity.</h3>
-          <p>One item bears a date later than the archive’s closure. Management considers this impossible.</p>
-          <Link href="/archive/the-veil-has-lifted" className="text-link light-link">Examine the record</Link>
-        </InWorldNotice>
-        <InWorldNotice label="Unclaimed property">
-          <h3>One black silk mask.</h3>
-          <p>Recovered after the 1924 masquerade without its owner. The evidence label records no room.</p>
-        </InWorldNotice>
       </section>
     </>
   );
