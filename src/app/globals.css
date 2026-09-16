@@ -178,15 +178,12 @@ img { max-width: 100%; height: auto; }
 .newspaper-copy p:first-child::first-letter { float: left; margin: .04em .08em 0 0; font-size: 3.4rem; line-height: .7; }
 .newspaper-dateline { font-weight: 800; }
 .continued { border-top: 1px solid var(--ink); padding-top: .25rem; font-size: .55rem; font-style: italic; text-align: right; }
-.newspaper-page6 { margin-top: .6rem; padding-top: .5rem; border-top: 1px solid var(--ink); }
-.newspaper-page6 h4 { margin: 0 0 .35rem; font-family: var(--font-display); font-size: 1.1rem; line-height: 1; text-transform: uppercase; }
+.newspaper-page6 { grid-column: 1 / -1; margin-top: .8rem; padding-top: .6rem; border-top: 1px solid var(--ink); columns: 3; column-gap: 1.2rem; font-size: .72rem; line-height: 1.25; text-align: justify; }
+.newspaper-page6 h4 { column-span: all; margin: 0 0 .4rem; font-family: var(--font-display); font-size: 1.4rem; line-height: 1; text-transform: uppercase; }
 .newspaper-page6 p { margin: 0 0 .5rem; }
 .newspaper-photo { margin: 0; align-self: start; border: 1px solid var(--ink); padding: 4px; background: #c8c3b6; }
 .newspaper-photo img { display: block; width: 100%; max-height: 480px; object-fit: cover; filter: grayscale(1) contrast(1.15); mix-blend-mode: multiply; }
 .newspaper-photo figcaption { padding: .32rem .2rem .08rem; font-size: .57rem; line-height: 1.2; font-weight: 700; text-transform: uppercase; }
-.newspaper-photo .newspaper-page6 { margin: .5rem .2rem 0; padding-top: .5rem; }
-.newspaper-photo .newspaper-page6 h4 { font-size: .95rem; }
-.newspaper-photo .newspaper-page6 p { font-size: .68rem; line-height: 1.25; text-align: justify; }
 .newspaper-side { border-left: 1px solid var(--ink); padding-left: .75rem; }
 .newspaper-side div { padding-bottom: .7rem; margin-bottom: .7rem; border-bottom: 1px solid var(--ink); }
 .newspaper-side h4 { margin: 0 0 .2rem; font-family: var(--font-display); font-size: 1.25rem; line-height: .9; text-transform: uppercase; }

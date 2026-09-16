@@ -36,12 +36,6 @@ export function NewspaperArtifact({ record }: { record: ArchiveRecord }) {
               sizes="(max-width: 900px) 74vw, 440px"
             />
             <figcaption>{record.image.caption}</figcaption>
-            {record.continuedArticle && (
-              <div className="newspaper-page6">
-                <h4>{record.continuedArticle.headline}</h4>
-                {record.continuedArticle.body.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
-              </div>
-            )}
           </figure>
         )}
 
@@ -59,6 +53,13 @@ export function NewspaperArtifact({ record }: { record: ArchiveRecord }) {
               );
             })}
         </aside>
+
+        {record.continuedArticle && (
+          <div className="newspaper-page6">
+            <h4>{record.continuedArticle.headline}</h4>
+            {record.continuedArticle.body.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+          </div>
+        )}
       </div>
 
       <footer className="newspaper-footer-ads" aria-label="Period advertisements">
