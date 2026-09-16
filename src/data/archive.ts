@@ -52,6 +52,8 @@ export type ArchiveRecord = {
   markings?: string[];
   neighboringCopy?: (string | { headline: string; body: string })[];
   continuedArticle?: { headline: string; body: string[] };
+  /** Short filler notice set beneath the "Continued on page N" jump line, when the lead column runs short. */
+  columnFiller?: { headline: string; body: string };
   provenance: ArchiveProvenance;
   featured?: boolean;
   anomaly?: boolean;
@@ -232,6 +234,10 @@ export const archiveRecords: ArchiveRecord[] = [
       "The precise number of dead remains unknown. Whatever bodies the scene once held were gone before police arrived, leaving no remains to count and no official toll to publish. Investigators maintain, nonetheless, that a massacre did take place inside the club that night.",
       "The department has offered no further statement. The Black Veil remains sealed, and its address is still absent from public record.",
     ],
+    columnFiller: {
+      headline: "Readers with information",
+      body: "This paper's city desk will receive, in strict confidence, any account from those who attended the masquerade or who can otherwise speak to the events of that night.",
+    },
     neighboringCopy: [
       {
         headline: "Neighbors report sleepless night on the West Side",
@@ -244,10 +250,6 @@ export const archiveRecords: ArchiveRecord[] = [
       {
         headline: "All Hallows' Eve trolley service called uneventful elsewhere",
         body: "Aside from the disturbance reported near the mill district, the Manchester Street Railway described the holiday's late service as routine.",
-      },
-      {
-        headline: "Guest list withheld from press",
-        body: "Officials declined to confirm how many masqueraders attended, nor would they release a single name, citing the ongoing inquiry.",
       },
     ],
     markings: ["No death toll confirmed", "Second paragraph reset before printing"],

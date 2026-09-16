@@ -25,6 +25,12 @@ export function NewspaperArtifact({ record }: { record: ArchiveRecord }) {
           <p><span className="newspaper-dateline">MANCHESTER, N.H.—</span>{story}</p>
           {record.body.slice(1).map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
           <p className="continued">Continued on page 6</p>
+          {record.columnFiller && (
+            <div className="newspaper-filler">
+              <h5>{record.columnFiller.headline}</h5>
+              <p>{record.columnFiller.body}</p>
+            </div>
+          )}
         </div>
 
         {record.image && (
