@@ -7,7 +7,8 @@ import { archiveRecords } from "@/data/archive";
 
 export default function Home() {
   const cassandraFrontPage = archiveRecords.find((record) => record.slug === "murderer-or-murdered")!;
-  const featured = archiveRecords.filter((record) => record.featured && record.slug !== "murderer-or-murdered");
+  const featuredOrder = ["last-photograph-at-the-masquerade", "terror-at-the-black-veil", "where-is-cassandra-castello"];
+  const featured = featuredOrder.map((slug) => archiveRecords.find((record) => record.slug === slug)!);
 
   return (
     <>
