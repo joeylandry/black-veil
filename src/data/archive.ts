@@ -104,7 +104,7 @@ export const archiveRecords: ArchiveRecord[] = [
     date: "December 3, 1921",
     year: 1921,
     title: "Miss Castello Receives",
-    deck: "The name Cassandra Castello appears for the first time in a damaged society clipping.",
+    deck: "Miss Cassandra Castello hosts a small company at an unnamed dining room, declining to name her partners in a new club called The Black Veil.",
     format: "newspaper",
     masthead: "The Manchester Saturday Review",
     edition: "Society & Amusements · Page Eight",
