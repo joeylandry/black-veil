@@ -184,6 +184,9 @@ img { max-width: 100%; height: auto; }
 .newspaper-photo { margin: 0; align-self: start; border: 1px solid var(--ink); padding: 4px; background: #c8c3b6; }
 .newspaper-photo img { display: block; width: 100%; max-height: 480px; object-fit: cover; filter: grayscale(1) contrast(1.15); mix-blend-mode: multiply; }
 .newspaper-photo figcaption { padding: .32rem .2rem .08rem; font-size: .57rem; line-height: 1.2; font-weight: 700; text-transform: uppercase; }
+.newspaper-photo .newspaper-page6 { margin: .5rem .2rem 0; padding-top: .5rem; }
+.newspaper-photo .newspaper-page6 h4 { font-size: .95rem; }
+.newspaper-photo .newspaper-page6 p { font-size: .68rem; line-height: 1.25; text-align: justify; }
 .newspaper-side { border-left: 1px solid var(--ink); padding-left: .75rem; }
 .newspaper-side div { padding-bottom: .7rem; margin-bottom: .7rem; border-bottom: 1px solid var(--ink); }
 .newspaper-side h4 { margin: 0 0 .2rem; font-family: var(--font-display); font-size: 1.25rem; line-height: .9; text-transform: uppercase; }
