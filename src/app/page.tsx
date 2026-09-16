@@ -15,6 +15,10 @@ export default function Home() {
       <section className="hero paper-panel">
         <div className="hero-rule" aria-hidden="true" />
         <Masthead />
+        <div className="posted-hours" aria-label="Posted hours">
+          <span>Hours</span>
+          <span className="posted-hours-text">Eight in the evening until the last mill whistle</span>
+        </div>
         <div className="hero-notice">
           <ClosureStamp />
           <div className="management-copy">
@@ -27,10 +31,6 @@ export default function Home() {
             </p>
             <p className="signed">— November 1, 1924</p>
           </div>
-        </div>
-        <div className="posted-hours" aria-label="Posted hours">
-          <span>Hours</span>
-          <span className="posted-hours-text">Eight in the evening until the last mill whistle</span>
         </div>
         <div className="hero-newspaper">
           <div className="newspaper-scroll" role="region" aria-label="Scrollable newspaper artifact" tabIndex={0}>
