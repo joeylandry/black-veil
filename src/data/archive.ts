@@ -108,7 +108,7 @@ export const archiveRecords: ArchiveRecord[] = [
     catalogNumber: "BV–21–008",
     date: "December 3, 1921",
     year: 1921,
-    title: "Miss Castello Receives",
+    title: "Miss Castello Hosts a Private Supper",
     deck: "Miss Cassandra Castello hosts a small company at an unnamed dining room, declining to name her partners in a new club called The Black Veil.",
     format: "newspaper",
     masthead: "The Manchester Saturday Review",
