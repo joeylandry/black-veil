@@ -91,7 +91,7 @@ export default async function ArchiveDocumentPage({ params }: Props) {
 
       {record.provenance.sourceUrl && (
         <p className="record-source-link">
-          <a href={record.provenance.sourceUrl} target="_blank" rel="noreferrer">Learn more about this record ↗</a>
+          <a href={record.provenance.sourceUrl} target="_blank" rel="noreferrer">Learn more about this record ↗︎</a>
         </p>
       )}
     </div>
