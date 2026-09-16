@@ -24,25 +24,27 @@ export function NewspaperArtifact({ record }: { record: ArchiveRecord }) {
           <p><span className="newspaper-dateline">MANCHESTER, N.H.—</span>{story}</p>
           {record.body.slice(1).map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
           <p className="continued">Continued on page 6</p>
-          {record.continuedArticle && (
-            <div className="newspaper-page6">
-              <h4>{record.continuedArticle.headline}</h4>
-              {record.continuedArticle.body.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
-            </div>
-          )}
         </div>
 
         {record.image && (
-          <figure className="newspaper-photo">
-            <Image
-              src={record.image.src}
-              alt={record.image.alt}
-              width={record.image.width}
-              height={record.image.height}
-              sizes="(max-width: 900px) 74vw, 440px"
-            />
-            <figcaption>{record.image.caption}</figcaption>
-          </figure>
+          <div className="newspaper-photo-column">
+            <figure className="newspaper-photo">
+              <Image
+                src={record.image.src}
+                alt={record.image.alt}
+                width={record.image.width}
+                height={record.image.height}
+                sizes="(max-width: 900px) 74vw, 440px"
+              />
+              <figcaption>{record.image.caption}</figcaption>
+            </figure>
+            {record.continuedArticle && (
+              <div className="newspaper-page6">
+                <h4>{record.continuedArticle.headline}</h4>
+                {record.continuedArticle.body.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+              </div>
+            )}
+          </div>
         )}
 
         <aside className="newspaper-side" aria-label="Neighboring stories">
