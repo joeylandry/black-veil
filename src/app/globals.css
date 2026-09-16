@@ -254,39 +254,9 @@ img { max-width: 100%; height: auto; }
 .record-return-link { font-family: var(--font-display); font-size: clamp(1.5rem, 3vw, 2.3rem); line-height: .95; font-weight: 500; letter-spacing: -.02em; }
 .record-stage { max-width: 1180px; margin: 0 auto 2rem; padding: clamp(1rem, 4vw, 3rem); background: radial-gradient(circle at 40% 20%, #8e8675, #504b41); border: 1px solid #a3977c; box-shadow: inset 0 0 55px rgba(0,0,0,.35); }
 .record-stage-full { max-width: none; padding: 0; background: none; border: 0; box-shadow: none; }
-.newspaper-stage { position: relative; }
 .newspaper-scroll { overflow: auto; padding: 1rem; overscroll-behavior: contain; }
 .record-stage-full .newspaper-scroll { padding: 0; }
 .newspaper-scroll .newspaper-artifact { margin: 0 auto; }
-.newspaper-margin-stamp { display: none; }
-@media (min-width: 1400px) {
-  .newspaper-margin-stamp {
-    position: absolute;
-    top: 5.5rem;
-    left: calc(50% + 452px);
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 160px;
-    height: 160px;
-    padding: .8rem;
-    color: var(--oxblood);
-    border: 4px double currentColor;
-    border-radius: 50%;
-    transform: rotate(-8deg);
-    text-align: center;
-    text-transform: uppercase;
-    opacity: .8;
-    mix-blend-mode: multiply;
-    pointer-events: none;
-  }
-  .newspaper-margin-stamp span { display: block; }
-}
-.newspaper-margin-stamp-label { font-family: var(--font-sans), Arial, sans-serif; font-size: .62rem; font-weight: 800; letter-spacing: .18em; }
-.newspaper-margin-stamp-catalog { margin: .35rem 0; font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; letter-spacing: .02em; }
-.newspaper-margin-stamp-date { font-family: var(--font-sans), Arial, sans-serif; font-size: .55rem; letter-spacing: .1em; }
 .physical-document { position: relative; max-width: 860px; margin: 0 auto; padding: clamp(2.5rem, 7vw, 6rem); background: var(--paper-light); border: 1px solid #756e5f; box-shadow: 11px 16px 26px rgba(0,0,0,.42); }
 .physical-document::after { content: ""; position: absolute; inset: 14px; pointer-events: none; border: 1px solid rgba(55,50,42,.24); }
 .physical-document header { position: relative; z-index: 1; text-align: center; border-top: 4px double var(--ink); padding-top: 1rem; }
@@ -484,7 +454,6 @@ img { max-width: 100%; height: auto; }
   body, .site-shell, .record-room, .record-stage, .invitation-page { background: #fff; box-shadow: none; }
   body::before { display: none; }
   .newspaper-scroll { overflow: visible; }
-  .newspaper-margin-stamp { display: none !important; }
   .newspaper-artifact { box-shadow: none; }
   .invitation-card { max-width: none; min-height: 100vh; box-shadow: none; border: 1px solid #222; }
 }

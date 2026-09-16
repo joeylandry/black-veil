@@ -24,15 +24,8 @@ export function NewspaperInspector({ record }: { record: ArchiveRecord }) {
 
   if (!isMobile) {
     return (
-      <div className="newspaper-stage">
-        <div className="newspaper-scroll" role="region" aria-label="Scrollable newspaper artifact" tabIndex={0}>
-          <NewspaperArtifact record={record} />
-        </div>
-        <div className="newspaper-margin-stamp" aria-hidden="true">
-          <span className="newspaper-margin-stamp-label">Archived</span>
-          <span className="newspaper-margin-stamp-catalog">{record.catalogNumber}</span>
-          <span className="newspaper-margin-stamp-date">{record.date}</span>
-        </div>
+      <div className="newspaper-scroll" role="region" aria-label="Scrollable newspaper artifact" tabIndex={0}>
+        <NewspaperArtifact record={record} />
       </div>
     );
   }
