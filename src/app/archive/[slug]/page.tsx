@@ -32,7 +32,7 @@ export default async function ArchiveDocumentPage({ params }: Props) {
   return (
     <div className="record-room">
       <div className="record-toolbar">
-        <Link href="/archive">← Return to drawer index</Link>
+        <Link href="/archive" className="record-return-link">Return to Archives</Link>
         <span>{record.catalogNumber}</span>
       </div>
 
