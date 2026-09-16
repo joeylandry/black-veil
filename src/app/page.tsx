@@ -22,9 +22,9 @@ export default function Home() {
             <p className="eyebrow">Notice from the office of management</p>
             <h2>The house receives no company.</h2>
             <p>
-              By resolution of management, ordinary operations ceased after the All Hallows’ Eve
-              masquerade of 1924. Cassandra Castello cannot be reached. Correspondence concerning
-              the night in question will be returned unopened.
+              By resolution of management, all ordinary operations ceased after the All Hallows’
+              Eve masquerade massacre of 1924. Cassandra Castello cannot be reached. The house is
+              closed until further notice, and no visitors will be received.
             </p>
             <p className="signed">— November 1, 1924</p>
           </div>
