@@ -178,7 +178,7 @@ img { max-width: 100%; height: auto; }
 .newspaper-copy p:first-child::first-letter { float: left; margin: .04em .08em 0 0; font-size: 3.4rem; line-height: .7; }
 .newspaper-dateline { font-weight: 800; }
 .continued { border-top: 1px solid var(--ink); padding-top: .25rem; margin-top: auto; font-size: .55rem; font-style: italic; text-align: right; }
-.newspaper-page6 { grid-column: 1 / -1; margin-top: .8rem; padding-top: .6rem; border-top: 1px solid var(--ink); columns: 3; column-gap: 1.2rem; font-size: .72rem; line-height: 1.25; text-align: justify; }
+.newspaper-page6 { grid-column: 1 / -1; margin-top: .8rem; padding-top: .6rem; columns: 3; column-gap: 1.2rem; font-size: .72rem; line-height: 1.25; text-align: justify; }
 .newspaper-page6 h4 { column-span: all; margin: 0 0 .4rem; font-family: var(--font-display); font-size: 1.4rem; line-height: 1; text-transform: uppercase; }
 .newspaper-page6 p { margin: 0 0 .5rem; }
 .newspaper-photo { display: flex; flex-direction: column; margin: 0; border: 1px solid var(--ink); padding: 4px; background: #c8c3b6; }
