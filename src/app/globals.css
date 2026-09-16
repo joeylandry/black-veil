@@ -186,6 +186,8 @@ img { max-width: 100%; height: auto; }
 .newspaper-photo img { display: block; width: 100%; max-height: 480px; object-fit: cover; filter: grayscale(1) contrast(1.25) brightness(.95) sepia(.1); mix-blend-mode: multiply; }
 .newspaper-photo-frame::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .5; mix-blend-mode: multiply; background-image: radial-gradient(circle, rgba(20,18,12,.85) 1px, transparent 1.4px); background-size: 3px 3px; }
 .newspaper-photo figcaption { padding: .32rem .2rem .08rem; font-size: .57rem; line-height: 1.2; font-weight: 700; text-transform: uppercase; }
+.newspaper-photo-note { margin: 0; padding: 0 .2rem .32rem; font-size: .62rem; line-height: 1.25; text-align: justify; }
+.newspaper-photo-note + .newspaper-photo-note { padding-top: .32rem; border-top: 1px solid var(--ink); }
 .newspaper-side { border-left: 1px solid var(--ink); padding-left: .75rem; }
 .newspaper-side div { padding-bottom: .7rem; margin-bottom: .7rem; border-bottom: 1px solid var(--ink); }
 .newspaper-side h4 { margin: 0 0 .2rem; font-family: var(--font-display); font-size: 1.25rem; line-height: .9; text-transform: uppercase; }

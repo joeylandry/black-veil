@@ -32,6 +32,8 @@ export type ArchiveImage = {
   height: number;
   /** CSS object-position, so a cropped thumbnail still centers on the subject's face. */
   focalPoint?: string;
+  /** Additional copy set directly beneath the caption, e.g. a note following up on the photograph. */
+  note?: string[];
 };
 
 export type ArchiveRecord = {
@@ -314,14 +316,16 @@ export const archiveRecords: ArchiveRecord[] = [
       width: 1122,
       height: 1402,
       focalPoint: "50% 25%",
+      note: [
+        "The precise number of dead remains unknown. Whatever bodies the scene once held were gone before police arrived, leaving no remains to count and no official toll to publish. Investigators maintain, nonetheless, that a massacre did take place inside the club that night.",
+        "The department has offered no further statement. The Black Veil remains sealed, and its address is still absent from public record.",
+      ],
     },
     continuedArticle: {
       headline: "Inquiry continues into masquerade massacre",
       body: [
         "Detectives returned to the shuttered premises of The Black Veil this week, continuing an inquiry into what officials now privately concede was a massacre at the club’s All Hallows’ Eve masquerade two nights past. No official count of the dead has been released.",
         "Cassandra Castello, the club’s proprietress, was reported missing that same night. Police will not say whether her disappearance is connected to the killings, or whether she is to be considered a victim, a witness, or a suspect.",
-        "The precise number of dead remains unknown. Whatever bodies the scene once held were gone before police arrived, leaving no remains to count and no official toll to publish. Investigators maintain, nonetheless, that a massacre did take place inside the club that night.",
-        "The department has offered no further statement. The Black Veil remains sealed, and its address is still absent from public record.",
       ],
     },
     neighboringCopy: [

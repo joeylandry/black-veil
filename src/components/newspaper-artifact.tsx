@@ -40,6 +40,9 @@ export function NewspaperArtifact({ record }: { record: ArchiveRecord }) {
               />
             </div>
             <figcaption>{record.image.caption}</figcaption>
+            {record.image.note?.map((paragraph) => (
+              <p className="newspaper-photo-note" key={paragraph}>{paragraph}</p>
+            ))}
           </figure>
         )}
 
