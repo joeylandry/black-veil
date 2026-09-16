@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { ArchiveEntryCard } from "@/components/archive-entry-card";
 import { ClosureStamp } from "@/components/closure-stamp";
-import { DecoDivider } from "@/components/deco-divider";
 import { InWorldNotice } from "@/components/in-world-notice";
 import { Masthead } from "@/components/masthead";
 import { NewspaperArtifact } from "@/components/newspaper-artifact";
@@ -50,25 +49,6 @@ export default function Home() {
         <div className="archive-table featured-table">
           {featured.map((record, index) => <ArchiveEntryCard key={record.slug} record={record} index={index} />)}
         </div>
-      </section>
-
-      <section className="section intro-section">
-        <article className="record-clipping">
-          <p className="newspaper-kicker">The surviving Manchester record</p>
-          <h2>A house remembered imperfectly.</h2>
-          <div className="two-column-copy">
-            <p className="drop-cap">
-              Somewhere between Elm Street, the Merrimack, and the brick mass of the Amoskeag works,
-              The Black Veil offered illegal drink and uncommon privacy to people who did not ordinarily share a table.
-            </p>
-            <p>
-              Correspondence addressed to the house is still collected, though by whom is not recorded.
-              Those who ask after The Black Veil are told, politely, that it closed in 1924. Those who
-              know the old words are not told this.
-            </p>
-          </div>
-        </article>
-        <DecoDivider />
       </section>
 
       <section className="section notices-grid">

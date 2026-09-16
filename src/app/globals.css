@@ -489,12 +489,6 @@ img { max-width: 100%; height: auto; }
 .section, .page-wrap { padding-left: clamp(1.25rem,6vw,7rem); padding-right: clamp(1.25rem,6vw,7rem); }
 .section { padding-top: clamp(4rem,8vw,7rem); padding-bottom: clamp(4rem,8vw,7rem); }
 .page-wrap { min-height: 70vh; padding-top: clamp(3rem,7vw,6rem); padding-bottom: clamp(4rem,8vw,8rem); }
-.intro-section { background: var(--paper); }
-.record-clipping { max-width: 900px; margin: 0 auto; text-align: center; }
-.record-clipping h2 { margin: .3rem 0 1.5rem; padding-bottom: 1.3rem; font-family: Impact, "Arial Narrow", var(--font-display); font-size: clamp(2.6rem,5.6vw,4.6rem); font-weight: 400; line-height: .86; letter-spacing: -.01em; text-transform: uppercase; border-bottom: 3px double var(--ink); }
-.two-column-copy { max-width: 980px; margin: 0 auto; columns: 2; column-gap: clamp(2rem,6vw,6rem); column-rule: 1px solid var(--rule); text-align: justify; }
-.two-column-copy p { margin-top: 0; }
-.drop-cap::first-letter { float: left; margin: .18em .1em 0 0; color: var(--oxblood-dark); font-family: var(--font-display); font-size: 5.5rem; line-height: .68; }
 .latest-records { color: var(--paper); background: var(--charcoal); border-top: 1px solid var(--gold-muted); border-bottom: 1px solid var(--gold-muted); }
 .latest-records .eyebrow { color: var(--brass); }
 .latest-records .archive-table { max-width: 1250px; margin: 0 auto; }
@@ -628,7 +622,6 @@ img { max-width: 100%; height: auto; }
   .hero-notice { grid-template-columns: 1fr; margin-top: 2.5rem; gap: 2.8rem; }
   .management-copy { padding: 1.5rem 0 0; border-left: 0; border-top: 1px solid var(--ink); }
   .posted-hours { flex-direction: column; gap: .25rem; text-align: center; }
-  .two-column-copy { columns: 1; }
   .history-timeline article { grid-template-columns: 1fr; gap: .4rem; }
   .history-timeline time { font-size: 2rem; }
   .terminal-reveal { margin: 3rem -1.35rem -3.2rem; padding: 1rem .55rem 1.5rem; }

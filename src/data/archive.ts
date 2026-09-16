@@ -371,6 +371,22 @@ export const archiveRecords: ArchiveRecord[] = [
     provenance: fictionalArtifact("Fictional archive memorandum."),
   },
   {
+    slug: "a-house-remembered-imperfectly",
+    catalogNumber: "BV–25–014",
+    date: "Undated · filed with the 1925 papers",
+    year: 1925,
+    title: "A House Remembered Imperfectly",
+    deck: "The surviving Manchester record kept on hand for anyone who asks after the house.",
+    format: "memorandum",
+    excerpt: "A records-office reference note, kept for public inquiries, on a house whose address was never quite agreed upon.",
+    body: [
+      "Somewhere between Elm Street, the Merrimack, and the brick mass of the Amoskeag works, The Black Veil offered illegal drink and uncommon privacy to people who did not ordinarily share a table.",
+      "Correspondence addressed to the house is still collected, though by whom is not recorded. Those who ask after The Black Veil are told, politely, that it closed in 1924. Those who know the old words are not told this.",
+    ],
+    markings: ["Kept for public inquiries", "Address unconfirmed"],
+    provenance: fictionalArtifact("Fictional records-office reference note, kept on file to answer routine public inquiries about the house."),
+  },
+  {
     slug: "black-envelopes-appear",
     catalogNumber: "BV–26–016",
     date: "October 7, 1926",
