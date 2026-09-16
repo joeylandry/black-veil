@@ -29,7 +29,6 @@ export function ArchiveEntryCard({ record, index }: { record: ArchiveRecord; ind
         <p>{record.excerpt}</p>
         <Link href={`/archive/${record.slug}`} className="artifact-link">Open record <span aria-hidden="true">↗</span></Link>
       </div>
-      {record.markings?.[0] && <span className="archive-stamp" aria-hidden="true">{record.markings[0]}</span>}
     </article>
   );
 }

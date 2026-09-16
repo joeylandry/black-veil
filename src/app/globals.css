@@ -235,8 +235,6 @@ img { max-width: 100%; height: auto; }
 .archive-piece h3 a:hover { color: var(--oxblood); }
 .archive-piece-deck { font-weight: 700; line-height: 1.25; }
 .archive-piece-copy > p:not(.archive-piece-deck) { font-size: .92rem; line-height: 1.5; }
-.archive-stamp { position: absolute; right: .7rem; bottom: .7rem; max-width: 170px; padding: .25rem .45rem; color: var(--oxblood); border: 2px solid currentColor; font-family: var(--font-sans), Arial, sans-serif; font-size: .54rem; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; transform: rotate(-4deg); opacity: .72; }
-.archive-piece-invitation .archive-stamp { color: #b99962; }
 .featured-table .archive-piece { grid-column: span 4; }
 /* Record detail */
 .record-room { min-height: 80vh; padding: clamp(2rem, 5vw, 5rem) clamp(.75rem, 4vw, 4rem) 7rem; background: #766f60; }
