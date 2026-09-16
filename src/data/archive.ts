@@ -260,10 +260,10 @@ export const archiveRecords: ArchiveRecord[] = [
   {
     slug: "terror-at-the-black-veil",
     catalogNumber: "BV–24–046",
-    date: "November 3, 1924",
+    date: "November 1, 1924",
     year: 1924,
     title: "The Black Veil Masquerade Massacre",
-    deck: "Officials privately concede a massacre took place at the All Hallows' Eve masquerade; no bodies, no toll, and Cassandra Castello still missing.",
+    deck: "Officials privately concede a massacre took place at the All Hallows' Eve masquerade; no bodies and no toll have been released.",
     format: "front-page",
     masthead: "The Manchester Evening Chronicle",
     edition: "Vol. LXVIII · No. 263 · Final City Edition · Two Cents",
@@ -277,8 +277,7 @@ export const archiveRecords: ArchiveRecord[] = [
       focalPoint: "50% 55%",
     },
     body: [
-      "Detectives returned to the shuttered premises of The Black Veil this week, continuing an inquiry into what officials now privately concede was a massacre at the club's All Hallows' Eve masquerade two nights past. No official count of the dead has been released.",
-      "Cassandra Castello, the club's proprietress, was reported missing that same night. Police will not say whether her disappearance is connected to the killings, or whether she is to be considered a victim, a witness, or a suspect.",
+      "Detectives arrived at the shuttered premises of The Black Veil this morning, opening an inquiry into what officials now privately concede was a massacre at the club's All Hallows' Eve masquerade overnight. No official count of the dead has been released.",
       "The precise number of dead remains unknown. Whatever bodies the scene once held were gone before police arrived, leaving no remains to count and no official toll to publish. Investigators maintain, nonetheless, that a massacre did take place inside the club that night.",
       "The department has offered no further statement. The Black Veil remains sealed, and its address is still absent from public record.",
     ],
@@ -297,7 +296,7 @@ export const archiveRecords: ArchiveRecord[] = [
       },
     ],
     markings: ["No death toll confirmed", "Second paragraph reset before printing"],
-    provenance: fictionalArtifact("Signature fictional front page, filed days after the 1924 masquerade once investigators privately conceded a massacre had occurred. The newspaper, the report, and The Black Veil are fictional."),
+    provenance: fictionalArtifact("Signature fictional front page, filed the morning after the 1924 masquerade once investigators privately conceded a massacre had occurred. The newspaper, the report, and The Black Veil are fictional."),
     featured: true,
   },
   {
