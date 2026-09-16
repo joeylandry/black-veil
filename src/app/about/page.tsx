@@ -14,12 +14,9 @@ export default function AboutPage() {
     <div className="page-wrap about-page">
       <Masthead compact />
       <section className="history-intro">
-        <p className="eyebrow">As it stood before the closing</p>
+        <p className="eyebrow">Revised October 1924</p>
         <h1>A Manchester supper club, above the river.</h1>
-        <p className="lede">
-          Preserved by the office of management for public record. This notice has not been
-          revised since October 1924.
-        </p>
+        <p className="lede">Preserved by the office of management for public record.</p>
       </section>
       <DecoDivider />
       <section className="old-notice-copy">
