@@ -511,15 +511,28 @@ img { max-width: 100%; height: auto; }
 .history-intro { max-width: 850px; margin: 4rem auto 2rem; text-align: center; }
 .history-intro h1 { margin: .2rem 0 1.3rem; font-size: clamp(3rem,7vw,6rem); }
 .lede { font-size: clamp(1.15rem,2vw,1.4rem); }
-.history-timeline { max-width: 900px; margin: 4rem auto; }
-.history-timeline article { display: grid; grid-template-columns: 110px 1fr; gap: 2rem; padding: 2rem 0; border-top: 1px solid var(--rule); }
-.history-timeline time { color: var(--oxblood); font-family: var(--font-display); font-size: 2.5rem; font-weight: 700; }
-.history-timeline h2 { margin: 0 0 .7rem; font-family: var(--font-display); font-size: 2.1rem; line-height: 1; }
-.history-timeline p { margin: 0; }
-.quote-panel { max-width: 760px; margin: 5rem auto; padding: 2rem; border-top: 3px double var(--ink); border-bottom: 3px double var(--ink); text-align: center; }
-.quote-panel p { font-family: var(--font-display); font-size: clamp(2rem,4vw,3rem); font-style: italic; line-height: 1.1; }
-.quote-panel span { font-family: var(--font-sans), Arial, sans-serif; font-size: .7rem; text-transform: uppercase; letter-spacing: .13em; }
-.center-link { text-align: center; }
+
+.old-notice-copy { max-width: 850px; margin: 3rem auto; display: grid; gap: 2.5rem; grid-template-columns: 1fr 1fr; }
+.old-notice-image { display: block; width: 100%; height: auto; margin: 0 0 1rem; border: 1px solid var(--ink); }
+.old-notice-copy h2 { margin: 0 0 .6rem; font-family: var(--font-display); font-size: 1.7rem; line-height: 1; }
+.old-notice-copy p { margin: 0; font-size: .95rem; }
+.old-notice-signature { text-align: center; margin: 2rem auto 3rem; }
+
+.reservation-lookup { max-width: 560px; margin: 3rem auto; padding: clamp(1.6rem,4vw,2.4rem); background: var(--paper-light); border: 1px solid var(--ink); text-align: center; }
+.reservation-lookup .eyebrow { margin-bottom: 1rem; }
+.reservation-form { display: flex; gap: .6rem; }
+.reservation-form input { flex: 1; min-width: 0; padding: .8rem .9rem; color: var(--ink); background: rgba(180,166,134,.13); border: 1px solid var(--ink); border-radius: 0; font-family: var(--font-sans), Arial, sans-serif; font-size: .85rem; }
+.reservation-form .button-link { white-space: nowrap; }
+.reservation-result { margin: 1.4rem 0 0; padding-top: 1.2rem; border-top: 1px solid var(--rule); font-size: .92rem; text-align: left; }
+.reservation-result-restricted { color: var(--paper-light); background: var(--charcoal); padding: 1.2rem 1.4rem; border: 1px solid var(--ink); }
+.reservation-result-restricted p { margin: 0 0 .4rem; }
+.reservation-result-restricted p:last-child { margin-bottom: 0; }
+.reservation-restricted-label { font-family: var(--font-sans), Arial, sans-serif; font-size: .68rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--brass); }
+
+@media (max-width: 640px) {
+  .old-notice-copy { grid-template-columns: 1fr; }
+  .reservation-form { flex-direction: column; }
+}
 
 .ledger-locked { max-width: 720px; margin: 2rem auto; padding: clamp(2rem,6vw,5rem); background: var(--paper-light); border: 5px double var(--ink); text-align: center; box-shadow: 7px 10px 20px var(--shadow); }
 .ledger-lock { width: 100px; height: 100px; display: grid; place-items: center; margin: 0 auto 1.5rem; border: 3px double var(--oxblood); border-radius: 50%; color: var(--oxblood); font-family: var(--font-display); font-size: 2rem; font-weight: 700; }

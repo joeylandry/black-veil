@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Image from "next/image";
 import { DecoDivider } from "@/components/deco-divider";
 import { Masthead } from "@/components/masthead";
+import { ReservationLookup } from "@/components/reservation-lookup";
 
 export const metadata: Metadata = {
   title: "About",
-  description: "A chronology of Manchester and The Black Veil, 1921–1926.",
+  description: "The Black Veil supper club notice, as it stood before the closing.",
 };
 
 export default function AboutPage() {
@@ -13,41 +14,51 @@ export default function AboutPage() {
     <div className="page-wrap about-page">
       <Masthead compact />
       <section className="history-intro">
-        <p className="eyebrow">A history approved by management</p>
-        <h1>A Manchester house remembered imperfectly.</h1>
+        <p className="eyebrow">As it stood before the closing</p>
+        <h1>A Manchester supper club, above the river.</h1>
         <p className="lede">
-          Assembled from what survives: newspapers, papers, and the memory of a city that
-          mostly chose not to notice. Gaps remain uncorrected.
+          Preserved by the office of management for public record. This notice has not been
+          revised since October 1924.
         </p>
       </section>
       <DecoDivider />
-      <section className="history-timeline">
+      <section className="old-notice-copy">
         <article>
-          <time>1921</time>
-          <div><h2>The first door opens.</h2><p>A private club begins operating somewhere between Elm Street, the river, and the Amoskeag works. Surviving records disagree about its address.</p></div>
+          <Image
+            className="old-notice-image"
+            src="/archive/fictional/black-veil-dining-room.png"
+            alt="The Black Veil's empty dining room, set for supper with the orchestra stage beyond."
+            width={1916}
+            height={821}
+          />
+          <h2>Dining &amp; Orchestra</h2>
+          <p>
+            The Black Veil receives guests from eight in the evening until the last mill
+            whistle. A house orchestra plays nightly excepting Sundays. Supper is served at
+            the river tables; reservations are suggested and may be confirmed by telephone
+            or in person at the door.
+          </p>
         </article>
         <article>
-          <time>1922</time>
-          <div><h2>The city walks out.</h2><p>Amoskeag cuts wages by twenty percent and lengthens the work week. The strike lasts nine months. Later papers claim laborers and owners both passed through The Black Veil.</p></div>
-        </article>
-        <article>
-          <time>1923</time>
-          <div><h2>Whispers follow the river.</h2><p>Prohibition enforcement, Canadian liquor, and private meetings enter the club’s record. No surviving account agrees on who protected the house.</p></div>
-        </article>
-        <article>
-          <time>1924</time>
-          <div><h2>The final masquerade.</h2><p>Something occurs on All Hallows’ Eve. Reports call it murder, accident, disturbance, and rumor. Proprietress Cassandra Castello disappears. No body is found.</p></div>
-        </article>
-        <article>
-          <time>1925–26</time>
-          <div><h2>A closed house keeps its hours.</h2><p>The file thins. Then black envelopes bearing the old insignia begin circulating in Manchester. Cassandra is still missing. The sender is unknown.</p></div>
+          <Image
+            className="old-notice-image"
+            src="/archive/fictional/black-veil-dressing-room.png"
+            alt="A private dressing room upstairs, with an evening gown, a tuxedo, and a masquerade mask laid out."
+            width={1916}
+            height={821}
+          />
+          <h2>By Introduction</h2>
+          <p>
+            Certain accommodations upstairs are reserved for members introduced personally
+            to the proprietress. Management regrets that these rooms cannot be described
+            further in a public notice, and asks that guests not press the staff for
+            particulars.
+          </p>
         </article>
       </section>
-      <aside className="quote-panel">
-        <p>“If Cassandra disappeared two years ago, who sent the invitations?”</p>
-        <span>— question entered without signature, October 1926</span>
-      </aside>
-      <div className="center-link"><Link href="/archive" className="button-link">Consult the surviving records</Link></div>
+      <ReservationLookup />
+      <DecoDivider />
+      <p className="fine-print old-notice-signature">Established 1921 · Manchester, New Hampshire</p>
     </div>
   );
 }

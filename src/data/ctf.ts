@@ -60,6 +60,16 @@ export const ctfChallenges: CtfChallenge[] = [
     hint: "An investigator may examine the page source as carefully as any physical record.",
     flag: "VEIL{MERRIMACK_ROOM}",
   },
+  {
+    id: "uninvited-guest",
+    number: "VI",
+    title: "The Uninvited Guest",
+    points: 350,
+    briefing: "The old public page still takes reservations for a room that no longer exists.",
+    clue: "Confirm a standing reservation on the archived supper-club notice. Submit the withheld guest's arrangement as two words joined by an underscore.",
+    hint: "The form trusts whatever name it is given. A true statement can stand in for one.",
+    flag: "VEIL{SILENT_PARTNER}",
+  },
 ];
 
 export const maxCtfScore = ctfChallenges.reduce((total, challenge) => total + challenge.points, 0);
