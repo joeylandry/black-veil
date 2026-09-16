@@ -245,6 +245,10 @@ export const archiveRecords: ArchiveRecord[] = [
         headline: "All Hallows' Eve trolley service called uneventful elsewhere",
         body: "Aside from the disturbance reported near the mill district, the Manchester Street Railway described the holiday's late service as routine.",
       },
+      {
+        headline: "Guest list withheld from press",
+        body: "Officials declined to confirm how many masqueraders attended, nor would they release a single name, citing the ongoing inquiry.",
+      },
     ],
     markings: ["No death toll confirmed", "Second paragraph reset before printing"],
     provenance: fictionalArtifact("Signature fictional front page, filed the morning after the 1924 masquerade once investigators privately conceded a massacre had occurred. The newspaper, the report, and The Black Veil are fictional."),
