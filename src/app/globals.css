@@ -475,7 +475,7 @@ img { max-width: 100%; height: auto; }
 .closure-stamp { justify-self: center; width: min(100%,560px); padding: 1.8rem 2.2rem 1.4rem; color: var(--oxblood); border: 6px double currentColor; transform: rotate(-5deg); text-align: center; text-transform: uppercase; line-height: 1; opacity: .88; overflow-wrap: break-word; }
 .closure-stamp span { display: block; font-family: var(--font-sans), Arial, sans-serif; font-size: 1.1rem; letter-spacing: .3em; }
 .closure-stamp strong { display: block; margin: .3rem 0 .55rem; font-family: var(--font-display); font-size: clamp(1.8rem,5vw,2.8rem); letter-spacing: -.02em; white-space: nowrap; }
-.closure-stamp small { display: block; font-family: var(--font-sans), Arial, sans-serif; font-size: .75rem; letter-spacing: .2em; }
+.closure-stamp small { display: block; padding-top: .55rem; border-top: 1px solid currentColor; font-family: var(--font-sans), Arial, sans-serif; font-size: .75rem; letter-spacing: .2em; }
 .management-copy { padding-left: clamp(1.2rem,3vw,3rem); }
 .management-copy h2, .in-world-notice h3, .history-intro h1 { font-family: var(--font-display); font-weight: 600; line-height: .98; }
 .management-copy h2 { margin: 0 0 1rem; font-size: clamp(2rem,4vw,3rem); }
