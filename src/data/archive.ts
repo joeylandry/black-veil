@@ -156,6 +156,7 @@ export const archiveRecords: ArchiveRecord[] = [
       rights: "Public domain in the United States (published before 1930)",
       notes: "Historical context cross-checked with the New Hampshire Historical Society primary-source set on Amoskeag.",
     },
+    featured: false,
   },
   {
     slug: "whispers-along-the-merrimack",
@@ -315,10 +316,6 @@ export const archiveRecords: ArchiveRecord[] = [
       width: 1122,
       height: 1402,
       focalPoint: "50% 25%",
-      note: [
-        "The precise number of dead remains unknown. Whatever bodies the scene once held were gone before police arrived, leaving no remains to count and no official toll to publish. Investigators maintain, nonetheless, that a massacre did take place inside the club that night.",
-        "The department has offered no further statement. The Black Veil remains sealed, and its address is still absent from public record.",
-      ],
     },
     continuedArticle: {
       headline: "Inquiry continues into masquerade massacre",
