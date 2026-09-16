@@ -156,7 +156,7 @@ export const archiveRecords: ArchiveRecord[] = [
       rights: "Public domain in the United States (published before 1930)",
       notes: "Historical context cross-checked with the New Hampshire Historical Society primary-source set on Amoskeag.",
     },
-    featured: true,
+    featured: false,
   },
   {
     slug: "whispers-along-the-merrimack",
