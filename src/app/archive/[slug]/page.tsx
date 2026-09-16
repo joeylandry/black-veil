@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArtifactInspector } from "@/components/artifact-inspector";
-import { NewspaperArtifact } from "@/components/newspaper-artifact";
+import { NewspaperInspector } from "@/components/newspaper-inspector";
 import { TerminalDiscovery } from "@/components/terminal/terminal-discovery";
 import { archiveRecords, getArchiveRecord } from "@/data/archive";
 
@@ -53,9 +53,7 @@ export default async function ArchiveDocumentPage({ params }: Props) {
 
       <div className={`record-stage record-stage-${record.format} ${isNewspaper ? "record-stage-full" : ""}`}>
         {isNewspaper ? (
-          <div className="newspaper-scroll" role="region" aria-label="Scrollable newspaper artifact" tabIndex={0}>
-            <NewspaperArtifact record={record} />
-          </div>
+          <NewspaperInspector record={record} />
         ) : (
           <article className={`physical-document physical-document-${record.format}`}>
             <div className="document-punches" aria-hidden="true"><i /><i /></div>

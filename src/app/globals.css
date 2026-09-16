@@ -279,6 +279,13 @@ img { max-width: 100%; height: auto; }
 .artifact-dialog-scroll { max-height: 76vh; overflow: auto; text-align: center; }
 .artifact-dialog-scroll img { width: auto; max-width: none; min-width: min(100%, 900px); }
 .artifact-dialog > p { margin: .7rem 0 0; font-family: var(--font-sans), Arial, sans-serif; font-size: .7rem; text-transform: uppercase; }
+.newspaper-dialog-scroll { max-height: 88vh; overflow: auto; -webkit-overflow-scrolling: touch; }
+.newspaper-dialog-scroll .newspaper-artifact { margin: 0 auto; }
+.newspaper-fit { position: relative; overflow: hidden; }
+.newspaper-fit-frame { display: block; width: 100%; padding: 0; border: 0; background: none; text-align: left; cursor: zoom-in; }
+.newspaper-fit-inner { display: inline-block; transform-origin: top left; }
+.newspaper-fit-frame.hero-newspaper-link { transform: none; filter: none; }
+.newspaper-fit-hint { position: absolute; right: .6rem; bottom: .6rem; padding: .3rem .55rem; color: #eee5d0; background: rgba(15,14,11,.72); font-family: var(--font-sans), Arial, sans-serif; font-size: .58rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; pointer-events: none; }
 .record-pagination { max-width: 1180px; margin: 0 auto 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 .record-pagination a { display: flex; align-items: center; gap: .8rem; padding: 1rem; color: #eee5cf; background: #333128; text-decoration: none; border: 1px solid #8b7b5b; font-family: var(--font-display); font-size: 1.2rem; line-height: 1.1; }
 .record-pagination a:last-child { justify-content: flex-end; text-align: right; }

@@ -3,7 +3,7 @@ import { ArchiveEntryCard } from "@/components/archive-entry-card";
 import { ClosureStamp } from "@/components/closure-stamp";
 import { InWorldNotice } from "@/components/in-world-notice";
 import { Masthead } from "@/components/masthead";
-import { NewspaperArtifact } from "@/components/newspaper-artifact";
+import { NewspaperHeroPreview } from "@/components/newspaper-hero-preview";
 import { archiveRecords } from "@/data/archive";
 
 export default function Home() {
@@ -33,11 +33,7 @@ export default function Home() {
           </div>
         </div>
         <div className="hero-newspaper">
-          <div className="newspaper-scroll" role="region" aria-label="Scrollable newspaper artifact" tabIndex={0}>
-            <Link className="hero-newspaper-link" href="/archive/murderer-or-murdered" aria-label="Examine the Murderer or Murdered newspaper front page">
-              <NewspaperArtifact record={cassandraFrontPage} />
-            </Link>
-          </div>
+          <NewspaperHeroPreview record={cassandraFrontPage} href="/archive/murderer-or-murdered" />
         </div>
       </section>
 
