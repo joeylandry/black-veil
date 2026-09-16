@@ -153,6 +153,9 @@ export const archiveRecords: ArchiveRecord[] = [
       width: 1200,
       height: 952,
     },
+    neighboringCopy: [
+      { headline: "Street Railway Notice", body: "Local notices and ordinary city news continued inside this edition." },
+    ],
     markings: ["HISTORICAL CONTEXT", "Fiction separated in transcript"],
     provenance: {
       classification: "historical-context",
