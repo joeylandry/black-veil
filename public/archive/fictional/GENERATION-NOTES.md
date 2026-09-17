@@ -31,3 +31,5 @@ Prompt direction: Create a cinematic but historically plausible 1924 newspaper e
 ## `cassandra-person-of-interest-poster.png`
 
 Supplied by the project owner (generated outside this session) rather than produced with this session's tooling, using the canonical Cassandra likeness reference. Unlike the other assets in this set, its headline and body copy are baked into the image itself as a printed 1924 "Person of Interest" bulletin from the City of Manchester Police Department, rather than being rendered as separate HTML/CSS over the image per the deterministic-copy convention described in the project README. It is used as a physical-artifact reproduction (a posted bulletin, photographed/scanned whole) rather than as a newspaper page, so the baked-in print is treated as part of the artifact rather than as substitute article copy.
+
+This image is attached to the `police-seek-proprietress` archive record (`BV–24–052`, "Police Seek Proprietress for Questioning") as the bulletin that story reports on — it does not have its own standalone archive record.
