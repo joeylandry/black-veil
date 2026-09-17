@@ -280,7 +280,8 @@ img { max-width: 100%; height: auto; }
 .physical-document-invitation::after { border-color: rgba(166,137,82,.45); }
 .physical-document-invitation header { border-color: #a78b55; }
 .physical-document-invitation header time { color: #d1b375; }
-.physical-document-image-only { padding: clamp(1.2rem, 3vw, 2.2rem); }
+.physical-document-image-only { padding: 0; background: none; border: 0; box-shadow: none; }
+.physical-document-image-only::after { content: none; }
 .physical-document-image-only .document-photograph { margin: 0; }
 .record-markings { position: relative; z-index: 1; display: flex; flex-wrap: wrap; justify-content: center; gap: .8rem; margin-top: 3rem; }
 .record-markings span { padding: .35rem .6rem; color: var(--oxblood); border: 2px solid currentColor; font-family: var(--font-sans), Arial, sans-serif; font-size: .6rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; transform: rotate(-1.5deg); }

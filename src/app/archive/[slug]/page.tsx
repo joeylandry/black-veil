@@ -29,6 +29,7 @@ export default async function ArchiveDocumentPage({ params }: Props) {
   const previous = archiveRecords[index - 1];
   const next = archiveRecords[index + 1];
   const isNewspaper = record.format === "newspaper" || record.format === "front-page";
+  const useFullStage = isNewspaper || Boolean(record.imageOnly);
 
   return (
     <div className="record-room">
@@ -52,7 +53,7 @@ export default async function ArchiveDocumentPage({ params }: Props) {
         ) : <span />}
       </nav>
 
-      <div className={`record-stage record-stage-${record.format} ${isNewspaper ? "record-stage-full" : ""}`}>
+      <div className={`record-stage record-stage-${record.format} ${useFullStage ? "record-stage-full" : ""}`}>
         {isNewspaper ? (
           <NewspaperInspector record={record} />
         ) : record.imageOnly && record.image ? (
