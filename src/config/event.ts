@@ -15,6 +15,7 @@ export const eventConfig = {
     rsvp: "black-veil:rsvp",
     ctfProgress: "black-veil:ctf-progress",
     registerUnlocked: "black-veil:register-unlocked",
+    postscriptSolved: "black-veil:postscript-solved",
   },
 } as const;
 

@@ -12,6 +12,7 @@ export function SiteFooter() {
         <Link href="/guest-ledger">Private ledger</Link>
       </div>
       <p className="fine-print">Archive catalog last amended: October 31, 1926 · 11:47 P.M.</p>
+      <Link href="/postscript" className="footer-secret-link">secret secret flag</Link>
     </footer>
   );
 }
