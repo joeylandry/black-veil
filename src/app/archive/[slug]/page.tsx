@@ -6,6 +6,7 @@ import { ArtifactInspector } from "@/components/artifact-inspector";
 import { FitHeading } from "@/components/fit-heading";
 import { NewspaperInspector } from "@/components/newspaper-inspector";
 import { TerminalDiscovery } from "@/components/terminal/terminal-discovery";
+import { VeilFlyerReveal } from "@/components/terminal/veil-flyer-reveal";
 import { archiveRecords, getArchiveRecord } from "@/data/archive";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -58,19 +59,22 @@ export default async function ArchiveDocumentPage({ params }: Props) {
           <NewspaperInspector record={record} />
         ) : record.imageOnly && record.image ? (
           <article className={`physical-document physical-document-${record.format} physical-document-image-only`}>
-            <figure className="document-photograph">
-              <div className="document-photograph-frame">
-                <Image
-                  src={record.image.src}
-                  alt={record.image.alt}
-                  width={record.image.width}
-                  height={record.image.height}
-                  sizes="(max-width: 800px) 88vw, 760px"
-                  style={{ objectPosition: record.image.focalPoint ?? "center" }}
-                />
-              </div>
-            </figure>
-            {record.slug === "the-veil-has-lifted" && <TerminalDiscovery />}
+            {record.slug === "the-veil-has-lifted" ? (
+              <VeilFlyerReveal image={record.image} />
+            ) : (
+              <figure className="document-photograph">
+                <div className="document-photograph-frame">
+                  <Image
+                    src={record.image.src}
+                    alt={record.image.alt}
+                    width={record.image.width}
+                    height={record.image.height}
+                    sizes="(max-width: 800px) 88vw, 760px"
+                    style={{ objectPosition: record.image.focalPoint ?? "center" }}
+                  />
+                </div>
+              </figure>
+            )}
           </article>
         ) : (
           <article className={`physical-document physical-document-${record.format}`}>
