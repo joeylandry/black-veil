@@ -333,7 +333,8 @@ img { max-width: 100%; height: auto; }
 .central-questions > p:not(.eyebrow) { max-width: 700px; margin: 0 auto 2rem; }
 
 /* Guest register and invitation */
-.guest-ledger-page, .invitation-page { min-height: 78vh; padding: clamp(3rem, 7vw, 7rem) clamp(.75rem, 5vw, 5rem); background: linear-gradient(#777064, #9d947f); }
+.guest-ledger-page, .invitation-page { min-height: 78vh; padding: clamp(3rem, 7vw, 7rem) clamp(.75rem, 5vw, 5rem); }
+.guest-ledger-page { background: linear-gradient(#777064, #9d947f); }
 .ledger-checking { padding: 8rem 1rem; text-align: center; font-family: var(--font-sans), Arial, sans-serif; font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; }
 .ledger-form { max-width: 720px; margin: 0 auto; padding: clamp(1.5rem, 5vw, 3.2rem); background: var(--paper-light); border: 1px solid #6f6758; box-shadow: 10px 15px 28px var(--shadow); }
 .ledger-form > header { padding-bottom: 1.4rem; border-bottom: 4px double var(--ink); text-align: center; }
