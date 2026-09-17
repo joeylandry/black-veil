@@ -1,11 +1,13 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { BlackVeilInsignia } from "@/components/black-veil-insignia";
+import { useSessionState } from "@/lib/use-session-state";
 import { ArchivalTerminal } from "./archival-terminal";
+import { terminalSessionKeys } from "./session-keys";
 
 export function TerminalDiscovery() {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useSessionState(terminalSessionKeys.open, false);
   const revealRef = useRef<HTMLElement>(null);
 
   const handleOpen = () => {
