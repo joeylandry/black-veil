@@ -69,6 +69,7 @@ export default async function ArchiveDocumentPage({ params }: Props) {
                 />
               </div>
             </figure>
+            {record.slug === "the-veil-has-lifted" && <TerminalDiscovery />}
           </article>
         ) : (
           <article className={`physical-document physical-document-${record.format}`}>

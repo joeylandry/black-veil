@@ -604,12 +604,16 @@ export const archiveRecords: ArchiveRecord[] = [
     title: "The Veil Has Lifted",
     format: "invitation",
     excerpt: "The Black Veil summons its guests back to Manchester on All Hallows’ Eve.",
-    body: [
-      "THE BLACK VEIL requests your company at an All Hallows’ Eve masquerade, October 31, 1926, Manchester, New Hampshire. The location will be disclosed to confirmed guests.",
-      "The invitation carries no signature. Microscopic comparison has not established whether the hand resembles Cassandra Castello’s. The envelope was cataloged before the archive records receiving it.",
-    ],
-    markings: ["THE VEIL HAS LIFTED", "SENDER UNKNOWN"],
-    provenance: fictionalArtifact("Fictional 1926 invitation. The sender is intentionally unresolved."),
+    body: [],
+    image: {
+      src: "/archive/fictional/black-veil-veil-has-lifted-flyer-1926.png",
+      alt: "Fictional 1926 printed flyer for The Black Veil's All Hallows’ Eve Masquerade, Manchester, N.H., reading THE VEIL HAS LIFTED",
+      caption: "THE VEIL HAS LIFTED · All Hallows’ Eve Masquerade · October 31, 1926",
+      width: 1024,
+      height: 1536,
+    },
+    provenance: fictionalArtifact("Fictional 1926 flyer. The sender is intentionally unresolved."),
+    imageOnly: true,
     anomaly: true,
   },
 ];
