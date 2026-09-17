@@ -469,21 +469,14 @@ export const archiveRecords: ArchiveRecord[] = [
       rights: "Original generated image for this project",
       notes: "The depot scene, the pictured figure, and the sighting are fictional. No identity is asserted or ascertainable from the image; it is consistent with an unverified witness account, not evidence of one.",
     },
-  },
-  {
-    slug: "witnesses-give-conflicting-accounts",
-    catalogNumber: "MPD–24–118",
-    date: "November 5, 1924",
-    year: 1924,
-    title: "Witnesses Give Conflicting Accounts",
-    format: "police",
-    excerpt: "Four unsigned summaries disagree about the time, the number of guests, and whether officers entered the club.",
-    body: [
-      "STATEMENT A: music ceased at 11:47 P.M.; two persons left by the river side. STATEMENT B: music continued beyond midnight; no river entrance existed. STATEMENT C: an officer entered before twelve. STATEMENT D: police were not summoned until morning.",
-      "The original statements are missing. This summary carries no officer’s signature and no station seal. A typed line naming Castello as ‘complainant’ has been crossed out and replaced with ‘person sought.’",
+    neighboringCopy: [
+      "Cold fog expected along the river",
+      "Street railway notice",
+      {
+        headline: "Witnesses Give Conflicting Accounts",
+        body: "An unsigned police summary circulating this week says music at the club ceased at 11:47 P.M. and two persons left by the river side. A second statement insists the music continued beyond midnight and that no river entrance ever existed. A third places an officer inside before twelve; a fourth says police were not summoned until morning. The original statements could not be produced.",
+      },
     ],
-    markings: ["COPY — ORIGINAL NOT FOUND", "STATUS: OPEN / CLOSED"],
-    provenance: fictionalArtifact("Fictional police-record prop. It is not a real Manchester Police Department document."),
   },
   {
     slug: "black-veil-closed-indefinitely",
