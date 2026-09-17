@@ -8,6 +8,13 @@
       "when": 1789657634740,
       "tag": "0000_equal_maddog",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1789659379351,
+      "tag": "0001_clean_puck",
+      "breakpoints": true
     }
   ]
 }

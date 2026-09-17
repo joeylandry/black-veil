@@ -1,5 +1,4 @@
 import { eventConfig } from "@/config/event";
-import { ctfChallenges } from "@/data/ctf";
 import { setStorageValue } from "@/lib/use-storage-value";
 
 export type CtfProgress = {
@@ -9,23 +8,29 @@ export type CtfProgress = {
 };
 
 export type CtfService = {
-  submitFlag(challengeId: string, submission: string, current: CtfProgress): Promise<{ correct: boolean; progress: CtfProgress }>;
+  submitFlag(challengeId: string, submission: string): Promise<{ correct: boolean; progress: CtfProgress }>;
 };
 
-export const localCtfService: CtfService = {
-  async submitFlag(challengeId, submission, current) {
-    const challenge = ctfChallenges.find((item) => item.id === challengeId);
-    const correct = challenge?.flag.toUpperCase() === submission.trim().toUpperCase();
-    if (!challenge || !correct || current.solved.includes(challengeId)) {
-      return { correct: Boolean(correct), progress: current };
+/**
+ * Flags are checked server-side in /api/ctf/submit against the full challenge data
+ * in src/data/ctf.ts, which this module never imports, so correct answers never
+ * ship in client JS. The response is mirrored to localStorage purely as a UI
+ * cache; the ctf_solves table in Postgres is the source of truth.
+ */
+export const remoteCtfService: CtfService = {
+  async submitFlag(challengeId, submission) {
+    const response = await fetch("/api/ctf/submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ challengeId, submission }),
+    });
+    if (!response.ok) {
+      const body = await response.json().catch(() => null);
+      throw new Error(body?.error || "Failed to submit flag.");
     }
-    const progress = {
-      solved: [...current.solved, challengeId],
-      score: current.score + challenge.points,
-      updatedAt: new Date().toISOString(),
-    };
-    setStorageValue(eventConfig.storageKeys.ctfProgress, JSON.stringify(progress));
-    return { correct: true, progress };
+    const result = (await response.json()) as { correct: boolean; progress: CtfProgress };
+    setStorageValue(eventConfig.storageKeys.ctfProgress, JSON.stringify(result.progress));
+    return result;
   },
 };
 

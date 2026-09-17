@@ -3,9 +3,10 @@
 import Link from "next/link";
 import { FormEvent, useMemo, useState } from "react";
 import { BlackVeilInsignia } from "@/components/black-veil-insignia";
+import { PointClaims } from "@/components/point-claims";
 import { eventConfig } from "@/config/event";
 import { ctfChallenges, maxCtfScore } from "@/data/ctf";
-import { CtfProgress, emptyCtfProgress, localCtfService } from "@/lib/ctf-service";
+import { CtfProgress, emptyCtfProgress, remoteCtfService } from "@/lib/ctf-service";
 import { RsvpSubmission } from "@/lib/rsvp-service";
 import { useStorageValue } from "@/lib/use-storage-value";
 
@@ -25,6 +26,7 @@ export function CtfGame() {
   const storedProgress = useMemo(() => parseProgress(savedProgress), [savedProgress]);
   const [workingProgress, setWorkingProgress] = useState<CtfProgress | null>(null);
   const [feedback, setFeedback] = useState<Record<string, "correct" | "incorrect">>({});
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const progress = workingProgress ?? storedProgress;
 
   if (access === undefined || savedRsvp === undefined) {
@@ -46,10 +48,19 @@ export function CtfGame() {
   async function submit(event: FormEvent<HTMLFormElement>, challengeId: string) {
     event.preventDefault();
     const form = new FormData(event.currentTarget);
-    const result = await localCtfService.submitFlag(challengeId, String(form.get("flag") || ""), progress);
-    setWorkingProgress(result.progress);
-    setFeedback((current) => ({ ...current, [challengeId]: result.correct ? "correct" : "incorrect" }));
-    if (result.correct) event.currentTarget.reset();
+    setSubmitError(null);
+    try {
+      const result = await remoteCtfService.submitFlag(challengeId, String(form.get("flag") || ""));
+      setWorkingProgress(result.progress);
+      setFeedback((current) => ({ ...current, [challengeId]: result.correct ? "correct" : "incorrect" }));
+      if (result.correct) event.currentTarget.reset();
+    } catch (error) {
+      setSubmitError(
+        error instanceof Error
+          ? `${error.message} If you're on a new device or cleared this one, sign in again from the resume page.`
+          : "Failed to submit flag.",
+      );
+    }
   }
 
   return (
@@ -61,6 +72,11 @@ export function CtfGame() {
         <h1>The Black Rose Trials</h1>
         <p>Six irregularities remain across the Manchester record. Findings are rewarded. Careless guesses are remembered.</p>
         <div className="score-seal"><span>Your score</span><strong>{progress.score}</strong><small>of {maxCtfScore} points</small></div>
+        {submitError && (
+          <p className="field-error" role="alert">
+            {submitError} <Link href="/resume">Resume from another device</Link>.
+          </p>
+        )}
       </header>
 
       <section className="ctf-challenges" aria-label="Black Rose challenges">
@@ -90,6 +106,8 @@ export function CtfGame() {
           );
         })}
       </section>
+
+      <PointClaims />
     </div>
   );
 }

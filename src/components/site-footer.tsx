@@ -10,6 +10,7 @@ export function SiteFooter() {
         <Link href="/archive">Historical records</Link>
         <Link href="/about">About</Link>
         <Link href="/guest-ledger">Private ledger</Link>
+        <Link href="/resume">Resume your register</Link>
       </div>
       <p className="fine-print">Archive catalog last amended: October 31, 1926 · 11:47 P.M.</p>
       <Link href="/postscript" className="footer-secret-link">secret secret flag</Link>
