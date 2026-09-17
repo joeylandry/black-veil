@@ -579,10 +579,10 @@ export const archiveRecords: ArchiveRecord[] = [
     ],
     image: {
       src: "/archive/fictional/black-envelopes-doorstep-evidence.png",
-      alt: "Fictional evidence photograph of a single black wax-sealed envelope resting on the frost-dusted stone threshold of a Manchester rowhouse door at dusk",
+      alt: "Fictional evidence photograph of a single black wax-sealed envelope resting on a wet stone curb beside an iron post on a Manchester street corner",
       caption: "BLACK ENVELOPE · left without a hand seen · West Side, Manchester, N.H.",
-      width: 1448,
-      height: 1086,
+      width: 1402,
+      height: 1122,
     },
     markings: ["ORIGIN UNAVAILABLE", "Filed before receipt"],
     provenance: {
@@ -592,7 +592,7 @@ export const archiveRecords: ArchiveRecord[] = [
       sourceInstitution: "The Black Veil creative archive",
       sourceTitle: "Black Envelopes Appear",
       rights: "Original generated image for this project",
-      notes: "Fictional newspaper report and evidence photograph created for The Black Veil. The photograph has not yet been generated in this session; see GENERATION-NOTES.md for the prompt.",
+      notes: "Fictional newspaper report and evidence photograph created for The Black Veil. The photograph was supplied by the project owner; see GENERATION-NOTES.md for details.",
     },
     anomaly: true,
   },
