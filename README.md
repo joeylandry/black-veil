@@ -54,7 +54,14 @@ Generated images are never described as authentic historical photographs. The re
 
 The original archive-to-terminal-to-ledger flow is preserved. The 1926 invitation record contains a hidden seal that opens the simulated archival terminal; solving it unlocks the real-name RSVP, private invitation, and Black Rose trials. The terminal is client-side fiction and never executes commands on the visitor’s device.
 
-RSVPs use a guest’s real name and do not assign a fictional character. `src/lib/rsvp-service.ts` defines the persistence boundary; its current adapter stores the prototype submission only in local storage and the interface says so. CTF progress is also stored locally. Replace these adapters with an approved server-backed implementation before collecting production RSVPs or shared scores.
+RSVPs use a guest’s real name and do not assign a fictional character. `src/lib/rsvp-service.ts` defines the persistence boundary. `remoteRsvpService` (used by `GuestLedger`) POSTs to `/api/rsvp`, which writes to Postgres via Drizzle — see `src/lib/db/schema.ts` and `src/app/api/rsvp/route.ts`; a `DATABASE_URL` connection string (Supabase, Neon, or any Postgres host — see `.env.example`) must be set for that route to work. `localRsvpService` remains for local development without a database connection. The submission is also mirrored to `localStorage` purely so the visitor's device can render "you already RSVP'd" without a login step; the database, not `localStorage`, is the source of truth. CTF progress is still stored locally only; replace that adapter with an approved server-backed implementation before sharing production scores.
+
+### Database setup
+
+1. Create a Postgres database (e.g. a [Supabase](https://supabase.com) project) and copy its connection string.
+2. Copy `.env.example` to `.env.local` and set `DATABASE_URL` (use Supabase's pooled "Transaction" connection string for serverless/Next.js).
+3. Run `npm run db:migrate` to apply `drizzle/0000_equal_maddog.sql` (creates the `rsvps` table).
+4. `npm run db:generate` regenerates migrations after schema changes in `src/lib/db/schema.ts`; `npm run db:studio` opens Drizzle Studio against the configured database.
 
 ## Future private game
 

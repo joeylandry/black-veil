@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { FormEvent, useMemo, useState } from "react";
 import { eventConfig } from "@/config/event";
-import { localRsvpService, RsvpSubmission } from "@/lib/rsvp-service";
+import { remoteRsvpService, RsvpSubmission } from "@/lib/rsvp-service";
 import { setStorageValue, useStorageValue } from "@/lib/use-storage-value";
 
 type Errors = Partial<Record<"fullName" | "email" | "attending" | "dress", string>>;
@@ -13,6 +13,7 @@ export function GuestLedger() {
   const savedValue = useStorageValue(eventConfig.storageKeys.rsvp);
   const [saved, setSaved] = useState<RsvpSubmission | null>(null);
   const [errors, setErrors] = useState<Errors>({});
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [codeInput, setCodeInput] = useState("");
   const [codeError, setCodeError] = useState(false);
   const storedSubmission = useMemo(() => {
@@ -58,8 +59,13 @@ export function GuestLedger() {
       attendanceStatus: attending === "yes" ? "confirmed" : "declined",
       recordedAt: new Date().toISOString(),
     };
-    await localRsvpService.save(submission);
-    setSaved(submission);
+    setSubmitError(null);
+    try {
+      await remoteRsvpService.save(submission);
+      setSaved(submission);
+    } catch (error) {
+      setSubmitError(error instanceof Error ? error.message : "Failed to save RSVP.");
+    }
   }
 
   if (access === "checking" || savedValue === undefined) {
@@ -106,7 +112,7 @@ export function GuestLedger() {
             <p>The management of The Black Veil has located your file.</p>
             <strong>Further correspondence will follow.</strong>
           </div>
-          <p className="rsvp-storage-note">This prototype entry is stored only on this device and has not yet been transmitted to event management.</p>
+          <p className="rsvp-storage-note">Your entry has been recorded for event management.</p>
           <div className="ledger-success-actions">
             <Link href="/invitation" className="button-link">Open private invitation</Link>
             <Link href="/black-rose" className="button-link">Enter the Black Rose trials</Link>
@@ -150,7 +156,7 @@ export function GuestLedger() {
         </label>
         {errors.dress && <small className="field-error">{errors.dress}</small>}
       </div>
-      <p className="prototype-note">Prototype register: submissions remain in this browser until a permanent event backend is connected.</p>
+      {submitError && <small className="field-error" role="alert">{submitError}</small>}
       <button className="ledger-submit" type="submit">Enter my name upon the register</button>
     </form>
   );
