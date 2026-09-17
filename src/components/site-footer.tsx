@@ -1,7 +1,13 @@
+"use client";
+
 import Link from "next/link";
+import { eventConfig } from "@/config/event";
+import { useStorageValue } from "@/lib/use-storage-value";
 import { BlackVeilInsignia } from "./black-veil-insignia";
 
 export function SiteFooter() {
+  const registerUnlocked = useStorageValue(eventConfig.storageKeys.registerUnlocked) === "true";
+
   return (
     <footer className="site-footer">
       <BlackVeilInsignia />
@@ -12,7 +18,9 @@ export function SiteFooter() {
         <Link href="/guest-ledger">Private ledger</Link>
       </div>
       <p className="fine-print">Archive catalog last amended: October 31, 1926 · 11:47 P.M.</p>
-      <Link href="/postscript" className="footer-secret-link">secret secret flag</Link>
+      {registerUnlocked && (
+        <Link href="/postscript" className="footer-secret-link">secret secret flag</Link>
+      )}
     </footer>
   );
 }
