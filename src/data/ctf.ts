@@ -70,6 +70,16 @@ export const ctfChallenges: CtfChallenge[] = [
     hint: "The form trusts whatever name it is given. A true statement can stand in for one.",
     flag: "VEIL{SILENT_PARTNER}",
   },
+  {
+    id: "unlisted-room",
+    number: "VII",
+    title: "The Unlisted Room",
+    points: 400,
+    briefing: "The archive lists six trials for public guests. A seventh room was never entered in any directory.",
+    clue: "No hallway plan and no link from the house itself will lead you to it. Only the address itself will.",
+    hint: "Some doors in this house are never advertised — only remembered by those who already know the number.",
+    flag: "VEIL{UNLISTED_ROOM}",
+  },
 ];
 
 export const maxCtfScore = ctfChallenges.reduce((total, challenge) => total + challenge.points, 0);

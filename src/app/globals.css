@@ -633,6 +633,7 @@ img { max-width: 100%; height: auto; }
 .challenge-copy form > div { display: flex; }
 .challenge-copy input { flex: 1; min-width: 0; height: 50px; padding: .7rem; color: #eee2c6; background: #0d0e0c; border: 1px solid #6a6453; border-right: 0; border-radius: 0; font-family: var(--font-mono), monospace; font-size: 16px; }
 .challenge-copy form button { min-height: 50px; padding: .6rem 1rem; color: var(--paper-light); background: #30291d; border: 1px solid var(--gold-muted); cursor: pointer; font-family: var(--font-sans), Arial, sans-serif; font-size: .65rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.secret-flag { display: inline-block; margin: .5rem 0; padding: .6rem 1.1rem; color: var(--oxblood); background: var(--paper); border: 1px solid var(--ink); font-family: var(--font-mono), monospace; font-size: 1.1rem; letter-spacing: .04em; }
 .flag-incorrect, .flag-correct { display: block; margin-top: .6rem; font-family: var(--font-mono), monospace; font-size: .68rem; }
 .flag-incorrect { color: #d28f95; }
 .flag-correct { color: #b9c89d !important; text-transform: uppercase; letter-spacing: .06em; }
