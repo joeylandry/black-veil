@@ -218,6 +218,7 @@ img { max-width: 100%; height: auto; }
 .catalog-note { max-width: 680px; display: flex; flex-wrap: wrap; gap: .5rem 1.4rem; padding: .65rem 0; border-top: 1px solid #c2b795; border-bottom: 1px solid #c2b795; color: #cfc2a0; font-family: var(--font-mono), monospace; font-size: .68rem; text-transform: uppercase; letter-spacing: .05em; }
 .archive-drawers { max-width: 1300px; margin: 0 auto; }
 .archive-table { display: grid; grid-template-columns: repeat(12, 1fr); gap: clamp(1rem, 2.5vw, 2.2rem); align-items: start; }
+.archive-table > .archive-piece:last-child { grid-column: 5 / 9; margin-top: 0; }
 .archive-piece { --tilt: 0deg; position: relative; grid-column: span 4; min-height: 390px; color: var(--ink); background: #e8e0ca; border: 1px solid #736d5d; box-shadow: 7px 10px 16px rgba(0,0,0,.3); transform: rotate(var(--tilt)); }
 .archive-piece:nth-child(2n) { margin-top: 1.8rem; }
 .archive-piece-featured { grid-column: span 7; }
@@ -402,6 +403,7 @@ img { max-width: 100%; height: auto; }
   .chronology-entry-heading { grid-column: span 2; }
   .archive-piece, .archive-piece-featured, .archive-piece-front-page { grid-column: span 6; }
   .featured-table .archive-piece { grid-column: span 6; }
+  .archive-table > .archive-piece:last-child { grid-column: 4 / 10; }
 }
 
 @media (max-width: 700px) {
@@ -421,6 +423,7 @@ img { max-width: 100%; height: auto; }
   .archive-room { padding-left: .75rem; padding-right: .75rem; }
   .catalog-note { gap: .3rem 1rem; }
   .archive-piece, .archive-piece-featured, .archive-piece-front-page, .archive-piece-police, .archive-piece-telegram, .archive-piece-notice, .archive-piece-invitation, .archive-piece-memorandum, .featured-table .archive-piece, .archive-piece.archive-piece-compact { grid-column: 1 / -1; transform: none; margin-top: 0; }
+  .archive-table > .archive-piece:last-child { grid-column: 1 / -1; }
   .record-stage { padding: .35rem; }
   .newspaper-scroll { padding: .45rem; }
   .newspaper-artifact { width: 760px; min-height: 1020px; }
