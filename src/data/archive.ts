@@ -419,7 +419,7 @@ export const archiveRecords: ArchiveRecord[] = [
       caption: "PERSON OF INTEREST · department bulletin reproduced with this report · no warrant accompanies it",
       width: 1122,
       height: 1402,
-      focalPoint: "50% 30%",
+      focalPoint: "50% 20%",
     },
     neighboringCopy: [
       {
