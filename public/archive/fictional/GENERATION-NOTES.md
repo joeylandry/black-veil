@@ -21,3 +21,9 @@ Prompt direction: Create a cinematic but historically plausible 1920s Manchester
 ## `terror-at-the-black-veil-raid.png`
 
 Prompt direction: Create a cinematic but historically plausible 1924 newspaper evidence photograph: two Manchester, NH patrolmen in period uniform standing inside the emptied Black Veil supper club just after dawn, one holding a lantern, both with baffled, uneasy expressions. Show overturned chairs and a knocked-over table, dropped masquerade masks and streamers on the floor, an Art Deco stage backdrop, weak grey light through tall windows, no bodies, no blood, no modern objects, no readable text, silver-gelatin grain and archival wear consistent with the rest of the set.
+
+## `boston-maine-depot-evidence.png`
+
+**Status: prompt drafted, image not yet generated.** This session has no image-generation tool available, so the file below does not exist yet and the `the-platform-photograph` archive record (`BV–24–053`) currently points at a missing asset. Generate this image with the project's image tool and save it to this path to complete the record.
+
+Prompt direction: Create a cinematic but historically plausible 1924 newspaper evidence photograph: the platform of a Boston & Maine railroad depot in Manchester, New Hampshire, at dusk, with a northbound train idling at the platform and steam drifting from the engine. Include one ambiguous, distant figure in a dark coat and cloche hat near the rear car, back turned, face not identifiable — no confirmable likeness, consistent with a witness account that could not be verified. Weak grey winter light, wet platform boards, a station lamp just lit, silver-gelatin grain, and archival wear (creases, light foxing) consistent with the rest of the set. No modern objects, no readable signage or text, no other people in frame.
