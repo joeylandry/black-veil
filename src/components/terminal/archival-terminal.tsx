@@ -2,8 +2,10 @@
 
 import { FormEvent, KeyboardEvent, useEffect, useRef, useState } from "react";
 import { eventConfig, EntryMethod } from "@/config/event";
+import { clearSessionState, useSessionState } from "@/lib/use-session-state";
 import { removeStorageValue, setStorageValue, useStorageValue } from "@/lib/use-storage-value";
 import { HintSystem } from "./hint-system";
+import { terminalSessionKeys } from "./session-keys";
 
 type OutputLine = { id: number; kind: "command" | "output" | "error" | "system"; text: string };
 
@@ -22,15 +24,15 @@ const maintenanceMemo = [
 ].join("\n");
 
 export function ArchivalTerminal() {
-  const [lines, setLines] = useState<OutputLine[]>(opening);
+  const [lines, setLines] = useSessionState<OutputLine[]>(terminalSessionKeys.lines, opening);
   const [input, setInput] = useState("");
-  const [cwd, setCwd] = useState("/black-veil/archive");
-  const [history, setHistory] = useState<string[]>([]);
+  const [cwd, setCwd] = useSessionState(terminalSessionKeys.cwd, "/black-veil/archive");
+  const [history, setHistory] = useSessionState<string[]>(terminalSessionKeys.history, []);
   const [historyIndex, setHistoryIndex] = useState(-1);
-  const [awaitingPassword, setAwaitingPassword] = useState(false);
-  const [authenticated, setAuthenticated] = useState(false);
-  const [complete, setComplete] = useState(false);
-  const [progress, setProgress] = useState(0);
+  const [awaitingPassword, setAwaitingPassword] = useSessionState(terminalSessionKeys.awaitingPassword, false);
+  const [authenticated, setAuthenticated] = useSessionState(terminalSessionKeys.authenticated, false);
+  const [complete, setComplete] = useSessionState(terminalSessionKeys.complete, false);
+  const [progress, setProgress] = useSessionState(terminalSessionKeys.progress, 0);
   const storedComplete = useStorageValue(eventConfig.storageKeys.puzzleComplete);
   const counter = useRef(10);
   const outputRef = useRef<HTMLDivElement>(null);
@@ -40,8 +42,14 @@ export function ArchivalTerminal() {
     const params = new URLSearchParams(window.location.search);
     if (params.get("reset-archive") === "management") {
       Object.values(eventConfig.storageKeys).forEach((key) => removeStorageValue(key));
+      clearSessionState(Object.values(terminalSessionKeys));
     }
   }, []);
+
+  useEffect(() => {
+    const maxId = lines.reduce((max, line) => Math.max(max, line.id), 0);
+    counter.current = Math.max(counter.current, maxId + 1);
+  }, [lines]);
 
   useEffect(() => {
     outputRef.current?.scrollTo({ top: outputRef.current.scrollHeight, behavior: "smooth" });

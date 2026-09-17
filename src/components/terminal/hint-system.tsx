@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { useSessionState } from "@/lib/use-session-state";
+import { terminalSessionKeys } from "./session-keys";
 
 type Props = {
   progress: number;
@@ -15,10 +17,10 @@ const notes = [
 ];
 
 export function HintSystem({ progress, onRunCommand, onAssistedEntry }: Props) {
-  const [noteCount, setNoteCount] = useState(0);
+  const [noteCount, setNoteCount] = useSessionState(terminalSessionKeys.hintNoteCount, 0);
   const [confirming, setConfirming] = useState(false);
-  const [guided, setGuided] = useState(false);
-  const [emergency, setEmergency] = useState(false);
+  const [guided, setGuided] = useSessionState(terminalSessionKeys.hintGuided, false);
+  const [emergency, setEmergency] = useSessionState(terminalSessionKeys.hintEmergency, false);
   const suggested = progress < 1 ? "ls -la" : progress < 2 ? "cat .1926" : progress < 3 ? "strings correspondence/maintenance.mem" : progress < 4 ? "unlock ledger" : "mail";
 
   return (
