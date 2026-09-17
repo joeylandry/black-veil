@@ -68,7 +68,6 @@ export default async function ArchiveDocumentPage({ params }: Props) {
                   style={{ objectPosition: record.image.focalPoint ?? "center" }}
                 />
               </div>
-              <ArtifactInspector {...record.image} title={record.title} />
             </figure>
           </article>
         ) : (
