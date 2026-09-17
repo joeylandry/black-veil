@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { FormEvent, useMemo, useState } from "react";
 import { eventConfig } from "@/config/event";
-import { InvitationCard } from "./invitation-card";
 import { localRsvpService, RsvpSubmission } from "@/lib/rsvp-service";
 import { setStorageValue, useStorageValue } from "@/lib/use-storage-value";
 
@@ -100,7 +99,6 @@ export function GuestLedger() {
     return (
       <div className="ledger-success ledger-success-complete">
         <header>
-          <div className="ledger-success-stamp">Entered</div>
           <p className="eyebrow">Guest register · October 1926</p>
           <h1>Your name has been entered<br />upon the guest register.</h1>
           <p className="registered-name">{visibleSubmission.fullName}</p>
@@ -114,7 +112,6 @@ export function GuestLedger() {
             <Link href="/black-rose" className="button-link">Enter the Black Rose trials</Link>
           </div>
         </header>
-        <InvitationCard fullName={visibleSubmission.fullName} />
       </div>
     );
   }
