@@ -44,6 +44,10 @@ This image is attached to the `police-seek-proprietress` archive record (`BV–2
 
 Supplied by the project owner (generated outside this session) rather than produced with this session's tooling. It shows a distressed black masquerade flyer bearing a Black Veil insignia (a masked face inside a radiating star), reading "MANCHESTER N.H.", "BV-26-031", "THE VEIL HAS LIFTED", and the invitation copy for the October 31, 1926 masquerade. This image is attached to the `the-veil-has-lifted` archive record (`BV–26–031`), replacing the earlier plain-text rendering of the same invitation.
 
+## `cassandra-arrival-by-carriage.png`
+
+Supplied by the project owner (generated outside this session) rather than produced with this session's tooling. It shows Cassandra Castello in furs, jewels, and a beaded gown stepping from a carriage into a crowded Manchester square at night, greeted by a companion in a top hat and coat while photographers with flash cameras and a press band look on, with a lit clock tower and lamplit stone buildings behind her. This image replaces `cassandra-society-cigarette-holder.png` on the `miss-castello-receives` archive record ("A Stranger of Means Comes to Manchester"), which retains the original image on its own `where-is-cassandra-castello` record.
+
 ## `black-envelopes-doorstep-evidence.png`
 
 Supplied by the project owner (generated outside this session) rather than produced with this session's tooling. Unlike the original prompt direction below, it shows the envelope resting on a wet stone curb beside an iron post at a foggy street corner rather than a rowhouse threshold, with blurred period motor vehicles and reflective wet pavement in the background, scattered leaves and twigs nearby, and a wax seal bearing an interlocking-letters monogram rather than the Black Veil crest specifically — kept as delivered, consistent with the record's unresolved, no-hand-seen framing.

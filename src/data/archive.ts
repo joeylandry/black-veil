@@ -130,12 +130,12 @@ export const archiveRecords: ArchiveRecord[] = [
       "Neither her people nor the source of her evident comfort could be traced by inquiries at the city directory office. The hostess, known to her friends as Cassie, declined to identify her partners in the enterprise. She allowed only that the rooms were called The Black Veil and that membership was a matter of introduction, not application.",
     ],
     image: {
-      src: "/archive/fictional/cassandra-society-cigarette-holder.png",
-      alt: "Fictional 1920s society portrait of Cassandra Castello holding a long cigarette holder",
-      caption: "MISS CASSANDRA CASTELLO · photograph supplied to the society desk",
-      width: 1122,
-      height: 1402,
-      focalPoint: "58% 20%",
+      src: "/archive/fictional/cassandra-arrival-by-carriage.png",
+      alt: "Fictional 1920s photograph of Cassandra Castello in furs and jewels arriving by carriage in a Manchester square, greeted by a companion in a top hat as photographers' flashes go off",
+      caption: "MISS CASSANDRA CASTELLO · arriving before the society desk's cameras",
+      width: 1024,
+      height: 1536,
+      focalPoint: "50% 30%",
     },
     neighboringCopy: [
       "Street railway winter timetable revised",
