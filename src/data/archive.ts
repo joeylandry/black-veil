@@ -310,11 +310,11 @@ export const archiveRecords: ArchiveRecord[] = [
     ],
     image: {
       src: "/archive/fictional/cassandra-castello-portrait.png",
-      alt: "Fictional 1920s newspaper portrait of Cassandra Castello",
+      alt: "Fictional aged 1920s photograph of Cassandra Castello in a fur-trimmed coat, the print worn and cracked at the edges",
       caption: "CASSANDRA CASTELLO · proprietress of The Black Veil · photograph date uncertain",
-      width: 1122,
-      height: 1402,
-      focalPoint: "50% 25%",
+      width: 1100,
+      height: 1430,
+      focalPoint: "50% 22%",
     },
     continuedArticle: {
       headline: "Inquiry continues into masquerade massacre",

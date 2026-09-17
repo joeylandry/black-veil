@@ -40,7 +40,7 @@ Important newspaper copy is deterministic HTML/CSS rather than text baked into g
 
 ## Visual assets
 
-- `public/archive/fictional/cassandra-castello-portrait.png` — canonical fictional Cassandra portrait generated from a privately supplied likeness reference
+- `public/archive/fictional/cassandra-castello-portrait.png` — canonical Cassandra portrait; a privately supplied photograph, not AI-generated
 - `public/archive/fictional/cassandra-society-cigarette-holder.png` — society portrait using the same canonical likeness
 - `public/archive/fictional/cassandra-arrival-by-carriage.png` — Cassandra's carriage arrival before the society desk's cameras
 - `public/archive/fictional/cassandra-masquerade-evidence.png` — fictional 1924 masquerade evidence photograph using the same likeness

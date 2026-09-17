@@ -4,7 +4,9 @@ These images were created with OpenAI's built-in image generation tool for **The
 
 ## `cassandra-castello-portrait.png`
 
-Prompt direction: Preserve the supplied woman's recognizable identity and facial structure while portraying her as Cassandra Castello in a dignified 1920s Manchester, New Hampshire newspaper portrait. Use period-accurate waved auburn hair, understated makeup, dark beaded dress, soft studio light, silver-gelatin grain, slight age and print wear, with no modern objects or text.
+Supplied by the project owner (an aged studio portrait, not generated with this session's tooling) and attached to the `murderer-or-murdered` archive record (`BV–24–047`, "Murdered or Murderer?") as Cassandra Castello's own photograph — dark waved hair, a fur-trimmed coat, a pearl drop earring, and worn, cracked print edges consistent with the record's "photograph date uncertain" caption. This file was previously an AI-generated portrait using the original prompt direction below; it has been replaced with the supplied photograph, which now also serves as the canonical Cassandra likeness reference for the other portraits in this set.
+
+Original prompt direction (superseded): Preserve the supplied woman's recognizable identity and facial structure while portraying her as Cassandra Castello in a dignified 1920s Manchester, New Hampshire newspaper portrait. Use period-accurate waved auburn hair, understated makeup, dark beaded dress, soft studio light, silver-gelatin grain, slight age and print wear, with no modern objects or text.
 
 ## `cassandra-masquerade-evidence.png`
 
