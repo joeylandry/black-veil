@@ -1,8 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
+import { FitHeading } from "@/components/fit-heading";
 import { ArchiveRecord } from "@/data/archive";
 
-export function ArchiveEntryCard({ record, index }: { record: ArchiveRecord; index: number }) {
+export function ArchiveEntryCard({ record, index, compact = false }: { record: ArchiveRecord; index: number; compact?: boolean }) {
   const tilt = ["-1.2deg", "0.7deg", "-0.35deg", "1.1deg"][index % 4];
 
   if (record.imageOnly && record.image) {
@@ -47,7 +48,9 @@ export function ArchiveEntryCard({ record, index }: { record: ArchiveRecord; ind
       <div className="archive-piece-copy">
         <div className="archive-piece-topline"><span>{record.format.replace("-", " ")}</span><span>{record.catalogNumber}</span></div>
         <time>{record.date}</time>
-        <h3><Link href={`/archive/${record.slug}`}>{record.title}</Link></h3>
+        <FitHeading as="h3" maxRem={compact ? 2.5 : 3.2} minRem={1.4}>
+          <Link href={`/archive/${record.slug}`}>{record.title}</Link>
+        </FitHeading>
         {record.deck && <p className="archive-piece-deck">{record.deck}</p>}
         <p>{record.excerpt}</p>
         <Link href={`/archive/${record.slug}`} className="artifact-link">Open record <span aria-hidden="true">↗︎</span></Link>

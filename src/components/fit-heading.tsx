@@ -1,6 +1,6 @@
 "use client";
 
-import { useLayoutEffect, useRef, useState } from "react";
+import { ReactNode, useLayoutEffect, useRef, useState } from "react";
 
 export function FitHeading({
   children,
@@ -9,7 +9,7 @@ export function FitHeading({
   minRem = 1.3,
   as: Tag = "h2",
 }: {
-  children: string;
+  children: ReactNode;
   className?: string;
   maxRem?: number;
   minRem?: number;

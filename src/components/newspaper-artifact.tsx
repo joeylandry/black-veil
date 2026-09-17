@@ -16,7 +16,14 @@ export function NewspaperArtifact({ record }: { record: ArchiveRecord }) {
 
       <section className="newspaper-lead">
         <p className="newspaper-kicker">{record.catalogNumber} · Special report</p>
-        <h3 className={record.format === "front-page" ? "newspaper-headline-banner" : undefined}>{record.title}</h3>
+        <FitHeading
+          as="h3"
+          className={record.format === "front-page" ? "newspaper-headline-banner" : undefined}
+          maxRem={record.format === "front-page" ? 3.7 : 5.4}
+          minRem={2}
+        >
+          {record.title}
+        </FitHeading>
         {record.deck && <p className="newspaper-deck">{record.deck}</p>}
       </section>
 

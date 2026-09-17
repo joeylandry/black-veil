@@ -43,7 +43,7 @@ export default function Home() {
           <Link className="text-link light-link" href="/archive">Explore the full archive <span aria-hidden="true">→</span></Link>
         </div>
         <div className="archive-table featured-table">
-          {featured.map((record, index) => <ArchiveEntryCard key={record.slug} record={record} index={index} />)}
+          {featured.map((record, index) => <ArchiveEntryCard key={record.slug} record={record} index={index} compact />)}
         </div>
       </section>
     </>

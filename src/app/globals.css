@@ -170,7 +170,7 @@ img { max-width: 100%; height: auto; }
 .newspaper-lead { padding: 1rem 0 .8rem; text-align: center; border-bottom: 2px solid var(--ink); }
 .newspaper-kicker { margin: 0 0 .25rem; font-family: var(--font-sans), Arial, sans-serif; font-size: .6rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
 .newspaper-lead h3 { margin: 0; font-family: Impact, "Arial Narrow", var(--font-display); font-size: 5.4rem; line-height: .82; letter-spacing: -.035em; text-transform: uppercase; }
-.newspaper-lead h3.newspaper-headline-banner { font-size: 3.7rem; line-height: .92; overflow-wrap: break-word; word-break: break-word; }
+.newspaper-lead h3.newspaper-headline-banner { font-size: 3.7rem; line-height: .92; }
 .newspaper-deck { max-width: 700px; margin: .65rem auto 0; font-family: var(--font-display); font-size: 1.65rem; font-weight: 700; line-height: 1; text-transform: uppercase; }
 .newspaper-columns { display: grid; grid-template-columns: 1fr 1.15fr .82fr; gap: .8rem; padding-top: .9rem; align-items: stretch; }
 .newspaper-copy { display: flex; flex-direction: column; columns: 1; font-size: .73rem; line-height: 1.26; text-align: justify; }
@@ -239,7 +239,7 @@ img { max-width: 100%; height: auto; }
 .archive-piece-topline { display: flex; justify-content: space-between; gap: .8rem; padding-bottom: .45rem; margin-bottom: .7rem; border-bottom: 2px solid currentColor; font-family: var(--font-sans), Arial, sans-serif; font-size: .62rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
 .archive-piece time { color: var(--oxblood); font-family: var(--font-sans), Arial, sans-serif; font-size: .66rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
 .archive-piece-invitation time { color: #c5a868; }
-.archive-piece h3 { margin: .5rem 0 .7rem; font-family: var(--font-display); font-size: clamp(2rem, 3.5vw, 3.2rem); line-height: .88; font-weight: 600; text-transform: uppercase; overflow-wrap: break-word; }
+.archive-piece h3 { margin: .5rem 0 .7rem; font-family: var(--font-display); font-size: clamp(2rem, 3.5vw, 3.2rem); line-height: .88; font-weight: 600; text-transform: uppercase; }
 .archive-piece h3 a { text-decoration: none; }
 .archive-piece h3 a:hover { color: var(--oxblood); }
 .archive-piece-deck { font-weight: 700; line-height: 1.25; }
