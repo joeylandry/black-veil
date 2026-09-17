@@ -341,7 +341,7 @@ export const archiveRecords: ArchiveRecord[] = [
     ],
     markings: ["Clipped from library binding", "Question mark circled in red pencil"],
     provenance: fictionalArtifact("Signature fictional front page. The newspaper, reports, death inquiry, Cassandra Castello, and The Black Veil are fictional."),
-    featured: true,
+    compact: true,
   },
   {
     slug: "last-photograph-at-the-masquerade",
