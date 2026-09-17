@@ -285,6 +285,7 @@ img { max-width: 100%; height: auto; }
 .physical-document-image-only::after { content: none; }
 .physical-document-image-only .document-photograph { margin: 0; }
 .physical-document-veil-lifted .document-photograph { padding: 0; background: none; box-shadow: none; }
+.physical-document-masquerade-flyer .document-photograph { padding: 0; background: none; box-shadow: none; }
 .record-markings { position: relative; z-index: 1; display: flex; flex-wrap: wrap; justify-content: center; gap: .8rem; margin-top: 3rem; }
 .record-markings span { padding: .35rem .6rem; color: var(--oxblood); border: 2px solid currentColor; font-family: var(--font-sans), Arial, sans-serif; font-size: .6rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; transform: rotate(-1.5deg); }
 .physical-document-invitation .record-markings span { color: #c19e60; }

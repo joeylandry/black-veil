@@ -58,7 +58,7 @@ export default async function ArchiveDocumentPage({ params }: Props) {
         {isNewspaper ? (
           <NewspaperInspector record={record} />
         ) : record.imageOnly && record.image ? (
-          <article className={`physical-document physical-document-${record.format} physical-document-image-only ${record.slug === "the-veil-has-lifted" ? "physical-document-veil-lifted" : ""}`}>
+          <article className={`physical-document physical-document-${record.format} physical-document-image-only ${record.slug === "the-veil-has-lifted" ? "physical-document-veil-lifted" : ""} ${record.slug === "masquerade-announcement-1924" ? "physical-document-masquerade-flyer" : ""}`}>
             {record.slug === "the-veil-has-lifted" ? (
               <VeilFlyerReveal image={record.image} />
             ) : (
