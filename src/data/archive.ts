@@ -402,6 +402,10 @@ export const archiveRecords: ArchiveRecord[] = [
       "Police renewed their request that Cassandra Castello present herself for an interview concerning the Black Veil disturbance. The department confirmed that no warrant has been issued and declined to identify the person reportedly killed.",
       "A porter at the Boston & Maine station believed he saw Castello board a northbound train. A boarding-house keeper on the West Side insists Castello spent the same hour in her parlor. Both accounts are unsupported.",
     ],
+    columnFiller: {
+      headline: "Have you seen Miss Castello?",
+      body: "This paper's city desk will forward, in strict confidence, any sighting or account of Cassandra Castello's present whereabouts to the investigating officers named in the department's bulletin.",
+    },
     image: {
       src: "/archive/fictional/cassandra-person-of-interest-poster.png",
       alt: "Fictional 1924 City of Manchester Police Department person-of-interest bulletin for Cassandra Castello, proprietress of The Black Veil",
@@ -410,6 +414,16 @@ export const archiveRecords: ArchiveRecord[] = [
       height: 1402,
       focalPoint: "50% 30%",
     },
+    neighboringCopy: [
+      {
+        headline: "Cold fog expected along the river",
+        body: "The Weather Bureau calls for a heavy fog to settle over the Merrimack by nightfall, lifting only after sunrise. Boatmen were advised to keep running lights through the morning watch.",
+      },
+      {
+        headline: "Street railway notice",
+        body: "The Manchester Street Railway will run a reduced winter timetable beginning this week, with the last West Side car departing promptly at eleven.",
+      },
+    ],
     markings: ["Later edition removes ‘fled’", "No warrant located"],
     provenance: {
       classification: "generated-historical-fiction",
