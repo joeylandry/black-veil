@@ -232,6 +232,7 @@ img { max-width: 100%; height: auto; }
 .archive-piece-image-only .archive-piece-image img { object-fit: cover; }
 .archive-piece-memorandum { grid-column: span 5; min-height: 280px; background: #d9d6ca; }
 .archive-piece-front-page { grid-column: span 7; }
+.archive-piece.archive-piece-compact { grid-column: span 4; }
 .archive-piece-image { position: relative; margin: 0; height: 230px; overflow: hidden; border-bottom: 1px solid #625c4e; background: #b7ac8f; }
 .archive-piece-photograph .archive-piece-image { height: 310px; border: 8px solid #f1eee5; box-shadow: 0 2px 7px rgba(0,0,0,.3); }
 .archive-piece-image img { width: 100%; height: 100%; object-fit: cover; }
@@ -417,7 +418,7 @@ img { max-width: 100%; height: auto; }
   .heading-with-link .artifact-link { display: inline-block; margin-top: 1rem; }
   .archive-room { padding-left: .75rem; padding-right: .75rem; }
   .catalog-note { gap: .3rem 1rem; }
-  .archive-piece, .archive-piece-featured, .archive-piece-front-page, .archive-piece-police, .archive-piece-telegram, .archive-piece-notice, .archive-piece-invitation, .archive-piece-memorandum, .featured-table .archive-piece { grid-column: 1 / -1; transform: none; margin-top: 0; }
+  .archive-piece, .archive-piece-featured, .archive-piece-front-page, .archive-piece-police, .archive-piece-telegram, .archive-piece-notice, .archive-piece-invitation, .archive-piece-memorandum, .featured-table .archive-piece, .archive-piece.archive-piece-compact { grid-column: 1 / -1; transform: none; margin-top: 0; }
   .record-stage { padding: .35rem; }
   .newspaper-scroll { padding: .45rem; }
   .newspaper-artifact { width: 760px; min-height: 1020px; }

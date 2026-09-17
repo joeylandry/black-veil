@@ -56,6 +56,8 @@ export type ArchiveRecord = {
   columnFiller?: { headline: string; body: string };
   provenance: ArchiveProvenance;
   featured?: boolean;
+  /** Renders at the small (span-4) card size on the archive grid, regardless of format. */
+  compact?: boolean;
   anomaly?: boolean;
   /** Record is presented as nothing but its image — no title, deck, excerpt, body, or markings rendered around it. */
   imageOnly?: boolean;
@@ -287,7 +289,7 @@ export const archiveRecords: ArchiveRecord[] = [
     ],
     markings: ["No death toll confirmed", "Second paragraph reset before printing"],
     provenance: fictionalArtifact("Signature fictional front page, filed the morning after the 1924 masquerade once investigators privately conceded a massacre had occurred. The newspaper, the report, and The Black Veil are fictional."),
-    featured: true,
+    compact: true,
   },
   {
     slug: "murderer-or-murdered",

@@ -29,7 +29,7 @@ export function ArchiveEntryCard({ record, index }: { record: ArchiveRecord; ind
 
   return (
     <article
-      className={`archive-piece archive-piece-${record.format} ${record.featured ? "archive-piece-featured" : ""}`}
+      className={`archive-piece archive-piece-${record.format} ${record.featured ? "archive-piece-featured" : ""} ${record.compact ? "archive-piece-compact" : ""}`}
       style={{ "--tilt": tilt } as React.CSSProperties}
     >
       {record.image && (
