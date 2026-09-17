@@ -507,11 +507,11 @@ export const archiveRecords: ArchiveRecord[] = [
     },
     image: {
       src: "/archive/fictional/black-veil-closure-notice.png",
-      alt: "Fictional evidence photograph of an unsigned closure notice pasted to a weathered brick wall in Manchester, New Hampshire, its printed lines not legible in the print",
+      alt: "Fictional evidence photograph of a weathered closure notice pinned to a wooden mill door in Manchester, New Hampshire, reading THE BLACK VEIL, CLOSED INDEFINITELY, CRIME SCENE, by order of the Manchester Police Department, with a shadowed figure passing in the foreground",
       caption: "NOTICE OF CLOSURE · one of three postings · location not recorded",
-      width: 1448,
-      height: 1086,
-      focalPoint: "50% 45%",
+      width: 1371,
+      height: 1148,
+      focalPoint: "70% 45%",
     },
     neighboringCopy: [
       "Cold fog expected along the river",
@@ -529,7 +529,7 @@ export const archiveRecords: ArchiveRecord[] = [
       sourceInstitution: "The Black Veil creative archive",
       sourceTitle: "The Black Veil Closed Indefinitely",
       rights: "Original generated image for this project",
-      notes: "Fictional management notice recast as a newspaper report, with fictional archival annotation. The photograph has not yet been generated in this session; see GENERATION-NOTES.md for the prompt.",
+      notes: "Fictional management notice recast as a newspaper report, with fictional archival annotation. The photograph was supplied by the project owner; see GENERATION-NOTES.md for details.",
     },
   },
   {
