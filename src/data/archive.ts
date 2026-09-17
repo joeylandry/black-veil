@@ -57,6 +57,8 @@ export type ArchiveRecord = {
   provenance: ArchiveProvenance;
   featured?: boolean;
   anomaly?: boolean;
+  /** Record is presented as nothing but its image — no title, deck, excerpt, body, or markings rendered around it. */
+  imageOnly?: boolean;
 };
 
 const fictionalArtifact = (notes?: string): ArchiveProvenance => ({
@@ -229,12 +231,17 @@ export const archiveRecords: ArchiveRecord[] = [
     year: 1924,
     title: "All Hallows’ Eve Masquerade",
     format: "invitation",
-    excerpt: "The printer’s proof survives without a street number; three location lines were set in the margin and struck before it went to press.",
-    body: [
-      "THE BLACK VEIL requests the pleasure of its members on All Hallows’ Eve. Masks after ten. Supper at twelve. Admission by black envelope only.",
-      "The proof gives no street number. In the printer’s margin, three location lines were set and struck: near the works; off Elm; river entrance.",
-    ],
+    excerpt: "The surviving proof of the black envelope, printed entire.",
+    body: [],
+    image: {
+      src: "/archive/fictional/black-veil-masquerade-invitation-1924.png",
+      alt: "Fictional 1924 printed invitation for The Black Veil's All Hallows’ Eve Masquerade, Manchester, N.H.",
+      caption: "THE BLACK VEIL · All Hallows’ Eve Masquerade · October 31, 1924",
+      width: 1024,
+      height: 1536,
+    },
     provenance: fictionalArtifact("Fictional 1924 invitation proof created for The Black Veil."),
+    imageOnly: true,
   },
   {
     slug: "terror-at-the-black-veil",

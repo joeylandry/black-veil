@@ -55,6 +55,22 @@ export default async function ArchiveDocumentPage({ params }: Props) {
       <div className={`record-stage record-stage-${record.format} ${isNewspaper ? "record-stage-full" : ""}`}>
         {isNewspaper ? (
           <NewspaperInspector record={record} />
+        ) : record.imageOnly && record.image ? (
+          <article className={`physical-document physical-document-${record.format} physical-document-image-only`}>
+            <figure className="document-photograph">
+              <div className="document-photograph-frame">
+                <Image
+                  src={record.image.src}
+                  alt={record.image.alt}
+                  width={record.image.width}
+                  height={record.image.height}
+                  sizes="(max-width: 800px) 88vw, 760px"
+                  style={{ objectPosition: record.image.focalPoint ?? "center" }}
+                />
+              </div>
+              <ArtifactInspector {...record.image} title={record.title} />
+            </figure>
+          </article>
         ) : (
           <article className={`physical-document physical-document-${record.format}`}>
             <div className="document-punches" aria-hidden="true"><i /><i /></div>

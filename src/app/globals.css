@@ -227,6 +227,9 @@ img { max-width: 100%; height: auto; }
 .archive-piece-telegram { grid-column: span 5; min-height: 300px; background: #ece7d5; border-left: 11px solid #d2c9ad; font-family: var(--font-mono), monospace; }
 .archive-piece-notice { grid-column: span 4; border: 4px double var(--ink); text-align: center; }
 .archive-piece-invitation { grid-column: span 4; color: #e9dfc9; background: #161714; border-color: #796540; }
+.archive-piece-image-only { min-height: 0; padding: 0; background: none; border: 0; box-shadow: none; }
+.archive-piece-image-only .archive-piece-image { height: auto; aspect-ratio: 2 / 3; border: 0; box-shadow: 7px 10px 16px rgba(0,0,0,.3); }
+.archive-piece-image-only .archive-piece-image img { object-fit: cover; }
 .archive-piece-memorandum { grid-column: span 5; min-height: 280px; background: #d9d6ca; }
 .archive-piece-front-page { grid-column: span 7; }
 .archive-piece-image { position: relative; margin: 0; height: 230px; overflow: hidden; border-bottom: 1px solid #625c4e; background: #b7ac8f; }
@@ -276,6 +279,8 @@ img { max-width: 100%; height: auto; }
 .physical-document-invitation::after { border-color: rgba(166,137,82,.45); }
 .physical-document-invitation header { border-color: #a78b55; }
 .physical-document-invitation header time { color: #d1b375; }
+.physical-document-image-only { padding: clamp(1.2rem, 3vw, 2.2rem); }
+.physical-document-image-only .document-photograph { margin: 0; }
 .record-markings { position: relative; z-index: 1; display: flex; flex-wrap: wrap; justify-content: center; gap: .8rem; margin-top: 3rem; }
 .record-markings span { padding: .35rem .6rem; color: var(--oxblood); border: 2px solid currentColor; font-family: var(--font-sans), Arial, sans-serif; font-size: .6rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; transform: rotate(-1.5deg); }
 .physical-document-invitation .record-markings span { color: #c19e60; }
