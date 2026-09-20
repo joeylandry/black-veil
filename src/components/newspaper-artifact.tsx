@@ -1,9 +1,12 @@
 import Image from "next/image";
 import { ArchiveRecord } from "@/data/archive";
+import { getBenchLabForRecord } from "@/data/bench";
 import { FitHeading } from "@/components/fit-heading";
 
 export function NewspaperArtifact({ record }: { record: ArchiveRecord }) {
   const story = record.body[0] ?? record.excerpt;
+  // Each paper carries one present-day conservation slip in its right-hand column.
+  const slip = getBenchLabForRecord(record.slug);
 
   return (
     <article className="newspaper-artifact" aria-label={`${record.title}, ${record.date}`}>
@@ -61,7 +64,7 @@ export function NewspaperArtifact({ record }: { record: ArchiveRecord }) {
 
         <aside className="newspaper-side" aria-label="Neighboring stories">
           {(record.neighboringCopy ?? ["Cold fog expected along the river", "Street railway notice"])
-            .slice(0, 5)
+            .slice(0, slip ? 3 : 5)
             .map((item) => {
               const headline = typeof item === "string" ? item : item.headline;
               const body = typeof item === "string" ? "Local notices and ordinary city news continued inside this edition." : item.body;
@@ -72,6 +75,13 @@ export function NewspaperArtifact({ record }: { record: ArchiveRecord }) {
                 </div>
               );
             })}
+          {slip && (
+            <div className="newspaper-slip">
+              <h4>{slip.slip.headline}</h4>
+              <p>{slip.slip.body}</p>
+              <p className="newspaper-slip-mark">{slip.ticket} · {slip.topic}</p>
+            </div>
+          )}
         </aside>
 
         {record.continuedArticle && (

@@ -1,3 +1,4 @@
+import { benchLabs, benchSolveId } from "@/data/bench";
 import { ctfChallenges } from "@/data/ctf";
 import { ctfFlags } from "@/data/ctf-flags";
 
@@ -10,7 +11,13 @@ export function verifyFlag(challengeId: string, submission: string) {
   return { valid: correct, points: challenge.points };
 }
 
+/**
+ * Scores both tracks from one solved-id list: the Manchester trials by challenge id,
+ * and the Restoration Bench labs by their bench- prefixed solve id.
+ */
 export function scoreForSolvedIds(solvedIds: string[]) {
   const solvedSet = new Set(solvedIds);
-  return ctfChallenges.reduce((total, challenge) => (solvedSet.has(challenge.id) ? total + challenge.points : total), 0);
+  const trials = ctfChallenges.reduce((total, challenge) => (solvedSet.has(challenge.id) ? total + challenge.points : total), 0);
+  const bench = benchLabs.reduce((total, lab) => (solvedSet.has(benchSolveId(lab.id)) ? total + lab.points : total), 0);
+  return trials + bench;
 }
