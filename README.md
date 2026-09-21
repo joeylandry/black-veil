@@ -80,6 +80,7 @@ Digital flags self-score, but not everything can be auto-checked — an in-perso
 2. Copy `.env.example` to `.env.local` and fill in `DATABASE_URL` (Supabase's pooled "Transaction" connection string for serverless/Next.js), `SESSION_SECRET` (`openssl rand -hex 32`), and `ADMIN_SECRET`. `RESEND_API_KEY`/`EMAIL_FROM` are optional (see above).
 3. Run `npm run db:migrate` to apply the migrations in `drizzle/` (creates `rsvps`, `guests`, `magic_links`, `characters`, `ctf_solves`, `point_claims`).
 4. `npm run db:generate` regenerates migrations after schema changes in `src/lib/db/schema.ts`; `npm run db:studio` opens Drizzle Studio against the configured database — also how character content gets entered for now.
+5. Deploying: set `DATABASE_URL`, `SESSION_SECRET`, and `ADMIN_SECRET` in the host's environment (for every environment that serves the site, preview builds included — `.env.local` is not deployed), and run step 3 against that database before the first RSVP. Skipping either leaves `POST /api/rsvp` returning a 503 and the register refusing names.
 
 The model supports a primary 1926 murder and an optional advanced investigation into Cassandra and the 1924 masquerade without choosing how those mysteries connect.
 

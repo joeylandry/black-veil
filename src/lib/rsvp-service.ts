@@ -51,7 +51,13 @@ export const remoteRsvpService: RsvpService = {
     });
     if (!response.ok) {
       const body = await response.json().catch(() => null);
-      throw new Error(body?.error || "Failed to save RSVP.");
+      // A failure with no JSON body is an unhandled server error; carry the status
+      // through so a guest reporting this gives the host something to go on.
+      throw new Error(
+        typeof body?.error === "string" && body.error
+          ? body.error
+          : `Failed to save RSVP (server error ${response.status}).`,
+      );
     }
     setStorageValue(eventConfig.storageKeys.rsvp, JSON.stringify(submission));
     return { ok: true };
