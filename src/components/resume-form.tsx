@@ -24,11 +24,24 @@ export function ResumeForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),
       });
-      if (!response.ok) throw new Error();
+      if (!response.ok) {
+        const failure = await response.json().catch(() => null);
+        // A failure with no JSON body is an unhandled server error; carry the status
+        // through so a guest reporting this gives the host something to go on.
+        throw new Error(
+          typeof failure?.error === "string" && failure.error
+            ? failure.error
+            : `Something went wrong sending that link (server error ${response.status}).`,
+        );
+      }
       setStatus("sent");
-    } catch {
+    } catch (caught) {
       setStatus("idle");
-      setError("Something went wrong sending that link. Try again in a moment.");
+      setError(
+        caught instanceof Error && caught.message
+          ? caught.message
+          : "Something went wrong sending that link. Try again in a moment.",
+      );
     }
   }
 
