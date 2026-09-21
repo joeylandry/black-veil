@@ -753,6 +753,8 @@ img { max-width: 100%; height: auto; }
 .bench-meta a { color: var(--paper-light); }
 
 .bench-lab section { margin-top: 2.6rem; }
+.bench-session-lost { margin: 1.6rem 0 0; padding: .9rem 1.1rem; color: #e7c9c4; background: rgba(90,32,28,.34); border: 1px solid #7d4a43; font-family: var(--font-mono), monospace; font-size: .74rem; line-height: 1.6; }
+.bench-session-lost a { color: var(--paper-light); }
 .bench-lab h2 { margin: 0 0 .9rem; color: var(--paper-light); font-family: var(--font-sans), Arial, sans-serif; font-size: .7rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
 .bench-brief p { max-width: 720px; color: var(--paper-deep); }
 .bench-brief ol { max-width: 760px; margin: 0; padding-left: 1.2rem; color: var(--paper-light); }
