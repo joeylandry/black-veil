@@ -558,6 +558,20 @@ export const archiveRecords: ArchiveRecord[] = [
       height: 1402,
       focalPoint: "58% 20%",
     },
+    neighboringCopy: [
+      {
+        headline: "Anniversary Notices Withdrawn",
+        body: "Two memorial notices submitted to this paper for the week of All Hallows’ Eve were withdrawn before press time by the parties who placed them. Neither gave a reason.",
+      },
+      {
+        headline: "Rents Paid on Empty Rooms",
+        body: "A downtown agent confirmed that leases on at least two shuttered premises in the mill district remain in good standing, the rent arriving by draft each quarter from an account he declined to name.",
+      },
+      {
+        headline: "Winter Coal Prices Hold Steady",
+        body: "Dealers along Canal Street expect no advance before December, citing full yards and an open river.",
+      },
+    ],
     markings: ["Reporter’s notes unavailable", "No trace of missing woman"],
     provenance: fictionalArtifact("Fictional retrospective and generated Cassandra photograph."),
     featured: true,
@@ -584,6 +598,20 @@ export const archiveRecords: ArchiveRecord[] = [
       width: 1402,
       height: 1122,
     },
+    neighboringCopy: [
+      {
+        headline: "Telegraph Office Reports Heavy Night Traffic",
+        body: "The Elm Street office logged an unusual volume of local wires between eleven and one o’clock, several of them filed without a sender's name and paid in coin.",
+      },
+      {
+        headline: "Printers Canvassed Again",
+        body: "No shop in the city will claim the type used on the envelopes, and two masters who examined a rubbing said the face is not one sold in New England.",
+      },
+      {
+        headline: "Postal Inspector Declines Inquiry",
+        body: "Since the envelopes passed through no mail, the inspector's office said the matter lies outside its authority and referred this paper to the police.",
+      },
+    ],
     markings: ["ORIGIN UNAVAILABLE", "Filed before receipt"],
     provenance: {
       classification: "generated-historical-fiction",

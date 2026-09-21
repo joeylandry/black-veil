@@ -2,9 +2,11 @@
 
 import Link from "next/link";
 import { FormEvent, useMemo, useState } from "react";
+import { BenchSection } from "@/components/bench/bench-section";
 import { BlackVeilInsignia } from "@/components/black-veil-insignia";
 import { PointClaims } from "@/components/point-claims";
 import { eventConfig } from "@/config/event";
+import { maxBenchScore } from "@/data/bench";
 import { ctfChallenges, maxCtfScore } from "@/data/ctf";
 import { CtfProgress, emptyCtfProgress, remoteCtfService } from "@/lib/ctf-service";
 import { RsvpSubmission } from "@/lib/rsvp-service";
@@ -70,14 +72,19 @@ export function CtfGame() {
         <BlackVeilInsignia />
         <p className="eyebrow">Restricted postscript · rose clearance</p>
         <h1>The Black Rose Trials</h1>
-        <p>Six irregularities remain across the Manchester record. Findings are rewarded. Careless guesses are remembered.</p>
-        <div className="score-seal"><span>Your score</span><strong>{progress.score}</strong><small>of {maxCtfScore} points</small></div>
+        <p>Two ledgers are open to you. Irregularities remain across the Manchester record, and the present-day restoration of that record has left tickets of its own. Findings are rewarded. Careless guesses are remembered.</p>
+        <div className="score-seal"><span>Your score</span><strong>{progress.score}</strong><small>of {maxCtfScore + maxBenchScore} points</small></div>
         {submitError && (
           <p className="field-error" role="alert">
             {submitError} <Link href="/resume">Resume from another device</Link>.
           </p>
         )}
       </header>
+
+      <div className="track-heading">
+        <p className="eyebrow">First track · the Manchester record</p>
+        <h2>The Manchester Trials</h2>
+      </div>
 
       <section className="ctf-challenges" aria-label="Black Rose challenges">
         {ctfChallenges.map((challenge) => {
@@ -106,6 +113,8 @@ export function CtfGame() {
           );
         })}
       </section>
+
+      <BenchSection />
 
       <PointClaims />
     </div>
