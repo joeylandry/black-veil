@@ -4,7 +4,7 @@ import Link from "next/link";
 import { FormEvent, useMemo, useRef, useState } from "react";
 import { BenchLab, benchSolveId } from "@/data/bench";
 import { eventConfig } from "@/config/event";
-import { BenchGradeResult, benchService } from "@/lib/bench-service";
+import { BenchGradeResult, benchService, isSessionLost } from "@/lib/bench-service";
 import { CtfProgress, emptyCtfProgress } from "@/lib/ctf-service";
 import { useStorageValue } from "@/lib/use-storage-value";
 
@@ -36,6 +36,7 @@ export function BenchLabWorkbench({ lab }: { lab: BenchLab }) {
   const [busy, setBusy] = useState(false);
   const [result, setResult] = useState<BenchGradeResult | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [sessionLost, setSessionLost] = useState(false);
   const consoleEnd = useRef<HTMLDivElement>(null);
 
   const solved = result?.passed || storedProgress.solved.includes(benchSolveId(lab.id));
@@ -56,6 +57,7 @@ export function BenchLabWorkbench({ lab }: { lab: BenchLab }) {
       const output = await benchService.run(lab.ticket, nextHistory);
       setLines((current) => [...current, ...output.map((text) => ({ kind: "output" as const, text }))]);
     } catch (runError) {
+      if (isSessionLost(runError)) setSessionLost(true);
       setLines((current) => [
         ...current,
         { kind: "output", text: runError instanceof Error ? runError.message : "The bench did not respond." },
@@ -72,6 +74,7 @@ export function BenchLabWorkbench({ lab }: { lab: BenchLab }) {
     try {
       setResult(await benchService.submit(lab.ticket, { files, fields, history }));
     } catch (submitError) {
+      if (isSessionLost(submitError)) setSessionLost(true);
       setError(submitError instanceof Error ? submitError.message : "The bench could not grade that submission.");
     } finally {
       setBusy(false);
@@ -94,6 +97,13 @@ export function BenchLabWorkbench({ lab }: { lab: BenchLab }) {
           </span>
         </div>
       </header>
+
+      {sessionLost && (
+        <p className="bench-session-lost" role="alert">
+          Your sign-in lapsed while this bench was open, so the server will not run commands or grade work from this browser.{" "}
+          <Link href="/resume">Request a new sign-in link</Link>, then reload this ticket. Your typed work stays on the page until you do.
+        </p>
+      )}
 
       <section className="bench-brief">
         <p>{lab.brief}</p>
