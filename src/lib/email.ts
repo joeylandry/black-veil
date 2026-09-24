@@ -1,13 +1,17 @@
 /**
  * Sends transactional email via the Resend API if RESEND_API_KEY is configured.
- * Without it (local dev), logs the message and link to the server console instead
- * so the sign-in flow is testable without an email provider.
+ * Without it in local dev, logs the message and link to the server console instead
+ * so the sign-in flow is testable without an email provider. In a production build
+ * a missing key is an error, so guests see a failure instead of a link that never comes.
  */
 export async function sendMagicLinkEmail(to: string, url: string) {
   const apiKey = process.env.RESEND_API_KEY;
   const from = process.env.EMAIL_FROM || "The Black Veil <onboarding@resend.dev>";
 
   if (!apiKey) {
+    if (process.env.NODE_ENV === "production") {
+      throw new Error("RESEND_API_KEY is not set; cannot send magic link email.");
+    }
     console.log(`[dev] Magic link for ${to}: ${url}`);
     return;
   }
@@ -30,4 +34,7 @@ export async function sendMagicLinkEmail(to: string, url: string) {
     const body = await response.text().catch(() => "");
     throw new Error(`Failed to send magic link email (${response.status}): ${body}`);
   }
+
+  const { id } = (await response.json().catch(() => ({}))) as { id?: string };
+  console.log(`Magic link email queued for ${to} (Resend id ${id ?? "unknown"})`);
 }
