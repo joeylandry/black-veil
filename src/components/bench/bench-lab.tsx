@@ -252,7 +252,7 @@ export function BenchLabWorkbench({ lab }: { lab: BenchLab }) {
       </section>
 
       <footer className="bench-footer">
-        <Link href="/black-rose" className="button-link">
+        <Link href="/bench" className="button-link">
           Return to the bench
         </Link>
       </footer>

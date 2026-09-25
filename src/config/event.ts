@@ -16,6 +16,7 @@ export const eventConfig = {
     ctfProgress: "black-veil:ctf-progress",
     registerUnlocked: "black-veil:register-unlocked",
     postscriptSolved: "black-veil:postscript-solved",
+    benchUnlocked: "black-veil:bench-unlocked",
   },
 } as const;
 

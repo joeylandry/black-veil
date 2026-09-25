@@ -36,6 +36,11 @@ export type BenchLab = {
   id: string;
   /** Ticket number printed on the restoration slip in the newspaper's right column. */
   ticket: string;
+  /**
+   * Unlocks the lab. Printed in plain sight on the lab's conservation slip, so the
+   * guest has to go and read the newspaper first. Not a secret — just a door.
+   */
+  benchWord: string;
   number: string;
   title: string;
   topic: string;
@@ -164,11 +169,12 @@ export const benchLabs: BenchLab[] = [
   {
     id: "register-recovery",
     ticket: "RST-01",
+    benchWord: "BINDERY",
     number: "R-01",
     title: "The Missing Register Page",
     topic: "Git · history, diffs, and recovery",
     sprint: "Sprint 1 · Git fundamentals",
-    points: 250,
+    points: 25,
     recordSlug: "a-door-without-an-address",
     recordTitle: "A Door Without an Address",
     slip: {
@@ -207,11 +213,12 @@ export const benchLabs: BenchLab[] = [
   {
     id: "two-clerks-one-register",
     ticket: "RST-02",
+    benchWord: "CARBON",
     number: "R-02",
     title: "Two Clerks, One Register",
     topic: "Git · resolving a merge conflict",
     sprint: "Sprint 2 · Advanced Git and repository hygiene",
-    points: 250,
+    points: 25,
     recordSlug: "murderer-or-murdered",
     recordTitle: "Murdered or Murderer?",
     slip: {
@@ -257,11 +264,12 @@ export const benchLabs: BenchLab[] = [
   {
     id: "unwitnessed-page",
     ticket: "RST-03",
+    benchWord: "WAXSEAL",
     number: "R-03",
     title: "No Page Enters Unwitnessed",
     topic: "Peer review · reading a diff for defects",
     sprint: "Sprint 2 · Code review etiquette and secure code review",
-    points: 200,
+    points: 20,
     recordSlug: "last-photograph-at-the-masquerade",
     recordTitle: "Last Photograph at the Masquerade",
     slip: {
@@ -321,11 +329,12 @@ export const benchLabs: BenchLab[] = [
   {
     id: "standard-crate",
     ticket: "RST-04",
+    benchWord: "DRAYMAN",
     number: "R-04",
     title: "A Standard Crate",
     topic: "Docker · writing an image that builds the same anywhere",
     sprint: "Sprint 1 · Docker and containerization",
-    points: 250,
+    points: 25,
     recordSlug: "whispers-along-the-merrimack",
     recordTitle: "Whispers Along the Merrimack",
     slip: {
@@ -374,11 +383,12 @@ export const benchLabs: BenchLab[] = [
   {
     id: "nothing-leaves-unproved",
     ticket: "RST-05",
+    benchWord: "PRESSMAN",
     number: "R-05",
     title: "Nothing Leaves the Shop Unproved",
     topic: "CI/CD · pipeline order and quality gates",
     sprint: "Sprint 7 · CI quality gates and DevSecOps",
-    points: 300,
+    points: 30,
     recordSlug: "black-veil-closed-indefinitely",
     recordTitle: "The Black Veil Closed Indefinitely",
     slip: {
@@ -428,11 +438,12 @@ export const benchLabs: BenchLab[] = [
   {
     id: "how-much-silence",
     ticket: "RST-06",
+    benchWord: "NIGHTWATCH",
     number: "R-06",
     title: "How Much Silence Is Allowed",
     topic: "SRE · SLIs, SLOs, and error budgets",
     sprint: "Sprint 2 · Site Reliability Engineering",
-    points: 300,
+    points: 30,
     recordSlug: "amoskeag-strike-nine-months",
     recordTitle: "Nine Months at the Mill Gates",
     slip: {
@@ -477,11 +488,12 @@ export const benchLabs: BenchLab[] = [
   {
     id: "stewards-keys",
     ticket: "RST-07",
+    benchWord: "KEYRING",
     number: "R-07",
     title: "The Steward's Keys",
     topic: "IAM · least privilege",
     sprint: "Sprint 11 · IAM and least-privilege access",
-    points: 300,
+    points: 30,
     recordSlug: "miss-castello-receives",
     recordTitle: "A Stranger of Means Comes to Manchester",
     slip: {
@@ -524,11 +536,12 @@ export const benchLabs: BenchLab[] = [
   {
     id: "coat-check-numbers",
     ticket: "RST-08",
+    benchWord: "CLOAKROOM",
     number: "R-08",
     title: "The Coat-Check Numbers",
     topic: "OWASP · broken access control",
     sprint: "Sprint 2 · OWASP Top 10 and secure code review",
-    points: 350,
+    points: 35,
     recordSlug: "police-seek-proprietress",
     recordTitle: "Police Seek Proprietress for Questioning",
     slip: {
@@ -600,11 +613,12 @@ export const benchLabs: BenchLab[] = [
   {
     id: "sealed-pass",
     ticket: "RST-09",
+    benchWord: "SIGNET",
     number: "R-09",
     title: "The Sealed Pass",
     topic: "Authentication · JSON Web Tokens",
     sprint: "Sprint 8 · JWT issuance, validation, and lifetime",
-    points: 400,
+    points: 40,
     recordSlug: "the-platform-photograph",
     recordTitle: "The Platform Photograph",
     slip: {
@@ -645,11 +659,12 @@ export const benchLabs: BenchLab[] = [
   {
     id: "one-fact-written-once",
     ticket: "RST-10",
+    benchWord: "INKWELL",
     number: "R-10",
     title: "One Fact, Written Once",
     topic: "SQL · joins, aggregation, and window functions",
     sprint: "Sprint 3 · Advanced SQL against a relational model",
-    points: 400,
+    points: 40,
     recordSlug: "where-is-cassandra-castello",
     recordTitle: "Where Is Cassandra Castello?",
     slip: {
@@ -690,11 +705,12 @@ export const benchLabs: BenchLab[] = [
   {
     id: "subscription-wire",
     ticket: "RST-11",
+    benchWord: "TELEGRAM",
     number: "R-11",
     title: "The Subscription Wire",
     topic: "Kafka · partitions, ordering, and delivery",
     sprint: "Sprint 7 · Event-driven architecture and Kafka",
-    points: 350,
+    points: 35,
     recordSlug: "black-envelopes-appear",
     recordTitle: "Black Envelopes Appear",
     slip: {
@@ -750,11 +766,12 @@ export const benchLabs: BenchLab[] = [
   {
     id: "before-you-touch-it",
     ticket: "RST-12",
+    benchWord: "LAMPLIGHT",
     number: "R-12",
     title: "Before You Touch It",
     topic: "Characterization tests · refactoring safely",
     sprint: "Sprint 7 · Safe refactoring and characterization tests",
-    points: 300,
+    points: 30,
     recordSlug: "terror-at-the-black-veil",
     recordTitle: "The Black Veil Masquerade Massacre",
     slip: {
@@ -845,4 +862,9 @@ export function getBenchLabForRecord(slug: string) {
 /** The id a solved lab is recorded under in ctf_solves, kept distinct from the trial ids. */
 export function benchSolveId(labId: string) {
   return `bench-${labId}`;
+}
+
+/** Bench words are compared without regard to case, spacing or hyphens. */
+export function normalizeBenchWord(value: string) {
+  return value.toUpperCase().replace(/[^A-Z0-9]/g, "");
 }

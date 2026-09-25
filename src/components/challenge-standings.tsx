@@ -5,6 +5,7 @@ import { eventConfig } from "@/config/event";
 import { ctfChallenges } from "@/data/ctf";
 import { CtfProgress, emptyCtfProgress } from "@/lib/ctf-service";
 import { RsvpSubmission } from "@/lib/rsvp-service";
+import { trackScores } from "@/lib/track-scores";
 import { useStorageValue } from "@/lib/use-storage-value";
 
 type Me = {
@@ -47,7 +48,7 @@ export function ChallengeStandings() {
       </div>
       <div className="leaderboard-table" role="table" aria-label="Black Rose standings">
         <div role="row" className="leaderboard-row leaderboard-labels"><span role="columnheader">Rank</span><span role="columnheader">Guest</span><span role="columnheader">Character</span><span role="columnheader">Flags</span><span role="columnheader">Points</span></div>
-        <div role="row" className="leaderboard-row"><span role="cell">01</span><strong role="cell">{rsvp.fullName}</strong><span role="cell" className={me?.character ? undefined : "character-sealed"}>{characterLabel}</span><span role="cell">{progress.solved.length} / {ctfChallenges.length}</span><strong role="cell">{totalScore}</strong></div>
+        <div role="row" className="leaderboard-row"><span role="cell">01</span><strong role="cell">{rsvp.fullName}</strong><span role="cell" className={me?.character ? undefined : "character-sealed"}>{characterLabel}</span><span role="cell">{trackScores(progress.solved).trialsSolved} / {ctfChallenges.length}</span><strong role="cell">{totalScore}</strong></div>
       </div>
       <p className="leaderboard-note">Character assignments remain sealed until attendance is confirmed. No murderer, victim, or private dossier material is exposed here.</p>
     </section>

@@ -2,14 +2,12 @@
 
 import Link from "next/link";
 import { FormEvent, useMemo, useState } from "react";
-import { BenchSection } from "@/components/bench/bench-section";
 import { BlackVeilInsignia } from "@/components/black-veil-insignia";
-import { PointClaims } from "@/components/point-claims";
 import { eventConfig } from "@/config/event";
-import { maxBenchScore } from "@/data/bench";
 import { ctfChallenges, maxCtfScore } from "@/data/ctf";
 import { CtfProgress, emptyCtfProgress, remoteCtfService } from "@/lib/ctf-service";
 import { RsvpSubmission } from "@/lib/rsvp-service";
+import { trackScores } from "@/lib/track-scores";
 import { useStorageValue } from "@/lib/use-storage-value";
 
 function parseProgress(raw: string | null | undefined): CtfProgress {
@@ -30,6 +28,7 @@ export function CtfGame() {
   const [feedback, setFeedback] = useState<Record<string, "correct" | "incorrect">>({});
   const [submitError, setSubmitError] = useState<string | null>(null);
   const progress = workingProgress ?? storedProgress;
+  const scores = useMemo(() => trackScores(progress.solved), [progress.solved]);
 
   if (access === undefined || savedRsvp === undefined) {
     return <div className="ledger-checking">Checking the challenge ledger…</div>;
@@ -72,8 +71,8 @@ export function CtfGame() {
         <BlackVeilInsignia />
         <p className="eyebrow">Restricted postscript · rose clearance</p>
         <h1>The Black Rose Trials</h1>
-        <p>Two ledgers are open to you. Irregularities remain across the Manchester record, and the present-day restoration of that record has left tickets of its own. Findings are rewarded. Careless guesses are remembered.</p>
-        <div className="score-seal"><span>Your score</span><strong>{progress.score}</strong><small>of {maxCtfScore + maxBenchScore} points</small></div>
+        <p>Irregularities remain across the Manchester record. Findings are rewarded. Careless guesses are remembered.</p>
+        <div className="score-seal"><span>Trials score</span><strong>{scores.trials}</strong><small>of {maxCtfScore} points</small></div>
         {submitError && (
           <p className="field-error" role="alert">
             {submitError} <Link href="/resume">Resume from another device</Link>.
@@ -82,7 +81,7 @@ export function CtfGame() {
       </header>
 
       <div className="track-heading">
-        <p className="eyebrow">First track · the Manchester record</p>
+        <p className="eyebrow">The Manchester record</p>
         <h2>The Manchester Trials</h2>
       </div>
 
@@ -114,9 +113,11 @@ export function CtfGame() {
         })}
       </section>
 
-      <BenchSection />
+      <p className="track-crosslink">
+        The engineering track is kept, and scored, separately at <Link href="/bench">the Restoration Bench</Link>.
+      </p>
 
-      <PointClaims />
+      {/* Claim a finding (<PointClaims />) is withheld until in-person gameplay opens. */}
     </div>
   );
 }

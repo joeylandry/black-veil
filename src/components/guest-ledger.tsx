@@ -106,7 +106,7 @@ export function GuestLedger() {
       <div className="ledger-success ledger-success-complete">
         <header>
           <p className="eyebrow">Guest register · October 1926</p>
-          <h1>Your name has been entered<br />upon the guest register.</h1>
+          <h1>Your name has been entered upon the guest register.</h1>
           <p className="registered-name">{visibleSubmission.fullName}</p>
           <div className="management-found-file">
             <p>The management of The Black Veil has located your file.</p>
