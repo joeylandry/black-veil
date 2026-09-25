@@ -50,7 +50,11 @@ export type ArchiveRecord = {
   body: string[];
   image?: ArchiveImage;
   markings?: string[];
-  neighboringCopy?: (string | { headline: string; body: string })[];
+  /**
+   * Right-hand column stories. `color` marks local color with no bearing on the case:
+   * cut, after the recurring notices, when the column runs longer than the story beside it.
+   */
+  neighboringCopy?: (string | { headline: string; body: string; color?: boolean })[];
   continuedArticle?: { headline: string; body: string[] };
   /** Short filler notice set beneath the "Continued on page N" jump line, when the lead column runs short. */
   columnFiller?: { headline: string; body: string };
@@ -173,10 +177,10 @@ export const archiveRecords: ArchiveRecord[] = [
     },
     neighboringCopy: [
       { headline: "Street Railway Notice", body: "Local notices and ordinary city news continued inside this edition." },
-      { headline: "Relief Baskets Distributed on the West Side", body: "Strike relief committees reported longer lines at the West Side depot as the walkout entered its sixth month." },
-      { headline: "City Council Declines Special Session", body: "Aldermen voted against convening early to discuss the mill closures, citing ongoing negotiations between Amoskeag and union representatives." },
-      { headline: "Mill Yard Churches Report Full Pews", body: "West Side congregations noted heavier Sunday attendance through the strike, with several pastors devoting sermons to the walkout." },
-      { headline: "Boarding Houses Feel the Pinch", body: "Landladies along Canal Street said rent collections had slowed considerably since the mills went idle in February." },
+      { headline: "Relief Baskets Distributed on the West Side", body: "Strike relief committees reported longer lines at the West Side depot as the walkout entered its sixth month.", color: true },
+      { headline: "City Council Declines Special Session", body: "Aldermen voted against convening early to discuss the mill closures, citing ongoing negotiations between Amoskeag and union representatives.", color: true },
+      { headline: "Mill Yard Churches Report Full Pews", body: "West Side congregations noted heavier Sunday attendance through the strike, with several pastors devoting sermons to the walkout.", color: true },
+      { headline: "Boarding Houses Feel the Pinch", body: "Landladies along Canal Street said rent collections had slowed considerably since the mills went idle in February.", color: true },
     ],
     markings: ["HISTORICAL CONTEXT", "Fiction separated in transcript"],
     provenance: {
@@ -276,10 +280,12 @@ export const archiveRecords: ArchiveRecord[] = [
     neighboringCopy: [
       {
         headline: "Neighbors report sleepless night on the West Side",
+        color: true,
         body: "Several households along the nearest streets told this paper they remained awake past three o'clock, uncertain whether to summon police themselves.",
       },
       {
         headline: "Coroner's office declines early statement",
+        color: true,
         body: "A clerk said no request for the coroner's services had been logged as of press time, though the line had been busy since sunrise.",
       },
       {
@@ -373,6 +379,7 @@ export const archiveRecords: ArchiveRecord[] = [
     neighboringCopy: [
       {
         headline: "Amoskeag Mills Announce Holiday Schedule",
+        color: true,
         body: "The corporation confirmed reduced shifts through the first week of November for seasonal inventory.",
       },
       {
@@ -561,6 +568,7 @@ export const archiveRecords: ArchiveRecord[] = [
     neighboringCopy: [
       {
         headline: "Anniversary Notices Withdrawn",
+        color: true,
         body: "Two memorial notices submitted to this paper for the week of All Hallows’ Eve were withdrawn before press time by the parties who placed them. Neither gave a reason.",
       },
       {
@@ -609,6 +617,7 @@ export const archiveRecords: ArchiveRecord[] = [
       },
       {
         headline: "Postal Inspector Declines Inquiry",
+        color: true,
         body: "Since the envelopes passed through no mail, the inspector's office said the matter lies outside its authority and referred this paper to the police.",
       },
     ],
@@ -647,6 +656,30 @@ export const archiveRecords: ArchiveRecord[] = [
 ];
 
 export const archiveYears = [1921, 1922, 1923, 1924, 1925, 1926] as const;
+
+/**
+ * Filler notices that run in several editions — the street railway timetable, river
+ * fog and frost, coal, the printers' canvass. When a column runs long these are the
+ * stories cut, since the reader has seen them elsewhere.
+ */
+export type SideStoryTier = "recurring" | "color" | "news";
+
+const recurringNotice = /street ?railway|streetcar|trolley|fog|frost|cold weather|river level|coal|printers/i;
+
+/**
+ * A record's right-hand column stories, tiered by what may be cut to balance the columns:
+ * notices that recur in other editions (and one-line items with no story of their own)
+ * go first, then local color. Anything else may be a clue and always prints.
+ */
+export function sideStories(record: ArchiveRecord) {
+  return (record.neighboringCopy ?? ["Cold fog expected along the river", "Street railway notice"]).slice(0, 5).map((item) => {
+    const headline = typeof item === "string" ? item : item.headline;
+    const body = typeof item === "string" ? "Local notices and ordinary city news continued inside this edition." : item.body;
+    const tier: SideStoryTier =
+      typeof item === "string" || recurringNotice.test(headline) ? "recurring" : item.color ? "color" : "news";
+    return { headline, body, tier };
+  });
+}
 
 export function getArchiveRecord(slug: string) {
   return archiveRecords.find((record) => record.slug === slug);

@@ -1,7 +1,8 @@
 import Image from "next/image";
-import { ArchiveRecord } from "@/data/archive";
+import { ArchiveRecord, sideStories } from "@/data/archive";
 import { getBenchLabForRecord } from "@/data/bench";
 import { FitHeading } from "@/components/fit-heading";
+import { NewspaperSide } from "@/components/newspaper-side";
 
 export function NewspaperArtifact({ record }: { record: ArchiveRecord }) {
   const story = record.body[0] ?? record.excerpt;
@@ -62,27 +63,15 @@ export function NewspaperArtifact({ record }: { record: ArchiveRecord }) {
           </figure>
         )}
 
-        <aside className="newspaper-side" aria-label="Neighboring stories">
-          {(record.neighboringCopy ?? ["Cold fog expected along the river", "Street railway notice"])
-            .slice(0, slip ? 3 : 5)
-            .map((item) => {
-              const headline = typeof item === "string" ? item : item.headline;
-              const body = typeof item === "string" ? "Local notices and ordinary city news continued inside this edition." : item.body;
-              return (
-                <div key={headline}>
-                  <h4>{headline}</h4>
-                  <p>{body}</p>
-                </div>
-              );
-            })}
+        <NewspaperSide stories={sideStories(record)}>
           {slip && (
             <div className="newspaper-slip">
               <h4>{slip.slip.headline}</h4>
               <p>{slip.slip.body}</p>
-              <p className="newspaper-slip-mark">{slip.ticket} · {slip.topic}</p>
+              <p className="newspaper-slip-mark">{slip.ticket} · Bench word: <strong>{slip.benchWord}</strong></p>
             </div>
           )}
-        </aside>
+        </NewspaperSide>
 
         {record.continuedArticle && (
           <div className="newspaper-page6">

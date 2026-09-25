@@ -1,6 +1,19 @@
-import { redirect } from "next/navigation";
+import type { Metadata } from "next";
+import { BenchAccessGate } from "@/components/bench/bench-gate";
+import { BenchSection } from "@/components/bench/bench-section";
 
-/** The bench has no index of its own; the tickets are listed with the trials. */
+export const metadata: Metadata = {
+  title: "The Restoration Bench",
+  description: "Present-day restoration tickets filed against the Manchester record.",
+  robots: { index: false, follow: false },
+};
+
 export default function BenchIndexPage() {
-  redirect("/black-rose");
+  return (
+    <div className="page-wrap ctf-page bench-page">
+      <BenchAccessGate>
+        <BenchSection />
+      </BenchAccessGate>
+    </div>
+  );
 }

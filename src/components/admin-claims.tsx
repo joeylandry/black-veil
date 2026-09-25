@@ -124,7 +124,7 @@ function AdminClaimRow({
   claim: AdminClaim;
   onDecide: (id: string, decision: "approved" | "rejected", points?: number) => void;
 }) {
-  const [points, setPoints] = useState("50");
+  const [points, setPoints] = useState("5");
 
   return (
     <li className="admin-claim">
