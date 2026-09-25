@@ -733,13 +733,13 @@ img { max-width: 100%; height: auto; }
 .track-heading h2 { margin: .2rem 0 0; font-family: var(--font-display); font-size: clamp(2rem,4.5vw,3.1rem); font-weight: 600; line-height: .9; text-transform: uppercase; }
 
 .bench-section { margin-top: clamp(3rem,7vw,6rem); padding-top: clamp(2rem,5vw,3.5rem); border-top: 4px double #6c624d; }
-.bench-section-header { max-width: 820px; margin-bottom: 2.5rem; }
+.bench-section-header { max-width: 820px; margin: 0 auto 2.5rem; text-align: center; }
 .bench-section-header .eyebrow { color: var(--brass); }
 .bench-section-header h1 { margin: .2rem 0 1rem; font-family: var(--font-display); font-size: clamp(2.6rem,6vw,4.6rem); font-weight: 600; line-height: .85; text-transform: uppercase; }
 .bench-section-header p { color: var(--paper-deep); }
 .track-crosslink { max-width: 820px; margin: 3rem auto 0; color: var(--paper-deep); text-align: center; font-style: italic; }
 .bench-page .bench-section { margin-top: 0; padding-top: 0; border-top: 0; }
-.bench-section-header .score-seal { margin: 1.6rem 0 1rem; }
+.bench-section-header .score-seal { margin: 1.6rem auto 1rem; }
 .bench-word-form { display: grid; gap: .5rem; max-width: 420px; margin: 1.6rem auto 0; text-align: left; }
 .bench-word-form label { font-family: var(--font-sans), Arial, sans-serif; font-size: .68rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
 .bench-word-form div { display: flex; gap: .5rem; }

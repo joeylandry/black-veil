@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { ArtifactInspector } from "@/components/artifact-inspector";
 import { FitHeading } from "@/components/fit-heading";
 import { NewspaperInspector } from "@/components/newspaper-inspector";
+import { ScrollToTop } from "@/components/scroll-to-top";
 import { TerminalDiscovery } from "@/components/terminal/terminal-discovery";
 import { VeilFlyerReveal } from "@/components/terminal/veil-flyer-reveal";
 import { archiveRecords, getArchiveRecord } from "@/data/archive";
@@ -34,6 +35,7 @@ export default async function ArchiveDocumentPage({ params }: Props) {
 
   return (
     <div className="record-room">
+      <ScrollToTop key={record.slug} />
       <div className="record-toolbar">
         <Link href="/archive" className="record-return-link">← RETURN TO ARCHIVES</Link>
         <span>{record.catalogNumber}</span>
