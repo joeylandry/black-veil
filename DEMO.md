@@ -2,7 +2,7 @@
 
 A script you can read off a second screen during the demo. Every command and answer below was run end to end against a fresh build before this file was committed.
 
-**Path:** archive → hidden terminal → passcode → RSVP → leaderboard → CTF trials → Restoration Bench → staff approval. **Time:** about 10 minutes.
+**Path:** archive → hidden terminal → passcode → RSVP → leaderboard → CTF trials → Restoration Bench → staff office (dashboard, claims, characters) → signing in as a guest to see their character card. **Time:** about 12 minutes.
 
 ---
 
@@ -12,16 +12,16 @@ Run these from the repo, with `.env.local` pointing at **the database the demo s
 
 ```bash
 npm run db:migrate          # make sure every table exists
-npm run demo:seed           # 22 invented guests, solves, 3 approved + 3 pending staff claims
+npm run demo:seed           # 22 invented guests, solves, 3 approved + 3 pending claims, 24 unassigned characters
 npm run demo:reset -- YOUR_DEMO_EMAIL   # wipe your own RSVP/solves so you start from zero
 ```
 
-You can run `demo:seed` as many times as you like. It replaces the demo guests each time and never touches real RSVPs: every demo guest uses the `@demo.blackveil.invalid` domain.
+You can run `demo:seed` as many times as you like. It replaces the demo guests and the demo cast each time, and leaves every character **unassigned** so you can deal them on stage. It never touches real RSVPs: every demo guest uses the `@demo.blackveil.invalid` domain.
 
 After seeding, the leaderboard reads: **Eleanor D. 460 · Marcus W. 345 · Priya R. 320 · Sofia M. 235 · Theo L. 230 …**
 
 Also check:
-- [ ] You know the **ADMIN_SECRET** for the demo site (needed in step 8).
+- [ ] You know the **ADMIN_SECRET** for the demo site (needed in steps 8–9).
 - [ ] The demo site is deployed from a build that includes this commit (it adds the shared leaderboard).
 - [ ] **Do one full dry run tonight**, then run `npm run demo:reset -- YOUR_DEMO_EMAIL` again.
 
@@ -76,7 +76,7 @@ Optional laugh lines if you have time: `sudo su` → "Nice try." · `rm -rf /` �
    - ◉ *Yes, I shall attend.*
    - ☑ the 1920s attire checkbox
 4. **Enter my name upon the register**.
-5. You'll see "Your name has been entered upon the guest register." Scroll down: the **Guest Ledger** leaderboard shows the seeded guests, with your row highlighted at 0 points.
+5. You'll see "Your name has been entered upon the guest register." Below it is a black card titled **Sealed**: "Management has not yet chosen who you will be". That's your character slot, and you'll fill it in step 8. Further down, the **Guest Ledger** leaderboard shows the seeded guests, with your row highlighted at 0 points.
 
 > Talking point: the RSVP is written to Postgres and signs this device in with an httpOnly session cookie. Guests can resume on another device with a magic link (`/resume`).
 
@@ -171,13 +171,33 @@ CMD ["npm", "run", "start"]
 
 Or click **Submit for review** on the untouched file first, to show the failing checks reading like a build log.
 
-## 8. Leaderboard + staff approval (≈1 min)
+## 8. Leaderboard + the staff office (≈2 min)
 
 1. **GUEST LEDGER** in the nav → scroll to the leaderboard. You've climbed: with all 7 trials plus RST-01 and RST-08 you have **235** and sit **#5**, between Sofia M. and Theo L. (Fewer trials means a lower rank, which is fine.)
-2. Switch to Tab 2 (`/admin`) → enter **ADMIN_SECRET** → **Unlock**.
-3. Three pending claims appear (Priya R. "Found the river door token", etc.). Set points → **Approve**.
+2. Switch to Tab 2 (`/admin`) → enter **ADMIN_SECRET** → **Unlock**. This is the **Staff Office**: a visual view of the database, top to bottom:
+   - **Four tiles:** names on the register (23 · 21 attending · 2 regrets), flags & tickets solved, claims awaiting review (3), characters dealt (**0 / 24**).
+   - **Solves by challenge:** a bar per trial and per bench ticket. Hover a bar for "N of 23 guests · %". Your solves are already in the counts.
+   - **The cast:** all 24 characters, each marked *Unassigned*. Two carry a dark **MURDERER · STAFF ONLY** / **VICTIM · STAFF ONLY** tag.
+   - **Guests:** the full table with RSVP, solves, points and character, plus a **Sign in as** button on every row.
+   - **Claim queue** at the bottom.
 
-> Talking point: not everything at a live event can be auto-checked. Staff approve in-person findings here, and the points add to the guest's total.
+> Talking point: this is the database, live. Guests never see the murderer/victim flags; the API that serves a guest doesn't even send them.
+
+3. **Approve a claim:** at the bottom, Priya Raman's "Found the river door token" → set points → **Approve**. The pending tile drops to 2.
+4. **Deal the characters:** scroll to **The cast** → **Assign characters**. You'll see "Dealt 21 characters to attending guests." Every card now shows → *guest name*, the tile reads **21 / 24**, and the Guests table fills its Character column. (Click it again to show it's safe: "Every attending guest already holds a character.") The two guests who sent regrets get nothing.
+
+> Talking point: assignment is random, only to confirmed attendees, and never reshuffles someone who already has a character.
+
+## 9. Become a guest and see their character card (≈1 min)
+
+1. Back in Tab 1, reload **GUEST LEDGER**. The Sealed card has become **your** character: name, occupation, faction tags and public biography. Your leaderboard row now shows the character too.
+2. Click **Break the seal** to open the private dossier: "What you are hiding" and "What you must do tonight". **Reseal** closes it.
+3. In Tab 2 (`/admin`) → **Guests** table → **Eleanor Downes** (the #1 guest) → **Sign in as**. The browser becomes Eleanor and lands on her Guest Ledger: her name, her rank #1 on the leaderboard, and *her* character card → **Break the seal**.
+4. **Get back to yourself:** `/admin` → Guests table → your own row → **Sign in as**.
+
+> Talking point: staff can see exactly what any guest sees, which is how you'd support someone at the door. The dossier is only ever served to the guest it belongs to.
+
+Characters are dealt at random, so you won't know in advance who you or Eleanor will be. Every one of the 24 has a full card.
 
 ---
 
@@ -197,6 +217,8 @@ RST-01     BINDERY   · git log --oneline · git show c0f5a28 · git revert c0f5
 RST-08     CLOAKROOM · whoami · GET /vault/records?owner=me · GET /vault/records/117
            → RSV-7731-CASTELLO / 13 / 404 / guard line
 RST-04     DRAYMAN   · paste the Dockerfile above
+ADMIN      /admin → ADMIN_SECRET → approve claim → Assign characters → Guests: Sign in as Eleanor → Break the seal
+           → Sign in as yourself to get back
 ```
 
 ## Don'ts
@@ -214,6 +236,8 @@ RST-04     DRAYMAN   · paste the Dockerfile above
 | Bench says "Sign in to work this bench" | The session cookie is gone. Close Incognito, reset your email, start again from step 3 (it takes ~2 min with the cheat sheet). |
 | Leaderboard only shows you | Reload the Guest Ledger page. If it's still just you, the demo site's database wasn't seeded → `npm run demo:seed`. |
 | Already "solved" when you open the trials | You're in an old window or forgot the reset → `npm run demo:reset -- YOUR_DEMO_EMAIL` + new Incognito window. |
+| Assign characters says no characters exist | The demo site's database wasn't seeded since this update → `npm run demo:seed`. |
+| Want to deal characters again on stage | `/admin` → **Take all back**, then **Assign characters** again. |
 | Need a second take | `npm run demo:reset -- YOUR_DEMO_EMAIL`, close all Incognito windows, open a new one. |
 
 ## After the demo
@@ -221,6 +245,6 @@ RST-04     DRAYMAN   · paste the Dockerfile above
 If you seeded the **production** database, take the invented guests out before real guests see the leaderboard:
 
 ```bash
-npm run demo:clear          # removes every @demo.blackveil.invalid guest
+npm run demo:clear          # removes every @demo.blackveil.invalid guest and the 24 demo characters
 npm run demo:reset -- YOUR_DEMO_EMAIL   # optional: drop your demo RSVP too
 ```

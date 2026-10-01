@@ -95,11 +95,13 @@ Sign-in links are emailed via Resend if `RESEND_API_KEY` is set (`src/lib/email.
 
 ### Characters
 
-`guests.characterId` links a guest to a row in `characters` (public profile + private dossier fields, per the shapes `src/features/game/models.ts` already sketched). `GET /api/me` returns only the public fields (`characterName`, `occupation`, `publicBiography`, `factions`) once assigned; secrets, objectives, and murderer/victim flags never leave the server. No character content is authored yet — write it directly into the `characters` table (and set a guest's `characterId`) with `npm run db:studio` once the mystery is ready; there's no admin UI for this yet.
+`guests.characterId` links a guest to a row in `characters` (public profile + private dossier fields, per the shapes `src/features/game/models.ts` already sketched). Once assigned, `GET /api/me` returns the public fields (`characterName`, `occupation`, `publicBiography`, `factions`) and, because that route only ever answers for the signed-in guest, their own dossier (`privateBiography`, `secrets`, `objectives`). `CharacterCard` shows both on `/guest-ledger`, with the dossier behind a seal. Murderer/victim flags never leave the server except to `/admin`. No real character content is authored yet: `npm run demo:seed` adds a placeholder cast of 24 (`scripts/demo-characters.ts`), and the real cast goes into the `characters` table with `npm run db:studio`. Staff deal characters from `/admin` (see below).
 
 ### Claiming points during the event
 
 Digital flags self-score, but not everything can be auto-checked — an in-person objective, a piece of roleplay. `POST /api/claims` lets a signed-in guest submit a claim (label + optional note); it stays `pending` until a staff member reviews it at `/admin`, gated by a shared `ADMIN_SECRET` passphrase (no per-staff accounts). Approving sets the points awarded; `GET /api/me` sums approved claim points into `totalScore` alongside the CTF score, which `ChallengeStandings` displays.
+
+The same passphrase opens the rest of the Staff Office at `/admin`. `GET /api/admin/overview` feeds headline counts, solves per challenge, every guest, and the cast. `POST /api/admin/characters` with `action: "assign"` deals unassigned active characters at random to attending guests who have none; `"clear"` takes them all back. `POST /api/admin/impersonate` signs the staff browser in as any guest, as their magic link would, so staff can see the site as that guest does.
 
 ### Database setup
 
@@ -113,7 +115,7 @@ Digital flags self-score, but not everything can be auto-checked — an in-perso
 
 `GET /api/standings` ranks every guest by the same score as `GET /api/me` (solves plus approved claims) for the Guest Ledger leaderboard. It is signed-in only; other guests appear by first name and initial.
 
-For walkthroughs, `npm run demo:seed` fills the register with invented guests on the reserved `@demo.blackveil.invalid` domain, `npm run demo:reset -- you@example.com` forgets one guest so a walkthrough starts from zero, and `npm run demo:clear` removes every demo guest. `DEMO.md` is the step-by-step demo runbook.
+For walkthroughs, `npm run demo:seed` fills the register with invented guests on the reserved `@demo.blackveil.invalid` domain, `npm run demo:reset -- you@example.com` forgets one guest so a walkthrough starts from zero, and `npm run demo:clear` removes every demo guest and demo character. `DEMO.md` is the step-by-step demo runbook.
 
 The model supports a primary 1926 murder and an optional advanced investigation into Cassandra and the 1924 masquerade without choosing how those mysteries connect.
 

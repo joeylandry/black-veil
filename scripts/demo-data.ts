@@ -5,7 +5,7 @@
  *
  *   npm run demo:seed                    replace every demo guest with a fresh set
  *   npm run demo:reset -- you@email.com  forget one guest entirely (RSVP, solves, claims)
- *   npm run demo:clear                   remove every demo guest — run before real guests arrive
+ *   npm run demo:clear                   remove every demo guest and demo character — run before real guests arrive
  *
  * Demo guests all use the reserved @demo.blackveil.invalid domain, so clearing them can
  * never touch a real RSVP. Reads DATABASE_URL the same way drizzle.config.ts does.
@@ -16,7 +16,8 @@ import postgres from "postgres";
 import { benchLabs, benchSolveId } from "@/data/bench";
 import { ctfChallenges } from "@/data/ctf";
 import { scoreForSolvedIds } from "@/lib/ctf-scoring";
-import { ctfSolves, guests, magicLinks, pointClaims, rsvps } from "@/lib/db/schema";
+import { characters, ctfSolves, guests, magicLinks, pointClaims, rsvps } from "@/lib/db/schema";
+import { demoCharacters } from "./demo-characters";
 
 if (!process.env.DATABASE_URL) {
   try {
@@ -89,16 +90,31 @@ async function deleteGuests(guestIds: string[], emails: string[]) {
   if (emails.length) await db.delete(rsvps).where(inArray(rsvps.email, emails));
 }
 
+/** Removes the demo cast, first taking it back from any guest (demo or real) who holds one. */
+async function clearDemoCharacters() {
+  const names = demoCharacters.map((character) => character.characterName);
+  const rows = await db.select({ id: characters.id }).from(characters).where(inArray(characters.characterName, names));
+  const ids = rows.map((row) => row.id);
+  if (ids.length) {
+    await db.update(guests).set({ characterId: null }).where(inArray(guests.characterId, ids));
+    await db.delete(characters).where(inArray(characters.id, ids));
+  }
+  return ids.length;
+}
+
 async function clearDemo() {
   const rows = await db.select({ id: guests.id }).from(guests).where(like(guests.email, `%@${DEMO_DOMAIN}`));
   await deleteGuests(rows.map((row) => row.id), []);
   await db.delete(rsvps).where(like(rsvps.email, `%@${DEMO_DOMAIN}`));
-  return rows.length;
+  const cast = await clearDemoCharacters();
+  return { guests: rows.length, characters: cast };
 }
 
 async function seed() {
   const removed = await clearDemo();
-  if (removed) console.log(`Removed ${removed} earlier demo guests.`);
+  if (removed.guests) console.log(`Removed ${removed.guests} earlier demo guests.`);
+  // Unassigned on purpose: dealing them out is the "Assign characters" button on /admin.
+  await db.insert(characters).values(demoCharacters.map((character) => ({ ...character, murderer: !!character.murderer, victim: !!character.victim })));
 
   for (const [index, [name, trials, bench, attending]] of roster.entries()) {
     const email = emailFor(name);
@@ -151,7 +167,7 @@ async function seed() {
     const claim = approvedClaims.find(([claimant]) => claimant === name)?.[2] ?? 0;
     return `${name} (${scoreForSolvedIds([...trialIds.slice(0, trials), ...benchIds.slice(0, bench)]) + claim})`;
   });
-  console.log(`Seeded ${roster.length} demo guests, ${approvedClaims.length} approved and ${pendingClaims.length} pending claims.`);
+  console.log(`Seeded ${roster.length} demo guests, ${approvedClaims.length} approved and ${pendingClaims.length} pending claims, ${demoCharacters.length} unassigned characters.`);
   console.log(`Top of the standings: ${top.join(", ")}`);
 }
 
@@ -176,7 +192,10 @@ async function main() {
   console.log(`Database: ${new URL(url!).host}${new URL(url!).pathname}`);
   if (command === "seed") await seed();
   else if (command === "reset") await resetGuest(argument);
-  else if (command === "clear") console.log(`Removed ${await clearDemo()} demo guests.`);
+  else if (command === "clear") {
+    const removed = await clearDemo();
+    console.log(`Removed ${removed.guests} demo guests and ${removed.characters} demo characters.`);
+  }
   else {
     console.error("Usage: tsx scripts/demo-data.ts seed | reset <email> | clear");
     process.exitCode = 1;

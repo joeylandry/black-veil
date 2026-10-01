@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useEffect, useState } from "react";
+import { AdminDashboard } from "./admin-dashboard";
 
 type AdminClaim = {
   id: string;
@@ -20,6 +21,7 @@ export function AdminClaims() {
   const [secretInput, setSecretInput] = useState("");
   const [claims, setClaims] = useState<AdminClaim[] | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [refreshKey, setRefreshKey] = useState(0);
 
   useEffect(() => {
     try {
@@ -75,6 +77,7 @@ export function AdminClaims() {
     });
     if (response.ok) {
       setClaims((current) => (current ?? []).filter((claim) => claim.id !== id));
+      setRefreshKey((key) => key + 1);
     }
   }
 
@@ -83,7 +86,7 @@ export function AdminClaims() {
       <form className="ledger-form admin-unlock" onSubmit={unlock} noValidate>
         <header>
           <p className="eyebrow">Staff only</p>
-          <h1>Claim queue</h1>
+          <h1>Staff office</h1>
         </header>
         <div className="ledger-fields">
           <label>
@@ -100,10 +103,12 @@ export function AdminClaims() {
   return (
     <div className="admin-claims">
       <header>
-        <p className="eyebrow">Staff only · pending</p>
-        <h1>Claim Queue</h1>
-        <button type="button" className="button-link" onClick={() => load(secret)}>Refresh</button>
+        <p className="eyebrow">Staff only · the register</p>
+        <h1>Staff Office</h1>
+        <button type="button" className="button-link" onClick={() => { load(secret); setRefreshKey((key) => key + 1); }}>Refresh</button>
       </header>
+      <AdminDashboard secret={secret} refreshKey={refreshKey} />
+      <h2 className="admin-section-title">Claim queue</h2>
       {error && <p className="field-error" role="alert">{error}</p>}
       {claims && claims.length === 0 && <p>Nothing pending.</p>}
       {claims && claims.length > 0 && (
