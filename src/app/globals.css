@@ -488,7 +488,7 @@ img { max-width: 100%; height: auto; }
 .masthead h1 { margin: -.1rem 0 .1rem; font-family: var(--font-display); font-size: clamp(4.7rem, 12vw, 10.5rem); line-height: .77; font-weight: 600; letter-spacing: -.045em; text-transform: uppercase; }
 .masthead .established { margin: .6rem 0; letter-spacing: .38em; }
 .masthead-subtitle { font-family: var(--font-sans), Arial, sans-serif; font-size: clamp(.7rem, 1.2vw, .9rem); font-weight: 700; letter-spacing: .24em; text-transform: uppercase; }
-.masthead-subtitle span { margin: 0 .45em; color: var(--oxblood); }
+.masthead-subtitle-sep { margin: 0 .45em; color: var(--oxblood); }
 .masthead-compact { padding: 2.5rem 0 3rem; border-bottom: 1px solid var(--rule); }
 .masthead-compact > .insignia { width: 65px; }
 .masthead-compact h1 { font-size: clamp(3rem, 8vw, 6.5rem); }
@@ -697,6 +697,8 @@ img { max-width: 100%; height: auto; }
   .masthead > .insignia { width: 72px; }
   .masthead h1 { font-size: clamp(4.1rem,24vw,6.3rem); line-height: .74; }
   .masthead-subtitle { line-height: 1.8; letter-spacing: .14em; }
+  .masthead-subtitle-sep { display: none; }
+  .masthead-subtitle-tail { display: block; }
   .hero-notice { grid-template-columns: 1fr; margin-top: 2.5rem; gap: 2.8rem; }
   .management-copy { padding: 1.5rem 0 0; border-left: 0; }
   .posted-hours { flex-direction: column; gap: .25rem; text-align: center; }
