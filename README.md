@@ -109,6 +109,12 @@ Digital flags self-score, but not everything can be auto-checked — an in-perso
 4. `npm run db:generate` regenerates migrations after schema changes in `src/lib/db/schema.ts`; `npm run db:studio` opens Drizzle Studio against the configured database — also how character content gets entered for now.
 5. Deploying: set `DATABASE_URL`, `SESSION_SECRET`, and `ADMIN_SECRET` in the host's environment (for every environment that serves the site, preview builds included — `.env.local` is not deployed), and run step 3 against that database before the first RSVP. Skipping either leaves `POST /api/rsvp` returning a 503 and the register refusing names.
 
+### Standings and demo data
+
+`GET /api/standings` ranks every guest by the same score as `GET /api/me` (solves plus approved claims) for the Guest Ledger leaderboard. It is signed-in only; other guests appear by first name and initial.
+
+For walkthroughs, `npm run demo:seed` fills the register with invented guests on the reserved `@demo.blackveil.invalid` domain, `npm run demo:reset -- you@example.com` forgets one guest so a walkthrough starts from zero, and `npm run demo:clear` removes every demo guest. `DEMO.md` is the step-by-step demo runbook.
+
 The model supports a primary 1926 murder and an optional advanced investigation into Cassandra and the 1924 masquerade without choosing how those mysteries connect.
 
 ## Historical reference links

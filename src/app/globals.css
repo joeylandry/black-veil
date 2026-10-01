@@ -657,6 +657,7 @@ img { max-width: 100%; height: auto; }
 .leaderboard-labels { font-family: var(--font-sans), Arial, sans-serif; font-size: .62rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
 .leaderboard-row > :last-child { text-align: right; }
 .character-sealed { color: var(--oxblood); font-style: italic; }
+.leaderboard-you { background: rgba(120, 20, 20, .08); box-shadow: inset 4px 0 0 var(--oxblood); }
 .leaderboard-note { margin: 1.5rem 0 0; padding-top: 1rem; color: var(--oxblood-dark); border-top: 1px dashed var(--oxblood); font-size: .78rem; }
 
 .point-claims { max-width: 720px; margin: 5rem auto 0; padding-top: 3rem; border-top: 1px solid #6c624d; }
