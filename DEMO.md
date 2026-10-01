@@ -12,7 +12,7 @@ Run these from the repo, with `.env.local` pointing at **the database the demo s
 
 ```bash
 npm run db:migrate          # make sure every table exists
-npm run demo:seed           # 22 invented guests, solves, 3 approved + 3 pending claims, 24 unassigned characters
+npm run demo:seed           # 22 invented guests, solves, 3 approved + 3 pending claims, 35 unassigned characters (one per person in the program)
 npm run demo:reset -- YOUR_DEMO_EMAIL   # wipe your own RSVP/solves so you start from zero
 ```
 
@@ -175,16 +175,16 @@ Or click **Submit for review** on the untouched file first, to show the failing 
 
 1. **GUEST LEDGER** in the nav → scroll to the leaderboard. You've climbed: with all 7 trials plus RST-01 and RST-08 you have **235** and sit **#5**, between Sofia M. and Theo L. (Fewer trials means a lower rank, which is fine.)
 2. Switch to Tab 2 (`/admin`) → enter **ADMIN_SECRET** → **Unlock**. This is the **Staff Office**: a visual view of the database, top to bottom:
-   - **Four tiles:** names on the register (23 · 21 attending · 2 regrets), flags & tickets solved, claims awaiting review (3), characters dealt (**0 / 24**).
+   - **Four tiles:** names on the register (23 · 21 attending · 2 regrets), flags & tickets solved, claims awaiting review (3), characters dealt (**0 / 35**).
    - **Solves by challenge:** a bar per trial and per bench ticket. Hover a bar for "N of 23 guests · %". Your solves are already in the counts.
-   - **The cast:** all 24 characters, each marked *Unassigned*. Two carry a dark **MURDERER · STAFF ONLY** / **VICTIM · STAFF ONLY** tag.
+   - **The cast:** all 35 characters, one per person in the program, each a pun on their own name (Joseph “Laundry” Landry, Timothy “Gin” McGinley, Arjun “The Bat” Bhat…), each marked *Unassigned*. Two carry a dark **MURDERER · STAFF ONLY** / **VICTIM · STAFF ONLY** tag.
    - **Guests:** the full table with RSVP, solves, points and character, plus a **Sign in as** button on every row.
    - **Claim queue** at the bottom.
 
 > Talking point: this is the database, live. Guests never see the murderer/victim flags; the API that serves a guest doesn't even send them.
 
 3. **Approve a claim:** at the bottom, Priya Raman's "Found the river door token" → set points → **Approve**. The pending tile drops to 2.
-4. **Deal the characters:** scroll to **The cast** → **Assign characters**. You'll see "Dealt 21 characters to attending guests." Every card now shows → *guest name*, the tile reads **21 / 24**, and the Guests table fills its Character column. (Click it again to show it's safe: "Every attending guest already holds a character.") The two guests who sent regrets get nothing.
+4. **Deal the characters:** scroll to **The cast** → **Assign characters**. You'll see "Dealt 21 characters to attending guests." Every card now shows → *guest name*, the tile reads **21 / 35**, and the Guests table fills its Character column. (Click it again to show it's safe: "Every attending guest already holds a character.") The two guests who sent regrets get nothing.
 
 > Talking point: assignment is random, only to confirmed attendees, and never reshuffles someone who already has a character.
 
@@ -197,7 +197,7 @@ Or click **Submit for review** on the untouched file first, to show the failing 
 
 > Talking point: staff can see exactly what any guest sees, which is how you'd support someone at the door. The dossier is only ever served to the guest it belongs to.
 
-Characters are dealt at random, so you won't know in advance who you or Eleanor will be. Every one of the 24 has a full card.
+Characters are dealt at random, so you won't know in advance who you or Eleanor will be. Every one of the 35 has a full card. The laugh line is that nobody gets their own character: you might be dealt your neighbour.
 
 ---
 
@@ -245,6 +245,6 @@ ADMIN      /admin → ADMIN_SECRET → approve claim → Assign characters → G
 If you seeded the **production** database, take the invented guests out before real guests see the leaderboard:
 
 ```bash
-npm run demo:clear          # removes every @demo.blackveil.invalid guest and the 24 demo characters
+npm run demo:clear          # removes every @demo.blackveil.invalid guest and the 35 demo characters
 npm run demo:reset -- YOUR_DEMO_EMAIL   # optional: drop your demo RSVP too
 ```

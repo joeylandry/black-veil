@@ -17,7 +17,7 @@ import { benchLabs, benchSolveId } from "@/data/bench";
 import { ctfChallenges } from "@/data/ctf";
 import { scoreForSolvedIds } from "@/lib/ctf-scoring";
 import { characters, ctfSolves, guests, magicLinks, pointClaims, rsvps } from "@/lib/db/schema";
-import { demoCharacters } from "./demo-characters";
+import { demoCharacters, retiredDemoCharacterNames } from "./demo-characters";
 
 if (!process.env.DATABASE_URL) {
   try {
@@ -92,7 +92,7 @@ async function deleteGuests(guestIds: string[], emails: string[]) {
 
 /** Removes the demo cast, first taking it back from any guest (demo or real) who holds one. */
 async function clearDemoCharacters() {
-  const names = demoCharacters.map((character) => character.characterName);
+  const names = [...demoCharacters.map((character) => character.characterName), ...retiredDemoCharacterNames];
   const rows = await db.select({ id: characters.id }).from(characters).where(inArray(characters.characterName, names));
   const ids = rows.map((row) => row.id);
   if (ids.length) {
