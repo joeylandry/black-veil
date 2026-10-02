@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { desc, eq, isNotNull } from "drizzle-orm";
 import { getDb } from "@/lib/db/client";
 import { characters, guests, rsvps } from "@/lib/db/schema";
-import { isAuthorizedAdmin } from "@/lib/auth/admin";
+import { adminGuard } from "@/lib/auth/admin";
 
 function shuffle<T>(items: T[]) {
   const copy = [...items];
@@ -20,9 +20,8 @@ function shuffle<T>(items: T[]) {
  * action "clear": take every character back, so the deal can be run again.
  */
 export async function POST(request: NextRequest) {
-  if (!isAuthorizedAdmin(request)) {
-    return NextResponse.json({ error: "Unauthorized." }, { status: 401 });
-  }
+  const denied = adminGuard(request);
+  if (denied) return denied;
 
   const body = await request.json().catch(() => null);
   const action = body?.action;

@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { desc } from "drizzle-orm";
 import { getDb } from "@/lib/db/client";
 import { characters, ctfSolves, guests, pointClaims, rsvps } from "@/lib/db/schema";
-import { isAuthorizedAdmin } from "@/lib/auth/admin";
+import { adminGuard } from "@/lib/auth/admin";
 import { scoreForSolvedIds } from "@/lib/ctf-scoring";
 import { ctfChallenges } from "@/data/ctf";
 import { benchLabs, benchSolveId } from "@/data/bench";
@@ -13,9 +13,8 @@ import { benchLabs, benchSolveId } from "@/data/bench";
  * roster — including the murderer/victim flags, which nothing outside /admin ever reads.
  */
 export async function GET(request: NextRequest) {
-  if (!isAuthorizedAdmin(request)) {
-    return NextResponse.json({ error: "Unauthorized." }, { status: 401 });
-  }
+  const denied = adminGuard(request);
+  if (denied) return denied;
 
   const db = getDb();
   const [guestRows, rsvpRows, solveRows, claimRows, characterRows] = await Promise.all([

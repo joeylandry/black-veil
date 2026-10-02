@@ -2,12 +2,11 @@ import { NextRequest, NextResponse } from "next/server";
 import { desc, eq } from "drizzle-orm";
 import { getDb } from "@/lib/db/client";
 import { guests, pointClaims } from "@/lib/db/schema";
-import { isAuthorizedAdmin } from "@/lib/auth/admin";
+import { adminGuard } from "@/lib/auth/admin";
 
 export async function GET(request: NextRequest) {
-  if (!isAuthorizedAdmin(request)) {
-    return NextResponse.json({ error: "Unauthorized." }, { status: 401 });
-  }
+  const denied = adminGuard(request);
+  if (denied) return denied;
 
   const statusFilter = request.nextUrl.searchParams.get("status");
   const db = getDb();

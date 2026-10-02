@@ -36,7 +36,7 @@ type Overview = {
 };
 
 /** The staff view of the whole register: counts, solves per challenge, guests, and the cast. */
-export function AdminDashboard({ secret, refreshKey }: { secret: string; refreshKey: number }) {
+export function AdminDashboard({ secret, refreshKey, onChange }: { secret: string; refreshKey: number; onChange?: () => void }) {
   const [data, setData] = useState<Overview | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
@@ -46,7 +46,8 @@ export function AdminDashboard({ secret, refreshKey }: { secret: string; refresh
   const load = useCallback(async () => {
     const response = await fetch("/api/admin/overview", { headers: { Authorization: `Bearer ${secret}` } });
     if (!response.ok) {
-      setError("The register could not be read.");
+      const body = await response.json().catch(() => null);
+      setError(body?.error ?? "The register could not be read.");
       return;
     }
     setError(null);
@@ -77,6 +78,23 @@ export function AdminDashboard({ secret, refreshKey }: { secret: string; refresh
       );
     }
     await load();
+    onChange?.();
+    setBusy(false);
+  }
+
+  async function loadCast(hasCast: boolean) {
+    if (hasCast && !window.confirm("Replace the cast with a fresh copy of the 35 characters? Everyone holding one loses it, and any edits to those characters are undone.")) return;
+    setBusy(true);
+    setNotice(null);
+    const response = await fetch("/api/admin/demo", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Authorization: `Bearer ${secret}` },
+      body: JSON.stringify({ action: "load-cast" }),
+    });
+    const body = await response.json().catch(() => null);
+    setNotice(body?.message ?? body?.error ?? "That did not work.");
+    await load();
+    onChange?.();
     setBusy(false);
   }
 
@@ -132,7 +150,7 @@ export function AdminDashboard({ secret, refreshKey }: { secret: string; refresh
             <p className="admin-panel-note">
               {stats.characters
                 ? "Dealing gives every attending guest without a character a random one. Guests who already hold one keep it."
-                : "No characters are in the database yet. Run npm run demo:seed, or add them in Drizzle Studio."}
+                : "No characters are in the database yet. Load the cast of 35, or create characters one at a time in the database editor below."}
             </p>
           </div>
           <div className="admin-actions">
@@ -141,6 +159,9 @@ export function AdminDashboard({ secret, refreshKey }: { secret: string; refresh
             </button>
             <button type="button" disabled={busy || !stats.assigned} onClick={() => characters("clear")}>
               Take all back
+            </button>
+            <button type="button" className={stats.characters ? undefined : "admin-primary"} disabled={busy} onClick={() => loadCast(stats.characters > 0)}>
+              {stats.characters ? "Reload the cast" : "Load the cast"}
             </button>
           </div>
         </div>

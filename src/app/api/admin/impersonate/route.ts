@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { eq } from "drizzle-orm";
 import { getDb } from "@/lib/db/client";
 import { guests } from "@/lib/db/schema";
-import { isAuthorizedAdmin } from "@/lib/auth/admin";
+import { adminGuard } from "@/lib/auth/admin";
 import { setSessionCookie } from "@/lib/auth/session";
 
 /**
@@ -11,9 +11,8 @@ import { setSessionCookie } from "@/lib/auth/session";
  * /resume/restored to load that guest's register into local storage.
  */
 export async function POST(request: NextRequest) {
-  if (!isAuthorizedAdmin(request)) {
-    return NextResponse.json({ error: "Unauthorized." }, { status: 401 });
-  }
+  const denied = adminGuard(request);
+  if (denied) return denied;
 
   const body = await request.json().catch(() => null);
   const guestId = typeof body?.guestId === "string" ? body.guestId : "";
