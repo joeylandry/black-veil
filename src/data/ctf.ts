@@ -57,7 +57,7 @@ export const ctfChallenges: CtfChallenge[] = [
     title: "A Thread in the Rose",
     points: 30,
     briefing: "The last room is not printed in the public dossier. Its name is woven into this restricted page.",
-    clue: "Inspect the Black Rose page more closely. Two words; one underscore.",
+    clue: "Inspect the Black Frog page more closely. Two words; one underscore.",
     hint: "An investigator may examine the page source as carefully as any physical record.",
   },
   {

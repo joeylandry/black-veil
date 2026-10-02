@@ -115,7 +115,7 @@ export function GuestLedger() {
           <p className="rsvp-storage-note">Your entry has been recorded for event management.</p>
           <div className="ledger-success-actions">
             <Link href="/invitation" className="button-link">Open private invitation</Link>
-            <Link href="/black-rose" className="button-link">Enter the Black Rose trials</Link>
+            <Link href="/black-frog" className="button-link">Enter the Black Frog trials</Link>
           </div>
         </header>
       </div>

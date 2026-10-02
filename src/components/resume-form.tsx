@@ -37,7 +37,7 @@ export function ResumeForm() {
       <section className="invitation-locked">
         <p className="eyebrow">Check your correspondence</p>
         <h1>A sign-in link is on its way.</h1>
-        <p>If {email} is on file, a private link back to your guest register, Black Rose standing, and character will arrive shortly. It expires in 30 minutes and works once.</p>
+        <p>If {email} is on file, a private link back to your guest register, Black Frog standing, and character will arrive shortly. It expires in 30 minutes and works once.</p>
       </section>
     );
   }
