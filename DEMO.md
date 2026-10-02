@@ -2,7 +2,7 @@
 
 A script you can read off a second screen during the demo. Every command and answer below was run end to end against a fresh build before this file was committed.
 
-**Path:** archive → hidden terminal → passcode → RSVP → leaderboard → CTF trials → Restoration Bench → staff office (dashboard, claims, characters) → signing in as a guest to see their character card. **Time:** about 12 minutes.
+**Path:** archive → hidden terminal → passcode → RSVP → leaderboard → CTF trials → Restoration Bench → staff office (dashboard, claims, characters) → signing in as a classmate to see their character card → submitting flags as them while the scoreboard updates live. **Time:** about 14 minutes.
 
 ---
 
@@ -10,7 +10,7 @@ A script you can read off a second screen during the demo. Every command and ans
 
 You can do all of this from **`/admin`** on the live site, with no terminal. Unlock with **ADMIN_SECRET**, then use the **Demo tools** panel:
 
-1. **Seed demo data:** 22 invented guests, their solves, 3 approved + 3 pending claims, and the 35-character cast (one per person in the program), all unassigned so you can deal them on stage.
+1. **Seed demo data:** everyone in the program goes on the register (34 people), attending, each **already holding the character based on their own name**, all at **0 points**, plus 3 pending claims. The one character left unassigned is **Joseph “Laundry” Landry**: yours, dealt live in step 8.
 2. **Reset guest:** type **YOUR_DEMO_EMAIL** → **Reset guest**, so you start from zero.
 
 Prefer the terminal? With `.env.local` pointing at the database the live site uses (each script prints `Database: host/name` first, so check that line):
@@ -23,7 +23,7 @@ npm run demo:reset -- YOUR_DEMO_EMAIL   # same as "Reset guest"
 
 You can seed as many times as you like. It replaces the demo guests and the cast each time. It never touches real RSVPs: every demo guest uses the `@demo.blackveil.invalid` domain.
 
-After seeding, the leaderboard reads: **Eleanor D. 460 · Marcus W. 345 · Priya R. 320 · Sofia M. 235 · Theo L. 230 …**
+After seeding, the leaderboard shows the program's names (first name and initial) at 0 points, and `/admin` reads **34 names · 34 / 35 characters dealt**.
 
 Also check:
 - [ ] You know the **ADMIN_SECRET** for the demo site (needed in steps 8–9). If `/admin` says it isn't set, add it in Vercel → Settings → Environment Variables (Production), then **redeploy**.
@@ -82,7 +82,7 @@ Optional laugh lines if you have time: `sudo su` → "Nice try." · `rm -rf /` �
    - ◉ *Yes, I shall attend.*
    - ☑ the 1920s attire checkbox
 4. **Enter my name upon the register**.
-5. You'll see "Your name has been entered upon the guest register." Below it is a black card titled **Sealed**: "Management has not yet chosen who you will be". That's your character slot, and you'll fill it in step 8. Further down, the **Guest Ledger** leaderboard shows the seeded guests, with your row highlighted at 0 points.
+5. You'll see "Your name has been entered upon the guest register." Below it is a black card titled **Sealed**: "Management has not yet chosen who you will be". That's your character slot, and you'll fill it in step 8. Further down, the **Guest Ledger** leaderboard shows everyone in the program at 0, with your row highlighted.
 
 > Talking point: the RSVP is written to Postgres and signs this device in with an httpOnly session cookie. Guests can resume on another device with a magic link (`/resume`).
 
@@ -179,31 +179,40 @@ Or click **Submit for review** on the untouched file first, to show the failing 
 
 ## 8. Leaderboard + the staff office (≈2 min)
 
-1. **GUEST LEDGER** in the nav → scroll to the leaderboard. You've climbed: with all 7 trials plus RST-01 and RST-08 you have **235** and sit **#5**, between Sofia M. and Theo L. (Fewer trials means a lower rank, which is fine.)
+1. **GUEST LEDGER** in the nav → scroll to the leaderboard. You're **#1** with **235** (all 7 trials plus RST-01 and RST-08); everyone else is still at 0.
 2. Switch to Tab 2 (`/admin`) → enter **ADMIN_SECRET** → **Unlock**. This is the **Staff Office**: a visual view of the database, top to bottom:
-   - **Four tiles:** names on the register (23 · 21 attending · 2 regrets), flags & tickets solved, claims awaiting review (3), characters dealt (**0 / 35**).
-   - **Solves by challenge:** a bar per trial and per bench ticket. Hover a bar for "N of 23 guests · %". Your solves are already in the counts.
-   - **The cast:** all 35 characters, one per person in the program, each a pun on their own name (Joseph “Laundry” Landry, Timothy “Gin” McGinley, Arjun “The Bat” Bhat…), each marked *Unassigned*. Two carry a dark **MURDERER · STAFF ONLY** / **VICTIM · STAFF ONLY** tag.
-   - **Guests:** the full table with RSVP, solves, points and character, plus a **Sign in as** button on every row.
-   - **Claim queue** at the bottom.
+   - **Four tiles:** names on the register (**35** · 35 attending), flags & tickets solved, claims awaiting review (3), characters dealt (**34 / 35**).
+   - **Solves by challenge:** a bar per trial and per bench ticket. Hover a bar for "N of 35 guests · %". Your solves are already in the counts.
+   - **The cast:** all 35 characters, one per person in the program, each a pun on their own name, each showing → *who holds it*. Only **Joseph “Laundry” Landry** is *Unassigned*. Two carry a dark **MURDERER · STAFF ONLY** / **VICTIM · STAFF ONLY** tag.
+   - **Guests:** everyone, with RSVP, solves, points and character, plus a **Sign in as** button on every row.
+   - **Demo tools** and the **Database** editor, then the **Claim queue** at the bottom.
 
-> Talking point: this is the database, live. Guests never see the murderer/victim flags; the API that serves a guest doesn't even send them.
+> Talking point: this is the database, live. It refreshes itself every few seconds. Guests never see the murderer/victim flags; the API that serves a guest doesn't even send them.
 
-3. **Approve a claim:** at the bottom, Priya Raman's "Found the river door token" → set points → **Approve**. The pending tile drops to 2.
-4. **Deal the characters:** scroll to **The cast** → **Assign characters**. You'll see "Dealt 21 characters to attending guests." Every card now shows → *guest name*, the tile reads **21 / 35**, and the Guests table fills its Character column. (Click it again to show it's safe: "Every attending guest already holds a character.") The two guests who sent regrets get nothing.
+3. **Approve a claim:** at the bottom, Aidan Leach's "Found the river door token" → set points → **Approve**. The pending tile drops to 2, and Aidan picks up the points.
+4. **Deal your character:** scroll to **The cast** → **Assign characters**. You'll see **"Dealt 1 character to attending guests (all matched by name)."** The tile reads **35 / 35**, and Joseph “Laundry” Landry now shows → *your name*. (Click it again to show it's safe: "Every attending guest already holds a character.")
 
-> Talking point: assignment is random, only to confirmed attendees, and never reshuffles someone who already has a character.
+> Talking point: assignment matches each guest to the character based on them by name (nicknames too: "Joey Landry" finds Joseph), only for confirmed attendees, and never takes a character from someone who already has one. Anyone who doesn't match is dealt a random leftover.
 
-## 9. Become a guest and see their character card (≈1 min)
+## 9. See the character cards (≈1 min)
 
-1. Back in Tab 1, reload **GUEST LEDGER**. The Sealed card has become **your** character: name, occupation, faction tags and public biography. Your leaderboard row now shows the character too.
-2. Click **Break the seal** to open the private dossier: "What you are hiding" and "What you must do tonight". **Reseal** closes it.
-3. In Tab 2 (`/admin`) → **Guests** table → **Eleanor Downes** (the #1 guest) → **Sign in as**. The browser becomes Eleanor and lands on her Guest Ledger: her name, her rank #1 on the leaderboard, and *her* character card → **Break the seal**.
-4. **Get back to yourself:** `/admin` → Guests table → your own row → **Sign in as**.
+1. Back in Tab 1, reload **GUEST LEDGER**. The Sealed card has become **Joseph “Laundry” Landry**: name, occupation, faction tags and public biography. Your leaderboard row shows the character too.
+2. Click **Break the seal** to open the private dossier: "What you are hiding" and "What you must do tonight". **Reseal** closes it. (You're the murderer. Only staff can see that tag; the card doesn't say it.)
 
-> Talking point: staff can see exactly what any guest sees, which is how you'd support someone at the door. The dossier is only ever served to the guest it belongs to.
+## 10. Play as a classmate while the scoreboard updates live (≈2 min)
 
-Characters are dealt at random, so you won't know in advance who you or Eleanor will be. Every one of the 35 has a full card. The laugh line is that nobody gets their own character: you might be dealt your neighbour.
+**Sign in as** switches the *whole browser* to that guest: every tab in it, Incognito included. So for this step use a **second browser**: a normal (non-Incognito) window, Safari, or your phone. Your Incognito window stays signed in as you, showing the leaderboard.
+
+1. In your Incognito window, leave **GUEST LEDGER** open, scrolled to the leaderboard. Put it where the audience can see it.
+2. In the **second browser**, open `/admin` → **ADMIN_SECRET** → **Unlock** → **Database** panel → type a name in the filter (e.g. `aidan`) → **Sign in as** on **Aidan Leach**.
+3. That browser lands on Aidan's Guest Ledger: his name and **Dr. Aidan “The Leech” Leach**'s card → **Break the seal** to show his dossier.
+4. Still as Aidan: **BLACK ROSE TRIALS** → enter `VEIL{KEEPER}` in **III** and `VEIL{1147}` in **IV**. His score seal reads **45**.
+5. Look at your Incognito window: **within about five seconds, without a reload**, Aidan's points jump by 45 (plus whatever you approved for his claim in step 8) and he climbs the leaderboard. The staff dashboard's tiles and chart update the same way.
+6. Repeat with anyone you like (**Sign in as** works on every row). A great one: **Timothy McGinley**, the victim.
+
+> Talking point: every flag is checked on the server and written to the database; every open scoreboard picks it up within seconds.
+
+To put the second browser back to staff-only, just close it; your Incognito session was never touched.
 
 ---
 
@@ -223,8 +232,9 @@ RST-01     BINDERY   · git log --oneline · git show c0f5a28 · git revert c0f5
 RST-08     CLOAKROOM · whoami · GET /vault/records?owner=me · GET /vault/records/117
            → RSV-7731-CASTELLO / 13 / 404 / guard line
 RST-04     DRAYMAN   · paste the Dockerfile above
-ADMIN      /admin → ADMIN_SECRET → approve claim → Assign characters → Guests: Sign in as Eleanor → Break the seal
-           → Sign in as yourself to get back
+ADMIN      /admin → ADMIN_SECRET → approve claim → Assign characters (you get Joseph “Laundry” Landry by name)
+LIVE       2nd browser → /admin → Database → filter “aidan” → Sign in as → Black Rose: VEIL{KEEPER}, VEIL{1147}
+           → watch the Incognito leaderboard update by itself
 ```
 
 ## Don'ts
@@ -246,7 +256,9 @@ ADMIN      /admin → ADMIN_SECRET → approve claim → Assign characters → G
 | `/admin` says the database could not be read | `DATABASE_URL` is wrong on the deployment, or migrations weren't run (`npm run db:migrate`). |
 | The cast is empty | `/admin` → The cast → **Load the cast**. |
 | A guest, character or score is wrong | `/admin` → **Database** → find the row → **Edit** or **Delete**. |
-| Want to deal characters again on stage | `/admin` → **Take all back**, then **Assign characters** again. |
+| Want to deal characters again on stage | `/admin` → **Take all back**, then **Assign characters** again. Everyone gets their own character back by name. |
+| Your Incognito window turned into Aidan | You used **Sign in as** in the same browser. `/admin` → Database → your row → **Sign in as** to get back. |
+| You didn't get Joseph “Laundry” Landry | Your RSVP name didn't match (e.g. a typo). `/admin` → Database → Guests → your row → **Edit** → pick the character. |
 | Need a second take | `/admin` → **Reset guest** on your email, close all Incognito windows, open a new one. |
 
 ## After the demo

@@ -4,6 +4,7 @@ import { desc, eq, isNotNull } from "drizzle-orm";
 import { getDb } from "@/lib/db/client";
 import { characters, guests, rsvps } from "@/lib/db/schema";
 import { adminGuard } from "@/lib/auth/admin";
+import { matchByName } from "@/lib/demo/seed";
 
 function shuffle<T>(items: T[]) {
   const copy = [...items];
@@ -15,8 +16,9 @@ function shuffle<T>(items: T[]) {
 }
 
 /**
- * action "assign": deal every unassigned active character, at random, to attending guests
- * who don't have one yet. Guests already holding a character keep it.
+ * action "assign": give every attending guest without a character one. A guest whose name
+ * matches a cast member gets the character based on them; the rest are dealt what's left
+ * at random. Guests already holding a character keep it.
  * action "clear": take every character back, so the deal can be run again.
  */
 export async function POST(request: NextRequest) {
@@ -36,22 +38,32 @@ export async function POST(request: NextRequest) {
   }
 
   const [guestRows, rsvpRows, characterRows] = await Promise.all([
-    db.select({ id: guests.id, email: guests.email, characterId: guests.characterId }).from(guests),
+    db.select({ id: guests.id, email: guests.email, fullName: guests.fullName, characterId: guests.characterId }).from(guests),
     db.select({ email: rsvps.email, attending: rsvps.attending }).from(rsvps).orderBy(desc(rsvps.createdAt)),
-    db.select({ id: characters.id }).from(characters).where(eq(characters.active, true)),
+    db.select({ id: characters.id, characterName: characters.characterName }).from(characters).where(eq(characters.active, true)),
   ]);
 
   const attendingByEmail = new Map<string, string>();
   for (const row of rsvpRows) if (!attendingByEmail.has(row.email)) attendingByEmail.set(row.email, row.attending);
 
   const taken = new Set(guestRows.map((guest) => guest.characterId).filter(Boolean));
-  const free = shuffle(characterRows.filter((row) => !taken.has(row.id)));
-  const waiting = shuffle(guestRows.filter((guest) => !guest.characterId && attendingByEmail.get(guest.email) === "yes"));
+  const free = characterRows.filter((row) => !taken.has(row.id));
+  const waiting = guestRows.filter((guest) => !guest.characterId && attendingByEmail.get(guest.email) === "yes");
 
-  const pairs = waiting.slice(0, free.length).map((guest, index) => ({ guestId: guest.id, characterId: free[index].id }));
+  // A guest named in the cast gets the character based on them; everyone else is dealt
+  // one of what remains at random.
+  const matched = matchByName(waiting, free);
+  const matchedGuests = new Set(matched.map((pair) => pair.guestId));
+  const matchedCharacters = new Set(matched.map((pair) => pair.characterId));
+  const rest = shuffle(waiting.filter((guest) => !matchedGuests.has(guest.id)));
+  const leftover = shuffle(free.filter((row) => !matchedCharacters.has(row.id)));
+  const pairs = [
+    ...matched,
+    ...rest.slice(0, leftover.length).map((guest, index) => ({ guestId: guest.id, characterId: leftover[index].id })),
+  ];
   for (const pair of pairs) {
     await db.update(guests).set({ characterId: pair.characterId }).where(eq(guests.id, pair.guestId));
   }
 
-  return NextResponse.json({ ok: true, assigned: pairs.length, stillWaiting: waiting.length - pairs.length });
+  return NextResponse.json({ ok: true, assigned: pairs.length, byName: matched.length, stillWaiting: waiting.length - pairs.length });
 }

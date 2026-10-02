@@ -6,7 +6,7 @@ import { clearDemo, loadCast, resetGuest, seedDemo } from "@/lib/demo/seed";
 /**
  * The npm run demo:* scripts as staff-only buttons, for when there is no terminal to hand.
  *   load-cast   replace the cast with a fresh, unassigned copy of the 35 characters
- *   seed        replace every demo guest, their solves and claims, and the cast
+ *   seed        everyone in the program on the register, each holding the character based on them
  *   reset       forget one guest by email (RSVP, solves, claims, sign-in links)
  *   clear       remove every demo guest and the demo cast
  */
@@ -27,7 +27,7 @@ export async function POST(request: NextRequest) {
       const result = await seedDemo(db);
       return NextResponse.json({
         ok: true,
-        message: `Seeded ${result.guests} demo guests, ${result.approvedClaims + result.pendingClaims} claims (${result.pendingClaims} pending) and ${result.characters} unassigned characters.`,
+        message: `Seeded ${result.guests} guests, each holding the character based on them, plus ${result.pendingClaims} pending claims. ${result.presenterCharacter} is left unassigned: RSVP under your own name, then press Assign characters.`,
       });
     }
     if (action === "reset") {

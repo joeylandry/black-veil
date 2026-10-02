@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { FormEvent, ReactNode, useCallback, useEffect, useMemo, useState } from "react";
 
 type Guest = { id: string; email: string; fullName: string; characterId: string | null; createdAt: string };
@@ -51,6 +52,23 @@ export function AdminDatabase({ secret, refreshKey, onChange }: { secret: string
   const [notice, setNotice] = useState<{ ok: boolean; text: string } | null>(null);
   const [busy, setBusy] = useState(false);
   const [filter, setFilter] = useState("");
+  const router = useRouter();
+
+  /** Signs this browser in as the guest and opens their ledger, to play (and submit flags) as them. */
+  async function signInAs(guest: Guest) {
+    setBusy(true);
+    const response = await fetch("/api/admin/impersonate", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Authorization: `Bearer ${secret}` },
+      body: JSON.stringify({ guestId: guest.id }),
+    }).catch(() => null);
+    if (response?.ok) {
+      router.push("/resume/restored");
+      return;
+    }
+    setNotice({ ok: false, text: `Could not sign in as ${guest.fullName}.` });
+    setBusy(false);
+  }
 
   const load = useCallback(async () => {
     const response = await fetch("/api/admin/db", { headers: { Authorization: `Bearer ${secret}` } }).catch(() => null);
@@ -117,7 +135,7 @@ export function AdminDatabase({ secret, refreshKey, onChange }: { secret: string
       <div className="admin-panel-heading">
         <div>
           <h2>Database</h2>
-          <p className="admin-panel-note">Edit or remove anything. Deleting a guest also deletes their RSVP, solves, claims and sign-in links. Deletes can&apos;t be undone.</p>
+          <p className="admin-panel-note">Edit or remove anything. <strong>Sign in as</strong> opens the site as that guest, to see their character card or submit flags as them. Deleting a guest also deletes their RSVP, solves, claims and sign-in links. Deletes can&apos;t be undone.</p>
         </div>
         <input className="admin-filter" type="search" placeholder="Filter…" value={filter} onChange={(event) => setFilter(event.target.value)} aria-label="Filter rows" />
       </div>
@@ -147,6 +165,7 @@ export function AdminDatabase({ secret, refreshKey, onChange }: { secret: string
                 onSave={(values) => send({ op: "update", table: "guests", id: guest.id, data: values })} />
             ) : (
               <Row key={guest.id} title={guest.fullName} detail={`${guest.email} · ${guest.characterId ? characterName.get(guest.characterId) ?? "unknown character" : "no character"}`}
+                onSignIn={() => signInAs(guest)}
                 onEdit={() => setEditing(guest.id)}
                 onDelete={() => send({ op: "delete", table: "guests", id: guest.id }, `Delete ${guest.fullName}, and their RSVP, solves, claims and sign-in links?`)} busy={busy} />
             ),
@@ -232,7 +251,9 @@ function Rows({ children, empty }: { children: ReactNode[]; empty: string }) {
   return children.length ? <ul className="admin-rows">{children}</ul> : <p className="admin-panel-note">{empty}</p>;
 }
 
-function Row({ title, detail, onEdit, onDelete, busy }: { title: string; detail: string; onEdit?: () => void; onDelete: () => void; busy: boolean }) {
+function Row({ title, detail, onSignIn, onEdit, onDelete, busy }: {
+  title: string; detail: string; onSignIn?: () => void; onEdit?: () => void; onDelete: () => void; busy: boolean;
+}) {
   return (
     <li className="admin-row">
       <div>
@@ -240,6 +261,7 @@ function Row({ title, detail, onEdit, onDelete, busy }: { title: string; detail:
         <small>{detail}</small>
       </div>
       <div className="admin-row-actions">
+        {onSignIn && <button type="button" className="admin-primary" disabled={busy} onClick={onSignIn}>Sign in as</button>}
         {onEdit && <button type="button" disabled={busy} onClick={onEdit}>Edit</button>}
         <button type="button" className="admin-danger" disabled={busy} onClick={onDelete}>Delete</button>
       </div>

@@ -1,9 +1,7 @@
 import { eq, inArray, like } from "drizzle-orm";
-import { benchLabs, benchSolveId } from "@/data/bench";
-import { ctfChallenges } from "@/data/ctf";
 import type { getDb } from "@/lib/db/client";
 import { characters, ctfSolves, guests, magicLinks, pointClaims, rsvps } from "@/lib/db/schema";
-import { demoCharacters, retiredDemoCharacterNames } from "./cast";
+import { castMemberFor, demoCharacters, normalizePersonName, retiredDemoCharacterNames } from "./cast";
 
 /**
  * Server-only demo data, shared by `scripts/demo-data.ts` (npm run demo:*) and the
@@ -17,48 +15,25 @@ type Db = ReturnType<typeof getDb>;
 
 export const DEMO_DOMAIN = "demo.blackveil.invalid";
 
-const trialIds = ctfChallenges.map((challenge) => challenge.id);
-const benchIds = benchLabs.map((lab) => benchSolveId(lab.id));
+/**
+ * The presenter's own character stays unassigned so the walkthrough can deal it live:
+ * the presenter RSVPs under their real name, presses "Assign characters", and is
+ * matched to it by name. Every other cast member is seeded as a guest already holding
+ * the character based on them.
+ */
+export const PRESENTER_CHARACTER = "Joseph “Laundry” Landry";
 
-/** [name, trials solved (in order), bench tickets solved (in order), attending]. */
-const roster: [string, number, number, "yes" | "no"][] = [
-  ["Eleanor Downes", 7, 9, "yes"],
-  ["Marcus Whitfield", 7, 6, "yes"],
-  ["Priya Raman", 6, 7, "yes"],
-  ["Theo Lambert", 6, 4, "yes"],
-  ["Sofia Marchetti", 5, 5, "yes"],
-  ["Daniel Okafor", 5, 3, "yes"],
-  ["Hannah Brooks", 4, 4, "yes"],
-  ["Julian Castellanos", 4, 2, "yes"],
-  ["Grace Thornton", 4, 1, "yes"],
-  ["Owen Fitzgerald", 3, 3, "yes"],
-  ["Mei Lin", 3, 2, "yes"],
-  ["Isaac Feldman", 3, 0, "yes"],
-  ["Charlotte Duval", 2, 2, "yes"],
-  ["Ravi Patel", 2, 1, "yes"],
-  ["Abigail Morrow", 2, 0, "yes"],
-  ["Lucas Bennett", 1, 1, "yes"],
-  ["Nora Kowalski", 1, 0, "yes"],
-  ["Samuel Pryce", 1, 0, "yes"],
-  ["Vivian Ashby", 0, 0, "yes"],
-  ["Henry Calloway", 0, 0, "yes"],
-  ["Ada Quinlan", 0, 0, "no"],
-  ["Felix Moreau", 0, 0, "no"],
-];
+/** Everyone in the program but the presenter, each with the character based on them. */
+const seededCast = demoCharacters.filter((character) => character.characterName !== PRESENTER_CHARACTER);
 
 /** Claims awaiting staff review, so /admin has a queue to approve on stage. */
 const pendingClaims: [string, string, string][] = [
-  ["Priya Raman", "Found the river door token", "It was taped under the coat-check counter."],
-  ["Theo Lambert", "Delivered the sealed letter in character", "Handed to the bartender with the password."],
-  ["Mei Lin", "Identified the masked violinist", ""],
-];
-const approvedClaims: [string, string, number][] = [
-  ["Eleanor Downes", "Solved the cigarette-case cipher", 25],
-  ["Marcus Whitfield", "Recovered the torn guest card", 15],
-  ["Sofia Marchetti", "Matched the 1924 photograph to the dining room", 10],
+  ["Aidan Leach", "Found the river door token", "It was taped under the coat-check counter."],
+  ["Molly Daniel", "Delivered the sealed letter in character", "Handed to the bartender with the password."],
+  ["Kyle Erhabor", "Identified the masked violinist", ""],
 ];
 
-const emailFor = (name: string) => `${name.toLowerCase().replace(/[^a-z]+/g, ".")}@${DEMO_DOMAIN}`;
+const emailFor = (name: string) => `${normalizePersonName(name).replace(/ /g, ".")}@${DEMO_DOMAIN}`;
 const daysAgo = (days: number, hours = 0) => new Date(Date.now() - (days * 24 + hours) * 60 * 60 * 1000);
 
 /** Deletes guests and everything that hangs off them (sign-in links, solves, claims), plus RSVP rows by email. */
@@ -90,7 +65,11 @@ export async function loadCast(db: Db) {
   // Unassigned on purpose: dealing them out is the "Assign characters" button on /admin.
   await db
     .insert(characters)
-    .values(demoCharacters.map((character) => ({ ...character, murderer: !!character.murderer, victim: !!character.victim })));
+    .values(
+      // playedBy lives in code only; the table has no column for it.
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      demoCharacters.map(({ playedBy, ...character }) => ({ ...character, murderer: !!character.murderer, victim: !!character.victim })),
+    );
   return demoCharacters.length;
 }
 
@@ -103,65 +82,74 @@ export async function clearDemo(db: Db) {
   return { guests: rows.length, characters: cast };
 }
 
-/** Replaces every demo guest, their solves and claims, and the cast. */
+/**
+ * Replaces every demo guest and the cast: everyone in the program but the presenter goes
+ * on the register, attending, holding the character based on them, with no solves yet,
+ * so every flag submitted during the demo visibly moves the standings.
+ */
 export async function seedDemo(db: Db) {
   const removed = await clearDemo(db);
   const cast = await loadCast(db);
+  const characterIds = new Map(
+    (await db.select({ id: characters.id, name: characters.characterName }).from(characters)).map((row) => [row.name, row.id]),
+  );
 
-  for (const [index, [name, trials, bench, attending]] of roster.entries()) {
+  const seeded = new Map<string, string>();
+  for (const [index, character] of seededCast.entries()) {
+    const name = character.playedBy[0];
     const email = emailFor(name);
-    const joined = daysAgo(14 - Math.floor(index / 2), index);
+    const joined = daysAgo(14 - Math.floor(index / 3), index % 24);
     await db.insert(rsvps).values({
       fullName: name,
       email,
-      attending,
+      attending: "yes",
       note: "",
       dressAcknowledged: true,
-      attendanceStatus: attending === "yes" ? "confirmed" : "declined",
+      attendanceStatus: "confirmed",
       recordedAt: joined,
       createdAt: joined,
     });
-    const [guest] = await db.insert(guests).values({ email, fullName: name, createdAt: joined }).returning();
-
-    const solved = [...trialIds.slice(0, trials), ...benchIds.slice(0, bench)];
-    if (solved.length) {
-      await db.insert(ctfSolves).values(
-        solved.map((challengeId, step) => ({
-          guestId: guest.id,
-          challengeId,
-          solvedAt: new Date(joined.getTime() + (step + 1) * 47 * 60 * 1000),
-        })),
-      );
-    }
+    const [guest] = await db
+      .insert(guests)
+      .values({ email, fullName: name, characterId: characterIds.get(character.characterName) ?? null, createdAt: joined })
+      .returning();
+    seeded.set(name, guest.id);
   }
 
-  const ids = new Map(
-    (await db.select({ id: guests.id, fullName: guests.fullName }).from(guests).where(like(guests.email, `%@${DEMO_DOMAIN}`))).map(
-      (row) => [row.fullName, row.id],
-    ),
-  );
-  for (const [name, label, points] of approvedClaims) {
-    await db.insert(pointClaims).values({
-      guestId: ids.get(name)!,
-      label,
-      points,
-      status: "approved",
-      submittedAt: daysAgo(3),
-      reviewedAt: daysAgo(2),
-      reviewedBy: "staff",
-    });
-  }
   for (const [name, label, note] of pendingClaims) {
-    await db.insert(pointClaims).values({ guestId: ids.get(name)!, label, note, submittedAt: daysAgo(0, 2) });
+    const guestId = seeded.get(name);
+    if (guestId) await db.insert(pointClaims).values({ guestId, label, note, submittedAt: daysAgo(0, 2) });
   }
 
   return {
     removedGuests: removed.guests,
-    guests: roster.length,
-    approvedClaims: approvedClaims.length,
+    guests: seeded.size,
     pendingClaims: pendingClaims.length,
     characters: cast,
+    assigned: seeded.size,
+    presenterCharacter: PRESENTER_CHARACTER,
   };
+}
+
+/**
+ * The character each waiting guest should be dealt by name: the cast member based on
+ * them, when that character is in the database and free. Used by "Assign characters".
+ */
+export function matchByName<G extends { id: string; fullName: string }>(
+  waiting: G[],
+  free: { id: string; characterName: string }[],
+) {
+  const freeByName = new Map(free.map((character) => [character.characterName, character.id]));
+  const pairs: { guestId: string; characterId: string }[] = [];
+  for (const guest of waiting) {
+    const member = castMemberFor(guest.fullName);
+    const characterId = member ? freeByName.get(member.characterName) : undefined;
+    if (characterId) {
+      pairs.push({ guestId: guest.id, characterId });
+      freeByName.delete(member!.characterName);
+    }
+  }
+  return pairs;
 }
 
 /** Forgets one guest entirely: RSVP rows, solves, claims and sign-in links. Returns false if they weren't there. */
