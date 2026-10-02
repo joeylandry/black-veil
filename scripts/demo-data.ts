@@ -2,7 +2,7 @@
  * Demo data for walkthroughs, from the terminal. The same actions are buttons on /admin
  * ("Demo tools"); both run src/lib/demo/seed.ts.
  *
- *   npm run demo:seed                    replace every demo guest and the cast with a fresh set
+ *   npm run demo:seed                    everyone in the program on the register, each holding their character
  *   npm run demo:reset -- you@email.com  forget one guest entirely (RSVP, solves, claims)
  *   npm run demo:clear                   remove every demo guest and demo character — run before real guests arrive
  *
@@ -35,7 +35,7 @@ async function main() {
     const result = await seedDemo(db);
     if (result.removedGuests) console.log(`Removed ${result.removedGuests} earlier demo guests.`);
     console.log(
-      `Seeded ${result.guests} demo guests, ${result.approvedClaims} approved and ${result.pendingClaims} pending claims, ${result.characters} unassigned characters.`,
+      `Seeded ${result.guests} guests, each holding the character based on them, ${result.pendingClaims} pending claims, and ${result.characters} characters in all. ${result.presenterCharacter} is left for the presenter.`,
     );
   } else if (command === "reset") {
     if (!argument?.includes("@")) {

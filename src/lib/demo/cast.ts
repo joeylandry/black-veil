@@ -10,6 +10,12 @@
  */
 export type DemoCharacter = {
   characterName: string;
+  /**
+   * The person in the program this character is based on: their name as it goes on the
+   * register first, then nicknames a guest might RSVP under. Assigning characters
+   * deals a guest whose name matches one of these the character based on them.
+   */
+  playedBy: string[];
   occupation: string;
   publicBiography: string;
   factions: string[];
@@ -23,6 +29,7 @@ export type DemoCharacter = {
 export const demoCharacters: DemoCharacter[] = [
   {
     characterName: "Adam “Holds Fire” Ouldsfiya",
+    playedBy: ["Adam Ouldsfiya"],
     occupation: "Gunsmith, West Side",
     publicBiography: "Makes the finest revolvers in Hillsborough County and has famously never fired one. Adam's motto: a good gun, like a good argument, works best when it stays holstered.",
     factions: ["The River Trade"],
@@ -32,6 +39,7 @@ export const demoCharacters: DemoCharacter[] = [
   },
   {
     characterName: "Dr. Aidan “The Leech” Leach",
+    playedBy: ["Aidan Leach"],
     occupation: "Physician and bloodletter",
     publicBiography: "The last doctor in New England who still swears by leeches. Patients say Dr. Leach bleeds them twice: once with the leeches, once with the bill.",
     factions: ["Elm Street Society"],
@@ -41,6 +49,7 @@ export const demoCharacters: DemoCharacter[] = [
   },
   {
     characterName: "Aimee “Dead Aim” Hong",
+    playedBy: ["Aimee Hong"],
     occupation: "Sharpshooter, travelling Wild West revue",
     publicBiography: "Can shoot the ash off a cigarette at forty paces. Has been asked, politely, to leave the rifle at the coat check.",
     factions: ["The Orchestra"],
@@ -50,6 +59,7 @@ export const demoCharacters: DemoCharacter[] = [
   },
   {
     characterName: "Ananya “The Code-Ruler” Koduru",
+    playedBy: ["Ananya Koduru"],
     occupation: "Cipher clerk, Western Union",
     publicBiography: "Reads Morse faster than most people read English. Every telegram in Manchester passes under Ananya's pencil.",
     factions: ["The Press"],
@@ -59,6 +69,7 @@ export const demoCharacters: DemoCharacter[] = [
   },
   {
     characterName: "Andrew “Cup of” Joffe",
+    playedBy: ["Andrew Joffe", "Andy Joffe"],
     occupation: "Proprietor, Joffe's Coffee House",
     publicBiography: "Serves the best cup of joe on Elm Street. Regulars know to ask for it 'with a little Irish' and to pay double.",
     factions: ["The River Trade"],
@@ -68,6 +79,7 @@ export const demoCharacters: DemoCharacter[] = [
   },
   {
     characterName: "Angelos “Bowled Over” Boules",
+    playedBy: ["Angelos Boules"],
     occupation: "Lawn-bowls hustler",
     publicBiography: "Has never lost a game of boules with money on it. Has lost several without, on purpose, to raise the stakes.",
     factions: ["The River Trade"],
@@ -77,6 +89,7 @@ export const demoCharacters: DemoCharacter[] = [
   },
   {
     characterName: "Anika Mahns of Mahns Manor",
+    playedBy: ["Anika Mahns"],
     occupation: "Heir to the Mahns fortune, and host",
     publicBiography: "Lives in the largest house in the North End and reminds everyone of it. The Mahns Manor garden party is the only invitation harder to get than this one.",
     factions: ["Elm Street Society", "Mill Families"],
@@ -86,6 +99,7 @@ export const demoCharacters: DemoCharacter[] = [
   },
   {
     characterName: "Anthony “Hung Jury” Huang",
+    playedBy: ["Anthony Huang", "Tony Huang"],
     occupation: "Defence attorney",
     publicBiography: "Has never won an acquittal and never lost a conviction, because every jury Anthony faces deadlocks. Clients pay for juries that argue.",
     factions: ["The Law"],
@@ -95,6 +109,7 @@ export const demoCharacters: DemoCharacter[] = [
   },
   {
     characterName: "Arjun “The Bat” Bhat",
+    playedBy: ["Arjun Bhat"],
     occupation: "Slugger, Manchester Textiles baseball club",
     publicBiography: "Hit .412 last season and wants a word with anyone who mentions the Babe. Brought the bat to the party for 'sentimental reasons'.",
     factions: ["Mill Workers"],
@@ -104,6 +119,7 @@ export const demoCharacters: DemoCharacter[] = [
   },
   {
     characterName: "Diwakar “Sandbag” Sandhu",
+    playedBy: ["Diwakar Sandhu"],
     occupation: "Prizefighter",
     publicBiography: "Undefeated in every fight Diwakar was supposed to win. Mysteriously knocked out in every fight with real money on it.",
     factions: ["The River Trade"],
@@ -113,6 +129,7 @@ export const demoCharacters: DemoCharacter[] = [
   },
   {
     characterName: "Emmanuel “The Con” Kon",
+    playedBy: ["Emmanuel Kon"],
     occupation: "Person of independent means (confidence artist)",
     publicBiography: "Has sold the Amoskeag Mills twice and the Merrimack River once. Charming, generous, and holding your wallet.",
     factions: ["The River Trade"],
@@ -122,6 +139,7 @@ export const demoCharacters: DemoCharacter[] = [
   },
   {
     characterName: "Emre “Sooner or Later” Sunar",
+    playedBy: ["Emre Sunar"],
     occupation: "Clockmaker",
     publicBiography: "Repairs every clock in Manchester and is always, without fail, early. Emre's motto: it happens sooner or later.",
     factions: ["Elm Street Society"],
@@ -131,6 +149,7 @@ export const demoCharacters: DemoCharacter[] = [
   },
   {
     characterName: "Judge Eric “Leeway” Li",
+    playedBy: ["Eric Li"],
     occupation: "Municipal court judge",
     publicBiography: "The most lenient bench in New Hampshire: anyone with a good excuse can get a lot of leeway in Judge Li's court.",
     factions: ["The Law"],
@@ -140,6 +159,7 @@ export const demoCharacters: DemoCharacter[] = [
   },
   {
     characterName: "Erika “On the” Lam",
+    playedBy: ["Erika Lam"],
     occupation: "Fugitive",
     publicBiography: "Says 'between addresses' when asked. Wanted in three states for crimes Erika describes, with a smile, as misunderstandings.",
     factions: ["The River Trade"],
@@ -149,6 +169,7 @@ export const demoCharacters: DemoCharacter[] = [
   },
   {
     characterName: "Ivan “Chew” Chiu",
+    playedBy: ["Ivan Chiu"],
     occupation: "Chewing-gum magnate",
     publicBiography: "Spearmint, Peppermint, and the bestselling Black Licorice Twist. Offers everyone a stick and is offended by a refusal.",
     factions: ["Mill Families"],
@@ -158,6 +179,7 @@ export const demoCharacters: DemoCharacter[] = [
   },
   {
     characterName: "Jack “Cello” Marcello",
+    playedBy: ["Jack Marcello"],
     occupation: "Cellist, the house orchestra",
     publicBiography: "Plays every night and never misses a note. The cello case is suspiciously heavy for something that only holds a cello.",
     factions: ["The Orchestra"],
@@ -167,6 +189,7 @@ export const demoCharacters: DemoCharacter[] = [
   },
   {
     characterName: "John “Jack” Hudson (no relation to the motorcar)",
+    playedBy: ["Jack Hudson", "John Hudson"],
     occupation: "Automobile dealer",
     publicBiography: "Sells Hudson motorcars and insists on being no relation to the company. Nobody has ever believed it, and it has sold a lot of cars.",
     factions: ["Elm Street Society"],
@@ -176,6 +199,7 @@ export const demoCharacters: DemoCharacter[] = [
   },
   {
     characterName: "Joseph “Laundry” Landry",
+    playedBy: ["Joseph Landry", "Joey Landry", "Joe Landry"],
     occupation: "Proprietor, Landry's Laundry",
     publicBiography: "Runs the cleanest laundry on the West Side. Gets out every stain. Some of them were on banknotes.",
     factions: ["The River Trade"],
@@ -186,6 +210,7 @@ export const demoCharacters: DemoCharacter[] = [
   },
   {
     characterName: "Joshua “Chimney Sweep” Kaminsky",
+    playedBy: ["Joshua Kaminsky", "Josh Kaminsky"],
     occupation: "Chimney sweep",
     publicBiography: "Has been up every chimney in Manchester and down a few that were off limits. Finds the most interesting things in the soot.",
     factions: ["Mill Workers"],
@@ -195,6 +220,7 @@ export const demoCharacters: DemoCharacter[] = [
   },
   {
     characterName: "Krrish “Vermouth” Verma",
+    playedBy: ["Krrish Verma"],
     occupation: "Head bartender",
     publicBiography: "Invented a martini so dry the Volstead Act doesn't apply to it. Remembers every guest's drink and every guest's secret.",
     factions: ["House Staff"],
@@ -204,6 +230,7 @@ export const demoCharacters: DemoCharacter[] = [
   },
   {
     characterName: "Kyle “Harbor” Erhabor",
+    playedBy: ["Kyle Erhabor"],
     occupation: "Harbourmaster and rum-runner",
     publicBiography: "Runs the Merrimack docks and knows every boat that comes in by night. Swears the river door is just for deliveries.",
     factions: ["The River Trade"],
@@ -213,6 +240,7 @@ export const demoCharacters: DemoCharacter[] = [
   },
   {
     characterName: "Leon “Gee-Whiz” Ge",
+    playedBy: ["Leon Ge"],
     occupation: "Radio announcer, WFEA",
     publicBiography: "The voice of Manchester's first radio station. Says 'gee whiz' on air, nightly, and the town loves it.",
     factions: ["The Press"],
@@ -222,6 +250,7 @@ export const demoCharacters: DemoCharacter[] = [
   },
   {
     characterName: "Luke “Shell Game” Sheldon",
+    playedBy: ["Luke Sheldon"],
     occupation: "Carnival barker",
     publicBiography: "Runs the shell game at every county fair in New England. Follow the pea. Lose your money. Thank Luke for the lesson.",
     factions: ["The River Trade"],
@@ -231,6 +260,7 @@ export const demoCharacters: DemoCharacter[] = [
   },
   {
     characterName: "Mihir “Nag” Nagarkatti",
+    playedBy: ["Mihir Nagarkatti"],
     occupation: "Racetrack bookmaker",
     publicBiography: "Takes bets on the nags at Rockingham Park, and on anything else. Will give you odds on who leaves the party first.",
     factions: ["The River Trade"],
@@ -240,6 +270,7 @@ export const demoCharacters: DemoCharacter[] = [
   },
   {
     characterName: "Molly “Old No. 7” Daniel",
+    playedBy: ["Molly Daniel"],
     occupation: "Distiller (no relation to the Tennessee Daniels, officially)",
     publicBiography: "The family whiskey was legal until 1920. Molly insists it still is, in spirit.",
     factions: ["The River Trade"],
@@ -249,6 +280,7 @@ export const demoCharacters: DemoCharacter[] = [
   },
   {
     characterName: "Rebecca “Chow” Chou",
+    playedBy: ["Rebecca Chou", "Becca Chou"],
     occupation: "Head chef",
     publicBiography: "The supper menu is the real reason anyone comes. Rebecca once threw a cleaver at a food critic and would do it again.",
     factions: ["House Staff"],
@@ -258,6 +290,7 @@ export const demoCharacters: DemoCharacter[] = [
   },
   {
     characterName: "Rhea “Emporium” Mallya",
+    playedBy: ["Rhea Mallya"],
     occupation: "Owner, Mallya's Department Emporium",
     publicBiography: "Mallya's on Elm Street sells everything from silk gloves to tractor parts. If Mallya's doesn't stock it, it doesn't exist.",
     factions: ["Elm Street Society"],
@@ -267,6 +300,7 @@ export const demoCharacters: DemoCharacter[] = [
   },
   {
     characterName: "Robert “Win” Winfield",
+    playedBy: ["Robert Winfield", "Rob Winfield", "Bob Winfield"],
     occupation: "College football hero",
     publicBiography: "Scored the winning touchdown for Dartmouth in 1923 and hasn't stopped talking about it. Robert wins at everything, including conversations.",
     factions: ["Elm Street Society"],
@@ -276,6 +310,7 @@ export const demoCharacters: DemoCharacter[] = [
   },
   {
     characterName: "Shadi “Shady” Soufan",
+    playedBy: ["Shadi Soufan"],
     occupation: "Dealer in rare goods",
     publicBiography: "Sells antiques, maps, and 'heirlooms', no questions asked. The shop is open only at night, which is suspicious.",
     factions: ["The River Trade"],
@@ -285,6 +320,7 @@ export const demoCharacters: DemoCharacter[] = [
   },
   {
     characterName: "Siddarth “Air-Wind” Arvind",
+    playedBy: ["Siddarth Arvind", "Sid Arvind"],
     occupation: "Aviator and barnstormer",
     publicBiography: "Flies loop-the-loops over the Merrimack every Sunday. Lands wherever the wind blows, which is rarely where Siddarth aimed.",
     factions: ["Elm Street Society"],
@@ -294,6 +330,7 @@ export const demoCharacters: DemoCharacter[] = [
   },
   {
     characterName: "Silas “Palm Reader” Palmer",
+    playedBy: ["Silas Palmer"],
     occupation: "Fortune-teller and medium",
     publicBiography: "Reads palms, tea leaves and tarot. Correctly predicted the 1924 raid, which the police found suspicious.",
     factions: ["The Orchestra"],
@@ -303,6 +340,7 @@ export const demoCharacters: DemoCharacter[] = [
   },
   {
     characterName: "Theodor “Farrago” Farag",
+    playedBy: ["Theodor Farag", "Theo Farag"],
     occupation: "Editor, Manchester Evening Farrago",
     publicBiography: "Runs the town's least reliable newspaper. Every story is half true; readers argue over which half.",
     factions: ["The Press"],
@@ -312,6 +350,7 @@ export const demoCharacters: DemoCharacter[] = [
   },
   {
     characterName: "Tiffany Liu, of the Lamps",
+    playedBy: ["Tiffany Liu"],
     occupation: "Stained-glass artisan",
     publicBiography: "Makes Tiffany lamps. Not those Tiffany lamps. Yes, Tiffany has heard the joke. No, there is no discount.",
     factions: ["Elm Street Society"],
@@ -321,6 +360,7 @@ export const demoCharacters: DemoCharacter[] = [
   },
   {
     characterName: "Timothy “Gin” McGinley",
+    playedBy: ["Timothy McGinley", "Tim McGinley"],
     occupation: "Bathtub-gin baron",
     publicBiography: "Supplies half the speakeasies in Manchester from a bathtub in Goffstown. Calls it 'botanical'. Generous with samples.",
     factions: ["The River Trade"],
@@ -331,6 +371,7 @@ export const demoCharacters: DemoCharacter[] = [
   },
   {
     characterName: "Victor “Victrola” Liu",
+    playedBy: ["Ting Shing “Victor” Liu", "Victor Liu", "Ting Shing Liu"],
     occupation: "Gramophone dealer",
     publicBiography: "Ting Shing Liu on the birth certificate, Victor to friends, and Victrola to the whole of Elm Street after selling one to every house on it.",
     factions: ["The Orchestra"],
@@ -348,3 +389,35 @@ export const retiredDemoCharacterNames = [
   "Harold Pemberton", "Ines Castellano", "Father Declan Rourke", "Clara Whitlock", "Mortimer Graves",
   "Pearl Hastings", "Walter Sinclair", "Sylvie Montague", "Reginald Thorne",
 ];
+
+/** "Ting Shing “Victor” Liu" → "ting shing victor liu": lowercase, letters and spaces only. */
+export function normalizePersonName(name: string) {
+  return name
+    .normalize("NFKD")
+    .replace(/[̀-ͯ]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z\s]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+/**
+ * The cast member based on this person, if any: an exact (normalised) match on one of
+ * their names, or failing that the same first and last name, so "Joey Landry" and
+ * "Joseph A. Landry" both find Joseph “Laundry” Landry.
+ */
+export function castMemberFor(fullName: string): DemoCharacter | undefined {
+  const name = normalizePersonName(fullName);
+  if (!name) return undefined;
+  const exact = demoCharacters.find((character) => character.playedBy.some((alias) => normalizePersonName(alias) === name));
+  if (exact) return exact;
+  const parts = name.split(" ");
+  if (parts.length < 2) return undefined;
+  const [first, last] = [parts[0], parts[parts.length - 1]];
+  return demoCharacters.find((character) =>
+    character.playedBy.some((alias) => {
+      const aliasParts = normalizePersonName(alias).split(" ");
+      return aliasParts[0] === first && aliasParts[aliasParts.length - 1] === last;
+    }),
+  );
+}

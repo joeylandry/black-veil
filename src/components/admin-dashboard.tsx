@@ -59,6 +59,14 @@ export function AdminDashboard({ secret, refreshKey, onChange }: { secret: strin
     load();
   }, [load, refreshKey]);
 
+  // Live: flags guests submit show up in the tiles, chart and guest table without a reload.
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      if (document.visibilityState === "visible") load();
+    }, 5000);
+    return () => window.clearInterval(timer);
+  }, [load]);
+
   async function characters(action: "assign" | "clear") {
     setBusy(true);
     setNotice(null);
@@ -73,7 +81,7 @@ export function AdminDashboard({ secret, refreshKey, onChange }: { secret: strin
     else {
       setNotice(
         body.assigned
-          ? `Dealt ${body.assigned} character${body.assigned === 1 ? "" : "s"} to attending guests.${body.stillWaiting ? ` ${body.stillWaiting} guest(s) still waiting — add more characters.` : ""}`
+          ? `Dealt ${body.assigned} character${body.assigned === 1 ? "" : "s"} to attending guests${body.byName ? ` (${body.byName === body.assigned ? "all" : body.byName} matched by name)` : ""}.${body.stillWaiting ? ` ${body.stillWaiting} guest(s) still waiting — add more characters.` : ""}`
           : "Every attending guest already holds a character.",
       );
     }
@@ -149,7 +157,7 @@ export function AdminDashboard({ secret, refreshKey, onChange }: { secret: strin
             <h2>The cast</h2>
             <p className="admin-panel-note">
               {stats.characters
-                ? "Dealing gives every attending guest without a character a random one. Guests who already hold one keep it."
+                ? "Dealing gives every attending guest without a character one: the character based on them if their name matches, otherwise a random one. Guests who already hold one keep it."
                 : "No characters are in the database yet. Load the cast of 35, or create characters one at a time in the database editor below."}
             </p>
           </div>

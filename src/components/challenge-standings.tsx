@@ -18,6 +18,8 @@ type Standings = {
   rows: { rank: number; isYou: boolean; name: string; solved: string[]; points: number }[];
 };
 
+const STANDINGS_REFRESH_MS = 5000;
+
 function parseProgress(raw: string | null | undefined): CtfProgress {
   if (!raw) return emptyCtfProgress;
   try { return JSON.parse(raw) as CtfProgress; } catch { return emptyCtfProgress; }
@@ -35,14 +37,26 @@ export function ChallengeStandings() {
   const [standings, setStandings] = useState<Standings | null>(null);
 
   useEffect(() => {
-    fetch("/api/me")
-      .then((response) => (response.ok ? response.json() : null))
-      .then((body) => setMe(body))
-      .catch(() => setMe(null));
-    fetch("/api/standings")
-      .then((response) => (response.ok ? response.json() : null))
-      .then((body) => setStandings(body))
-      .catch(() => setStandings(null));
+    if (!savedRsvp) return;
+    let cancelled = false;
+    const refresh = () => {
+      fetch("/api/me")
+        .then((response) => (response.ok ? response.json() : null))
+        .then((body) => { if (!cancelled && body) setMe(body); })
+        .catch(() => {});
+      fetch("/api/standings")
+        .then((response) => (response.ok ? response.json() : null))
+        .then((body) => { if (!cancelled && body) setStandings(body); })
+        .catch(() => {});
+    };
+    refresh();
+    // Other guests' flags land in the standings without this page reloading. A failed
+    // poll keeps the last good table rather than blanking it.
+    const timer = window.setInterval(refresh, STANDINGS_REFRESH_MS);
+    return () => {
+      cancelled = true;
+      window.clearInterval(timer);
+    };
   }, [savedProgress, savedRsvp]);
 
   if (!rsvp) return null;
@@ -54,7 +68,7 @@ export function ChallengeStandings() {
     <section className="leaderboard-section">
       <div className="leaderboard-heading">
         <div><p className="eyebrow">Private standings · before doors</p><h2>Guest Ledger</h2></div>
-        <p>Flag points update the moment they’re accepted; approved findings are added once staff review them.</p>
+        <p>Live: every guest’s accepted flags appear here within a few seconds; approved findings are added once staff review them.</p>
       </div>
       <div className="leaderboard-table" role="table" aria-label="Black Rose standings">
         <div role="row" className="leaderboard-row leaderboard-labels"><span role="columnheader">Rank</span><span role="columnheader">Guest</span><span role="columnheader">Character</span><span role="columnheader">Flags</span><span role="columnheader">Points</span></div>

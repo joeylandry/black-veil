@@ -41,8 +41,8 @@ export function AdminDemoTools({ secret, onChange }: { secret: string; onChange:
       <div className="admin-demo-grid">
         <div>
           <strong>Fill the register</strong>
-          <p>Replaces the demo guests with 22 invented ones, their solves and claims, and reloads the 35-character cast, unassigned.</p>
-          <button type="button" className="admin-primary" disabled={busy} onClick={() => run("seed", "Replace all demo guests and reload the cast? Everyone holding a character loses it.")}>
+          <p>Puts everyone in the program on the register, each holding the character based on them, all at 0 points. Joseph “Laundry” Landry is left for you: RSVP under your own name, then press Assign characters.</p>
+          <button type="button" className="admin-primary" disabled={busy} onClick={() => run("seed", "Replace all demo guests and reload the cast? Their scores go back to 0, and anyone else holding a character loses it.")}>
             Seed demo data
           </button>
         </div>
