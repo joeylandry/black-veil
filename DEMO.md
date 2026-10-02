@@ -206,7 +206,7 @@ Or click **Submit for review** on the untouched file first, to show the failing 
 1. In your Incognito window, leave **GUEST LEDGER** open, scrolled to the leaderboard. Put it where the audience can see it.
 2. In the **second browser**, open `/admin` → **ADMIN_SECRET** → **Unlock** → **Database** panel → type a name in the filter (e.g. `aidan`) → **Sign in as** on **Aidan Leach**.
 3. That browser lands on Aidan's Guest Ledger: his name and **Dr. Aidan “The Leech” Leach**'s card → **Break the seal** to show his dossier.
-4. Still as Aidan: **BLACK ROSE TRIALS** → enter `VEIL{KEEPER}` in **III** and `VEIL{1147}` in **IV**. His score seal reads **45**.
+4. Still as Aidan: **BLACK FROG TRIALS** → enter `VEIL{KEEPER}` in **III** and `VEIL{1147}` in **IV**. His score seal reads **45**.
 5. Look at your Incognito window: **within about five seconds, without a reload**, Aidan's points jump by 45 (plus whatever you approved for his claim in step 8) and he climbs the leaderboard. The staff dashboard's tiles and chart update the same way.
 6. Repeat with anyone you like (**Sign in as** works on every row). A great one: **Timothy McGinley**, the victim.
 
@@ -233,7 +233,7 @@ RST-08     CLOAKROOM · whoami · GET /vault/records?owner=me · GET /vault/reco
            → RSV-7731-CASTELLO / 13 / 404 / guard line
 RST-04     DRAYMAN   · paste the Dockerfile above
 ADMIN      /admin → ADMIN_SECRET → approve claim → Assign characters (you get Joseph “Laundry” Landry by name)
-LIVE       2nd browser → /admin → Database → filter “aidan” → Sign in as → Black Rose: VEIL{KEEPER}, VEIL{1147}
+LIVE       2nd browser → /admin → Database → filter “aidan” → Sign in as → Black Frog: VEIL{KEEPER}, VEIL{1147}
            → watch the Incognito leaderboard update by itself
 ```
 
