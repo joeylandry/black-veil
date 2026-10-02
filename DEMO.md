@@ -8,26 +8,32 @@ A script you can read off a second screen during the demo. Every command and ans
 
 ## 1. The night before (5 min)
 
-Run these from the repo, with `.env.local` pointing at **the database the demo site uses**. Each script prints `Database: host/name` first, so check that line.
+You can do all of this from **`/admin`** on the live site, with no terminal. Unlock with **ADMIN_SECRET**, then use the **Demo tools** panel:
+
+1. **Seed demo data:** 22 invented guests, their solves, 3 approved + 3 pending claims, and the 35-character cast (one per person in the program), all unassigned so you can deal them on stage.
+2. **Reset guest:** type **YOUR_DEMO_EMAIL** → **Reset guest**, so you start from zero.
+
+Prefer the terminal? With `.env.local` pointing at the database the live site uses (each script prints `Database: host/name` first, so check that line):
 
 ```bash
-npm run db:migrate          # make sure every table exists
-npm run demo:seed           # 22 invented guests, solves, 3 approved + 3 pending claims, 35 unassigned characters (one per person in the program)
-npm run demo:reset -- YOUR_DEMO_EMAIL   # wipe your own RSVP/solves so you start from zero
+npm run db:migrate          # make sure every table exists (terminal only)
+npm run demo:seed           # same as "Seed demo data"
+npm run demo:reset -- YOUR_DEMO_EMAIL   # same as "Reset guest"
 ```
 
-You can run `demo:seed` as many times as you like. It replaces the demo guests and the demo cast each time, and leaves every character **unassigned** so you can deal them on stage. It never touches real RSVPs: every demo guest uses the `@demo.blackveil.invalid` domain.
+You can seed as many times as you like. It replaces the demo guests and the cast each time. It never touches real RSVPs: every demo guest uses the `@demo.blackveil.invalid` domain.
 
 After seeding, the leaderboard reads: **Eleanor D. 460 · Marcus W. 345 · Priya R. 320 · Sofia M. 235 · Theo L. 230 …**
 
 Also check:
-- [ ] You know the **ADMIN_SECRET** for the demo site (needed in steps 8–9).
-- [ ] The demo site is deployed from a build that includes this commit (it adds the shared leaderboard).
-- [ ] **Do one full dry run tonight**, then run `npm run demo:reset -- YOUR_DEMO_EMAIL` again.
+- [ ] You know the **ADMIN_SECRET** for the demo site (needed in steps 8–9). If `/admin` says it isn't set, add it in Vercel → Settings → Environment Variables (Production), then **redeploy**.
+- [ ] **Do one full dry run tonight**, then **Reset guest** on your email again.
+
+**Fixing anything by hand:** the **Database** panel at the bottom of `/admin` edits or deletes any guest, RSVP, character, claim or solve. Use the filter box and the tabs to find the row.
 
 ## 2. Ten minutes before
 
-1. Run `npm run demo:reset -- YOUR_DEMO_EMAIL` one more time.
+1. `/admin` → Demo tools → **Reset guest** on YOUR_DEMO_EMAIL one more time (or `npm run demo:reset -- YOUR_DEMO_EMAIL`).
 2. Open a **new Incognito/Private window**. This matters: progress lives in browser storage and a session cookie, and only a fresh window guarantees "no challenges done yet".
 3. Open these tabs in that window:
    - Tab 1: `https://<site>/`
@@ -233,18 +239,23 @@ ADMIN      /admin → ADMIN_SECRET → approve claim → Assign characters → G
 |---|---|
 | RSVP says "guest register is not configured" (503) | `DATABASE_URL` isn't set on the deployed site. |
 | RSVP says "could not be reached" | The database is down, or migrations weren't run → `npm run db:migrate`. |
-| Bench says "Sign in to work this bench" | The session cookie is gone. Close Incognito, reset your email, start again from step 3 (it takes ~2 min with the cheat sheet). |
-| Leaderboard only shows you | Reload the Guest Ledger page. If it's still just you, the demo site's database wasn't seeded → `npm run demo:seed`. |
-| Already "solved" when you open the trials | You're in an old window or forgot the reset → `npm run demo:reset -- YOUR_DEMO_EMAIL` + new Incognito window. |
-| Assign characters says no characters exist | The demo site's database wasn't seeded since this update → `npm run demo:seed`. |
+| Bench says "Sign in to work this bench" | The session cookie is gone. Close Incognito, **Reset guest** on your email, start again from step 3 (it takes ~2 min with the cheat sheet). |
+| Leaderboard only shows you | Reload the Guest Ledger page. If it's still just you, the database wasn't seeded → `/admin` → **Seed demo data**. |
+| Already "solved" when you open the trials | You're in an old window or forgot the reset → `/admin` → **Reset guest** + new Incognito window. |
+| `/admin` says ADMIN_SECRET is not set | Add it in Vercel → Settings → Environment Variables (Production), then redeploy. |
+| `/admin` says the database could not be read | `DATABASE_URL` is wrong on the deployment, or migrations weren't run (`npm run db:migrate`). |
+| The cast is empty | `/admin` → The cast → **Load the cast**. |
+| A guest, character or score is wrong | `/admin` → **Database** → find the row → **Edit** or **Delete**. |
 | Want to deal characters again on stage | `/admin` → **Take all back**, then **Assign characters** again. |
-| Need a second take | `npm run demo:reset -- YOUR_DEMO_EMAIL`, close all Incognito windows, open a new one. |
+| Need a second take | `/admin` → **Reset guest** on your email, close all Incognito windows, open a new one. |
 
 ## After the demo
 
-If you seeded the **production** database, take the invented guests out before real guests see the leaderboard:
+If you seeded the **production** database, take the invented guests out before real guests see the leaderboard: `/admin` → Demo tools → **Clear demo data** (removes every `@demo.blackveil.invalid` guest and the 35 demo characters). Optionally **Reset guest** on your own email too.
+
+Terminal equivalent:
 
 ```bash
-npm run demo:clear          # removes every @demo.blackveil.invalid guest and the 35 demo characters
-npm run demo:reset -- YOUR_DEMO_EMAIL   # optional: drop your demo RSVP too
+npm run demo:clear
+npm run demo:reset -- YOUR_DEMO_EMAIL
 ```

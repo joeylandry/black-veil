@@ -2,12 +2,11 @@ import { NextRequest, NextResponse } from "next/server";
 import { eq } from "drizzle-orm";
 import { getDb } from "@/lib/db/client";
 import { pointClaims } from "@/lib/db/schema";
-import { isAuthorizedAdmin } from "@/lib/auth/admin";
+import { adminGuard } from "@/lib/auth/admin";
 
 export async function PATCH(request: NextRequest, ctx: RouteContext<"/api/admin/claims/[id]">) {
-  if (!isAuthorizedAdmin(request)) {
-    return NextResponse.json({ error: "Unauthorized." }, { status: 401 });
-  }
+  const denied = adminGuard(request);
+  if (denied) return denied;
 
   const { id } = await ctx.params;
   const body = await request.json().catch(() => null);

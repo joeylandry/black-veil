@@ -2,6 +2,8 @@
 
 import { FormEvent, useEffect, useState } from "react";
 import { AdminDashboard } from "./admin-dashboard";
+import { AdminDatabase } from "./admin-database";
+import { AdminDemoTools } from "./admin-demo-tools";
 
 type AdminClaim = {
   id: string;
@@ -23,32 +25,52 @@ export function AdminClaims() {
   const [error, setError] = useState<string | null>(null);
   const [refreshKey, setRefreshKey] = useState(0);
 
+  /**
+   * Checks a passphrase before the staff office is shown, so a failure is reported on
+   * the unlock form with its real cause: wrong passphrase, no ADMIN_SECRET on this
+   * deployment, or a database that can't be read.
+   */
+  async function verify(candidate: string) {
+    const check = await fetch("/api/admin/session", { headers: { Authorization: `Bearer ${candidate}` } }).catch(() => null);
+    if (check?.ok) return null;
+    const body = await check?.json().catch(() => null);
+    return (
+      body?.error ??
+      (check ? `The staff office could not be opened (server error ${check.status}).` : "The site could not be reached. Check your connection.")
+    );
+  }
+
   useEffect(() => {
+    let stored: string | null = null;
     try {
-      const stored = sessionStorage.getItem(adminSecretKey);
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      if (stored) setSecret(stored);
+      stored = sessionStorage.getItem(adminSecretKey);
     } catch {
       // sessionStorage unavailable — fall back to entering the passphrase each visit
     }
+    if (!stored) return;
+    verify(stored).then((problem) => {
+      if (problem) {
+        setError(problem);
+        try {
+          sessionStorage.removeItem(adminSecretKey);
+        } catch {
+          // ignore
+        }
+      } else setSecret(stored);
+    });
   }, []);
 
   async function load(withSecret: string) {
-    setError(null);
     const response = await fetch("/api/admin/claims?status=pending", {
       headers: { Authorization: `Bearer ${withSecret}` },
-    });
-    if (!response.ok) {
-      setError("That passphrase was rejected.");
+    }).catch(() => null);
+    if (!response?.ok) {
+      const body = await response?.json().catch(() => null);
+      setError(body?.error ?? "The claim queue could not be loaded.");
       setClaims(null);
-      try {
-        sessionStorage.removeItem(adminSecretKey);
-      } catch {
-        // ignore
-      }
-      setSecret(null);
       return;
     }
+    setError(null);
     const body = await response.json();
     setClaims(body.claims);
   }
@@ -58,8 +80,14 @@ export function AdminClaims() {
     if (secret) load(secret);
   }, [secret]);
 
-  function unlock(event: FormEvent<HTMLFormElement>) {
+  async function unlock(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    setError(null);
+    const problem = await verify(secretInput);
+    if (problem) {
+      setError(problem);
+      return;
+    }
     try {
       sessionStorage.setItem(adminSecretKey, secretInput);
     } catch {
@@ -107,7 +135,9 @@ export function AdminClaims() {
         <h1>Staff Office</h1>
         <button type="button" className="button-link" onClick={() => { load(secret); setRefreshKey((key) => key + 1); }}>Refresh</button>
       </header>
-      <AdminDashboard secret={secret} refreshKey={refreshKey} />
+      <AdminDashboard secret={secret} refreshKey={refreshKey} onChange={() => { load(secret); setRefreshKey((key) => key + 1); }} />
+      <AdminDemoTools secret={secret} onChange={() => { load(secret); setRefreshKey((key) => key + 1); }} />
+      <AdminDatabase secret={secret} refreshKey={refreshKey} onChange={() => { load(secret); setRefreshKey((key) => key + 1); }} />
       <h2 className="admin-section-title">Claim queue</h2>
       {error && <p className="field-error" role="alert">{error}</p>}
       {claims && claims.length === 0 && <p>Nothing pending.</p>}
