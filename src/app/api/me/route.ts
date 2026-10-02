@@ -42,6 +42,7 @@ export async function GET() {
     occupation: string;
     publicBiography: string;
     factions: string[];
+    dossier: { privateBiography: string; secrets: string[]; objectives: string[] };
   } | null = null;
   if (guest.characterId) {
     const [row] = await db.select().from(characters).where(eq(characters.id, guest.characterId)).limit(1);
@@ -51,6 +52,9 @@ export async function GET() {
         occupation: row.occupation,
         publicBiography: row.publicBiography,
         factions: row.factions,
+        // The guest's own dossier, for their eyes only: this route only ever answers for
+        // the signed-in guest. Murderer/victim flags stay server-side regardless.
+        dossier: { privateBiography: row.privateBiography, secrets: row.secrets, objectives: row.objectives },
       };
     }
   }

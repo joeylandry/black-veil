@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ChallengeStandings } from "@/components/challenge-standings";
+import { CharacterCard } from "@/components/character-card";
 import { GuestLedger } from "@/components/guest-ledger";
 
 export const metadata: Metadata = {
@@ -11,6 +12,7 @@ export default function GuestLedgerPage() {
   return (
     <div className="page-wrap guest-ledger-page">
       <GuestLedger />
+      <CharacterCard />
       <ChallengeStandings />
     </div>
   );

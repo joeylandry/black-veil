@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { AdminClaims } from "@/components/admin-claims";
 
 export const metadata: Metadata = {
-  title: "Staff · Claim Queue",
+  title: "Staff Office",
   robots: { index: false, follow: false },
 };
 
