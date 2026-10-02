@@ -88,9 +88,9 @@ Optional laugh lines if you have time: `sudo su` → "Nice try." · `rm -rf /` �
 
 Optional: click **Open private invitation** to show the personalised invitation, then come back.
 
-## 6. CTF: the Black Rose Trials (≈3 min)
+## 6. CTF: the Black Frog Trials (≈3 min)
 
-Click **Enter the Black Rose trials** (or `/black-rose`). Score seal starts at **0 of 175**.
+Click **Enter the Black Frog trials** (or `/black-frog`). Score seal starts at **0 of 175**.
 
 Show these in this order. The first three take seconds because you already have the answers from the terminal:
 
@@ -102,7 +102,7 @@ Show these in this order. The first three take seconds because you already have 
 | **VI** The Uninvited Guest | `VEIL{SILENT_PARTNER}` | **SQL injection.** Go to **ABOUT** in the nav → scroll to "Confirm a standing reservation" → type `' OR 1=1 --` → **Confirm**. A RESTRICTED management ledger appears ending "**Silent Partner**." |
 | **VII** The Unlisted Room | `VEIL{UNLISTED_ROOM}` | No link anywhere. Type the URL **`/secret`** directly. The flag is printed there. |
 
-After VI and VII, go back to `/black-rose` to enter them.
+After VI and VII, go back to `/black-frog` to enter them.
 
 To show a **wrong answer** being rejected: type `VEIL{WRONG}` into any trial → "Finding rejected. Examine the record again."
 

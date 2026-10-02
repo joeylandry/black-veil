@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { BlackRoseGate } from "@/components/black-rose-gate";
+import { BlackFrogGate } from "@/components/black-frog-gate";
 
 export const metadata: Metadata = {
   title: "Restricted Postscript",
@@ -7,6 +7,6 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-export default function BlackRosePage() {
-  return <div className="page-wrap ctf-page"><BlackRoseGate /></div>;
+export default function BlackFrogPage() {
+  return <div className="page-wrap ctf-page"><BlackFrogGate /></div>;
 }

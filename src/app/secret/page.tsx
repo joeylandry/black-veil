@@ -18,12 +18,12 @@ export default function SecretPage() {
     <div className="page-wrap">
       <section className="invitation-locked">
         <BlackVeilInsignia />
-        <p className="eyebrow">Secret flag · The Black Rose Trials</p>
+        <p className="eyebrow">Secret flag · The Black Frog Trials</p>
         <h1>The Unlisted Room</h1>
         <p>{challenge.briefing}</p>
         <p className="secret-flag">{flag}</p>
         <p>Carry this finding back to the trials and enter it for {challenge.points} points.</p>
-        <Link href="/black-rose" className="button-link">Return to the trials</Link>
+        <Link href="/black-frog" className="button-link">Return to the trials</Link>
       </section>
     </div>
   );

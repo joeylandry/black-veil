@@ -69,8 +69,8 @@ export function CtfGame() {
       <span className="ctf-source-thread" data-thread="MERRIMACK_ROOM" aria-hidden="true" />
       <header className="ctf-header">
         <BlackVeilInsignia />
-        <p className="eyebrow">Restricted postscript · rose clearance</p>
-        <h1>The Black Rose Trials</h1>
+        <p className="eyebrow">Restricted postscript · frog clearance</p>
+        <h1>The Black Frog Trials</h1>
         <p>Irregularities remain across the Manchester record. Findings are rewarded. Careless guesses are remembered.</p>
         <div className="score-seal"><span>Trials score</span><strong>{scores.trials}</strong><small>of {maxCtfScore} points</small></div>
         {submitError && (
@@ -85,7 +85,7 @@ export function CtfGame() {
         <h2>The Manchester Trials</h2>
       </div>
 
-      <section className="ctf-challenges" aria-label="Black Rose challenges">
+      <section className="ctf-challenges" aria-label="Black Frog challenges">
         {ctfChallenges.map((challenge) => {
           const solved = progress.solved.includes(challenge.id);
           return (

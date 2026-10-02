@@ -7,6 +7,10 @@ const nextConfig: NextConfig = {
    * Node runtime, so it is required natively instead of bundled.
    */
   serverExternalPackages: ["@electric-sql/pglite"],
+  /** The trials were renamed from Black Rose to Black Frog; keep old links working. */
+  async redirects() {
+    return [{ source: "/black-rose", destination: "/black-frog", permanent: true }];
+  },
 };
 
 export default nextConfig;

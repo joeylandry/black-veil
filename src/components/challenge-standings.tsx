@@ -70,7 +70,7 @@ export function ChallengeStandings() {
         <div><p className="eyebrow">Private standings · before doors</p><h2>Guest Ledger</h2></div>
         <p>Live: every guest’s accepted flags appear here within a few seconds; approved findings are added once staff review them.</p>
       </div>
-      <div className="leaderboard-table" role="table" aria-label="Black Rose standings">
+      <div className="leaderboard-table" role="table" aria-label="Black Frog standings">
         <div role="row" className="leaderboard-row leaderboard-labels"><span role="columnheader">Rank</span><span role="columnheader">Guest</span><span role="columnheader">Character</span><span role="columnheader">Flags</span><span role="columnheader">Points</span></div>
         {standings?.rows.length ? (
           standings.rows.map((row) => (

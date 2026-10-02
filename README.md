@@ -29,7 +29,7 @@ npm run build
 - `/about` — chronology separating real Manchester context from Black Veil fiction
 - `/guest-ledger` — real-name RSVP, persisted to Postgres and signed in for this device
 - `/invitation` — private invitation revealed after archive access and RSVP
-- `/black-rose` — the seven-trial CTF (server-verified flags), the twelve-ticket Restoration Bench, and in-person point claims
+- `/black-frog` — the seven-trial CTF (server-verified flags), the twelve-ticket Restoration Bench, and in-person point claims
 - `/bench/[ticket]` — one restoration bench: a graded engineering exercise (RST-01 … RST-12)
 - `/resume` — request a magic-link sign-in to restore your register on a new device
 - `/admin` — staff-only, passphrase-gated queue for approving point claims
@@ -55,15 +55,15 @@ Generated images are never described as authentic historical photographs. The re
 
 ## RSVP, CTF, and guest accounts
 
-The original archive-to-terminal-to-ledger flow is preserved. The 1926 invitation record contains a hidden seal that opens the simulated archival terminal; solving it unlocks the real-name RSVP, private invitation, and Black Rose trials. The terminal is client-side fiction and never executes commands on the visitor’s device.
+The original archive-to-terminal-to-ledger flow is preserved. The 1926 invitation record contains a hidden seal that opens the simulated archival terminal; solving it unlocks the real-name RSVP, private invitation, and Black Frog trials. The terminal is client-side fiction and never executes commands on the visitor’s device.
 
 RSVPs use a guest’s real name and do not assign a fictional character. `src/lib/rsvp-service.ts` defines the persistence boundary. `remoteRsvpService` (used by `GuestLedger`) POSTs to `/api/rsvp`, which upserts a `guests` row by email, writes to `rsvps`, and signs the visitor's device in (see "Guest accounts and resuming" below). `localRsvpService` remains for local development without a database connection. Submissions are also mirrored to `localStorage` purely so the visitor's device can render "you already RSVP'd" without a login step; the database, not `localStorage`, is the source of truth.
 
-Black Rose flags are checked server-side in `POST /api/ctf/submit` against `src/data/ctf-flags.ts`, a module never imported by client code — only `src/lib/ctf-scoring.ts` and the intentionally source-revealing `/secret` page (challenge VII) import it. `src/data/ctf.ts` holds public challenge copy (title, briefing, clue, points) with no flag field, safe for "use client" components. Each solve is written to `ctf_solves`, keyed by guest, so a correct flag can never be re-derived by reading client JS.
+Black Frog flags are checked server-side in `POST /api/ctf/submit` against `src/data/ctf-flags.ts`, a module never imported by client code — only `src/lib/ctf-scoring.ts` and the intentionally source-revealing `/secret` page (challenge VII) import it. `src/data/ctf.ts` holds public challenge copy (title, briefing, clue, points) with no flag field, safe for "use client" components. Each solve is written to `ctf_solves`, keyed by guest, so a correct flag can never be re-derived by reading client JS.
 
 ### The Restoration Bench
 
-`/black-rose` carries two tracks. The Manchester trials (I–VII) are the original in-world puzzles, answered with a `VEIL{…}` flag. The **Restoration Bench** (RST-01 … RST-12) is an engineering track: twelve labs where the flag is a receipt for work the server actually checked, not a string to be guessed.
+`/black-frog` carries two tracks. The Manchester trials (I–VII) are the original in-world puzzles, answered with a `VEIL{…}` flag. The **Restoration Bench** (RST-01 … RST-12) is an engineering track: twelve labs where the flag is a receipt for work the server actually checked, not a string to be guessed.
 
 The fiction is the present-day team digitising the archive. Every newspaper record carries exactly one conservation slip in its right-hand column, naming the ticket open against that paper — `src/components/newspaper-artifact.tsx` renders it from `getBenchLabForRecord(record.slug)`, so the slip and the lab can never drift apart.
 
