@@ -7,9 +7,9 @@ export const eventConfig = {
   location: "Location disclosed to confirmed guests",
   /** Printed only on the private invitation card, which the guest sees after entering the register. */
   address: "3 Warren Street, Manchester, N.H. 03104",
-  rsvpDeadline: "October 16, 2026",
+  rsvpDeadline: "October 12, 2026",
   /** The deadline without a year, for in-world copy and the link preview. */
-  rsvpDeadlineShort: "October 16",
+  rsvpDeadlineShort: "October 12",
   contact: "Correspondence by private invitation only",
   finalPassphrase: "THE VEIL HAS LIFTED",
   intermediateCredential: "blackfrog",
