@@ -15,11 +15,11 @@ export function SiteFooter() {
       <div className="footer-links">
         <Link href="/archive">Historical records</Link>
         <Link href="/about">About</Link>
-        <Link href="/guest-ledger">Private ledger</Link>
+        <Link href="/guest-ledger">Guest ledger</Link>
         {eventConfig.benchPromoted && <Link href="/bench">Restoration bench</Link>}
-        <Link href="/resume">Resume your register</Link>
+        {registerUnlocked && <Link href="/resume">Resume your register</Link>}
       </div>
-      <p className="fine-print">Archive catalog last amended: October 31, 1926 · 11:47 P.M.</p>
+      <p className="fine-print">Archive catalog last amended: October 23, 1926 · 11:47 P.M.</p>
       {registerUnlocked && (
         <Link href="/postscript" className="footer-secret-link">secret secret flag</Link>
       )}

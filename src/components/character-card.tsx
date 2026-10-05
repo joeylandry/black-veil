@@ -40,7 +40,7 @@ export function CharacterCard() {
         <BlackVeilInsignia />
         <div>
           <p className="eyebrow">Your identity for the evening · <strong>Sealed</strong></p>
-          <p>Management has not yet chosen who you will be on October 31. It will appear here once assigned.</p>
+          <p>Management has not yet chosen who you will be on October 23. It will appear here once assigned.</p>
         </div>
       </section>
     );

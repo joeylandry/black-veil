@@ -11,7 +11,7 @@ export function InvitationCard({ fullName }: { fullName?: string }) {
       <p className="established">Manchester, New Hampshire · By private invitation</p>
       <h1>The Black Veil</h1>
       <p className="request-line">requests the pleasure of {fullName ? <><strong>{fullName}</strong> at</> : "your company at"}</p>
-      <h2>An All Hallows’ Eve Masquerade</h2>
+      <h2>A Masquerade</h2>
       <DecoDivider compact />
       <time>{eventConfig.fictionalEventDate}</time>
       <p className="invitation-details">Supper <span>•</span> Dancing <span>•</span> Masks</p>
