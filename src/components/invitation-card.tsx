@@ -21,7 +21,6 @@ export function InvitationCard({ fullName }: { fullName?: string }) {
         <div><dt>Dress</dt><dd>1920s formal attire and masquerade</dd></div>
         <div><dt>Admission</dt><dd>Black envelope and confirmed name</dd></div>
       </dl>
-      <p className="identity-line">Your name has been remembered.</p>
       <p className="invitation-warning">
         Management has located your file. If a private identity is prepared for the masquerade,
         it will follow only after the guest register is settled.

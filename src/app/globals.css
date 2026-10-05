@@ -392,8 +392,7 @@ img { max-width: 100%; height: auto; }
 .invitation-card dt { font-family: var(--font-sans), Arial, sans-serif; font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; }
 .invitation-card dd { margin: 0; }
 .invitation-address { display: block; margin-top: .2rem; font-weight: 700; }
-.identity-line { margin: 2.5rem 0 1rem; font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.5rem); font-style: italic; }
-.invitation-warning { max-width: 600px; margin: 0 auto; font-size: .95rem; }
+.invitation-warning { max-width: 600px; margin: 2.5rem auto 0; font-size: .95rem; }
 .passphrase-line { max-width: 520px; margin: 2.5rem auto 1rem; padding: 1.3rem; color: var(--oxblood-dark); border: 3px double var(--oxblood); }
 .passphrase-line span, .passphrase-line strong { display: block; }
 .passphrase-line span { font-family: var(--font-sans), Arial, sans-serif; font-size: .62rem; text-transform: uppercase; letter-spacing: .15em; }
