@@ -4,6 +4,7 @@ import { getDb } from "@/lib/db/client";
 import { characters, ctfSolves, guests, pointClaims, rsvps } from "@/lib/db/schema";
 import { getSessionGuestId } from "@/lib/auth/session";
 import { scoreForSolvedIds } from "@/lib/ctf-scoring";
+import { eventConfig } from "@/config/event";
 
 export async function GET() {
   const guestId = await getSessionGuestId();
@@ -44,7 +45,8 @@ export async function GET() {
     factions: string[];
     dossier: { privateBiography: string; secrets: string[]; objectives: string[] };
   } | null = null;
-  if (guest.characterId) {
+  // Until the cast is released, every guest's identity stays sealed, whatever the table holds.
+  if (eventConfig.charactersReleased && guest.characterId) {
     const [row] = await db.select().from(characters).where(eq(characters.id, guest.characterId)).limit(1);
     if (row) {
       character = {

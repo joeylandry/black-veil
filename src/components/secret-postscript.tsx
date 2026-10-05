@@ -1,24 +1,38 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import Link from "next/link";
+import { FormEvent, useMemo, useState } from "react";
 import { eventConfig } from "@/config/event";
-import { secretFlag } from "@/data/secret-flag";
-import { setStorageValue, useStorageValue } from "@/lib/use-storage-value";
+import { bonusChallenges } from "@/data/ctf";
+import { CtfProgress, emptyCtfProgress, remoteCtfService } from "@/lib/ctf-service";
+import { useStorageValue } from "@/lib/use-storage-value";
 
+const challenge = bonusChallenges.find((item) => item.id === "postscript")!;
+
+/** The unlisted postscript flag. Checked on the server like every trial, and scored onto the register. */
 export function SecretPostscript() {
-  const solvedValue = useStorageValue(eventConfig.storageKeys.postscriptSolved);
+  const savedProgress = useStorageValue(eventConfig.storageKeys.ctfProgress);
+  const storedProgress = useMemo<CtfProgress>(() => {
+    if (!savedProgress) return emptyCtfProgress;
+    try { return JSON.parse(savedProgress) as CtfProgress; } catch { return emptyCtfProgress; }
+  }, [savedProgress]);
   const [incorrect, setIncorrect] = useState(false);
-  const solved = solvedValue === "true";
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [busy, setBusy] = useState(false);
+  const solved = storedProgress.solved.includes(challenge.id);
 
-  function submit(event: FormEvent<HTMLFormElement>) {
+  async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = new FormData(event.currentTarget);
-    const submission = String(form.get("flag") || "").trim().toUpperCase();
-    if (submission === secretFlag.toUpperCase()) {
-      setStorageValue(eventConfig.storageKeys.postscriptSolved, "true");
-      setIncorrect(false);
-    } else {
-      setIncorrect(true);
+    setBusy(true);
+    setSubmitError(null);
+    try {
+      const result = await remoteCtfService.submitFlag(challenge.id, String(form.get("flag") || ""));
+      setIncorrect(!result.correct);
+    } catch (error) {
+      setSubmitError(error instanceof Error ? error.message : "Failed to submit flag.");
+    } finally {
+      setBusy(false);
     }
   }
 
@@ -29,7 +43,7 @@ export function SecretPostscript() {
       <h1>A Postscript No One Was Meant to Find.</h1>
       <p>Nothing here was printed in any dossier. If something led you to this page, it should also have led you to a flag.</p>
       {solved ? (
-        <p className="flag-correct" role="status">◆ Flag accepted.</p>
+        <p className="flag-correct" role="status">◆ Flag accepted · {challenge.points} points entered</p>
       ) : (
         <>
           <form className="ledger-code-form" onSubmit={submit}>
@@ -46,9 +60,14 @@ export function SecretPostscript() {
                 aria-describedby={incorrect ? "postscript-error" : undefined}
               />
             </label>
-            <button className="button-link" type="submit">Enter finding</button>
+            <button className="button-link" type="submit" disabled={busy}>Enter finding</button>
           </form>
           {incorrect && <small id="postscript-error" className="field-error">Finding rejected. Look again.</small>}
+          {submitError && (
+            <small className="field-error" role="alert">
+              {submitError} Only names on the <Link href="/guest-ledger">guest register</Link> can be scored — on a new device, <Link href="/resume">resume your register</Link>.
+            </small>
+          )}
         </>
       )}
     </section>

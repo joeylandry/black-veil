@@ -17,7 +17,7 @@ export async function POST(request: NextRequest) {
   if (typeof fullName !== "string" || fullName.trim().length < 2) {
     return NextResponse.json({ error: "A full name is required." }, { status: 400 });
   }
-  if (typeof email !== "string" || !/^\S+@\S+\.\S+$/.test(email)) {
+  if (typeof email !== "string" || !/^\S+@\S+\.\S+$/.test(email.trim())) {
     return NextResponse.json({ error: "A valid email is required." }, { status: 400 });
   }
   if (attending !== "yes" && attending !== "no") {

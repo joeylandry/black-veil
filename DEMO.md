@@ -1,5 +1,7 @@
 # Demo runbook
 
+> **Invitations are live.** Two switches in `src/config/event.ts` are off for launch: `charactersReleased: false` (guests see a sealed identity; **Assign characters** in `/admin` is refused) and `benchPromoted: false` (no footer link, trials-page link, or newspaper slips for the Restoration Bench; `/bench` still works if you type it). Steps 7–9 below need them flipped to `true` and a redeploy.
+
 A script you can read off a second screen during the demo. Every command and answer below was run end to end against a fresh build before this file was committed.
 
 **Path:** archive → hidden terminal → passcode → RSVP → leaderboard → CTF trials → Restoration Bench → staff office (dashboard, claims, characters) → signing in as a classmate to see their character card → submitting flags as them while the scoreboard updates live. **Time:** about 14 minutes.
@@ -227,6 +229,7 @@ FLAGS      I   VEIL{RIVER_SIDE}         II  VEIL{NOT_THE_LAST}
            V   VEIL{MERRIMACK_ROOM}     (Inspect → Elements → search data-thread)
            VI  VEIL{SILENT_PARTNER}     (/about:  ' OR 1=1 -- )
            VII VEIL{UNLISTED_ROOM}      (/secret)
+           P.S. VEIL{PAST_THE_LAST_PAGE} (terminal: cd ledger · ls -la · cat .postscript → enter at /postscript)
 RST-01     BINDERY   · git log --oneline · git show c0f5a28 · git revert c0f5a28 · cat registers/1921-09.txt
            → c0f5a28 / 23:47
 RST-08     CLOAKROOM · whoami · GET /vault/records?owner=me · GET /vault/records/117
@@ -239,7 +242,7 @@ LIVE       2nd browser → /admin → Database → filter “aidan” → Sign i
 
 ## Don'ts
 
-- **Don't click "secret secret flag" in the footer.** It shows up once the register is unsealed and goes to `/postscript`, whose flag is still a placeholder (`VEIL{REPLACE_ME}`) in `src/data/secret-flag.ts`.
+- The **"secret secret flag"** footer link (shown once the register is unsealed) goes to `/postscript`. Its flag is **`VEIL{PAST_THE_LAST_PAGE}`** (25 bonus points, checked on the server): after `unlock ledger blackrose`, run `cd ledger` → `ls -la` → `cat .postscript`. The `mail` message ends with a P.S. pointing there.
 - Don't use the terminal's hint panel or the "management-assisted" entry.
 - Don't demo in a normal browser window that has visited the site before. Use Incognito.
 

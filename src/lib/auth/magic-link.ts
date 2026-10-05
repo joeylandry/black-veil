@@ -9,18 +9,17 @@ function hashToken(token: string) {
   return createHash("sha256").update(token).digest("hex");
 }
 
-/** Finds or creates the guest for this email, then issues a fresh sign-in token for it. */
-export async function issueMagicLink(email: string, fullNameIfNew: string) {
+/**
+ * Issues a fresh sign-in token for the guest already registered under this email. Returns
+ * null for an email nobody has RSVP'd with: a mistyped address on /resume must not put a
+ * nameless guest on the register (and the leaderboard).
+ */
+export async function issueMagicLink(email: string) {
   const db = getDb();
   const normalizedEmail = email.trim().toLowerCase();
 
-  let [guest] = await db.select().from(guests).where(eq(guests.email, normalizedEmail)).limit(1);
-  if (!guest) {
-    [guest] = await db
-      .insert(guests)
-      .values({ email: normalizedEmail, fullName: fullNameIfNew || normalizedEmail })
-      .returning();
-  }
+  const [guest] = await db.select().from(guests).where(eq(guests.email, normalizedEmail)).limit(1);
+  if (!guest) return null;
 
   const token = randomBytes(32).toString("hex");
   await db.insert(magicLinks).values({

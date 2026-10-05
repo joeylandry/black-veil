@@ -10,9 +10,11 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "A valid email is required." }, { status: 400 });
   }
 
-  const { token } = await issueMagicLink(email, "");
-  const url = `${getSiteUrl()}/api/auth/verify?token=${token}`;
-  await sendMagicLinkEmail(email, url);
+  const issued = await issueMagicLink(email);
+  if (issued) {
+    const url = `${getSiteUrl()}/api/auth/verify?token=${issued.token}`;
+    await sendMagicLinkEmail(email, url);
+  }
 
   // Always respond ok, whether or not the email is already registered, so this
   // endpoint can't be used to test which emails have RSVP'd.

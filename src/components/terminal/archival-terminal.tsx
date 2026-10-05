@@ -23,6 +23,28 @@ const maintenanceMemo = [
   "Disposition: objection denied. The sealed ledger is not to leave Manchester.",
 ].join("\n");
 
+const ledgerPath = "/black-veil/archive/ledger";
+
+const ledgerRegister = [
+  "REGISTER OF ADMISSIONS / OCT. 31, 1924",
+  "22:10  orchestra admitted, river door",
+  "23:02  party of four, names withheld",
+  "23:47  keeper signs out",
+  "—  the remainder of the page is torn away  —",
+].join("\n");
+
+const ledgerPostscript = [
+  "P.S.",
+  "",
+  "If you are reading this, you looked past the last page, which is more than",
+  "the police ever did. Take this to the postscript the house keeps for itself,",
+  "at the foot of every page once the register is open:",
+  "",
+  "VEIL{PAST_THE_LAST_PAGE}",
+  "",
+  "— K.",
+].join("\n");
+
 export function ArchivalTerminal() {
   const [lines, setLines] = useSessionState<OutputLine[]>(terminalSessionKeys.lines, opening);
   const [input, setInput] = useState("");
@@ -94,6 +116,11 @@ export function ArchivalTerminal() {
     const [rawCommand, ...args] = normalized.split(" ");
     const command = rawCommand.toLowerCase();
     const argument = args.join(" ");
+    const flags = args.filter((arg) => arg.startsWith("-"));
+    const paths = args.filter((arg) => !arg.startsWith("-"));
+    const inLedger = cwd === ledgerPath;
+    // Whether a path names the ledger directory (or something inside it) from wherever we stand.
+    const pointsIntoLedger = (path: string) => /(^|\/)ledger(\/|$)/.test(path) || (inLedger && !path.includes("/"));
 
     if (command === "clear") {
       setLines([]);
@@ -105,7 +132,12 @@ export function ArchivalTerminal() {
         append("output", "Available: help  ls  pwd  whoami  cd  cat  file  strings  grep  date  history  unlock  mail  clear\nAll operations are simulated within the Black Veil archive.");
         break;
       case "ls":
-        if (args.includes("-la") || args.includes("-al") || (args.includes("-a") && args.includes("-l"))) {
+        if ((paths[0] && /(^|\/)ledger\/?$/.test(paths[0])) || (inLedger && !paths[0])) {
+          const showHidden = flags.some((flag) => flag.includes("a"));
+          if (!authenticated) append("error", "ls: ledger: Permission denied");
+          else if (flags.some((flag) => flag.includes("l")) && showHidden) append("output", "total 3\ndr-x------  .\ndrwxr-xr-x  ..\n-r--------  .postscript\n-r--------  mail\n-r--------  register-1924");
+          else append("output", showHidden ? ".  ..  .postscript  mail  register-1924" : "mail  register-1924");
+        } else if (args.includes("-la") || args.includes("-al") || (args.includes("-a") && args.includes("-l"))) {
           append("output", "total 47\ndrwxr-xr-x  .\ndr-xr-xr-x  ..\n-rw-------  .1926\ndr-xr-xr-x  archive\ndr-xr-xr-x  correspondence\nd---------  ledger");
           setProgress((value) => Math.max(value, 1));
         } else if (args.includes("-a")) {
@@ -128,7 +160,10 @@ export function ArchivalTerminal() {
           setCwd(target === ".." || target === "~" || target === "/black-veil" ? "/black-veil" : "/black-veil/archive");
         } else if (["correspondence", "/black-veil/archive/correspondence"].includes(target)) {
           setCwd("/black-veil/archive/correspondence");
-        } else if (target === "ledger") append("error", "cd: ledger: Permission denied");
+        } else if (["ledger", "ledger/", "~/archive/ledger", ledgerPath].includes(target)) {
+          if (authenticated) setCwd(ledgerPath);
+          else append("error", "cd: ledger: Permission denied");
+        }
         else append("error", `cd: ${target}: No such room or directory`);
         break;
       }
@@ -139,6 +174,11 @@ export function ArchivalTerminal() {
         } else if (argument.includes("maintenance.mem")) {
           append("output", maintenanceMemo);
           setProgress((value) => Math.max(value, 3));
+        } else if (argument && pointsIntoLedger(argument) && /(^|\/)(\.postscript|register-1924|mail)$/.test(argument)) {
+          if (!authenticated) append("error", `cat: ${argument}: Permission denied`);
+          else if (argument.endsWith(".postscript")) append("output", ledgerPostscript);
+          else if (argument.endsWith("register-1924")) append("output", ledgerRegister);
+          else append("output", "mail: a mailbox, not a record. Use ‘mail’.");
         } else if (!argument) append("error", "cat: a record must be named");
         else append("error", `cat: ${argument}: record unavailable`);
         break;
@@ -173,7 +213,7 @@ export function ArchivalTerminal() {
       case "mail":
         if (!authenticated) append("error", "mail: /ledger/mail: Permission denied");
         else {
-          append("system", `FROM: management@blackveil.internal\nDATE: OCTOBER 31, 1926 · 11:47 P.M.\nSUBJECT: THE HOUSE RECEIVES AGAIN\n\nKeeper—\n\nBlack envelopes have appeared on Elm Street and the West Side. No hand signed them. The orchestra is below. The river door is unbarred. Tell those who found their way here that admission requires the old words.\n\nDo not write them where the public may see.\n\nThe doors open once more.`);
+          append("system", `FROM: management@blackveil.internal\nDATE: OCTOBER 31, 1926 · 11:47 P.M.\nSUBJECT: THE HOUSE RECEIVES AGAIN\n\nKeeper—\n\nBlack envelopes have appeared on Elm Street and the West Side. No hand signed them. The orchestra is below. The river door is unbarred. Tell those who found their way here that admission requires the old words.\n\nDo not write them where the public may see.\n\nThe doors open once more.\n\nP.S. The ledger keeps one page past the last. A keeper knows where to look.`);
           finish("archive-breached");
         }
         break;

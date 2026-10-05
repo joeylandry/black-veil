@@ -27,6 +27,10 @@ export function GuestLedger() {
     event.preventDefault();
     if (codeInput.trim().toLowerCase() === eventConfig.finalPassphrase.toLowerCase()) {
       setStorageValue(eventConfig.storageKeys.registerUnlocked, "true");
+      // The old words only come out of the archive, so knowing them counts as having opened it.
+      // Without this, a guest unsealing the register on a second device would find the trials
+      // and the invitation still locked.
+      setStorageValue(eventConfig.storageKeys.puzzleComplete, "true");
       setCodeError(false);
     } else {
       setCodeError(true);
@@ -63,6 +67,12 @@ export function GuestLedger() {
     try {
       await remoteRsvpService.save(submission);
       setSaved(submission);
+      // The register remembers guests by email: someone re-entering their name on a new
+      // device picks up the flags they already solved instead of starting from zero.
+      fetch("/api/me")
+        .then((response) => (response.ok ? response.json() : null))
+        .then((me) => { if (me?.ctf) setStorageValue(eventConfig.storageKeys.ctfProgress, JSON.stringify(me.ctf)); })
+        .catch(() => {});
     } catch (error) {
       setSubmitError(error instanceof Error ? error.message : "Failed to save RSVP.");
     }

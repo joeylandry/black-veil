@@ -13,4 +13,7 @@ export const ctfFlags: Record<string, string> = {
   "thread-in-the-rose": "VEIL{MERRIMACK_ROOM}",
   "uninvited-guest": "VEIL{SILENT_PARTNER}",
   "unlisted-room": "VEIL{UNLISTED_ROOM}",
+  // Bonus, entered at /postscript. Printed by `cat .postscript` inside the unlocked
+  // ledger in the archival terminal (src/components/terminal/archival-terminal.tsx).
+  postscript: "VEIL{PAST_THE_LAST_PAGE}",
 };

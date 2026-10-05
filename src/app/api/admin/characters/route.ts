@@ -5,6 +5,7 @@ import { getDb } from "@/lib/db/client";
 import { characters, guests, rsvps } from "@/lib/db/schema";
 import { adminGuard } from "@/lib/auth/admin";
 import { matchByName } from "@/lib/demo/seed";
+import { eventConfig } from "@/config/event";
 
 function shuffle<T>(items: T[]) {
   const copy = [...items];
@@ -35,6 +36,12 @@ export async function POST(request: NextRequest) {
   }
   if (action !== "assign") {
     return NextResponse.json({ error: 'action must be "assign" or "clear".' }, { status: 400 });
+  }
+  if (!eventConfig.charactersReleased) {
+    return NextResponse.json(
+      { error: "Characters are not released yet. Set charactersReleased to true in src/config/event.ts and redeploy to deal them." },
+      { status: 409 },
+    );
   }
 
   const [guestRows, rsvpRows, characterRows] = await Promise.all([
