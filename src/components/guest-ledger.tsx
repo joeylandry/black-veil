@@ -47,7 +47,7 @@ export function GuestLedger() {
     const dressAcknowledged = form.get("dressAcknowledged") === "on";
     const nextErrors: Errors = {};
 
-    if (fullName.length < 2) nextErrors.fullName = "Enter the real name management should place on the register.";
+    if (fullName.length < 2) nextErrors.fullName = "Enter the real name management should place in the ledger.";
     if (!/^\S+@\S+\.\S+$/.test(email)) nextErrors.email = "Enter a valid address for further correspondence.";
     if (!attending) nextErrors.attending = "Indicate whether a place should be held.";
     if (!dressAcknowledged) nextErrors.dress = "Acknowledge the house dress requirement.";
@@ -87,7 +87,7 @@ export function GuestLedger() {
       <section className="ledger-locked">
         <div className="ledger-lock" aria-hidden="true">BV</div>
         <p className="eyebrow">Restricted volume · members only</p>
-        <h1>The Guest Register Is Sealed</h1>
+        <h1>The Guest Ledger Is Sealed</h1>
         <p>Your name cannot be entered until you give the old words. Kindly reply by {eventConfig.rsvpDeadlineShort}.</p>
         <form className="ledger-code-form" onSubmit={submitCode}>
           <label>
@@ -103,9 +103,9 @@ export function GuestLedger() {
               aria-describedby={codeError ? "code-error" : undefined}
             />
           </label>
-          <button className="button-link" type="submit">Unseal the register</button>
+          <button className="button-link" type="submit">Unseal the ledger</button>
         </form>
-        {codeError && <small id="code-error" className="field-error">AUTHENTICATION REFUSED. The register does not recognize you.</small>}
+        {codeError && <small id="code-error" className="field-error">AUTHENTICATION REFUSED. The ledger does not recognize you.</small>}
         <small>Those who have not found the words should begin in the <Link href="/archive">archive</Link>.</small>
       </section>
     );
@@ -115,8 +115,8 @@ export function GuestLedger() {
     return (
       <div className="ledger-success ledger-success-complete">
         <header>
-          <p className="eyebrow">Guest register · October 1926</p>
-          <h1>Your name has been entered upon the guest register.</h1>
+          <p className="eyebrow">Guest ledger · October 1926</p>
+          <h1>Your name has been entered in the guest ledger.</h1>
           <p className="registered-name">{visibleSubmission.fullName}</p>
           <div className="management-found-file">
             <p>The management of The Black Veil has located your file.</p>
@@ -135,7 +135,7 @@ export function GuestLedger() {
   return (
     <form className="ledger-form" onSubmit={submit} noValidate>
       <header>
-        <p className="eyebrow">Private guest register · Manchester · 1926</p>
+        <p className="eyebrow">Private guest ledger · Manchester · 1926</p>
         <h1>Enter your name.</h1>
         <p>Use your real name. A fictional identity will be prepared only after attendance is confirmed.</p>
         <p>Kindly reply by {eventConfig.rsvpDeadlineShort}.</p>
@@ -168,7 +168,7 @@ export function GuestLedger() {
         {errors.dress && <small className="field-error">{errors.dress}</small>}
       </div>
       {submitError && <small className="field-error" role="alert">{submitError}</small>}
-      <button className="ledger-submit" type="submit">Enter my name upon the register</button>
+      <button className="ledger-submit" type="submit">Enter my name in the ledger</button>
     </form>
   );
 }

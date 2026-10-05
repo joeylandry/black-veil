@@ -42,7 +42,7 @@ export async function POST(request: NextRequest) {
     // will not help, so say so rather than inviting the guest to submit again.
     console.error("[rsvp] the database is not configured:", error);
     return NextResponse.json(
-      { error: "The guest register is not configured on this deployment. Please let the host know." },
+      { error: "The guest ledger is not configured on this deployment. Please let the host know." },
       { status: 503 },
     );
   }
@@ -63,7 +63,7 @@ export async function POST(request: NextRequest) {
     // to know their name was not written down.
     console.error("[rsvp] failed to record the RSVP:", error);
     return NextResponse.json(
-      { error: "The guest register could not be reached, so nothing was recorded. Please try again, and tell the host if it keeps failing." },
+      { error: "The guest ledger could not be reached, so nothing was recorded. Please try again, and tell the host if it keeps failing." },
       { status: 503 },
     );
   }

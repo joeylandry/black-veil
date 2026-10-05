@@ -65,7 +65,7 @@ export function SecretPostscript() {
           {incorrect && <small id="postscript-error" className="field-error">Finding rejected. Look again.</small>}
           {submitError && (
             <small className="field-error" role="alert">
-              {submitError} Only names on the <Link href="/guest-ledger">guest register</Link> can be scored — on a new device, <Link href="/resume">resume your register</Link>.
+              {submitError} Only names in the <Link href="/guest-ledger">guest ledger</Link> can be scored — on a new device, <Link href="/resume">resume your ledger</Link>.
             </small>
           )}
         </>

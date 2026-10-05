@@ -37,7 +37,7 @@ export function ResumeForm() {
       <section className="invitation-locked">
         <p className="eyebrow">Check your correspondence</p>
         <h1>A sign-in link is on its way.</h1>
-        <p>If {email} is on file, a private link back to your guest register, Black Frog standing, and character will arrive shortly. It expires in 30 minutes and works once.</p>
+        <p>If {email} is on file, a private link back to your guest ledger, Black Frog standing, and character will arrive shortly. It expires in 30 minutes and works once.</p>
       </section>
     );
   }
@@ -46,7 +46,7 @@ export function ResumeForm() {
     <form className="ledger-form" onSubmit={submit} noValidate>
       <header>
         <p className="eyebrow">Returning guest</p>
-        <h1>Resume your register.</h1>
+        <h1>Resume your ledger.</h1>
         <p>On a new device, or cleared this one? Enter the email you RSVP&rsquo;d with and we&rsquo;ll send a private link back in.</p>
       </header>
       <div className="ledger-fields">

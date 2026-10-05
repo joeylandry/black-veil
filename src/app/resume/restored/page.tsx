@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { RestoreSession } from "@/components/restore-session";
 
 export const metadata: Metadata = {
-  title: "Restoring Your Register",
+  title: "Restoring Your Ledger",
   robots: { index: false, follow: false },
 };
 

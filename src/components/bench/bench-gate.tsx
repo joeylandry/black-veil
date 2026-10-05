@@ -53,7 +53,7 @@ export function BenchAccessGate({ ticket, children }: { ticket?: string; childre
         <div className="ledger-lock" aria-hidden="true">R</div>
         <p className="eyebrow">Restoration bench withheld</p>
         <h1>This Bench Is Not Public.</h1>
-        <p>Restoration tickets are worked only by guests who have opened the hidden archive and entered a real name in the register.</p>
+        <p>Restoration tickets are worked only by guests who have opened the hidden archive and entered a real name in the ledger.</p>
         <Link href="/archive" className="button-link">Return to the archive</Link>
       </section>
     );
@@ -68,9 +68,9 @@ export function BenchAccessGate({ ticket, children }: { ticket?: string; childre
         <div className="ledger-lock" aria-hidden="true">R</div>
         <p className="eyebrow">Restoration bench withheld</p>
         <h1>Sign In To Work This Bench.</h1>
-        <p>This browser remembers the archive, but its sign-in has lapsed. The bench runs your commands and grades your work on the server against your register entry, so it needs you signed in again.</p>
+        <p>This browser remembers the archive, but its sign-in has lapsed. The bench runs your commands and grades your work on the server against your ledger entry, so it needs you signed in again.</p>
         <Link href="/resume" className="button-link">Send a new sign-in link</Link>
-        <small>The link goes to the address on your register entry. Already signed in on another device? Work ticket {ticket} there instead.</small>
+        <small>The link goes to the address on your ledger entry. Already signed in on another device? Work ticket {ticket} there instead.</small>
       </section>
     );
   }

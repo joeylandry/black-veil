@@ -23,7 +23,7 @@ export function InvitationCard({ fullName }: { fullName?: string }) {
       </dl>
       <p className="invitation-warning">
         Management has located your file. If a private identity is prepared for the masquerade,
-        it will follow only after the guest register is settled.
+        it will follow only after the guest ledger is settled.
       </p>
       <p className="passphrase-line"><span>The enclosure reads</span><strong>{eventConfig.finalPassphrase}</strong></p>
       <Link href="/black-frog" className="trials-link">A restricted postscript bears your name</Link>

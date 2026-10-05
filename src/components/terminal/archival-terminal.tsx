@@ -88,7 +88,7 @@ export function ArchivalTerminal() {
     setAuthenticated(true);
     setComplete(true);
     setProgress(5);
-    append("system", `ACCESS GRANTED.\n\nTHE OLD WORDS: ${eventConfig.finalPassphrase}\n\nCarry them to the guest register yourself. Management will not ask twice.`);
+    append("system", `ACCESS GRANTED.\n\nTHE OLD WORDS: ${eventConfig.finalPassphrase}\n\nCarry them to the guest ledger yourself. Management will not ask twice.`);
   }
 
   function acceptCredential() {

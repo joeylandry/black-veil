@@ -86,7 +86,7 @@ export function ChallengeStandings() {
           <div role="row" className="leaderboard-row"><span role="cell">01</span><strong role="cell">{rsvp.fullName}</strong><span role="cell" className={me?.character ? undefined : "character-sealed"}>{characterLabel}</span><span role="cell">{trackScores(progress.solved).trialsSolved} / {ctfChallenges.length}</span><strong role="cell">{totalScore}</strong></div>
         )}
       </div>
-      <p className="leaderboard-note">{standings ? `${standings.total} names on the register; other guests appear by first name and initial. ` : null}Character assignments remain sealed until attendance is confirmed. No murderer, victim, or private dossier material is exposed here.</p>
+      <p className="leaderboard-note">{standings ? `${standings.total} names in the ledger; other guests appear by first name and initial. ` : null}Character assignments remain sealed until attendance is confirmed. No murderer, victim, or private dossier material is exposed here.</p>
     </section>
   );
 }
