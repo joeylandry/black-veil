@@ -88,7 +88,7 @@ export function GuestLedger() {
         <div className="ledger-lock" aria-hidden="true">BV</div>
         <p className="eyebrow">Restricted volume · members only</p>
         <h1>The Guest Register Is Sealed</h1>
-        <p>Your name cannot be entered until you give the old words.</p>
+        <p>Your name cannot be entered until you give the old words. Kindly reply by {eventConfig.rsvpDeadlineShort}.</p>
         <form className="ledger-code-form" onSubmit={submitCode}>
           <label>
             <span className="sr-only">The old words</span>
@@ -138,6 +138,7 @@ export function GuestLedger() {
         <p className="eyebrow">Private guest register · Manchester · 1926</p>
         <h1>Enter your name.</h1>
         <p>Use your real name. A fictional identity will be prepared only after attendance is confirmed.</p>
+        <p>Kindly reply by {eventConfig.rsvpDeadlineShort}.</p>
       </header>
       <div className="ledger-fields">
         <label>

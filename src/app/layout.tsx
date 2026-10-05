@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import type { ReactNode } from "react";
 import "./globals.css";
 import { SiteFooter } from "@/components/site-footer";
+import { eventConfig } from "@/config/event";
 import { SiteHeader } from "@/components/site-header";
 
 const sans = localFont({
@@ -29,12 +30,18 @@ export const metadata: Metadata = {
   },
   description:
     "An invitation, a vanished proprietress, and the surviving Manchester records of The Black Veil, 1921–1926.",
+  // What a guest sees when the link is texted or emailed: an invitation first, the mystery second.
   openGraph: {
-    title: "The Black Veil — Manchester, 1926",
-    description: "Cassandra Castello disappeared after the 1924 masquerade. Two years later, the invitations returned.",
+    title: "You’re invited: The Black Veil",
+    description: `A 1920s murder mystery masquerade. Friday, October 23, 8 PM, Manchester, N.H. Masks and Prohibition-era formal. Kindly reply by ${eventConfig.rsvpDeadlineShort}.`,
+    siteName: "The Black Veil",
     type: "website",
   },
-  twitter: { card: "summary_large_image" },
+  twitter: {
+    card: "summary_large_image",
+    title: "You’re invited: The Black Veil",
+    description: `A 1920s murder mystery masquerade. Friday, October 23, Manchester, N.H. Kindly reply by ${eventConfig.rsvpDeadlineShort}.`,
+  },
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
