@@ -1,6 +1,6 @@
 # The Black Veil
 
-The Black Veil is an immersive historical-fiction invitation and archive for a real All Hallows’ Eve event. The public story is set in Manchester, New Hampshire, from 1921 to 1926, with fictional proprietor Cassandra “Cassie” Castello at the center of an unresolved 1924 disappearance.
+The Black Veil is an immersive historical-fiction invitation and archive for a real masquerade on October 23, 2026. The public story is set in Manchester, New Hampshire, from 1921 to 1926, with fictional proprietor Cassandra “Cassie” Castello at the center of an unresolved 1924 disappearance.
 
 The club, Cassandra, its alleged crimes, and all witness accounts are fictional. Manchester, Prohibition, the Amoskeag industrial setting, the Merrimack River, Elm Street, and the 1922 strike provide documented historical context. Every archive record carries provenance metadata that distinguishes those layers.
 

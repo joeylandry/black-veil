@@ -44,7 +44,7 @@ This image is attached to the `police-seek-proprietress` archive record (`BV–2
 
 ## `black-veil-veil-has-lifted-flyer-1926.png`
 
-Supplied by the project owner (generated outside this session) rather than produced with this session's tooling. It shows a distressed black masquerade flyer bearing a Black Veil insignia (a masked face inside a radiating star), reading "MANCHESTER N.H.", "BV-26-031", "THE VEIL HAS LIFTED", and the invitation copy for the October 31, 1926 masquerade. This image is attached to the `the-veil-has-lifted` archive record (`BV–26–031`), replacing the earlier plain-text rendering of the same invitation.
+Supplied by the project owner (generated outside this session) rather than produced with this session's tooling. It shows a distressed black masquerade flyer bearing a Black Veil insignia (a masked face inside a radiating star), reading "MANCHESTER N.H.", "BV-26-031", "THE VEIL HAS LIFTED", and the invitation copy for the October 23, 1926 masquerade. The date line and the words "All Hallows’ Eve" were later retouched in place (glyphs reused from the flyer itself) when the real party moved to October 23. This image is attached to the `the-veil-has-lifted` archive record (`BV–26–031`), replacing the earlier plain-text rendering of the same invitation.
 
 ## `cassandra-arrival-by-carriage.png`
 

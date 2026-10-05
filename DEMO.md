@@ -47,7 +47,7 @@ Also check:
 ## 3. Find the hidden terminal (≈1 min)
 
 1. Home page → **Explore the full archive →**.
-2. Scroll to the very **last** record, **"The Veil Has Lifted"** (Oct 31, 1926), and open it.
+2. Scroll to the very **last** record, **"The Veil Has Lifted"** (Oct 23, 1926), and open it.
    Shortcut: `/archive/the-veil-has-lifted`
 3. Click the **black rose seal printed on the flyer**. The archival terminal opens below.
 

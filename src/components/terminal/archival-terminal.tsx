@@ -152,7 +152,7 @@ export function ArchivalTerminal() {
         append("output", "guest");
         break;
       case "date":
-        append("output", "Sun Oct 31 23:47:00 EST 1926");
+        append("output", "Sat Oct 23 23:47:00 EST 1926");
         break;
       case "cd": {
         const target = argument || "/black-veil/archive";
@@ -169,7 +169,7 @@ export function ArchivalTerminal() {
       }
       case "cat":
         if ([".1926", "/black-veil/archive/.1926"].includes(argument)) {
-          append("output", "RESTRICTED LEDGER HANDOFF\nAccount: keeper\nCredential record: correspondence/maintenance.mem\nRecovery instruction: strings may outlive the paper that carried them.\nMailbox scheduled: 1926-10-31 23:47");
+          append("output", "RESTRICTED LEDGER HANDOFF\nAccount: keeper\nCredential record: correspondence/maintenance.mem\nRecovery instruction: strings may outlive the paper that carried them.\nMailbox scheduled: 1926-10-23 23:47");
           setProgress((value) => Math.max(value, 2));
         } else if (argument.includes("maintenance.mem")) {
           append("output", maintenanceMemo);
@@ -213,7 +213,7 @@ export function ArchivalTerminal() {
       case "mail":
         if (!authenticated) append("error", "mail: /ledger/mail: Permission denied");
         else {
-          append("system", `FROM: management@blackveil.internal\nDATE: OCTOBER 31, 1926 · 11:47 P.M.\nSUBJECT: THE HOUSE RECEIVES AGAIN\n\nKeeper—\n\nBlack envelopes have appeared on Elm Street and the West Side. No hand signed them. The orchestra is below. The river door is unbarred. Tell those who found their way here that admission requires the old words.\n\nDo not write them where the public may see.\n\nThe doors open once more.\n\nP.S. The ledger keeps one page past the last. A keeper knows where to look.`);
+          append("system", `FROM: management@blackveil.internal\nDATE: OCTOBER 23, 1926 · 11:47 P.M.\nSUBJECT: THE HOUSE RECEIVES AGAIN\n\nKeeper—\n\nBlack envelopes have appeared on Elm Street and the West Side. No hand signed them. The orchestra is below. The river door is unbarred. Tell those who found their way here that admission requires the old words.\n\nDo not write them where the public may see.\n\nThe doors open once more.\n\nP.S. The ledger keeps one page past the last. A keeper knows where to look.`);
           finish("archive-breached");
         }
         break;

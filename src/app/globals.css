@@ -145,8 +145,12 @@ img { max-width: 100%; height: auto; }
 
 /* Newspaper artifact */
 .hero-newspaper { display: flex; justify-content: center; margin: 3.5rem auto 0; max-width: 1020px; }
-.hero-newspaper-link { display: block; text-decoration: none; transform: rotate(-1.4deg); filter: drop-shadow(18px 22px 20px rgba(0,0,0,.52)); transition: transform .25s ease; }
+/* The shadow is a box-shadow on the paper, not filter: drop-shadow on the link — Safari
+   re-rasterises a filtered element in tiles while its transform animates, which showed as
+   pale blocks and a clipped page on hover. */
+.hero-newspaper-link { display: block; text-decoration: none; transform: rotate(-1.4deg); transition: transform .25s ease; will-change: transform; backface-visibility: hidden; }
 .hero-newspaper-link:hover { transform: rotate(-.6deg) translateY(-5px); }
+.hero-newspaper-link .newspaper-artifact { box-shadow: inset 0 0 55px rgba(66,55,35,.16), 18px 22px 40px rgba(0,0,0,.45); }
 .newspaper-artifact {
   position: relative;
   width: 820px;
@@ -305,7 +309,8 @@ img { max-width: 100%; height: auto; }
 .newspaper-fit { position: relative; overflow: hidden; }
 .newspaper-fit-frame { display: block; width: 100%; padding: 0; border: 0; background: none; text-align: left; cursor: zoom-in; }
 .newspaper-fit-inner { display: inline-block; transform-origin: top left; }
-.newspaper-fit-frame.hero-newspaper-link { transform: none; filter: none; }
+.newspaper-fit-frame.hero-newspaper-link { transform: none; will-change: auto; }
+.newspaper-fit-frame.hero-newspaper-link .newspaper-artifact { box-shadow: inset 0 0 55px rgba(66,55,35,.16); }
 .newspaper-fit-hint { position: absolute; right: .6rem; bottom: .6rem; padding: .3rem .55rem; color: #eee5d0; background: rgba(15,14,11,.72); font-family: var(--font-sans), Arial, sans-serif; font-size: .58rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; pointer-events: none; }
 .record-pagination { max-width: 1180px; margin: 0 auto 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 .record-pagination a { display: flex; align-items: center; gap: .8rem; padding: 1rem; color: #eee5cf; background: #333128; text-decoration: none; border: 1px solid #8b7b5b; font-family: var(--font-display); font-size: 1.2rem; line-height: 1.1; }

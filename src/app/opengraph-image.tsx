@@ -10,7 +10,7 @@ export default function OpenGraphImage() {
       <div style={{ display: "flex", fontSize: 22, letterSpacing: 8, color: "#aa8a4b", textTransform: "uppercase" }}>Manchester · Established 1921</div>
       <div style={{ display: "flex", marginTop: 20, fontFamily: "serif", fontSize: 118, letterSpacing: -5, textTransform: "uppercase" }}>The Black Veil</div>
       <div style={{ display: "flex", width: 580, height: 1, background: "#aa8a4b", margin: "22px 0" }} />
-      <div style={{ display: "flex", fontSize: 24, letterSpacing: 7, textTransform: "uppercase" }}>All Hallows’ Eve · October 31, 1926</div>
+      <div style={{ display: "flex", fontSize: 24, letterSpacing: 7, textTransform: "uppercase" }}>A Masquerade · October 23, 1926</div>
       <div style={{ display: "flex", marginTop: 52, padding: "10px 22px", border: "2px solid #7b2530", color: "#c68a90", fontSize: 21, letterSpacing: 6, textTransform: "uppercase", transform: "rotate(-2deg)" }}>The veil has lifted</div>
     </div>,
     size,
