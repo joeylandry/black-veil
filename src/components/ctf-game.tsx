@@ -113,9 +113,11 @@ export function CtfGame() {
         })}
       </section>
 
-      <p className="track-crosslink">
-        The engineering track is kept, and scored, separately at <Link href="/bench">the Restoration Bench</Link>.
-      </p>
+      {eventConfig.benchPromoted && (
+        <p className="track-crosslink">
+          The engineering track is kept, and scored, separately at <Link href="/bench">the Restoration Bench</Link>.
+        </p>
+      )}
 
       {/* Claim a finding (<PointClaims />) is withheld until in-person gameplay opens. */}
     </div>

@@ -80,4 +80,21 @@ export const ctfChallenges: CtfChallenge[] = [
   },
 ];
 
+/**
+ * Unlisted findings: scored like a trial, but never printed on the trials page. The
+ * postscript flag is hidden in the archival terminal's ledger once it is unlocked, and
+ * entered at /postscript (linked from the footer once the register is unsealed).
+ */
+export const bonusChallenges: CtfChallenge[] = [
+  {
+    id: "postscript",
+    number: "P.S.",
+    title: "A Postscript No One Was Meant to Find",
+    points: 25,
+    briefing: "The keeper left one more page in the ledger, past the last.",
+    clue: "Unlock the ledger in the archival terminal, then look inside it — closely.",
+    hint: "Hidden files begin with a dot.",
+  },
+];
+
 export const maxCtfScore = ctfChallenges.reduce((total, challenge) => total + challenge.points, 0);

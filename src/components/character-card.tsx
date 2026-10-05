@@ -38,9 +38,10 @@ export function CharacterCard() {
     return (
       <section className="character-card character-card-sealed" aria-label="Your character">
         <BlackVeilInsignia />
-        <p className="eyebrow">Your identity for the evening</p>
-        <h2>Sealed</h2>
-        <p>Management has not yet chosen who you will be on October 31. Your character will appear here once it is assigned.</p>
+        <div>
+          <p className="eyebrow">Your identity for the evening · <strong>Sealed</strong></p>
+          <p>Management has not yet chosen who you will be on October 31. It will appear here once assigned.</p>
+        </div>
       </section>
     );
   }

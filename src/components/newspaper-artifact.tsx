@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { ArchiveRecord, sideStories } from "@/data/archive";
+import { eventConfig } from "@/config/event";
 import { getBenchLabForRecord } from "@/data/bench";
 import { FitHeading } from "@/components/fit-heading";
 import { NewspaperSide } from "@/components/newspaper-side";
@@ -7,7 +8,8 @@ import { NewspaperSide } from "@/components/newspaper-side";
 export function NewspaperArtifact({ record }: { record: ArchiveRecord }) {
   const story = record.body[0] ?? record.excerpt;
   // Each paper carries one present-day conservation slip in its right-hand column.
-  const slip = getBenchLabForRecord(record.slug);
+  // Withheld while the bench is not being promoted.
+  const slip = eventConfig.benchPromoted ? getBenchLabForRecord(record.slug) : undefined;
 
   return (
     <article className="newspaper-artifact" aria-label={`${record.title}, ${record.date}`}>
