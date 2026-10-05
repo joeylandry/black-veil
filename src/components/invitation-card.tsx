@@ -14,10 +14,10 @@ export function InvitationCard({ fullName }: { fullName?: string }) {
       <h2>A Masquerade</h2>
       <DecoDivider compact />
       <time>{eventConfig.fictionalEventDate}</time>
-      <p className="invitation-details">Supper <span>•</span> Dancing <span>•</span> Masks</p>
+      <p className="invitation-details">Cocktails <span>•</span> Hors d’oeuvres <span>•</span> Dancing <span>•</span> Masks</p>
       <dl>
         <div><dt>Doors</dt><dd>{eventConfig.doorsTime}</dd></div>
-        <div><dt>Place</dt><dd>{eventConfig.location}</dd></div>
+        <div><dt>Place</dt><dd>{eventConfig.location}<span className="invitation-address">{eventConfig.address}</span></dd></div>
         <div><dt>Dress</dt><dd>1920s formal attire and masquerade</dd></div>
         <div><dt>Admission</dt><dd>Black envelope and confirmed name</dd></div>
       </dl>
