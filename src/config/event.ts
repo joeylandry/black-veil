@@ -5,6 +5,8 @@ export const eventConfig = {
   realEventDate: "October 23, 2026",
   doorsTime: "Eight o’clock in the evening",
   location: "Location disclosed to confirmed guests",
+  /** Printed only on the private invitation card, which the guest sees after entering the register. */
+  address: "3 Warren Street, Manchester, N.H. 03104",
   rsvpDeadline: "October 9, 2026",
   contact: "Correspondence by private invitation only",
   finalPassphrase: "THE VEIL HAS LIFTED",

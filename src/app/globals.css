@@ -381,7 +381,7 @@ img { max-width: 100%; height: auto; }
 .invitation-card h1 { margin: 0; font-family: var(--font-display); font-size: clamp(4.2rem, 11vw, 8.5rem); line-height: .78; font-weight: 600; letter-spacing: -.05em; text-transform: uppercase; }
 .request-line { margin: 2rem 0 .5rem; font-family: var(--font-display); font-size: 1.35rem; font-style: italic; }
 .request-line strong { display: inline-block; color: var(--oxblood-dark); }
-.invitation-card h2 { max-width: 680px; margin: 0 auto; font-family: var(--font-display); font-size: clamp(2.4rem, 6vw, 4.8rem); line-height: .9; text-transform: uppercase; }
+.invitation-card h2 { max-width: 680px; margin: 0 auto; font-family: var(--font-display); font-size: clamp(1.6rem, 8vw, 4.8rem); line-height: .9; text-transform: uppercase; white-space: nowrap; }
 .deco-divider { display: flex; align-items: center; justify-content: center; gap: .7rem; width: min(620px, 80%); margin: 1rem auto; color: var(--oxblood-dark); }
 .deco-divider span { height: 1px; background: currentColor; flex: 1; }
 .deco-divider i { font-style: normal; font-size: .55rem; }
@@ -391,8 +391,8 @@ img { max-width: 100%; height: auto; }
 .invitation-card dl div { display: grid; grid-template-columns: 110px 1fr; gap: 1rem; padding: .6rem 0; border-bottom: 1px solid var(--rule); text-align: left; }
 .invitation-card dt { font-family: var(--font-sans), Arial, sans-serif; font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; }
 .invitation-card dd { margin: 0; }
-.identity-line { margin: 2.5rem 0 1rem; font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.5rem); font-style: italic; }
-.invitation-warning { max-width: 600px; margin: 0 auto; font-size: .95rem; }
+.invitation-address { display: block; margin-top: .2rem; font-weight: 700; }
+.invitation-warning { max-width: 600px; margin: 2.5rem auto 0; font-size: .95rem; }
 .passphrase-line { max-width: 520px; margin: 2.5rem auto 1rem; padding: 1.3rem; color: var(--oxblood-dark); border: 3px double var(--oxblood); }
 .passphrase-line span, .passphrase-line strong { display: block; }
 .passphrase-line span { font-family: var(--font-sans), Arial, sans-serif; font-size: .62rem; text-transform: uppercase; letter-spacing: .15em; }
