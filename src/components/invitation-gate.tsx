@@ -22,7 +22,7 @@ export function InvitationGate() {
       <section className="invitation-locked">
         <p className="eyebrow">Private enclosure</p>
         <h1>This envelope bears no name.</h1>
-        <p>The invitation is revealed only after the hidden archive has opened and a guest has entered the register under their real name.</p>
+        <p>The invitation is revealed only after the hidden archive has opened and a guest has entered their real name in the ledger.</p>
         <Link href="/archive/the-veil-has-lifted" className="button-link">Return to the impossible record</Link>
       </section>
     );

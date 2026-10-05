@@ -33,5 +33,5 @@ export function RestoreSession() {
     );
   }
 
-  return <div className="ledger-checking" aria-live="polite">Restoring your register…</div>;
+  return <div className="ledger-checking" aria-live="polite">Restoring your ledger…</div>;
 }

@@ -3,7 +3,7 @@ import { BlackFrogGate } from "@/components/black-frog-gate";
 
 export const metadata: Metadata = {
   title: "Restricted Postscript",
-  description: "A private Black Veil record available only to names entered in the guest register.",
+  description: "A private Black Veil record available only to names entered in the guest ledger.",
   robots: { index: false, follow: false },
 };
 

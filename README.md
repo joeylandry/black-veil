@@ -98,7 +98,7 @@ Sign-in links are emailed via Resend if `RESEND_API_KEY` is set (`src/lib/email.
 
 ### Characters
 
-Sealed for launch: while `eventConfig.charactersReleased` is `false`, `GET /api/me` never returns a character (whatever `guests.characterId` holds), the Guest Register shows a compact "Sealed" strip, and `POST /api/admin/characters` refuses `assign` with a 409. Flip it and redeploy to release the cast.
+Sealed for launch: while `eventConfig.charactersReleased` is `false`, `GET /api/me` never returns a character (whatever `guests.characterId` holds), the Guest Ledger shows a compact "Sealed" strip, and `POST /api/admin/characters` refuses `assign` with a 409. Flip it and redeploy to release the cast.
 
 `guests.characterId` links a guest to a row in `characters` (public profile + private dossier fields, per the shapes `src/features/game/models.ts` already sketched). Once assigned, `GET /api/me` returns the public fields (`characterName`, `occupation`, `publicBiography`, `factions`) and, because that route only ever answers for the signed-in guest, their own dossier (`privateBiography`, `secrets`, `objectives`). `CharacterCard` shows both on `/guest-ledger`, with the dossier behind a seal. Murderer/victim flags never leave the server except to `/admin`. No real character content is authored yet: `npm run demo:seed` adds a cast of 35, one per person in the program, each a pun on their name (`src/lib/demo/cast.ts`; written without gendered pronouns, since each is based on a real person), and the real cast goes into the `characters` table with `npm run db:studio`. Staff deal characters from `/admin` (see below).
 

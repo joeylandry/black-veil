@@ -4,7 +4,7 @@ import { CharacterCard } from "@/components/character-card";
 import { GuestLedger } from "@/components/guest-ledger";
 
 export const metadata: Metadata = {
-  title: "Guest Register",
+  title: "Guest Ledger",
   description: "Enter your real name for The Black Veil masquerade in Manchester, October 23, 1926.",
 };
 

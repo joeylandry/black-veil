@@ -77,14 +77,14 @@ Optional laugh lines if you have time: `sudo su` → "Nice try." · `rm -rf /` �
 ## 5. RSVP (≈1 min)
 
 1. Click **GUEST LEDGER** in the top nav (or go to `/guest-ledger`).
-2. "The Guest Register Is Sealed": type **`the veil has lifted`** → **Unseal the register**.
+2. "The Guest Ledger Is Sealed": type **`the veil has lifted`** → **Unseal the ledger**.
 3. Fill the form:
    - Name: your name
    - Email: **YOUR_DEMO_EMAIL** (the one you reset)
    - ◉ *Yes, I shall attend.*
    - ☑ the 1920s attire checkbox
 4. **Enter my name upon the register**.
-5. You'll see "Your name has been entered upon the guest register." Below it is a black card titled **Sealed**: "Management has not yet chosen who you will be". That's your character slot, and you'll fill it in step 8. Further down, the **Guest Ledger** leaderboard shows everyone in the program at 0, with your row highlighted.
+5. You'll see "Your name has been entered in the guest ledger." Below it is a black card titled **Sealed**: "Management has not yet chosen who you will be". That's your character slot, and you'll fill it in step 8. Further down, the **Guest Ledger** leaderboard shows everyone in the program at 0, with your row highlighted.
 
 > Talking point: the RSVP is written to Postgres and signs this device in with an httpOnly session cookie. Guests can resume on another device with a magic link (`/resume`).
 
@@ -250,7 +250,7 @@ LIVE       2nd browser → /admin → Database → filter “aidan” → Sign i
 
 | Symptom | Fix |
 |---|---|
-| RSVP says "guest register is not configured" (503) | `DATABASE_URL` isn't set on the deployed site. |
+| RSVP says "guest ledger is not configured" (503) | `DATABASE_URL` isn't set on the deployed site. |
 | RSVP says "could not be reached" | The database is down, or migrations weren't run → `npm run db:migrate`. |
 | Bench says "Sign in to work this bench" | The session cookie is gone. Close Incognito, **Reset guest** on your email, start again from step 3 (it takes ~2 min with the cheat sheet). |
 | Leaderboard only shows you | Reload the Guest Ledger page. If it's still just you, the database wasn't seeded → `/admin` → **Seed demo data**. |

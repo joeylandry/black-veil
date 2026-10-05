@@ -40,7 +40,7 @@ export function CtfGame() {
         <div className="ledger-lock" aria-hidden="true">V</div>
         <p className="eyebrow">Postscript withheld</p>
         <h1>The Trials Are Not Public.</h1>
-        <p>Only a guest who has opened the hidden archive and entered a real name in the register may be scored.</p>
+        <p>Only a guest who has opened the hidden archive and entered a real name in the ledger may be scored.</p>
         <Link href="/archive" className="button-link">Return to the archive</Link>
       </section>
     );
