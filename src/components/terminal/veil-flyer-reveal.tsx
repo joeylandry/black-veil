@@ -35,7 +35,7 @@ export function VeilFlyerReveal({ image }: { image: ArchiveImage }) {
             type="button"
             className="anomaly-seal-overlay"
             onClick={handleOpen}
-            aria-label="Examine the unusual black rose seal printed on the flyer"
+            aria-label="Examine the unusual black frog seal printed on the flyer"
           >
             <BlackVeilInsignia interactive />
           </button>

@@ -31,7 +31,7 @@ export function TerminalDiscovery() {
   return (
     <div className="anomaly-seal">
       <p>This record bears an unfamiliar seal. The paper beneath it is warm.</p>
-      <button type="button" className="rose-button" onClick={handleOpen} aria-label="Examine the unusual black rose seal">
+      <button type="button" className="frog-button" onClick={handleOpen} aria-label="Examine the unusual black frog seal">
         <BlackVeilInsignia interactive />
         <span>Examine seal</span>
       </button>
