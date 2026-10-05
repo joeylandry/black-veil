@@ -65,7 +65,7 @@ export function HintSystem({ progress, onRunCommand, onAssistedEntry }: Props) {
           {emergency && (
             <div className="emergency-mode">
               <p className="terminal-kicker">Management-assisted entry</p>
-              <p>The cabinet credential is <code>blackrose</code>. Run <code>unlock ledger</code>, enter it when asked, then run <code>mail</code>.</p>
+              <p>The cabinet credential is <code>blackfrog</code>. Run <code>unlock ledger</code>, enter it when asked, then run <code>mail</code>.</p>
               <p>If even this arrangement proves too strenuous, management may enter the finding on your behalf.</p>
               <button type="button" className="terminal-secondary" onClick={onAssistedEntry}>Reveal admission credentials</button>
             </div>

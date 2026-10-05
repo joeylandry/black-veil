@@ -18,7 +18,7 @@ const opening: OutputLine[] = [
 const maintenanceMemo = [
   "BLACK VEIL SYSTEMS MEMORANDUM / OCT. 1924",
   "Archive account: keeper",
-  "Credential policy: house flower; lowercase; no spaces.",
+  "Credential policy: house pet; lowercase; no spaces.",
   "Objection: credential unchanged since opening.",
   "Disposition: objection denied. The sealed ledger is not to leave Manchester.",
 ].join("\n");
@@ -105,7 +105,7 @@ export function ArchivalTerminal() {
       append("command", "Password: •••••••••");
       setAwaitingPassword(false);
       if (trimmed.toLowerCase() === eventConfig.intermediateCredential) acceptCredential();
-      else append("error", "AUTHENTICATION REFUSED. The roses do not recognize you.");
+      else append("error", "AUTHENTICATION REFUSED. The frog does not recognize you.");
       return;
     }
 
@@ -189,13 +189,13 @@ export function ArchivalTerminal() {
         break;
       case "strings":
         if (argument.includes("maintenance.mem")) {
-          append("output", "KEEPER\nHOUSE_FLOWER\nLOWERCASE\nNO_SPACES\nBLACKROSE\nSINCE_1921");
+          append("output", "KEEPER\nHOUSE_PET\nLOWERCASE\nNO_SPACES\nBLACKFROG\nSINCE_1921");
           setProgress((value) => Math.max(value, 3));
         } else append("error", "strings: no legible sequence found");
         break;
       case "grep":
         if (argument.toLowerCase().includes("maintenance")) {
-          append("output", "Credential policy: house flower; lowercase; no spaces.\nCredential unchanged since opening.");
+          append("output", "Credential policy: house pet; lowercase; no spaces.\nCredential unchanged since opening.");
           setProgress((value) => Math.max(value, 3));
         } else append("output", "");
         break;

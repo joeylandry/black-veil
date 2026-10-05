@@ -54,7 +54,7 @@ export const ctfChallenges: CtfChallenge[] = [
   {
     id: "thread-in-the-rose",
     number: "V",
-    title: "A Thread in the Rose",
+    title: "A Thread in the Frog",
     points: 30,
     briefing: "The last room is not printed in the public dossier. Its name is woven into this restricted page.",
     clue: "Inspect the Black Frog page more closely. Two words; one underscore.",

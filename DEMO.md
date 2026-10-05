@@ -49,7 +49,7 @@ Also check:
 1. Home page → **Explore the full archive →**.
 2. Scroll to the very **last** record, **"The Veil Has Lifted"** (Oct 23, 1926), and open it.
    Shortcut: `/archive/the-veil-has-lifted`
-3. Click the **black rose seal printed on the flyer**. The archival terminal opens below.
+3. Click the **black frog seal printed on the flyer**. The archival terminal opens below.
 
 > Talking point: the whole invitation is gated behind a puzzle. You can't RSVP until you've broken into the club's 1926 archive system.
 
@@ -63,9 +63,9 @@ Type these one at a time, exactly as written (↑ recalls history):
 | 2 | `ls` | `archive  correspondence  ledger`. Nothing interesting yet. |
 | 3 | `ls -la` | A hidden file appears: **`.1926`**. "Always check for dotfiles." |
 | 4 | `cat .1926` | Account **keeper**; points to `correspondence/maintenance.mem`; hint "*strings* may outlive the paper". |
-| 5 | `cat correspondence/maintenance.mem` | Password policy: *house flower; lowercase; no spaces.* |
-| 6 | `strings correspondence/maintenance.mem` | Dumps **`BLACKROSE`**, which is the password. |
-| 7 | `unlock ledger blackrose` | `AUTHENTICATION ACCEPTED … LAST LOGIN: OCTOBER 31, 1924 · 11:47 P.M.` (**remember 11:47** for the CTF) |
+| 5 | `cat correspondence/maintenance.mem` | Password policy: *house pet; lowercase; no spaces.* |
+| 6 | `strings correspondence/maintenance.mem` | Dumps **`BLACKFROG`**, which is the password. |
+| 7 | `unlock ledger blackfrog` | `AUTHENTICATION ACCEPTED … LAST LOGIN: OCTOBER 31, 1924 · 11:47 P.M.` (**remember 11:47** for the CTF) |
 | 8 | `mail` | The management letter, then **`ACCESS GRANTED. THE OLD WORDS: THE VEIL HAS LIFTED`** |
 
 **Passcode: `THE VEIL HAS LIFTED`** (not case sensitive)
@@ -100,7 +100,7 @@ Show these in this order. The first three take seconds because you already have 
 |-------|--------|------------------------------|
 | **III** The Cabinet Account | `VEIL{KEEPER}` | The account name from `cat .1926`. |
 | **IV** The Interrupted Session | `VEIL{1147}` | Last login after `unlock ledger`: 11:47 P.M. |
-| **V** A Thread in the Rose | `VEIL{MERRIMACK_ROOM}` | Right-click the page → **Inspect** → in the **Elements** panel press Ctrl/Cmd+F → search `data-thread` → `MERRIMACK_ROOM`. (Use DevTools, **not** Ctrl+U view-source: the thread is rendered in the browser, so it isn't in the raw HTML.) |
+| **V** A Thread in the Frog | `VEIL{MERRIMACK_ROOM}` | Right-click the page → **Inspect** → in the **Elements** panel press Ctrl/Cmd+F → search `data-thread` → `MERRIMACK_ROOM`. (Use DevTools, **not** Ctrl+U view-source: the thread is rendered in the browser, so it isn't in the raw HTML.) |
 | **VI** The Uninvited Guest | `VEIL{SILENT_PARTNER}` | **SQL injection.** Go to **ABOUT** in the nav → scroll to "Confirm a standing reservation" → type `' OR 1=1 --` → **Confirm**. A RESTRICTED management ledger appears ending "**Silent Partner**." |
 | **VII** The Unlisted Room | `VEIL{UNLISTED_ROOM}` | No link anywhere. Type the URL **`/secret`** directly. The flag is printed there. |
 
@@ -208,7 +208,7 @@ Or click **Submit for review** on the untouched file first, to show the failing 
 1. In your Incognito window, leave **GUEST LEDGER** open, scrolled to the leaderboard. Put it where the audience can see it.
 2. In the **second browser**, open `/admin` → **ADMIN_SECRET** → **Unlock** → **Database** panel → type a name in the filter (e.g. `aidan`) → **Sign in as** on **Aidan Leach**.
 3. That browser lands on Aidan's Guest Ledger: his name and **Dr. Aidan “The Leech” Leach**'s card → **Break the seal** to show his dossier.
-4. Still as Aidan: **BLACK ROSE TRIALS** → enter `VEIL{KEEPER}` in **III** and `VEIL{1147}` in **IV**. His score seal reads **45**.
+4. Still as Aidan: **BLACK FROG TRIALS** → enter `VEIL{KEEPER}` in **III** and `VEIL{1147}` in **IV**. His score seal reads **45**.
 5. Look at your Incognito window: **within about five seconds, without a reload**, Aidan's points jump by 45 (plus whatever you approved for his claim in step 8) and he climbs the leaderboard. The staff dashboard's tiles and chart update the same way.
 6. Repeat with anyone you like (**Sign in as** works on every row). A great one: **Timothy McGinley**, the victim.
 
@@ -222,7 +222,7 @@ To put the second browser back to staff-only, just close it; your Incognito sess
 
 ```
 TERMINAL   ls -la · cat .1926 · cat correspondence/maintenance.mem
-           strings correspondence/maintenance.mem · unlock ledger blackrose · mail
+           strings correspondence/maintenance.mem · unlock ledger blackfrog · mail
 PASSCODE   THE VEIL HAS LIFTED
 FLAGS      I   VEIL{RIVER_SIDE}         II  VEIL{NOT_THE_LAST}
            III VEIL{KEEPER}             IV  VEIL{1147}
@@ -236,13 +236,13 @@ RST-08     CLOAKROOM · whoami · GET /vault/records?owner=me · GET /vault/reco
            → RSV-7731-CASTELLO / 13 / 404 / guard line
 RST-04     DRAYMAN   · paste the Dockerfile above
 ADMIN      /admin → ADMIN_SECRET → approve claim → Assign characters (you get Joseph “Laundry” Landry by name)
-LIVE       2nd browser → /admin → Database → filter “aidan” → Sign in as → Black Rose: VEIL{KEEPER}, VEIL{1147}
+LIVE       2nd browser → /admin → Database → filter “aidan” → Sign in as → Black Frog: VEIL{KEEPER}, VEIL{1147}
            → watch the Incognito leaderboard update by itself
 ```
 
 ## Don'ts
 
-- The **"secret secret flag"** footer link (shown once the register is unsealed) goes to `/postscript`. Its flag is **`VEIL{PAST_THE_LAST_PAGE}`** (25 bonus points, checked on the server): after `unlock ledger blackrose`, run `cd ledger` → `ls -la` → `cat .postscript`. The `mail` message ends with a P.S. pointing there.
+- The **"secret secret flag"** footer link (shown once the register is unsealed) goes to `/postscript`. Its flag is **`VEIL{PAST_THE_LAST_PAGE}`** (25 bonus points, checked on the server): after `unlock ledger blackfrog`, run `cd ledger` → `ls -la` → `cat .postscript`. The `mail` message ends with a P.S. pointing there.
 - Don't use the terminal's hint panel or the "management-assisted" entry.
 - Don't demo in a normal browser window that has visited the site before. Use Incognito.
 

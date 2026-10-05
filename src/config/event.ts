@@ -8,7 +8,7 @@ export const eventConfig = {
   rsvpDeadline: "October 9, 2026",
   contact: "Correspondence by private invitation only",
   finalPassphrase: "THE VEIL HAS LIFTED",
-  intermediateCredential: "blackrose",
+  intermediateCredential: "blackfrog",
   /**
    * Characters stay sealed until this is true: /api/me withholds them from guests and
    * /admin refuses to deal them. Flip it (and redeploy) when the cast is ready.
