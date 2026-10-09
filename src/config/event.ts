@@ -23,7 +23,13 @@ export const eventConfig = {
    * footer link, no link from the trials, no conservation slips in the newspapers.
    * /bench still answers for staff who know the address.
    */
-  benchPromoted: false,
+  benchPromoted: true,
+  /**
+   * Demo switch. While true the bench needs no archive access, no sign-in, and no bench
+   * word: every ticket opens and is graded for anyone. Solves are only recorded for guests
+   * who happen to hold a session. Set it back to false before the real event.
+   */
+  benchOpen: true,
   storageKeys: {
     puzzleComplete: "black-veil:archive-access",
     entryMethod: "black-veil:entry-method",
