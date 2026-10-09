@@ -23,7 +23,7 @@ export const eventConfig = {
    * footer link, no link from the trials, no conservation slips in the newspapers.
    * /bench still answers for staff who know the address.
    */
-  benchPromoted: false,
+  benchPromoted: true,
   storageKeys: {
     puzzleComplete: "black-veil:archive-access",
     entryMethod: "black-veil:entry-method",
