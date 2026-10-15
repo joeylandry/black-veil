@@ -146,6 +146,28 @@ Each objective names a **verifier character** *and* an alternate verifier factio
 
 ---
 
+## 4a. Prop diet: almost nothing to buy 💡
+**Rule: a prop is a printed card with a code.** The site shows the item's picture and text when someone redeems the code, so a "photograph," "telegram" or "ledger page" is just paper. Nothing needs to be authentic.
+
+| Item | Cheapest version | Buy? |
+|---|---|---|
+| Dummy, mask | yours | no |
+| Letter opener in the back, pocket watch, key ring, rail stub | a cardboard cut-out and printed cards taped on the dummy (watch card reads 11:47) | no |
+| Envelopes | plain white envelopes with a black marker or a printed black label; or print black sheets and fold | ~$5 |
+| Currency | printed on paper (already planned) | printing |
+| Telegrams, wire slips, ledger fragments, hat-check stubs, newspapers (Extra, *Farrago*) | home printer, torn edges, coffee-stained | paper |
+| Engraved spoon | a kitchen spoon from home with a printed "M" label | no |
+| Cello/instrument case | any bag, box or case a guest has | no |
+| Sheriff's star | a printed paper badge and safety pin | no |
+| Dead Letter box, Standby tray | a shoebox, a bowl | no |
+| Frog box with a 3-part key | **dropped**; its contents become a printed letter handed out at 9:15 | no |
+| Recognition signals (green glove, white carnation, ribbon, cap) | **guests bring one item they already own or can make** (a single glove, a flower or a paper one, a ribbon, a cap), listed in the wardrobe note; any green/white/black item works | ~$0–3 per guest |
+| Drink tickets | printed cards | paper |
+
+**Estimated spend:** about $15–25 (envelopes, cardstock, safety pins, tape). Prop count shrinks to about 20 distinct cards and nothing breakable. If a guest forgets their signal item, the standby tray holds a paper version.
+
+---
+
 ## 5. Relationship network overview 💡
 
 Computed from the draft graph in the validator:
