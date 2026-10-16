@@ -3,7 +3,6 @@
 import { FormEvent, useEffect, useState } from "react";
 import { AdminDashboard } from "./admin-dashboard";
 import { AdminDatabase } from "./admin-database";
-import { AdminDemoTools } from "./admin-demo-tools";
 
 type AdminClaim = {
   id: string;
@@ -136,7 +135,6 @@ export function AdminClaims() {
         <button type="button" className="button-link" onClick={() => { load(secret); setRefreshKey((key) => key + 1); }}>Refresh</button>
       </header>
       <AdminDashboard secret={secret} refreshKey={refreshKey} onChange={() => { load(secret); setRefreshKey((key) => key + 1); }} />
-      <AdminDemoTools secret={secret} onChange={() => { load(secret); setRefreshKey((key) => key + 1); }} />
       <AdminDatabase secret={secret} refreshKey={refreshKey} onChange={() => { load(secret); setRefreshKey((key) => key + 1); }} />
       <h2 className="admin-section-title">Claim queue</h2>
       {error && <p className="field-error" role="alert">{error}</p>}

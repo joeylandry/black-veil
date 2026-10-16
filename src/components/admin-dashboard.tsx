@@ -81,26 +81,10 @@ export function AdminDashboard({ secret, refreshKey, onChange }: { secret: strin
     else {
       setNotice(
         body.assigned
-          ? `Dealt ${body.assigned} character${body.assigned === 1 ? "" : "s"} to attending guests${body.byName ? ` (${body.byName === body.assigned ? "all" : body.byName} matched by name)` : ""}.${body.stillWaiting ? ` ${body.stillWaiting} guest(s) still waiting — add more characters.` : ""}`
+          ? `Dealt ${body.assigned} character${body.assigned === 1 ? "" : "s"} to attending guests.${body.stillWaiting ? ` ${body.stillWaiting} guest(s) still waiting — add more characters.` : ""}`
           : "Every attending guest already holds a character.",
       );
     }
-    await load();
-    onChange?.();
-    setBusy(false);
-  }
-
-  async function loadCast(hasCast: boolean) {
-    if (hasCast && !window.confirm("Replace the cast with a fresh copy of the 35 characters? Everyone holding one loses it, and any edits to those characters are undone.")) return;
-    setBusy(true);
-    setNotice(null);
-    const response = await fetch("/api/admin/demo", {
-      method: "POST",
-      headers: { "Content-Type": "application/json", Authorization: `Bearer ${secret}` },
-      body: JSON.stringify({ action: "load-cast" }),
-    });
-    const body = await response.json().catch(() => null);
-    setNotice(body?.message ?? body?.error ?? "That did not work.");
     await load();
     onChange?.();
     setBusy(false);
@@ -157,8 +141,8 @@ export function AdminDashboard({ secret, refreshKey, onChange }: { secret: strin
             <h2>The cast</h2>
             <p className="admin-panel-note">
               {stats.characters
-                ? "Dealing gives every attending guest without a character one: the character based on them if their name matches, otherwise a random one. Guests who already hold one keep it."
-                : "No characters are in the database yet. Load the cast of 35, or create characters one at a time in the database editor below."}
+                ? "Dealing gives every attending guest without a character a random one nobody holds. To cast a specific guest, set their character in the database editor below. Guests who already hold one keep it."
+                : "No characters are in the database yet. Create them one at a time in the database editor below."}
             </p>
           </div>
           <div className="admin-actions">
@@ -167,9 +151,6 @@ export function AdminDashboard({ secret, refreshKey, onChange }: { secret: strin
             </button>
             <button type="button" disabled={busy || !stats.assigned} onClick={() => characters("clear")}>
               Take all back
-            </button>
-            <button type="button" className={stats.characters ? undefined : "admin-primary"} disabled={busy} onClick={() => loadCast(stats.characters > 0)}>
-              {stats.characters ? "Reload the cast" : "Load the cast"}
             </button>
           </div>
         </div>

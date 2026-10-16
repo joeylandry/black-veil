@@ -3,7 +3,7 @@ import { desc, eq } from "drizzle-orm";
 import { getDb } from "@/lib/db/client";
 import { characters, ctfSolves, guests, pointClaims, rsvps } from "@/lib/db/schema";
 import { adminDatabaseError, adminGuard } from "@/lib/auth/admin";
-import { deleteGuests } from "@/lib/demo/seed";
+import { deleteGuests } from "@/lib/guest-admin";
 import { ctfChallenges } from "@/data/ctf";
 import { benchLabs, benchSolveId } from "@/data/bench";
 
