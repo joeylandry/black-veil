@@ -68,12 +68,12 @@ Next.js note (from `AGENTS.md`): this Next version differs from what I know. No 
 ## 3. The proposed truth 💡 — **SPOILERS** (rev 2)
 
 ### One-sentence version
-> Nobody died in 1924. Cassandra Castello staged the "massacre" to escape the Four partners who meant to poison her, and vanished with the Ledger. Tonight her Keeper, **Kit Kessler**, came back to open the Merrimack Room, and **Anika Mahns of Mahns Manor**, the Mill's heir and the Silent Partner, stabbed him at the river door just before the party and hid him in the cellar.
+> Nobody died in 1924. Cassandra Castello staged the "massacre" to escape the Four partners who meant to poison her, and vanished with the Ledger. Tonight her Keeper, **Kit Kessler**, came back to open the Merrimack Room, and **Anika Mahns of Mahns Manor**, the Mill's heir and the Silent Partner, poisoned him at the river door just before the party and hid him in the cellar.
 
 So **"Murderer or Murdered?"** → *neither, in 1924.* The man on the floor at 8:45 is the Keeper, who left the club with her.
 
 ### The victim: your dummy
-A man in a plain black half-mask (the mask the Keeper wore on the door every night). When the mask comes off he is **Kit Kessler, the Keeper**. On him: a pocket watch engraved "K." **stopped at 11:47** (he never reset it after the night he signed out), a Montreal rail-ticket stub dated today, a ring with two keys, and a **pearl-handled letter opener in his back with the monogram scratched off**. The Ledger is not on him.
+A man in a plain black half-mask (the mask the Keeper wore on the door every night). When the mask comes off he is **Kit Kessler, the Keeper**. On him: a pocket watch engraved "K." **stopped at 11:47** (he never reset it after the night he signed out), a Montreal rail-ticket stub dated today, a ring with two keys, and a **silver hip flask in his hand with the monogram scratched off** (printed card; a real cocktail glass lies tipped beside him). His back is arched and his mouth fixed in a grin: strychnine. The Ledger is not on him.
 
 ### The Four (the "party of four" at 23:02) 💡
 1. **The Mill** — Anika Mahns (the Mahns family *is* the Silent Partner; spoons engraved with the crest)
@@ -84,6 +84,7 @@ A man in a plain black half-mask (the mask the Keeper wore on the door every nig
 The Ledger (kept by the Keeper) records the strike-settlement bribes and every payoff since 1921. By 1924 Cassie meant to sell it to Federal agents.
 
 ### 1924 (what really happened)
+- Oct ~20, 1924: Anika buys rat poison (strychnine) at Mallya's Emporium, signing the poison register as "A. Pell."
 - Oct 31, 23:02: the Four come up to the landing for a "toast" that was to be Cassie's last (poison). Anika's glass came back **untouched**; Krrish noticed.
 - Cassie had been warned (a note slipped under a supper plate to the chef). She doesn't drink. At 23:30 pig's blood, six blank cartridges (Adam's revolvers) and overturned furniture make a "massacre." The music stops at **11:47** on the cellist's cue.
 - Cassie and the Keeper leave by the **river door** (the "two who left"). Kyle's boat meets them on the lantern signal (Aimee saw it, 11:46). Siddarth flies Cassie out on Nov 1, paid in gold. A decoy in Cassie's coat boards the B&M train (the second gown Rhea sold).
@@ -92,7 +93,7 @@ The Ledger (kept by the Keeper) records the strike-settlement bribes and every p
 
 ### 1926 (tonight)
 - Cassie's black envelopes (Montreal-printed, so the unfamiliar type; wire filed before receipt) went out in the Keeper's hand. **The guest list is Cassie's list.** Every character is here because they hold a piece of the truth or have something to answer for.
-- ~6:30 PM: the Keeper arrives by freight boat at the river door. ~7:10 PM: **Anika's carriage** is seen at the river steps (as Silent Partner she holds a landing key and "came early to inspect the house"). ~7:35: she stabs him with the opener from her **Mahns monogram desk set**, drags him down to the Merrimack Room, scratches the monogram off the handle, and takes his keys.
+- ~6:30 PM: the Keeper arrives by freight boat at the river door. ~7:10 PM: **Anika's carriage** is seen at the river steps (as Silent Partner she holds a landing key and "came early to inspect the house"). ~7:35: she offers him a "peace toast" from her **Mahns monogram hip flask** (strychnine again; second "A. Pell" entry in Rhea's register, Oct 20, 1926), drags him down to the Merrimack Room once he collapses, scratches the monogram off the flask, and takes his keys.
 - ~8:00 PM: Anika "arrives" like every other guest. Her real first sighting is 7:10.
 - **8:45 PM: Bartender Joe finds the body.** Anika spends the next hour hunting for the Ledger while appearing to investigate.
 
@@ -104,13 +105,13 @@ You do not know or carry any clue. You hold one sealed envelope, the **Final Edi
 |---|---|---|
 | 1 | Who is the dead man? | engraved watch stopped at 11:47 (matches the 1924 sign-out/ledger time in the archive), rail stub, keys, Krrish and Jack M. (staff who knew him), the mask he wore on the door. |
 | 2 | What really happened in 1924? | plate note (Rebecca), blanks sale (Adam), 11:46 lantern (Aimee), two identical gowns (Rhea), clock set 11 min fast (Emre), music cue (Jack M.), decoded telegram (Ananya), butcher's bill (Rebecca). |
-| 3 | How? | wound and time of death (Dr. Leach), the opener (Rhea's sales book: a *pair*, sold on a Mahns account; **Judge Li still has the twin**, a gift from Anika), scratched monogram under Tiffany's loupe. |
+| 3 | How? | symptoms and time of death (Dr. Leach), the flask (Rhea's sales book: a *pair*, sold on a Mahns account; **Judge Li still has the twin**, a gift from Anika), scratched monogram (Tiffany's loupe), Rhea's **poison register** with two "A. Pell" entries two years apart. |
 | 4 | Who? | Rhea's book + the Judge's twin; Anika's carriage at 7:10 (Jack H.'s sales book for the Packard, the Driver, Emre's clock); Krrish's "untouched glass" tell; the pin-free crest spoon (Shadi); alibi cracks (a "ride" with Robert; Leon's on-air time). |
 | 5 | Why? | The Ledger: Judge's envelopes with Mill drafts; Landry's Laundry tickets; Joshua's burned pages; Mahns foreclosure papers (Ivan holds the factory note). |
 | 6 | Who were the Four? | torn register page; four hat-check stub fragments; four matching half-masks (Rhea); the Silent Partner crest. |
 
 ### Red herrings (each is disprovable by a rung)
-- Judge Li: holds the twin opener. Theodor: his anonymous Montreal wire. Mihir: bets on "who'll die tonight." Kyle: "the river door is still unlocked." Timothy: about to testify against the River Trade. Jack M.: a cello case with a false bottom.
+- Judge Li: holds the twin flask. Theodor: his anonymous Montreal wire. Mihir: bets on "who'll die tonight." Kyle: "the river door is still unlocked." Timothy: about to testify against the River Trade. Jack M.: a cello case with a false bottom.
 
 ### What makes it fair
 The culprit-indicting facts never rely on the culprit being present. If Anika is absent, the same trail points to an empty chair (the "fugitive clause," §6).
@@ -152,7 +153,7 @@ Each objective names a **verifier character** *and* an alternate verifier factio
 | Item | Cheapest version | Buy? |
 |---|---|---|
 | Dummy, mask | yours | no |
-| Letter opener in the back, pocket watch, key ring, rail stub | a cardboard cut-out and printed cards taped on the dummy (watch card reads 11:47) | no |
+| Flask, pocket watch, key ring, rail stub | printed cards on the dummy (watch card reads 11:47); a real glass or paper cup tipped over beside it | no |
 | Envelopes | plain white envelopes with a black marker or a printed black label; or print black sheets and fold | ~$5 |
 | Currency | printed on paper (already planned) | printing |
 | Telegrams, wire slips, ledger fragments, hat-check stubs, newspapers (Extra, *Farrago*) | home printer, torn edges, coffee-stained | paper |
@@ -193,7 +194,7 @@ Computed from the draft graph in the validator:
 
 **Five 1924 "witness" extension characters** (use for guests 35–40, or fold into Dead Letter exhibits): the **Porter, the Driver, the Boarding-House Keeper, the Printer, the Patrolman.** All five appear in canon articles as unnamed witnesses with statements that don't hold up. Each gets a paid-for-lie hook.
 
-**Example of one character's web (Rhea "Emporium" Mallya, 9 ties; six shown):** Anika ($ unpaid account; sold her the monogrammed desk-set pair), Aidan ($ prescriptions), Emmanuel ($ account fraud), Rebecca ($ kitchen account), Emre (W shop clocks), Jack H. ($ accounts) — and she holds *the* two-gowns clue and the sales book that names the opener's twin. A "minor" shopkeeper owns half of rung 3 and rung 6.
+**Example of one character's web (Rhea "Emporium" Mallya, 9 ties; six shown):** Anika ($ unpaid account; sold her the monogrammed flask pair; keeps the poison register), Aidan ($ prescriptions), Emmanuel ($ account fraud), Rebecca ($ kitchen account), Emre (W shop clocks), Jack H. ($ accounts) — and she holds *the* two-gowns clue and the sales book that names the flask's twin and the poison register with both "A. Pell" entries. A "minor" shopkeeper owns half of rung 3 and rung 6.
 
 ---
 
