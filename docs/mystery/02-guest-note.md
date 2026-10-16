@@ -1,6 +1,6 @@
 # THE BLACK VEIL — Guest Note (draft)
 
-*Fill in the three blanks marked **[ ]**. Send the group note to everyone, then the one-line private add-on to the eight guests who have an arrival signal. Don't put the signals in the group note: other guests are watching for them.*
+*Fill in the blanks marked **[ ]** and send one note to everyone. You no longer need private messages: each guest's card on the site has three tabs, and **what to wear or bring is in the private Background tab**, so the signals stay secret without any extra sending.*
 
 ---
 
@@ -11,7 +11,10 @@
 You're on the list for **The Black Veil: a masquerade and a murder** on **Friday, October 23, doors at 8:00 PM**, 3 Warren Street, Manchester, N.H.
 
 **Your character**
-Sign in at the Guest Ledger with the email you RSVP'd with: **[SITE LINK]**. Your character's public card is waiting there. Your **secrets and private objectives unlock at 7:55 PM on Friday**, so you can't peek early, and nothing is lost by waiting.
+Sign in at the Guest Ledger with the email you RSVP'd with: **[SITE LINK]**. Your character card has three tabs:
+- **Public:** what everyone knows about you.
+- **Background:** your history, who you know, and **what to wear or bring**. Read this one now.
+- **Private:** your secrets and missions. It unlocks at **7:55 PM on Friday**, so you can't peek early.
 
 **The game starts the moment you walk in.** Some of you will arrive carrying something, or watching for someone. Be on time: your arrival moves other people's stories.
 
@@ -49,24 +52,24 @@ See you at the door.
 
 ---
 
-## B. Private add-on lines (send individually, only to these eight)
+## B. What goes in each Background tab (for your reference; no extra messages needed)
 
-Each guest brings **one thing they likely already own**. Keep it a secret from everyone else.
+Eight guests have a **signal item** to wear or bring. Put it in the **Background** tab's "What to wear or bring" line, not in any group message:
 
-| Guest | Private line to add |
+| Guest | "What to wear or bring" |
 |---|---|
-| **Luke Sheldon** | "Bring a case or trunk (a gym bag or a box with a latch will do). Someone will be watching for it." |
-| **Ananya Koduru** | "Wear **one green glove** on your left hand. A single glove, any green." |
-| **Leon Ge** | "Wear a **white carnation** on your lapel (a paper one is fine)." |
-| **Molly Daniel** | "Wear a **newsboy cap**. You'll have papers to hand out." |
-| **Angelos Boules** | "Carry a **single boule or any smooth ball** in your pocket." |
-| **Anika Mahns** | "Wear a **black velvet ribbon** at your throat." |
-| **Jack Hudson** | "Bring a **spoon from home** wrapped in a handkerchief." |
-| **Theodor Farag** | "Pin on a **tin star** (I'll give you a paper one if you don't have it). At a quarter to nine, listen for a scream." |
+| **Luke Sheldon** | A case or trunk (a gym bag or a box with a latch will do). |
+| **Ananya Koduru** | **One green glove** on your left hand (a single glove, any green). |
+| **Leon Ge** | A **white carnation** on your lapel (a paper one is fine). |
+| **Molly Daniel** | A **newsboy cap**. You'll have papers to hand out. |
+| **Angelos Boules** | A **single boule or any smooth ball** in your pocket. |
+| **Anika Mahns** | A **black velvet ribbon** at your throat. |
+| **Jack Hudson** | A **spoon from home**, wrapped in a handkerchief. |
+| **Theodor Farag** | A **tin star** (a paper one is on the way). |
 
-**Rebecca Chou** gets a different private line (she has a quarter-to-nine appointment): *"At a quarter to nine, go to the photo booth room. You're meeting someone."*
+Everyone else's line reads: *"Your best 1920s look. No required props."*
 
-Everyone else: **just your best 1920s look.** No required props.
+(Rebecca's quarter-to-nine appointment and Theodor's "listen for a scream" go in the **Private** tab, which unlocks at 7:55.)
 
 ---
 

@@ -473,7 +473,12 @@ Every arrow is a physical handover or a worn signal, and every one pays both end
 - Server-only `truth.ts` (like `ctf-flags.ts`) and a **pure `computeFinal(events, truth)`** with unit tests and the simulator promoted to a test.
 - Pages: `/game` (My Night), `/game/casebook`, `/game/reckoning`, `/game/sheriff`; `/admin` gets a **three-button Game Master panel** (§10). Phases auto-advance by the clock; buttons only override.
 - `characters` gets `circle`, `threads`, `signal`, `par`, `understudyOf`; NPC rows (Cassandra, the Keeper, the five witnesses) use `active=false` so the existing dealer never hands them out.
-- Split `charactersReleased` into `identitiesReleased` (+ wardrobe note, ~Oct 20) and `dossiersReleased` (7:55 PM).
+- **The character card has three tabs** (your design):
+  - **Public** (everyone can see it, from ~Oct 20): the sheet in Joel's format (name, age, occupation, hometown, social standing, known for, overview, portrait).
+  - **Background** (only you, from ~Oct 20): your history, who you know, and **what to wear or bring** (the arrival signals). This replaces the private messages.
+  - **Private** (only you, unlocks **7:55 PM** Friday): your secrets, arrival task and objectives.
+  Today's schema already splits public from private (`publicBiography` vs `privateBiography`/`secrets`/`objectives`); it needs `sheet` fields (age, hometown, standing, known for), `wardrobe`, `relationships`, and a portrait, plus the second release time.
+- Split `charactersReleased` into `identitiesReleased` (Public + Background, ~Oct 20) and `secretsReleased` (Private, 7:55 PM).
 - Hide the public leaderboard in-game; keep CTF as the capped Archivist track.
 
 ## 9. Production schedule (it is tight)
