@@ -87,7 +87,7 @@ Next.js note (from `AGENTS.md`): this Next version differs from what I know. No 
 So **"Murderer or Murdered?"** → *neither, in 1924.* The old man on the floor at 8:45 is the Keeper, who left the club with her.
 
 ### The victim: your dummy
-An old man (your realistic mask: white hair, white beard), lying in the **photo booth room**, now the Merrimack Room, a private room off the river passage. On him: a pocket watch engraved "K." **stopped at 11:47** (he never reset it after the night he signed out), a Montreal rail-ticket stub dated today, a ring with two keys, and a **silver hip flask in his hand with the monogram scratched off** (printed card; a real cup tipped over beside him). Lying on his back, one hand curled, the cup spilled: no gore, no corpse prop needed. (Strychnine's arched back and fixed grin are described in the Coroner's Folder, since the mask has a neutral face.) The Ledger is not on him, but **one printed Ledger page is taped under the booth bench**, found only by someone who looks *beneath* (the canon notice: "TRUTH LIES BENEATH").
+An old man (your realistic mask: white hair, white beard), lying in the **photo booth room**, now the Merrimack Room, a private room off the river passage. On him: a pocket watch engraved "K." **stopped at 11:47** (he never reset it after the night he signed out), a Montreal rail-ticket stub dated today, a ring with two keys, and a **silver hip flask in his hand with the monogram scratched off** (printed card; a real cup tipped over beside him). Lying on his back, one hand curled, the cup spilled: no gore, no corpse prop needed. (Strychnine's arched back and fixed grin are described in the Coroner's Folder, since the mask has a neutral face.) The Ledger is not on him, but **one printed Ledger page is taped to the underside of the leather ottoman**, found only by someone who looks *beneath* (the canon notice: "TRUTH LIES BENEATH").
 
 ### The Four (the "party of four" at 23:02) 💡
 1. **The Mill**: Anika Mahns (the Mahns family *is* the Silent Partner; spoons engraved with the crest)
@@ -343,6 +343,21 @@ The Sheriff gets a one-use **Nuisance Citation**, a printed card he can serve on
 
 ---
 
+## 6c. The Merrimack Room: planning from your photo 💡
+What I can see: a foil-fringe backdrop (black and gold) along one wall, a big rug, a **leather ottoman**, a stool, two tripods with tablets (the photo booth), two windows, two red diner chairs, a small round table, and a **black-draped table** with a skull, a bottle, a candle, a lamp and a box of papers. It is lit purple. It's a small room (I'd guess 8 people fit comfortably).
+
+**Before 8:45 the room must be closed**, because it's a photo booth and people will want to use it. Put a velvet rope, or a door sign, saying *"THE MERRIMACK ROOM — RESERVED BY MANAGEMENT."* **Rebecca's arrival prop is the room's pass** (a printed key card): she's the only one who may go in at 8:45, which also explains why she finds him. If she's absent, Bartender Joe opens it. After the investigation (10:05) the sign comes down and it's a photo booth again.
+
+**The staging, using what's there:**
+- **Body:** lying on the rug in front of the foil backdrop, one hand curled, the stool knocked over, a cup spilled beside him. Tilt the two tripods aside so nobody trips.
+- **The hidden Ledger page:** taped to the **underside of the leather ottoman** (tip it to find it). That's the "beneath" clue.
+- **The black table:** your skull and bottle are free set dressing for the "Keeper's effects." Add the **Scene Register card** (QR) and the printed scene-inventory card here.
+- **The window paper:** the sheet taped on the glass is a free spot for a posted note.
+
+**Crowd control (the room is small):** the Scene Register has **two QR codes**. One is inside, by the body, for the **first three in the room** (the Official Witnesses). The other is **outside the doorway** for everyone else, so nobody has to push in to score the 2-minute points. The Sheriff's "stand back" has real meaning in a room this size. Rule on the door sign: **Walk. Don't run. Drinks stay in your hand.**
+
+---
+
 ## 7. Sample interconnected arrival (8 characters) 💡 (rev 2)
 
 Seven are from the old cast; the white-carnation role moves to Leon (radio, the "coded message" man), and Theodor is the Sheriff. Molly keeps the still-in-the-Mahns-cellar secret but is the **public newsie**. Signals are cheap and self-supplied or door-issued.
@@ -427,7 +442,7 @@ Every arrow is a physical handover or a worn signal, and every one pays both end
 ## 12. What I still need (rev 4)
 **Settled:** an old man (your mask) as the dummy, in the photo booth room; Rebecca (boarding-house keeper, sketchy, his secret lover) finds him at 8:45; you are Bartender Joe; 8:00–10:00; Molly the Newsie; Theodor a clean Sheriff, no Deputy; Luke and Anthony half-brothers; Leon's immigrant backstory; Josh Jewish; Joel is J. Bruce Wayne; Mihir a wealthy businessman; poison; phones for everyone; near-zero props.
 
-1. **The photo of the booth room.** You said you'd send it next. Where the dummy lies, where the bench is, and how people reach it decides the rush, the "look beneath" clue, and crowd safety.
+1. **The room's door.** From your photo I can plan the scene (see §6c), but I can't see the doorway. Where is it, and can it be shut with a sign or a velvet rope until 8:45?
 2. **The real couple.** Still unknown. Give me the two names when you know, and anything off-limits.
 3. **The rest of the guest list** (below Anthony Huang). Not yet confirmed from the list: Emre, Krrish, Kyle, Rhea, Aidan, Andrew, Emmanuel, Ivan, Jack M., Robert, Shadi, Silas, Timothy. I've tagged their clues with printed backups.
 4. **Josh and Leon review their sheets** before anything goes live (the Yiddish gags and the immigrant backstory).

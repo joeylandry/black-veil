@@ -17,7 +17,7 @@
 | 10:05 | **The Great Anachronism.** Tap the playlist: 1920s jazz cuts to modern 2026 party music. Guests can drop their character, or stay in it and act shocked. | you |
 | 10:30+ | The Black Veil After Dark: dancing, cocktails, Halloween music. | everyone |
 
-**Cassie's letter (the last beat).** It says: she is alive; the "massacre" was her staging; the Keeper came back for her; the Four are named; the Ledger is under the booth bench in the Merrimack Room; she will not return. It ends: *"The veil has lifted. Pour the bartender a drink."*
+**Cassie's letter (the last beat).** It says: she is alive; the "massacre" was her staging; the Keeper came back for her; the Four are named; the Ledger is under the ottoman in the Merrimack Room; she will not return. It ends: *"The veil has lifted. Pour the bartender a drink."*
 
 **How the winner is chosen (plain words).** Everyone earns points from: doing their arrival task, three personal objectives, meeting people, filing clues, and answering the final questions. The most points wins. An arrested murderer can't win. If two people tie, the closest guess to *the minute the poison was given* wins; if still tied, more answers right, then more objectives, then a random but fixed draw printed on the Final Edition so anyone can check it. There is always exactly one winner.
 
