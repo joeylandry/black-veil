@@ -250,6 +250,41 @@ Computed from the draft graph in the validator:
 
 ---
 
+## 6a. The 8:45 rush and the Sheriff's crime-scene points 💡 (from your chat ideas)
+
+**Why I scaled them down.** Your brief says arrival order can't decide the winner, and nobody's standing position when the scream happens is skill. Also, +100/+250/−150 would swamp a game where a whole night's work is worth about 100–150. So I kept your *mechanics* and shrank the points to ~⅒; the real prize for being fast is **information**, not score. Total points available from the rush are about 10% of a strong night.
+
+**How it is verified with no host:** a printed **Scene Register** card with a QR on the dummy. Scanning it with a phone timestamps you. The 8:45 Extra push tells everyone the clock has started. The host (or the Newsie) screams. Printed rule on the card and in the push: **walk, don't run, and keep your drink in your hand.**
+
+| Rush action | Points | Notes |
+|---|---|---|
+| Scan the Scene Register within 2 min of the alert | +2 | everyone, including the culprit (rushing in is a great alibi) |
+| **First three to scan become Official Witnesses** | +4 each | each gets a *different* private witness card (a small clue, never a decisive one, and one the culprit's copy may lie about) and a bonus objective: give a statement to the Sheriff (+6) |
+| First to file each exhibit found at the scene | +3 | one winner per exhibit; cap 9 per player |
+| First to alert the Sheriff (Sheriff redeems your code) | +3 | |
+| "Official evidence" | 0 | only the Sheriff may formally collect scene evidence; anyone may *discover* it and submit it to the Docket |
+
+**Sheriff crime-scene points** (cap 35, on top of the arrest):
+
+| Sheriff action | Points | How verified |
+|---|---|---|
+| Reach the scene within 60 s | +3 | Scene Register scan time |
+| **Secure the scene** (orders guests back) | +4 | taps *Secure*; two witnesses confirm on their phones |
+| First official piece of evidence | +3 | first exhibit filed by the Sheriff |
+| Statement from each of the first three witnesses | +2 each (6) | witnesses redeem the Sheriff's code |
+| Correct suspected cause of death (poison) | +5 | checked against the truth file |
+| Accurate timeline (a 4-slot form) | +8 | server scores the slots |
+| Spot who tampered with the scene | +8 | see below |
+| **The First Five Minutes** (secured + 1 clue + 2 statements in 5 min) | +8 | all timestamps are on the site |
+| **Correct arrest** | **+20** | warrant vs truth |
+| **Wrong arrest** | **−12** and the badge | |
+
+**Tampering.** The culprit may take the flask card off the dummy during the confusion (a paper prop, not anyone's possession). The Sheriff's folder lists the six items that should be on the body, so securing the scene exposes a missing card. Whoever redeems that code later is flagged. This gives the culprit a real secret objective ("remove the flask card"), and the Sheriff a clue chase.
+
+**Balance.** The Sheriff gets only **2 personal objectives** (not 3), so the role's total ceiling is roughly 140, about the same as a good detective or operator. A Sheriff who does the job well is competitive but doesn't win automatically: other characters' secret objectives are worth as much, and the Reckoning still has to be solved.
+
+---
+
 ## 7. Sample interconnected arrival (8 characters) 💡 (rev 2)
 
 All eight are from the existing cast. The Newsie slot is the one change: Molly keeps the still-in-the-Mahns-cellar secret but is the **public newsie**. Signals are cheap and self-supplied or door-issued.
