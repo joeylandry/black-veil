@@ -248,9 +248,9 @@ console.log(`20000 games with heavy artificial ties: exactly one winner each tim
 // Reckoning is capped at 30 (culprit 12, other five questions 18) so that solving cannot swamp everything else.
 const RECKONING = { culprit: Number(process.env.RC ?? 12), other: Number(process.env.RO ?? 18) }; // victim 2, method 4, motive 4, 1924 truth 4, the Four 4 (1 each)
 const shapes = {
-  operator:  { obj: Number(process.env.OP ?? 65), web: 24, case: 6,  recSolve: 0.5 },
-  detective: { obj: 36, web: 15, case: 14, recSolve: 1.0 },
-  hybrid:    { obj: 48, web: 18, case: 10, recSolve: 0.75 },
+  operator:  { obj: Number(process.env.OP ?? 65), web: 18, case: 4, hunt: 8,  recSolve: 0.5 },
+  detective: { obj: 36, web: 12, case: 8, hunt: 14, recSolve: 1.0 },
+  hybrid:    { obj: 48, web: 14, case: 6, hunt: 11, recSolve: 0.75 },
 };
 function game({ players = 30, solveBase, escape, decay, sheriffAccuracy }) {
   const names = Object.keys(shapes);
@@ -262,7 +262,7 @@ function game({ players = 30, solveBase, escape, decay, sheriffAccuracy }) {
     const arrival = rnd() < 0.9 ? 10 : 0;
     const solvedCulprit = i !== 0 && rnd() < solveBase * s.recSolve * (0.5 + e);
     const reck = i === 0 ? 0 : (solvedCulprit ? RECKONING.culprit : 0) + RECKONING.other * (solvedCulprit ? 0.6 : 0.25) * Math.min(1, rnd() * 1.4);
-    rows.push({ id: `p${i}`, culprit: i === 0, solved: solvedCulprit, base: arrival + done(s.obj, 1.0) + done(s.web, 0.95) + done(s.case, 1.0), reck });
+    rows.push({ id: `p${i}`, culprit: i === 0, solved: solvedCulprit, base: arrival + done(s.obj, 1.0) + done(s.web, 0.95) + done(s.case, 1.0) + done(s.hunt, 0.9), reck });
   }
   const K = rows.filter((r) => r.solved).length;
   const caught = rnd() < sheriffAccuracy(K);

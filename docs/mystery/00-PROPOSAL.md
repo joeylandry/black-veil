@@ -194,6 +194,37 @@ Each objective names a **verifier character** *and* an alternate verifier factio
 
 ---
 
+## 4c. The House Hunt: find it, then do the next thing 💡
+**The idea:** about 12 printed **hidden cards** sit around the house. **Finding** one scores, and each card gives a **new challenge** that scores again. It's a third way to earn points, for the guests who would rather wander, poke around and chase breadcrumbs than interrogate people.
+
+| Step | Points | Check |
+|---|---|---|
+| **Find** a card (enter its code on your phone) | **+2** | the code |
+| **Do the follow-up** the card sets | **+3** | its own check (below) |
+| Cap, whole night | **18** | (about 4 full finds-and-follow-ups) |
+
+**Follow-up types (all verifiable with no host):**
+- **Go:** reach another spot and scan its code ("the next card is where the Keeper hid his hat").
+- **Ask:** a named character (or any holder of a signal item) gives you a password; entering it proves you asked.
+- **Answer:** a question you can solve from the card plus the Wall or another exhibit.
+- **Trade or hand over:** bring the card to the Sheriff's Docket or to a named person who redeems it.
+
+**Example chains (3 of the 12 cards):**
+1. **"Beneath."** The Ledger page under the **ottoman** (in Yiddish) → *Ask* **Josh** to read it (he gets +3 too) → the translation points *behind Cassie's framed photograph* (card 2) → *Hand over* both to the Sheriff's Docket.
+2. **"Not the Last."** A card in the **Keeper's-effects box** on the black table ("evidence print 6") → *Answer:* which of two handwriting samples on the Wall is the darker ink? → the answer names a notice on the Wall whose clip code is the next card.
+3. **"Last Call."** A card under the **bar's ice bucket** → *Ask:* whoever wears the green glove for the password → card 3 opens a clue about the 1924 toast.
+
+**Rules, so it stays safe and fair:**
+- Cards live **only in shared spaces**: the bar, the Wall, the photo booth room, the diner table, window ledges, plants, lamp bases. **Never** bedrooms, bathrooms, closets, drawers, behind appliances, or inside anyone's belongings. No climbing. The only furniture anyone moves is the ottoman.
+- Every card has a **black seal sticker** so guests know it's a game piece.
+- Cards are **never scarce**: one card, many finders, each scores. Only "first to file" bonuses are competitive, and those are small.
+- **Hints:** every character's dossier names one hiding place in riddle form, so everyone has a reason to look somewhere, not just the nosy.
+- **It's a bonus path, not a gate.** Every rung of the main deduction (§3) already has ≥3 holders without the hunt, so nobody who skips the hunt is shut out.
+
+**Your cost:** about 20 minutes to place ~12 cards before doors, plus a map in your GM card. Nothing to buy.
+
+---
+
 ## 4b. The Wall: a gossip bulletin board 💡
 **The continuity question: why would Cassie's own club display a bounty on her?** It doesn't. This isn't the club's board: it's the **Passage Wall**, the public posting wall in the outer passage where the whole town pinned notices about the place (canon: the closure notice was "posted in three locations," and the police bulletin went up too). When the Keeper came back to reopen the house he **left the old notices up on purpose**, on Cassie's instruction: *"Let them read what they said about me."*
 
@@ -242,8 +273,9 @@ Computed from the draft graph in the validator:
 |---|---|---|
 | **Arrival** | 10 | counterpart redeems your code; or the standby alt |
 | **Personal objectives** | 3 of 5 count; **dossier-specific 36–65** | verifier handshake / custody / time |
-| **Web (relationships)** | 3 each, cap **24** | both players redeem each other's relationship code; max 2 per pair |
-| **Casebook (exhibits)** | 2 each, cap **14** | code from a physical prop; duplicates don't stack |
+| **Web (relationships)** | 3 each, cap **18** | both players redeem each other's relationship code; max 2 per pair |
+| **Casebook (exhibits)** | 2 each, cap **8** | code from a prop someone carries; duplicates don't stack |
+| **House Hunt** (§4c) | find **+2**, each follow-up step **+3**, cap **18** | code on a hidden card, then the step's own check |
 | **Reckoning** (accusation form) | cap **30**: Culprit 12, Method 4, Motive 4, 1924 truth 4, Victim 2, the Four 1 each (4) | scored on the server at the reveal; **full credit needs a cited, valid exhibit; no proof = half** |
 | **Material Evidence** | +3 each, cap 9 | exhibits you gave the Sheriff's Docket that the truth file flags as material |
 | **Archivist (CTF)** | up to 20 | existing CTF, scaled and capped |
@@ -276,11 +308,11 @@ Computed from the draft graph in the validator:
 
 | Share of players who name the culprit | Culprit wins | Winners who never named the culprit |
 |---|---|---|
-| ~12% (hard) | 26% | 45% |
-| ~25% (typical) | **12%** | **33%** |
-| ~40% (easy) | 3% | 23% |
+| ~12% (hard) | 28% | 40% |
+| ~25% (typical) | **13%** | **29%** |
+| ~40% (easy) | 3% | 20% |
 
-(The first run had Reckoning at 45 pts and a non-solver won only ~8% of the time. That would have meant "minor characters can't win," so I cut Reckoning to 30 and raised objective-heavy dossiers.) Targets: **culprit 10–20%, non-solver wins ≥25%** at typical difficulty. I'll re-tune with real dossier values; the sim doesn't yet model Sheriff, Material Evidence, or Archivist points.
+(With the House Hunt added, Web fell from 24 to 18 and the Casebook from 14 to 8 so the totals stay level; the table above is the re-run. The first run had Reckoning at 45 pts and a non-solver won only ~8% of the time. That would have meant "minor characters can't win," so I cut Reckoning to 30 and raised objective-heavy dossiers.) Targets: **culprit 10–20%, non-solver wins ≥25%** at typical difficulty. I'll re-tune with real dossier values; the sim doesn't yet model Sheriff, Material Evidence, or Archivist points.
 
 **Par-parity rule for dossier writing:** every dossier must offer ≥100 reachable points by *two different routes* (operator: deals and objectives; detective: casebook and reckoning). A script will check this before release.
 
