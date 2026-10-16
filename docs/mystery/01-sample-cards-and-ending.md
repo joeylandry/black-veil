@@ -29,14 +29,14 @@
 
 **Private card.**
 - **Your authority.** You are the only one who can formally secure the scene and collect official evidence. You hold the **Coroner's Folder** (sealed until 8:45), three **subpoenas**, a **Docket** for evidence others hand you, one **sealed Warrant**, and a **Nuisance Citation** (see below).
-- **At a quarter to nine, listen for a scream.** When you hear it, get to the booth room fast and take charge: tell people to stand back (nobody runs, nobody touches anything), then secure the scene on your phone.
+- **At a quarter to nine, listen for a scream.** When you hear it, get to the booth room fast and take charge: tell people to stand back (nobody runs, nobody touches anything), type the **scene code** from the card on the black table, then secure the scene on your phone.
 - **Your two personal objectives:**
   1. **First Responder** (+10; +5 if within 3 min): reach the body within 60 seconds of the scream.
   2. **Reputation** (+10): by 9:30 have five different guests give you a sworn statement.
-- **Crime-scene points** (§6a): secure the scene +4, first official evidence +3, statements from the first three witnesses +2 each, cause of death +5, a good timeline +8, spotting tampering +8, "The First Five Minutes" +8.
+- **Crime-scene points** (§6a): secure the scene +4, first official evidence +3, statements from the First Witness and the next two guests +2 each, cause of death +5, a good timeline +8, spotting tampering +8, "The First Five Minutes" +8.
 - **The arrest.** One warrant, sealed, filed any time from 9:15. A correct arrest is +20. A wrong one is −12 and you lose the badge.
 - **The Citation.** One card, 0 points to anyone. You may serve it on Leon "for being insufferable." The reason you can't stand him: he mocks your department on the radio and you suspect a second, unlicensed transmitter.
-- **If you aren't here by 8:30,** the first Official Witness at the body becomes Acting Sheriff.
+- **If you aren't here by 8:30,** the **First Witness** (the first guest to reach the body) becomes Acting Sheriff.
 
 ---
 
@@ -47,12 +47,12 @@
 **Private card.**
 - **What you did.** You are the Mill's heir and the Silent Partner. You were one of the Four in 1924. This afternoon you bought the Keeper's whereabouts from a boarding-house keeper, met him at the river steps at about 7:10, gave him a toast from your flask, and put him in the booth room. The monogram on the flask is scratched off. You came in at 8:00 like everyone else.
 - **What you want.** The Ledger. It ruins you. It is hidden somewhere near where you left him.
-- **How you win.** You compete like everyone else. You also earn an **Escape bonus: 40 points minus 2 for every guest who correctly names you** (never below 0), *if you are not arrested.* If the Sheriff arrests you, you can't win. If the Sheriff arrests the wrong person, you keep your Escape bonus. You can win only if your total is the highest, so blend in and do your other objectives too.
+- **How you win.** You compete like everyone else. You also earn an **Escape bonus: 32 points minus 2 for every guest who correctly names you** (never below 0), *if you are not arrested.* If the Sheriff arrests you, you can't win. If the Sheriff arrests the wrong person, you keep your Escape bonus. You can win only if your total is the highest, so blend in and do your other objectives too.
 - **Your secret objectives** (any 3 of 5 count):
   1. **Remove the flask card from the body** without being seen (+10). It is a paper scene prop, not anyone's property. If the Sheriff's inventory finds it missing, you will be watched.
   2. **Plant the forged "Keeper's note"** on someone else (+10; counts when they redeem the code).
   3. **Get the Sheriff to subpoena someone other than you** (+10).
-  4. **Be one of the first three at the body** (+5): rushing in is a great alibi.
+  4. **Be the First Witness at the body** (+5): rushing in is a great alibi.
   5. **Charm J. Bruce Wayne** into taking your arm and a drink (+10; Joel redeems). He is the rich match you need, and also holds your mortgage.
 - **Your cover tasks** (normal points, look innocent): settle the cellar rent with the newsie; accept the first drink from the bar.
 - **Rules for you.** You may lie to anyone, including the Sheriff. You may not take, hide, or damage a guest's own belongings. Only the paper scene cards and the clues you are given are in play. If you are arrested, say nothing until the reveal.
@@ -78,7 +78,7 @@
   3. **Copy #7** (+15): Leon will offer $20 for it. It carries a classified in a code only the right person can read. Sell it, or find out who it's meant for.
   4. **Hawk the Extra** (+10): at 8:45 you run the printed Extra through the room within 2 minutes of the scream. (If you are absent, Bartender Joe hands it out.)
   5. **The Late Edition** (+10): at 9:15 you distribute the Late Edition and get three guests to redeem it.
-- **Who you know (6 ties):** Anika (rent, the cellar still), Leon (the white carnation), Theodor (the Sheriff, who buys the paper), Eric Li (reads your headlines), Kyle (carries your crates)*, Aidan (prescriptions)*. \* *not yet confirmed attending; backups exist.*
+- **Who you know (6 ties):** Anika (rent, the cellar still), Leon (the white carnation; your papers reach his radio), Theodor (the Sheriff, who buys the paper), Eric Li (pays you to keep a headline off the page), Rebecca (you drop papers at her boarding house), Angelos (you lose money to his bets).
 - **What you know.** Anika's carriage was at the river steps at about 7:10: you saw it while delivering the evening edition.
 
 ---
@@ -89,8 +89,8 @@
 
 **Your five jobs, all you need:**
 1. **7:55.** Put out the envelope table. Tap **Open the Night** (or let the clock do it).
-2. **8:30.** Nothing. The site opens the Standby Tray. Make sure the 8 spare envelopes are in the tray.
-3. **8:45.** Nothing, if Rebecca screams. If 8:47 passes and there's no scream, **you** walk to the booth room and find him.
+2. **8:30.** The site opens the Standby Tray; make sure the 8 spare envelopes are in it. **About 8:35, stage the dummy** in the chair section of the photo booth room (on the floor between the red chairs, a cup spilled, the stool toppled) and add the crime-scene tape.
+3. **8:45.** Nothing, if Rebecca screams. Rebecca has been told to go to the booth room at 8:45. If 8:47 passes and there's no scream, **you** find him.
 4. **10:00.** Open the **Final Edition**. Read Cassie's letter. Tap **Reveal** if the phones haven't flipped. Read the winner's name.
 5. **10:05.** Tap the playlist.
 

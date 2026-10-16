@@ -3,17 +3,16 @@
 *Status: proposal only. No app code, no dossiers, no props have been produced. Nothing here is canon until approved.*
 *Rev 2, 15 Oct 2026, after your answers: man's body revealed at the party (your dummy and mask), game over by 10:00, you as bartender, a newsie. Party: Fri 23 Oct 2026, doors 8:00 PM. That is **8 days out** (see §9).*
 
-**Rev 4 (16 Oct), from your latest answers:**
-- **The dummy is an old man** (your realistic old-man mask: white hair, white beard). His face is visible, so the first question is *who is he*. He's the Keeper, Kit Kessler, 68. He lies in the **photo booth room**, which becomes the **Merrimack Room**.
-- **Rebecca Chou is not a chef.** She's a **self-made, sketchy West Side boarding-house keeper** who sells alibis, hides people who need hiding, and takes money from anyone. She was the Keeper's **secret lover**. She goes to meet him in the Merrimack Room at 8:45 and finds him. And she carries a secret guilt (below).
-- **Theodor is a clean Sheriff.** Not one of the Four, no conflict. There is **no Deputy character**: if Theodor isn't there by 8:30, the first Official Witness at the body is sworn in automatically as Acting Sheriff.
-- **The Four change** to Anika (Mill), Judge Li (Bench), Mihir (Money), **Anthony Huang (Counsel)**.
-- **Luke Sheldon and Anthony Huang are brothers** with something sketchy between them: one half knows what the other does, not the whole.
-- **Leon gets an immigrant backstory** (Canton, via Montreal) and a reason Theodor wants him arrested. **No points for being annoying.**
-- **Josh Kaminsky is Jewish, and it becomes a clue source** (he reads the Keeper's Yiddish ledger notes), with a light Friday-night gag. Josh reviews his sheet first.
-- **Victor isn't coming**, so the Liu-siblings idea is dropped; Luke and Anthony are the siblings.
-- **Joel is J. Bruce Wayne, oil tycoon** (confirmed). **Mihir is a wealthy businessman**, so the two are rivals. **Aimee Hong regrets.**
-- **Still needed:** the real couple, the photo of the booth room, and the rest of the guest list.
+**Rev 5 (16 Oct), from your latest answers:**
+- **Confirmed:** the party is **Friday Oct 23**; the name is **Castello**. The guest list is **20 people attending** (Aimee regrets, nobody below Anthony). I had designed for ~30, so I **rebuilt the roster, the network and the arrival chain around the real 20** (§2b, §5, §7) and re-ran the checks.
+- **No bounty.** The wall is a gossip **bulletin board** (§4b).
+- **No QR codes.** Everything is typed short codes or phone buttons.
+- **No race at the body.** One **First Witness** (besides Rebecca) and the Sheriff's **First Responder** objective (§6a). Rebecca gets a **planned alibi** from Erika (§6a).
+- **The room stays open** until you stage the body at about 8:35 and add tape; the body goes in the **chair section** (the red diner chairs). The Ledger page hides **under the stool** (§6c).
+- **House Hunt cards are personal**, addressed to specific players (§4c). You'll send photos when the house is set.
+- **Leon's pardon:** Sheriff +1 to cite him, or +2 to take a bribe from someone Leon paid off; Leon and the go-between get points too (§6b).
+- **A Yiddish-phrase objective** for Arjun, from Josh (§2b).
+- **The killer is not decided.** Any of the Four can be the killer; I recommend staying with Anika (§3). **Lock it by Sunday Oct 18** so props can be printed.
 
 **Legend.** 🔒 = established in the repo or in your brief. 💡 = my new proposal. ⚠️ = conflict or gap you need to rule on.
 **Spoilers.** §3 and §4 contain the solution. Game Master eyes only.
@@ -77,69 +76,114 @@ Next.js note (from `AGENTS.md`): this Next version differs from what I know. No 
 
 ---
 
-## 3. The proposed truth 💡 — **SPOILERS** (rev 4)
+## 2b. The 20 who are coming 💡
+Aimee regrets, and everyone else from the old 35-person cast who isn't on the list is out. So every clue, tie and objective lives with these 20, plus printed backups for anything that depends on one person showing up.
 
-*An asterisk (\*) marks a clue holder whose attendance isn't confirmed yet. Every such clue has a printed backup in the Standby tray / Dead Letter box, so an absence never breaks a rung.*
+| Guest | Character | In one line |
+|---|---|---|
+| Theodor Farag | **Sheriff** | Clean lawman; feuds with Leon over the radio |
+| Molly Daniel | **The Newsie** | Sells the news; her family's still is in the Mahns cellar |
+| Rebecca Chou | **West Side boarding-house keeper** | Self-made, sketchy, sells alibis; the Keeper's secret lover; finds the body |
+| Anika Mahns | **The Mill** (of the Four) | Mahns heir, broke, courting money |
+| Eric Li | **The Bench** (of the Four) | Judge who dismissed every case |
+| Mihir Nagarkatti | **The Money** (of the Four) | Wealthy businessman with a private book |
+| Anthony Huang | **The Counsel** (of the Four) | The Four's fixer; Luke's half-brother |
+| Luke Sheldon | **Carnival barker** | Built the 1924 "massacre"; sold the flask pair |
+| Joel Indipiginja | **J. Bruce Wayne, oil tycoon** | New money; holds the Mahns mortgage; Mihir's rival (no objectives yet) |
+| Leon Ge | **WFEA radio** | Cassie's loyal ally; immigrant backstory; the Sheriff's nuisance |
+| Ananya Koduru | **Telegraph clerk** | Decoded the 1924 telegram |
+| Josh Kaminsky | **Chimney sweep** | Found the burned pages; reads the Keeper's Yiddish |
+| Erika Lam | **Fugitive** | Hid at Rebecca's; saw the 1924 lantern; Rebecca's planned alibi |
+| Adam Ouldsfiya | **Gunsmith and hardware** | Sold the blanks; keeps the poison register |
+| Jack Hudson | **Car dealer** | Traded for the crested spoon; his sales book catches Anika's Packard |
+| Sidd Arvind | **Aviator** | Flew Cassie out in 1924, paid in gold |
+| Diwakar Sandhu | **Prizefighter, 1924 doorman** | Saw two people leave by the river door |
+| Angelos Boules | **Boules hustler** | Reads tells; noticed Anika's untouched glass in 1924 |
+| Arjun Bhat | **Slugger** | Took Mihir's bribe; wants a Yiddish phrase from Josh |
+| Tiffany Liu | **Glass artisan** | Reads the scratched monogram; brokers Leon's pardon |
+
+**Paired objectives to place (proposals):**
+- **Arjun:** *"Get a Yiddish phrase from Josh"* (for shouting at an umpire). +10, Josh redeems the phrase; Josh gets +3 for giving it.
+- **Erika:** *"Vouch for Rebecca"* (a planned alibi, §6a). +10.
+- **Tiffany:** *"Broker Leon's pardon"* (§6b). +4.
+
+---
+
+## 3. The proposed truth 💡 — **SPOILERS** (rev 5)
 
 ### One-sentence version
-> Nobody died in 1924. Cassandra Castello staged the "massacre" with carnival stage effects to escape the Four partners who meant to poison her, and vanished with the Ledger. Tonight her Keeper, **Kit Kessler** (68), came back to open the Merrimack Room, and **Anika Mahns of Mahns Manor**, the Mill's heir and the Silent Partner, poisoned him just before the party and hid him there.
+> Nobody died in 1924. Cassandra Castello staged the "massacre" with carnival stage effects to escape the Four partners who meant to poison her, and vanished with the Ledger. Tonight her Keeper, **Kit Kessler** (68), came back to open the Merrimack Room, and **one of the Four** poisoned him just before the party and hid him there. *(I recommend Anika Mahns; see "Choosing the killer.")*
 
 So **"Murderer or Murdered?"** → *neither, in 1924.* The old man on the floor at 8:45 is the Keeper, who left the club with her.
 
+### Who are the Four? (plain words)
+The 1924 register says **"party of four, names withheld"** came in at 11:02 PM. In my story those four were the club's **secret partners**, the people behind the "Silent Partner" arrangement, each with a different kind of power:
+
+| Seat | Who | Why they matter |
+|---|---|---|
+| **The Mill** | Anika Mahns | the Mahns family money (and the crested spoons) |
+| **The Bench** | Judge Eric Li | dismissed every case against the club |
+| **The Money** | Mihir Nagarkatti | the businessman who financed it |
+| **The Counsel** | Anthony Huang | the lawyer who handled the paperwork and the payoffs |
+
+Working out **who the Four were** is one of the questions players answer at the end (1 point each). **The killer is one of the four.** That's what links 1924 to 1926: the people who wanted Cassie gone then are the people with the most to lose now.
+
+### Choosing the killer (your call)
+Any of the Four can be the killer; the story works with any. Changing the killer swaps about five clue cards (the flask monogram, the alias, one alibi crack, the motive papers). **Lock it by Sunday Oct 18**; after props are printed it's expensive.
+
+| Killer | Why it's good | What's special |
+|---|---|---|
+| **Anika** (recommended; already wired) | broke, ruined by the Ledger, holds the crested spoon | Joel holds her mortgage; her courting of Joel is the cover |
+| **Eric Li** | the "respectable judge" twist | his own twin flask becomes the clue he must explain away |
+| **Mihir** | the new-money villain | rivalry with Joel gives a strong red herring both ways |
+| **Anthony** | most dramatic: the lawyer kills, and his half-brother Luke unknowingly supplied the props | brother-vs-brother at the reveal |
+
 ### The victim: your dummy
-An old man (your realistic mask: white hair, white beard), lying in the **photo booth room**, now the Merrimack Room, a private room off the river passage. On him: a pocket watch engraved "K." **stopped at 11:47** (he never reset it after the night he signed out), a Montreal rail-ticket stub dated today, a ring with two keys, and a **silver hip flask in his hand with the monogram scratched off** (printed card; a real cup tipped over beside him). Lying on his back, one hand curled, the cup spilled: no gore, no corpse prop needed. (Strychnine's arched back and fixed grin are described in the Coroner's Folder, since the mask has a neutral face.) The Ledger is not on him, but **one printed Ledger page is taped to the underside of the leather ottoman**, found only by someone who looks *beneath* (the canon notice: "TRUTH LIES BENEATH").
-
-### The Four (the "party of four" at 23:02) 💡
-1. **The Mill**: Anika Mahns (the Mahns family *is* the Silent Partner; spoons engraved with the crest)
-2. **The Bench**: Judge Eric Li (dismissed every case)
-3. **The Money**: Mihir Nagarkatti (wealthy businessman; the vice book and fixed fights are his private secret)
-4. **The Counsel**: Anthony Huang (the Four's fixer: retainers, cash payments, the unfiled death certificate)
-
-The Ledger (kept by the Keeper, in **Yiddish**, which the Four couldn't read) records the strike-settlement bribes and every payoff since 1921. By 1924 Cassie meant to sell it to Federal agents.
+An old man (your realistic mask: white hair, white beard), lying in the **chair section** of the photo booth room (the red diner chairs). On him: a pocket watch engraved "K." **stopped at 11:47** (he never reset it after the night he signed out), a Montreal rail-ticket stub dated today, a ring with two keys, and a **silver hip flask in his hand with the monogram scratched off** (printed card; a real cup tipped over beside him). Lying on his back, one hand curled, the cup spilled: no gore, no corpse prop. (Strychnine's arched back and fixed grin are described in the Coroner's Folder.) **One printed Ledger page is taped under the stool's seat**, found only by someone who looks *beneath*.
 
 ### The brothers 💡
-**Luke Sheldon** (carnival barker, River Trade's payment drop) and **Anthony Huang** (the Four's counsel) are half-brothers, same mother. Their sketchy pipeline: Luke's shell-game payoffs come back to the family as Anthony's "legal retainers." Each knows half of the story: in 1924 **Luke built the "massacre"** for Cassie (carnival stage blood, trick bottles, gaff props, billed on a carnival invoice), while **Anthony was the Four's counsel**. Neither knew the other was on the opposite side.
+**Luke Sheldon** (carnival barker, River Trade's payment drop) and **Anthony Huang** (the Four's counsel) are half-brothers, same mother. Their sketchy pipeline: Luke's shell-game payoffs come back to the family as Anthony's "legal retainers." Each knows half the story: in 1924 **Luke built the "massacre"** for Cassie (stage blood, trick bottles, gaff props, on a carnival invoice) while **Anthony was the Four's counsel**. Neither knew the other was on the opposite side.
 
 ### 1924 (what really happened)
-- Oct ~20, 1924: Anika buys rat poison (strychnine) at Mallya's Emporium*, signing the poison register as "A. Pell."
-- Oct 31, 23:02: the Four come up to the landing for a "toast" that was to be Cassie's last. Anika's glass came back **untouched**; the bartender noticed.
-- Cassie had been warned by a note in the Keeper's hand. She doesn't drink. At 23:30 Luke's stage blood, six blank cartridges (Adam's revolvers) and overturned furniture make a "massacre." The music stops at **11:47** on the cellist's cue.
-- Cassie and the Keeper leave by the **river door** (the "two who left"). **Cassie spends the night in Rebecca's West Side boarding house**, which is why the "boarding-house keeper insists she was in her parlor" was *true*, and ignored. Siddarth flies Cassie out on Nov 1, paid in gold. A decoy in her coat boards the B&M train.
-- The Four, seeing blood and no Cassie, each fear the others did it. They post the **closure notice** on the **Mahns Mill's own job press** (type doesn't match 1921 stationery, and "PD" is invented) and hunt for the Ledger. Dr. Leach* is paid for a death certificate; Judge Li refuses to file it without a body. **Josh finds half-burned Ledger pages in the flue**: the Four burned a copy they couldn't read.
-- The real Ledger is bricked into the **Merrimack Room** ("TRUTH LIES BENEATH"). Cassie keeps the lease alive from Montreal by quarterly draft, so the Four can never legally tear the building open. The Christmas card was hers.
+- Oct ~20, 1924: the killer's alias, **"A. Pell,"** buys rat poison (strychnine) at **Ouldsfiya Arms & Hardware** and signs the poison register.
+- Oct 31, 11:02 PM: the Four come up to the landing for a "toast" that was to be Cassie's last. The killer's glass came back **untouched**; **Angelos**, who reads hands and glasses, noticed.
+- Cassie had been warned by a note in the Keeper's hand. She doesn't drink. At 11:30 Luke's stage blood, six blank cartridges (Adam's revolvers) and overturned furniture make a "massacre." The music stops at **11:47**.
+- Cassie and the Keeper leave by the **river door**; **Diwakar**, the doorman, sees them go (the "two who left"), and **Erika**, slipping out the back with her satchel, sees the lantern signal at 11:46. **Cassie spends the night in Rebecca's boarding house** (so the "boarding-house keeper insists she was in her parlor" was *true* and ignored). **Sidd** flies Cassie out on Nov 1, paid in gold. A decoy in her coat boards the B&M train.
+- The Four, seeing blood and no Cassie, each fear the others did it. They post the **closure notice** on the **Mahns Mill's job press** and hunt for the Ledger. **Josh finds half-burned Ledger pages in the flue**: the Four burned a copy they couldn't read.
+- The real Ledger is bricked into the **Merrimack Room**. Cassie keeps the lease alive from Montreal by quarterly draft, so the Four can never legally tear the building open. The Christmas card was hers.
 
 ### Leon's story 💡
-**Leon Ge** came from Canton by way of Montreal, in a world that did not want him. **Cassie sponsored his papers and his radio license**, and he owes her everything. He read her coded "I am well" message on WFEA in 1924, and he knows she's alive. He is the Keeper's friend. *That is why Sheriff Theodor can't stand him*: Leon mocks the Sheriff's department on air most nights, and Theodor suspects a second, unlicensed transmitter. The Sheriff's gag is about the **radio**, never about Leon's papers or origin. Leon is a Cassie ally, not a suspect.
+**Leon Ge** came from Canton by way of Montreal. **Cassie sponsored his papers and his radio license**, and he owes her everything. He read her coded "I am well" message on WFEA in 1924, and he knows she's alive. He is the Keeper's friend. *That is why Sheriff Theodor can't stand him*: Leon mocks the Sheriff's department on air most nights, and Theodor suspects a second, unlicensed transmitter. The gag is about the **radio**, never Leon's papers or origin. Leon is a Cassie ally, not a suspect.
 
 ### Josh's story 💡
-**Josh Kaminsky** is the Jewish chimney sweep from the West Side, whose family came from Poland to work the mills. He is the only person in the room who can read the **Keeper's Yiddish notes** in the margins of the burned pages and the taped Ledger page; his envelope has a short "translator's key," and a printed translation is in the Dead Letter box in case he isn't there. Light gags (optional; Josh reviews all of it): it's **Friday night**, so he is at a speakeasy masquerade on the Sabbath and is *very* aware of it; he's the only sweep in Manchester who gives an opinion on your flue and your matzo balls.
+**Josh Kaminsky** is the Jewish chimney sweep from the West Side, whose family came from Poland to work the mills. He is the only one who can read the **Keeper's Yiddish notes** on the burned pages and the taped Ledger page; his envelope has a short translator's key, and a printed translation is in the Dead Letter box in case he isn't there. Light gags (optional): it's **Friday night**, so he's at a speakeasy masquerade on the Sabbath and is *very* aware of it; and **Arjun needs a Yiddish phrase from him** (see §2b).
 
 ### 1926 (tonight)
-- Cassie's black envelopes (Montreal-printed, so the unfamiliar type; wire filed before receipt) went out in the Keeper's hand. **The guest list is Cassie's list.** Every character is here because they hold a piece of the truth or have something to answer for.
-- The Keeper arrived Oct 22 and **stayed at Rebecca's boarding house** (his lover, in secret). **Rebecca, who takes money from anyone, sold "who's staying at my house" to Anika on Oct 22 for $40**, not knowing what Anika would do. Her tips ledger shows "A.M. — $40 — arrivals." That is her guilt, and her evidence against herself.
-- ~7:10 PM: **Anika's carriage** is seen at the river steps (as Silent Partner she holds a landing key and "came early to inspect the house"). ~7:35: she offers him a "peace toast" from her **Mahns monogram hip flask** (strychnine again; second "A. Pell" entry, Oct 20, 1926), drags him into the Merrimack Room once he collapses, scratches the monogram off the flask, and takes his keys.
-- ~8:00 PM: Anika "arrives" like every other guest. Her real first sighting is 7:10.
-- **8:45 PM: Rebecca finds the body.** The Keeper had told her to meet him in the Merrimack Room at a quarter to nine. She screams, and the game starts. (If she's absent, **Bartender Joe** finds him.) She must decide whether to tell the room who he was to her.
-- Anika spends the next hour hunting for the Ledger while appearing to investigate.
+- Cassie's black envelopes (Montreal-printed; wire filed before receipt) went out in the Keeper's hand. **The guest list is Cassie's list.**
+- The Keeper arrived Oct 22 and **stayed at Rebecca's boarding house** (his lover, in secret). **Rebecca, who takes money from anyone, sold "who's staying at my house" to the killer on Oct 22 for $40**, not knowing what would follow. Her tips ledger shows it. That's her guilt, and her evidence against herself.
+- ~7:10 PM: **the killer's carriage** is seen at the river steps (as a Silent Partner they hold a landing key). ~7:35: a "peace toast" from their **monogrammed hip flask** (strychnine again; second "A. Pell" entry, Oct 20, 1926). The Keeper collapses; the killer drags him into the Merrimack Room, scratches the monogram off, takes his keys.
+- ~8:00 PM: the killer "arrives" like every other guest.
+- **8:45 PM: Rebecca finds the body.** The Keeper had told her to meet him in the photo booth room at a quarter to nine. She screams, and the game starts. (If she's absent, **Bartender Joe** finds him.) She must decide whether to tell the room who he was to her.
+- **Rebecca's planned alibi:** at 7:35 she was upstairs with her boarder **Erika**, who can vouch for her, at the risk of being seen by Judge Li, whom she evades.
 
 ### What you hold as Bartender Joe
-You do not know or carry any clue. You hold one sealed envelope, the **Final Edition**, to open at 10:00. It has Cassie's letter and the answers. In-world: the Keeper left it "with the bartender."
+You carry no clue. You hold one sealed envelope, the **Final Edition**, to open at 10:00 (Cassie's letter and the answers).
 
-### The deduction ladder (every rung has ≥3 independent holders, from ≥2 circles)
-| Rung | Question | Clue sources (examples) |
+### The deduction ladder (every rung has ≥3 independent holders among the 20, from ≥2 circles)
+| Rung | Question | Who holds it |
 |---|---|---|
-| 1 | Who is the dead man? | his face, the watch "K." stopped at 11:47 (the archive's 1924 sign-out time), rail stub, Rebecca (his lover), Leon (his friend), Jack M.\* (the orchestra knew him). |
-| 2 | What really happened in 1924? | Rebecca's boarding-house register (Cassie, room 3, Oct 31), the Keeper's warning note, **Luke's carnival invoice** for stage blood and trick props, Adam's blank-cartridge sale, **Leon's coded on-air message**, Ananya's decoded telegram, Sidd's gold, Kyle's lantern\*. |
-| 3 | How? | the Coroner's Folder (Dr. Leach's written findings: strychnine, time of death), the flask (Mallya's sales book\*: a *pair*, sold on a Mahns account; **Judge Li still has the twin**, a gift from Anika), the scratched monogram (Tiffany's loupe), the poison register with two "A. Pell" entries two years apart. |
-| 4 | Who? | the flask pair; **Rebecca's tips ledger** ("A.M. $40"); Anika's carriage at 7:10 (Jack H.'s Packard sales book); **Joel**: Anika invited him to dinner at 7:00 and cancelled at 6:55; the crest spoon (Shadi\*); a cracked alibi. |
-| 5 | Why? | the Ledger: Judge's envelopes with Mill drafts; Mihir's real books; Josh's burned pages and the Yiddish translation; **Joel holds the Mahns foreclosure papers** (he's buying the mortgage). |
-| 6 | Who were the Four? | the torn 1924 register page in four pieces (Josh, Rebecca, Luke, Ananya); Anthony's retainer letters; the Silent Partner crest. |
+| 1 | Who is the dead man? | his face, the watch "K." stopped at 11:47, the rail stub; **Rebecca** (his lover), **Leon** (his friend), **Diwakar** (the doorman knew him) |
+| 2 | What really happened in 1924? | **Rebecca**'s boarding-house register (Cassie, room 3) and the Keeper's warning note; **Luke**'s carnival invoice for stage blood; **Adam**'s blank-cartridge sale; **Leon**'s coded on-air message; **Ananya**'s decoded telegram; **Sidd**'s gold; **Erika**'s lantern; **Diwakar**'s river door |
+| 3 | How? | the Coroner's Folder (Dr. Leach's findings, held by **Theodor**); the flask pair (**Luke**'s invoice, the Judge's twin); the scratched monogram (**Tiffany**'s loupe); the poison register (**Adam**) |
+| 4 | Who? | the flask pair; **Rebecca**'s tips ledger ("A. Pell... $40"); **Jack**'s Packard sales book (7:10); **Joel** (a dinner cancelled at 6:55); **Tiffany** (a fitting cancelled at 7:00); **Angelos**'s untouched glass; **Jack**'s crested spoon |
+| 5 | Why? | the Ledger: the Judge's envelopes with Mill drafts; **Mihir**'s real books; **Josh**'s burned pages and the Yiddish translation; **Joel**'s mortgage papers; **Anthony**'s retainer letters |
+| 6 | Who were the Four? | the torn 1924 register page in four pieces (**Josh**, **Rebecca**, **Luke**, **Ananya**); **Anthony**'s retainer letters; **Diwakar** (paid to forget the four) |
 
 ### Red herrings (each is disprovable by a rung)
-- **Rebecca**: last to see him, sold his location, sells alibis (she's the most tempting suspect, and she's innocent). Judge Li: holds the twin flask. **Mihir**: his hidden book and bets on "who'll die tonight." **Joel**: rumored dealings and connections to dangerous figures. **Luke**: stage blood and trick bottles make him look like a poisoner. Leon: coded messages. Kyle\*: "the river door is still unlocked."
+- **Rebecca**: last to see him, sold his location, sells alibis (the most tempting suspect, and innocent). **Judge Li**: holds the twin flask. **Mihir**: hidden book, bets on "who'll die tonight." **Joel**: rumored dealings and dangerous connections. **Luke**: stage blood and trick bottles make him look like a poisoner. **Leon**: coded messages.
 
 ### What makes it fair
-The culprit-indicting facts never rely on the culprit being present. If Anika is absent, the same trail points to an empty chair (the "fugitive clause," §6).
+The culprit-indicting facts never rely on the culprit being present. If the killer is absent, the same trail points to an empty chair (the "fugitive clause," §6). Every rung also has a printed backup in the Dead Letter box.
 
 ---
 
@@ -152,9 +196,9 @@ The culprit-indicting facts never rely on the culprit being present. If Anika is
 4. *Money is a tool, not a score.* Net worth is worth 0 points.
 5. *Pong and dancing never gate points.*
 
-**Phones.** Each guest signs in with the existing magic-link login and uses `/game` (new). They have a **My Night** page: arrival task, 5 objectives (best 3 count), relationships, dossier, a *redeem code* box, the **Casebook**, and the **Reckoning** form. Doors-open shows a QR on 2–3 table tents ("Enter the Veil") that records check-in. Check-in is what activates other people's objectives. It takes 10 seconds and needs no host.
+**Phones.** Each guest signs in with the existing magic-link login and uses `/game` (new). They have a **My Night** page: arrival task, 5 objectives (best 3 count), relationships, dossier, a *redeem code* box, the **Casebook**, and the **Reckoning** form. At the door each guest opens the site and taps **"I'm here"** (no QR codes). Check-in is what activates other people's objectives. It takes 10 seconds and needs no host.
 
-**Physical layer.** A **black envelope per guest** (packet, alphabetized self-serve on a table), about 30 story props with printed codes, currency, and 4 pieces of furniture dressing: Dead Letter box, Standby tray, the **Black Frog box** (locked; opens with the 3-part key, holds Cassie's letter fragment), and the Pong table (decorative only).
+**Physical layer.** A **black envelope per guest** (packet, alphabetized self-serve on a table), about 30 story props with short typed codes, currency, and 4 pieces of furniture dressing: Dead Letter box, Standby tray, the **Black Frog box** (locked; opens with the 3-part key, holds Cassie's letter fragment), and the Pong table (decorative only).
 
 **Objective types (all verifiable without the host):**
 `handshake` (other player enters your item code) · `custody` (prop moved A→B, receiver redeems) · `signal` (you were recognized by wardrobe, and the finder reports it) · `exhibit` (you filed a coded prop to the Casebook) · `time` (did X by a site-clock deadline) · `accusation`.
@@ -162,7 +206,7 @@ Each objective names a **verifier character** *and* an alternate verifier factio
 
 **Five circles × five threads.** The 8 existing factions are the circles. Overlaid are five **threads** that every character touches: $ money/debt, B bottle/bootleg, W wire/information, L law/corruption, H heart/forbidden (few), plus **24** = a 1924 witness/relic. See §5.
 
-**The Sheriff.** A badge overlay on a confirmed guest. **Theodor Farag is the Sheriff** (clean, not one of the Four). **There is no Deputy character:** if the Sheriff isn't checked in by 8:30, the first Official Witness to reach the body is sworn in automatically as **Acting Sheriff**. Powers: exclusive Coroner's folder; 3 **subpoenas** (target must *show* a named prop and the Sheriff enters its code; refusal costs the target 3 pts); a **Docket** where anyone can submit exhibits; and **one sealed Warrant**, filed any time from 9:15, revealed at 9:45.
+**The Sheriff.** A badge overlay on a confirmed guest. **Theodor Farag is the Sheriff** (clean, not one of the Four). **There is no Deputy character:** if the Sheriff isn't checked in by 8:30, the **First Witness** (the first guest to reach the body) is sworn in automatically as **Acting Sheriff**. Powers: exclusive Coroner's folder; 3 **subpoenas** (target must *show* a named prop and the Sheriff enters its code; refusal costs the target 3 pts); a **Docket** where anyone can submit exhibits; and **one sealed Warrant**, filed any time from 9:15, revealed at 9:45.
 
 **The Culprit.** A normal player with 3 secret objectives (e.g., recover the Ledger key; plant the forged "Keeper" note on X; get the Sheriff to subpoena Y), a **cracking alibi**, and an extra scoring stream (*Escape*, §6). The culprit never sees who has accused them.
 
@@ -194,74 +238,73 @@ Each objective names a **verifier character** *and* an alternate verifier factio
 
 ---
 
-## 4c. The House Hunt: find it, then do the next thing 💡
-**The idea:** about 12 printed **hidden cards** sit around the house. **Finding** one scores, and each card gives a **new challenge** that scores again. It's a third way to earn points, for the guests who would rather wander, poke around and chase breadcrumbs than interrogate people.
+## 4c. The House Hunt: your own card, hidden for you 💡 (rev 5)
+**The idea:** **personal cards are hidden around the house, each addressed to a specific player.** Your dossier gives you a **riddle** that points toward yours. **Finding** it scores, and the card sets a **follow-up challenge** that scores again. It's a third way to earn points for guests who like to wander, poke around and chase breadcrumbs.
 
 | Step | Points | Check |
 |---|---|---|
-| **Find** a card (enter its code on your phone) | **+2** | the code |
+| **Find** your card (type its short code) | **+2** | the code is tied to your character, so only you can redeem it |
 | **Do the follow-up** the card sets | **+3** | its own check (below) |
-| Cap, whole night | **18** | (about 4 full finds-and-follow-ups) |
+| Cap, whole night | **18** | about 4 finds-and-follow-ups |
 
 **Follow-up types (all verifiable with no host):**
-- **Go:** reach another spot and scan its code ("the next card is where the Keeper hid his hat").
-- **Ask:** a named character (or any holder of a signal item) gives you a password; entering it proves you asked.
-- **Answer:** a question you can solve from the card plus the Wall or another exhibit.
-- **Trade or hand over:** bring the card to the Sheriff's Docket or to a named person who redeems it.
+- **Go:** reach another spot and type its code ("the next card is where the Keeper hid his hat").
+- **Ask:** a named character gives you a password; entering it proves you asked.
+- **Answer:** a question you can solve from the card plus the bulletin board or another exhibit.
+- **Hand over:** bring the card to the Sheriff or a named person, who redeems it.
 
-**Example chains (3 of the 12 cards):**
-1. **"Beneath."** The Ledger page under the **ottoman** (in Yiddish) → *Ask* **Josh** to read it (he gets +3 too) → the translation points *behind Cassie's framed photograph* (card 2) → *Hand over* both to the Sheriff's Docket.
-2. **"Not the Last."** A card in the **Keeper's-effects box** on the black table ("evidence print 6") → *Answer:* which of two handwriting samples on the Wall is the darker ink? → the answer names a notice on the Wall whose clip code is the next card.
-3. **"Last Call."** A card under the **bar's ice bucket** → *Ask:* whoever wears the green glove for the password → card 3 opens a clue about the 1924 toast.
+**Example chains:**
+1. **"Beneath"** (shared, one card): the Ledger page under the stool's seat (in Yiddish) → *Ask* **Josh** to read it (he gets +3 too) → the translation points to a card behind Cassie's framed photograph → *Hand over* to the Sheriff.
+2. **"Not the Last"** (for Tiffany): a card in the Keeper's-effects box → *Answer:* which of two handwriting samples on the bulletin board is the darker ink? → names a notice whose clip code is her next card.
+3. **"Last Call"** (for Angelos): a card under the bar's ice bucket → *Ask* whoever wears the green glove for the password → opens a clue about the 1924 toast.
 
-**Rules, so it stays safe and fair:**
-- Cards live **only in shared spaces**: the bar, the Wall, the photo booth room, the diner table, window ledges, plants, lamp bases. **Never** bedrooms, bathrooms, closets, drawers, behind appliances, or inside anyone's belongings. No climbing. The only furniture anyone moves is the ottoman.
-- Every card has a **black seal sticker** so guests know it's a game piece.
-- Cards are **never scarce**: one card, many finders, each scores. Only "first to file" bonuses are competitive, and those are small.
-- **Hints:** every character's dossier names one hiding place in riddle form, so everyone has a reason to look somewhere, not just the nosy.
-- **It's a bonus path, not a gate.** Every rung of the main deduction (§3) already has ≥3 holders without the hunt, so nobody who skips the hunt is shut out.
+**Rules (safe and fair):**
+- Cards live **only in shared spaces** (bar, bulletin board, photo booth room, diner table, window ledges, plants, lamp bases). **Never** bedrooms, bathrooms, closets, drawers, behind appliances, or inside anyone's belongings. No climbing.
+- Every card has a **black seal sticker** so everyone knows it's a game piece, and is **addressed by signal item** ("for the green glove"), not by name.
+- A card is **only worth points to the person it's for**, so nobody loses anything if someone else spots it.
+- **It's a bonus path, not a gate.** Every rung of the main deduction (§3) has ≥3 holders without the hunt.
 
-**Your cost:** about 20 minutes to place ~12 cards before doors, plus a map in your GM card. Nothing to buy.
+**Workload choice (decide when you send photos):** one personal card per guest is **~20 cards, about 30 minutes** of hiding; or personal cards for **about half the guests (10 cards, ~15 minutes)**. You said you'll send photos once the house is set so we can choose spots that look natural; I'll write the riddles from those.
 
 ---
 
-## 4b. The Wall: a gossip bulletin board 💡
-**The continuity question: why would Cassie's own club display a bounty on her?** It doesn't. This isn't the club's board: it's the **Passage Wall**, the public posting wall in the outer passage where the whole town pinned notices about the place (canon: the closure notice was "posted in three locations," and the police bulletin went up too). When the Keeper came back to reopen the house he **left the old notices up on purpose**, on Cassie's instruction: *"Let them read what they said about me."*
+## 4b. The Bulletin Board: a gossip wall 💡 (rev 5)
+No bounty. It's a **bulletin board of the town's gossip about the guests' characters**: a collection of cheap printed notices that feels like the speakeasy world's local postings, history and rumors.
 
-- **BOUNTY** headline, with the **framed Cassandra photograph** in the middle. The bounty is *the Four's*: in 1925, "a private party" offered $500 for word of Cassandra **Castello**'s whereabouts. It is set in the **same type as the closure notice**, from the Mahns Mill's job press (a clue toward Anika, hidden in plain sight).
-- Around it, **~25 cheap printed notices**: lost-and-found, apologies, classifieds, scandal-sheet items and rumors about the characters, plus the funny and embarrassing stories (the clogged toilet, the epic drunk).
-- **About 70% pure fun; about 30% carry a small hidden fact** (a relationship hook, an alibi crack, a red herring) disguised as gossip. It is *not* a police board. Six notices have a tiny **clip code** in the corner that files as an exhibit (+2).
+- A **framed photograph of Cassandra Castello** in the middle (caption is your call).
+- Around it, **~25 cheap printed notices**: lost-and-found, apologies, classifieds, scandal-sheet items and rumors about the characters, plus the funny and embarrassing true-to-life stories (the clogged toilet, the epic drunk), turned into 1920s town gossip.
+- **About 70% pure fun; about 30% carry a small hidden fact** (a relationship hook, an alibi crack, a red herring) disguised as gossip. It is *not* a police board. A few notices have a short **clip code** in the corner that files as an exhibit (+2).
 - **Consent rule:** any story about a real guest is shown to that guest first and printed only if they say yes. Affectionate, never private.
 - **Job at the party:** it's the icebreaker while people wait for 8:45, and it seeds the rivalries. Cost: paper, tape, your frame.
+- **Where it hangs:** your call; send a photo and I'll write the notices to fit.
 
 ---
 
-## 5. Relationship network overview 💡
+## 5. Relationship network overview 💡 (rebuilt for the real 20)
 
 Computed from the draft graph in the validator:
 
 | Check | Result |
 |---|---|
-| Players / ties | 34 players, 149 ties (median 8 per person, min 5) |
+| Players / ties | **20 players, 86 ties** (median 8 per person, min 6) |
 | Cross-circle ties | every character has ≥3 |
 | Threads | every character touches ≥2 of the 5 threads |
-| Cut-vertices | **none** (no single absence splits the web) |
-| 5 random absences ×4000 | web stays 100% connected; nobody isolated |
-| 8 random absences ×4000 | ≥96% connected; in 2 of 4000 draws, one present character loses all live ties → covered by the Dead Letter / Standby valves |
+| Cut-vertices | **none** |
+| 3 random absences ×4000 | web stays 100% connected; everyone keeps ≥3 live ties |
+| 5 random absences ×4000 | 100% connected; nobody isolated; the worst-off present person keeps ≥1 live tie |
 
-**Hubs (most ties):** Mihir (14), Anika (12+). Hubs are *not* single points of failure; each one's role is mirrored by someone else (e.g., Anika's pivots are backstopped by Rhea, Molly, Shadi).
+**Hubs:** Theodor (12 ties), Leon (12), Anika (11), Mihir (11). Hubs aren't single points of failure: each role is mirrored by someone else (e.g., Anika's pivots are backstopped by Joel, Rebecca and Tiffany).
 
 **Inter-circle bridges**
-- *River ↔ Elm:* Molly–Anika (still in the Mahns cellar), Shadi–Anika (the crested spoon), Emmanuel–Anika (con on an heiress), Jack H.–Kyle (rum cars).
-- *The Four:* Anika–Li–Mihir–Anthony (fully interlinked; each also owes someone outside the Four).
-- *House ↔ Orchestra ↔ River:* Krrish–Jack M., Rebecca–Erika (the boarding house hides her), Kyle–Aimee (11:46 lantern).
-- *Law ↔ everyone:* Judge Li (12 ties, reaching River, Press, Elm, Mill and Law), Anthony Huang (defended Andrew, Erika, Timothy…), Emre (Sheriff).
-- *Press ↔ Wire:* Ananya reads the Judge's private wires; Theodor pays her coin; Leon reads the coded 1924 message on air.
-- *Sports ↔ Book:* Mihir–Diwakar/Robert/Arjun; the fixed games are Mihir's and the Judge's lever on Robert.
+- *River ↔ Elm:* Molly–Anika (still in the Mahns cellar), Jack–Anika (the crested spoon), Joel–Mihir (rival tycoons), Jack–Erika (the 1924 getaway car).
+- *The Four:* Anika–Eric–Mihir–Anthony (fully interlinked; each also owes someone outside the Four).
+- *West Side ↔ everyone:* Rebecca–Erika (hides her), Rebecca–Sidd and Rebecca–Leon (Cassie's flight and her message), Rebecca–Anika (sold the tip).
+- *Brothers:* Anthony–Luke (the pipeline); Luke also ties to Mihir, Molly, Angelos, Ananya.
+- *Wire:* Ananya reads the Judge's wires; Leon's coded message; Molly's papers.
+- *Sports/Book:* Mihir–Diwakar–Arjun–Angelos; the fixed fights are Mihir's and Eric's lever.
+- *Law:* Theodor ties to twelve people; Eric reaches nine.
 
-**Five 1924 "witness" extension characters** (use for guests 35–40, or fold into Dead Letter exhibits): the **Porter, the Driver, the Boarding-House Keeper, the Printer, the Patrolman.** All five appear in canon articles as unnamed witnesses with statements that don't hold up. Each gets a paid-for-lie hook.
-
-**Example of one character's web (Rhea "Emporium" Mallya, 9 ties; six shown):** Anika ($ unpaid account; sold her the monogrammed flask pair; keeps the poison register), Aidan ($ prescriptions), Emmanuel ($ account fraud), Rebecca ($ kitchen account), Emre (W shop clocks), Jack H. ($ accounts) — and she holds *the* two-gowns clue and the sales book that names the flask's twin and the poison register with both "A. Pell" entries. A "minor" shopkeeper owns half of rung 3 and rung 6.
+**Example of one character's web (Tiffany Liu, 8 ties):** Anika (commissions; her fitting was cancelled at 7:00), Josh (roofs and windows), Jack (lamp commission), Angelos (lamp wager), Theodor (the Sheriff's office windows), Leon (broker for his pardon), Joel (commission), Ananya (telegram lamp). She also reads the scratched monogram under her loupe, so a "minor" glass-maker owns half of rung 3.
 
 ---
 
@@ -282,7 +325,7 @@ Computed from the draft graph in the validator:
 | **Sheriff** | correct arrest **+15**; wrongful arrest **−15** (and loses the badge) | warrant vs truth |
 | **Wrongly arrested** | **+10** (they can still win) | |
 | **Contempt** | −3 (refused a subpoena) | |
-| **Culprit: Escape** | **40 − 2 × (number of players who correctly named them)**, floor 0 | server count at the reveal |
+| **Culprit: Escape** | **32 − 2 × (number of players who correctly named them)**, floor 0 | server count at the reveal |
 
 **The escape rule, reconciled with one winner.** The culprit competes on the same ladder as everybody. Their personal categories are ordinary; Escape is an extra income that exists *only if they are not arrested*, and it shrinks with each correct accuser. Therefore:
 1. An **arrested culprit is ineligible** to win ("Caught"); the Sheriff's bonus pays out.
@@ -304,13 +347,13 @@ Computed from the draft graph in the validator:
 - Leaderboard hidden until the reveal; admin impersonation is logged.
 - **Sharing a code with a friend yields at most 2 pts;** it cannot buy solution points because Reckoning needs a cited exhibit *and* a correct answer.
 
-**Illustrative calibration** (not evidence; assumptions in the script, three dossier shapes of equal par, 30 players, 3,000 games per row):
+**Illustrative calibration** (not evidence; assumptions in the script, three dossier shapes of equal par, 20 players, 3,000 games per row):
 
 | Share of players who name the culprit | Culprit wins | Winners who never named the culprit |
 |---|---|---|
-| ~12% (hard) | 28% | 40% |
-| ~25% (typical) | **13%** | **29%** |
-| ~40% (easy) | 3% | 20% |
+| ~12% (hard) | 24% | 46% |
+| ~25% (typical) | **13%** | **34%** |
+| ~40% (easy) | 5% | 23% |
 
 (With the House Hunt added, Web fell from 24 to 18 and the Casebook from 14 to 8 so the totals stay level; the table above is the re-run. The first run had Reckoning at 45 pts and a non-solver won only ~8% of the time. That would have meant "minor characters can't win," so I cut Reckoning to 30 and raised objective-heavy dossiers.) Targets: **culprit 10–20%, non-solver wins ≥25%** at typical difficulty. I'll re-tune with real dossier values; the sim doesn't yet model Sheriff, Material Evidence, or Archivist points.
 
@@ -318,108 +361,104 @@ Computed from the draft graph in the validator:
 
 ---
 
-## 6a. The 8:45 rush and the Sheriff's crime-scene points 💡 (from your chat ideas)
+## 6a. The 8:45 discovery and the Sheriff's crime-scene points 💡 (rev 5)
+**No race and no QR codes.** At 8:45 Rebecca finds the body and screams; one other guest gets to be the **First Witness**; and the Sheriff has to get there in time. Everyone else just hurries over to look. Walk, don't run, and keep your drink in your hand.
 
-**Why I scaled them down.** Your brief says arrival order can't decide the winner, and nobody's standing position when the scream happens is skill. Also, +100/+250/−150 would swamp a game where a whole night's work is worth about 100–150. So I kept your *mechanics* and shrank the points to ~⅒; the real prize for being fast is **information**, not score. Total points available from the rush are about 10% of a strong night.
-
-**How it is verified with no host:** a printed **Scene Register** card with a QR on the dummy. Scanning it with a phone timestamps you. The 8:45 Extra push tells everyone the clock has started. The finder (Rebecca; you if she's absent) screams. Printed rule on the card and in the push: **walk, don't run, and keep your drink in your hand.**
-
-| Rush action | Points | Notes |
+| Who | Objective / points | How verified |
 |---|---|---|
-| Scan the Scene Register within 2 min of the alert | +2 | everyone, including the culprit (rushing in is a great alibi) |
-| **First three to scan become Official Witnesses** | +4 each | each gets a *different* private witness card (a small clue, never a decisive one, and one the culprit's copy may lie about) and a bonus objective: give a statement to the Sheriff (+6) |
-| First to file each exhibit found at the scene | +3 | one winner per exhibit; cap 9 per player |
-| First to alert the Sheriff (Sheriff redeems your code) | +3 | |
-| "Official evidence" | 0 | only the Sheriff may formally collect scene evidence; anyone may *discover* it and submit it to the Docket |
+| **Rebecca (the finder)** | **"The Scream"**: find the body and cry out within 2 minutes of 8:45. **+10** (+5 if within 5 min) | the site arms an *"I found him"* button on her phone at 8:45; the tap time scores it |
+| **The Sheriff (Theodor)** | **"First Responder"**: hear the scream and reach the body within 60 seconds. **+10** (+5 within 3 min) | he types the **scene code** (a short word printed on the scene card) and the site compares it with Rebecca's tap |
+| **The First Witness** (the first guest, other than Rebecca and the Sheriff, to type the scene code) | **+5** and a private **First Witness card** (a small clue, never a decisive one; the killer's copy may lie) | the site's timestamp |
+| **Erika (Rebecca's alibi)** | **"Vouch for Rebecca"**: tell the Sheriff Rebecca was with you at 7:35. **+10** (and Rebecca **+5** for being cleared) | the Sheriff redeems Erika's statement code. It's a *planned* alibi: both private cards say what to say; Erika risks being seen by Judge Li |
+
+Both Rebecca and Theodor are told in advance ("at a quarter to nine, listen for a scream"), so the Sheriff is waiting near the booth room.
+If Rebecca is absent, Bartender Joe finds the body, her objective is voided, and the Sheriff's clock starts from the 8:45 alert.
 
 **Sheriff crime-scene points** (cap 35, on top of the arrest):
 
 | Sheriff action | Points | How verified |
 |---|---|---|
-| **Secure the scene** (orders guests back) | +4 | taps *Secure*; two witnesses confirm on their phones |
+| **Secure the scene** (orders guests back) | +4 | taps *Secure*; the First Witness confirms on their phone |
 | First official piece of evidence | +3 | first exhibit filed by the Sheriff |
-| Statement from each of the first three witnesses | +2 each (6) | witnesses redeem the Sheriff's code |
+| Statement from the First Witness and the next two guests | +2 each (6) | each redeems the Sheriff's code |
 | Correct suspected cause of death (poison) | +5 | checked against the truth file |
 | Accurate timeline (a 4-slot form) | +8 | server scores the slots |
 | Spot who tampered with the scene | +8 | see below |
-| **The First Five Minutes** (secured + 1 clue + 2 statements in 5 min) | +8 | all timestamps are on the site |
+| **The First Five Minutes** (secured + 1 clue + 2 statements in 5 min) | +8 | timestamps on the site |
 | **Correct arrest** | **+20** | warrant vs truth |
 | **Wrong arrest** | **−12** and the badge | |
 
-**Tampering.** The culprit may take the flask card off the dummy during the confusion (a paper prop, not anyone's possession). The Sheriff's folder lists the six items that should be on the body, so securing the scene exposes a missing card. Whoever redeems that code later is flagged. This gives the culprit a real secret objective ("remove the flask card"), and the Sheriff a clue chase.
+**Tampering.** The killer may take the flask card off the dummy in the confusion (a paper prop, not anyone's possession). The Sheriff's folder lists the six items that should be there, so securing the scene exposes a missing card. Whoever redeems that code later is flagged.
 
-**The paired objectives (the scream and the sprint).** These are now **personal objectives** for the two characters, not bonus points:
+**Balance.** The Sheriff gets only **2 personal objectives** (not 3), one of them First Responder, so the role's ceiling is roughly 140, about a good detective or operator. A Sheriff who does the job well is competitive but doesn't win automatically.
 
-| Character | Objective | Points | How verified |
+---
+
+## 6b. Leon's arrest and the pardon 💡 (rev 5)
+The Sheriff has a one-use **Nuisance Citation** card for Leon ("for being insufferable"), and Leon's own card tells him it's coming. It's separate from the murder Warrant, and **it never touches the murder scoring** (the Reckoning, the culprit's Escape, anyone's objectives).
+
+**Two outcomes, both small, both self-verifying:**
+
+| Outcome | Sheriff | Leon | Go-between |
 |---|---|---|---|
-| **The finder (Rebecca)** | **"The Scream."** Find the body and cry out within 2 minutes of 8:45. | +10 (+5 if within 5 min) | The site arms a *"I found him"* button on the finder's phone at 8:45; the tap time scores it. |
-| **The Sheriff (Theodor)** | **"First Responder."** Hear the scream and reach the body within 60 seconds. | +10 (+5 within 3 min) | Scene Register scan time vs the finder's tap. |
+| **Cited:** the Sheriff serves the card | **+1** | 0 | — |
+| **Pardoned:** Leon pays a go-between (at least $50 in Black Veil bills), who hands the Sheriff a **Pardon slip**; the Sheriff accepts and tears up the citation | **+2** (the "bribe") | **+4** (stayed out of the cell) | **+4** (made it happen) |
 
-Both characters' private cards tell them in advance that this moment is coming ("at a quarter to nine, listen for a scream"), so the Sheriff is waiting near the booth room and the finder knows the scene is theirs. If the finder is absent, Bartender Joe finds him, the finder's objective is voided (Joe doesn't score), and the Sheriff's clock starts from the 8:45 alert instead.
+The Sheriff chooses one or the other. All three redeem codes on their phones; nobody needs a host. Leon is **rewarded for dodging the arrest, not for being annoying.**
 
-**Balance.** The Sheriff gets only **2 personal objectives** (not 3), and one of them is First Responder, so the role's total ceiling is roughly 140, about the same as a good detective or operator. A Sheriff who does the job well is competitive but doesn't win automatically: other characters' secret objectives are worth as much, and the Reckoning still has to be solved.
+**The go-between** should be someone with pull over the Sheriff: **Tiffany** (her glass is in the Sheriff's office windows) is the primary, and **Judge Li** or **Rebecca** can do it too. Leon's card hints at all three.
 
----
-
-## 6b. The running gag: Sheriff Theodor vs. Leon 💡 (rev 4)
-The Sheriff gets a one-use **Nuisance Citation**, a printed card he can serve on Leon (or anyone) whenever he likes, "for disorderly conduct, being insufferable."
-
-**It is walled off from everything real:**
-- It is **not** the Warrant. The Warrant stays single and sealed.
-- It is worth **0 points to everyone**. **Leon is not rewarded for being annoying.** The Sheriff earns nothing for citing him. It never touches the Reckoning, the culprit's Escape, or any objective, and never blocks one.
-- "Cited" is a ribbon and a laugh.
-
-**The story behind it** (so it isn't just a joke): Leon mocks the Sheriff's department on WFEA most nights, and Theodor suspects an unlicensed second transmitter. Leon's real objectives are about the plot (deliver Cassie's coded message to the right person; get the Keeper's letter read), and they are worth normal points. The gag is only the Sheriff's motive, and it stays about the radio.
-
-**Backstory note.** Leon's immigrant backstory and Anthony's family are written without period anti-Asian prejudice or stereotypes. The hardship is real context (Leon owes Cassie his papers and his license), but nobody uses it against him as a game mechanic.
+**The story behind it:** Leon mocks the Sheriff's department on WFEA most nights, and Theodor suspects an unlicensed second transmitter. The gag is about the radio and stays that way.
 
 ---
 
-## 6c. The Merrimack Room: planning from your photo 💡
-What I can see: a foil-fringe backdrop (black and gold) along one wall, a big rug, a **leather ottoman**, a stool, two tripods with tablets (the photo booth), two windows, two red diner chairs, a small round table, and a **black-draped table** with a skull, a bottle, a candle, a lamp and a box of papers. It is lit purple. It's a small room (I'd guess 8 people fit comfortably).
+## 6c. The Merrimack Room: planning from your photo 💡 (rev 5)
+What I can see: a foil-fringe backdrop (black and gold), a big rug, a **leather ottoman**, a **stool**, two tripods with tablets (the photo booth), two windows, two **red diner chairs and a small round table** (the "chair section"), and a **black-draped table** with a skull, a bottle, a candle, a lamp and a box of papers.
 
-**Before 8:45 the room must be closed**, because it's a photo booth and people will want to use it. Put a velvet rope, or a door sign, saying *"THE MERRIMACK ROOM — RESERVED BY MANAGEMENT."* **Rebecca's arrival prop is the room's pass** (a printed key card): she's the only one who may go in at 8:45, which also explains why she finds him. If she's absent, Bartender Joe opens it. After the investigation (10:05) the sign comes down and it's a photo booth again.
+**The room stays open** (it's the photo booth), until you stage the body.
+- **About 8:35:** you quietly stage the dummy in the **chair section** (on the floor between the red chairs, one hand curled, a cup spilled, the stool toppled) and add the crime-scene tape. It takes a couple of minutes. Rebecca has been told to go there at 8:45.
+- After the investigation (about 10:05) the tape comes down and it's a photo booth again.
 
 **The staging, using what's there:**
-- **Body:** lying on the rug in front of the foil backdrop, one hand curled, the stool knocked over, a cup spilled beside him. Tilt the two tripods aside so nobody trips.
-- **The hidden Ledger page:** taped to the **underside of the leather ottoman** (tip it to find it). That's the "beneath" clue.
-- **The black table:** your skull and bottle are free set dressing for the "Keeper's effects." Add the **Scene Register card** (QR) and the printed scene-inventory card here.
-- **The window paper:** the sheet taped on the glass is a free spot for a posted note.
+- **The hidden Ledger page:** taped **under the stool's seat** (tip it to find it). That's the "beneath" clue. The ottoman is a spare hiding place.
+- **The black table:** your skull and bottle are free set dressing for the "Keeper's effects." Put the **scene card** (with its typed **scene code**) and the printed scene-inventory card here.
+- **The window paper:** a free spot for a posted note.
+- **Tripods:** tilt them aside so nobody trips.
 
-**Crowd control (the room is small):** the Scene Register has **two QR codes**. One is inside, by the body, for the **first three in the room** (the Official Witnesses). The other is **outside the doorway** for everyone else, so nobody has to push in to score the 2-minute points. The Sheriff's "stand back" has real meaning in a room this size. Rule on the door sign: **Walk. Don't run. Drinks stay in your hand.**
+**Crowd control (small room):** the Sheriff's "stand back" has real force. Only the First Witness and the Sheriff need to be inside to score. Everyone else can look from the doorway.
 
 ---
 
-## 7. Sample interconnected arrival (8 characters) 💡 (rev 2)
+## 7. Sample interconnected arrival (8 characters) 💡 (rev 5, the real 20)
 
-Seven are from the old cast; the white-carnation role moves to Leon (radio, the "coded message" man), and Theodor is the Sheriff. Molly keeps the still-in-the-Mahns-cellar secret but is the **public newsie**. Signals are cheap and self-supplied or door-issued.
+All eight are confirmed guests. Signals are cheap and self-supplied or door-issued.
 
 | Character | Arrives with / wears | Must watch for | Their arrival… | Verified by |
 |---|---|---|---|---|
-| **Jack "Cello" Marcello** | instrument case (a black door-issued one if none); sealed **Orchestra Parcel P-01** (River key, pre-addressed Montreal wire form, $40 wire fee) | the **single green glove** | …activates **Ananya**: *"a parcel is expected from the orchestra; look for the case."* | Ananya enters P-01's code |
-| **Ananya "Code-Ruler" Koduru** | **one green glove (left)**; decoded 1924 telegram T-01 | the case; then the **white carnation** | …lets **Leon** send his wire | Leon redeems the wire slip |
-| **Leon "Gee-Whiz" Ge** | **white carnation**; $20; a one-line unsigned wire (text in his dossier) | the green glove; **the newsie** | …creates exhibit W-02, and he wants copy #7 pulled (its classified is Cassie's coded "I am well" message he once read on air) | Ananya; Molly |
-| **Molly "Extra!" Daniel** *(Newsie)* | newsboy cap, 24 copies of the *Evening Farrago* First Edition (each has a different classified ad = a clue; copy #7 holds the coded "I am well" classified) | the white carnation; the velvet ribbon | …Leon offers $20 for copy #7 so it reaches the right hands (sell it, or refuse). She owes **Anika** $30 for the cellar. At 8:45 she hawks the Extra. | copy codes; Anika redeems the $30 |
-| **Krrish "Vermouth" Verma** | bar float; the first **drink ticket** | the **velvet ribbon** | …must serve Anika the first drink and note whether it comes back untouched (the 1924 tell). | Anika redeems the ticket |
-| **Anika Mahns** *(culprit)* | **black velvet ribbon** | the crested spoon; who carries black envelopes with a gold "C" | …cover task: settle the cellar rent with Molly and take the first drink; *secret*: find who holds the Ledger key | Molly, Krrish (cover); the unwitting for the secret ones |
-| **Shadi "Shady" Soufan** | engraved spoon S-01 in a handkerchief | the **velvet ribbon** | …tries to sell the Mahns-crest spoon to Anika for $100 | either redeems S-01 |
-| **Theodor "Farrago" Farag** *(Sheriff)* | tin star; sealed **Coroner's Folder** (opens 8:45, with the body) | the instrument case and anyone at the 1924 masquerade | …takes **one sworn statement** (Jack: *"orchestra admitted 22:10 by the river door"*) and **one** from Krrish within the first 45 minutes of the investigation | Jack/Krrish redeem the Sheriff's statement code |
+| **Luke Sheldon** | a sketchy carnival trunk (a black door-issued case if none); sealed **Parcel P-01** (River key, pre-addressed Montreal wire form, $40 wire fee) | the **single green glove** | …activates **Ananya**: *"a parcel is expected from a carnival man"* | Ananya enters P-01's code |
+| **Ananya Koduru** | **one green glove (left)**; decoded 1924 telegram T-01 | the trunk; then the **white carnation** | …lets **Leon** send his wire | Leon redeems the wire slip |
+| **Leon Ge** | **white carnation**; $20; an unsigned wire (text in his dossier) | the green glove; the newsie | …creates exhibit W-02, and he offers $20 for copy #7 | Ananya; Molly |
+| **Molly Daniel** *(Newsie)* | newsboy cap, 24 papers (each with a different classified; copy #7 holds the coded "I am well") | the white carnation; the velvet ribbon | …Leon offers $20 for copy #7 (sell it, or refuse). She owes **Anika** $30 for the cellar. | copy codes; Anika redeems the $30 |
+| **Angelos Boules** | a single boule in his pocket | the **velvet ribbon** | …watches Anika's first drink and reports whether it comes back untouched (the 1924 tell) | Anika redeems the first drink ticket |
+| **Anika Mahns** | **black velvet ribbon** | the crested spoon; who carries black envelopes with a gold "C" | …cover task: settle the cellar rent with Molly and take the first drink | Molly, Joe (cover) |
+| **Jack Hudson** | the crested spoon in a handkerchief (taken in trade for a car) | the **velvet ribbon** | …tries to sell the Mahns-crest spoon to Anika for $100 | either redeems the spoon's code |
+| **Theodor Farag** *(Sheriff)* | tin star; sealed **Coroner's Folder** (opens 8:45) | the trunk, and Diwakar the old doorman | …takes **one sworn statement** (Luke: *"I built the show"*; Diwakar: *"two left by the river door"*) in the first 45 minutes of the investigation | each redeems the Sheriff's statement code |
 
 ```
- Jack Marcello ──P-01──▶ Ananya ◀──wire──  Leon ──$20 (copy #7)──▶ Molly (Newsie)
-   (case)              (green glove)       (white carnation)            │ $30 cellar rent
-      ▲                      │                                          ▼
-      │ statement             └─ T-01 + W-02 → Casebook          Anika (velvet ribbon)
- Sheriff ──statement──▶ Krrish ──first drink ticket──────────────────▲   ▲
-                                                       Shadi ──spoon S-01 / $100┘
+ Luke Sheldon ──P-01──▶ Ananya ◀──wire──  Leon ──$20 (copy #7)──▶ Molly (Newsie)
+   (trunk)             (green glove)     (white carnation)            │ $30 cellar rent
+      ▲                      │                                        ▼
+      │ statement             └─ T-01 + W-02 → Casebook        Anika (velvet ribbon)
+ Sheriff ──statement──▶ Diwakar      Angelos ──first drink──────────────▲   ▲
+                                                       Jack ──spoon / $100──┘
 ```
 
-Every arrow is a physical handover or a worn signal, and every one pays both ends. By 8:30 these eight have made ~14 interactions, produced three exhibits and put the Mahns crest, the untouched-glass tell, and Leon's secret into the room, **before the body is found**.
+Every arrow is a physical handover or a worn signal, and every one pays both ends. By 8:30 these eight have made ~14 interactions, produced three exhibits and put the Mahns crest, the untouched-glass tell, and Leon's secret into the room **before the body is found**.
 
 **If someone is late or absent**
-- **8:30 Standby Tray** (before the body): the site announces it. It holds a duplicate of each arrival prop, labeled by *signal* ("GREEN GLOVE"). You pre-place about 8 spare envelopes.
+- **8:30 Standby Tray:** the site announces it. It holds a duplicate of each arrival prop, labeled by *signal* ("GREEN GLOVE"). You pre-place about 8 spare envelopes.
 - The objective flips to its alternate verifier (e.g., Sidd, who also reads the wires, takes Ananya's role). If the Newsie is absent, the Extras sit on the bar and you hand them out.
-- **9:15 Dead Letter Rule:** any undelivered envelope is fair to open. This is the universal escape valve.
+- **9:15 Dead Letter Rule:** any undelivered envelope is fair to open.
 - Late arrivals get a **Latecomer's Telegram**, one quick task worth the same 10 pts, available until 9:00.
 
 ---
@@ -446,7 +485,7 @@ Every arrow is a physical handover or a worn signal, and every one pays both end
 
 ## 10. Game Master workload 💡 (rev 2, on your timeline)
 
-**Prep (once approved): about 3–4 hours, hands-on.** Print/cut (~1 hr), stuff envelopes (~70 min), hide the dummy and the 8 standby envelopes (~20 min), phone test (~15 min).
+**Prep (once approved): about 3–4 hours, hands-on, plus 15–30 minutes to hide the House Hunt cards.** Print/cut (~1 hr), stuff envelopes (~70 min), hide the dummy and the 8 standby envelopes (~20 min), phone test (~15 min).
 
 **During the game: 3 touchpoints, about 10 minutes in total.**
 | Time | Beat | You |
@@ -454,7 +493,8 @@ Every arrow is a physical handover or a worn signal, and every one pays both end
 | 7:55 | Tap **Open the Night** (or let the clock). Envelope table out. | 1 min |
 | 8:00–8:45 | Doors, cocktails, introductions, **immediate secret objectives** (§7), mingling, optional peer-to-peer gambling | tend bar |
 | 8:30 | Standby Tray opens (site announces) | 0 |
-| **8:45** | **THE BODY.** Rebecca finds the old man in the photo booth room and screams. Phones get the Extra; the Newsie hawks it; you confirm the scene and the Sheriff takes over. (You find him yourself if Rebecca's absent.) | ~2 min |
+| **~8:35** | Stage the dummy in the chair section of the photo booth room and add the crime-scene tape. | ~3 min |
+| **8:45** | **THE BODY.** Rebecca goes to the room, finds the old man and screams. Phones get the Extra; the Newsie hawks it; the Sheriff takes over. (You find him yourself if Rebecca's absent.) | ~1 min |
 | 8:45–9:45 | Investigation, interrogations, evidence, betrayals. 9:15: Dead Letter Rule; Sheriff may file a sealed warrant. | tend bar |
 | **9:45** | Accusations auto-lock. Sheriff performs the arrest aloud (their moment, not yours). | 0 |
 | **10:00** | **GRAND REVEAL.** Tap **Reveal** (auto-fires if untouched). Read one screen, open the Final Edition, read Cassie's letter, announce the winner. | ~5 min |
@@ -471,13 +511,11 @@ Every arrow is a physical handover or a worn signal, and every one pays both end
 **Done:** network robustness; one-winner determinism; a first scoring calibration that exposed and fixed the "minor characters can't win" problem.
 **Not yet validated (will be, before release):** the dossiers themselves (par-parity script), a full 30-seat paper simulation of the arrival chain with absences, proof that every objective has a reachable verifier, and that every deduction rung survives a given 5 absences.
 
-## 12. What I still need (rev 4)
-**Settled:** an old man (your mask) as the dummy, in the photo booth room; Rebecca (boarding-house keeper, sketchy, his secret lover) finds him at 8:45; you are Bartender Joe; 8:00–10:00; Molly the Newsie; Theodor a clean Sheriff, no Deputy; Luke and Anthony half-brothers; Leon's immigrant backstory; Josh Jewish; Joel is J. Bruce Wayne; Mihir a wealthy businessman; poison; phones for everyone; near-zero props.
+## 12. What I still need (rev 5)
+**Settled:** Oct 23; Castello; 20 guests; Theodor the Sheriff; Rebecca the finder (boarding-house keeper, the Keeper's lover); you as Bartender Joe; staged body in the chair section at ~8:35; Ledger page under the stool; bulletin board (no bounty); no QR codes; personal House Hunt cards; Leon's pardon; poison.
 
-1. **The room's door.** From your photo I can plan the scene (see §6c), but I can't see the doorway. Where is it, and can it be shut with a sign or a velvet rope until 8:45?
-2. **The real couple.** Still unknown. Give me the two names when you know, and anything off-limits.
-3. **The rest of the guest list** (below Anthony Huang). Not yet confirmed from the list: Emre, Krrish, Kyle, Rhea, Aidan, Andrew, Emmanuel, Ivan, Jack M., Robert, Shadi, Silas, Timothy. I've tagged their clues with printed backups.
-4. **Josh and Leon review their sheets** before anything goes live (the Yiddish gags and the immigrant backstory).
-5. **Yiddish text.** For the Ledger props I'd like Josh (or someone who reads Yiddish) to check my transliterations.
-6. **Anika as the culprit.** She's attending. Still a yes?
-7. **Any other character sheets** like Joel's? I'll keep them as written.
+1. **Who is the killer?** Pick one of the **Four** (Anika, Eric Li, Mihir, Anthony); see §3. **Lock it by Sunday Oct 18.** I'd stay with Anika, but it's your story.
+2. **Are there plus-ones or walk-ins?** The list shows exactly 20. If a few extra people come, I'll deal them spare characters from the old cast.
+3. **House Hunt size:** one personal card per guest (~20 cards, ~30 min) or about half the guests (~10 cards, ~15 min)? You'll send photos once the house is set; I'll write the riddles from those.
+4. **The real couple.** You said you're not sure yet. When you know, tell me and I'll write them a storyline.
+5. **Tiffany as Leon's go-between** (with Judge Li and Rebecca as alternates), and **Arjun's Yiddish-phrase objective**: OK, or do you want someone else?

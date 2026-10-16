@@ -1,171 +1,109 @@
 // Design validator for the proposed Black Veil mystery (docs only, no app imports).
 //   node docs/mystery/tools/validate-design.mjs
-// 1) Relationship network: degree, cross-circle ties, thread variety, cut-vertices, absence robustness.
-// 2) Scoring: one-winner determinism and a *illustrative* culprit-fairness calibration.
+// 1) Relationship network of the 20 confirmed guests: degree, cross-circle ties, thread variety,
+//    cut-vertices, absence robustness.
+// 2) Scoring: one-winner determinism and an *illustrative* culprit-fairness calibration.
 import { createHash } from "node:crypto";
 
 // --- 1. NETWORK -------------------------------------------------------------------------------
-// Circles are the existing factions from src/lib/demo/cast.ts (kept as-is).
+// The 20 confirmed attendees (Oct 16 guest list). Circles: River Trade, Elm Street, Wire (press/telegraph),
+// Law, West Side (the boarding house), Mill (mill families and workers).
 const circle = {
-  adam: "River", andrew: "River", angelos: "River", diwakar: "River", emmanuel: "River", erika: "River",
-  kyle: "River", luke: "River", mihir: "River", molly: "River", shadi: "River", timothy: "River",
-  aidan: "Elm", anika: "Elm+Mill", jackh: "Elm", rhea: "Elm", robert: "Elm", siddarth: "Elm", tiffany: "Elm", emre: "Elm",
-  aimee: "Orchestra", jackm: "Orchestra", silas: "Orchestra", victor: "Orchestra",
-  ananya: "Press", leon: "Press", theodor: "Press",
-  anthony: "Law", eric: "Law", krrish: "House", rebecca: "House",
-  ivan: "Mill", arjun: "MillWork", joshua: "MillWork",
+  adam: "River", molly: "River", luke: "River", angelos: "River", diwakar: "River", erika: "River", mihir: "River",
+  anika: "Elm", jackh: "Elm", tiffany: "Elm", sidd: "Elm", joel: "Elm",
+  ananya: "Wire", leon: "Wire",
+  eric: "Law", anthony: "Law", theodor: "Law",
+  rebecca: "WestSide",
+  josh: "Mill", arjun: "Mill",
 };
-// Threads: $ money/debt, B bootleg/bottle, W wire/info, L law/corruption, H heart/forbidden, X blackmail, 24 = 1924 witness
+// Threads: $ money/debt, B bottle/bootleg, W wire/information, L law/corruption, H heart/forbidden, 24 = 1924 witness
 const E = `
-anika-molly|B|still in the Mahns cellar, Anika takes a cut
-anika-shadi|$|crested spoon Shadi wants to sell back
+anika-molly|B|still in the Mahns cellar, rent owed
+anika-jackh|$|crested spoon traded in for a motorcar
 anika-eric|L|one of the Four; Mill money to the Bench
-anika-theodor|W|one of the Four; press kept quiet
-anika-mihir|$|one of the Four; Mihir holds Mahns markers
-anika-robert|H|courtship; dawn-ride alibi
-anika-ivan|$|Mahns holds Ivan's factory note
-anika-rhea|$|unpaid emporium account
-anika-jackh|$|Packard purchases
-anika-aidan|$|owes the doctor
+anika-mihir|$|one of the Four
+anika-anthony|L|one of the Four
+anika-joel|H|the rich match she needs; he holds her mortgage
+anika-rebecca|$|bought a tip about who was staying at the boarding house
+anika-tiffany|$|commissions
 anika-ananya|W|bribed for a copy of a wire
-eric-theodor|L|one of the Four
 eric-mihir|L|one of the Four; fixes
-eric-timothy|L|Timothy's books are due at court
-eric-anthony|L|dismissals paid through counsel
+eric-anthony|L|one of the Four; counsel before his bench
+eric-theodor|L|countersigns the Sheriff's warrant
 eric-erika|L|Erika evades the Judge
-eric-aidan|X|unfiled 1924 death certificate
-eric-emre|L|Sheriff needs the Judge's countersign
+eric-molly|L|pays the court to look away
+eric-leon|L|bench interviews on air
 eric-adam|L|gun registry
-eric-ananya|W|Ananya reads the Judge's private wires
-theodor-ananya|W|unsigned wires paid in coin
-theodor-leon|W|press v. radio; coded message
-theodor-mihir|X|gambling debt held over the editor
-theodor-joshua|W|wants the half-burned ledger pages
-theodor-jackm|24|the timeline he wants kept quiet
+mihir-anthony|$|one of the Four; retainers
+mihir-joel|$|business rivals
 mihir-diwakar|$|fight book
-mihir-robert|X|fixed 1923 game
 mihir-arjun|$|1925 championship bribe
-mihir-luke|$|shell game settles debts
-mihir-angelos|$|rival bets
-mihir-timothy|$|gambling debt
-kyle-molly|B|ferries her crates
-kyle-aimee|24|lantern signal at 11:46
-kyle-siddarth|24|river and air escape
-kyle-andrew|B|liquor shipments
-kyle-timothy|B|gin
-kyle-luke|$|payment drop
-kyle-krrish|B|club bar supply
-kyle-rebecca|24|cellar door to the river
-kyle-adam|B|guns on the boats
-molly-krrish|B|wants her whiskey on the bar
-molly-andrew|B|sold him a case
-molly-timothy|B|rival still
-molly-aidan|B|medicinal prescriptions
-krrish-rebecca|F|House Staff
-krrish-timothy|B|waters his gin
-krrish-jackm|24|staff and orchestra
-krrish-andrew|B|poaching the bartender
-rebecca-aimee|24|kitchen and the staged blood
-rebecca-tiffany|24|rose window over the kitchen
-rebecca-rhea|$|kitchen account
-rebecca-jackm|F|supper and band
-andrew-timothy|$|gin debt
-andrew-angelos|$|coffee-house deed
-andrew-luke|$|back-room games
-angelos-luke|$|hustle partners
-angelos-diwakar|$|fight bets
-angelos-emmanuel|$|rival hustlers
-angelos-robert|$|boules wager
-emmanuel-anika|H|courting an heiress
-emmanuel-ivan|$|sold him stock
-emmanuel-luke|$|shell partner
-emmanuel-shadi|$|fence
-emmanuel-rhea|$|account fraud
-emmanuel-jackh|$|car con
-adam-aimee|24|rifle and revolvers
-adam-erika|L|sold her a pistol
-adam-shadi|$|resold guns
-aidan-rhea|$|poison and prescriptions
-aidan-emre|24|time of death and the clock
-aidan-silas|W|police gossip
-aidan-ivan|$|patients in debt
-aimee-jackm|F|orchestra
-aimee-victor|F|orchestra
-aimee-arjun|$|marksman v. slugger bet
-anthony-emre|L|counsel and Sheriff
+mihir-angelos|$|bets
+mihir-leon|$|race results on air
+mihir-ananya|$|coded betting wires
+mihir-luke|$|shell-game payoffs
+anthony-luke|F|half-brothers
+anthony-theodor|L|counsel and Sheriff
 anthony-erika|L|defended her
-anthony-timothy|L|counsel for the books
-anthony-mihir|$|paid defenses
-anthony-joshua|L|trespass cases
 anthony-leon|W|libel threat
-arjun-diwakar|$|sporting circle
-arjun-robert|$|sporting circle
-arjun-joshua|F|mill workers
-arjun-ivan|F|mill families and workers
-diwakar-robert|$|sporting circle
-diwakar-silas|W|predicted fight
-emre-joshua|L|deputy
-emre-tiffany|W|clock tower and window
-emre-rhea|W|shop clocks
-emre-leon|W|time signal
-erika-shadi|$|satchel buyer
-erika-siddarth|24|flew her out
-erika-joshua|W|soot and roofs
-erika-kyle|24|river getaway
-ivan-kyle|B|gum wrappers carry River messages
-ivan-luke|B|gum wrappers carry River messages
-ivan-leon|W|radio sponsor
-ivan-robert|$|gum endorsement
-jackh-emre|W|motorcar sales book
-jackh-siddarth|F|cars v. planes
-jackh-rhea|$|accounts
-jackh-tiffany|$|lamp commission
-jackh-kyle|B|rum cars
-jackm-ananya|W|orchestra parcel
-jackm-victor|F|orchestra
-jackm-silas|F|orchestra
-joshua-tiffany|W|roof and window
-joshua-shadi|$|sells ledger pages
-leon-ananya|W|wire to radio
-leon-silas|W|spiritualist hour
-leon-victor|W|gramophone on air
-luke-diwakar|$|payment drop
-molly-rebecca|B|kitchen spirits
-rhea-tiffany|$|lamp stock
-rhea-victor|$|gramophone stock
-robert-ivan|$|sponsor
-shadi-tiffany|$|stained glass fence
-shadi-victor|$|gramophone fence
-shadi-timothy|X|stolen crate
-siddarth-ananya|W|wires and flights
-siddarth-leon|W|weather radio
-silas-victor|F|orchestra
-silas-emre|W|police gossip
-silas-aimee|F|orchestra
-tiffany-victor|F|window and band
-tiffany-jackh|$|commission
-adam-anika|$|pearl-handled pistol resold to the Mahns family
-adam-emre|L|gun permits
-andrew-anthony|L|defended after the coffee-house raid
-andrew-emre|L|raid on the back room
-andrew-rhea|$|coffee-urn account
-angelos-arjun|$|bets on the Textiles club
-angelos-silas|W|odds read from a palm
-angelos-krrish|B|bar tab settled in bootleg
-angelos-leon|W|bowls scores on the radio
+anthony-josh|L|trespass cases
+luke-molly|$|fair money
+luke-angelos|$|hustle partners
 luke-ananya|W|coded payment wires
-luke-robert|$|fairground wager
-luke-victor|$|fair gramophone
-jackh-erika|24|sold the 1924 getaway car; she rode in it
-jackh-mihir|$|car financing
-molly-eric|L|pays the court to look away
-molly-mihir|$|book on her still
-ananya-mihir|$|coded betting wires
-ananya-kyle|B|river shipment wires
-ananya-emre|L|police wires
-leon-mihir|$|race results on air
-leon-eric|L|bench interviews on air
-timothy-krrish|B|bar
+luke-diwakar|$|payment drop
+luke-adam|B|blank cartridges
+luke-jackh|$|carnival trailers and motorcars
+molly-rebecca|W|papers to the boarding house
+molly-leon|W|newsie and radio
+molly-theodor|W|the Sheriff buys the paper
+molly-angelos|$|bets
+rebecca-erika|24|hid her at the boarding house
+rebecca-josh|W|West Side neighbors
+rebecca-sidd|24|knew who flew out
+rebecca-leon|W|Cassie's coded message
+rebecca-theodor|L|the Sheriff eyes her boarding house
+rebecca-diwakar|24|a boarder
+erika-adam|L|sold her a pistol
+erika-jackh|24|the 1924 getaway car
+erika-diwakar|24|the back door she left by
+erika-theodor|L|wanted
+erika-sidd|24|flew her out
+josh-arjun|F|mill workers
+josh-tiffany|W|roofs and windows
+josh-theodor|L|reports what the flue held
+josh-ananya|W|Yiddish telegrams
+josh-adam|$|chimneys at the shop
+adam-anika|$|resold the pearl-handled pistol
+adam-theodor|L|permits
+adam-diwakar|$|gun for the fighter
+angelos-diwakar|$|fight bets
+angelos-jackh|$|car wager
+angelos-tiffany|$|lamp wager
+angelos-arjun|$|bets
+angelos-leon|W|boules scores on the radio
+diwakar-arjun|$|sporting circle
+diwakar-joel|$|fight purse sponsor
+arjun-joel|$|team sponsor
+arjun-leon|W|sports on air
+jackh-joel|$|cars and oil
+jackh-sidd|F|cars v. planes
+jackh-theodor|W|sales book
+jackh-tiffany|$|lamp commission
+jackh-mihir|$|financing
+sidd-joel|$|aviation fuel
+sidd-ananya|W|flight wires
+sidd-leon|W|weather on air
+tiffany-theodor|W|the Sheriff's office windows
+tiffany-leon|$|broker for Leon's pardon
+tiffany-joel|$|commission
+tiffany-ananya|W|telegram lamp
+ananya-leon|W|wire to radio
+ananya-theodor|W|police wires
+ananya-eric|W|the Judge's private wires
+leon-theodor|L|the feud over the radio
+leon-joel|W|sponsor on air
+joel-anika|$|the mortgage
+theodor-joel|L|permits for the oil depot
 `.trim().split("\n").map((line) => line.split("|")).map(([pair, type, note]) => ({ a: pair.split("-")[0], b: pair.split("-")[1], type, note }));
 
 const ids = Object.keys(circle);
@@ -194,37 +132,23 @@ console.log("== NETWORK ==");
 console.log(`nodes ${ids.length}  edges ${E.length}  unknown-ids ${unknown.length ? unknown.join(",") : "none"}`);
 const deg = ids.map((id) => [id, adj.get(id).size]).sort((a, b) => a[1] - b[1]);
 console.log(`degree min ${deg[0][1]} (${deg[0][0]})  median ${deg[Math.floor(deg.length / 2)][1]}  max ${deg.at(-1)[1]} (${deg.at(-1)[0]})`);
-const lowDeg = deg.filter(([, d]) => d < 5).map(([id, d]) => `${id}:${d}`);
-console.log(`characters with fewer than 5 ties: ${lowDeg.join(", ") || "none"}`);
-const cross = ids.map((id) => [id, [...adj.get(id)].filter((o) => circle[o].split("+")[0] !== circle[id].split("+")[0]).length]);
+console.log(`characters with fewer than 5 ties: ${deg.filter(([, d]) => d < 5).map(([id, d]) => `${id}:${d}`).join(", ") || "none"}`);
+const cross = ids.map((id) => [id, [...adj.get(id)].filter((o) => circle[o] !== circle[id]).length]);
 console.log(`characters with fewer than 3 cross-circle ties: ${cross.filter(([, c]) => c < 3).map(([id, c]) => `${id}:${c}`).join(", ") || "none"}`);
-const thin = ids.filter((id) => typesOf.get(id).size < 2);
-console.log(`characters touching fewer than 2 relationship threads: ${thin.join(", ") || "none"}`);
-const base = reachable(new Set());
-console.log(`connected: ${base.largest === ids.length}`);
-const cuts = ids.filter((id) => reachable(new Set([id])).largest < ids.length - 1);
-console.log(`cut-vertices (one absence splits the web): ${cuts.join(", ") || "none"}`);
+console.log(`characters touching fewer than 2 relationship threads: ${ids.filter((id) => typesOf.get(id).size < 2).join(", ") || "none"}`);
+console.log(`connected: ${reachable(new Set()).largest === ids.length}`);
+console.log(`cut-vertices (one absence splits the web): ${ids.filter((id) => reachable(new Set([id])).largest < ids.length - 1).join(", ") || "none"}`);
 
 let seed = 20261023; const rnd = () => ((seed = (seed * 1664525 + 1013904223) >>> 0) / 2 ** 32);
-function absenceTrial(missing) {
-  let worst = 1, isolated = 0;
+for (const m of [3, 5]) {
+  let worst = 1, isolated = 0, minLive = 99;
   for (let t = 0; t < 4000; t++) {
-    const pool = [...ids]; const gone = new Set();
-    while (gone.size < missing) gone.add(pool.splice(Math.floor(rnd() * pool.length), 1)[0]);
+    const gone = new Set(); while (gone.size < m) gone.add(ids[Math.floor(rnd() * ids.length)]);
     const { alive, largest } = reachable(gone);
     worst = Math.min(worst, largest / alive.length);
-    if (alive.some((id) => [...adj.get(id)].every((o) => gone.has(o)))) isolated++;
+    for (const id of alive) { const live = [...adj.get(id)].filter((o) => !gone.has(o)).length; minLive = Math.min(minLive, live); if (!live) isolated++; }
   }
-  return { worst, isolated };
-}
-for (const m of [5, 8]) {
-  const r = absenceTrial(m);
-  console.log(`absences ${m} of ${ids.length} (4000 random draws): worst connected share ${(r.worst * 100).toFixed(0)}%, draws that fully isolate someone ${r.isolated}`);
-}
-// Per-character: typical live ties left when 8 are absent
-{
-  let min = 99; for (let t = 0; t < 4000; t++) { const gone = new Set(); while (gone.size < 8) gone.add(ids[Math.floor(rnd() * ids.length)]); for (const id of ids) if (!gone.has(id)) min = Math.min(min, [...adj.get(id)].filter((o) => !gone.has(o)).length); }
-  console.log(`fewest live ties any present character is left with when 8 are absent: ${min}`);
+  console.log(`absences ${m} of ${ids.length} (4000 random draws): worst connected share ${(worst * 100).toFixed(0)}%, isolated-person events ${isolated}, fewest live ties left to anyone ${minLive}`);
 }
 
 // --- 2. SCORING -------------------------------------------------------------------------------
@@ -252,7 +176,7 @@ const shapes = {
   detective: { obj: 36, web: 12, case: 8, hunt: 14, recSolve: 1.0 },
   hybrid:    { obj: 48, web: 14, case: 6, hunt: 11, recSolve: 0.75 },
 };
-function game({ players = 30, solveBase, escape, decay, sheriffAccuracy }) {
+function game({ players = 20, solveBase, escape, decay, sheriffAccuracy }) {
   const names = Object.keys(shapes);
   const rows = [];
   for (let i = 0; i < players; i++) {
@@ -274,9 +198,9 @@ function game({ players = 30, solveBase, escape, decay, sheriffAccuracy }) {
   const w = eligible[0];
   return { culpritWon: w.culprit, winnerSolved: w.solved, K };
 }
-console.log("culprit win share / winners who never named the culprit / mean correct accusers  (30 players, 3000 games each)");
+console.log("culprit win share / winners who never named the culprit / mean correct accusers  (20 players, 3000 games each)");
 for (const solveBase of [0.12, 0.25, 0.4]) {
-  for (const [escape, decay] of [[35, 2], [40, 2], [45, 2]]) {
+  for (const [escape, decay] of [[28, 2], [32, 2], [36, 2]]) {
     let cw = 0, nonSolve = 0, k = 0, n = 3000;
     for (let g = 0; g < n; g++) {
       const r = game({ solveBase, escape, decay, sheriffAccuracy: (K) => Math.min(0.85, 0.1 + 0.03 * K) });
