@@ -233,13 +233,13 @@ console.log("\n== SCORING ==");
 function rank(rows, seedText) {
   const h = (id) => createHash("sha256").update(id + seedText).digest("hex");
   return [...rows].sort((x, y) =>
-    y.total - x.total || y.reckoning - x.reckoning || y.objectives - x.objectives || y.web - x.web || x.penalties - y.penalties || h(x.id).localeCompare(h(y.id)));
+    y.total - x.total || x.guessErr - y.guessErr || y.reckoning - x.reckoning || y.objectives - x.objectives || y.web - x.web || x.penalties - y.penalties || h(x.id).localeCompare(h(y.id)));
 }
 let ties = 0;
 for (let g = 0; g < 20000; g++) {
-  const rows = Array.from({ length: 30 }, (_, i) => ({ id: `p${i}`, total: 100 + Math.floor(rnd() * 6) * 5, reckoning: Math.floor(rnd() * 3) * 10, objectives: Math.floor(rnd() * 3) * 10, web: Math.floor(rnd() * 3) * 3, penalties: Math.floor(rnd() * 2) * 5 }));
+  const rows = Array.from({ length: 30 }, (_, i) => ({ id: `p${i}`, total: 100 + Math.floor(rnd() * 6) * 5, reckoning: Math.floor(rnd() * 3) * 10, objectives: Math.floor(rnd() * 3) * 10, web: Math.floor(rnd() * 3) * 3, penalties: Math.floor(rnd() * 2) * 5, guessErr: Math.floor(rnd() * 12) }));
   const top = rank(rows, "seed" + g);
-  if (top[0].total === top[1]?.total && top[0].reckoning === top[1].reckoning && top[0].objectives === top[1].objectives && top[0].web === top[1].web && top[0].penalties === top[1].penalties) ties++;
+  if (top[0].total === top[1]?.total && top[0].guessErr === top[1].guessErr && top[0].reckoning === top[1].reckoning && top[0].objectives === top[1].objectives && top[0].web === top[1].web && top[0].penalties === top[1].penalties) ties++;
   if (rank(rows, "seed" + g)[0].id !== top[0].id) throw new Error("non-deterministic");
 }
 console.log(`20000 games with heavy artificial ties: exactly one winner each time = true; games that needed the hash link ${ties}`);
