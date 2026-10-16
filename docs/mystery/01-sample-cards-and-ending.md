@@ -14,7 +14,7 @@
 | 9:55 | Bartender Joe taps *Ready*, or does nothing. | you |
 | **10:00** | **GRAND REVEAL.** The site flips to Reveal at 10:00 (or when you tap). Phones show: who died, who did it, how, why, what really happened in 1924, the Four, and each person's own score. Joe opens the **Final Edition** and reads **Cassie's letter** (about 90 seconds). | you |
 | 10:03 | **The winner.** Phones show the standings and the winner; Joe reads the name. If there was a tie, the site shows which tie-breaker decided it. | the site, you |
-| 10:05 | **The Great Anachronism.** Tap the playlist: 1920s jazz cuts to modern 2026 party music. Guests can drop their character, or stay in it and act shocked. | you |
+| 10:05 | **The Great Anachronism.** (Optional: Silas scats "the last chorus of 1926" first.) Tap the playlist: 1920s jazz cuts to modern 2026 party music. Guests can drop their character, or stay in it and act shocked. | you |
 | 10:30+ | The Black Veil After Dark: dancing, cocktails, Halloween music. | everyone |
 
 **Cassie's letter (the last beat).** It says: she is alive; the "massacre" was her staging; the Keeper came back for her; the Four are named; the Ledger is under the ottoman in the Merrimack Room; she will not return. It ends: *"The veil has lifted. Pour the bartender a drink."*

@@ -4,7 +4,7 @@
 *Rev 2, 15 Oct 2026, after your answers: man's body revealed at the party (your dummy and mask), game over by 10:00, you as bartender, a newsie. Party: Fri 23 Oct 2026, doors 8:00 PM. That is **8 days out** (see §9).*
 
 **Rev 5 (16 Oct), from your latest answers:**
-- **Confirmed:** the party is **Friday Oct 23**; the name is **Castello**. The guest list is **20 people attending** (Aimee regrets, nobody below Anthony). I had designed for ~30, so I **rebuilt the roster, the network and the arrival chain around the real 20** (§2b, §5, §7) and re-ran the checks.
+- **Confirmed:** the party is **Friday Oct 23**; the name is **Castello**. The guest list is **20 people attending** (Aimee regrets, nobody below Anthony), **plus Silas**, who wasn't on the screenshots but wants to be a scat jazz artist, so I count **21**. I had designed for ~30, so I **rebuilt the roster, the network and the arrival chain around the real 20** (§2b, §5, §7) and re-ran the checks.
 - **No bounty.** The wall is a gossip **bulletin board** (§4b).
 - **No QR codes.** Everything is typed short codes or phone buttons.
 - **No race at the body.** One **First Witness** (besides Rebecca) and the Sheriff's **First Responder** objective (§6a). Rebecca gets a **planned alibi** from Erika (§6a).
@@ -101,6 +101,9 @@ Aimee regrets, and everyone else from the old 35-person cast who isn't on the li
 | Angelos Boules | **Boules hustler** | Reads tells; noticed Anika's untouched glass in 1924 |
 | Arjun Bhat | **Slugger** | Took Mihir's bribe; wants a Yiddish phrase from Josh |
 | Tiffany Liu | **Glass artisan** | Reads the scratched monogram; brokers Leon's pardon |
+| Silas Palmer | **Scat jazz singer, the band's voice** | Recognizes Cassie's scat riff in Leon's coded message; the band's 11:47 cue |
+
+**Silas (the scat singer).** In 1924 he was the house band's voice. Two things he knows: the band stopped at **11:47** on his last scat phrase, and the "I am well" riff Leon read on the radio is **Cassie's own scat signature**, so only Silas can say it's really her. His objectives: **"Name that riff"** (+10 when Leon's coded message is put to him and he identifies it; Leon +5) and **"The Gig"** (+5 for performing one scat number; three guests tap *heard it*). Optional flourish: he scats the last chorus right before you tap the modern playlist at 10:05.
 
 **Paired objectives to place (proposals):**
 - **Arjun:** *"Get a Yiddish phrase from Josh"* (for shouting at an umpire). +10, Josh redeems the phrase; Josh gets +3 for giving it.
@@ -147,7 +150,7 @@ An old man (your realistic mask: white hair, white beard), lying in the **chair 
 ### 1924 (what really happened)
 - Oct ~20, 1924: the killer's alias, **"A. Pell,"** buys rat poison (strychnine) at **Ouldsfiya Arms & Hardware** and signs the poison register.
 - Oct 31, 11:02 PM: the Four come up to the landing for a "toast" that was to be Cassie's last. The killer's glass came back **untouched**; **Angelos**, who reads hands and glasses, noticed.
-- Cassie had been warned by a note in the Keeper's hand. She doesn't drink. At 11:30 Luke's stage blood, six blank cartridges (Adam's revolvers) and overturned furniture make a "massacre." The music stops at **11:47**.
+- Cassie had been warned by a note in the Keeper's hand. She doesn't drink. At 11:30 Luke's stage blood, six blank cartridges (Adam's revolvers) and overturned furniture make a "massacre." The music stops at **11:47** on Silas's last scat phrase.
 - Cassie and the Keeper leave by the **river door**; **Diwakar**, the doorman, sees them go (the "two who left"), and **Erika**, slipping out the back with her satchel, sees the lantern signal at 11:46. **Cassie spends the night in Rebecca's boarding house** (so the "boarding-house keeper insists she was in her parlor" was *true* and ignored). **Sidd** flies Cassie out on Nov 1, paid in gold. A decoy in her coat boards the B&M train.
 - The Four, seeing blood and no Cassie, each fear the others did it. They post the **closure notice** on the **Mahns Mill's job press** and hunt for the Ledger. **Josh finds half-burned Ledger pages in the flue**: the Four burned a copy they couldn't read.
 - The real Ledger is bricked into the **Merrimack Room**. Cassie keeps the lease alive from Montreal by quarterly draft, so the Four can never legally tear the building open. The Christmas card was hers.
@@ -173,7 +176,7 @@ You carry no clue. You hold one sealed envelope, the **Final Edition**, to open 
 | Rung | Question | Who holds it |
 |---|---|---|
 | 1 | Who is the dead man? | his face, the watch "K." stopped at 11:47, the rail stub; **Rebecca** (his lover), **Leon** (his friend), **Diwakar** (the doorman knew him) |
-| 2 | What really happened in 1924? | **Rebecca**'s boarding-house register (Cassie, room 3) and the Keeper's warning note; **Luke**'s carnival invoice for stage blood; **Adam**'s blank-cartridge sale; **Leon**'s coded on-air message; **Ananya**'s decoded telegram; **Sidd**'s gold; **Erika**'s lantern; **Diwakar**'s river door |
+| 2 | What really happened in 1924? | **Rebecca**'s boarding-house register (Cassie, room 3) and the Keeper's warning note; **Luke**'s carnival invoice for stage blood; **Adam**'s blank-cartridge sale; **Leon**'s coded on-air message and **Silas**, who knows the riff is Cassie's, and who ended the music at 11:47; **Ananya**'s decoded telegram; **Sidd**'s gold; **Erika**'s lantern; **Diwakar**'s river door |
 | 3 | How? | the Coroner's Folder (Dr. Leach's findings, held by **Theodor**); the flask pair (**Luke**'s invoice, the Judge's twin); the scratched monogram (**Tiffany**'s loupe); the poison register (**Adam**) |
 | 4 | Who? | the flask pair; **Rebecca**'s tips ledger ("A. Pell... $40"); **Jack**'s Packard sales book (7:10); **Joel** (a dinner cancelled at 6:55); **Tiffany** (a fitting cancelled at 7:00); **Angelos**'s untouched glass; **Jack**'s crested spoon |
 | 5 | Why? | the Ledger: the Judge's envelopes with Mill drafts; **Mihir**'s real books; **Josh**'s burned pages and the Yiddish translation; **Joel**'s mortgage papers; **Anthony**'s retainer letters |
@@ -286,14 +289,14 @@ Computed from the draft graph in the validator:
 
 | Check | Result |
 |---|---|
-| Players / ties | **20 players, 86 ties** (median 8 per person, min 6) |
+| Players / ties | **21 players, 94 ties** (median 9 per person, min 6) |
 | Cross-circle ties | every character has ≥3 |
 | Threads | every character touches ≥2 of the 5 threads |
 | Cut-vertices | **none** |
 | 3 random absences ×4000 | web stays 100% connected; everyone keeps ≥3 live ties |
 | 5 random absences ×4000 | 100% connected; nobody isolated; the worst-off present person keeps ≥1 live tie |
 
-**Hubs:** Theodor (12 ties), Leon (12), Anika (11), Mihir (11). Hubs aren't single points of failure: each role is mirrored by someone else (e.g., Anika's pivots are backstopped by Joel, Rebecca and Tiffany).
+**Hubs:** Leon (13 ties), Theodor (12), Anika (12), Mihir (12). Hubs aren't single points of failure: each role is mirrored by someone else (e.g., Anika's pivots are backstopped by Joel, Rebecca and Tiffany).
 
 **Inter-circle bridges**
 - *River ↔ Elm:* Molly–Anika (still in the Mahns cellar), Jack–Anika (the crested spoon), Joel–Mihir (rival tycoons), Jack–Erika (the 1924 getaway car).
@@ -347,13 +350,13 @@ Computed from the draft graph in the validator:
 - Leaderboard hidden until the reveal; admin impersonation is logged.
 - **Sharing a code with a friend yields at most 2 pts;** it cannot buy solution points because Reckoning needs a cited exhibit *and* a correct answer.
 
-**Illustrative calibration** (not evidence; assumptions in the script, three dossier shapes of equal par, 20 players, 3,000 games per row):
+**Illustrative calibration** (not evidence; assumptions in the script, three dossier shapes of equal par, 21 players, 3,000 games per row):
 
 | Share of players who name the culprit | Culprit wins | Winners who never named the culprit |
 |---|---|---|
-| ~12% (hard) | 24% | 46% |
-| ~25% (typical) | **13%** | **34%** |
-| ~40% (easy) | 5% | 23% |
+| ~12% (hard) | 25% | 46% |
+| ~25% (typical) | **12%** | **34%** |
+| ~40% (easy) | 4% | 22% |
 
 (With the House Hunt added, Web fell from 24 to 18 and the Casebook from 14 to 8 so the totals stay level; the table above is the re-run. The first run had Reckoning at 45 pts and a non-solver won only ~8% of the time. That would have meant "minor characters can't win," so I cut Reckoning to 30 and raised objective-heavy dossiers.) Targets: **culprit 10–20%, non-solver wins ≥25%** at typical difficulty. I'll re-tune with real dossier values; the sim doesn't yet model Sheriff, Material Evidence, or Archivist points.
 
