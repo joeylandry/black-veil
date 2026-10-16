@@ -103,10 +103,17 @@ Aimee regrets, and everyone else from the old 35-person cast who isn't on the li
 | Arjun Bhat | **Slugger** | Took Mihir's bribe; wants a Yiddish phrase from Josh |
 | Tiffany Liu | **Glass artisan** | Reads the scratched monogram; brokers Leon's pardon |
 | Silas "Duke" Palmer | **Jazz bandleader and scat singer** (think Duke Ellington: elegant, composed, a little grand) | Recognizes Cassie's scat riff in Leon's coded message; ended the music at 11:47 |
-| Emre Sunar | **Clockmaker** | Set the club's great clock 11 minutes fast in 1924 at Cassie's request, so the "11:47" everyone remembers was really 11:36; can tell the Keeper's watch was set by that clock |
+| Emre Sunar | **Doctor** (the county physician) | Examines the body: cause of death, time of death, and the poison's ingredients |
 | Rhea Mallya | **Owner, Mallya's department store** | Sold the monogrammed flask pair on a Mahns account, two identical gowns, and four matching half-masks |
 
 **Silas "Duke" Palmer (bandleader and scat singer).** In 1924 he led the house band and was its voice, with an Ellington-style polish: white tie, a long cigarette holder, a piano he insists is a "jungle" of sound. Two things he knows: the band stopped at **11:47** on his last scat phrase, and the "I am well" riff Leon read on the radio is **Cassie's own scat signature**, so only Silas can say it's really her. His objectives: **"Name that riff"** (+10 when Leon's coded message is put to him and he identifies it; Leon +5) and **"The Gig"** (+5 for performing one scat number; three guests tap *heard it*). Optional flourish: he scats the last chorus right before you tap the modern playlist at 10:05.
+
+**Emre (the doctor).** He is the only one who can examine the body. His objectives (his best three count):
+- **"The Examination"** (+10): type the scene code and open his **medical bag** within 10 minutes of the scream. It unlocks his private exam card.
+- **"Cause of Death"** (+10): file the cause. It's checked against the truth file (*poisoning*).
+- **"The Ingredients"** (+15): file the poison and what it was in (*strychnine, in sweetened rye whiskey, from a flask*). His bag gives three tests to run: the time-of-death window (about 7 to 8 PM), the spilled cup, and the flask.
+- **"Medical Report"** (+4): tell the Sheriff, who redeems it.
+If he's absent, the same findings are a printed physician's report in the Dead Letter box.
 
 **Paired objectives to place (proposals):**
 - **Arjun:** *"Get a Yiddish phrase from Josh"* (for shouting at an umpire). +10, Josh redeems the phrase; Josh gets +3 for giving it.
@@ -171,9 +178,9 @@ You carry no clue. You hold one sealed envelope, the **Final Edition**, to open 
 ### The deduction ladder (every rung has ≥3 independent holders among the 20, from ≥2 circles)
 | Rung | Question | Who holds it |
 |---|---|---|
-| 1 | Who is the dead man? | his face, the watch "K." stopped at 11:47 (**Emre** can tell it was set by the club's fast clock, so it's the Keeper's), the rail stub; **Rebecca** (his lover), **Leon** (his friend), **Diwakar** (the doorman knew him) |
-| 2 | What really happened in 1924? | **Rebecca**'s boarding-house register (Cassie, room 3) and the Keeper's warning note; **Luke**'s carnival invoice for stage blood; **Adam**'s blank-cartridge sale; **Leon**'s coded on-air message and **Silas**, who knows the riff is Cassie's, and who ended the music at 11:47; **Rhea**'s two identical gowns (the decoy on the train platform); **Emre**'s fast clock (the staged 11:47); **Ananya**'s decoded telegram; **Sidd**'s gold; **Erika**'s lantern; **Diwakar**'s river door |
-| 3 | How? | the Coroner's Folder (Dr. Leach's findings, held by **Theodor**); the flask pair (**Rhea**'s sales book on a Mahns account, the Judge's twin); the scratched monogram (**Tiffany**'s loupe); the poison register (**Adam**) |
+| 1 | Who is the dead man? | his face, the watch "K." stopped at 11:47, the rail stub; **Rebecca** (his lover), **Leon** (his friend), **Diwakar** (the doorman knew him) |
+| 2 | What really happened in 1924? | **Rebecca**'s boarding-house register (Cassie, room 3) and the Keeper's warning note; **Luke**'s carnival invoice for stage blood; **Adam**'s blank-cartridge sale; **Leon**'s coded on-air message and **Silas**, who knows the riff is Cassie's, and who ended the music at 11:47; **Rhea**'s two identical gowns (the decoy on the train platform); **Sidd**'s flight log (timed to the club's clock, which Cassie had set 11 minutes fast: the staged 11:47); **Ananya**'s decoded telegram; **Sidd**'s gold; **Erika**'s lantern; **Diwakar**'s river door |
+| 3 | How? | **Emre**'s medical examination (cause of death, time of death, the poison and what it was mixed in; a printed copy rides in the Coroner's Folder held by **Theodor**); the flask pair (**Rhea**'s sales book on a Mahns account, the Judge's twin); the scratched monogram (**Tiffany**'s loupe); the poison register (**Adam**) |
 | 4 | Who? | the flask pair; **Rebecca**'s tips ledger ("A. Pell... $40"); **Jack**'s Packard sales book (7:10); **Joel** (a dinner cancelled at 6:55); **Tiffany** (a fitting cancelled at 7:00); **Angelos**'s untouched glass; **Jack**'s crested spoon |
 | 5 | Why? | the Ledger: the Judge's envelopes with Mill drafts; **Mihir**'s real books; **Josh**'s burned pages and the Yiddish translation; **Joel**'s mortgage papers; **Anthony**'s retainer letters |
 | 6 | Who was on the landing in 1924? (supports rungs 4 and 5; not a scored question) | the torn 1924 register page in four pieces (**Josh**, **Rebecca**, **Luke**, **Ananya**); **Rhea**'s four matching half-masks; **Anthony**'s retainer letters; **Diwakar** (paid to forget the four) |
@@ -379,7 +386,7 @@ If Rebecca is absent, Bartender Joe finds the body, her objective is voided, and
 | **Secure the scene** (orders guests back) | +4 | taps *Secure*; the First Witness confirms on their phone |
 | First official piece of evidence | +3 | first exhibit filed by the Sheriff |
 | Statement from the First Witness and the next two guests | +2 each (6) | each redeems the Sheriff's code |
-| Correct suspected cause of death (poison) | +5 | checked against the truth file |
+| Correct suspected cause of death (poison), from Emre's report or the Sheriff's own reasoning | +5 | checked against the truth file |
 | Accurate timeline (a 4-slot form) | +8 | server scores the slots |
 | Spot who tampered with the scene | +8 | see below |
 | **The First Five Minutes** (secured + 1 clue + 2 statements in 5 min) | +8 | timestamps on the site |

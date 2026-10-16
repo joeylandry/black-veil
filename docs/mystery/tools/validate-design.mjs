@@ -116,15 +116,15 @@ rhea-molly|$|buys advertising in the paper
 rhea-leon|W|store ads on air
 rhea-silas|$|dresses the band
 rhea-theodor|L|the Sheriff's uniform
-emre-theodor|L|keeps the Sheriff's watch and the town clock
-emre-rhea|$|store clocks
-emre-jackh|W|clocks in the motorcars
-emre-tiffany|W|the clock-tower window
-emre-leon|W|the time signal on air
-emre-silas|W|the band's timing
-emre-anika|$|the Mahns Manor grandfather clock
-emre-eric|L|the courthouse clock
-emre-rebecca|$|boarding-house clocks
+emre-theodor|L|the county physician reports to the Sheriff
+emre-rhea|$|tonics and prescriptions
+emre-jackh|W|treats the accident cases
+emre-tiffany|W|treats her glass cuts
+emre-leon|W|health talks on air
+emre-silas|W|the singer's throat
+emre-anika|$|the Mahns family physician
+emre-eric|L|medical testimony in court
+emre-rebecca|$|the boarders' ailments
 ananya-leon|W|wire to radio
 ananya-theodor|W|police wires
 ananya-eric|W|the Judge's private wires

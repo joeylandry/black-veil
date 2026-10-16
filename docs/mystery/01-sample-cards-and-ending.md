@@ -34,6 +34,7 @@
   1. **First Responder** (+10; +5 if within 3 min): reach the body within 60 seconds of the scream.
   2. **Reputation** (+10): by 9:30 have five different guests give you a sworn statement.
 - **Crime-scene points** (§6a): secure the scene +4, first official evidence +3, statements from the First Witness and the next two guests +2 each, cause of death +5, a good timeline +8, spotting tampering +8, "The First Five Minutes" +8.
+- **The doctor.** Emre, the county physician, is the only one who can examine the body. Ask for the medical report: he scores for giving it to you, and it sharpens your cause-of-death finding.
 - **The arrest.** One warrant, sealed, filed any time from 9:15. A correct arrest is +20. A wrong one is −12 and you lose the badge.
 - **The Citation.** One card, 0 points to anyone. You may serve it on Leon "for being insufferable." The reason you can't stand him: he mocks your department on the radio and you suspect a second, unlicensed transmitter.
 - **If you aren't here by 8:30,** the **First Witness** (the first guest to reach the body) becomes Acting Sheriff.
