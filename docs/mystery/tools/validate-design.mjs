@@ -6,10 +6,10 @@
 import { createHash } from "node:crypto";
 
 // --- 1. NETWORK -------------------------------------------------------------------------------
-// The 20 confirmed attendees (Oct 16 guest list) plus Silas (the scat singer) Rhea and Emre (confirmed Oct 16). Circles: River Trade, Elm Street, Wire (press/telegraph),
+// The 20 confirmed attendees (Oct 16 guest list) plus Silas (the scat singer) Rhea and Emre (confirmed Oct 16), and Tim McGinley (tentative: waiting on a ride). Circles: River Trade, Elm Street, Wire (press/telegraph),
 // Law, West Side (the boarding house), Mill (mill families and workers).
 const circle = {
-  adam: "River", molly: "River", luke: "River", angelos: "River", diwakar: "River", erika: "River", mihir: "River",
+  tim: "River", adam: "River", molly: "River", luke: "River", angelos: "River", diwakar: "River", erika: "River", mihir: "River",
   emre: "Elm", rhea: "Elm", anika: "Elm", jackh: "Elm", tiffany: "Elm", sidd: "Elm", joel: "Elm",
   ananya: "Wire", leon: "Wire",
   eric: "Law", anthony: "Law", theodor: "Law",
@@ -125,6 +125,15 @@ emre-silas|W|the singer's throat
 emre-anika|$|the Mahns family physician
 emre-eric|L|medical testimony in court
 emre-rebecca|$|the boarders' ailments
+tim-eric|L|turning his books over to the Judge's court
+tim-molly|B|rival still
+tim-luke|$|gin for the carnival
+tim-mihir|$|old gambling debts
+tim-anika|B|gin for the Mahns Manor parties
+tim-rebecca|B|gin for the boarding house
+tim-silas|B|gin for the band
+tim-theodor|L|the Sheriff wants his books
+tim-emre|$|pays in gin for treatments
 ananya-leon|W|wire to radio
 ananya-theodor|W|police wires
 ananya-eric|W|the Judge's private wires
@@ -204,7 +213,7 @@ const shapes = {
   detective: { obj: 36, web: 12, case: 8, hunt: 14, recSolve: 1.0 },
   hybrid:    { obj: 48, web: 14, case: 6, hunt: 11, recSolve: 0.75 },
 };
-function game({ players = 23, solveBase, escape, decay, sheriffAccuracy }) {
+function game({ players = 24, solveBase, escape, decay, sheriffAccuracy }) {
   const names = Object.keys(shapes);
   const rows = [];
   for (let i = 0; i < players; i++) {
@@ -226,7 +235,7 @@ function game({ players = 23, solveBase, escape, decay, sheriffAccuracy }) {
   const w = eligible[0];
   return { culpritWon: w.culprit, winnerSolved: w.solved, K };
 }
-console.log("culprit win share / winners who never named the culprit / mean correct accusers  (23 players, 3000 games each)");
+console.log("culprit win share / winners who never named the culprit / mean correct accusers  (24 players, 3000 games each)");
 for (const solveBase of [0.12, 0.25, 0.4]) {
   for (const [escape, decay] of [[28, 2], [32, 2], [36, 2]]) {
     let cw = 0, nonSolve = 0, k = 0, n = 3000;
