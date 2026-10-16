@@ -235,10 +235,10 @@ function rank(rows, seedText) {
   return [...rows].sort((x, y) =>
     y.total - x.total || y.reckoning - x.reckoning || y.objectives - x.objectives || y.web - x.web || x.penalties - y.penalties || h(x.id).localeCompare(h(y.id)));
 }
-let ties = 0, winnersChecked = 0;
+let ties = 0;
 for (let g = 0; g < 20000; g++) {
   const rows = Array.from({ length: 30 }, (_, i) => ({ id: `p${i}`, total: 100 + Math.floor(rnd() * 6) * 5, reckoning: Math.floor(rnd() * 3) * 10, objectives: Math.floor(rnd() * 3) * 10, web: Math.floor(rnd() * 3) * 3, penalties: Math.floor(rnd() * 2) * 5 }));
-  const top = rank(rows, "seed" + g); winnersChecked++;
+  const top = rank(rows, "seed" + g);
   if (top[0].total === top[1]?.total && top[0].reckoning === top[1].reckoning && top[0].objectives === top[1].objectives && top[0].web === top[1].web && top[0].penalties === top[1].penalties) ties++;
   if (rank(rows, "seed" + g)[0].id !== top[0].id) throw new Error("non-deterministic");
 }

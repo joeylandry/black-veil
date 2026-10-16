@@ -3,6 +3,14 @@
 *Status: proposal only. No app code, no dossiers, no props have been produced. Nothing here is canon until approved.*
 *Rev 2, 15 Oct 2026, after your answers: man's body revealed at the party (your dummy and mask), game over by 10:00, you as bartender, a newsie. Party: Fri 23 Oct 2026, doors 8:00 PM. That is **8 days out** (see §9).*
 
+**Rev 3 (16 Oct), from your latest answers:**
+- **Theodor Farag is the Sheriff** (confirmed). I kept him as the Press partner of the Four, so the Sheriff is *secretly one of the suspects' circle*. He has to decide whether to arrest his own co-conspirator, and the Ledger would ruin him. That makes the badge a real dilemma instead of a free win. If you'd rather keep the Sheriff clean, Leon takes the Press seat; tell me.
+- **Joel Indipiginja is J. Bruce Wayne, oil tycoon**, 32, new to New England, rumors of private dealings (your character sheet). He's not in the old 35-person cast, so he's a new character; the sheet format (Age / Occupation / Hometown / Social standing / Known for + overview + portraits) becomes the template for every public character sheet. Ties: Anika (the rich match she needs, and a cover for her), Emmanuel (con mark), Mihir (business rival), Jack H. (cars), Sidd (aviation fuel), Eric Li (permits), Kyle (river fuel).
+- **Mihir is a wealthy businessman** in public. His bookmaking and fixed fights become his *private* secret, still on the Four's "Money" seat.
+- **A woman finds the Keeper, and he was her secret lover.** Proposed: **Rebecca Chou** (head chef, attending, knows the cellar door). She goes down at 8:45, finds him, screams. She recognizes him and must decide whether to say so. You are the fallback finder if she's absent.
+- **Still needed:** a real couple, and siblings (see §12). Proposed fictional siblings: **Victor and Tiffany Liu**, if Victor is attending.
+- **Demo/seed tooling is removed** from the site (see "Site changes" in the PR).
+
 **Legend.** 🔒 = established in the repo or in your brief. 💡 = my new proposal. ⚠️ = conflict or gap you need to rule on.
 **Spoilers.** §3 and §4 contain the solution. Game Master eyes only.
 
@@ -78,8 +86,8 @@ A man in a plain black half-mask (the mask the Keeper wore on the door every nig
 ### The Four (the "party of four" at 23:02) 💡
 1. **The Mill** — Anika Mahns (the Mahns family *is* the Silent Partner; spoons engraved with the crest)
 2. **The Bench** — Judge Eric Li (dismissed every case)
-3. **The Press** — Theodor Farag (retracted the one true story)
-4. **The Book** — Mihir Nagarkatti (vice, fixes, markers)
+3. **The Press** — Theodor Farag (retracted the one true story; now the Sheriff, secretly of the Four)
+4. **The Money** — Mihir Nagarkatti (wealthy businessman; the vice book and fixed fights are his private secret)
 
 The Ledger (kept by the Keeper) records the strike-settlement bribes and every payoff since 1921. By 1924 Cassie meant to sell it to Federal agents.
 
@@ -95,7 +103,8 @@ The Ledger (kept by the Keeper) records the strike-settlement bribes and every p
 - Cassie's black envelopes (Montreal-printed, so the unfamiliar type; wire filed before receipt) went out in the Keeper's hand. **The guest list is Cassie's list.** Every character is here because they hold a piece of the truth or have something to answer for.
 - ~6:30 PM: the Keeper arrives by freight boat at the river door. ~7:10 PM: **Anika's carriage** is seen at the river steps (as Silent Partner she holds a landing key and "came early to inspect the house"). ~7:35: she offers him a "peace toast" from her **Mahns monogram hip flask** (strychnine again; second "A. Pell" entry in Rhea's register, Oct 20, 1926), drags him down to the Merrimack Room once he collapses, scratches the monogram off the flask, and takes his keys.
 - ~8:00 PM: Anika "arrives" like every other guest. Her real first sighting is 7:10.
-- **8:45 PM: Bartender Joe finds the body.** Anika spends the next hour hunting for the Ledger while appearing to investigate.
+- **8:45 PM: Rebecca finds the body** (the cellar door is hers; Bartender Joe is the fallback finder). She recognizes him: he was her secret lover from before 1924, and she is the only one who knew he was alive. She screams, and the game starts.
+- **(was: Bartender Joe finds the body.)** Anika spends the next hour hunting for the Ledger while appearing to investigate.
 
 ### What you hold as Bartender Joe
 You do not know or carry any clue. You hold one sealed envelope, the **Final Edition**, to open at 10:00. It has Cassie's letter and the answers. In-world: the Keeper left it "with the bartender."
@@ -111,7 +120,7 @@ You do not know or carry any clue. You hold one sealed envelope, the **Final Edi
 | 6 | Who were the Four? | torn register page; four hat-check stub fragments; four matching half-masks (Rhea); the Silent Partner crest. |
 
 ### Red herrings (each is disprovable by a rung)
-- Judge Li: holds the twin flask. Theodor: his anonymous Montreal wire. Mihir: bets on "who'll die tonight." Kyle: "the river door is still unlocked." Timothy: about to testify against the River Trade. Jack M.: a cello case with a false bottom.
+- Judge Li: holds the twin flask. Leon: the anonymous wire (Theodor, the Sheriff, is secretly one of the Four). Mihir: bets on "who'll die tonight" (the businessman's hidden book). Kyle: "the river door is still unlocked." Timothy: about to testify against the River Trade. Jack M.: a cello case with a false bottom.
 
 ### What makes it fair
 The culprit-indicting facts never rely on the culprit being present. If Anika is absent, the same trail points to an empty chair (the "fugitive clause," §6).
@@ -254,7 +263,7 @@ Computed from the draft graph in the validator:
 
 **Why I scaled them down.** Your brief says arrival order can't decide the winner, and nobody's standing position when the scream happens is skill. Also, +100/+250/−150 would swamp a game where a whole night's work is worth about 100–150. So I kept your *mechanics* and shrank the points to ~⅒; the real prize for being fast is **information**, not score. Total points available from the rush are about 10% of a strong night.
 
-**How it is verified with no host:** a printed **Scene Register** card with a QR on the dummy. Scanning it with a phone timestamps you. The 8:45 Extra push tells everyone the clock has started. The host (or the Newsie) screams. Printed rule on the card and in the push: **walk, don't run, and keep your drink in your hand.**
+**How it is verified with no host:** a printed **Scene Register** card with a QR on the dummy. Scanning it with a phone timestamps you. The 8:45 Extra push tells everyone the clock has started. The finder (Rebecca; you if she's absent) screams. Printed rule on the card and in the push: **walk, don't run, and keep your drink in your hand.**
 
 | Rush action | Points | Notes |
 |---|---|---|
@@ -285,23 +294,38 @@ Computed from the draft graph in the validator:
 
 ---
 
+## 6b. The running gag: Sheriff Theodor vs. Leon 💡
+The Sheriff gets a one-use **Nuisance Citation** (a printed card he can hand to anyone, "for disorderly conduct, being insufferable"). Theodor can serve it on Leon whenever he likes.
+
+**It is walled off from everything real:**
+- It is **not** the Warrant. The Warrant stays single and sealed, and it is the only thing that can catch the culprit.
+- It has **no effect** on scoring for the Sheriff (0 points, so it can't be farmed), no effect on the culprit's Escape, the Reckoning, or anyone's objectives.
+- "Cited" is a ribbon and a laugh. It never blocks or delays any objective.
+- Leon gets a tiny matching objective, "be so annoying the Sheriff cites you" (+3, the only points in the whole gag). If the Sheriff never does it, nothing is lost.
+
+Leon's character is the white-carnation man who pesters people in the arrival chain (§7), so the gag happens naturally while he works his objectives. A cited Leon can still play every beat.
+
+**Note on Anthony and Leon.** I'll keep both characters' stories free of period anti-Asian prejudice and stereotypes. The gag is purely that Leon is annoying, and nothing in either dossier turns on ethnicity. If you want period-accurate immigrant backstories for either, tell me and I'll write them with care.
+
+---
+
 ## 7. Sample interconnected arrival (8 characters) 💡 (rev 2)
 
-All eight are from the existing cast. The Newsie slot is the one change: Molly keeps the still-in-the-Mahns-cellar secret but is the **public newsie**. Signals are cheap and self-supplied or door-issued.
+Seven are from the old cast; the white-carnation role moves to Leon (radio, the "coded message" man), and Theodor is the Sheriff. The Newsie slot is the one change: Molly keeps the still-in-the-Mahns-cellar secret but is the **public newsie**. Signals are cheap and self-supplied or door-issued.
 
 | Character | Arrives with / wears | Must watch for | Their arrival… | Verified by |
 |---|---|---|---|---|
 | **Jack "Cello" Marcello** | instrument case (a black door-issued one if none); sealed **Orchestra Parcel P-01** (River key, pre-addressed Montreal wire form, $40 wire fee) | the **single green glove** | …activates **Ananya**: *"a parcel is expected from the orchestra; look for the case."* | Ananya enters P-01's code |
-| **Ananya "Code-Ruler" Koduru** | **one green glove (left)**; decoded 1924 telegram T-01 | the case; then the **white carnation** | …lets **Theodor** send his wire | Theodor redeems the wire slip |
-| **Theodor "Farrago" Farag** | **white carnation**; $20; a one-line unsigned wire (text in his dossier) | the green glove; **the newsie** | …creates exhibit W-02, and he wants copy #7 of his own paper pulled (it holds his retracted story) | Ananya; Molly |
-| **Molly "Extra!" Daniel** *(Newsie)* | newsboy cap, 24 copies of the *Evening Farrago* First Edition (each has a different classified ad = a clue; copy #7 is Theodor's retracted story) | the white carnation; the velvet ribbon | …Theodor offers $20 to pull copy #7 (sell it, or refuse). She owes **Anika** $30 for the cellar. At 8:45 she hawks the Extra. | copy codes; Anika redeems the $30 |
+| **Ananya "Code-Ruler" Koduru** | **one green glove (left)**; decoded 1924 telegram T-01 | the case; then the **white carnation** | …lets **Leon** send his wire | Leon redeems the wire slip |
+| **Leon "Gee-Whiz" Ge** | **white carnation**; $20; a one-line unsigned wire (text in his dossier) | the green glove; **the newsie** | …creates exhibit W-02, and he wants copy #7 of his own paper pulled (it holds his retracted story) | Ananya; Molly |
+| **Molly "Extra!" Daniel** *(Newsie)* | newsboy cap, 24 copies of the *Evening Farrago* First Edition (each has a different classified ad = a clue; copy #7 is Leon's retracted story) | the white carnation; the velvet ribbon | …Leon offers $20 to pull copy #7 (sell it, or refuse). She owes **Anika** $30 for the cellar. At 8:45 she hawks the Extra. | copy codes; Anika redeems the $30 |
 | **Krrish "Vermouth" Verma** | bar float; the first **drink ticket** | the **velvet ribbon** | …must serve Anika the first drink and note whether it comes back untouched (the 1924 tell). | Anika redeems the ticket |
 | **Anika Mahns** *(culprit)* | **black velvet ribbon** | the crested spoon; who carries black envelopes with a gold "C" | …cover task: settle the cellar rent with Molly and take the first drink; *secret*: find who holds the Ledger key | Molly, Krrish (cover); the unwitting for the secret ones |
 | **Shadi "Shady" Soufan** | engraved spoon S-01 in a handkerchief | the **velvet ribbon** | …tries to sell the Mahns-crest spoon to Anika for $100 | either redeems S-01 |
-| **Emre "Sooner or Later" Sunar** *(Sheriff slot, name TBD)* | tin star; sealed **Coroner's Folder** (opens 8:45, with the body) | the instrument case and anyone at the 1924 masquerade | …takes **one sworn statement** (Jack: *"orchestra admitted 22:10 by the river door"*) and **one** from Krrish within the first 45 minutes of the investigation | Jack/Krrish redeem the Sheriff's statement code |
+| **Theodor "Farrago" Farag** *(Sheriff)* | tin star; sealed **Coroner's Folder** (opens 8:45, with the body) | the instrument case and anyone at the 1924 masquerade | …takes **one sworn statement** (Jack: *"orchestra admitted 22:10 by the river door"*) and **one** from Krrish within the first 45 minutes of the investigation | Jack/Krrish redeem the Sheriff's statement code |
 
 ```
- Jack Marcello ──P-01──▶ Ananya ◀──wire──  Theodor ──$20 (copy #7)──▶ Molly (Newsie)
+ Jack Marcello ──P-01──▶ Ananya ◀──wire──  Leon ──$20 (copy #7)──▶ Molly (Newsie)
    (case)              (green glove)       (white carnation)            │ $30 cellar rent
       ▲                      │                                          ▼
       │ statement             └─ T-01 + W-02 → Casebook          Anika (velvet ribbon)
@@ -309,11 +333,11 @@ All eight are from the existing cast. The Newsie slot is the one change: Molly k
                                                        Shadi ──spoon S-01 / $100┘
 ```
 
-Every arrow is a physical handover or a worn signal, and every one pays both ends. By 8:30 these eight have made ~14 interactions, produced three exhibits and put the Mahns crest, the untouched-glass tell, and Theodor's secret into the room, **before the body is found**.
+Every arrow is a physical handover or a worn signal, and every one pays both ends. By 8:30 these eight have made ~14 interactions, produced three exhibits and put the Mahns crest, the untouched-glass tell, and Leon's secret into the room, **before the body is found**.
 
 **If someone is late or absent**
 - **8:30 Standby Tray** (before the body): the site announces it. It holds a duplicate of each arrival prop, labeled by *signal* ("GREEN GLOVE"). You pre-place about 8 spare envelopes.
-- The objective flips to its alternate verifier (e.g., Leon takes Ananya's wire role). If the Newsie is absent, the Extras sit on the bar and you hand them out.
+- The objective flips to its alternate verifier (e.g., Sidd, who also reads the wires, takes Ananya's role). If the Newsie is absent, the Extras sit on the bar and you hand them out.
 - **9:15 Dead Letter Rule:** any undelivered envelope is fair to open. This is the universal escape valve.
 - Late arrivals get a **Latecomer's Telegram**, one quick task worth the same 10 pts, available until 9:00.
 
@@ -349,7 +373,7 @@ Every arrow is a physical handover or a worn signal, and every one pays both end
 | 7:55 | Tap **Open the Night** (or let the clock). Envelope table out. | 1 min |
 | 8:00–8:45 | Doors, cocktails, introductions, **immediate secret objectives** (§7), mingling, optional peer-to-peer gambling | tend bar |
 | 8:30 | Standby Tray opens (site announces) | 0 |
-| **8:45** | **THE BODY.** Phones get the Extra; the Newsie hawks it; you "discover" the masked dummy and it goes to the Sheriff. | ~3 min |
+| **8:45** | **THE BODY.** Rebecca finds the masked dummy and screams. Phones get the Extra; the Newsie hawks it; you confirm the scene and the Sheriff takes over. (You find him yourself if Rebecca's absent.) | ~2 min |
 | 8:45–9:45 | Investigation, interrogations, evidence, betrayals. 9:15: Dead Letter Rule; Sheriff may file a sealed warrant. | tend bar |
 | **9:45** | Accusations auto-lock. Sheriff performs the arrest aloud (their moment, not yours). | 0 |
 | **10:00** | **GRAND REVEAL.** Tap **Reveal** (auto-fires if untouched). Read one screen, open the Final Edition, read Cassie's letter, announce the winner. | ~5 min |
@@ -366,12 +390,14 @@ Every arrow is a physical handover or a worn signal, and every one pays both end
 **Done:** network robustness; one-winner determinism; a first scoring calibration that exposed and fixed the "minor characters can't win" problem.
 **Not yet validated (will be, before release):** the dossiers themselves (par-parity script), a full 30-seat paper simulation of the arrival chain with absences, proof that every objective has a reachable verifier, and that every deduction rung survives a given 5 absences.
 
-## 12. What I still need (rev 2)
-**Settled by your answers:** male victim shown as your masked dummy at 8:45; you are Bartender Joe (non-scoring); the 8:00–10:00 timeline; a Newsie role; romance pairings are open (I'll keep them light).
+## 12. What I still need (rev 3)
+**Settled:** male victim as your masked dummy at 8:45, found by a woman who was his secret lover (Rebecca, proposed); you are Bartender Joe; 8:00–10:00 timeline; Molly the Newsie; Theodor the Sheriff; Joel is J. Bruce Wayne; Mihir a wealthy businessman; poison; phones for everyone; near-zero props.
 
-1. **The guest list.** I can't read it: the production database isn't reachable from here (the only connected service, a Sanity project, is an unrelated brewery site). Fastest way: `/admin` → **Database** → **Guests**, copy the names (and which RSVPs said yes); or just paste the names. Plus-ones and anyone who isn't in the 35-person cast.
-2. **Sheriff(s).** Once I see the list I'll recommend a Sheriff and a Deputy (needs to be someone who will arrive early and enjoy being a bit bossy). If several people want to be lawmen: 1 Sheriff, 1 Deputy, the rest special deputies.
-3. **Culprit.** Anika Mahns is the proposed killer, which means she has to be reliable and good at bluffing. I'll check against the list, and I can swap the slot.
-4. **Newsie.** I'm assuming this is Molly Daniel (the Molly in the cast). Confirm, or tell me who.
-5. **The dummy.** (a) Where in the venue will it be hidden before 8:45 so nobody stumbles on it, and where is your "Merrimack Room" (a closet, a cellar, a bathroom)? (b) What does the mask look like? I'll build the Extra, the Coroner's Folder and the body's pockets around that.
-6. **Phones.** OK to rely on every guest having a phone?
+1. **The rest of the guest list.** Your two screenshots show 21 people: 20 attending, **Aimee Hong regrets** (so her 11:46 lantern clue is covered by Kyle, the Dead Letter box and a printed copy). The list may continue below Anthony Huang. I can see: Rebecca, Josh, Luke, Adam, Molly, Angelos, Erika, Jack Hudson, Ananya, Eric Li, Tiffany, Mihir, Diwakar, Theodor, Arjun, Leon, Sidd, Joel, Anika, Anthony. Are Kyle, Victor, Krrish, Andrew, Aidan, Emmanuel, Ivan, Rhea, Robert, Shadi, Silas, Timothy, Jack Marcello and Emre coming? Scroll down and send the rest.
+2. **The real couple.** Who is the real couple? I'll give them a storyline built on that, one they'll be glad to play. Tell me if there's anything off-limits.
+3. **Siblings.** Are there real siblings, or should I make the Liu siblings (Victor and Tiffany) fictional ones? Anyone else with a shared surname or a real family tie?
+4. **Rebecca as the finder and the Keeper's secret lover.** OK with her? (Other women on the list: Tiffany, Erika, Ananya. I think Rebecca fits best because the cellar is hers.)
+5. **Theodor as a secret member of the Four**, or keep the Sheriff clean and give the Press seat to Leon?
+6. **Deputy.** I recommend Josh Kaminsky (can get into any house through the roof).
+7. **The dummy.** Where is it hidden before 8:45, where is the cellar/"Merrimack Room", and what does the mask look like?
+8. **Any other character sheets** like Joel's? If so, send them and I'll keep them as written.

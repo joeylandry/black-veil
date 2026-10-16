@@ -4,7 +4,6 @@ import { desc, eq, isNotNull } from "drizzle-orm";
 import { getDb } from "@/lib/db/client";
 import { characters, guests, rsvps } from "@/lib/db/schema";
 import { adminGuard } from "@/lib/auth/admin";
-import { matchByName } from "@/lib/demo/seed";
 import { eventConfig } from "@/config/event";
 
 function shuffle<T>(items: T[]) {
@@ -17,9 +16,9 @@ function shuffle<T>(items: T[]) {
 }
 
 /**
- * action "assign": give every attending guest without a character one. A guest whose name
- * matches a cast member gets the character based on them; the rest are dealt what's left
- * at random. Guests already holding a character keep it.
+ * action "assign": give every attending guest without a character one, dealt at random from
+ * the characters nobody holds. Guests already holding a character keep it. (Casting a
+ * specific person to a specific role is done in the /admin Database panel.)
  * action "clear": take every character back, so the deal can be run again.
  */
 export async function POST(request: NextRequest) {
@@ -57,20 +56,12 @@ export async function POST(request: NextRequest) {
   const free = characterRows.filter((row) => !taken.has(row.id));
   const waiting = guestRows.filter((guest) => !guest.characterId && attendingByEmail.get(guest.email) === "yes");
 
-  // A guest named in the cast gets the character based on them; everyone else is dealt
-  // one of what remains at random.
-  const matched = matchByName(waiting, free);
-  const matchedGuests = new Set(matched.map((pair) => pair.guestId));
-  const matchedCharacters = new Set(matched.map((pair) => pair.characterId));
-  const rest = shuffle(waiting.filter((guest) => !matchedGuests.has(guest.id)));
-  const leftover = shuffle(free.filter((row) => !matchedCharacters.has(row.id)));
-  const pairs = [
-    ...matched,
-    ...rest.slice(0, leftover.length).map((guest, index) => ({ guestId: guest.id, characterId: leftover[index].id })),
-  ];
+  const dealt = shuffle(waiting);
+  const deck = shuffle(free);
+  const pairs = dealt.slice(0, deck.length).map((guest, index) => ({ guestId: guest.id, characterId: deck[index].id }));
   for (const pair of pairs) {
     await db.update(guests).set({ characterId: pair.characterId }).where(eq(guests.id, pair.guestId));
   }
 
-  return NextResponse.json({ ok: true, assigned: pairs.length, byName: matched.length, stillWaiting: waiting.length - pairs.length });
+  return NextResponse.json({ ok: true, assigned: pairs.length, stillWaiting: waiting.length - pairs.length });
 }
