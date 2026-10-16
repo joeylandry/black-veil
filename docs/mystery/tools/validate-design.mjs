@@ -6,11 +6,11 @@
 import { createHash } from "node:crypto";
 
 // --- 1. NETWORK -------------------------------------------------------------------------------
-// The 20 confirmed attendees (Oct 16 guest list) plus Silas (the scat singer). Circles: River Trade, Elm Street, Wire (press/telegraph),
+// The 20 confirmed attendees (Oct 16 guest list) plus Silas (the scat singer) and Rhea (confirmed Oct 16). Circles: River Trade, Elm Street, Wire (press/telegraph),
 // Law, West Side (the boarding house), Mill (mill families and workers).
 const circle = {
   adam: "River", molly: "River", luke: "River", angelos: "River", diwakar: "River", erika: "River", mihir: "River",
-  anika: "Elm", jackh: "Elm", tiffany: "Elm", sidd: "Elm", joel: "Elm",
+  rhea: "Elm", anika: "Elm", jackh: "Elm", tiffany: "Elm", sidd: "Elm", joel: "Elm",
   ananya: "Wire", leon: "Wire",
   eric: "Law", anthony: "Law", theodor: "Law",
   rebecca: "WestSide",
@@ -106,6 +106,16 @@ silas-mihir|$|club bookings
 silas-angelos|$|bets on the band
 silas-ananya|W|gig telegrams
 silas-anika|$|played the Mahns Manor parties
+rhea-anika|$|unpaid account; sold her the monogrammed flask pair
+rhea-eric|L|sold the twin flask Anika gave him
+rhea-tiffany|$|lamp stock
+rhea-jackh|$|store accounts
+rhea-joel|$|a new account (and an offer for the store)
+rhea-rebecca|$|linens for the boarding house
+rhea-molly|$|buys advertising in the paper
+rhea-leon|W|store ads on air
+rhea-silas|$|dresses the band
+rhea-theodor|L|the Sheriff's uniform
 ananya-leon|W|wire to radio
 ananya-theodor|W|police wires
 ananya-eric|W|the Judge's private wires
@@ -185,7 +195,7 @@ const shapes = {
   detective: { obj: 36, web: 12, case: 8, hunt: 14, recSolve: 1.0 },
   hybrid:    { obj: 48, web: 14, case: 6, hunt: 11, recSolve: 0.75 },
 };
-function game({ players = 21, solveBase, escape, decay, sheriffAccuracy }) {
+function game({ players = 22, solveBase, escape, decay, sheriffAccuracy }) {
   const names = Object.keys(shapes);
   const rows = [];
   for (let i = 0; i < players; i++) {
@@ -207,7 +217,7 @@ function game({ players = 21, solveBase, escape, decay, sheriffAccuracy }) {
   const w = eligible[0];
   return { culpritWon: w.culprit, winnerSolved: w.solved, K };
 }
-console.log("culprit win share / winners who never named the culprit / mean correct accusers  (21 players, 3000 games each)");
+console.log("culprit win share / winners who never named the culprit / mean correct accusers  (22 players, 3000 games each)");
 for (const solveBase of [0.12, 0.25, 0.4]) {
   for (const [escape, decay] of [[28, 2], [32, 2], [36, 2]]) {
     let cw = 0, nonSolve = 0, k = 0, n = 3000;
