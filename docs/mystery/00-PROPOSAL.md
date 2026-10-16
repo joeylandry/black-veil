@@ -4,7 +4,7 @@
 *Rev 2, 15 Oct 2026, after your answers: man's body revealed at the party (your dummy and mask), game over by 10:00, you as bartender, a newsie. Party: Fri 23 Oct 2026, doors 8:00 PM. That is **8 days out** (see §9).*
 
 **Rev 5 (16 Oct), from your latest answers:**
-- **Confirmed:** the party is **Friday Oct 23**; the name is **Castello**. The guest list is **20 people attending** (Aimee regrets, nobody below Anthony), **plus Silas** (a scat jazz bandleader) **Rhea, Emre and Tim McGinley** (all four say yes; they aren't on the site's register yet, so you or they add them), so I count **24**. I had designed for ~30, so I **rebuilt the roster, the network and the arrival chain around the real 20** (§2b, §5, §7) and re-ran the checks.
+- **Confirmed:** the party is **Friday Oct 23**; the name is **Castello**. The guest list is **20 people attending** (Aimee regrets, nobody below Anthony), **plus Silas** (a scat jazz bandleader) **Rhea, Emre, Tim McGinley and Krrish Verma** (all five say yes; they aren't on the site's register yet, so you or they add them), so I count **25**. **Rebecca now wants to be a butler** (below). I had designed for ~30, so I **rebuilt the roster, the network and the arrival chain around the real 20** (§2b, §5, §7) and re-ran the checks.
 - **No bounty.** The wall is a gossip **bulletin board** (§4b).
 - **No QR codes.** Everything is typed short codes or phone buttons.
 - **No race at the body.** One **First Witness** (besides Rebecca) and the Sheriff's **First Responder** objective (§6a). Rebecca gets a **planned alibi** from Erika (§6a).
@@ -84,7 +84,7 @@ Aimee regrets, and everyone else from the old 35-person cast who isn't on the li
 |---|---|---|
 | Theodor Farag | **Sheriff** | Clean lawman; feuds with Leon over the radio |
 | Molly Daniel | **The Newsie** | Sells the news; her family's still is in the Mahns cellar |
-| Rebecca Chou | **West Side boarding-house keeper** | Self-made, sketchy, sells alibis; the Keeper's secret lover; finds the body |
+| Rebecca Chou | **Butler at Mahns Manor**, with a sketchy side business: a no-questions West Side boarding house | Self-made; sells alibis and household secrets; the Keeper's secret lover; finds the body. (Dress: butler's black tailcoat, white gloves.) |
 | Anika Mahns | **The Mill heir** | Mahns heir, broke, courting money |
 | Eric Li | **The Judge** | Dismissed every case |
 | Mihir Nagarkatti | **The businessman** | Wealthy, with a private book |
@@ -102,6 +102,7 @@ Aimee regrets, and everyone else from the old 35-person cast who isn't on the li
 | Angelos Boules | **Boules hustler** | Reads tells; noticed Anika's untouched glass in 1924 |
 | Arjun Bhat | **Slugger** | Took Mihir's bribe; wants a Yiddish phrase from Josh |
 | Tiffany Liu | **Glass artisan** | Reads the scratched monogram; brokers Leon's pardon |
+| Krrish "Vermouth" Verma | **Head bartender** (Bartender Joe is his barback) | Poured the last drink of 1924 and noticed the killer's glass came back untouched; serves Anika's first drink tonight |
 | Silas "Duke" Palmer | **Jazz bandleader and scat singer** (think Duke Ellington: elegant, composed, a little grand) | Recognizes Cassie's scat riff in Leon's coded message; ended the music at 11:47 |
 | Emre Sunar | **Doctor** (the county physician) | Examines the body: cause of death, time of death, and the poison's ingredients |
 | Tim McGinley | **Bathtub-gin baron** | Going straight; his River Trade books could sink the Judge; the gin is the red herring (the poison was in whiskey) |
@@ -167,7 +168,7 @@ An old man (your realistic mask: white hair, white beard), lying in the **chair 
 
 ### 1926 (tonight)
 - Cassie's black envelopes (Montreal-printed; wire filed before receipt) went out in the Keeper's hand. **The guest list is Cassie's list.**
-- The Keeper arrived Oct 22 and **stayed at Rebecca's boarding house** (his lover, in secret). **Rebecca, who takes money from anyone, sold "who's staying at my house" to the killer on Oct 22 for $40**, not knowing what would follow. Her tips ledger shows it. That's her guilt, and her evidence against herself.
+- The Keeper arrived Oct 22 and **stayed at Rebecca's boarding house** (his lover, in secret). **Rebecca, the Mahns butler who takes money from anyone, sold "who's staying at my house" to the killer on Oct 22 for $40**, not knowing what would follow. Her tips ledger shows it. That's her guilt, and her evidence against herself.
 - ~7:10 PM: **the killer's carriage** is seen at the river steps (as a Silent Partner they hold a landing key). ~7:35: a "peace toast" from their **monogrammed hip flask** (strychnine again; second "A. Pell" entry, Oct 20, 1926). The Keeper collapses; the killer drags him into the Merrimack Room, scratches the monogram off, takes his keys.
 - ~8:00 PM: the killer "arrives" like every other guest.
 - **8:45 PM: Rebecca finds the body.** The Keeper had told her to meet him in the photo booth room at a quarter to nine. She screams, and the game starts. (If she's absent, **Bartender Joe** finds him.) She must decide whether to tell the room who he was to her.
@@ -292,14 +293,14 @@ Computed from the draft graph in the validator:
 
 | Check | Result |
 |---|---|
-| Players / ties | **24 players, 122 ties** (median 10 per person, min 6) |
+| Players / ties | **25 players, 132 ties** (median 10 per person, min 6) |
 | Cross-circle ties | every character has ≥3 |
 | Threads | every character touches ≥2 of the 5 threads |
 | Cut-vertices | **none** |
 | 3 random absences ×4000 | web stays 100% connected; everyone keeps ≥3 live ties |
 | 5 random absences ×4000 | 100% connected; nobody isolated; the worst-off present person keeps ≥1 live tie |
 
-**Hubs:** Anika (15 ties), Theodor (15), Leon (15), Mihir (13). Hubs aren't single points of failure: each role is mirrored by someone else (e.g., Anika's pivots are backstopped by Joel, Rebecca and Tiffany).
+**Hubs:** Anika (16 ties), Theodor (16), Leon (15), Mihir (14). Hubs aren't single points of failure: each role is mirrored by someone else (e.g., Anika's pivots are backstopped by Joel, Rebecca and Tiffany).
 
 **Inter-circle bridges**
 - *River ↔ Elm:* Molly–Anika (still in the Mahns cellar), Jack–Anika (the crested spoon), Joel–Mihir (rival tycoons), Jack–Erika (the 1924 getaway car).
@@ -353,13 +354,13 @@ Computed from the draft graph in the validator:
 - Leaderboard hidden until the reveal; admin impersonation is logged.
 - **Sharing a code with a friend yields at most 2 pts;** it cannot buy solution points because Reckoning needs a cited exhibit *and* a correct answer.
 
-**Illustrative calibration** (not evidence; assumptions in the script, three dossier shapes of equal par, 24 players, 3,000 games per row):
+**Illustrative calibration** (not evidence; assumptions in the script, three dossier shapes of equal par, 25 players, 3,000 games per row):
 
 | Share of players who name the culprit | Culprit wins | Winners who never named the culprit |
 |---|---|---|
-| ~12% (hard) | 19% | 46% |
-| ~25% (typical) | **9%** | **30%** |
-| ~40% (easy) | 2% | 19% |
+| ~12% (hard) | 20% | 44% |
+| ~25% (typical) | **8%** | **29%** |
+| ~40% (easy) | 1% | 18% |
 
 (With the House Hunt added, Web fell from 24 to 18 and the Casebook from 14 to 8 so the totals stay level; the table above is the re-run. The first run had Reckoning at 45 pts and a non-solver won only ~8% of the time. That would have meant "minor characters can't win," so I cut Reckoning to 30 and raised objective-heavy dossiers.) Targets: **culprit 10–20%, non-solver wins ≥25%** at typical difficulty. I'll re-tune with real dossier values; the sim doesn't yet model Sheriff, Material Evidence, or Archivist points.
 
@@ -435,7 +436,7 @@ What I can see: a foil-fringe backdrop (black and gold), a big rug, a **leather 
 
 ---
 
-## 7. Sample interconnected arrival (8 characters) 💡 (rev 5, the real 20)
+## 7. Sample interconnected arrival (9 characters) 💡 (rev 5)
 
 All eight are confirmed guests. Signals are cheap and self-supplied or door-issued.
 
@@ -445,7 +446,8 @@ All eight are confirmed guests. Signals are cheap and self-supplied or door-issu
 | **Ananya Koduru** | **one green glove (left)**; decoded 1924 telegram T-01 | the trunk; then the **white carnation** | …lets **Leon** send his wire | Leon redeems the wire slip |
 | **Leon Ge** | **white carnation**; $20; an unsigned wire (text in his dossier) | the green glove; the newsie | …creates exhibit W-02, and he offers $20 for copy #7 | Ananya; Molly |
 | **Molly Daniel** *(Newsie)* | newsboy cap, 24 papers (each with a different classified; copy #7 holds the coded "I am well") | the white carnation; the velvet ribbon | …Leon offers $20 for copy #7 (sell it, or refuse). She owes **Anika** $30 for the cellar. | copy codes; Anika redeems the $30 |
-| **Angelos Boules** | a single boule in his pocket | the **velvet ribbon** | …watches Anika's first drink and reports whether it comes back untouched (the 1924 tell) | Anika redeems the first drink ticket |
+| **Krrish Verma** | behind the bar; the first **drink ticket** | the **velvet ribbon** | …serves Anika the first drink and notes whether it comes back untouched (the 1924 tell) | Anika redeems the drink ticket |
+| **Angelos Boules** | a single boule in his pocket | the **velvet ribbon** | …watches the same first drink from across the room and reports whether it came back untouched (a second witness) | Krrish and Anika's tickets agree |
 | **Anika Mahns** | **black velvet ribbon** | the crested spoon; who carries black envelopes with a gold "C" | …cover task: settle the cellar rent with Molly and take the first drink | Molly, Joe (cover) |
 | **Jack Hudson** | the crested spoon in a handkerchief (taken in trade for a car) | the **velvet ribbon** | …tries to sell the Mahns-crest spoon to Anika for $100 | either redeems the spoon's code |
 | **Theodor Farag** *(Sheriff)* | tin star; sealed **Coroner's Folder** (opens 8:45) | the trunk, and Diwakar the old doorman | …takes **one sworn statement** (Luke: *"I built the show"*; Diwakar: *"two left by the river door"*) in the first 45 minutes of the investigation | each redeems the Sheriff's statement code |
@@ -528,6 +530,6 @@ Every arrow is a physical handover or a worn signal, and every one pays both end
 1. **Who is the killer?** Anika, Eric Li, Mihir or Anthony (see §3). **Lock it by Sunday Oct 18.** I'd stay with Anika; say "you pick" and I'll lock her.
 2. **Are there plus-ones or walk-ins?** The list is now **23** (see §2b). If a few extra people come, I'll deal them spare characters.
 3. **The real couple.** You're not sure yet. When you know, tell me and I'll write them a storyline.
-4. **Silas, Rhea, Emre and Tim** are yes, but aren't on the site's register yet. They need to RSVP on the site (or you add them in `/admin` → Database) before characters are released around Oct 20.
+4. **Silas, Rhea, Emre, Tim and Krrish** are yes, but aren't on the site's register yet. They need to RSVP on the site (or you add them in `/admin` → Database) before characters are released around Oct 20.
 
 *Decided by you or by me ("whatever works"):* House Hunt is half-sized (~12 cards); Tiffany is Leon's go-between (Judge Li and Rebecca as alternates); Arjun gets the Yiddish-phrase objective, with Josh giving it.
