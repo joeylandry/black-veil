@@ -78,6 +78,8 @@ Eight guests have a **signal item** to wear or bring. Put it in the **Background
 | **Jack Hudson** | A **spoon from home**, wrapped in a handkerchief. |
 | **Theodor Farag** | A **tin star** (a paper one is on the way). |
 
+Looks (no signal, just a suggestion in the Background tab): **Rebecca**, a butler's black tailcoat and white gloves; **Krrish**, a bartender's vest and sleeve garters; **Silas**, white tie and a long cigarette holder.
+
 Everyone else's line reads: *"Your best 1920s look. No required props."*
 
 (Rebecca's quarter-to-nine appointment and Theodor's "listen for a scream" go in the **Private** tab, which unlocks at 7:55.)
