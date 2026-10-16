@@ -6,7 +6,7 @@
 import { createHash } from "node:crypto";
 
 // --- 1. NETWORK -------------------------------------------------------------------------------
-// The 20 confirmed attendees (Oct 16 guest list) plus Silas (the scat singer) Rhea and Emre (confirmed Oct 16), and Tim McGinley (tentative: waiting on a ride). Circles: River Trade, Elm Street, Wire (press/telegraph),
+// The 20 confirmed attendees (Oct 16 guest list) plus Silas (the scat singer) Rhea and Emre (confirmed Oct 16), and Tim McGinley (all four are yes; not on the site's register yet). Circles: River Trade, Elm Street, Wire (press/telegraph),
 // Law, West Side (the boarding house), Mill (mill families and workers).
 const circle = {
   tim: "River", adam: "River", molly: "River", luke: "River", angelos: "River", diwakar: "River", erika: "River", mihir: "River",

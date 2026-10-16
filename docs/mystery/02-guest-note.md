@@ -1,6 +1,6 @@
 # THE BLACK VEIL — Guest Note (draft)
 
-*Fill in the blanks marked **[ ]** and send one note to everyone. You no longer need private messages: each guest's card on the site has three tabs, and **what to wear or bring is in the private Background tab**, so the signals stay secret without any extra sending.*
+*Fill in the blanks marked **[ ]** (your outfit links are the only ones left) and send one note to everyone. You no longer need private messages: each guest's card on the site has three tabs, and **what to wear or bring is in the private Background tab**, so the signals stay secret without any extra sending.*
 
 ---
 
@@ -41,8 +41,19 @@ Everyone has a real chance to win, and **there is exactly one winner**. You earn
 
 **Dress: 1920s formal and a mask**
 Outfit ideas: **[OUTFIT LINKS]**
-Menu: **[MENU LINK OR LIST]**
-Cocktails: **[COCKTAIL LIST]**
+
+**The menu**
+
+*Cocktails*
+1. **The Orange Espresso Martini** (vodka, rich, sophisticated): vodka, fresh espresso, Kahlúa, an orange twist. Served in a chilled coupe.
+2. **The Bee's Knees** (gin, bright, a Prohibition classic): gin, fresh lemon juice, honey syrup. Shaken and strained into a chilled coupe with a lemon twist.
+3. **Martha's Golden Sour** (bourbon, citrus, elegant): bourbon, fresh lemon and orange juice, simple syrup, a turbinado-sugar rim, and an oven-dried orange slice. Served in a rocks glass.
+4. **The Bloody Scary** (blood orange, sparkling, dramatic): black vodka, blood orange juice, Campari, simple syrup, and Prosecco. Served in a flute or coupe.
+
+*Bites*
+Oysters Rockefeller · Sausage-stuffed mushrooms · Mini Italian meatballs · Finger sandwiches · Charcuterie and cheese board · Pickles and olives · Crudités
+
+Allergies or dietary needs? Tell me when you confirm.
 
 **If you can't make it, tell me as soon as you know.**
 Every character is wired to other people's stories, and a missing character leaves a hole. I can patch one hole, but I'd much rather re-plan around you early than on the night. **Please let me know by [DAY, e.g. Wednesday, October 21]**, even if it's a "maybe." A text is fine.

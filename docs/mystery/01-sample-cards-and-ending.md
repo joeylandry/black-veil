@@ -86,7 +86,7 @@
 
 ## E. GAME MASTER CARD — Bartender Joe
 
-*You are Bartender Joe: part of the house, never a suspect, never scoring.*
+*You are Bartender Joe: part of the house, never a suspect, never scoring. (Your outfit: a bartender's.)*
 
 **Your five jobs, all you need:**
 1. **7:55.** Put out the envelope table. Tap **Open the Night** (or let the clock do it).

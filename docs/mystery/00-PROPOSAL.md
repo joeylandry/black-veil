@@ -4,7 +4,7 @@
 *Rev 2, 15 Oct 2026, after your answers: man's body revealed at the party (your dummy and mask), game over by 10:00, you as bartender, a newsie. Party: Fri 23 Oct 2026, doors 8:00 PM. That is **8 days out** (see §9).*
 
 **Rev 5 (16 Oct), from your latest answers:**
-- **Confirmed:** the party is **Friday Oct 23**; the name is **Castello**. The guest list is **20 people attending** (Aimee regrets, nobody below Anthony), **plus Silas** (a scat jazz bandleader) **Rhea and Emre** (confirmed), **and Tim McGinley** (tentative: waiting on his brother for a ride), so I count **24**. I had designed for ~30, so I **rebuilt the roster, the network and the arrival chain around the real 20** (§2b, §5, §7) and re-ran the checks.
+- **Confirmed:** the party is **Friday Oct 23**; the name is **Castello**. The guest list is **20 people attending** (Aimee regrets, nobody below Anthony), **plus Silas** (a scat jazz bandleader) **Rhea, Emre and Tim McGinley** (all four say yes; they aren't on the site's register yet, so you or they add them), so I count **24**. I had designed for ~30, so I **rebuilt the roster, the network and the arrival chain around the real 20** (§2b, §5, §7) and re-ran the checks.
 - **No bounty.** The wall is a gossip **bulletin board** (§4b).
 - **No QR codes.** Everything is typed short codes or phone buttons.
 - **No race at the body.** One **First Witness** (besides Rebecca) and the Sheriff's **First Responder** objective (§6a). Rebecca gets a **planned alibi** from Erika (§6a).
@@ -104,7 +104,7 @@ Aimee regrets, and everyone else from the old 35-person cast who isn't on the li
 | Tiffany Liu | **Glass artisan** | Reads the scratched monogram; brokers Leon's pardon |
 | Silas "Duke" Palmer | **Jazz bandleader and scat singer** (think Duke Ellington: elegant, composed, a little grand) | Recognizes Cassie's scat riff in Leon's coded message; ended the music at 11:47 |
 | Emre Sunar | **Doctor** (the county physician) | Examines the body: cause of death, time of death, and the poison's ingredients |
-| Tim McGinley *(tentative)* | **Bathtub-gin baron** | Going straight; his River Trade books could sink the Judge; the gin is the red herring (the poison was in whiskey) |
+| Tim McGinley | **Bathtub-gin baron** | Going straight; his River Trade books could sink the Judge; the gin is the red herring (the poison was in whiskey) |
 | Rhea Mallya | **Owner, Mallya's department store** | Sold the monogrammed flask pair on a Mahns account, two identical gowns, and four matching half-masks |
 
 **Silas "Duke" Palmer (bandleader and scat singer).** In 1924 he led the house band and was its voice, with an Ellington-style polish: white tie, a long cigarette holder, a piano he insists is a "jungle" of sound. Two things he knows: the band stopped at **11:47** on his last scat phrase, and the "I am well" riff Leon read on the radio is **Cassie's own scat signature**, so only Silas can say it's really her. His objectives: **"Name that riff"** (+10 when Leon's coded message is put to him and he identifies it; Leon +5) and **"The Gig"** (+5 for performing one scat number; three guests tap *heard it*). Optional flourish: he scats the last chorus right before you tap the modern playlist at 10:05.
@@ -528,6 +528,6 @@ Every arrow is a physical handover or a worn signal, and every one pays both end
 1. **Who is the killer?** Anika, Eric Li, Mihir or Anthony (see §3). **Lock it by Sunday Oct 18.** I'd stay with Anika; say "you pick" and I'll lock her.
 2. **Are there plus-ones or walk-ins?** The list is now **23** (see §2b). If a few extra people come, I'll deal them spare characters.
 3. **The real couple.** You're not sure yet. When you know, tell me and I'll write them a storyline.
-4. **Silas, Rhea and Emre** need to RSVP on the site (or you add them in `/admin` → Database) before characters are released around Oct 20.
+4. **Silas, Rhea, Emre and Tim** are yes, but aren't on the site's register yet. They need to RSVP on the site (or you add them in `/admin` → Database) before characters are released around Oct 20.
 
 *Decided by you or by me ("whatever works"):* House Hunt is half-sized (~12 cards); Tiffany is Leon's go-between (Judge Li and Rebecca as alternates); Arjun gets the Yiddish-phrase objective, with Josh giving it.
