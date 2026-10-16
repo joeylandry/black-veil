@@ -12,12 +12,12 @@
 | **9:45** | **Accusations lock.** Every phone shows "The Book is closed." Warrants are sealed. | the site |
 | 9:45–9:55 | **The Arrest.** The Sheriff stands, names the suspect aloud, and the site reveals the sealed warrant on all phones. The Sheriff serves a printed warrant card on the suspect. (Wrong arrest: the suspect gets a "Wrongly held" ribbon and +10; the Sheriff loses the badge.) | Sheriff |
 | 9:55 | Bartender Joe taps *Ready*, or does nothing. | you |
-| **10:00** | **GRAND REVEAL.** The site flips to Reveal at 10:00 (or when you tap). Phones show: who died, who did it, how, why, what really happened in 1924, the Four, and each person's own score. Joe opens the **Final Edition** and reads **Cassie's letter** (about 90 seconds). | you |
+| **10:00** | **GRAND REVEAL.** The site flips to Reveal at 10:00 (or when you tap). Phones show: who died, who did it, how, why, what really happened in 1924, and each person's own score. Joe opens the **Final Edition** and reads **Cassie's letter** (about 90 seconds). | you |
 | 10:03 | **The winner.** Phones show the standings and the winner; Joe reads the name. If there was a tie, the site shows which tie-breaker decided it. | the site, you |
 | 10:05 | **The Great Anachronism.** (Optional: Silas scats "the last chorus of 1926" first.) Tap the playlist: 1920s jazz cuts to modern 2026 party music. Guests can drop their character, or stay in it and act shocked. | you |
 | 10:30+ | The Black Veil After Dark: dancing, cocktails, Halloween music. | everyone |
 
-**Cassie's letter (the last beat).** It says: she is alive; the "massacre" was her staging; the Keeper came back for her; the Four are named; the Ledger is under the ottoman in the Merrimack Room; she will not return. It ends: *"The veil has lifted. Pour the bartender a drink."*
+**Cassie's letter (the last beat).** It says: she is alive; the "massacre" was her staging; the Keeper came back for her; she names the ones the Ledger would ruin; the Ledger is under the ottoman in the Merrimack Room; she will not return. It ends: *"The veil has lifted. Pour the bartender a drink."*
 
 **How the winner is chosen (plain words).** Everyone earns points from: doing their arrival task, three personal objectives, meeting people, filing clues, and answering the final questions. The most points wins. An arrested murderer can't win. If two people tie, the closest guess to *the minute the poison was given* wins; if still tied, more answers right, then more objectives, then a random but fixed draw printed on the Final Edition so anyone can check it. There is always exactly one winner.
 
@@ -45,7 +45,7 @@
 **Public card.** Heir to the Mahns fortune and mistress of the largest house in the North End. Famous for being hard to impress, easy to invite, and always in want of an escort.
 
 **Private card.**
-- **What you did.** You are the Mill's heir and the Silent Partner. You were one of the Four in 1924. This afternoon you bought the Keeper's whereabouts from a boarding-house keeper, met him at the river steps at about 7:10, gave him a toast from your flask, and put him in the booth room. The monogram on the flask is scratched off. You came in at 8:00 like everyone else.
+- **What you did.** You are the Mill's heir and the Silent Partner. You were on the landing in 1924, bargaining for the Ledger. This afternoon you bought the Keeper's whereabouts from a boarding-house keeper, met him at the river steps at about 7:10, gave him a toast from your flask, and put him in the booth room. The monogram on the flask is scratched off. You came in at 8:00 like everyone else.
 - **What you want.** The Ledger. It ruins you. It is hidden somewhere near where you left him.
 - **How you win.** You compete like everyone else. You also earn an **Escape bonus: 32 points minus 2 for every guest who correctly names you** (never below 0), *if you are not arrested.* If the Sheriff arrests you, you can't win. If the Sheriff arrests the wrong person, you keep your Escape bonus. You can win only if your total is the highest, so blend in and do your other objectives too.
 - **Your secret objectives** (any 3 of 5 count):

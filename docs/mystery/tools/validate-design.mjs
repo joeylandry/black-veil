@@ -21,21 +21,21 @@ const circle = {
 const E = `
 anika-molly|B|still in the Mahns cellar, rent owed
 anika-jackh|$|crested spoon traded in for a motorcar
-anika-eric|L|one of the Four; Mill money to the Bench
-anika-mihir|$|one of the Four
-anika-anthony|L|one of the Four
+anika-eric|L|on the 1924 landing; Mill money to the Bench
+anika-mihir|$|on the 1924 landing
+anika-anthony|L|on the 1924 landing
 anika-joel|H|the rich match she needs; he holds her mortgage
 anika-rebecca|$|bought a tip about who was staying at the boarding house
 anika-tiffany|$|commissions
 anika-ananya|W|bribed for a copy of a wire
-eric-mihir|L|one of the Four; fixes
-eric-anthony|L|one of the Four; counsel before his bench
+eric-mihir|L|on the 1924 landing; fixes
+eric-anthony|L|on the 1924 landing; counsel before his bench
 eric-theodor|L|countersigns the Sheriff's warrant
 eric-erika|L|Erika evades the Judge
 eric-molly|L|pays the court to look away
 eric-leon|L|bench interviews on air
 eric-adam|L|gun registry
-mihir-anthony|$|one of the Four; retainers
+mihir-anthony|$|on the 1924 landing; retainers
 mihir-joel|$|business rivals
 mihir-diwakar|$|fight book
 mihir-arjun|$|1925 championship bribe
@@ -197,8 +197,8 @@ for (let g = 0; g < 20000; g++) {
 console.log(`20000 games with heavy artificial ties: exactly one winner each time = true; games that needed the hash link ${ties}`);
 
 // Illustrative calibration. Assumptions, not data. Three dossier shapes, built so that "par" is similar.
-// Reckoning is capped at 30 (culprit 12, other five questions 18) so that solving cannot swamp everything else.
-const RECKONING = { culprit: Number(process.env.RC ?? 12), other: Number(process.env.RO ?? 18) }; // victim 2, method 4, motive 4, 1924 truth 4, the Four 4 (1 each)
+// Reckoning is capped at 30 (culprit 14, the other four questions 16) so that solving cannot swamp everything else.
+const RECKONING = { culprit: Number(process.env.RC ?? 14), other: Number(process.env.RO ?? 16) }; // victim 2, method 4, motive 5, 1924 truth 5
 const shapes = {
   operator:  { obj: Number(process.env.OP ?? 65), web: 18, case: 4, hunt: 8,  recSolve: 0.5 },
   detective: { obj: 36, web: 12, case: 8, hunt: 14, recSolve: 1.0 },

@@ -12,7 +12,8 @@
 - **House Hunt cards are personal**, addressed to specific players (§4c). You'll send photos when the house is set.
 - **Leon's pardon:** Sheriff +1 to cite him, or +2 to take a bribe from someone Leon paid off; Leon and the go-between get points too (§6b).
 - **A Yiddish-phrase objective** for Arjun, from Josh (§2b).
-- **The killer is not decided.** Any of the Four can be the killer; I recommend staying with Anika (§3). **Lock it by Sunday Oct 18** so props can be printed.
+- **The killer is not decided.** Four people could be the killer; I recommend staying with Anika (§3). **Lock it by Sunday Oct 18** so props can be printed.
+- **Rev 6 (16 Oct):** *no more "the Four."* It's gone as a puzzle and as a scored question; the 1924 "party of four" is just a landing party that came to bargain for the Ledger, and only one of them is the killer. **House Hunt is half-sized (~12 cards).** I picked the Yiddish and go-between details myself (§2b).
 
 **Legend.** 🔒 = established in the repo or in your brief. 💡 = my new proposal. ⚠️ = conflict or gap you need to rule on.
 **Spoilers.** §3 and §4 contain the solution. Game Master eyes only.
@@ -84,10 +85,10 @@ Aimee regrets, and everyone else from the old 35-person cast who isn't on the li
 | Theodor Farag | **Sheriff** | Clean lawman; feuds with Leon over the radio |
 | Molly Daniel | **The Newsie** | Sells the news; her family's still is in the Mahns cellar |
 | Rebecca Chou | **West Side boarding-house keeper** | Self-made, sketchy, sells alibis; the Keeper's secret lover; finds the body |
-| Anika Mahns | **The Mill** (of the Four) | Mahns heir, broke, courting money |
-| Eric Li | **The Bench** (of the Four) | Judge who dismissed every case |
-| Mihir Nagarkatti | **The Money** (of the Four) | Wealthy businessman with a private book |
-| Anthony Huang | **The Counsel** (of the Four) | The Four's fixer; Luke's half-brother |
+| Anika Mahns | **The Mill heir** | Mahns heir, broke, courting money |
+| Eric Li | **The Judge** | Dismissed every case |
+| Mihir Nagarkatti | **The businessman** | Wealthy, with a private book |
+| Anthony Huang | **The lawyer** | Handled the paperwork and payoffs; Luke's half-brother |
 | Luke Sheldon | **Carnival barker** | Built the 1924 "massacre" with stage effects |
 | Joel Indipiginja | **J. Bruce Wayne, oil tycoon** | New money; holds the Mahns mortgage; Mihir's rival (no objectives yet) |
 | Leon Ge | **WFEA radio** | Cassie's loyal ally; immigrant backstory; the Sheriff's nuisance |
@@ -117,24 +118,17 @@ Aimee regrets, and everyone else from the old 35-person cast who isn't on the li
 ## 3. The proposed truth 💡 — **SPOILERS** (rev 5)
 
 ### One-sentence version
-> Nobody died in 1924. Cassandra Castello staged the "massacre" with carnival stage effects to escape the Four partners who meant to poison her, and vanished with the Ledger. Tonight her Keeper, **Kit Kessler** (68), came back to open the Merrimack Room, and **one of the Four** poisoned him just before the party and hid him there. *(I recommend Anika Mahns; see "Choosing the killer.")*
+> Nobody died in 1924. Cassandra Castello staged the "massacre" with carnival stage effects to escape the powerful people the Ledger would ruin, one of whom meant to poison her, and vanished with the Ledger. Tonight her Keeper, **Kit Kessler** (68), came back to open the Merrimack Room, and **one person the Ledger would ruin** poisoned him just before the party and hid him there. *(I recommend Anika Mahns; see "Choosing the killer.")*
 
 So **"Murderer or Murdered?"** → *neither, in 1924.* The old man on the floor at 8:45 is the Keeper, who left the club with her.
 
-### Who are the Four? (plain words)
-The 1924 register says **"party of four, names withheld"** came in at 11:02 PM. In my story those four were the club's **secret partners**, the people behind the "Silent Partner" arrangement, each with a different kind of power:
+### The Ledger and the landing party (flavor, not a puzzle)
+The **Ledger** is the Keeper's record of the bribes and payoffs that ran through the club since 1921. It names several powerful people: the **Mill heir (Anika)**, the **Judge (Eric Li)**, the **businessman (Mihir)** and the **lawyer (Anthony)**, plus smaller fry.
 
-| Seat | Who | Why they matter |
-|---|---|---|
-| **The Mill** | Anika Mahns | the Mahns family money (and the crested spoons) |
-| **The Bench** | Judge Eric Li | dismissed every case against the club |
-| **The Money** | Mihir Nagarkatti | the businessman who financed it |
-| **The Counsel** | Anthony Huang | the lawyer who handled the paperwork and the payoffs |
-
-Working out **who the Four were** is one of the questions players answer at the end (1 point each). **The killer is one of the four.** That's what links 1924 to 1926: the people who wanted Cassie gone then are the people with the most to lose now.
+The 1924 register line, **"party of four, names withheld,"** is then easy to read: at 11:02 PM those four came up to the landing **to bargain for the Ledger** (not as a gang). **Only one of them is the killer.** The other three each came for their own reasons and are red herrings. Players don't have to name all four; they only have to work out *which one* did it.
 
 ### Choosing the killer (your call)
-Any of the Four can be the killer; the story works with any. Changing the killer swaps about five clue cards (the flask monogram, the alias, one alibi crack, the motive papers). **Lock it by Sunday Oct 18**; after props are printed it's expensive.
+Any of those four can be the killer. Changing the killer swaps about five clue cards (the flask monogram, the alias, one alibi crack, the motive papers). **Lock it by Sunday Oct 18**; after props are printed it's expensive. If you'd rather not choose, say "you pick" and I'll lock Anika and tell you.
 
 | Killer | Why it's good | What's special |
 |---|---|---|
@@ -147,15 +141,15 @@ Any of the Four can be the killer; the story works with any. Changing the killer
 An old man (your realistic mask: white hair, white beard), lying in the **chair section** of the photo booth room (the red diner chairs). On him: a pocket watch engraved "K." **stopped at 11:47** (he never reset it after the night he signed out), a Montreal rail-ticket stub dated today, a ring with two keys, and a **silver hip flask in his hand with the monogram scratched off** (printed card; a real cup tipped over beside him). Lying on his back, one hand curled, the cup spilled: no gore, no corpse prop. (Strychnine's arched back and fixed grin are described in the Coroner's Folder.) **One printed Ledger page is taped under the stool's seat**, found only by someone who looks *beneath*.
 
 ### The brothers 💡
-**Luke Sheldon** (carnival barker, River Trade's payment drop) and **Anthony Huang** (the Four's counsel) are half-brothers, same mother. Their sketchy pipeline: Luke's shell-game payoffs come back to the family as Anthony's "legal retainers." Each knows half the story: in 1924 **Luke built the "massacre"** for Cassie (stage blood, trick bottles, gaff props, on a carnival invoice) while **Anthony was the Four's counsel**. Neither knew the other was on the opposite side.
+**Luke Sheldon** (carnival barker, River Trade's payment drop) and **Anthony Huang** (the lawyer who handled payoffs) are half-brothers, same mother. Their sketchy pipeline: Luke's shell-game payoffs come back to the family as Anthony's "legal retainers." Each knows half the story: in 1924 **Luke built the "massacre"** for Cassie (stage blood, trick bottles, gaff props, on a carnival invoice) while **Anthony was handling the payoffs**. Neither knew the other was on the opposite side.
 
 ### 1924 (what really happened)
 - Oct ~20, 1924: the killer's alias, **"A. Pell,"** buys rat poison (strychnine) at **Ouldsfiya Arms & Hardware** and signs the poison register.
-- Oct 31, 11:02 PM: the Four come up to the landing for a "toast" that was to be Cassie's last. The killer's glass came back **untouched**; **Angelos**, who reads hands and glasses, noticed.
+- Oct 31, 11:02 PM: four of the people the Ledger names come up to the landing to bargain for it. The killer alone has brought poison for a "toast" that was to be Cassie's last. The killer's glass came back **untouched**; **Angelos**, who reads hands and glasses, noticed.
 - Cassie had been warned by a note in the Keeper's hand. She doesn't drink. At 11:30 Luke's stage blood, six blank cartridges (Adam's revolvers) and overturned furniture make a "massacre." The music stops at **11:47** on Silas's last scat phrase.
 - Cassie and the Keeper leave by the **river door**; **Diwakar**, the doorman, sees them go (the "two who left"), and **Erika**, slipping out the back with her satchel, sees the lantern signal at 11:46. **Cassie spends the night in Rebecca's boarding house** (so the "boarding-house keeper insists she was in her parlor" was *true* and ignored). **Sidd** flies Cassie out on Nov 1, paid in gold. A decoy in her coat boards the B&M train.
-- The Four, seeing blood and no Cassie, each fear the others did it. They post the **closure notice** on the **Mahns Mill's job press** and hunt for the Ledger. **Josh finds half-burned Ledger pages in the flue**: the Four burned a copy they couldn't read.
-- The real Ledger is bricked into the **Merrimack Room**. Cassie keeps the lease alive from Montreal by quarterly draft, so the Four can never legally tear the building open. The Christmas card was hers.
+- The landing party, seeing blood and no Cassie, each fear the others did it. They post the **closure notice** on the **Mahns Mill's job press** and hunt for the Ledger. **Josh finds half-burned Ledger pages in the flue**: the landing party burned a copy they couldn't read.
+- The real Ledger is bricked into the **Merrimack Room**. Cassie keeps the lease alive from Montreal by quarterly draft, so nobody can legally tear the building open. The Christmas card was hers.
 
 ### Leon's story 💡
 **Leon Ge** came from Canton by way of Montreal. **Cassie sponsored his papers and his radio license**, and he owes her everything. He read her coded "I am well" message on WFEA in 1924, and he knows she's alive. He is the Keeper's friend. *That is why Sheriff Theodor can't stand him*: Leon mocks the Sheriff's department on air most nights, and Theodor suspects a second, unlicensed transmitter. The gag is about the **radio**, never Leon's papers or origin. Leon is a Cassie ally, not a suspect.
@@ -182,7 +176,7 @@ You carry no clue. You hold one sealed envelope, the **Final Edition**, to open 
 | 3 | How? | the Coroner's Folder (Dr. Leach's findings, held by **Theodor**); the flask pair (**Rhea**'s sales book on a Mahns account, the Judge's twin); the scratched monogram (**Tiffany**'s loupe); the poison register (**Adam**) |
 | 4 | Who? | the flask pair; **Rebecca**'s tips ledger ("A. Pell... $40"); **Jack**'s Packard sales book (7:10); **Joel** (a dinner cancelled at 6:55); **Tiffany** (a fitting cancelled at 7:00); **Angelos**'s untouched glass; **Jack**'s crested spoon |
 | 5 | Why? | the Ledger: the Judge's envelopes with Mill drafts; **Mihir**'s real books; **Josh**'s burned pages and the Yiddish translation; **Joel**'s mortgage papers; **Anthony**'s retainer letters |
-| 6 | Who were the Four? | the torn 1924 register page in four pieces (**Josh**, **Rebecca**, **Luke**, **Ananya**); **Rhea**'s four matching half-masks; **Anthony**'s retainer letters; **Diwakar** (paid to forget the four) |
+| 6 | Who was on the landing in 1924? (supports rungs 4 and 5; not a scored question) | the torn 1924 register page in four pieces (**Josh**, **Rebecca**, **Luke**, **Ananya**); **Rhea**'s four matching half-masks; **Anthony**'s retainer letters; **Diwakar** (paid to forget the four) |
 
 ### Red herrings (each is disprovable by a rung)
 - **Rebecca**: last to see him, sold his location, sells alibis (the most tempting suspect, and innocent). **Judge Li**: holds the twin flask. **Mihir**: hidden book, bets on "who'll die tonight." **Joel**: rumored dealings and dangerous connections. **Luke**: stage blood and trick bottles make him look like a poisoner. **Leon**: coded messages.
@@ -211,7 +205,7 @@ Each objective names a **verifier character** *and* an alternate verifier factio
 
 **Five circles × five threads.** The 8 existing factions are the circles. Overlaid are five **threads** that every character touches: $ money/debt, B bottle/bootleg, W wire/information, L law/corruption, H heart/forbidden (few), plus **24** = a 1924 witness/relic. See §5.
 
-**The Sheriff.** A badge overlay on a confirmed guest. **Theodor Farag is the Sheriff** (clean, not one of the Four). **There is no Deputy character:** if the Sheriff isn't checked in by 8:30, the **First Witness** (the first guest to reach the body) is sworn in automatically as **Acting Sheriff**. Powers: exclusive Coroner's folder; 3 **subpoenas** (target must *show* a named prop and the Sheriff enters its code; refusal costs the target 3 pts); a **Docket** where anyone can submit exhibits; and **one sealed Warrant**, filed any time from 9:15, revealed at 9:45.
+**The Sheriff.** A badge overlay on a confirmed guest. **Theodor Farag is the Sheriff** (clean, not a suspect). **There is no Deputy character:** if the Sheriff isn't checked in by 8:30, the **First Witness** (the first guest to reach the body) is sworn in automatically as **Acting Sheriff**. Powers: exclusive Coroner's folder; 3 **subpoenas** (target must *show* a named prop and the Sheriff enters its code; refusal costs the target 3 pts); a **Docket** where anyone can submit exhibits; and **one sealed Warrant**, filed any time from 9:15, revealed at 9:45.
 
 **The Culprit.** A normal player with 3 secret objectives (e.g., recover the Ledger key; plant the forged "Keeper" note on X; get the Sheriff to subpoena Y), a **cracking alibi**, and an extra scoring stream (*Escape*, §6). The culprit never sees who has accused them.
 
@@ -269,8 +263,7 @@ Each objective names a **verifier character** *and* an alternate verifier factio
 - A card is **only worth points to the person it's for**, so nobody loses anything if someone else spots it.
 - **It's a bonus path, not a gate.** Every rung of the main deduction (§3) has ≥3 holders without the hunt.
 
-**Workload choice (decide when you send photos):** one personal card per guest is **~20 cards, about 30 minutes** of hiding; or personal cards for **about half the guests (10 cards, ~15 minutes)**. You said you'll send photos once the house is set so we can choose spots that look natural; I'll write the riddles from those.
-
+**Size (decided):** personal cards for **about half the guests, ~12 cards, about 15 minutes** of hiding. You'll send photos once the house is set so we choose spots that look natural; I'll write the riddles from those.
 ---
 
 ## 4b. The Bulletin Board: a gossip wall 💡 (rev 5)
@@ -302,7 +295,7 @@ Computed from the draft graph in the validator:
 
 **Inter-circle bridges**
 - *River ↔ Elm:* Molly–Anika (still in the Mahns cellar), Jack–Anika (the crested spoon), Joel–Mihir (rival tycoons), Jack–Erika (the 1924 getaway car).
-- *The Four:* Anika–Eric–Mihir–Anthony (fully interlinked; each also owes someone outside the Four).
+- *The landing party:* Anika–Eric–Mihir–Anthony (fully interlinked; each also owes someone outside the group).
 - *West Side ↔ everyone:* Rebecca–Erika (hides her), Rebecca–Sidd and Rebecca–Leon (Cassie's flight and her message), Rebecca–Anika (sold the tip).
 - *Brothers:* Anthony–Luke (the pipeline); Luke also ties to Mihir, Molly, Angelos, Ananya.
 - *Wire:* Ananya reads the Judge's wires; Leon's coded message; Molly's papers.
@@ -324,7 +317,7 @@ Computed from the draft graph in the validator:
 | **Web (relationships)** | 3 each, cap **18** | both players redeem each other's relationship code; max 2 per pair |
 | **Casebook (exhibits)** | 2 each, cap **8** | code from a prop someone carries; duplicates don't stack |
 | **House Hunt** (§4c) | find **+2**, each follow-up step **+3**, cap **18** | code on a hidden card, then the step's own check |
-| **Reckoning** (accusation form) | cap **30**: Culprit 12, Method 4, Motive 4, 1924 truth 4, Victim 2, the Four 1 each (4) | scored on the server at the reveal; **full credit needs a cited, valid exhibit; no proof = half** |
+| **Reckoning** (accusation form) | cap **30**: Culprit 14, Method 4, Motive 5, 1924 truth 5, Victim 2 | scored on the server at the reveal; **full credit needs a cited, valid exhibit; no proof = half** |
 | **Material Evidence** | +3 each, cap 9 | exhibits you gave the Sheriff's Docket that the truth file flags as material |
 | **Archivist (CTF)** | up to 20 | existing CTF, scaled and capped |
 | **Sheriff** | correct arrest **+15**; wrongful arrest **−15** (and loses the badge) | warrant vs truth |
@@ -356,9 +349,9 @@ Computed from the draft graph in the validator:
 
 | Share of players who name the culprit | Culprit wins | Winners who never named the culprit |
 |---|---|---|
-| ~12% (hard) | 20% | 49% |
-| ~25% (typical) | **11%** | **34%** |
-| ~40% (easy) | 3% | 23% |
+| ~12% (hard) | 20% | 46% |
+| ~25% (typical) | **10%** | **31%** |
+| ~40% (easy) | 3% | 19% |
 
 (With the House Hunt added, Web fell from 24 to 18 and the Casebook from 14 to 8 so the totals stay level; the table above is the re-run. The first run had Reckoning at 45 pts and a non-solver won only ~8% of the time. That would have meant "minor characters can't win," so I cut Reckoning to 30 and raised objective-heavy dossiers.) Targets: **culprit 10–20%, non-solver wins ≥25%** at typical difficulty. I'll re-tune with real dossier values; the sim doesn't yet model Sheriff, Material Evidence, or Archivist points.
 
@@ -519,8 +512,9 @@ Every arrow is a physical handover or a worn signal, and every one pays both end
 ## 12. What I still need (rev 5)
 **Settled:** Oct 23; Castello; 20 guests; Theodor the Sheriff; Rebecca the finder (boarding-house keeper, the Keeper's lover); you as Bartender Joe; staged body in the chair section at ~8:35; Ledger page under the stool; bulletin board (no bounty); no QR codes; personal House Hunt cards; Leon's pardon; poison.
 
-1. **Who is the killer?** Pick one of the **Four** (Anika, Eric Li, Mihir, Anthony); see §3. **Lock it by Sunday Oct 18.** I'd stay with Anika, but it's your story.
-2. **Are there plus-ones or walk-ins?** The list shows exactly 20. If a few extra people come, I'll deal them spare characters from the old cast.
-3. **House Hunt size:** one personal card per guest (~20 cards, ~30 min) or about half the guests (~10 cards, ~15 min)? You'll send photos once the house is set; I'll write the riddles from those.
-4. **The real couple.** You said you're not sure yet. When you know, tell me and I'll write them a storyline.
-5. **Tiffany as Leon's go-between** (with Judge Li and Rebecca as alternates), and **Arjun's Yiddish-phrase objective**: OK, or do you want someone else?
+1. **Who is the killer?** Anika, Eric Li, Mihir or Anthony (see §3). **Lock it by Sunday Oct 18.** I'd stay with Anika; say "you pick" and I'll lock her.
+2. **Are there plus-ones or walk-ins?** The list is now **23** (see §2b). If a few extra people come, I'll deal them spare characters.
+3. **The real couple.** You're not sure yet. When you know, tell me and I'll write them a storyline.
+4. **Silas, Rhea and Emre** need to RSVP on the site (or you add them in `/admin` → Database) before characters are released around Oct 20.
+
+*Decided by you or by me ("whatever works"):* House Hunt is half-sized (~12 cards); Tiffany is Leon's go-between (Judge Li and Rebecca as alternates); Arjun gets the Yiddish-phrase objective, with Josh giving it.
