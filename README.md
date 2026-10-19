@@ -29,6 +29,7 @@ npm run build
 - `/about` — chronology separating real Manchester context from Black Veil fiction
 - `/guest-ledger` — real-name RSVP, persisted to Postgres and signed in for this device
 - `/invitation` — private invitation revealed after archive access and RSVP
+- `/game` — the guest's night: three-tab character card ("Characters coming very soon" until released), errands, final answers, results. See `docs/game/README.md`
 - `/black-frog` — the seven-trial CTF (server-verified flags) and in-person point claims
 - `/postscript` — the unlisted bonus flag (footer link once the register is unsealed; the flag is in the unlocked terminal ledger)
 - `/bench/[ticket]` — one restoration bench: a graded engineering exercise (RST-01 … RST-12)
@@ -121,6 +122,10 @@ The same passphrase opens the rest of the Staff Office at `/admin`. `GET /api/ad
 `GET /api/standings` ranks every guest by the same score as `GET /api/me` (solves plus approved claims) for the Guest Ledger leaderboard. It is signed-in only; other guests appear by first name and initial. The leaderboard and the /admin dashboard poll every five seconds, so flags submitted anywhere show up on open screens without a reload.
 
 The model supports a primary 1926 murder and an optional advanced investigation into Cassandra and the 1924 masquerade without choosing how those mysteries connect.
+
+## The murder-mystery game
+
+The party game (the old man, Cassie, the five survivors, the Butler's vial) is specified in `docs/game/` and implemented under `src/data/game` (the bible, server-only), `src/lib/game` (grading, scoring, services, tests) and `src/app/api/game` / `src/app/api/admin/game`. Run `npm run game:check`, `npm run game:test`, `npm run game:docs`, and at the end of the night `npm run game:grade -- --help`-style commands (see `docs/game/README.md`).
 
 ## Historical reference links
 

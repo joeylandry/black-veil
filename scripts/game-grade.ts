@@ -1,0 +1,106 @@
+/**
+ * The game master's command line for the end of the night. It talks to the same database as
+ * the site and uses the same rules as the /admin panel.
+ *
+ *   npm run game:grade -- status
+ *   npm run game:grade -- grade                    run the automatic grader
+ *   npm run game:grade -- packet [out.json]        write what needs a second look, for Claude
+ *   npm run game:grade -- verdicts verdicts.json   apply Claude's (or staff's) decisions
+ *   npm run game:grade -- standings                print the ladder
+ *   npm run game:grade -- publish [--force]        show everyone the results
+ *   npm run game:grade -- unpublish
+ *   npm run game:grade -- assign-vial <slug>       sell the vial to a survivor by hand
+ *   npm run game:grade -- seed                     create characters and cast guests by name
+ *
+ * DATABASE_URL comes from the environment or .env.local.
+ */
+import { readFileSync, writeFileSync } from "node:fs";
+import { getDb } from "@/lib/db/client";
+import {
+  adminOverview,
+  applyVerdictFile,
+  assignVial,
+  castByName,
+  makePacket,
+  publishResults,
+  runGrading,
+  seedCast,
+  standingsNow,
+  unpublishResults,
+} from "@/lib/game/service";
+import type { GameDb } from "@/lib/game/service";
+
+const [command, ...args] = process.argv.slice(2);
+let cached: GameDb | null = null;
+/** Connects only when a command needs the database, so `--help` works anywhere. */
+const database = () => (cached ??= getDb() as unknown as GameDb);
+
+function print(value: unknown) {
+  console.log(typeof value === "string" ? value : JSON.stringify(value, null, 2));
+}
+
+async function main() {
+  switch (command) {
+    case "status": {
+      const overview = await adminOverview(database());
+      print({ state: overview.state, killer: overview.killer, cast: `${overview.castCount} of ${overview.cast.length} characters cast`, uncastGuests: overview.uncastGuests.map((guest) => guest.fullName), vial: overview.vial, grades: overview.grades });
+      break;
+    }
+    case "seed": {
+      const seeded = await seedCast(database());
+      print({ ...seeded, ...(await castByName(database())) });
+      break;
+    }
+    case "grade":
+      print(await runGrading(database()));
+      break;
+    case "packet": {
+      const packet = await makePacket(database());
+      const out = args[0] ?? "black-veil-review-packet.json";
+      writeFileSync(out, `${JSON.stringify(packet, null, 2)}\n`);
+      print(`Wrote ${packet.items.length} items to ${out}. Read it, decide each one, and save a verdicts file in the format given at the top of the packet.`);
+      break;
+    }
+    case "verdicts": {
+      const file = args[0];
+      if (!file) throw new Error("Usage: verdicts <file.json> [--staff]");
+      const result = await applyVerdictFile(database(), JSON.parse(readFileSync(file, "utf8")), args.includes("--staff") ? "staff" : "claude");
+      print(result);
+      if (result.errors.length) process.exitCode = 1;
+      break;
+    }
+    case "standings": {
+      const { standings } = await standingsNow(database());
+      const rows = standings.standings.map((row) => ({ rank: row.rank, name: row.name, circle: row.circle, total: row.total, errands: row.tiers.objectives, pages: row.tiers.exhibits, survivors: row.tiers.survivors, mysteries: row.tiers.mysteries, poisoner: row.tiers.poisoner }));
+      console.table(rows);
+      print({ winner: standings.winner, killer: standings.killer, pendingReview: standings.pendingReview, awards: standings.awards });
+      break;
+    }
+    case "publish": {
+      const result = await publishResults(database(), { force: args.includes("--force") });
+      print(result);
+      if (!result.ok) process.exitCode = 1;
+      break;
+    }
+    case "unpublish":
+      await unpublishResults(database());
+      print("Results are hidden again.");
+      break;
+    case "assign-vial": {
+      const ok = await assignVial(database(), args[0] ?? "");
+      print(ok ? `Vial assigned to ${args[0]}.` : "That is not a registered survivor.");
+      if (!ok) process.exitCode = 1;
+      break;
+    }
+    default:
+      print("Commands: status, seed, grade, packet [out.json], verdicts <file.json> [--staff], standings, publish [--force], unpublish, assign-vial <slug>");
+      process.exitCode = command ? 1 : 0;
+  }
+}
+
+main()
+  .catch((error) => {
+    console.error(error instanceof Error ? error.message : error);
+    process.exitCode = 1;
+  })
+  .finally(() => process.exit());

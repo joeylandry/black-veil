@@ -1,4 +1,5 @@
-import { boolean, integer, jsonb, pgTable, text, timestamp, unique, uuid } from "drizzle-orm/pg-core";
+import { sql } from "drizzle-orm";
+import { boolean, index, integer, jsonb, pgTable, text, timestamp, unique, uniqueIndex, uuid } from "drizzle-orm/pg-core";
 
 export const rsvps = pgTable("rsvps", {
   id: uuid("id").defaultRandom().primaryKey(),
@@ -53,6 +54,12 @@ export const characters = pgTable("characters", {
   murderer: boolean("murderer").notNull().default(false),
   victim: boolean("victim").notNull().default(false),
   active: boolean("active").notNull().default(true),
+  /**
+   * The slug of this character in src/data/game (e.g. "anika"). The game bible lives in code,
+   * not in this table: private cards, objectives and answers are served by /api/game/card from
+   * that data, so this row only carries what the older guest ledger already shows.
+   */
+  gameKey: text("game_key").unique(),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
 });
 
@@ -88,3 +95,74 @@ export const pointClaims = pgTable("point_claims", {
   reviewedAt: timestamp("reviewed_at", { withTimezone: true }),
   reviewedBy: text("reviewed_by"),
 });
+
+/**
+ * Switches and small pieces of state for the party night: which tabs are released, whether
+ * the Butler may still sell, the published results. One row per key; values are JSON.
+ */
+export const gameFlags = pgTable("game_flags", {
+  key: text("key").primaryKey(),
+  value: jsonb("value").$type<unknown>().notNull(),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+});
+
+/**
+ * Everything a guest types during the game, append-only. A guest may resubmit as often as they
+ * like; the newest row per (guest, kind, item) is the one that counts. Nothing here tells the
+ * guest whether they were right: that is decided only when the night is graded.
+ */
+export const gameSubmissions = pgTable(
+  "game_submissions",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    guestId: uuid("guest_id").notNull().references(() => guests.id),
+    kind: text("kind", { enum: ["objective", "exhibit", "mystery", "survivors"] }).notNull(),
+    itemId: text("item_id").notNull(),
+    answer: text("answer").notNull(),
+    proof: text("proof").notNull().default(""),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (table) => [index("game_submissions_lookup").on(table.guestId, table.kind, table.itemId, table.createdAt)],
+);
+
+/**
+ * The House's own log: every offer a survivor makes to the Butler, the single sale of the
+ * night, and the dosing of the nightcap. The partial unique index on 'vial-sold' is what
+ * makes "only one survivor can succeed" true even if two phones tap at the same instant.
+ */
+export const gameEvents = pgTable(
+  "game_events",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    kind: text("kind", { enum: ["vial-attempt", "vial-sold", "dose"] }).notNull(),
+    /** The survivor the event is about. */
+    guestId: uuid("guest_id").notNull().references(() => guests.id),
+    /** Who recorded it: the Butler's guest id, or null when staff did it. */
+    byGuestId: uuid("by_guest_id").references(() => guests.id),
+    sold: boolean("sold"),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (table) => [uniqueIndex("game_events_one_sale").on(table.kind).where(sql`${table.kind} = 'vial-sold'`), index("game_events_kind").on(table.kind, table.createdAt)],
+);
+
+/**
+ * One graded item for one guest. Automatic grades are rewritten whenever grading re-runs;
+ * rows decided by Claude or by staff are never touched again unless staff reset them.
+ */
+export const gameGrades = pgTable(
+  "game_grades",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    guestId: uuid("guest_id").notNull().references(() => guests.id),
+    kind: text("kind").notNull(),
+    itemId: text("item_id").notNull(),
+    verdict: text("verdict", { enum: ["accept", "partial", "reject"] }).notNull(),
+    points: integer("points").notNull(),
+    max: integer("max").notNull(),
+    rationale: text("rationale").notNull().default(""),
+    needsReview: boolean("needs_review").notNull().default(false),
+    source: text("source", { enum: ["auto", "claude", "staff"] }).notNull().default("auto"),
+    gradedAt: timestamp("graded_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (table) => [unique("game_grades_item_unique").on(table.guestId, table.kind, table.itemId)],
+);

@@ -2,6 +2,7 @@
 
 import { FormEvent, useEffect, useState } from "react";
 import { AdminDashboard } from "./admin-dashboard";
+import { AdminGame } from "./admin-game";
 import { AdminDatabase } from "./admin-database";
 
 type AdminClaim = {
@@ -135,6 +136,7 @@ export function AdminClaims() {
         <button type="button" className="button-link" onClick={() => { load(secret); setRefreshKey((key) => key + 1); }}>Refresh</button>
       </header>
       <AdminDashboard secret={secret} refreshKey={refreshKey} onChange={() => { load(secret); setRefreshKey((key) => key + 1); }} />
+      <AdminGame secret={secret} />
       <AdminDatabase secret={secret} refreshKey={refreshKey} onChange={() => { load(secret); setRefreshKey((key) => key + 1); }} />
       <h2 className="admin-section-title">Claim queue</h2>
       {error && <p className="field-error" role="alert">{error}</p>}

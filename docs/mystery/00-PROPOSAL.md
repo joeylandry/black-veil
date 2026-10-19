@@ -1,3 +1,5 @@
+> **SUPERSEDED.** This is the earlier design. The game as now built, around the old man who ousted Cassie, the five survivors and the Butler's vial, is documented in `docs/game/README.md`. This file is kept for its canon notes and history.
+
 # THE BLACK VEIL — Gameplay Architecture Proposal (for approval)
 
 *Status: proposal only. No app code, no dossiers, no props have been produced. Nothing here is canon until approved.*

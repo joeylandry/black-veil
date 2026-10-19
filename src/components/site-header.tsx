@@ -18,6 +18,7 @@ export function SiteHeader() {
         <Link href="/archive">Archive</Link>
         <Link href="/about">About</Link>
         <Link href="/guest-ledger">Guest ledger</Link>
+        {registerUnlocked && <Link href="/game">Your night</Link>}
         {registerUnlocked && <Link href="/black-frog">Black Frog Trials</Link>}
       </nav>
     </header>
