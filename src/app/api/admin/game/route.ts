@@ -17,6 +17,7 @@ import {
   writeFlag,
 } from "@/lib/game/service";
 import { gameDb } from "@/lib/game/http";
+import { setupGameDatabase } from "@/lib/game/setup";
 
 /** Only these switches may be set from the panel. Anything else is refused, never stored. */
 const booleanFlags = new Set(["identitiesReleased", "secretsReleased", "submissionsClosed", "nightcapServed"]);
@@ -48,6 +49,8 @@ export async function POST(request: NextRequest) {
 
   try {
     switch (action) {
+      case "setup-database":
+        return reply({ ok: true, ...(await setupGameDatabase(db)) });
       case "seed-cast": {
         const seeded = await seedCast(db);
         const cast = await castByName(db);
