@@ -2,6 +2,7 @@
 
 import { FormEvent, useEffect, useState } from "react";
 import { AdminDashboard } from "./admin-dashboard";
+import { AdminGame } from "./admin-game";
 import { AdminDatabase } from "./admin-database";
 
 type AdminClaim = {
@@ -46,7 +47,14 @@ export function AdminClaims() {
     } catch {
       // sessionStorage unavailable — fall back to entering the passphrase each visit
     }
-    if (!stored) return;
+    if (!stored) {
+      // When the passphrase is switched off (temporary, see eventConfig.adminOpen) the
+      // session check passes with any value, so open the office straight away.
+      verify("open").then((problem) => {
+        if (!problem) setSecret("open");
+      });
+      return;
+    }
     verify(stored).then((problem) => {
       if (problem) {
         setError(problem);
@@ -129,12 +137,18 @@ export function AdminClaims() {
 
   return (
     <div className="admin-claims">
+      {secret === "open" && (
+        <p className="admin-notice" role="alert">
+          <strong>The passphrase is switched off.</strong> Anyone who opens this page has full control. Set <code>adminOpen</code> to false in <code>src/config/event.ts</code> and redeploy before real guests arrive.
+        </p>
+      )}
       <header>
         <p className="eyebrow">Staff only · the register</p>
         <h1>Staff Office</h1>
         <button type="button" className="button-link" onClick={() => { load(secret); setRefreshKey((key) => key + 1); }}>Refresh</button>
       </header>
       <AdminDashboard secret={secret} refreshKey={refreshKey} onChange={() => { load(secret); setRefreshKey((key) => key + 1); }} />
+      <AdminGame secret={secret} />
       <AdminDatabase secret={secret} refreshKey={refreshKey} onChange={() => { load(secret); setRefreshKey((key) => key + 1); }} />
       <h2 className="admin-section-title">Claim queue</h2>
       {error && <p className="field-error" role="alert">{error}</p>}

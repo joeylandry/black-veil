@@ -1,0 +1,178 @@
+/**
+ * Small constructors so 120 objectives stay readable. Text may contain placeholders that
+ * `renderText` (index.ts) fills in from the live data, so a renamed character or an edited
+ * hiding-place hint changes everywhere at once:
+ *   {prop}        the objective's prop name
+ *   {hint}        the prop's hiding-place hint
+ *   {name:id}     the 1926 name of a character
+ */
+import type { AnyOf, Pattern } from "@/lib/game/text";
+import type { GuestId, Objective, PropId } from "./types";
+import { props } from "./props";
+
+export const POINTS = 12;
+
+const codeOf = (propId: PropId) => {
+  const prop = props.find((item) => item.id === propId);
+  if (!prop) throw new Error(`Unknown prop ${propId}`);
+  return prop.code;
+};
+
+export function find(id: string, prop: PropId): Objective {
+  return {
+    id,
+    kind: "find",
+    title: "A thing to find",
+    text: "Find the {prop}. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. {hint}",
+    ask: "The code on the tag",
+    points: POINTS,
+    with: [],
+    prop,
+    check: { kind: "code", codes: [codeOf(prop)] },
+  };
+}
+
+export function learn(
+  id: string,
+  title: string,
+  text: string,
+  ask: string,
+  from: GuestId,
+  alsoFrom: GuestId[],
+  all: Pattern,
+  options: { forbid?: AnyOf } = {},
+): Objective {
+  return { id, kind: "learn", title, text, ask, points: POINTS, with: [from], alsoFrom, check: { kind: "pattern", all, forbid: options.forbid } };
+}
+
+/** Learn a guest's small secret. The answer pattern is that secret's key. */
+export function secretOf(id: string, target: GuestId, alsoFrom: GuestId, key: AnyOf): Objective {
+  return {
+    id,
+    kind: "learn",
+    title: `What {name:${target}} is hiding`,
+    text: "Everyone has something they would rather not say. Learn {name:{target}}'s small secret, not by being told it is a secret, but by earning it.".replace("{target}", target),
+    ask: "The key word or name",
+    points: POINTS,
+    with: [target],
+    alsoFrom: [alsoFrom],
+    check: { kind: "pattern", all: [key] },
+  };
+}
+
+export function swap(id: string, partner: GuestId, give: PropId, get: PropId): Objective {
+  return {
+    id,
+    kind: "swap",
+    title: "A fair trade",
+    text: `Strike a bargain with {name:${partner}}: your ${"{give}"} for their ${"{get}"}. It must be a deal, never a grab. When you hold it, read the code on its tag.`
+      .replace("{give}", props.find((p) => p.id === give)?.name ?? give)
+      .replace("{get}", props.find((p) => p.id === get)?.name ?? get),
+    ask: "The code on the tag you received",
+    points: POINTS,
+    with: [partner],
+    prop: get,
+    check: { kind: "code", codes: [codeOf(get)] },
+  };
+}
+
+export function money(id: string, min: number, text: string): Objective {
+  return {
+    id,
+    kind: "money",
+    title: "Money to make",
+    text: `${text} Count your bills at the end and submit the total. The host may ask to see it.`,
+    ask: "Dollars in your pocket at the end",
+    points: POINTS,
+    with: [],
+    check: { kind: "money", min },
+  };
+}
+
+export function hide(id: string, partner: GuestId): Objective {
+  return {
+    id,
+    kind: "hide",
+    title: "A secret affair",
+    text: "You and {name:partner} are secretly sweet on each other. Nobody must learn it. If anyone names the two of you as a pair in their final answers, you lose points. Enjoy it, quietly.".replace("partner", partner),
+    ask: "In a sentence, how did you keep it secret?",
+    points: POINTS,
+    with: [partner],
+    check: { kind: "hide", partner },
+  };
+}
+
+export function seek(id: string, pairs: [GuestId, GuestId][]): Objective {
+  return {
+    id,
+    kind: "seek",
+    title: "Gossip",
+    text: "Two guests are secretly sweet on each other. Find out who. Name the pair, and you have your story.",
+    ask: "The two guests, by name",
+    points: POINTS,
+    with: [],
+    check: { kind: "seek", pairs },
+  };
+}
+
+export function story(
+  id: string,
+  title: string,
+  text: string,
+  ask: string,
+  from: GuestId,
+  alsoFrom: GuestId[],
+  all: Pattern,
+): Objective {
+  return { id, kind: "story", title, text, ask, points: POINTS, with: [from], alsoFrom, check: { kind: "pattern", all } };
+}
+
+export function role(id: string, title: string, text: string, ask: string, check: Objective["check"], withGuests: GuestId[] = []): Objective {
+  return { id, kind: "role", title, text, ask, points: POINTS, with: withGuests, check };
+}
+
+// ---- the three objectives every survivor shares in shape (their content differs) ----
+
+/** Learn the hour the Keeper takes his nightcap: the window in which the glass can be dosed. */
+export function nightcapChain(id: string): Objective {
+  return {
+    id,
+    kind: "chain",
+    title: "The old man's hour",
+    text: "The Keeper takes a nightcap at a fixed hour, in a fixed room. Until then the glass on his table is only a glass. Learn the hour, so you know how long you have.",
+    ask: "The hour of his nightcap",
+    points: POINTS,
+    with: ["rebecca"],
+    alsoFrom: ["mihir", "molly", "anika"],
+    check: { kind: "pattern", all: [["half past eight", "8:30", "830", "eight thirty", "8 30", "half eight"]] },
+  };
+}
+
+/** Make an offer to the Butler. The Butler's phone records it whether she says yes or no. */
+export function offerChain(id: string): Objective {
+  return {
+    id,
+    kind: "chain",
+    title: "Make your offer to the House",
+    text: "The House keeps one bottle for those who can pay in a marker. Before the nightcap is served at half past eight, take your marker to the Butler at the bar and make your offer. The House counts every offer, whether the answer is yes or no.",
+    ask: "In a sentence, what did the Butler say?",
+    points: POINTS,
+    with: ["rebecca"],
+    check: { kind: "vial-attempt" },
+  };
+}
+
+/** Learn why you want him dead. The answer is the survivor's own grievance, held by three other guests. */
+export function motiveChain(id: string, holders: GuestId[], keys: Pattern): Objective {
+  return {
+    id,
+    kind: "motive",
+    title: "Why you?",
+    text: "You came to be the one, and you are not sure you remember why. Find out what the Keeper took from you. Someone here saw part of it.",
+    ask: "What did he do?",
+    points: POINTS,
+    with: [holders[0]],
+    alsoFrom: holders.slice(1),
+    check: { kind: "pattern", all: keys },
+  };
+}

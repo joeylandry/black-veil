@@ -15,6 +15,13 @@
       "when": 1789659379351,
       "tag": "0001_clean_puck",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1792435795624,
+      "tag": "0002_game_engine",
+      "breakpoints": true
     }
   ]
 }

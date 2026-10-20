@@ -19,6 +19,19 @@ export const eventConfig = {
    */
   charactersReleased: false,
   /**
+   * TEMPORARY. While true, /admin and every /api/admin route work with NO passphrase, so anyone
+   * who opens /admin can read guest emails, sign in as any guest, edit or delete records and
+   * download the answer key. Set it back to false (and redeploy) before real guests arrive.
+   */
+  adminOpen: true,
+  /**
+   * The private tab, the errands and the answer boxes open on the night. They open on their own
+   * at this moment (the game master can also open or hold them from /admin without a redeploy).
+   */
+  secretsReleaseAt: "2026-10-23T19:55:00-04:00",
+  /** Answers stop being accepted at this moment, unless staff reopen them from /admin. */
+  submissionsCloseAt: "2026-10-23T22:30:00-04:00",
+  /**
    * The Restoration Bench (engineering track) is not advertised while this is false: no
    * footer link, no link from the trials, no conservation slips in the newspapers.
    * /bench still answers for staff who know the address.

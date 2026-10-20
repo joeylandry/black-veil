@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import Link from "next/link";
 import { eventConfig } from "@/config/event";
 import { RsvpSubmission } from "@/lib/rsvp-service";
 import { useStorageValue } from "@/lib/use-storage-value";
@@ -39,8 +40,8 @@ export function CharacterCard() {
       <section className="character-card character-card-sealed" aria-label="Your character">
         <BlackVeilInsignia />
         <div>
-          <p className="eyebrow">Your identity for the evening · <strong>Sealed</strong></p>
-          <p>Management has not yet chosen who you will be on October 23. It will appear here once assigned.</p>
+          <p className="eyebrow">Your identity for the evening · <strong>Coming very soon</strong></p>
+          <p>Characters are coming very soon. Your name, your history and what to wear will appear here, and on your <Link href="/game">Night page</Link>, the moment the cast is released.</p>
         </div>
       </section>
     );
