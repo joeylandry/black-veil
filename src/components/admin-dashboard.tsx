@@ -36,7 +36,7 @@ type Overview = {
 };
 
 /** The staff view of the whole register: counts, solves per challenge, guests, and the cast. */
-export function AdminDashboard({ secret, refreshKey, onChange }: { secret: string; refreshKey: number; onChange?: () => void }) {
+export function AdminDashboard({ secret, refreshKey }: { secret: string; refreshKey: number; onChange?: () => void }) {
   const [data, setData] = useState<Overview | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
@@ -67,29 +67,6 @@ export function AdminDashboard({ secret, refreshKey, onChange }: { secret: strin
     return () => window.clearInterval(timer);
   }, [load]);
 
-  async function characters(action: "assign" | "clear") {
-    setBusy(true);
-    setNotice(null);
-    const response = await fetch("/api/admin/characters", {
-      method: "POST",
-      headers: { "Content-Type": "application/json", Authorization: `Bearer ${secret}` },
-      body: JSON.stringify({ action }),
-    });
-    const body = await response.json().catch(() => null);
-    if (!response.ok) setNotice(body?.error ?? "That did not work.");
-    else if (action === "clear") setNotice(`Took back ${body.cleared} character${body.cleared === 1 ? "" : "s"}.`);
-    else {
-      setNotice(
-        body.assigned
-          ? `Dealt ${body.assigned} character${body.assigned === 1 ? "" : "s"} to attending guests.${body.stillWaiting ? ` ${body.stillWaiting} guest(s) still waiting — add more characters.` : ""}`
-          : "Every attending guest already holds a character.",
-      );
-    }
-    await load();
-    onChange?.();
-    setBusy(false);
-  }
-
   async function signInAs(guestId: string) {
     setBusy(true);
     const response = await fetch("/api/admin/impersonate", {
@@ -114,7 +91,6 @@ export function AdminDashboard({ secret, refreshKey, onChange }: { secret: strin
     { label: "Names on the register", value: stats.guests, note: `${stats.attending} attending · ${stats.regrets} regrets` },
     { label: "Flags & tickets solved", value: stats.solves, note: "across both tracks" },
     { label: "Claims awaiting review", value: stats.pendingClaims, note: "see the queue below" },
-    { label: "Characters dealt", value: `${stats.assigned} / ${stats.characters}`, note: stats.assigned ? "identities assigned" : "none assigned yet" },
   ];
 
   return (
@@ -136,43 +112,8 @@ export function AdminDashboard({ secret, refreshKey, onChange }: { secret: strin
       </section>
 
       <section className="admin-panel">
-        <div className="admin-panel-heading">
-          <div>
-            <h2>The cast</h2>
-            <p className="admin-panel-note">
-              {stats.characters
-                ? "Dealing gives every attending guest without a character a random one nobody holds. To cast a specific guest, set their character in the database editor below. Guests who already hold one keep it."
-                : "No characters are in the database yet. Create them one at a time in the database editor below."}
-            </p>
-          </div>
-          <div className="admin-actions">
-            <button type="button" className="admin-primary" disabled={busy || !stats.characters} onClick={() => characters("assign")}>
-              Assign characters
-            </button>
-            <button type="button" disabled={busy || !stats.assigned} onClick={() => characters("clear")}>
-              Take all back
-            </button>
-          </div>
-        </div>
-        {notice && <p className="admin-notice" role="status">{notice}</p>}
-        <ul className="admin-cast">
-          {data.characters.map((character) => (
-            <li key={character.id} className={character.assignedTo ? "assigned" : undefined}>
-              <strong>{character.name}</strong>
-              <em>{character.occupation}</em>
-              <span className="admin-cast-holder">{character.assignedTo ? `→ ${character.assignedTo}` : "Unassigned"}</span>
-              {(character.murderer || character.victim) && (
-                <span className="admin-cast-flag" title="Staff eyes only — never sent to guests">
-                  {character.murderer ? "Murderer" : "Victim"} · staff only
-                </span>
-              )}
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      <section className="admin-panel">
         <h2>Guests</h2>
+        {notice && <p className="admin-notice" role="status">{notice}</p>}
         <p className="admin-panel-note">Sign in as any guest to see the site exactly as they do, character card included. Sign back in as yourself from this table.</p>
         <div className="admin-table-scroll">
           <table className="admin-table">
