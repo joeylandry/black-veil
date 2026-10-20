@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { redirect } from "next/navigation";
+import { eventConfig } from "@/config/event";
 import { SecretPostscript } from "@/components/secret-postscript";
 
 export const metadata: Metadata = {
@@ -8,5 +10,7 @@ export const metadata: Metadata = {
 };
 
 export default function PostscriptPage() {
+  // The trials are closed for now: send everyone to the game.
+  if (!eventConfig.ctfOpen) redirect("/game");
   return <div className="page-wrap"><SecretPostscript /></div>;
 }

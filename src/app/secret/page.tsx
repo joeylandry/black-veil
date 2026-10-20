@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { redirect } from "next/navigation";
+import { eventConfig } from "@/config/event";
 import Link from "next/link";
 import { BlackVeilInsignia } from "@/components/black-veil-insignia";
 import { ctfChallenges } from "@/data/ctf";
@@ -11,6 +13,8 @@ export const metadata: Metadata = {
 };
 
 export default function SecretPage() {
+  // The trials are closed for now: send everyone to the game.
+  if (!eventConfig.ctfOpen) redirect("/game");
   const challenge = ctfChallenges.find((item) => item.id === "unlisted-room")!;
   const flag = ctfFlags[challenge.id];
 

@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { eventConfig } from "@/config/event";
 import { eq } from "drizzle-orm";
 import { getDb } from "@/lib/db/client";
 import { ctfSolves } from "@/lib/db/schema";
@@ -6,6 +7,7 @@ import { getSessionGuestId } from "@/lib/auth/session";
 import { scoreForSolvedIds, verifyFlag } from "@/lib/ctf-scoring";
 
 export async function POST(request: NextRequest) {
+  if (!eventConfig.ctfOpen) return NextResponse.json({ error: "The trials are closed for now.", code: "closed" }, { status: 410 });
   const guestId = await getSessionGuestId();
   if (!guestId) {
     return NextResponse.json({ error: "Sign in again to save your progress.", code: "unauthenticated" }, { status: 401 });

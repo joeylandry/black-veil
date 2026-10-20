@@ -4,7 +4,7 @@ import { PGlite } from "@electric-sql/pglite";
 import { drizzle } from "drizzle-orm/pglite";
 import { migrate } from "drizzle-orm/pglite/migrator";
 import { characters, markers, survivorIds, questions, characterById } from "@/data/game";
-import { guests, gameSubmissions } from "@/lib/db/schema";
+import { guests, gameSubmissions, rsvps } from "@/lib/db/schema";
 import { correctAnswer, correctMystery } from "./sim";
 import {
   adminOverview,
@@ -16,6 +16,7 @@ import {
   deriveState,
   dose,
   getState,
+  ledgerFor,
   loadRoster,
   makePacket,
   mySubmissions,
@@ -460,5 +461,54 @@ describe("refuses to publish without a killer", () => {
     assert.equal(result.ok, false);
     assert.match(result.message, /killer/i);
     await client.close();
+  });
+});
+
+describe("the guest ledger", () => {
+  let ctx: Awaited<ReturnType<typeof freshDb>>;
+  before(async () => {
+    ctx = await freshDb();
+    await seedGuests(ctx.db);
+    await ctx.db.insert(rsvps).values(characters.map((character) => ({ fullName: character.realNames[0], email: `${character.id}@example.test`, attending: "yes" as const, recordedAt: new Date() })));
+    // Luke changed his mind
+    await ctx.db.insert(rsvps).values({ fullName: "Luke Sheldon", email: "luke@example.test", attending: "no", recordedAt: new Date() });
+  });
+  after(async () => ctx.client.close());
+
+  it("lists every attending guest at zero, with no characters, before the cast is released", async () => {
+    const ledger = await ledgerFor(ctx.db, await idOf(ctx.db, "anika"), BEFORE);
+    assert.equal(ledger.released, false);
+    assert.equal(ledger.rows.length, characters.length - 1, "a guest whose latest RSVP is no is left off");
+    assert.ok(!ledger.rows.some((row) => row.name === "Luke Sheldon"));
+    for (const row of ledger.rows) {
+      assert.equal(row.points, 0);
+      assert.equal(row.character, null);
+      assert.equal(row.rank, null);
+    }
+    assert.equal(ledger.rows.filter((row) => row.isYou).length, 1);
+    assert.doesNotMatch(JSON.stringify(ledger), /survivor|marker|killer/i);
+  });
+
+  it("shows each guest's character once the cast is released, still at zero", async () => {
+    await writeFlag(ctx.db, "identitiesReleased", true);
+    const ledger = await ledgerFor(ctx.db, await idOf(ctx.db, "anika"), BEFORE);
+    assert.equal(ledger.released, true);
+    const sidd = ledger.rows.find((row) => row.name === "Siddarth Arvind")!;
+    assert.match(sidd.character!, /Air-Wind/);
+    assert.equal(sidd.points, 0);
+    for (const row of ledger.rows) assert.equal(row.points, 0);
+  });
+
+  it("stays at zero while the night is graded, and shows final scores only once published", async () => {
+    await butlerSell(ctx.db, null, markers.find((marker) => marker.no === 21)!.code, NIGHT);
+    await submit(ctx.db, await idOf(ctx.db, "anika"), { kind: "objective", itemId: "anika-2", answer: "Sophia" }, NIGHT);
+    await runGrading(ctx.db);
+    assert.ok((await ledgerFor(ctx.db, await idOf(ctx.db, "anika"), NIGHT)).rows.every((row) => row.points === 0), "grading alone changes nothing a guest can see");
+    await publishResults(ctx.db, { force: true });
+    const ledger = await ledgerFor(ctx.db, await idOf(ctx.db, "anika"), NIGHT);
+    assert.equal(ledger.published, true);
+    assert.equal(ledger.rows[0].rank, 1);
+    assert.ok(ledger.rows.some((row) => row.points > 0));
+    assert.ok(ledger.rows.every((row, index) => index === 0 || (ledger.rows[index - 1].rank ?? 0) <= (row.rank ?? 0)));
   });
 });
