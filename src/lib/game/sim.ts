@@ -31,7 +31,7 @@ export function correctAnswer(character: Character, objective: Objective): strin
     case "money":
       return `$${check.min + 5}`;
     case "clock":
-      return "8:46 pm";
+      return "9:16 pm";
     case "seek": {
       const [a, b] = check.pairs[0];
       return `${characterById.get(a)!.realNames[0]} and ${characterById.get(b)!.realNames[0]}`;

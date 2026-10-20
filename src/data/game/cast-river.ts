@@ -63,15 +63,15 @@ export const river: Character[] = [
       "You are the Butler. At the bar you hold the House Tin, the House Book and a single bottle of the House's own tincture for “river rats.”",
       "The bottle sells once a night, and only against a numbered marker handed to you by its owner. When a guest offers a marker, open the House panel on your phone, type the five-character code printed on it, and the phone tells you whether to sell. If it says sold, hand over the vial. If it says sold out, hand the marker back. The House counts every offer.",
       "Whatever you do, never reveal who bought the tincture until after the body is found. After that, you may sell the answer or keep it: $75 is a fair price.",
-      "At a quarter to nine you take the Keeper his rye. You will find him. Scream.",
+      "At a quarter past nine you take the Keeper his rye. You will find him. Scream.",
       "Nobody takes the marker from you, and you take nothing from anyone: it is all deals, always.",
     ],
     objectives: [
       find("rebecca-1", "black-frog"),
       secretOf("rebecca-2", "silas", "leon", ["hartford"]),
       money("rebecca-3", 175, "The House runs on cash, favours and silence. Sell alibis, sell silence, sell the answer. Leave with at least $175."),
-      role("rebecca-4", "The House's one sale", "Sell the House's single bottle to the owner of a numbered marker, once, before the nightcap is served at half past eight. Record the sale on your House panel.", "In a sentence, who did you sell to?", { kind: "butler-sale" }),
-      role("rebecca-5", "The scream", "At a quarter to nine, go to the Merrimack Room, find the Keeper and scream. Submit the time you screamed.", "The time you screamed (e.g. 8:46)", { kind: "clock", from: "20:44", to: "20:52" }),
+      role("rebecca-4", "The House's one sale", "Sell the House's single bottle to the owner of a numbered marker, once, before the nightcap is served at nine o'clock. Record the sale on your House panel.", "In a sentence, who did you sell to?", { kind: "butler-sale" }),
+      role("rebecca-5", "The scream", "At a quarter past nine, go to the Merrimack Room, find the Keeper and scream. Submit the time you screamed.", "The time you screamed (e.g. 9:16)", { kind: "clock", from: "21:14", to: "21:22" }),
     ],
   },
   {

@@ -22,8 +22,8 @@ joel-1. **A thing to find** (find, 12) Find the silver dollar. It is hidden in a
 joel-2. **What Rhea “Emporium” Mallya is hiding** (learn, 12) Everyone has something they would rather not say. Learn Rhea “Emporium” Mallya's small secret, not by being told it is a secret, but by earning it.
    - answer: [granite]; from Rhea “Emporium” Mallya, Anika Mahns of Mahns Manor
 joel-3. **The old man's hour** (chain, 12) The Keeper takes a nightcap at a fixed hour, in a fixed room. Until then the glass on his table is only a glass. Learn the hour, so you know how long you have.
-   - answer: [half past eight | 8:30 | 830 | eight thirty | 8 30 | half eight]; from Rebecca “Chow” Chou, Mihir “Nag” Nagarkatti, Molly “Extra!” Daniel, Anika Mahns of Mahns Manor
-joel-4. **Make your offer to the House** (chain, 12) The House keeps one bottle for those who can pay in a marker. Before the nightcap is served at half past eight, take your marker to the Butler at the bar and make your offer. The House counts every offer, whether the answer is yes or no.
+   - answer: [nine | 9 | 9:00 | 900 | 9 00 | nine oclock | 9 oclock | 9pm | 9 pm]; from Rebecca “Chow” Chou, Mihir “Nag” Nagarkatti, Molly “Extra!” Daniel, Anika Mahns of Mahns Manor
+joel-4. **Make your offer to the House** (chain, 12) The House keeps one bottle for those who can pay in a marker. Before the nightcap is served at nine o'clock, take your marker to the Butler at the bar and make your offer. The House counts every offer, whether the answer is yes or no.
    - answer: vial-attempt; from Rebecca “Chow” Chou
 joel-5. **Why you?** (motive, 12) You came to be the one, and you are not sure you remember why. Find out what the Keeper took from you. Someone here saw part of it.
    - answer: [co-pilot | copilot | cal | yates | partner | friend] AND [fuel line | fuel | sabotage | sabotaged | crash | plane | aeroplane | airplane | massabesic]; from Timothy “Gin” McGinley, John “Jack” Hudson (no relation to the motorcar), Sheriff Theodor “Farrago” Farag
@@ -73,7 +73,7 @@ theodor-1. **A thing to find** (find, 12) Find the Keeper's missing hat. It is h
    - answer: code K6NRA
 theodor-2. **What Leon “Gee-Whiz” Ge is hiding** (learn, 12) Everyone has something they would rather not say. Learn Leon “Gee-Whiz” Ge's small secret, not by being told it is a secret, but by earning it.
    - answer: [st anne | saint anne | st annes]; from Leon “Gee-Whiz” Ge, Ananya “The Code-Ruler” Koduru
-theodor-3. **First Responder** (role, 12) When you hear the scream at about a quarter to nine, reach the body fast, walk, do not run, and read the scene code on the card by the table.
+theodor-3. **First Responder** (role, 12) When you hear the scream at about a quarter past nine, reach the body fast, walk, do not run, and read the scene code on the card by the table.
    - answer: code AYTHC
 theodor-4. **The Coroner's Folder** (role, 12) Open the Coroner's Folder at the scene. File the report: type the filing code printed at the foot of the page.
    - answer: code YMYKK
@@ -87,8 +87,8 @@ eric-1. **A thing to find** (find, 12) Find the black feather. It is hidden in a
 eric-2. **What Mihir “Nag” Nagarkatti is hiding** (learn, 12) Everyone has something they would rather not say. Learn Mihir “Nag” Nagarkatti's small secret, not by being told it is a secret, but by earning it.
    - answer: [marigold]; from Mihir “Nag” Nagarkatti, Angelos “Bowled Over” Boules
 eric-3. **The old man's hour** (chain, 12) The Keeper takes a nightcap at a fixed hour, in a fixed room. Until then the glass on his table is only a glass. Learn the hour, so you know how long you have.
-   - answer: [half past eight | 8:30 | 830 | eight thirty | 8 30 | half eight]; from Rebecca “Chow” Chou, Mihir “Nag” Nagarkatti, Molly “Extra!” Daniel, Anika Mahns of Mahns Manor
-eric-4. **Make your offer to the House** (chain, 12) The House keeps one bottle for those who can pay in a marker. Before the nightcap is served at half past eight, take your marker to the Butler at the bar and make your offer. The House counts every offer, whether the answer is yes or no.
+   - answer: [nine | 9 | 9:00 | 900 | 9 00 | nine oclock | 9 oclock | 9pm | 9 pm]; from Rebecca “Chow” Chou, Mihir “Nag” Nagarkatti, Molly “Extra!” Daniel, Anika Mahns of Mahns Manor
+eric-4. **Make your offer to the House** (chain, 12) The House keeps one bottle for those who can pay in a marker. Before the nightcap is served at nine o'clock, take your marker to the Butler at the bar and make your offer. The House counts every offer, whether the answer is yes or no.
    - answer: vial-attempt; from Rebecca “Chow” Chou
 eric-5. **Why you?** (motive, 12) You came to be the one, and you are not sure you remember why. Find out what the Keeper took from you. Someone here saw part of it.
    - answer: [band | orchestra | musicians | drummer | pianist | singer | players] AND [killed | murdered | dead | died | killings | murder]; from Molly “Extra!” Daniel, Dr. Emre “Sooner or Later” Sunar, Luke “Shell Game” Sheldon
@@ -115,7 +115,7 @@ emre-2. **What Luke “Shell Game” Sheldon is hiding** (learn, 12) Everyone ha
 emre-3. **The examination** (role, 12) Examine the body. State what killed him, and what it was carried in.
    - answer: [strychnine | nux vomica] AND [rye | whiskey | nightcap | glass | drink]; from Sheriff Theodor “Farrago” Farag
 emre-4. **The time** (role, 12) State when the poison was taken, as closely as you can.
-   - answer: [half past eight | 8:30 | 830 | eight thirty | 8 30]
+   - answer: [nine | 9 | 9:00 | 900 | 9 00 | nine oclock | 9 oclock | 9pm | 9 pm]
 emre-5. **Where did it come from?** (story, 12) The report says a house stock, not a druggist's pack. Learn whose house.
    - answer: [butler | house | chow | rebecca]; from Adam “Holds Fire” Ouldsfiya, Rhea “Emporium” Mallya
 
@@ -178,8 +178,8 @@ silas-1. **A thing to find** (find, 12) Find the queen of spades. It is hidden i
 silas-2. **What Sheriff Theodor “Farrago” Farag is hiding** (learn, 12) Everyone has something they would rather not say. Learn Sheriff Theodor “Farrago” Farag's small secret, not by being told it is a secret, but by earning it.
    - answer: [sock]; from Sheriff Theodor “Farrago” Farag, Adam “Holds Fire” Ouldsfiya
 silas-3. **The old man's hour** (chain, 12) The Keeper takes a nightcap at a fixed hour, in a fixed room. Until then the glass on his table is only a glass. Learn the hour, so you know how long you have.
-   - answer: [half past eight | 8:30 | 830 | eight thirty | 8 30 | half eight]; from Rebecca “Chow” Chou, Mihir “Nag” Nagarkatti, Molly “Extra!” Daniel, Anika Mahns of Mahns Manor
-silas-4. **Make your offer to the House** (chain, 12) The House keeps one bottle for those who can pay in a marker. Before the nightcap is served at half past eight, take your marker to the Butler at the bar and make your offer. The House counts every offer, whether the answer is yes or no.
+   - answer: [nine | 9 | 9:00 | 900 | 9 00 | nine oclock | 9 oclock | 9pm | 9 pm]; from Rebecca “Chow” Chou, Mihir “Nag” Nagarkatti, Molly “Extra!” Daniel, Anika Mahns of Mahns Manor
+silas-4. **Make your offer to the House** (chain, 12) The House keeps one bottle for those who can pay in a marker. Before the nightcap is served at nine o'clock, take your marker to the Butler at the bar and make your offer. The House counts every offer, whether the answer is yes or no.
    - answer: vial-attempt; from Rebecca “Chow” Chou
 silas-5. **Why you?** (motive, 12) You came to be the one, and you are not sure you remember why. Find out what the Keeper took from you. Someone here saw part of it.
    - answer: [forged | forge | forger | forgery | forging] AND [orders | order | cassie | framed | frame | blame | blamed]; from Anthony “Hung Jury” Huang, Ananya “The Code-Ruler” Koduru, Joshua “Chimney Sweep” Kaminsky
@@ -243,8 +243,8 @@ diwakar-1. **A thing to find** (find, 12) Find the lipstick. It is hidden in a s
 diwakar-2. **What Molly “Extra!” Daniel is hiding** (learn, 12) Everyone has something they would rather not say. Learn Molly “Extra!” Daniel's small secret, not by being told it is a secret, but by earning it.
    - answer: [dolly]; from Molly “Extra!” Daniel, Anika Mahns of Mahns Manor
 diwakar-3. **The old man's hour** (chain, 12) The Keeper takes a nightcap at a fixed hour, in a fixed room. Until then the glass on his table is only a glass. Learn the hour, so you know how long you have.
-   - answer: [half past eight | 8:30 | 830 | eight thirty | 8 30 | half eight]; from Rebecca “Chow” Chou, Mihir “Nag” Nagarkatti, Molly “Extra!” Daniel, Anika Mahns of Mahns Manor
-diwakar-4. **Make your offer to the House** (chain, 12) The House keeps one bottle for those who can pay in a marker. Before the nightcap is served at half past eight, take your marker to the Butler at the bar and make your offer. The House counts every offer, whether the answer is yes or no.
+   - answer: [nine | 9 | 9:00 | 900 | 9 00 | nine oclock | 9 oclock | 9pm | 9 pm]; from Rebecca “Chow” Chou, Mihir “Nag” Nagarkatti, Molly “Extra!” Daniel, Anika Mahns of Mahns Manor
+diwakar-4. **Make your offer to the House** (chain, 12) The House keeps one bottle for those who can pay in a marker. Before the nightcap is served at nine o'clock, take your marker to the Butler at the bar and make your offer. The House counts every offer, whether the answer is yes or no.
    - answer: vial-attempt; from Rebecca “Chow” Chou
 diwakar-5. **Why you?** (motive, 12) You came to be the one, and you are not sure you remember why. Find out what the Keeper took from you. Someone here saw part of it.
    - answer: [share | own money | advance | savings | pocket] AND [hitman | quill | killer | killers | assassin | murder | killings | killed]; from John “Jack” Hudson (no relation to the motorcar), Adam “Holds Fire” Ouldsfiya, Timothy “Gin” McGinley
@@ -270,10 +270,10 @@ rebecca-2. **What Silas “Duke” Palmer is hiding** (learn, 12) Everyone has s
    - answer: [hartford]; from Silas “Duke” Palmer, Leon “Gee-Whiz” Ge
 rebecca-3. **Money to make** (money, 12) The House runs on cash, favours and silence. Sell alibis, sell silence, sell the answer. Leave with at least $175. Count your bills at the end and submit the total. The host may ask to see it.
    - answer: at least $175
-rebecca-4. **The House's one sale** (role, 12) Sell the House's single bottle to the owner of a numbered marker, once, before the nightcap is served at half past eight. Record the sale on your House panel.
+rebecca-4. **The House's one sale** (role, 12) Sell the House's single bottle to the owner of a numbered marker, once, before the nightcap is served at nine o'clock. Record the sale on your House panel.
    - answer: butler-sale
-rebecca-5. **The scream** (role, 12) At a quarter to nine, go to the Merrimack Room, find the Keeper and scream. Submit the time you screamed.
-   - answer: 20:44 to 20:52
+rebecca-5. **The scream** (role, 12) At a quarter past nine, go to the Merrimack Room, find the Keeper and scream. Submit the time you screamed.
+   - answer: 21:14 to 21:22
 
 ## Angelos “Bowled Over” Boules
 
@@ -308,8 +308,8 @@ sidd-1. **A thing to find** (find, 12) Find the green glove. It is hidden in a s
 sidd-2. **What Tiffany Liu, of the Lamps is hiding** (learn, 12) Everyone has something they would rather not say. Learn Tiffany Liu, of the Lamps's small secret, not by being told it is a secret, but by earning it.
    - answer: [frog]; from Tiffany Liu, of the Lamps, Joshua “Chimney Sweep” Kaminsky
 sidd-3. **The old man's hour** (chain, 12) The Keeper takes a nightcap at a fixed hour, in a fixed room. Until then the glass on his table is only a glass. Learn the hour, so you know how long you have.
-   - answer: [half past eight | 8:30 | 830 | eight thirty | 8 30 | half eight]; from Rebecca “Chow” Chou, Mihir “Nag” Nagarkatti, Molly “Extra!” Daniel, Anika Mahns of Mahns Manor
-sidd-4. **Make your offer to the House** (chain, 12) The House keeps one bottle for those who can pay in a marker. Before the nightcap is served at half past eight, take your marker to the Butler at the bar and make your offer. The House counts every offer, whether the answer is yes or no.
+   - answer: [nine | 9 | 9:00 | 900 | 9 00 | nine oclock | 9 oclock | 9pm | 9 pm]; from Rebecca “Chow” Chou, Mihir “Nag” Nagarkatti, Molly “Extra!” Daniel, Anika Mahns of Mahns Manor
+sidd-4. **Make your offer to the House** (chain, 12) The House keeps one bottle for those who can pay in a marker. Before the nightcap is served at nine o'clock, take your marker to the Butler at the bar and make your offer. The House counts every offer, whether the answer is yes or no.
    - answer: vial-attempt; from Rebecca “Chow” Chou
 sidd-5. **Why you?** (motive, 12) You came to be the one, and you are not sure you remember why. Find out what the Keeper took from you. Someone here saw part of it.
    - answer: [partner | bell | ignatius | friend | second door | second doorman] AND [killed | shot | murdered | murder]; from Sheriff Theodor “Farrago” Farag, Adam “Holds Fire” Ouldsfiya, Angelos “Bowled Over” Boules

@@ -58,13 +58,13 @@ Everything below was a gap. Each is a single place in the data, and `npm run gam
 **Mechanics**
 6. **Markers.** Each survivor carries a numbered **marker** (18 to 22, matching the List). Paying the Butler a marker buys the vial; the **marker left in the House Tin is placed by the body**. The List says which member owns which marker, and notes each member's **tell**. That is the main route from the body to the killer; the Butler's testimony and the tells are two more.
 7. **Tells and decoys.** Each survivor has a small habit (counts bills with a thumb, rings every i, conducts with two fingers, never sits with their back to a door, wets a finger to test the wind). **Five innocent guests have a lookalike habit** (Mihir, Anthony, Molly, Theodor, Arjun), each cleared by three other guests, so naming survivors is a real puzzle, not a giveaway.
-8. **The nightcap.** The Keeper takes a honeyed rye at **8:30**; the House closes then. The buyer pours the vial into the glass and types the code under its coaster into their phone (always answered "Noted"). The dose is the story; **the sale is what decides the killer.**
+8. **The nightcap.** The Keeper takes a honeyed rye at **9:00**; the House closes then. The buyer pours the vial into the glass and types the code under its coaster into their phone (always answered "Noted"). The dose is the story; **the sale is what decides the killer.**
 9. **The List** has 22 names, 17 "settled", 5 unsettled. The **forged orders ring their i's**; Cassie's real hand does not. That ring-dotting also points at the Notary.
 10. **Two withdrawn memorial notices** (public canon) are two of the survivors faking their deaths.
 11. **Persona-group fairness.** Errands are the same 60 for everyone in every circle.
 12. **Money.** $100 average per guest ($2,740 in the room); eight guests have money errands that ask them to win $40 to $110 from others. The host may spot-check cash for the likely winners.
 13. **Two secret affairs, to hide and to seek.** **Anthony and Rhea; Jack and Tiffany.** Three seekers (Molly, Leon, Angelos). These are character romances, light and arbitrary. **Veto or swap any pair.**
-14. **Timing:** doors 8:00, nightcap 8:30, body found 8:45, investigation to about 10:00, answers close 10:30 (all adjustable from /admin).
+14. **Timing:** doors 8:00, nightcap 9:00, body found 9:15, investigation to about 10:15, answers close 10:30 (all adjustable from /admin).
 
 **Scoring**
 15. **Pages ("exhibits").** Typing the code at the foot of a printed page earns 2 points, 6 pages at most. Pages you were handed earn nothing.

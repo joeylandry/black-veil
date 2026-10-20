@@ -111,7 +111,7 @@ Filing code: 4U2J3
 
 ```
 FOR THE HOUSE · K.K.
-Rye, one finger, a spoon of honey. Half past eight. In the Merrimack Room. No ice. The Butler serves it.
+Rye, one finger, a spoon of honey. Nine o'clock. In the Merrimack Room. No ice. The Butler serves it.
 
 Filing code: T7MYM
 ```
@@ -208,7 +208,7 @@ Filing code: 8C7CN
 COUNTY PHYSICIAN · preliminary examination
 Deceased: an old man, white hair and beard; pocket watch engraved “K.”
 Cause: poisoning. Strychnine, as nux vomica, taken in rye whiskey. The glass was sweetened with honey to hide the bitterness.
-Time: the dose was taken at about half past eight; death within the quarter hour.
+Time: the dose was taken at about nine o'clock; death within the quarter hour.
 Bottle: an apothecary's vial from a house stock, not a druggist's pack.
 
 Filing code: YMYKK
@@ -320,7 +320,7 @@ One slip per clue errand. Hand it to a guest whose named sources did not come.
 - **anika-2** (Anika Mahns of Mahns Manor): Your lucky boule, Sophia, is weighted with lead.
 - **anika-5** (Anika Mahns of Mahns Manor): In 1921 you sold the Veil a vault lock with three keyways and a dial. The combination was set in your shop by one person, a lady, alone.
 - **joel-2** (J. Bruce Wayne): The Emporium is mortgaged to the Granite State Trust, and the sign still says “Established, Unencumbered.”
-- **joel-3** (J. Bruce Wayne): You knew him the moment he came to the river door on the 22nd: Kit Kessler, the Keeper. He asked for the Merrimack Room, and a rye at half past eight.
+- **joel-3** (J. Bruce Wayne): On 1 November 1924 you took $200 from “Mr. K.” to forget the lady in Room 3. You took it.
 - **joel-5** (J. Bruce Wayne): The mechanic they called Lefty bragged in the gin cellar that he had been paid to cut a fuel line on a plane that fell into Lake Massabesic in March 1925, killing the co-pilot, Cal Yates.
 - **mihir-2** (Mihir “Nag” Nagarkatti): You struck out on purpose on August 14 for $500.
 - **mihir-4** (Mihir “Nag” Nagarkatti): Every marker carries the number of its owner on the Keeper's List. Markers 18 to 22 never came back to the House.
@@ -332,7 +332,7 @@ One slip per clue errand. Hand it to a guest whose named sources did not come.
 - **theodor-2** (Sheriff Theodor “Farrago” Farag): see theodor-2 in 03-objectives.md
 - **theodor-5** (Sheriff Theodor “Farrago” Farag): Your poison register shows the House bought four ounces of nux vomica tincture in September, “for river rats,” signed R. Chow.
 - **eric-2** (Judge Eric “Leeway” Li): You fixed the fourth at Rockingham Park by buying off a jockey to ride the long shot Marigold's Pride.
-- **eric-3** (Judge Eric “Leeway” Li): You knew him the moment he came to the river door on the 22nd: Kit Kessler, the Keeper. He asked for the Merrimack Room, and a rye at half past eight.
+- **eric-3** (Judge Eric “Leeway” Li): On 1 November 1924 you took $200 from “Mr. K.” to forget the lady in Room 3. You took it.
 - **eric-5** (Judge Eric “Leeway” Li): Within six months in 1925 the Farrago reported three members of one small band dead: a drummer in a motor-bus, a singer from a window, a pianist from a stove flue. All three died.
 - **anthony-2** (Anthony “Hung Jury” Huang): Your gin travels in the hearse of Dolan's Funeral Home, where a coffin holds forty bottles.
 - **anthony-4** (Anthony “Hung Jury” Huang): You cut the brass plate on the Veil's register: “KEEPER · K.K.” You know whose initials those are: Kit Kessler's.
@@ -350,11 +350,11 @@ One slip per clue errand. Hand it to a guest whose named sources did not come.
 - **luke-2** (Luke “Shell Game” Sheldon): You pawned your mother's pearls at Dutton's Pawn and told the whole North End they were at the cleaners.
 - **luke-4** (Luke “Shell Game” Sheldon): That night you were called to a fainting guest, not a wound: the “blood” on the glove smelled of beet and sugar. No coroner was ever summoned and you signed no certificate.
 - **silas-2** (Silas “Duke” Palmer): You keep your revolver's bullets in your sock; the gun itself has never been loaded.
-- **silas-3** (Silas “Duke” Palmer): You knew him the moment he came to the river door on the 22nd: Kit Kessler, the Keeper. He asked for the Merrimack Room, and a rye at half past eight.
+- **silas-3** (Silas “Duke” Palmer): On 1 November 1924 you took $200 from “Mr. K.” to forget the lady in Room 3. You took it.
 - **silas-5** (Silas “Duke” Palmer): The three forged orders carry the smudge of a notary's embossing seal, as if a notary had been made to sign them against his will.
 - **josh-2** (Joshua “Chimney Sweep” Kaminsky): You fired a gun once, at a pigeon, and missed.
 - **josh-4** (Joshua “Chimney Sweep” Kaminsky): In November 1924 you sold a grey Hudson to a man called Quill, paid by a draft on a Boston account signed K. Kessler. The car turned up wrecked in the Merrimack that March.
-- **josh-5** (Joshua “Chimney Sweep” Kaminsky): You knew him the moment he came to the river door on the 22nd: Kit Kessler, the Keeper. He asked for the Merrimack Room, and a rye at half past eight.
+- **josh-5** (Joshua “Chimney Sweep” Kaminsky): You knew him the moment he came to the river door on the 22nd: Kit Kessler, the Keeper. He asked for the Merrimack Room, and a rye at nine o'clock.
 - **arjun-2** (Arjun “The Bat” Bhat): The House whiskey is cut with cold tea; nobody has ever noticed.
 - **arjun-4** (Arjun “The Bat” Bhat): Between December 1924 and September 1925 seventeen people with no records and no families died in “accidents” in your county: a fire, a fall, a drowning, an aeroplane. You never found a link.
 - **arjun-5** (Arjun “The Bat” Bhat): If anyone asks you for a Yiddish word to shout at an umpire, give them “shmendrik.” It means a fool, and it is the funniest word you know.
@@ -364,7 +364,7 @@ One slip per clue errand. Hand it to a guest whose named sources did not come.
 - **tiffany-2** (Tiffany Liu, of the Lamps): You are wanted in Vermont for stealing a church organ.
 - **tiffany-5** (Tiffany Liu, of the Lamps): In 1921 you sold the Veil a vault lock with three keyways and a dial. The combination was set in your shop by one person, a lady, alone.
 - **diwakar-2** (Diwakar “Sandbag” Sandhu): The still in the Mahns Manor cellar is named Dolly, and she turns out forty gallons a month.
-- **diwakar-3** (Diwakar “Sandbag” Sandhu): You knew him the moment he came to the river door on the 22nd: Kit Kessler, the Keeper. He asked for the Merrimack Room, and a rye at half past eight.
+- **diwakar-3** (Diwakar “Sandbag” Sandhu): On 1 November 1924 you took $200 from “Mr. K.” to forget the lady in Room 3. You took it.
 - **diwakar-5** (Diwakar “Sandbag” Sandhu): The draft that bought Quill's Hudson was drawn on an account stubbed “Crane, advance.” The money was somebody's own share.
 - **tim-2** (Timothy “Gin” McGinley): Wayne Petroleum owns exactly one leased derrick, near Beaumont, Texas. It has never struck oil.
 - **tim-5** (Timothy “Gin” McGinley): The flue of the Merrimack Room runs behind a brick wall that is too thick on the inside. A safe lives there.
@@ -373,7 +373,7 @@ One slip per clue errand. Hand it to a guest whose named sources did not come.
 - **erika-2** (Erika “On the” Lam): The gavel you bang is a doorstop from your mother's kitchen.
 - **erika-4** (Erika “On the” Lam): Every “I am well” item Leon airs was filed from Montreal. You have seen the stamp on the telegram slip.
 - **sidd-2** (Siddarth “Air-Wind” Arvind): Every window you make hides a tiny frog in the glass as your signature.
-- **sidd-3** (Siddarth “Air-Wind” Arvind): You knew him the moment he came to the river door on the 22nd: Kit Kessler, the Keeper. He asked for the Merrimack Room, and a rye at half past eight.
+- **sidd-3** (Siddarth “Air-Wind” Arvind): On 1 November 1924 you took $200 from “Mr. K.” to forget the lady in Room 3. You took it.
 - **sidd-5** (Siddarth “Air-Wind” Arvind): On 15 September 1925 a man named Ignatius Bell was shot in a “brawl” at a Granite Street shed. Nobody claimed his body.
 
 ## Each guest's envelope

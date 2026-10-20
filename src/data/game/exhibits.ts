@@ -1,7 +1,7 @@
 /**
  * Every printed page in the game. "binder" pages live in the Keeper's Binder on the
  * table in the Merrimack Room; "held" pages ride in one guest's envelope; "scene" pages
- * are laid out around the body at about 8:35. Each page ends with its filing code, which
+ * are laid out around the body at about 9:05. Each page ends with its filing code, which
  * a guest types to claim the exhibit.
  */
 import type { Exhibit } from "./types";
@@ -163,7 +163,7 @@ export const exhibits: Exhibit[] = [
     appears: "start",
     body: [
       "FOR THE HOUSE · K.K.",
-      "Rye, one finger, a spoon of honey. Half past eight. In the Merrimack Room. No ice. The Butler serves it.",
+      "Rye, one finger, a spoon of honey. Nine o'clock. In the Merrimack Room. No ice. The Butler serves it.",
       "",
       "Filing code: T7MYM",
     ],
@@ -316,7 +316,7 @@ export const exhibits: Exhibit[] = [
       "COUNTY PHYSICIAN · preliminary examination",
       "Deceased: an old man, white hair and beard; pocket watch engraved “K.”",
       "Cause: poisoning. Strychnine, as nux vomica, taken in rye whiskey. The glass was sweetened with honey to hide the bitterness.",
-      "Time: the dose was taken at about half past eight; death within the quarter hour.",
+      "Time: the dose was taken at about nine o'clock; death within the quarter hour.",
       "Bottle: an apothecary's vial from a house stock, not a druggist's pack.",
       "",
       "Filing code: YMYKK",
@@ -324,7 +324,7 @@ export const exhibits: Exhibit[] = [
     supports: ["poison", "vial", "nightcap"],
   },
 
-  // ---- at the scene (laid out by Joe at about 8:35) ----
+  // ---- at the scene (laid out by Joe at about 9:05) ----
   {
     id: "watch",
     code: "4CXUR",
