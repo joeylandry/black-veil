@@ -89,8 +89,6 @@ export function AdminDashboard({ secret, refreshKey }: { secret: string; refresh
   const { stats } = data;
   const tiles = [
     { label: "Names on the register", value: stats.guests, note: `${stats.attending} attending · ${stats.regrets} regrets` },
-    { label: "Flags & tickets solved", value: stats.solves, note: "across both tracks" },
-    { label: "Claims awaiting review", value: stats.pendingClaims, note: "see the queue below" },
   ];
 
   return (
@@ -106,12 +104,6 @@ export function AdminDashboard({ secret, refreshKey }: { secret: string; refresh
       </section>
 
       <section className="admin-panel">
-        <h2>Solves by challenge</h2>
-        <p className="admin-panel-note">How many guests have solved each trial and restoration ticket.</p>
-        <SolveChart challenges={data.challenges} total={stats.guests} />
-      </section>
-
-      <section className="admin-panel">
         <h2>Guests</h2>
         {notice && <p className="admin-notice" role="status">{notice}</p>}
         <p className="admin-panel-note">Sign in as any guest to see the site exactly as they do, character card included. Sign back in as yourself from this table.</p>
@@ -121,7 +113,6 @@ export function AdminDashboard({ secret, refreshKey }: { secret: string; refresh
               <tr>
                 <th>Guest</th>
                 <th>RSVP</th>
-                <th className="numeric">Solved</th>
                 <th className="numeric">Points</th>
                 <th>Character</th>
                 <th><span className="sr-only">Actions</span></th>
@@ -135,7 +126,6 @@ export function AdminDashboard({ secret, refreshKey }: { secret: string; refresh
                     <small>{guest.email}</small>
                   </td>
                   <td>{guest.attending === "yes" ? "Attending" : guest.attending === "no" ? "Regrets" : "—"}</td>
-                  <td className="numeric">{guest.solves}</td>
                   <td className="numeric">{guest.points}</td>
                   <td>{guest.character ? guest.character.name : <span className="character-sealed">None</span>}</td>
                   <td>
@@ -147,49 +137,6 @@ export function AdminDashboard({ secret, refreshKey }: { secret: string; refresh
           </table>
         </div>
       </section>
-    </div>
-  );
-}
-
-/** One series, so one ink: horizontal bars grouped by track, value labels at the bar ends. */
-function SolveChart({ challenges, total }: { challenges: Overview["challenges"]; total: number }) {
-  const [hovered, setHovered] = useState<string | null>(null);
-  const max = Math.max(1, ...challenges.map((challenge) => challenge.solves));
-  const groups = [
-    { track: "trials", title: "Manchester trials" },
-    { track: "bench", title: "Restoration bench" },
-  ] as const;
-
-  return (
-    <div className="solve-chart">
-      {groups.map((group) => (
-        <div key={group.track} className="solve-chart-group">
-          <h3>{group.title}</h3>
-          <ul>
-            {challenges
-              .filter((challenge) => challenge.track === group.track)
-              .map((challenge) => (
-                <li
-                  key={challenge.id}
-                  className={hovered === challenge.id ? "hovered" : undefined}
-                  onMouseEnter={() => setHovered(challenge.id)}
-                  onMouseLeave={() => setHovered(null)}
-                >
-                  <span className="solve-chart-label">{challenge.label}</span>
-                  <span className="solve-chart-track">
-                    <span className="solve-chart-bar" style={{ width: `${(challenge.solves / max) * 100}%` }} />
-                    {hovered === challenge.id && (
-                      <span className="solve-chart-tip" role="tooltip">
-                        {challenge.solves} of {total} guests · {total ? Math.round((challenge.solves / total) * 100) : 0}%
-                      </span>
-                    )}
-                  </span>
-                  <span className="solve-chart-value">{challenge.solves}</span>
-                </li>
-              ))}
-          </ul>
-        </div>
-      ))}
     </div>
   );
 }
