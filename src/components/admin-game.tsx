@@ -15,11 +15,10 @@ type Overview = {
 
 type StandingRow = { rank: number; name: string; circle: string; survivor: boolean; total: number; tiers: { objectives: number; exhibits: number; survivors: number; mysteries: number; poisoner: number } };
 
-const flagLabels: { key: "identitiesReleased" | "secretsReleased" | "submissionsClosed" | "nightcapServed"; title: string; note: string }[] = [
+const flagLabels: { key: "identitiesReleased" | "secretsReleased" | "submissionsClosed"; title: string; note: string }[] = [
   { key: "identitiesReleased", title: "Characters released", note: "Public and Background tabs. Until this is on, guests see “Characters coming very soon.”" },
   { key: "secretsReleased", title: "Private tab open", note: "Opens by itself at 7:55 PM on the 23rd. Force it open to test, or hold it shut." },
   { key: "submissionsClosed", title: "Book closed", note: "Closes by itself at 10:30 PM. Force it open if the night runs long." },
-  { key: "nightcapServed", title: "Nightcap served", note: "Turn on at 8:30. It closes the House: no more sales, no more dosing." },
 ];
 
 /** The game master's panel: switches, the cast, the House's log, and the end-of-night grading. */
