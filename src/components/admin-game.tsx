@@ -4,7 +4,7 @@ import { FormEvent, useCallback, useEffect, useState } from "react";
 
 type Overview = {
   state: { identitiesReleased: boolean; secretsReleased: boolean; submissionsOpen: boolean; nightcapServed: boolean; resultsPublished: boolean; absent: string[]; seed: string; killerOverride: string | null };
-  cast: { slug: string; name: string; circle: string; survivor: boolean; markerNo: number | null; guest: { id: string; fullName: string } | null; absent: boolean; submissions: number }[];
+  cast: { slug: string; name: string; occupation: string; publicBio: string; history: string; wardrobe: string; edited: boolean; circle: string; survivor: boolean; markerNo: number | null; guest: { id: string; fullName: string } | null; absent: boolean; submissions: number }[];
   uncastGuests: { id: string; fullName: string }[];
   guests: { id: string; fullName: string }[];
   created: number;
@@ -24,6 +24,28 @@ const flagLabels: { key: "identitiesReleased" | "secretsReleased" | "submissions
   { key: "secretsReleased", title: "Private tab open", note: "Opens by itself at 7:55 PM on the 23rd. Force it open to test, or hold it shut." },
   { key: "submissionsClosed", title: "Book closed", note: "Closes by itself at 10:30 PM. Force it open if the night runs long." },
 ];
+
+type CastEntry = Overview["cast"][number];
+
+/** Rename a character and rewrite their public line and background. Saved text replaces the printed text everywhere guests see it. */
+function EditCharacter({ entry, busy, onSave, onReset }: { entry: CastEntry; busy: boolean; onSave: (fields: Record<string, string>) => void; onReset: () => void }) {
+  const [fields, setFields] = useState({ name: entry.name, occupation: entry.occupation, publicBio: entry.publicBio, history: entry.history, wardrobe: entry.wardrobe });
+  const set = (key: keyof typeof fields) => (event: { target: { value: string } }) => setFields((current) => ({ ...current, [key]: event.target.value }));
+  return (
+    <details className="admin-cast-edit">
+      <summary>Edit name and text{entry.edited ? " · edited" : ""}</summary>
+      <label>Name<input value={fields.name} onChange={set("name")} maxLength={80} /></label>
+      <label>Job or title<input value={fields.occupation} onChange={set("occupation")} maxLength={120} /></label>
+      <label>Public line (what everyone sees)<textarea value={fields.publicBio} onChange={set("publicBio")} maxLength={600} rows={3} /></label>
+      <label>Background (their history)<textarea value={fields.history} onChange={set("history")} maxLength={1500} rows={5} /></label>
+      <label>What to wear<textarea value={fields.wardrobe} onChange={set("wardrobe")} maxLength={400} rows={2} /></label>
+      <div className="admin-row-actions">
+        <button type="button" className="admin-primary" disabled={busy} onClick={() => onSave(fields)}>Save</button>
+        <button type="button" disabled={busy} onClick={onReset}>Back to printed text</button>
+      </div>
+    </details>
+  );
+}
 
 /** The game master's panel: switches, the cast, the House's log, and the end-of-night grading. */
 export function AdminGame({ secret }: { secret: string }) {
@@ -159,9 +181,7 @@ export function AdminGame({ secret }: { secret: string }) {
 
       <h3 className="admin-section-title">2 · Who plays whom</h3>
       <p className="admin-panel-note">
-        {overview.created === 0
-          ? "No characters exist yet. Press the button below first."
-          : `${overview.castCount} of ${overview.cast.length} characters have a guest.`}{" "}
+        {`${overview.castCount} of ${overview.cast.length} characters have a guest.`}{" "}
         &ldquo;Fill in by name&rdquo; matches each registered guest to the character written for them. After that you can change anyone by hand: pick a different guest from a character&rsquo;s dropdown, or choose &ldquo;nobody&rdquo; to free it up. A guest can only hold one character, so picking someone who already has one moves them.
       </p>
       <div className="admin-actions">
@@ -182,7 +202,7 @@ export function AdminGame({ secret }: { secret: string }) {
                   Played by
                   <select
                     value={entry.guest?.id ?? ""}
-                    disabled={busy || overview.created === 0}
+                    disabled={busy}
                     onChange={(event) => act({ action: "assign-character", slug: entry.slug, guestId: event.target.value || null }, () => `${entry.name} is now ${event.target.value ? "played by " + (overview.guests.find((guest) => guest.id === event.target.value)?.fullName ?? "that guest") : "unassigned"}.`)}
                   >
                     <option value="">Nobody</option>
@@ -190,6 +210,7 @@ export function AdminGame({ secret }: { secret: string }) {
                   </select>
                 </label>
                 <small>{entry.submissions} answers saved</small>
+                <EditCharacter entry={entry} busy={busy} onSave={(fields) => act({ action: "edit-character", slug: entry.slug, ...fields }, () => `${entry.name} saved.`)} onReset={() => act({ action: "edit-character", slug: entry.slug, reset: true }, () => `${entry.name} is back to the printed text.`)} />
                 <label className="admin-cast-absent">
                   <input
                     type="checkbox"

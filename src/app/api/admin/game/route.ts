@@ -8,6 +8,7 @@ import {
   assignVial,
   butlerSell,
   castByName,
+  editCharacter,
   publishResults,
   resetGrades,
   resetVial,
@@ -62,6 +63,12 @@ export async function POST(request: NextRequest) {
         if (!characterById.has(slug)) return reply({ error: "Unknown character." }, 400);
         const guestId = body.guestId === null || body.guestId === "" ? null : String(body.guestId);
         const result = await assignCharacter(db, slug, guestId);
+        return result.ok ? reply({ ok: true }) : reply({ error: result.error }, 400);
+      }
+      case "edit-character": {
+        const slug = String(body.slug ?? "");
+        const edit = body.reset === true ? null : { name: body.name, occupation: body.occupation, publicBio: body.publicBio, history: body.history, wardrobe: body.wardrobe };
+        const result = await editCharacter(db, slug, edit);
         return result.ok ? reply({ ok: true }) : reply({ error: result.error }, 400);
       }
       case "set-flag": {
