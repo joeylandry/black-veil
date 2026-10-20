@@ -151,7 +151,7 @@ export function survivorRules(markerNo: number): string[] {
     "You are one of the five. Everyone has been told survivors are in the room; nobody has been told who. Your cover is your public card. Keep it.",
     `You carry marker No. ${markerNo}. It is yours alone: never trade it, never give it away. It is how you pay the House.`,
     "You have told yourself so many stories since 1925 that you are no longer certain of your real reason for coming. You only know that you must be the one. Somebody in this room saw what he did to you; finding out is one of your errands.",
-    "The House keeps one bottle of tincture and sells it once a night, to whoever shows the Butler a marker first. Make your offer before the nightcap is served at half past eight. Only one of you can be the one.",
+    "The House keeps one bottle of tincture and sells it once a night, to whoever shows the Butler a marker first. Make your offer before the nightcap is served at nine o'clock. Only one of you can be the one.",
     "If the Butler sells to you, the Keeper's nightcap waits in a glass on his table in the Merrimack Room. Pour the vial in unseen, then type the short code printed under the glass's coaster into the nightcap box on this page. Only the buyer's code counts, and the page will say only “Noted.”",
     "Do your tell, a small habit you no longer notice, at least three times before the nightcap. Do not overdo it.",
     "You know who the other four are, and they know you. You are competing, and every one of you has the right to try.",

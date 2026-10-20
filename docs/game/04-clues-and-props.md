@@ -71,19 +71,19 @@ A vault in the Merrimack Room holds the Veil's real books. It opens to three key
 ### dead-kit (new)
 The man in the Merrimack Room is Kit Kessler, the Veil's Keeper and bookkeeper, who was thought dead in 1924.
 
-- **Rebecca “Chow” Chou** [trade]: You knew him the moment he came to the river door on the 22nd: Kit Kessler, the Keeper. He asked for the Merrimack Room, and a rye at half past eight.
+- **Rebecca “Chow” Chou** [trade]: You knew him the moment he came to the river door on the 22nd: Kit Kessler, the Keeper. He asked for the Merrimack Room, and a rye at nine o'clock.
 - **Anika Mahns of Mahns Manor** [trade]: “K.K.” endorsed every Mahns draft for three years: an old man with a white beard and a watch he never reset.
 - **Anthony “Hung Jury” Huang** [trade]: Fitch & Fitch of Boston, who sent you “K. Kessler's” instructions, had one client of that name: the old keeper of a supper club.
 - **Tiffany Liu, of the Lamps** [free]: You cut the brass plate on the Veil's register: “KEEPER · K.K.” You know whose initials those are: Kit Kessler's.
 - printed: watch, drafts, ticket
 
 ### nightcap (new)
-Kit takes a rye nightcap, one finger, with honey, at half past eight every night.
+Kit takes a rye nightcap, one finger, with honey, at nine o'clock every night.
 
-- **Rebecca “Chow” Chou** [trade]: His order for tonight: rye, one finger, a spoon of honey, half past eight sharp, in the Merrimack Room. You were to bring it.
-- **Mihir “Nag” Nagarkatti** [free]: You once lost a bet with him. His terms: “I will be drinking my rye at half past eight, with honey in it, wherever I am.”
-- **Molly “Extra!” Daniel** [free]: The Farrago's 1924 society column called it “the Keeper's half-past-eight rye with honey.”
-- **Anika Mahns of Mahns Manor** [free]: Your father used to mock him: “Half past eight, honey in the rye, as if the clock needed him.”
+- **Rebecca “Chow” Chou** [trade]: His order for tonight: rye, one finger, a spoon of honey, nine o'clock sharp, in the Merrimack Room. You were to bring it.
+- **Mihir “Nag” Nagarkatti** [free]: You once lost a bet with him. His terms: “I will be drinking my rye at nine o'clock, with honey in it, wherever I am.”
+- **Molly “Extra!” Daniel** [free]: The Farrago's 1924 society column called it “the Keeper's nine-o'clock rye with honey.”
+- **Anika Mahns of Mahns Manor** [free]: Your father used to mock him: “Nine o'clock, honey in the rye, as if the clock needed him.”
 - printed: nightcap
 
 ### poison (new)

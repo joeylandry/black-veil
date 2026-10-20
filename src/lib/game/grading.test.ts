@@ -96,11 +96,11 @@ describe("objectives", () => {
 
   it("reads the Butler's scream time inside its window", () => {
     const clockItem = (answer: string) => objectiveItem(autoGrade({ submissions: [sub("rebecca", "objective", "rebecca-5", answer)], events: [], truth: truth() }), "rebecca-5");
-    assert.equal(clockItem("8:46").points, 12);
-    assert.equal(clockItem("8:46 pm").points, 12);
-    assert.equal(clockItem("20:51").points, 12);
-    assert.equal(clockItem("8:30").points, 0);
-    assert.equal(clockItem("9:15").points, 0);
+    assert.equal(clockItem("9:16").points, 12);
+    assert.equal(clockItem("9:16 pm").points, 12);
+    assert.equal(clockItem("21:21").points, 12);
+    assert.equal(clockItem("9:00").points, 0);
+    assert.equal(clockItem("9:30").points, 0);
     assert.equal(clockItem("a while ago").points, 0);
   });
 

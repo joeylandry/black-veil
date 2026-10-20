@@ -38,7 +38,7 @@ export const brief1924: { heading: string; bullets: string[] }[] = [
 export const rulesCard: string[] = [
   "Your card has three tabs. Public is what everyone knows. Background is your history and what to wear. Private is yours alone: your secrets, your five errands, and anything you must not say aloud.",
   "From 8:00 the room is a cocktail party. Mingle, trade, bargain. Errands earn you points; so do the pages and clues you find.",
-  "Around a quarter to nine a body will be found. There is no town hall and no host to rule on anything. Question whom you like. Nobody is forced to answer.",
+  "Around a quarter past nine a body will be found. There is no town hall and no host to rule on anything. Question whom you like. Nobody is forced to answer.",
   "Nothing is ever taken from anyone. Props change hands by a deal. Hidden game pieces are only in shared rooms, never in bedrooms, bathrooms, closets or drawers.",
   "Walk, do not run, and keep your drink in your hand.",
   "Type your answers into your phone whenever you like, and as often as you like. Only your last answer to each question counts. The site will not tell you whether you were right; nobody will, until the end.",
@@ -76,7 +76,7 @@ export function finalEdition(killerSlug: string): FinalEdition {
       "The Keeper, Kit Kessler, her bookkeeper, was one of the four who witnessed the plan on the private landing at 11:02. At 11:47, as the music stopped, he left with Cassie by the river door. At the launch he ambushed her, took the books, and told the scattered members that Cassie was finished. She escaped with a bandaged shoulder and a hiding place at Rebecca Chou's boarding house.",
       "Kit prepared the List: twenty-two names, each with a place to lie quiet. He hired a man named Quill to settle them. Seventeen died in “accidents” between December 1924 and September 1925. Every order that appeared to come from Cassie was forged by the Veil's Notary under threat, in a hand that rings its i's. Five could not be found: Crane, Lyle, Ballard, Marek and Pike.",
       "1926. Cassie, in Montreal, sent the black envelopes and the wire that asked who prepared the list, so that the Keeper and the five he failed to kill would be in one room with the town for witnesses. Kit came for her pin and her dial. The five came for him.",
-      `Tonight the one who got to the Butler first was ${killer?.name ?? killerSlug}, who paid the House a numbered marker for its single vial of nux vomica, and put it in the Keeper's half-past-eight rye.${info ? ` Why: ${info.grievance}` : ""}`,
+      `Tonight the one who got to the Butler first was ${killer?.name ?? killerSlug}, who paid the House a numbered marker for its single vial of nux vomica, and put it in the Keeper's nine-o'clock rye.${info ? ` Why: ${info.grievance}` : ""}`,
     ],
     survivors: survivors.map((character) => ({
       cover: character.name,
@@ -105,8 +105,8 @@ export const timeline: { when: string; what: string }[] = [
   { when: "Oct 1925", what: "Two memorial notices (Crane, Ballard) are placed in the Farrago and withdrawn. The survivors have gone under new names." },
   { when: "22 Dec 1925", what: "Cassie's Christmas card, postmarked Manchester." },
   { when: "7 Oct 1926", what: "Black envelopes appear in Elm Street and on the West Side. A Montreal wire asks WHO PREPARED THE LIST." },
-  { when: "22 Oct 1926", what: "Kit Kessler returns to Manchester and asks the Butler for the Merrimack Room and a rye at half past eight." },
+  { when: "22 Oct 1926", what: "Kit Kessler returns to Manchester and asks the Butler for the Merrimack Room and a rye at nine o'clock." },
   { when: "23 Oct 1926, 20:00", what: "The party. Five survivors under fake identities compete for the House's single vial." },
-  { when: "23 Oct 1926, 20:30", what: "The nightcap is served. The House is closed." },
-  { when: "23 Oct 1926, 20:45", what: "The Butler finds the Keeper dead, and screams." },
+  { when: "23 Oct 1926, 21:00", what: "The nightcap is served. The House is closed." },
+  { when: "23 Oct 1926, 21:15", what: "The Butler finds the Keeper dead, and screams." },
 ];

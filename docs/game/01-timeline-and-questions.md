@@ -15,10 +15,10 @@
 - **Oct 1925**: Two memorial notices (Crane, Ballard) are placed in the Farrago and withdrawn. The survivors have gone under new names.
 - **22 Dec 1925**: Cassie's Christmas card, postmarked Manchester.
 - **7 Oct 1926**: Black envelopes appear in Elm Street and on the West Side. A Montreal wire asks WHO PREPARED THE LIST.
-- **22 Oct 1926**: Kit Kessler returns to Manchester and asks the Butler for the Merrimack Room and a rye at half past eight.
+- **22 Oct 1926**: Kit Kessler returns to Manchester and asks the Butler for the Merrimack Room and a rye at nine o'clock.
 - **23 Oct 1926, 20:00**: The party. Five survivors under fake identities compete for the House's single vial.
-- **23 Oct 1926, 20:30**: The nightcap is served. The House is closed.
-- **23 Oct 1926, 20:45**: The Butler finds the Keeper dead, and screams.
+- **23 Oct 1926, 21:00**: The nightcap is served. The House is closed.
+- **23 Oct 1926, 21:15**: The Butler finds the Keeper dead, and screams.
 
 ## The nine final questions
 

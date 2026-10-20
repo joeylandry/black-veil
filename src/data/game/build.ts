@@ -144,7 +144,7 @@ export function nightcapChain(id: string): Objective {
     points: POINTS,
     with: ["rebecca"],
     alsoFrom: ["mihir", "molly", "anika"],
-    check: { kind: "pattern", all: [["half past eight", "8:30", "830", "eight thirty", "8 30", "half eight"]] },
+    check: { kind: "pattern", all: [["nine", "9", "9:00", "900", "9 00", "nine oclock", "9 oclock", "9pm", "9 pm"]] },
   };
 }
 
@@ -154,7 +154,7 @@ export function offerChain(id: string): Objective {
     id,
     kind: "chain",
     title: "Make your offer to the House",
-    text: "The House keeps one bottle for those who can pay in a marker. Before the nightcap is served at half past eight, take your marker to the Butler at the bar and make your offer. The House counts every offer, whether the answer is yes or no.",
+    text: "The House keeps one bottle for those who can pay in a marker. Before the nightcap is served at nine o'clock, take your marker to the Butler at the bar and make your offer. The House counts every offer, whether the answer is yes or no.",
     ask: "In a sentence, what did the Butler say?",
     points: POINTS,
     with: ["rebecca"],

@@ -36,7 +36,7 @@ export const order: Character[] = [
     objectives: [
       find("theodor-1", "hat"),
       secretOf("theodor-2", "leon", "ananya", ["st anne", "saint anne", "st annes"]),
-      role("theodor-3", "First Responder", "When you hear the scream at about a quarter to nine, reach the body fast, walk, do not run, and read the scene code on the card by the table.", "The scene code", { kind: "code", codes: [sceneCode] }),
+      role("theodor-3", "First Responder", "When you hear the scream at about a quarter past nine, reach the body fast, walk, do not run, and read the scene code on the card by the table.", "The scene code", { kind: "code", codes: [sceneCode] }),
       role("theodor-4", "The Coroner's Folder", "Open the Coroner's Folder at the scene. File the report: type the filing code printed at the foot of the page.", "The filing code", { kind: "code", codes: ["YMYKK"] }),
       story("theodor-5", "Who sold the poison?", "The physician's report names the poison. Find out how much of it the House bought, and in what form.", "The poison, as it was sold", "adam", ["rhea"], [["nux vomica"]]),
     ],
@@ -149,14 +149,14 @@ export const order: Character[] = [
     role: "doctor",
     roleCard: [
       "You are the only one who may examine the body. When the Sheriff opens the scene, take your time and do it properly.",
-      "What you will find: the arched back and fixed grin of strychnine; a bitter residue in the honeyed rye; a tincture bottle's label (the House's); and a time of death that fits a dose at about half past eight.",
+      "What you will find: the arched back and fixed grin of strychnine; a bitter residue in the honeyed rye; a tincture bottle's label (the House's); and a time of death that fits a dose at about nine o'clock.",
       "You report to the Sheriff, but your findings are yours. Share them freely or trade them.",
     ],
     objectives: [
       find("emre-1", "spectacles"),
       secretOf("emre-2", "luke", "silas", ["goliath"]),
       role("emre-3", "The examination", "Examine the body. State what killed him, and what it was carried in.", "Cause of death", { kind: "pattern", all: [["strychnine", "nux vomica"], ["rye", "whiskey", "nightcap", "glass", "drink"]] }, ["theodor"]),
-      role("emre-4", "The time", "State when the poison was taken, as closely as you can.", "Time the poison was taken", { kind: "pattern", all: [["half past eight", "8:30", "830", "eight thirty", "8 30"]] }),
+      role("emre-4", "The time", "State when the poison was taken, as closely as you can.", "Time the poison was taken", { kind: "pattern", all: [["nine", "9", "9:00", "900", "9 00", "nine oclock", "9 oclock", "9pm", "9 pm"]] }),
       story("emre-5", "Where did it come from?", "The report says a house stock, not a druggist's pack. Learn whose house.", "Whose stock it was", "adam", ["rhea"], [["butler", "house", "chow", "rebecca"]]),
     ],
   },
