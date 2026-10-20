@@ -33,11 +33,28 @@ export function AdminGame({ secret }: { secret: string }) {
 
   const headers = useCallback(() => ({ "Content-Type": "application/json", Authorization: `Bearer ${secret}` }), [secret]);
 
+  const [loadError, setLoadError] = useState<string | null>(null);
+
   const load = useCallback(async () => {
     const response = await fetch("/api/admin/game", { headers: { Authorization: `Bearer ${secret}` }, cache: "no-store" }).catch(() => null);
-    if (!response?.ok) return;
+    if (!response?.ok) {
+      const body = await response?.json().catch(() => null);
+      setLoadError(body?.error ?? "The game could not be read.");
+      return;
+    }
+    setLoadError(null);
     setOverview(await response.json());
   }, [secret]);
+
+  async function setupDatabase() {
+    setBusy(true);
+    setNotice(null);
+    const response = await fetch("/api/admin/game", { method: "POST", headers: headers(), body: JSON.stringify({ action: "setup-database" }) }).catch(() => null);
+    const body = await response?.json().catch(() => null);
+    setNotice(response?.ok ? "The game database is ready." : (body?.error ?? "The setup did not work."));
+    await load();
+    setBusy(false);
+  }
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -75,7 +92,20 @@ export function AdminGame({ secret }: { secret: string }) {
     if (Array.isArray(result.rows)) setStandings(result.rows as StandingRow[]);
   }
 
-  if (!overview) return <div className="ledger-checking">Reading the game…</div>;
+  if (!overview) {
+    if (!loadError) return <div className="ledger-checking">Reading the game…</div>;
+    return (
+      <section className="admin-panel admin-game">
+        <h2>The night</h2>
+        <p className="admin-notice" role="alert">{loadError}</p>
+        <p className="admin-panel-note">If this is the first time the game has been opened, its tables do not exist yet. One click creates them. It only adds new tables and never touches the guest list, and it is safe to press twice.</p>
+        {notice && <p className="admin-notice" role="status">{notice}</p>}
+        <div className="admin-actions">
+          <button type="button" className="admin-primary" disabled={busy} onClick={setupDatabase}>Set up the game database</button>
+        </div>
+      </section>
+    );
+  }
   const { state } = overview;
   const effective: Record<string, boolean> = {
     identitiesReleased: state.identitiesReleased,
