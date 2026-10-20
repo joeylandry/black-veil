@@ -4,6 +4,7 @@ import { adminDatabaseError, adminGuard } from "@/lib/auth/admin";
 import {
   adminOverview,
   applyVerdictFile,
+  assignCharacter,
   assignVial,
   butlerSell,
   castByName,
@@ -55,6 +56,13 @@ export async function POST(request: NextRequest) {
         const seeded = await seedCast(db);
         const cast = await castByName(db);
         return reply({ ok: true, ...seeded, ...cast });
+      }
+      case "assign-character": {
+        const slug = String(body.slug ?? "");
+        if (!characterById.has(slug)) return reply({ error: "Unknown character." }, 400);
+        const guestId = body.guestId === null || body.guestId === "" ? null : String(body.guestId);
+        const result = await assignCharacter(db, slug, guestId);
+        return result.ok ? reply({ ok: true }) : reply({ error: result.error }, 400);
       }
       case "set-flag": {
         const key = String(body.key ?? "");
