@@ -13,6 +13,8 @@ import {
   assignVial,
   butlerSell,
   castByName,
+  editCharacter,
+  readFlags,
   cardFor,
   deriveState,
   dose,
@@ -93,6 +95,18 @@ describe("the cast", () => {
     assert.equal((await assignCharacter(ctx.db, "luke", "00000000-0000-0000-0000-000000000000")).ok, false);
     await castByName(ctx.db);
     assert.equal((await adminOverview(ctx.db)).castCount, characters.length);
+  });
+
+  it("lets the game master rename a character and restore the printed text", async () => {
+    const printed = characterById.get("anika")!.name;
+    assert.deepEqual(await editCharacter(ctx.db, "anika", { name: "Miss Annie Manor", occupation: "Heiress" }), { ok: true });
+    await readFlags(ctx.db);
+    assert.equal(characterById.get("anika")!.name, "Miss Annie Manor");
+    assert.equal(characterById.get("anika")!.occupation, "Heiress");
+    assert.equal((await editCharacter(ctx.db, "anika", { name: "x".repeat(81) })).ok, false);
+    assert.deepEqual(await editCharacter(ctx.db, "anika", null), { ok: true });
+    await readFlags(ctx.db);
+    assert.equal(characterById.get("anika")!.name, printed);
   });
 
   it("carries nothing private into the characters table", async () => {

@@ -50,9 +50,63 @@ export type GameState = {
   killerOverride: string | null;
 };
 
+/** What the game master may rewrite on a character from the admin page. Everything else stays in the bible. */
+export type CastEdit = { name?: string; occupation?: string; publicBio?: string; history?: string; wardrobe?: string };
+const castEditLimits: Record<keyof CastEdit, number> = { name: 80, occupation: 120, publicBio: 600, history: 1500, wardrobe: 400 };
+const originals = new Map<string, Required<CastEdit>>();
+
+/**
+ * Lays the saved edits over the in-memory bible (and restores the printed text where an edit
+ * was removed). Called whenever flags are read, so every request sees the current wording.
+ */
+export function applyCastEdits(edits: unknown) {
+  const saved = edits && typeof edits === "object" ? (edits as Record<string, CastEdit>) : {};
+  for (const character of characters) {
+    if (!originals.has(character.id)) {
+      originals.set(character.id, { name: character.name, occupation: character.occupation, publicBio: character.publicBio, history: character.background.history, wardrobe: character.background.wardrobe });
+    }
+    const base = originals.get(character.id)!;
+    const edit = saved[character.id] ?? {};
+    const pick = (key: keyof CastEdit) => (typeof edit[key] === "string" && edit[key]!.trim() ? edit[key]!.trim() : base[key]);
+    character.name = pick("name");
+    character.occupation = pick("occupation");
+    character.publicBio = pick("publicBio");
+    character.background = { ...character.background, history: pick("history"), wardrobe: pick("wardrobe") };
+  }
+}
+
+export function printedCharacter(slug: string): Required<CastEdit> | undefined {
+  return originals.get(slug);
+}
+
+/** Saves one character's edits (blank fields go back to the printed text), or clears them all when `edit` is null. */
+export async function editCharacter(db: GameDb, slug: string, edit: CastEdit | null): Promise<{ ok: true } | { ok: false; error: string }> {
+  if (!characterById.has(slug)) return { ok: false, error: "Unknown character." };
+  const flags = await readFlags(db);
+  const all: Record<string, CastEdit> = flags.castEdits && typeof flags.castEdits === "object" ? { ...(flags.castEdits as Record<string, CastEdit>) } : {};
+  if (edit === null) delete all[slug];
+  else {
+    const clean: CastEdit = {};
+    for (const key of Object.keys(castEditLimits) as (keyof CastEdit)[]) {
+      const value = edit[key];
+      if (typeof value !== "string" || !value.trim()) continue;
+      if (value.trim().length > castEditLimits[key]) return { ok: false, error: `${key} is too long (the limit is ${castEditLimits[key]} characters).` };
+      clean[key] = value.trim();
+    }
+    if (Object.keys(clean).length) all[slug] = clean;
+    else delete all[slug];
+  }
+  await writeFlag(db, "castEdits", Object.keys(all).length ? all : null);
+  applyCastEdits(Object.keys(all).length ? all : null);
+  await seedCast(db);
+  return { ok: true };
+}
+
 export async function readFlags(db: GameDb): Promise<Record<string, unknown>> {
   const rows = await db.select().from(gameFlags);
-  return Object.fromEntries(rows.map((row) => [row.key, row.value]));
+  const flags = Object.fromEntries(rows.map((row) => [row.key, row.value]));
+  applyCastEdits(flags.castEdits);
+  return flags;
 }
 
 /** Sets a flag. Writing null (or undefined) clears it, handing the switch back to the clock. */
@@ -183,8 +237,12 @@ export async function castByName(db: GameDb): Promise<{ assigned: number; kept: 
  * one character and a character has one guest, so whoever held either before is released.
  */
 export async function assignCharacter(db: GameDb, slug: string, guestId: string | null): Promise<{ ok: true } | { ok: false; error: string }> {
-  const [row] = await db.select({ id: characterRows.id }).from(characterRows).where(eq(characterRows.gameKey, slug)).limit(1);
-  if (!row) return { ok: false, error: "That character has not been created yet. Press “Create the characters” first." };
+  let [row] = await db.select({ id: characterRows.id }).from(characterRows).where(eq(characterRows.gameKey, slug)).limit(1);
+  if (!row) {
+    await seedCast(db);
+    [row] = await db.select({ id: characterRows.id }).from(characterRows).where(eq(characterRows.gameKey, slug)).limit(1);
+  }
+  if (!row) return { ok: false, error: "That character could not be created." };
   if (guestId !== null) {
     const [guest] = await db.select({ id: guests.id }).from(guests).where(eq(guests.id, guestId)).limit(1);
     if (!guest) return { ok: false, error: "That guest is not on the register." };
@@ -594,6 +652,12 @@ export async function adminOverview(db: GameDb) {
       return {
         slug: character.id,
         name: character.name,
+        occupation: character.occupation,
+        publicBio: character.publicBio,
+        history: character.background.history,
+        wardrobe: character.background.wardrobe,
+        edited: Boolean((flags.castEdits as Record<string, unknown> | undefined)?.[character.id]),
+        printed: printedCharacter(character.id) ?? null,
         circle: character.circle,
         survivor: Boolean(character.survivor),
         markerNo: character.survivor?.markerNo ?? null,
