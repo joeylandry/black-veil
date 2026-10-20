@@ -19,6 +19,12 @@ export const eventConfig = {
    */
   charactersReleased: false,
   /**
+   * TEMPORARY. While true, /admin and every /api/admin route work with NO passphrase, so anyone
+   * who opens /admin can read guest emails, sign in as any guest, edit or delete records and
+   * download the answer key. Set it back to false (and redeploy) before real guests arrive.
+   */
+  adminOpen: true,
+  /**
    * The private tab, the errands and the answer boxes open on the night. They open on their own
    * at this moment (the game master can also open or hold them from /admin without a redeploy).
    */

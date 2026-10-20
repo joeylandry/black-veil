@@ -1,5 +1,6 @@
 import { timingSafeEqual } from "crypto";
 import { NextResponse } from "next/server";
+import { eventConfig } from "@/config/event";
 
 /**
  * Shared-secret auth for the staff-only /admin routes. No per-staff accounts yet.
@@ -10,6 +11,8 @@ import { NextResponse } from "next/server";
  * when the deployment simply has none set.
  */
 export function adminGuard(request: Request): NextResponse | null {
+  // Temporary switch in src/config/event.ts: no passphrase at all. Turn it off before the party.
+  if (eventConfig.adminOpen) return null;
   const secret = process.env.ADMIN_SECRET;
   if (!secret) {
     return NextResponse.json(
