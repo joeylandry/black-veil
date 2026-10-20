@@ -1035,3 +1035,12 @@ img { max-width: 100%; height: auto; }
 .admin-cast-grid li.uncast { border-style: dashed; }
 .admin-cast-grid label { display: flex; gap: .4rem; align-items: center; font-size: .72rem; }
 .admin-cast-grid input { width: auto; }
+
+.admin-game-guide { margin: 0 0 1.25rem; padding: .9rem 1.1rem; border: 1px solid var(--line, rgba(255,255,255,.18)); border-radius: 4px; font-size: .9rem; line-height: 1.5; }
+.admin-game-guide ol { margin: .5rem 0 0; padding-left: 1.2rem; }
+.admin-game-guide li { margin: .25rem 0; }
+.admin-cast-circle { margin-top: 1rem; }
+.admin-cast-circle h4 { margin: 0 0 .4rem; font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; opacity: .8; }
+.admin-cast-grid select { width: 100%; margin-top: .2rem; }
+.admin-cast-tag { display: block; font-size: .75rem; opacity: .75; }
+.admin-cast-absent { display: block; font-size: .8rem; }

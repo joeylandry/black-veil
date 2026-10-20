@@ -178,6 +178,22 @@ export async function castByName(db: GameDb): Promise<{ assigned: number; kept: 
   return { assigned, kept, unmatchedGuests: unmatched, uncastCharacters: characters.filter((character) => !cast.has(character.id)).map((character) => character.id) };
 }
 
+/**
+ * Hand-casting: gives a character to a guest, or takes it back when guestId is null. A guest holds
+ * one character and a character has one guest, so whoever held either before is released.
+ */
+export async function assignCharacter(db: GameDb, slug: string, guestId: string | null): Promise<{ ok: true } | { ok: false; error: string }> {
+  const [row] = await db.select({ id: characterRows.id }).from(characterRows).where(eq(characterRows.gameKey, slug)).limit(1);
+  if (!row) return { ok: false, error: "That character has not been created yet. Press “Create the characters” first." };
+  if (guestId !== null) {
+    const [guest] = await db.select({ id: guests.id }).from(guests).where(eq(guests.id, guestId)).limit(1);
+    if (!guest) return { ok: false, error: "That guest is not on the register." };
+  }
+  await db.update(guests).set({ characterId: null }).where(eq(guests.characterId, row.id));
+  if (guestId !== null) await db.update(guests).set({ characterId: row.id }).where(eq(guests.id, guestId));
+  return { ok: true };
+}
+
 // ---------------------------------------------------------------- the guest's card
 
 export type CardResponse =
@@ -587,6 +603,8 @@ export async function adminOverview(db: GameDb) {
       };
     }),
     uncastGuests: night.roster.filter((row) => !row.slug).map((row) => ({ id: row.guestId, fullName: row.fullName })),
+    guests: night.roster.map((row) => ({ id: row.guestId, fullName: row.fullName })),
+    created: Number((await db.select({ n: sql<number>`count(*)` }).from(characterRows).where(sql`${characterRows.gameKey} is not null`))[0]?.n ?? 0),
     vial: {
       soldTo: sale ? { slug: sale.guest, name: characterById.get(sale.guest)?.name, marker: characterById.get(sale.guest)?.survivor?.markerNo } : null,
       attempts: attempts.map((event) => ({ slug: event.guest, name: characterById.get(event.guest)?.name, sold: event.kind === "vial-attempt" ? event.sold : false, at: new Date(event.at).toISOString() })),

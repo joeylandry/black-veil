@@ -9,6 +9,7 @@ import { correctAnswer, correctMystery } from "./sim";
 import {
   adminOverview,
   applyVerdictFile,
+  assignCharacter,
   assignVial,
   butlerSell,
   castByName,
@@ -77,6 +78,21 @@ describe("the cast", () => {
     const seeded = await seedCast(ctx.db);
     assert.equal(seeded.created, 0);
     assert.equal(seeded.updated, characters.length);
+  });
+
+  it("lets the game master recast by hand, one guest per character", async () => {
+    const molly = await idOf(ctx.db, "molly");
+    const luke = await idOf(ctx.db, "luke");
+    assert.deepEqual(await assignCharacter(ctx.db, "luke", molly), { ok: true });
+    const roster = await loadRoster(ctx.db);
+    assert.equal(roster.find((row) => row.guestId === molly)?.slug, "luke");
+    assert.equal(roster.find((row) => row.guestId === luke)?.slug, null);
+    assert.ok(!roster.some((row) => row.slug === "molly"));
+    assert.deepEqual(await assignCharacter(ctx.db, "luke", null), { ok: true });
+    assert.ok(!(await loadRoster(ctx.db)).some((row) => row.slug === "luke"));
+    assert.equal((await assignCharacter(ctx.db, "luke", "00000000-0000-0000-0000-000000000000")).ok, false);
+    await castByName(ctx.db);
+    assert.equal((await adminOverview(ctx.db)).castCount, characters.length);
   });
 
   it("carries nothing private into the characters table", async () => {

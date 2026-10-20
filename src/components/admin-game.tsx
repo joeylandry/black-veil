@@ -6,6 +6,8 @@ type Overview = {
   state: { identitiesReleased: boolean; secretsReleased: boolean; submissionsOpen: boolean; nightcapServed: boolean; resultsPublished: boolean; absent: string[]; seed: string; killerOverride: string | null };
   cast: { slug: string; name: string; circle: string; survivor: boolean; markerNo: number | null; guest: { id: string; fullName: string } | null; absent: boolean; submissions: number }[];
   uncastGuests: { id: string; fullName: string }[];
+  guests: { id: string; fullName: string }[];
+  created: number;
   vial: { soldTo: { slug: string; name?: string; marker?: number } | null; attempts: { slug: string; name?: string; sold: boolean; at: string }[]; dosed: boolean };
   killer: string | null;
   castCount: number;
@@ -14,6 +16,8 @@ type Overview = {
 };
 
 type StandingRow = { rank: number; name: string; circle: string; survivor: boolean; total: number; tiers: { objectives: number; exhibits: number; survivors: number; mysteries: number; poisoner: number } };
+
+const circleNames: Record<string, string> = { gilded: "The Gilded", order: "Order & Letters", stage: "Wire & Stage", working: "Working Folk", river: "River Trade" };
 
 const flagLabels: { key: "identitiesReleased" | "secretsReleased" | "submissionsClosed"; title: string; note: string }[] = [
   { key: "identitiesReleased", title: "Characters released", note: "Public and Background tabs. Until this is on, guests see “Characters coming very soon.”" },
@@ -126,7 +130,18 @@ export function AdminGame({ secret }: { secret: string }) {
       </div>
       {notice && <p className="admin-notice" role="status">{notice}</p>}
 
-      <h3 className="admin-section-title">Switches</h3>
+      <div className="admin-game-guide">
+        <strong>How the night works</strong>
+        <ol>
+          <li><b>Before the party:</b> create the characters, give each registered guest one, then turn on <i>Characters released</i> so guests can see who they are.</li>
+          <li><b>At 7:55 PM:</b> the Private tab opens by itself. That&rsquo;s where each guest sees their secrets and errands.</li>
+          <li><b>During the party:</b> the Butler sells the one vial to the first survivor who shows a marker. That guest is the Poisoner. You stage the old man&rsquo;s death.</li>
+          <li><b>At 10:30 PM:</b> answers lock by themselves. Then run the grading below and publish the results.</li>
+        </ol>
+      </div>
+
+      <h3 className="admin-section-title">1 · Switches</h3>
+      <p className="admin-panel-note">Each switch is <b>On</b>, <b>Off</b> or <b>Auto</b> (follows the clock). Leave them on Auto unless you&rsquo;re testing.</p>
       <div className="admin-game-flags">
         {flagLabels.map((flag) => (
           <div className="admin-flag" key={flag.key}>
@@ -142,32 +157,55 @@ export function AdminGame({ secret }: { secret: string }) {
         ))}
       </div>
 
-      <h3 className="admin-section-title">The cast</h3>
-      <p className="admin-panel-note">{overview.castCount} of {overview.cast.length} characters are dealt to a registered guest. Characters are matched to guests by name.</p>
+      <h3 className="admin-section-title">2 · Who plays whom</h3>
+      <p className="admin-panel-note">
+        {overview.created === 0
+          ? "No characters exist yet. Press the button below first."
+          : `${overview.castCount} of ${overview.cast.length} characters have a guest.`}{" "}
+        &ldquo;Fill in by name&rdquo; matches each registered guest to the character written for them. After that you can change anyone by hand: pick a different guest from a character&rsquo;s dropdown, or choose &ldquo;nobody&rdquo; to free it up. A guest can only hold one character, so picking someone who already has one moves them.
+      </p>
       <div className="admin-actions">
-        <button type="button" className="admin-primary" disabled={busy} onClick={() => act({ action: "seed-cast" }, (r) => `Created ${r.created}, refreshed ${r.updated}. Cast ${r.assigned} guests, kept ${r.kept}. ${Array.isArray(r.unmatchedGuests) && r.unmatchedGuests.length ? `No character for: ${(r.unmatchedGuests as string[]).join(", ")}.` : ""}`)}>Create characters and cast by name</button>
+        <button type="button" className="admin-primary" disabled={busy} onClick={() => act({ action: "seed-cast" }, (r) => `Created ${r.created}, refreshed ${r.updated}. Cast ${r.assigned} guests, kept ${r.kept}. ${Array.isArray(r.unmatchedGuests) && r.unmatchedGuests.length ? `No character for: ${(r.unmatchedGuests as string[]).join(", ")}.` : ""}`)}>
+          {overview.created === 0 ? "Create the characters and fill in by name" : "Fill in by name again"}
+        </button>
       </div>
-      {overview.uncastGuests.length > 0 && <p className="admin-notice">No character yet for: {overview.uncastGuests.map((guest) => guest.fullName).join(", ")}</p>}
-      <ul className="admin-cast-grid">
-        {overview.cast.map((entry) => (
-          <li key={entry.slug} className={`${entry.survivor ? "survivor" : ""} ${entry.absent ? "absent" : ""} ${entry.guest ? "" : "uncast"}`}>
-            <strong>{entry.name}</strong>
-            <span>{entry.guest ? entry.guest.fullName : "not cast"} · {entry.circle}{entry.survivor ? ` · SURVIVOR, marker ${entry.markerNo}` : ""}</span>
-            <small>{entry.submissions} answers saved</small>
-            <label>
-              <input
-                type="checkbox"
-                checked={entry.absent}
-                disabled={busy}
-                onChange={(event) => act({ action: "set-flag", key: "absentCharacters", value: event.target.checked ? [...state.absent, entry.slug] : state.absent.filter((slug) => slug !== entry.slug) }, () => `${entry.name} marked ${event.target.checked ? "absent" : "present"}.`)}
-              />
-              did not come
-            </label>
-          </li>
-        ))}
-      </ul>
+      {overview.uncastGuests.length > 0 && <p className="admin-notice">Guests with no character yet: {overview.uncastGuests.map((guest) => guest.fullName).join(", ")}. Give them one from a dropdown below, or leave them out.</p>}
+      {Object.entries(circleNames).map(([circle, title]) => (
+        <div key={circle} className="admin-cast-circle">
+          <h4>{title}</h4>
+          <ul className="admin-cast-grid">
+            {overview.cast.filter((entry) => entry.circle === circle).map((entry) => (
+              <li key={entry.slug} className={`${entry.survivor ? "survivor" : ""} ${entry.absent ? "absent" : ""} ${entry.guest ? "" : "uncast"}`}>
+                <strong>{entry.name}</strong>
+                {entry.survivor && <span className="admin-cast-tag">Survivor · marker {entry.markerNo}</span>}
+                <label>
+                  Played by
+                  <select
+                    value={entry.guest?.id ?? ""}
+                    disabled={busy || overview.created === 0}
+                    onChange={(event) => act({ action: "assign-character", slug: entry.slug, guestId: event.target.value || null }, () => `${entry.name} is now ${event.target.value ? "played by " + (overview.guests.find((guest) => guest.id === event.target.value)?.fullName ?? "that guest") : "unassigned"}.`)}
+                  >
+                    <option value="">Nobody</option>
+                    {overview.guests.map((guest) => <option key={guest.id} value={guest.id}>{guest.fullName}</option>)}
+                  </select>
+                </label>
+                <small>{entry.submissions} answers saved</small>
+                <label className="admin-cast-absent">
+                  <input
+                    type="checkbox"
+                    checked={entry.absent}
+                    disabled={busy}
+                    onChange={(event) => act({ action: "set-flag", key: "absentCharacters", value: event.target.checked ? [...state.absent, entry.slug] : state.absent.filter((slug) => slug !== entry.slug) }, () => `${entry.name} marked ${event.target.checked ? "absent" : "present"}.`)}
+                  />
+                  Didn&rsquo;t come
+                </label>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
 
-      <h3 className="admin-section-title">The House</h3>
+      <h3 className="admin-section-title">3 · The House (the vial)</h3>
       <p className="admin-panel-note">
         {overview.vial.soldTo ? <>The vial was sold to <strong>{overview.vial.soldTo.name}</strong> (marker {overview.vial.soldTo.marker}). {overview.vial.dosed ? "The nightcap was dosed." : "Not yet dosed."}</> : "The vial has not been sold."} Stage the marker from the House Tin beside the body.
       </p>
@@ -196,7 +234,7 @@ export function AdminGame({ secret }: { secret: string }) {
         <button type="button" className="admin-danger" disabled={busy} onClick={() => act({ action: "reset-vial" }, () => "The House's log is cleared.")}>Clear the House&rsquo;s log</button>
       </div>
 
-      <h3 className="admin-section-title">Grading</h3>
+      <h3 className="admin-section-title">4 · Grading, after the party</h3>
       <p className="admin-panel-note">{graded} items graded; {pending} need a second look. The killer is {overview.killer ? <strong>{overview.cast.find((entry) => entry.slug === overview.killer)?.name}</strong> : "not yet known"}.</p>
       <div className="admin-actions">
         <button type="button" className="admin-primary" disabled={busy} onClick={() => act({ action: "grade" }, (r) => `Graded ${r.graded}, kept ${r.kept} decided items, ${r.pending} need a second look.`)}>1 · Run the automatic grader</button>
