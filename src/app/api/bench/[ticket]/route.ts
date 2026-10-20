@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { eventConfig } from "@/config/event";
 import { eq } from "drizzle-orm";
 import { getDb } from "@/lib/db/client";
 import { ctfSolves } from "@/lib/db/schema";
@@ -31,6 +32,7 @@ function readHistory(value: unknown) {
 }
 
 export async function POST(request: NextRequest, ctx: RouteContext<"/api/bench/[ticket]">) {
+  if (!eventConfig.ctfOpen) return NextResponse.json({ error: "The trials are closed for now.", code: "closed" }, { status: 410 });
   const guestId = await getSessionGuestId();
   if (!guestId) {
     return NextResponse.json({ error: "Sign in again to work this bench.", code: "unauthenticated" }, { status: 401 });

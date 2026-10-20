@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
+import { eventConfig } from "@/config/event";
 import { BenchGate } from "@/components/bench/bench-gate";
 import { benchLabs, getBenchLab } from "@/data/bench";
 
@@ -21,6 +22,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function BenchTicketPage({ params }: Props) {
+  // The trials are closed for now: send everyone to the game.
+  if (!eventConfig.ctfOpen) redirect("/game");
   const { ticket } = await params;
   const lab = getBenchLab(ticket);
   if (!lab) notFound();

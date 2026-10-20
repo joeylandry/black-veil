@@ -25,6 +25,11 @@ export const eventConfig = {
    */
   adminOpen: true,
   /**
+   * The Black Frog trials and the Restoration Bench (the CTF) are closed for now: their pages
+   * send guests to the game and their routes refuse submissions. Set to true to bring them back.
+   */
+  ctfOpen: false,
+  /**
    * The private tab, the errands and the answer boxes open on the night. They open on their own
    * at this moment (the game master can also open or hold them from /admin without a redeploy).
    */

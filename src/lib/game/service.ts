@@ -22,7 +22,7 @@ import {
   survivors,
 } from "@/data/game";
 import { glassCode } from "@/data/game/props";
-import { characters as characterRows, gameEvents, gameFlags, gameGrades, gameSubmissions, guests } from "@/lib/db/schema";
+import { characters as characterRows, gameEvents, gameFlags, gameGrades, gameSubmissions, guests, rsvps } from "@/lib/db/schema";
 import { autoGrade, parsePicks } from "./grading";
 import { buildPacket, parseVerdicts } from "./packet";
 import type { Packet } from "./packet";
@@ -515,6 +515,47 @@ export async function resultsFor(db: GameDb, guestId: string) {
     awards: published.standings.awards.map((award) => ({ ...award, guest: name(award.guest) })),
     solution: published.solution,
   };
+}
+
+// ---------------------------------------------------------------- the guest ledger
+
+export type LedgerRow = { name: string; character: string | null; occupation: string | null; points: number; rank: number | null; isYou: boolean };
+
+/**
+ * The guest ledger every signed-in guest sees: who is coming and, once the cast is released,
+ * who they will be. Everyone starts at 0, and stays at 0 until the host publishes results:
+ * there is no live leaderboard, so nothing here reveals who is doing well.
+ */
+export async function ledgerFor(db: GameDb, guestId: string, now = new Date()): Promise<{ released: boolean; published: boolean; rows: LedgerRow[] }> {
+  const flags = await readFlags(db);
+  const state = deriveState(flags, now);
+  const roster = await db
+    .select({ id: guests.id, email: guests.email, fullName: guests.fullName, characterName: characterRows.characterName, occupation: characterRows.occupation, slug: characterRows.gameKey })
+    .from(guests)
+    .leftJoin(characterRows, eq(guests.characterId, characterRows.id))
+    .orderBy(asc(guests.fullName));
+  const latest = await db.select({ email: rsvps.email, attending: rsvps.attending, createdAt: rsvps.createdAt }).from(rsvps).orderBy(asc(rsvps.createdAt));
+  const attending = new Map<string, string>();
+  for (const row of latest) attending.set(row.email, row.attending);
+
+  const published = state.resultsPublished ? (flags.results as PublishedResults | undefined) : undefined;
+  const totals = new Map((published?.standings.standings ?? []).map((row) => [row.guest, { total: row.total, rank: row.rank }]));
+
+  const rows = roster
+    .filter((row) => attending.get(row.email) !== "no")
+    .map((row) => {
+      const score = row.slug ? totals.get(row.slug) : undefined;
+      return {
+        name: row.fullName,
+        character: state.identitiesReleased ? row.characterName : null,
+        occupation: state.identitiesReleased ? row.occupation : null,
+        points: score?.total ?? 0,
+        rank: score?.rank ?? null,
+        isYou: row.id === guestId,
+      };
+    });
+  if (published) rows.sort((a, b) => (a.rank ?? 999) - (b.rank ?? 999) || a.name.localeCompare(b.name));
+  return { released: state.identitiesReleased, published: Boolean(published), rows };
 }
 
 // ---------------------------------------------------------------- admin overview

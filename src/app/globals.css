@@ -658,7 +658,7 @@ img { max-width: 100%; height: auto; }
 .leaderboard-heading h2 { margin: 0; font-family: var(--font-display); font-size: clamp(3rem,7vw,5.5rem); line-height: .85; text-transform: uppercase; }
 .leaderboard-heading > p { max-width: 300px; font-size: .88rem; font-style: italic; }
 .leaderboard-table { margin-top: 1.4rem; }
-.leaderboard-row { display: grid; grid-template-columns: 70px 1.5fr 1.3fr 90px 90px; gap: 1rem; align-items: center; padding: .85rem 0; border-bottom: 1px solid var(--rule); }
+.leaderboard-row { display: grid; grid-template-columns: 70px 1.3fr 1.7fr 90px; gap: 1rem; align-items: center; padding: .85rem 0; border-bottom: 1px solid var(--rule); }
 .leaderboard-labels { font-family: var(--font-sans), Arial, sans-serif; font-size: .62rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
 .leaderboard-row > :last-child { text-align: right; }
 .character-sealed { color: var(--oxblood); font-style: italic; }
@@ -725,8 +725,7 @@ img { max-width: 100%; height: auto; }
   .challenge-copy form > div { flex-direction: column; gap: .5rem; }
   .challenge-copy input { border-right: 1px solid #6a6453; }
   .leaderboard-heading { align-items: start; flex-direction: column; gap: .5rem; }
-  .leaderboard-row { grid-template-columns: 44px 1fr 62px 58px; gap: .5rem; font-size: .8rem; }
-  .leaderboard-row > :nth-child(3) { display: none; }
+  .leaderboard-row { grid-template-columns: 34px 1fr 1fr 40px; gap: .4rem; font-size: .74rem; }
 }
 
 /* Conservation slip pasted into a newspaper's right-hand column */

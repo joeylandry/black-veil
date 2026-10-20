@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import { ChallengeStandings } from "@/components/challenge-standings";
 import { CharacterCard } from "@/components/character-card";
 import { GuestLedger } from "@/components/guest-ledger";
+import { GuestRoster } from "@/components/guest-roster";
 
 export const metadata: Metadata = {
   title: "Guest Ledger",
@@ -13,7 +13,7 @@ export default function GuestLedgerPage() {
     <div className="page-wrap guest-ledger-page">
       <GuestLedger />
       <CharacterCard />
-      <ChallengeStandings />
+      <GuestRoster />
     </div>
   );
 }

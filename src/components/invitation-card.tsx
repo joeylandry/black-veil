@@ -26,7 +26,7 @@ export function InvitationCard({ fullName }: { fullName?: string }) {
         it will follow only after the guest ledger is settled.
       </p>
       <p className="passphrase-line"><span>The enclosure reads</span><strong>{eventConfig.finalPassphrase}</strong></p>
-      <Link href="/black-frog" className="trials-link">A restricted postscript bears your name</Link>
+      <Link href="/game" className="trials-link">Your night awaits: open the game</Link>
       <Link href="/" className="invitation-home-link">Return to the public rooms</Link>
     </article>
   );
