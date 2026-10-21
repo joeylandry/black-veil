@@ -13,7 +13,17 @@ export function RestoreSession() {
     fetch("/api/me")
       .then((response) => (response.ok ? response.json() : Promise.reject(response)))
       .then((me) => {
-        if (me.rsvp) setStorageValue(eventConfig.storageKeys.rsvp, JSON.stringify(me.rsvp));
+        // A guest added without an RSVP still gets their page: this device just remembers them as coming.
+        const rsvp = me.rsvp ?? {
+          fullName: me.guest.fullName,
+          email: me.guest.email,
+          attending: "yes",
+          note: "",
+          dressAcknowledged: true,
+          attendanceStatus: "confirmed",
+          recordedAt: new Date().toISOString(),
+        };
+        setStorageValue(eventConfig.storageKeys.rsvp, JSON.stringify(rsvp));
         setStorageValue(eventConfig.storageKeys.ctfProgress, JSON.stringify(me.ctf));
         setStorageValue(eventConfig.storageKeys.puzzleComplete, "true");
         setStorageValue(eventConfig.storageKeys.registerUnlocked, "true");

@@ -3,39 +3,22 @@
 import Link from "next/link";
 import { FormEvent, useMemo, useState } from "react";
 import { eventConfig } from "@/config/event";
+import { RecoverForm } from "./recover-form";
 import { remoteRsvpService, RsvpSubmission } from "@/lib/rsvp-service";
 import { setStorageValue, useStorageValue } from "@/lib/use-storage-value";
 
 type Errors = Partial<Record<"fullName" | "email" | "attending" | "dress", string>>;
 
 export function GuestLedger() {
-  const accessValue = useStorageValue(eventConfig.storageKeys.registerUnlocked);
   const savedValue = useStorageValue(eventConfig.storageKeys.rsvp);
   const [saved, setSaved] = useState<RsvpSubmission | null>(null);
   const [errors, setErrors] = useState<Errors>({});
   const [submitError, setSubmitError] = useState<string | null>(null);
-  const [codeInput, setCodeInput] = useState("");
-  const [codeError, setCodeError] = useState(false);
   const storedSubmission = useMemo(() => {
     if (!savedValue) return null;
     try { return JSON.parse(savedValue) as RsvpSubmission; } catch { return null; }
   }, [savedValue]);
-  const access = accessValue === undefined ? "checking" : accessValue === "true" ? "open" : "locked";
   const visibleSubmission = saved ?? storedSubmission;
-
-  function submitCode(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    if (codeInput.trim().toLowerCase() === eventConfig.finalPassphrase.toLowerCase()) {
-      setStorageValue(eventConfig.storageKeys.registerUnlocked, "true");
-      // The old words only come out of the archive, so knowing them counts as having opened it.
-      // Without this, a guest unsealing the register on a second device would find the trials
-      // and the invitation still locked.
-      setStorageValue(eventConfig.storageKeys.puzzleComplete, "true");
-      setCodeError(false);
-    } else {
-      setCodeError(true);
-    }
-  }
 
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -66,6 +49,9 @@ export function GuestLedger() {
     setSubmitError(null);
     try {
       await remoteRsvpService.save(submission);
+      // Entering a name opens the rest of the site; there are no old words to give any more.
+      setStorageValue(eventConfig.storageKeys.puzzleComplete, "true");
+      setStorageValue(eventConfig.storageKeys.registerUnlocked, "true");
       setSaved(submission);
       // The register remembers guests by email: someone re-entering their name on a new
       // device picks up the flags they already solved instead of starting from zero.
@@ -78,37 +64,8 @@ export function GuestLedger() {
     }
   }
 
-  if (access === "checking" || savedValue === undefined) {
+  if (savedValue === undefined) {
     return <div className="ledger-checking" aria-live="polite">Consulting the private ledger…</div>;
-  }
-
-  if (access === "locked") {
-    return (
-      <section className="ledger-locked">
-        <div className="ledger-lock" aria-hidden="true">BV</div>
-        <p className="eyebrow">Restricted volume · members only</p>
-        <h1>The Guest Ledger Is Sealed</h1>
-        <p>Your name cannot be entered until you give the old words. Kindly reply by {eventConfig.rsvpDeadlineShort}.</p>
-        <form className="ledger-code-form" onSubmit={submitCode}>
-          <label>
-            <span className="sr-only">The old words</span>
-            <input
-              type="text"
-              autoComplete="off"
-              autoCapitalize="none"
-              value={codeInput}
-              onChange={(event) => { setCodeInput(event.target.value); setCodeError(false); }}
-              placeholder="The old words"
-              aria-invalid={codeError}
-              aria-describedby={codeError ? "code-error" : undefined}
-            />
-          </label>
-          <button className="button-link" type="submit">Unseal the ledger</button>
-        </form>
-        {codeError && <small id="code-error" className="field-error">AUTHENTICATION REFUSED. The ledger does not recognize you.</small>}
-        <small>Those who have not found the words should begin in the <Link href="/archive">archive</Link>.</small>
-      </section>
-    );
   }
 
   if (visibleSubmission) {
@@ -121,10 +78,12 @@ export function GuestLedger() {
   }
 
   return (
-    <form className="ledger-form" onSubmit={submit} noValidate>
+    <>
+    <RecoverForm />
+    <form className="ledger-form ledger-form-new" onSubmit={submit} noValidate>
       <header>
         <p className="eyebrow">Private guest ledger · Manchester · 1926</p>
-        <h1>Enter your name.</h1>
+        <h2 className="ledger-new-title">New here? Enter your name.</h2>
         <p>Use your real name. A fictional identity will be prepared only after attendance is confirmed.</p>
         <p>Kindly reply by {eventConfig.rsvpDeadlineShort}.</p>
       </header>
@@ -158,5 +117,6 @@ export function GuestLedger() {
       {submitError && <small className="field-error" role="alert">{submitError}</small>}
       <button className="ledger-submit" type="submit">Enter my name in the ledger</button>
     </form>
+    </>
   );
 }

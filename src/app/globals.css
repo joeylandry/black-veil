@@ -1109,3 +1109,11 @@ form.admin-unlock .admin-show input { width: 1.2rem; height: 1.2rem; margin: 0; 
 
 .ledger-actions-only { display: flex; flex-wrap: wrap; justify-content: center; gap: .8rem; max-width: 980px; margin: 2rem auto 0; padding: 1.4rem 1rem; color: var(--ink); background: var(--paper-light); border: 1px solid #6f6758; }
 .ledger-actions-only .button-link { flex: 1 1 220px; max-width: 320px; text-align: center; }
+
+/* ---- finding yourself again ---- */
+.ledger-recover { margin-bottom: 0; }
+.ledger-recover > header h1 { font-size: clamp(2rem, 7vw, 3.2rem); }
+.ledger-form-new { margin-top: 2.5rem; }
+.ledger-form-new .ledger-new-title { margin: .3rem 0 .6rem; font-family: var(--font-display); font-size: clamp(1.7rem, 6vw, 2.4rem); line-height: 1; text-transform: uppercase; font-weight: 500; }
+.ledger-recover .ledger-submit:disabled { opacity: .55; cursor: wait; }
+.ledger-recover .ledger-fields input[type="text"], .ledger-recover .ledger-fields input[type="email"] { padding: .8rem .9rem; background: #fbf8ef; border: 1px solid var(--ink); }
