@@ -38,7 +38,7 @@ export const roster: RosterEntry[] = [
     slug: "joel",
     name: "J. Bruce Wayne",
     role: "Wealthy playboy",
-    background: "Famous for being rich, famous for being photographed, and famously nowhere near whatever just happened.",
+    background: "Famous for being rich, famous for being photographed, and famous for the parties nobody remembers being invited to.",
     match: [{ first: ["joel"], last: ["indipiginja"] }],
   },
   {
@@ -80,14 +80,14 @@ export const roster: RosterEntry[] = [
     slug: "emre",
     name: "Dr. Emmerich Sunner",
     role: "Doctor",
-    background: "The county's only doctor, with a steady hand for bad news. Will see you sooner or later, and is rarely surprised by what turns up.",
+    background: "The county's only doctor, with a steady hand and a bedside manner that has talked many a patient out of a fuss. Will see you sooner or later.",
     match: [{ first: ["emre"], last: ["sunar"] }],
   },
   {
     slug: "molly",
     name: "Molly Daniel of the Manchester Union",
     role: "Newsie",
-    background: "A newsie sells newspapers on the street corner by shouting the headline. Molly shouts it before the ink is dry, and sometimes before it happens.",
+    background: "A newsie sells newspapers on the street corner by shouting the headline. Molly shouts louder than the rest and is usually first to the story.",
     match: [{ first: ["molly"], last: ["daniel"] }],
   },
   {
@@ -172,16 +172,16 @@ export const roster: RosterEntry[] = [
   },
   {
     slug: "angelos",
-    name: "Angelos Bowles",
-    role: "Bowling-alley hustler",
-    background: "A hustler plays badly on purpose until the stakes get high, then wins. Angelos works the candlepin lanes, a New England bowling game with skinny pins.",
+    name: "Angelos Bowles, Sporting Gentleman",
+    role: "Sporting gentleman",
+    background: "A sporting gentleman is a man about town with a stake in every game going. Angelos has an opinion on all of them and a wager on most.",
     match: [{ first: ["angelos"], last: ["boules"] }],
   },
   {
     slug: "erika",
     name: "Erika Lamm",
     role: "Fugitive",
-    background: "On the lam means running from the law. Erika always sits where the exits are, and has never said why.",
+    background: "On the lam means running from the law. Erika is never far from a door, and never in one town for long.",
     match: [{ first: ["erika"], last: ["lam"] }],
   },
   {
