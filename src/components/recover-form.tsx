@@ -40,7 +40,7 @@ export function RecoverForm() {
       <header>
         <p className="eyebrow">Already on the list?</p>
         <h1>Find your character.</h1>
-        <p>Enter the name and email you registered with. A small spelling slip in your name is fine.</p>
+        <p>Enter the name and email you registered with.</p>
       </header>
       <div className="ledger-fields">
         <label>
