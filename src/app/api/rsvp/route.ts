@@ -1,7 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getDb } from "@/lib/db/client";
 import { guests, rsvps } from "@/lib/db/schema";
+import { eq } from "drizzle-orm";
 import { setSessionCookie } from "@/lib/auth/session";
+import { chooseGuestName } from "@/lib/auth/recover";
 
 const attendanceStatuses = ["invited", "confirmed", "declined", "waitlisted"] as const;
 
@@ -73,10 +75,14 @@ export async function POST(request: NextRequest) {
   // so a failure here must not be reported as a failed RSVP — that would send the
   // guest back to submit a second time and duplicate their own entry in the register.
   try {
+    // A guest signing up again from a new device may misspell their name. Keep the name they were
+    // registered with when the new one is a near miss, since their character is matched by it.
+    const [existing] = await db.select({ fullName: guests.fullName }).from(guests).where(eq(guests.email, normalizedEmail)).limit(1);
+    const keptName = chooseGuestName(existing?.fullName, normalizedName);
     const [guest] = await db
       .insert(guests)
-      .values({ email: normalizedEmail, fullName: normalizedName })
-      .onConflictDoUpdate({ target: guests.email, set: { fullName: normalizedName } })
+      .values({ email: normalizedEmail, fullName: keptName })
+      .onConflictDoUpdate({ target: guests.email, set: { fullName: keptName } })
       .returning();
     await setSessionCookie(guest.id);
   } catch (error) {
