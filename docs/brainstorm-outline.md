@@ -20,6 +20,7 @@ Source: Joey's voice transcripts with a friend (Oct 19) and follow-up messages (
 - Invitations have two senders: the old man invites the 19 regular guests; Cassie secretly sends each survivor a separate invitation. Cassie at least alerts them. Each survivor's invitation carries something unique to them (for example a numbered token).
 - Survivors compete: it is a succession. Whoever finishes the old man takes Cassie's seat and the club (the Veil). That satisfies Cassie. Everyone also has a private personal motive depending on their character.
 - Survivors are spread across the persona groups, one in each.
+- Every survivor has a personal objective to kill the old man, and has to work out why they want to. The answer comes from clues and other guests (note for later, not built yet).
 - The poison: one bottle, held by the Butler (Rebecca). Whoever possesses the bottle is the one who knows who got it first.
 
 **Characters and cards**
@@ -34,7 +35,7 @@ Source: Joey's voice transcripts with a friend (Oct 19) and follow-up messages (
 - Everyone may name up to five survivors: right earns, wrong loses.
 
 ## Open
-- The old man's plan for tonight (see options discussed).
+- What the old man is actually planning. Decided so far: he has everyone's secrets and is gathering the guests to do something bad. The 'something' is not settled; characters come first.
 - Whether survivors know each other (Cassie's letter "alerts" them; how much?).
 - Exact point values; whether survivors score for staying hidden.
 - Names and identities: the old man, the five survivors' real identities, the Butler's link to Cassie.
