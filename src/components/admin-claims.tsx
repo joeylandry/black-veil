@@ -9,6 +9,7 @@ const adminSecretKey = "black-veil-admin-secret";
 export function AdminClaims() {
   const [secret, setSecret] = useState<string | null>(null);
   const [secretInput, setSecretInput] = useState("");
+  const [showSecret, setShowSecret] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   /**
@@ -78,8 +79,20 @@ export function AdminClaims() {
         </header>
         <div className="ledger-fields">
           <label>
-            <span>Admin passphrase</span>
-            <input type="password" value={secretInput} onChange={(event) => setSecretInput(event.target.value)} required />
+            <span>Admin passcode</span>
+            <input
+              type={showSecret ? "text" : "password"}
+              value={secretInput}
+              onChange={(event) => setSecretInput(event.target.value)}
+              autoComplete="off"
+              autoCapitalize="none"
+              spellCheck={false}
+              required
+            />
+          </label>
+          <label className="admin-show">
+            <input type="checkbox" checked={showSecret} onChange={(event) => setShowSecret(event.target.checked)} />
+            <span>Show passcode</span>
           </label>
         </div>
         {error && <small className="field-error" role="alert">{error}</small>}
@@ -90,11 +103,6 @@ export function AdminClaims() {
 
   return (
     <div className="admin-claims">
-      {secret === "open" && (
-        <p className="admin-notice" role="alert">
-          The passphrase is switched off. Set <code>adminOpen</code> to false in <code>src/config/event.ts</code> before the party.
-        </p>
-      )}
       <AdminCast secret={secret} />
     </div>
   );

@@ -19,11 +19,10 @@ export const eventConfig = {
    */
   charactersReleased: false,
   /**
-   * TEMPORARY. While true, /admin and every /api/admin route work with NO passphrase, so anyone
-   * who opens /admin can read guest emails, sign in as any guest, edit or delete records and
-   * download the answer key. Set it back to false (and redeploy) before real guests arrive.
+   * While true, /admin and every /api/admin route work with NO passcode, so anyone who opens
+   * /admin can read guest emails and sign in as any guest. Keep it false.
    */
-  adminOpen: true,
+  adminOpen: false,
   /**
    * The Black Frog trials and the Restoration Bench (the CTF) are closed for now: their pages
    * send guests to the game and their routes refuse submissions. Set to true to bring them back.

@@ -14,10 +14,10 @@ export function SiteFooter() {
       <p className="eyebrow">Manchester, New Hampshire · Established 1921</p>
       <div className="footer-links">
         <Link href="/archive">Historical records</Link>
-        <Link href="/about">About</Link>
         <Link href="/guest-ledger">Guest ledger</Link>
         {eventConfig.benchPromoted && <Link href="/bench">Restoration bench</Link>}
         {registerUnlocked && <Link href="/resume">Resume your register</Link>}
+        <Link href="/admin">Staff</Link>
       </div>
       <p className="fine-print">Archive catalog last amended: October 23, 1926 · 11:47 P.M.</p>
       {registerUnlocked && (

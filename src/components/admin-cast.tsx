@@ -103,6 +103,7 @@ export function AdminCast({ secret }: { secret: string }) {
                 <>
                   <strong>{guest.character.name}</strong>
                   <small>{guest.character.role}{guest.how === "hand" ? " · cast by hand" : ""}</small>
+                  <small className="staff-cast-bg">{guest.character.background}</small>
                 </>
               ) : (
                 <span className="character-sealed">No character matched</span>

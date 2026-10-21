@@ -1099,3 +1099,10 @@ img { max-width: 100%; height: auto; }
   .staff-release { width: 100%; }
   .staff-release button { min-height: 48px; }
 }
+
+/* ---- the staff unlock form ---- */
+form.admin-unlock .ledger-fields input[type="text"], form.admin-unlock .ledger-fields input[type="password"] { width: 100%; padding: .8rem .9rem; font-size: 1rem; color: var(--ink); background: #fbf8ef; border: 2px solid var(--ink); border-radius: 0; }
+form.admin-unlock .ledger-fields input:focus { outline: 3px solid var(--oxblood); outline-offset: 2px; }
+form.admin-unlock .admin-show { display: flex; flex-direction: row; align-items: center; gap: .6rem; margin-top: .4rem; font-size: .9rem; cursor: pointer; }
+form.admin-unlock .admin-show input { width: 1.2rem; height: 1.2rem; margin: 0; accent-color: var(--oxblood); }
+.staff-cast-bg { margin-top: .25rem; font-style: italic; line-height: 1.4; }

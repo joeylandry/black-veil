@@ -3,31 +3,27 @@ import { NextResponse } from "next/server";
 import { eventConfig } from "@/config/event";
 
 /**
+ * The /admin passcode. It lives here, in server-only code, never in src/config/event.ts: that file
+ * is imported by pages that run in the browser, so anything in it is public. The ADMIN_SECRET
+ * environment variable, if the host sets it, also works.
+ */
+const ADMIN_PASSCODE = "1926staff";
+
+/**
  * Shared-secret auth for the staff-only /admin routes. No per-staff accounts yet.
  *
- * Returns null when the request may proceed, otherwise the response to send. A missing
- * ADMIN_SECRET and a wrong passphrase are answered differently, with a `code` the
- * /admin page turns into a message, so staff aren't told their passphrase is wrong
- * when the deployment simply has none set.
+ * Returns null when the request may proceed, otherwise the response to send.
  */
 export function adminGuard(request: Request): NextResponse | null {
-  // Temporary switch in src/config/event.ts: no passphrase at all. Turn it off before the party.
+  // Switch in src/config/event.ts: no passcode at all. Keep it off.
   if (eventConfig.adminOpen) return null;
-  const secret = process.env.ADMIN_SECRET;
-  if (!secret) {
-    return NextResponse.json(
-      {
-        error: "ADMIN_SECRET is not set on this deployment, so no passphrase can work. Add it in the host's environment variables and redeploy.",
-        code: "not-configured",
-      },
-      { status: 503 },
-    );
-  }
   const given = Buffer.from(request.headers.get("authorization") ?? "");
-  const expected = Buffer.from(`Bearer ${secret}`);
-  if (given.length !== expected.length || !timingSafeEqual(given, expected)) {
-    return NextResponse.json({ error: "That passphrase was rejected.", code: "bad-passphrase" }, { status: 401 });
-  }
+  const accepted = [ADMIN_PASSCODE, process.env.ADMIN_SECRET].filter((value): value is string => Boolean(value));
+  const ok = accepted.some((secret) => {
+    const expected = Buffer.from(`Bearer ${secret}`);
+    return given.length === expected.length && timingSafeEqual(given, expected);
+  });
+  if (!ok) return NextResponse.json({ error: "That passcode was rejected.", code: "bad-passphrase" }, { status: 401 });
   return null;
 }
 
@@ -36,7 +32,7 @@ export function adminDatabaseError(context: string, error: unknown) {
   console.error(`[admin] ${context}:`, error);
   return NextResponse.json(
     {
-      error: "The passphrase is right, but the database could not be read. Check DATABASE_URL on this deployment and that migrations have been run.",
+      error: "The passcode is right, but the database could not be read. Check DATABASE_URL on this deployment and that migrations have been run.",
       code: "database",
     },
     { status: 503 },

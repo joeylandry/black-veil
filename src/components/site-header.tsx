@@ -12,7 +12,6 @@ export function SiteHeader() {
       </Link>
       <nav aria-label="Primary navigation">
         <Link href="/archive">Archive</Link>
-        <Link href="/about">About</Link>
         <Link href="/guest-ledger">Guest ledger</Link>
         <Link href="/game">Game</Link>
       </nav>
