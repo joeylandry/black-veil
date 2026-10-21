@@ -1,57 +1,110 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { eventConfig } from "@/config/event";
+import type { RsvpSubmission } from "@/lib/rsvp-service";
+import type { RosterView } from "@/lib/roster-service";
 import { useStorageValue } from "@/lib/use-storage-value";
+import { BlackVeilInsignia } from "./black-veil-insignia";
 
-type Ledger = {
-  released: boolean;
-  published: boolean;
-  rows: { name: string; character: string | null; occupation: string | null; points: number; rank: number | null; isYou: boolean }[];
-};
-
-/** Who is coming, who they will be, and where everyone stands: at 0 until the host publishes results. */
+/**
+ * Your character on top, then everyone who is coming. Before the host releases character names
+ * it shows names only; after, each guest's character, role and background (tap a row to open it).
+ */
 export function GuestRoster() {
   const savedRsvp = useStorageValue(eventConfig.storageKeys.rsvp);
-  const [ledger, setLedger] = useState<Ledger | null>(null);
+  const rsvp = useMemo(() => {
+    if (!savedRsvp) return null;
+    try { return JSON.parse(savedRsvp) as RsvpSubmission; } catch { return null; }
+  }, [savedRsvp]);
+  const [view, setView] = useState<RosterView | null>(null);
 
   useEffect(() => {
     if (!savedRsvp) return;
     let cancelled = false;
     const refresh = () => {
-      fetch("/api/standings", { cache: "no-store" })
+      fetch("/api/roster", { cache: "no-store" })
         .then((response) => (response.ok ? response.json() : null))
-        .then((body) => { if (!cancelled && body) setLedger(body); })
+        .then((body) => { if (!cancelled && body) setView(body); })
         .catch(() => {});
     };
     refresh();
-    const timer = window.setInterval(refresh, 15000);
+    const timer = window.setInterval(refresh, 20000);
     return () => {
       cancelled = true;
       window.clearInterval(timer);
     };
   }, [savedRsvp]);
 
-  if (!savedRsvp || !ledger) return null;
+  if (!rsvp || !view) return null;
+
+  const mine = view.rows.find((row) => row.isYou);
 
   return (
-    <section className="leaderboard-section">
-      <div className="leaderboard-heading">
-        <div><p className="eyebrow">Private ledger · before doors</p><h2>Guest Ledger</h2></div>
-        <p>{ledger.published ? "The night is over. Here is how everyone finished." : "Everyone starts the night at 0. Points are counted when the night is over."}</p>
-      </div>
-      <div className="leaderboard-table" role="table" aria-label="Guest ledger">
-        <div role="row" className="leaderboard-row leaderboard-labels"><span role="columnheader">{ledger.published ? "Rank" : "No."}</span><span role="columnheader">Guest</span><span role="columnheader">Character</span><span role="columnheader">Points</span></div>
-        {ledger.rows.map((row, index) => (
-          <div role="row" className={row.isYou ? "leaderboard-row leaderboard-you" : "leaderboard-row"} key={`${row.name}-${index}`}>
-            <span role="cell">{String(row.rank ?? index + 1).padStart(2, "0")}</span>
-            <strong role="cell">{row.name}</strong>
-            <span role="cell" className={row.character ? undefined : "character-sealed"}>{row.character ? `${row.character} · ${row.occupation}` : "Coming very soon"}</span>
-            <strong role="cell">{row.points}</strong>
-          </div>
-        ))}
-      </div>
-      <p className="leaderboard-note">{ledger.rows.length} names in the ledger. Who is a survivor, and everything private to a character, stays sealed.</p>
-    </section>
+    <>
+      {rsvp.attending === "yes" && (
+        <section className={view.you ? "character-card roster-you" : "character-card character-card-sealed"} aria-label="Your character">
+          {view.you ? (
+            <div className="character-card-face">
+              <p className="eyebrow">Your character for the evening</p>
+              <h2>{view.you.name}</h2>
+              <p className="character-occupation">{view.you.role}</p>
+              <p className="character-bio">{view.you.background}</p>
+              <ul className="roster-soon" aria-label="Still to come">
+                <li><strong>Objectives</strong> coming soon</li>
+                <li><strong>Secrets</strong> coming soon</li>
+              </ul>
+            </div>
+          ) : (
+            <>
+              <BlackVeilInsignia />
+              <div>
+                <p className="eyebrow">Your character for the evening · <strong>Coming very soon</strong></p>
+                <p>
+                  {view.released
+                    ? "Management has not yet matched a character to your name. It will appear here very soon."
+                    : "Your character name, role and background will appear here the moment the cast is released."}
+                </p>
+              </div>
+            </>
+          )}
+        </section>
+      )}
+
+      <section className="roster-section" aria-label="Guest ledger">
+        <div className="roster-heading">
+          <p className="eyebrow">Private ledger · before doors</p>
+          <h2>Who is coming</h2>
+          <p>{view.released ? "Tap a name to see who they will be." : "Characters are coming very soon. Names only, for now."}</p>
+        </div>
+        <ul className="roster-list">
+          {view.rows.map((row, index) => (
+            <li key={`${row.name}-${index}`} className={row.isYou ? "roster-item roster-item-you" : "roster-item"}>
+              {row.card ? (
+                <details>
+                  <summary>
+                    <span className="roster-name">{row.name}{row.isYou && <em> · you</em>}</span>
+                    <span className="roster-role">{row.card.role}</span>
+                  </summary>
+                  <div className="roster-detail">
+                    <strong>{row.card.name}</strong>
+                    <p>{row.card.background}</p>
+                  </div>
+                </details>
+              ) : (
+                <div className="roster-plain">
+                  <span className="roster-name">{row.name}{row.isYou && <em> · you</em>}</span>
+                  <span className="roster-role character-sealed">Coming very soon</span>
+                </div>
+              )}
+            </li>
+          ))}
+        </ul>
+        <p className="roster-note">
+          {view.rows.length} {view.rows.length === 1 ? "name" : "names"} in the ledger.
+          {mine ? "" : " Your own name appears once you are registered."}
+        </p>
+      </section>
+    </>
   );
 }

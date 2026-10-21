@@ -1048,3 +1048,54 @@ img { max-width: 100%; height: auto; }
 .admin-cast-edit summary { cursor: pointer; opacity: .85; }
 .admin-cast-edit label { display: block; margin-top: .5rem; }
 .admin-cast-edit input, .admin-cast-edit textarea { width: 100%; box-sizing: border-box; margin-top: .2rem; }
+
+/* ---- the roster: your character on top, then everyone who is coming ---- */
+.roster-you { grid-template-columns: minmax(0, 1fr); margin-top: 1.5rem; }
+.roster-soon { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1.2rem 0 0; padding: 0; list-style: none; }
+.roster-soon li { padding: .45rem .75rem; font-family: var(--font-sans), Arial, sans-serif; font-size: .68rem; letter-spacing: .06em; text-transform: uppercase; color: #cbbf9f; border: 1px dashed var(--gold-muted); }
+.roster-soon strong { color: var(--paper-light); }
+.roster-section { max-width: 980px; margin: 2.5rem auto 0; padding: clamp(1.1rem, 4vw, 2.6rem); color: var(--ink); background: var(--paper-light); border: 4px double var(--ink); }
+.roster-heading { padding-bottom: 1rem; border-bottom: 3px double var(--ink); }
+.roster-heading h2 { margin: .2rem 0 .4rem; font-family: var(--font-display); font-size: clamp(2.2rem, 8vw, 4rem); line-height: .9; text-transform: uppercase; }
+.roster-heading p:last-child { margin: 0; font-size: .9rem; font-style: italic; color: var(--ink-soft); }
+.roster-list { margin: 0; padding: 0; list-style: none; }
+.roster-item { border-bottom: 1px solid var(--rule); }
+.roster-item-you { background: rgba(120, 20, 20, .08); box-shadow: inset 4px 0 0 var(--oxblood); }
+.roster-item summary, .roster-plain { display: flex; align-items: baseline; justify-content: space-between; gap: .8rem; min-height: 52px; padding: .75rem .6rem .75rem .9rem; cursor: pointer; list-style: none; }
+.roster-plain { cursor: default; }
+.roster-item summary::-webkit-details-marker { display: none; }
+.roster-item summary::after { content: "+"; flex: 0 0 auto; align-self: center; width: 1.4rem; text-align: center; font-family: var(--font-sans), Arial, sans-serif; font-weight: 800; color: var(--oxblood); }
+.roster-item details[open] summary::after { content: "\2212"; }
+.roster-name { font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; min-width: 0; overflow-wrap: anywhere; }
+.roster-name em { font-family: var(--font-sans), Arial, sans-serif; font-size: .66rem; font-style: normal; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--oxblood); }
+.roster-role { margin-left: auto; text-align: right; font-size: .82rem; font-style: italic; color: var(--ink-soft); }
+.roster-item summary .roster-role { margin-right: .2rem; }
+.roster-detail { padding: .2rem 1rem 1.1rem .9rem; }
+.roster-detail strong { display: block; font-family: var(--font-display); font-size: 1.05rem; color: var(--oxblood-dark); }
+.roster-detail p { margin: .35rem 0 0; font-size: .92rem; line-height: 1.5; }
+.roster-note { margin: 1.1rem 0 0; font-size: .78rem; color: var(--oxblood-dark); }
+@media (max-width: 560px) {
+  .roster-item summary, .roster-plain { flex-wrap: wrap; row-gap: .1rem; }
+  .roster-role { flex-basis: 100%; margin-left: 0; text-align: left; order: 3; }
+  .roster-item summary::after { order: 2; margin-left: auto; }
+  .roster-name { flex: 1 1 70%; }
+}
+
+/* ---- the staff cast panel ---- */
+.staff-cast-top { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 1rem; }
+.staff-cast-top h2 { margin: .1rem 0; }
+.staff-release { display: flex; flex-direction: column; gap: .4rem; min-width: min(100%, 260px); padding: .9rem 1rem; background: rgba(101, 30, 39, .08); border: 1px solid var(--oxblood); }
+.staff-release-on { background: rgba(60, 100, 60, .12); border-color: #4a6b4a; }
+.staff-release small { color: var(--ink-soft); }
+.staff-cast-list { margin: 1rem 0 0; padding: 0; list-style: none; }
+.staff-cast-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr) auto; align-items: center; gap: .8rem; padding: .7rem 0; border-bottom: 1px solid var(--rule); }
+.staff-cast-row small { display: block; font-size: .74rem; color: var(--ink-soft); overflow-wrap: anywhere; }
+.staff-cast-row-missing { background: rgba(101, 30, 39, .06); }
+.staff-cast-actions { display: flex; flex-wrap: wrap; gap: .4rem; justify-content: flex-end; }
+@media (max-width: 700px) {
+  .staff-cast-row { grid-template-columns: minmax(0, 1fr); gap: .35rem; padding: .9rem 0; }
+  .staff-cast-actions { justify-content: flex-start; }
+  .staff-cast-actions button { min-height: 44px; }
+  .staff-release { width: 100%; }
+  .staff-release button { min-height: 48px; }
+}

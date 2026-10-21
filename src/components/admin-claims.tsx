@@ -1,29 +1,15 @@
 "use client";
 
 import { FormEvent, useEffect, useState } from "react";
-import { AdminDashboard } from "./admin-dashboard";
-import { AdminGame } from "./admin-game";
-import { AdminDatabase } from "./admin-database";
-
-type AdminClaim = {
-  id: string;
-  label: string;
-  note: string;
-  points: number | null;
-  status: "pending" | "approved" | "rejected";
-  submittedAt: string;
-  guestFullName: string;
-  guestEmail: string;
-};
+import { AdminCast } from "./admin-cast";
 
 const adminSecretKey = "black-veil-admin-secret";
 
+/** The staff office: unlock, then the cast. Nothing else for now. */
 export function AdminClaims() {
   const [secret, setSecret] = useState<string | null>(null);
   const [secretInput, setSecretInput] = useState("");
-  const [claims, setClaims] = useState<AdminClaim[] | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [refreshKey, setRefreshKey] = useState(0);
 
   /**
    * Checks a passphrase before the staff office is shown, so a failure is reported on
@@ -67,26 +53,6 @@ export function AdminClaims() {
     });
   }, []);
 
-  async function load(withSecret: string) {
-    const response = await fetch("/api/admin/claims?status=pending", {
-      headers: { Authorization: `Bearer ${withSecret}` },
-    }).catch(() => null);
-    if (!response?.ok) {
-      const body = await response?.json().catch(() => null);
-      setError(body?.error ?? "The claim queue could not be loaded.");
-      setClaims(null);
-      return;
-    }
-    setError(null);
-    const body = await response.json();
-    setClaims(body.claims);
-  }
-
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    if (secret) load(secret);
-  }, [secret]);
-
   async function unlock(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setError(null);
@@ -101,19 +67,6 @@ export function AdminClaims() {
       // ignore
     }
     setSecret(secretInput);
-  }
-
-  async function decide(id: string, decision: "approved" | "rejected", points?: number) {
-    if (!secret) return;
-    const response = await fetch(`/api/admin/claims/${id}`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json", Authorization: `Bearer ${secret}` },
-      body: JSON.stringify({ decision, points }),
-    });
-    if (response.ok) {
-      setClaims((current) => (current ?? []).filter((claim) => claim.id !== id));
-      setRefreshKey((key) => key + 1);
-    }
   }
 
   if (!secret) {
@@ -139,52 +92,10 @@ export function AdminClaims() {
     <div className="admin-claims">
       {secret === "open" && (
         <p className="admin-notice" role="alert">
-          <strong>The passphrase is switched off.</strong> Anyone who opens this page has full control. Set <code>adminOpen</code> to false in <code>src/config/event.ts</code> and redeploy before real guests arrive.
+          The passphrase is switched off. Set <code>adminOpen</code> to false in <code>src/config/event.ts</code> before the party.
         </p>
       )}
-      <header>
-        <p className="eyebrow">Staff only · the register</p>
-        <h1>Staff Office</h1>
-        <button type="button" className="button-link" onClick={() => { load(secret); setRefreshKey((key) => key + 1); }}>Refresh</button>
-      </header>
-      <AdminDashboard secret={secret} refreshKey={refreshKey} onChange={() => { load(secret); setRefreshKey((key) => key + 1); }} />
-      <AdminGame secret={secret} />
-      <AdminDatabase secret={secret} refreshKey={refreshKey} onChange={() => { load(secret); setRefreshKey((key) => key + 1); }} />
-      <h2 className="admin-section-title">Claim queue</h2>
-      {error && <p className="field-error" role="alert">{error}</p>}
-      {claims && claims.length === 0 && <p>Nothing pending.</p>}
-      {claims && claims.length > 0 && (
-        <ul className="admin-claims-list">
-          {claims.map((claim) => (
-            <AdminClaimRow key={claim.id} claim={claim} onDecide={decide} />
-          ))}
-        </ul>
-      )}
+      <AdminCast secret={secret} />
     </div>
-  );
-}
-
-function AdminClaimRow({
-  claim,
-  onDecide,
-}: {
-  claim: AdminClaim;
-  onDecide: (id: string, decision: "approved" | "rejected", points?: number) => void;
-}) {
-  const [points, setPoints] = useState("5");
-
-  return (
-    <li className="admin-claim">
-      <div>
-        <strong>{claim.label}</strong>
-        <p>{claim.guestFullName} · {claim.guestEmail}</p>
-        {claim.note && <p className="admin-claim-note">{claim.note}</p>}
-      </div>
-      <div className="admin-claim-actions">
-        <input type="number" min={0} value={points} onChange={(event) => setPoints(event.target.value)} aria-label="Points to award" />
-        <button type="button" onClick={() => onDecide(claim.id, "approved", Number(points))}>Approve</button>
-        <button type="button" onClick={() => onDecide(claim.id, "rejected")}>Reject</button>
-      </div>
-    </li>
   );
 }

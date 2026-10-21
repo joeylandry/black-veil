@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { CharacterCard } from "@/components/character-card";
 import { GuestLedger } from "@/components/guest-ledger";
 import { GuestRoster } from "@/components/guest-roster";
 
@@ -11,9 +10,9 @@ export const metadata: Metadata = {
 export default function GuestLedgerPage() {
   return (
     <div className="page-wrap guest-ledger-page">
-      <GuestLedger />
-      <CharacterCard />
+      {/* your character and everyone coming come first; the name form and confirmation sit below once you are in */}
       <GuestRoster />
+      <GuestLedger />
     </div>
   );
 }
