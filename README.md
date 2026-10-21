@@ -26,7 +26,6 @@ npm run build
 - `/` — 1926 invitation entry and the early Cassandra newspaper hook
 - `/archive` — archive drawers organized by year, 1921–1926
 - `/archive/[slug]` — full-size physical artifact view with prior/next record navigation
-- `/about` — chronology separating real Manchester context from Black Veil fiction
 - `/guest-ledger` — real-name RSVP, persisted to Postgres and signed in for this device
 - `/invitation` — private invitation revealed after archive access and RSVP
 - `/game` — the guest's night: three-tab character card ("Characters coming very soon" until released), errands, final answers, results. See `docs/game/README.md`
@@ -34,7 +33,7 @@ npm run build
 - `/postscript` — the unlisted bonus flag (footer link once the register is unsealed; the flag is in the unlocked terminal ledger)
 - `/bench/[ticket]` — one restoration bench: a graded engineering exercise (RST-01 … RST-12)
 - `/resume` — request a magic-link sign-in to restore your register on a new device
-- `/admin` — staff-only, passphrase-gated queue for approving point claims
+- `/admin` — staff-only, passcode-gated cast page: who is coming, their character, sign in as them, and the switch that releases character names (linked from the footer)
 - unmatched routes — custom in-world 404
 
 ## Archive system

@@ -113,21 +113,9 @@ export function GuestLedger() {
 
   if (visibleSubmission) {
     return (
-      <div className="ledger-success ledger-success-complete">
-        <header>
-          <p className="eyebrow">Guest ledger · October 1926</p>
-          <h1>Your name has been entered in the guest ledger.</h1>
-          <p className="registered-name">{visibleSubmission.fullName}</p>
-          <div className="management-found-file">
-            <p>The management of The Black Veil has located your file.</p>
-            <strong>Further correspondence will follow.</strong>
-          </div>
-          <p className="rsvp-storage-note">Your entry has been recorded for event management.</p>
-          <div className="ledger-success-actions">
-            <Link href="/invitation" className="button-link">Open private invitation</Link>
-            <Link href="/game" className="button-link">Open the game</Link>
-          </div>
-        </header>
+      <div className="ledger-success-actions ledger-actions-only">
+        <Link href="/invitation" className="button-link">Open private invitation</Link>
+        <Link href="/game" className="button-link">Open the game</Link>
       </div>
     );
   }
