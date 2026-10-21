@@ -6,28 +6,28 @@ Generated from `src/data/roster.ts`: edit the data, not this file.
 
 | Played by | Character | Role | Background |
 |---|---|---|---|
-| Anika (anika) | Anika Mahns of Mahns Manor | Heir | Born into the Mahns fortune and Mahns Manor. Has never paid for a drink, and has never let anyone forget it. |
-| Joel (joel) | J. Bruce Wayne | Wealthy playboy | Famous for being rich, famous for being photographed, and famous for the parties nobody remembers being invited to. |
-| Mihir (mihir) | Mihir Nagarkatti of Nag Oil | Oil master | Struck oil once, then spent a fortune telling everyone. The well ran dry long ago; the stories never did. |
-| Rhea (rhea) | Rhea Mallya of Mallya's Emporium | Department store owner | Everything under one roof, including the prices. Whatever you want, Mallya's has it, and has marked it up. |
-| Theodor (theodor) | Sheriff Theodor Farrago | Sheriff | Keeps the peace the way some people keep secrets: loosely, and only when it suits. Knows everyone's business and writes down very little. |
-| Eric (eric) | Judge Eric Leeway | Judge | Hands down light sentences and long lunches. Nobody has ever walked out of this courtroom unhappy, which is exactly what worries people. |
+| Anika (anika) | Anika Mahns of Mahns Manor | Heir | Mahns Manor has more rooms than guests and more portraits than friends. The fortune does most of the talking. |
+| Joel (joel) | J. Bruce Wayne | Wealthy playboy | Always in the society pages, never at the office. Nobody can say what J. Bruce does, only where. |
+| Mihir (mihir) | Mihir Nagarkatti of Nag Oil | Oil master | One gusher made a fortune, and the whole town has heard the story twice. Wells run dry; the swagger never does. |
+| Rhea (rhea) | Rhea Mallya of Mallya's Emporium | Department store owner | Everything under one roof, from hats to hatboxes, under a sign that says the customer is always right. The prices say otherwise. |
+| Theodor (theodor) | Sheriff Theodor Farrago | Sheriff | A tin star, a quiet office and a long memory. Knows everyone's business and writes down very little. |
+| Eric (eric) | Judge Eric Leeway | Judge | Light sentences, long lunches, and a gavel that rarely gets raised. Everyone leaves this courtroom smiling. |
 | Anthony (anthony) | Anthony Hung, Esq. | Defense attorney | Has never lost a case, only a jury. Charges by the word, and every word is worth it. |
-| Emre (emre) | Dr. Emmerich Sunner | Doctor | The county's only doctor, with a steady hand and a bedside manner that has talked many a patient out of a fuss. Will see you sooner or later. |
-| Molly (molly) | Molly Daniel of the Manchester Union | Newsie | A newsie sells newspapers on the street corner by shouting the headline. Molly shouts louder than the rest and is usually first to the story. |
+| Emre (emre) | Dr. Emmerich Sunner | Doctor | Steady hands, a black bag, and a bedside manner that talks patients out of a fuss. Will see you sooner or later. |
+| Molly (molly) | Molly Daniel of the Manchester Union | Newsie | Hollers the headlines from the corner before the ink is dry. If it's news, Molly has it, and so does everyone within three blocks. |
 | Leon (leon) | Leon Gee of WFEA | Radio announcer | The voice of WFEA, smooth enough to sell soap and loud enough to wake the dead. Half the town trusts every word; the other half just likes the sound. |
-| Ananya and Charlie (ananya) | Ananya Codru and Charlie Wakem | Night telegraph office | In 1926 news travelled by telegram, and these two run the night desk. Every wire in town crosses their table, and nothing leaves it unread. |
-| Luke (luke) | Luke Shelldon | Carnival barker | A barker is the showman who shouts outside a carnival tent to pull in the crowd. Luke could sell you the tent, the show and the ticket, and have you thank them for the change. |
-| Silas (silas) | Silas Palmer of the Palm Court | Jazz scat singer | Scat is singing in nonsense syllables, like a horn with a voice. Silas turns words into rhythm and rhythm into trouble, and leads the band that keeps the dance floor moving. |
-| Josh (josh) | Joshua Kamin-Sky | Soothsayer | A soothsayer tells fortunes. Joshua reads the sky, the room and the palm in front of them, and is right more often than is comfortable. |
-| Arjun (arjun) | Arjun Bat | Slugger | A slugger is a star baseball hitter. Arjun has never met a pitch that didn't deserve a swing, or a fence that didn't deserve a dent. |
+| Ananya and Charlie (ananya) | Ananya Codru and Charlie Wakem | Night telegraph office | Every wire in town crosses their desk after dark. News travels fast, and these two are first to read it. |
+| Luke (luke) | Luke Shelldon | Carnival barker | Hollers outside the tent until the whole street is inside it. Could sell you the show, the ticket and the change. |
+| Silas (silas) | Silas Palmer of the Palm Court | Jazz scat singer | Sings the words nobody wrote, ba-doo-be-da and all, and leads the band that keeps the floor moving. |
+| Josh (josh) | Joshua Kamin-Sky | Soothsayer | Reads fortunes in palms, clouds and the bottom of a teacup, and is right more often than is comfortable. |
+| Arjun (arjun) | Arjun Bat | Slugger | Has never met a pitch that didn't deserve a swing, or a fence that didn't deserve a dent. The ball usually gets the worst of it. |
 | Adam (adam) | Adam Holdsfire | Gunsmith | Builds the finest revolvers in the county and has never fired one. A good gun, like a good argument, is best left in the holster. |
-| Tiffany (tiffany) | Tiffany Liu of the Lamps | Stained-glass artist | Turns broken glass into lamps and windows people stop and stare at. Everything Tiffany makes glows a little like a secret. |
-| Diwakar (diwakar) | Diwakar Sandbagg | Prizefighter | A prizefighter is a boxer who fights for money. Diwakar takes a punch the way other people take a compliment: calmly, and with a plan. |
-| Tim (tim) | Tim McGinley, Baron of Bathtub Gin | Gin baron | Bathtub gin was cheap homemade liquor during Prohibition. Tim makes the most of it, delivered with a smile and a very large bathtub. |
-| Rebecca (rebecca) | Rebecca Chow, Butler of the Black Veil | Butler | Runs the house, pours the drinks and keeps the secrets. Hears everything, repeats nothing, and holds the keys to every room. |
-| Angelos (angelos) | Angelos Bowles, Sporting Gentleman | Sporting gentleman | A sporting gentleman is a man about town with a stake in every game going. Angelos has an opinion on all of them and a wager on most. |
-| Erika (erika) | Erika Lamm | Fugitive | On the lam means running from the law. Erika is never far from a door, and never in one town for long. |
-| Sidd (sidd) | Sidd Airwind | Barnstormer | A barnstormer is a stunt pilot who flies from town to town selling rides and thrills. Sidd has seen every field in New England from above, and doesn't much like the ground. |
-| Krrish (krrish) | Krrish Vermouth | Wine importer | Smuggles wine and vermouth past Prohibition, one crate at a time, and has never once been caught holding a corkscrew. |
-| Jack (jack) | Jack Hudson of Hudson Motors (no relation) | Car dealer | Sells the finest cars in Manchester, whether or not they run. No relation to the motorcar, as Jack will tell you loudly. |
+| Tiffany (tiffany) | Tiffany Liu of the Lamps | Stained-glass artist | Turns broken glass into lamps and windows people stop and stare at. Everything made here glows a little like a secret. |
+| Diwakar (diwakar) | Diwakar Sandbagg | Prizefighter | Takes a punch the way other people take a compliment: calmly, with a plan, and for a fee. |
+| Tim (tim) | Tim McGinley, Baron of Bathtub Gin | Gin baron | The finest gin in Manchester comes out of the biggest bathtub, delivered with a smile and no questions. |
+| Rebecca (rebecca) | Rebecca Chow, Butler of the Black Veil | Butler | Runs the house, pours the drinks, keeps the secrets. Hears everything, repeats nothing, and holds the keys to every room. |
+| Angelos (angelos) | Angelos Bowles | Card sharp | Deals fast, bets faster, and always has one more hand to play. The smile across the table is part of the game. |
+| Erika (erika) | Erika Lamm | Fugitive | Never far from a door, and never in one town for long. Always seems to be leaving, even when arriving. |
+| Sidd (sidd) | Sidd Airwind | Barnstormer | Flies from town to town in a patched-up plane, selling rides and thrills to anyone with a dollar. Has seen every field in New England from above, and doesn't much like the ground. |
+| Krrish (krrish) | Krrish Vermouth | Wine importer | Fine wine and vermouth arrive in Manchester by the crate, no questions asked and none answered. |
+| Jack (jack) | Jack Hudson of Hudson Motors (no relation) | Car dealer | Sells the shiniest cars in Manchester, and whether they run is a separate conversation. No relation to the motorcar, as Jack will tell you loudly. |
