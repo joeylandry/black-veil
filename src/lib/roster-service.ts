@@ -100,25 +100,30 @@ export async function castList(db: GameDb, flags?: RosterFlags): Promise<CastRow
 }
 
 export type PublicCard = { name: string; role: string; background: string };
+/**
+ * `name` is the guest's real name before release and the character's name after, so a guest can
+ * never match a real name to a character. `role` and `background` are null until release.
+ */
 export type RosterView = {
   released: boolean;
   you: PublicCard | null;
-  rows: { name: string; card: PublicCard | null; isYou: boolean }[];
+  rows: { name: string; role: string | null; background: string | null; isYou: boolean }[];
 };
 
 const publicCard = (entry: RosterEntry): PublicCard => ({ name: entry.name, role: entry.role, background: entry.background });
 
-/** The guest ledger a signed-in guest sees. Before release it lists names only. */
+/** The guest ledger a signed-in guest sees. Before release it lists real names only; after, character names only. */
 export async function rosterViewFor(db: GameDb, guestId: string): Promise<RosterView> {
   const flags = await readRosterFlags(db);
   const cast = await castList(db, flags);
-  const rows = cast
-    .filter((row) => row.attending !== "no")
-    .map((row) => ({
-      name: row.fullName,
-      card: flags.released && row.entry ? publicCard(row.entry) : null,
-      isYou: row.guestId === guestId,
-    }));
+  const coming = cast.filter((row) => row.attending !== "no");
+  const rows = coming.map((row) => {
+    if (!flags.released) return { name: row.fullName, role: null, background: null, isYou: row.guestId === guestId };
+    if (!row.entry) return { name: "A character still to be chosen", role: null, background: null, isYou: row.guestId === guestId };
+    return { name: row.entry.name, role: row.entry.role, background: row.entry.background, isYou: row.guestId === guestId };
+  });
+  // after release the order follows the characters, so it can never spell out who is who
+  if (flags.released) rows.sort((a, b) => a.name.localeCompare(b.name));
   const mine = cast.find((row) => row.guestId === guestId);
   return { released: flags.released, you: flags.released && mine?.entry ? publicCard(mine.entry) : null, rows };
 }

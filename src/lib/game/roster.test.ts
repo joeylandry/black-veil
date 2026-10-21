@@ -70,15 +70,20 @@ describe("who is coming", () => {
     const before = await rosterViewFor(db, eric.guestId);
     assert.equal(before.released, false);
     assert.equal(before.you, null);
-    assert.ok(before.rows.every((row) => row.card === null));
+    assert.ok(before.rows.every((row) => row.role === null && row.background === null));
+    assert.deepEqual(before.rows.map((row) => row.name).sort(), ["Eric Li", "Mihir", "Rebecca Chou", "Visitor Nobody"]);
     assert.equal(before.rows.length, 4, "the guest who sent regrets is not listed");
     assert.ok(!JSON.stringify(before).includes("Leeway"));
 
     await setReleased(db, true);
     const after = await rosterViewFor(db, eric.guestId);
     assert.equal(after.you?.name, "Judge Eric Leeway");
-    assert.equal(after.rows.find((row) => row.name === "Mihir")?.card?.role, "Oil master");
-    assert.equal(after.rows.find((row) => row.name === "Visitor Nobody")?.card, null, "an unmatched guest has no character");
+    assert.equal(after.rows.find((row) => row.name === "Mihir Nagarkatti of Nag Oil")?.role, "Oil master");
+    assert.equal(after.rows.find((row) => row.name === "A character still to be chosen")?.background, null, "an unmatched guest has no character yet");
+    assert.ok(after.rows.find((row) => row.isYou)?.name === "Judge Eric Leeway");
+    const everything = JSON.stringify(after);
+    for (const real of ["Eric Li", "Rebecca Chou", "Visitor Nobody", "example.test"]) assert.ok(!everything.includes(real), `${real} must not reach a guest after release`);
+    assert.deepEqual(after.rows.map((row) => row.name), [...after.rows.map((row) => row.name)].sort((a, b) => a.localeCompare(b)));
 
     await setReleased(db, false);
     assert.equal((await readRosterFlags(db)).released, false);

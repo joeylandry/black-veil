@@ -1106,3 +1106,6 @@ form.admin-unlock .ledger-fields input:focus { outline: 3px solid var(--oxblood)
 form.admin-unlock .admin-show { display: flex; flex-direction: row; align-items: center; gap: .6rem; margin-top: .4rem; font-size: .9rem; cursor: pointer; }
 form.admin-unlock .admin-show input { width: 1.2rem; height: 1.2rem; margin: 0; accent-color: var(--oxblood); }
 .staff-cast-bg { margin-top: .25rem; font-style: italic; line-height: 1.4; }
+
+.ledger-actions-only { display: flex; flex-wrap: wrap; justify-content: center; gap: .8rem; max-width: 980px; margin: 2rem auto 0; padding: 1.4rem 1rem; color: var(--ink); background: var(--paper-light); border: 1px solid #6f6758; }
+.ledger-actions-only .button-link { flex: 1 1 220px; max-width: 320px; text-align: center; }

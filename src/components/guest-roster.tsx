@@ -38,8 +38,6 @@ export function GuestRoster() {
 
   if (!rsvp || !view) return null;
 
-  const mine = view.rows.find((row) => row.isYou);
-
   return (
     <>
       {rsvp.attending === "yes" && (
@@ -74,27 +72,26 @@ export function GuestRoster() {
       <section className="roster-section" aria-label="Guest ledger">
         <div className="roster-heading">
           <p className="eyebrow">Private ledger · before doors</p>
-          <h2>Who is coming</h2>
-          <p>{view.released ? "Tap a name to see who they will be." : "Characters are coming very soon. Names only, for now."}</p>
+          <h2>{view.released ? "The cast" : "Who is coming"}</h2>
+          <p>{view.released ? "Tap a character to read more." : "Characters are coming very soon. Names only, for now."}</p>
         </div>
         <ul className="roster-list">
           {view.rows.map((row, index) => (
             <li key={`${row.name}-${index}`} className={row.isYou ? "roster-item roster-item-you" : "roster-item"}>
-              {row.card ? (
+              {row.background ? (
                 <details>
                   <summary>
                     <span className="roster-name">{row.name}{row.isYou && <em> · you</em>}</span>
-                    <span className="roster-role">{row.card.role}</span>
+                    <span className="roster-role">{row.role}</span>
                   </summary>
                   <div className="roster-detail">
-                    <strong>{row.card.name}</strong>
-                    <p>{row.card.background}</p>
+                    <p>{row.background}</p>
                   </div>
                 </details>
               ) : (
                 <div className="roster-plain">
                   <span className="roster-name">{row.name}{row.isYou && <em> · you</em>}</span>
-                  <span className="roster-role character-sealed">Coming very soon</span>
+                  <span className="roster-role character-sealed">{view.released ? "Coming soon" : "Coming very soon"}</span>
                 </div>
               )}
             </li>
@@ -102,7 +99,6 @@ export function GuestRoster() {
         </ul>
         <p className="roster-note">
           {view.rows.length} {view.rows.length === 1 ? "name" : "names"} in the ledger.
-          {mine ? "" : " Your own name appears once you are registered."}
         </p>
       </section>
     </>
