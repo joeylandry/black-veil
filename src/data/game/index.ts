@@ -12,10 +12,10 @@ import { working } from "./cast-working";
 import { exhibits } from "./exhibits";
 import { facts } from "./facts";
 import { markers, propById, props } from "./props";
-import { questionById, questions } from "./questions";
+import { alternateOf, MYSTERY_POINTS, questionById, questions } from "./questions";
 import type { Character, Circle, CircleId, Line, Objective, Share } from "./types";
 
-export { circles, exhibits, facts, markers, props, questionById, questions };
+export { alternateOf, circles, exhibits, facts, markers, MYSTERY_POINTS, props, questionById, questions };
 export * from "./types";
 
 export const characters: Character[] = [...gilded, ...order, ...stage, ...working, ...river];
@@ -43,40 +43,41 @@ export function renderText(text: string, objective?: Pick<Objective, "prop">): s
 
 // ---------------------------------------------------------------- naming guests
 
-const skipWords = new Set(["the", "of", "on", "no", "dr", "mr", "mrs", "miss", "judge", "sheriff", "relation", "to", "motorcar", "and", "or", "a", "manor", "lamps"]);
+const skipWords = new Set(["the", "of", "on", "no", "dr", "mr", "mrs", "miss", "judge", "sheriff", "relation", "to", "motorcar", "and", "or", "a", "manor", "lamps", "court", "palm", "union", "manchester", "black", "veil", "bathtub", "gin", "baron", "emporium", "farrago", "oil", "nag", "esq", "wfea", "sky", "bat", "vermouth"]);
 
 /** Extra ways a guest might name a character: the stage names on the card, minus any that are also ordinary words in the story. */
 const extraAliases: Record<string, string[]> = {
-  joel: ["wayne", "bruce", "j bruce wayne", "bruce wayne", "joel", "oil tycoon"],
-  silas: ["duke", "palmer", "duke palmer"],
-  theodor: ["theo", "farag", "theodor", "the sheriff"],
-  jack: ["hudson", "jack", "john"],
+  joel: ["wayne", "bruce", "j bruce wayne", "bruce wayne", "joel", "playboy"],
+  silas: ["duke", "palmer"],
+  theodor: ["theo", "farag", "theodor", "the sheriff", "sheriff farrago", "theodor farrago"],
   tim: ["timothy", "mcginley", "tim"],
-  josh: ["joshua", "kaminsky", "josh", "chimney sweep"],
+  josh: ["joshua", "kaminsky", "kamin sky", "josh", "soothsayer"],
   sidd: ["siddarth", "arvind", "sid", "sidd", "air wind", "airwind"],
-  rebecca: ["chou", "becca", "rebecca", "the butler"],
+  rebecca: ["chou", "chow", "becca", "rebecca", "the butler"],
   tiffany: ["liu", "tiffany"],
-  eric: ["eric", "li", "leeway", "judge li"],
-  diwakar: ["sandbag", "sandhu"],
-  leon: ["gee whiz", "geewhiz"],
-  ananya: ["code ruler", "koduru"],
-  luke: ["shell game", "sheldon"],
+  eric: ["eric", "li", "leeway", "judge li", "the judge"],
+  diwakar: ["sandbag", "sandbagg", "sandhu"],
+  leon: ["gee whiz", "geewhiz", "gee"],
+  ananya: ["codru", "koduru", "charlie", "wakem", "wakim"],
+  luke: ["shell game", "sheldon", "shelldon"],
   arjun: ["the bat", "bhat"],
-  adam: ["holds fire", "ouldsfiya"],
-  angelos: ["bowled over", "boules"],
-  anthony: ["hung jury", "huang"],
-  emre: ["sooner or later", "sunar", "the doctor"],
+  adam: ["holds fire", "holdsfire", "ouldsfiya"],
+  angelos: ["bowled over", "boules", "bowles"],
+  anthony: ["hung jury", "huang", "hung"],
+  emre: ["sooner or later", "sunar", "sunner", "emmerich", "the doctor"],
   mihir: ["nagarkatti"],
   rhea: ["mallya"],
-  molly: ["daniel"],
-  erika: ["lam"],
+  molly: ["daniel", "the newsie"],
+  erika: ["lam", "lamm"],
   anika: ["mahns"],
+  krrish: ["verma"],
 };
 
 /** Every distinctive word a guest might use for a character: first and last names and the odd stage name. */
 export function aliasesFor(character: Character): string[] {
   const words = new Set<string>([character.id]);
   for (const real of character.realNames) for (const word of normalize(real).split(" ")) if (word.length > 2 && !skipWords.has(word)) words.add(word);
+  for (const word of normalize(character.name).split(" ")) if (word.length > 2 && !skipWords.has(word)) words.add(word);
   for (const word of extraAliases[character.id] ?? []) words.add(normalize(word));
   return [...words];
 }
@@ -148,13 +149,14 @@ export type CardView = {
 /** What every survivor is told on the night. The reason they want him dead is deliberately not here: it is their own errand to learn it. */
 export function survivorRules(markerNo: number): string[] {
   return [
-    "You are one of the five. Everyone has been told survivors are in the room; nobody has been told who. Your cover is your public card. Keep it.",
+    "You are one who got away. You know the old man hunted you and the people you trusted, and you know who he is. Others probably escaped too, but you do not know how many or who. Everyone else has been told only that survivors are in the room. Your cover is your public card. Keep it.",
+    "Your invitation came unsigned, and it knew the new name you have used ever since. Only one person could have known it. Working out who is one of your errands.",
     `You carry marker No. ${markerNo}. It is yours alone: never trade it, never give it away. It is how you pay the House.`,
     "You have told yourself so many stories since 1925 that you are no longer certain of your real reason for coming. You only know that you must be the one. Somebody in this room saw what he did to you; finding out is one of your errands.",
     "The House keeps one bottle of tincture and sells it once a night, to whoever shows the Butler a marker first. Make your offer before the nightcap is served at nine o'clock. Only one of you can be the one.",
     "If the Butler sells to you, the Keeper's nightcap waits in a glass on his table in the Merrimack Room. Pour the vial in unseen, then type the short code printed under the glass's coaster into the nightcap box on this page. Only the buyer's code counts, and the page will say only “Noted.”",
     "Do your tell, a small habit you no longer notice, at least three times before the nightcap. Do not overdo it.",
-    "You know who the other four are, and they know you. You are competing, and every one of you has the right to try.",
+    "Whoever finishes him takes Cassie's seat and the Veil. You are competing with others you cannot name, and every one of you has the right to try.",
   ];
 }
 
@@ -186,9 +188,8 @@ export function buildCard(id: string): CardView | null {
   if (!character) return null;
   const circle = circleById.get(character.circle)!;
   const survivor = character.survivor;
-  const rivals = survivor
-    ? survivors.filter((other) => other.id !== character.id).map((other) => ({ name: other.name, circle: circleById.get(other.circle)!.name }))
-    : [];
+  // survivors do not know each other: they know only that others probably escaped, not how many or who
+  const rivals: { name: string; circle: string }[] = [];
   return {
     id: character.id,
     name: character.name,

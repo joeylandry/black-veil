@@ -1,8 +1,8 @@
 /**
- * Every physical object that carries a printed code tag. "generic" says what the thing
- * could be; after you scan the house, fill in `assigned` with the real item and edit
- * `hint` so the finder's riddle points at the real hiding place. Hidden props may serve
- * two finders: finding means reading the tag, never taking the object.
+ * Every physical object that carries a printed code tag. Hidden objects are things already in
+ * the house: the finder reads the tag, never moves or takes the object. Carried items start in
+ * a guest's envelope and change hands by a deal. "Slips" are small printed cards that make a
+ * deal provable. Nobody brings anything: the host hands out every carried item at the door.
  */
 import type { Prop } from "./types";
 
@@ -26,39 +26,49 @@ const C = (id: string, code: string, name: string, generic: string, carriedBy: s
 });
 
 export const props: Prop[] = [
-  // ---- hidden in shared rooms (house scan fills `assigned` and the hints) ----
-  H("hat", "K6NRA", "Keeper's missing hat", "any hat, ideally a fedora or a cap", "He took it off in a hurry. Look where a man who wants to be unseen would hang it."),
-  H("pocket-mirror", "D9X6N", "pocket mirror", "a compact or any small hand mirror", "Somewhere a woman checks her face before she faces a room."),
-  H("silver-dollar", "V23EE", "silver dollar", "any large coin", "Money hides where money sleeps: low, and out of the light."),
-  H("matchbook", "XAN9D", "Black Veil matchbook", "a matchbook or box of matches", "Close to where the smokers gather, where the smoke is not supposed to be."),
-  H("perfume-bottle", "A8NKR", "perfume bottle", "a small bottle or atomiser", "A scent lingers near a mirror and a lamp."),
-  H("green-glove", "AJTN9", "green glove", "a single glove, any colour you have", "One of a pair, and the other is long gone. Look where lost things get found."),
-  H("black-feather", "J84CN", "black feather", "a feather, a quill or a fan", "A wren's moult, left where the birds are not allowed."),
-  H("queen-card", "PWKGP", "queen of spades", "a single playing card", "Near a table where cards and dice belong."),
-  H("spectacles", "DF46N", "pair of spectacles", "reading glasses or a monocle", "Someone put them down to read a letter, then forgot them."),
-  H("velvet-ribbon", "E3HTT", "black velvet ribbon", "any ribbon or strip of cloth", "Tied where something is meant to be kept closed."),
-  H("radio-tube", "EFCKF", "radio tube", "a small glass bulb or any tube-shaped thing", "Hidden near the sound of the evening: the speakers, the gramophone, the music."),
-  H("brass-key", "XTWGH", "brass key", "any key", "Hung up by the door, or under it: the House always leaves a key for those who look."),
-  H("dice-pair", "VAMUX", "pair of dice", "dice or any game pieces", "Where fortunes are lost, or where they are made."),
-  H("candle-stub", "N8CM8", "candle stub", "a candle or tea light", "Where the light is low and the shadows are long."),
-  H("spare-button", "NCPMX", "brass button", "any large button", "A coat has been unbuttoned near here. Look at the hooks."),
-  H("lipstick", "2Y34A", "lipstick", "a lipstick or a small tin", "Behind a frame or a mirror, where a hand reaches for a final touch."),
-  H("cigarette-case", "U8GVW", "silver cigarette case", "a case, a tin, or a small box", "Left where the smokers breathe in the cold."),
-  H("black-frog", "GXG4U", "the House's black frog", "any frog figurine or a drawn card", "The House's mascot wanders. It prefers damp corners and low shelves."),
+  // ---- hidden in shared rooms: the tag is taped to or beside the object ----
+  H("veil-candle", "N8CM8", "Veil candle", "the brass candlestick with salt in its dish", "A brass candlestick burns beside her portrait, and a ring of salt keeps it company."),
+  H("lantern", "K6NRA", "river lantern", "the jack-o'-lantern", "A grinning lantern keeps the dining table lit. Look where it glows."),
+  H("elephant", "D9X6N", "Silent Partner's elephant", "the golden elephant on the book", "A gilded elephant, who never forgets, leans on a book by the old globe."),
+  H("conch", "V23EE", "launch's fog horn", "the conch shell", "Something that once sounded a warning across the water now sits on the bookshelf."),
+  H("mask", "XAN9D", "masquerade mask", "the carved mask sculpture", "A carved face from the night of the masquerade watches the room from the shelves."),
+  H("sugar-dish", "A8NKR", "sugar dish", "the lidded glass candy jar", "A glass dish with a lid sits where the sweets go. The tag is under the lid."),
+  H("red-bird", "AJTN9", "red bird", "the cardinal ornament", "A small red bird perches somewhere it should not, away from its lamp."),
+  H("cloche", "J84CN", "vault cloche", "the glass cake dome on its marble stand", "A glass dome over a marble stand hides what the House keeps under glass."),
+  H("octopus", "PWKGP", "Kraken Cove candle stand", "the octopus candle holder", "Eight arms hold up a single candle, in the cabinet with the good glass."),
+  H("duck", "DF46N", "decoy duck", "the carved wooden duck with a lid", "A decoy that is hollow inside sits in the cabinet. Lift its head."),
+  H("globe", "E3HTT", "route globe", "the lit globe on its stand", "The whole world turns on a stand by the window, with the hours marked round its rim."),
+  H("opera-bill", "EFCKF", "opera bill", "the Falstaff poster in the hall", "A fat knight with his cup hangs in the hall. The tag is at the corner of the frame."),
+  H("chess-box", "NCPMX", "Judge's board", "the folding chess box", "A board in a box on the black table, with one white piece missing from its rank."),
+  H("constitution", "2Y34A", "Eighteenth Amendment", "the pocket Constitution", "A little green book of the nation's laws, the one that made the Veil necessary."),
+  H("bill-of-rights", "U8GVW", "Bill of Rights", "the pocket Bill of Rights", "The little book beside it, with the rights every defendant has."),
+  H("dumbbell", "GXG4U", "champion's weight", "the golden dumbbell", "A prize weight that nobody is lifting. Look where a heavy thing sits quietly."),
+  H("star-salt", "X8WCT", "star-marked salt", "the blue kosher salt box with the star", "A blue box with a six-pointed star, in the pantry where the salt is kept."),
+  H("lit-bottle", "RD99K", "glowing bottle", "the lit-up wine bottle", "A bottle of wine that glows in the dark, though nobody lit it."),
 
-  // ---- carried by a guest (swap objectives) ----
-  C("mahns-spoon", "EV6M4", "Mahns crested spoon", "a spoon from your kitchen", "anika"),
-  C("hudson-key", "AFPEP", "Hudson showroom key", "a key on a tag", "jack"),
-  C("silk-handkerchief", "VJ773", "Emporium silk handkerchief", "a handkerchief or cloth napkin", "rhea"),
-  C("gin-flask", "P4PD3", "empty gin flask", "a flask, a mini bottle or a jar", "tim"),
-  C("carnival-ticket", "JJGXP", "carnival ticket", "a ticket stub or a card", "luke"),
-  C("lucky-boule", "YYRM4", "lucky boule", "a ball or a smooth stone", "angelos"),
-  C("glass-charm", "66M4W", "glass charm", "a marble, bead or ornament", "tiffany"),
-  C("brass-brush", "DTF7R", "chimney brush", "a small brush", "josh"),
-  C("cartridge-box", "88MDU", "empty cartridge box", "a small box", "adam"),
-  C("baseball", "YY72H", "signed baseball", "a ball or a card", "arjun"),
-  C("telegram-form", "YUGWA", "blank telegram form", "a printed slip", "ananya"),
-  C("false-papers", "ERYTJ", "set of false papers", "a folded paper", "erika"),
+  // ---- carried by a guest in a deal: handed over at the door ----
+  C("mahns-spoon", "EV6M4", "Mahns crested spoon", "the metal spoon", "anika"),
+  C("vault-key", "AFPEP", "Silent Partner's brass key", "the key", "krrish"),
+  C("casino-chip", "YYRM4", "House chip", "the casino chip", "angelos"),
+  C("giraffe", "JJGXP", "carnival giraffe", "the giraffe whittling", "diwakar"),
+  C("false-papers", "ERYTJ", "set of false papers", "a printed folded paper in a black envelope", "erika"),
+  C("telegram-form", "YUGWA", "blank telegram form", "a printed telegram slip", "ananya"),
+  C("sooth-charm", "DTF7R", "soothsayer's charm", "a small charm, bead or stone", "josh"),
+  C("earring", "66M4W", "glass earring", "an earring", "tiffany"),
+  C("gin-jar", "P4PD3", "jar of bathtub gin", "the little jar", "tim"),
+  C("baseball", "YY72H", "signed baseball", "a baseball", "arjun"),
+
+  // ---- slips: printed cards that prove a deal ----
+  C("fee-voucher", "844M9", "Mahns Manor voucher", "a printed voucher", "anika"),
+  C("request-card", "RKRGA", "request card", "a printed card", "silas"),
+  C("crate-receipt", "ATCTU", "crate receipt", "a printed receipt", "krrish"),
+  C("dismissal", "VMX7X", "notice of dismissal", "a printed notice", "eric"),
+  C("alibi-note", "XPD6N", "sworn alibi note", "a printed note", "erika"),
+  C("fee-receipt", "PJEYU", "House receipt", "a printed receipt", "rebecca"),
+  C("pardon-slip", "U7WNK", "Pardon slip", "a printed slip", "tiffany"),
+  C("pardon-receipt", "RU647", "go-between's receipt", "a printed receipt", "tiffany"),
+  C("citation", "MKPAE", "Nuisance Citation", "a printed citation", "theodor"),
+  C("served-stub", "T78W7", "served stub", "a printed stub", "leon"),
 
   // ---- table and scene ----
   { id: "glass-coaster", code: "8YUR2", name: "nightcap glass coaster", generic: "a coaster", placement: "table", hint: "" },

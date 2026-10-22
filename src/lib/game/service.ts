@@ -13,6 +13,7 @@ import {
   characterById,
   characterForName,
   characters,
+  alternateOf,
   circleById,
   listDirectory,
   markers,
@@ -274,6 +275,10 @@ export async function cardFor(db: GameDb, guestId: string, now = new Date()): Pr
   const slug = maps(roster).slugOf.get(guestId);
   if (!slug) return { status: "uncast", message: "Management has not yet chosen who you will be." };
   const full = buildCard(slug)!;
+  // the Butler and the one who bought the vial answer the replacement questions instead of "who" and "how"
+  const buyer = await db.select({ guestId: gameEvents.guestId }).from(gameEvents).where(eq(gameEvents.kind, "vial-sold")).limit(1);
+  const insider = characterById.get(slug)?.role === "butler" || buyer[0]?.guestId === guestId;
+  const asked = questions.filter((question) => (question.alternateFor ? insider : !(insider && alternateOf.has(question.id))));
   // before the night the private tab is withheld entirely, never merely hidden by the client
   const card = state.secretsReleased
     ? full
@@ -283,7 +288,7 @@ export async function cardFor(db: GameDb, guestId: string, now = new Date()): Pr
     card,
     secretsReleased: state.secretsReleased,
     directory: state.secretsReleased ? listDirectory() : null,
-    questions: state.secretsReleased ? questions.map((question) => ({ id: question.id, mystery: question.mystery, prompt: question.prompt, hint: question.hint, points: question.points, type: question.type })) : null,
+    questions: state.secretsReleased ? asked.map((question) => ({ id: question.id, mystery: question.mystery, prompt: question.prompt, hint: question.hint, points: question.points, type: question.type })) : null,
     state: { submissionsOpen: state.submissionsOpen, nightcapServed: state.nightcapServed, resultsPublished: state.resultsPublished },
   };
 }

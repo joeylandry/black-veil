@@ -27,9 +27,9 @@ export const listRows: { no: number; name: string; trade: string; placed: string
   { no: 17, name: "Bell, I.", trade: "Second door", placed: "Granite St., shed", fate: "SETTLED 15 Sep 1925: a “brawl”" },
   { no: 18, name: "Crane, B.", trade: "The Teller", placed: "Hosmer's rooms, Spring St.", fate: "UNSETTLED. Notes: “counts with his thumb as he talks.”" },
   { no: 19, name: "Lyle, E.", trade: "The Notary", placed: "Dr. Hollis's attic, Beech St.", fate: "UNSETTLED. Notes: “rings every i; taps the pen twice.”" },
-  { no: 20, name: "Ballard, S.", trade: "The Maestro", placed: "The Brass Rail, Canal St.", fate: "UNSETTLED. Notes: “beats time with two fingers; cannot bear a silent room.”" },
+  { no: 20, name: "Ballard, S.", trade: "The Milliner", placed: "The Brass Rail, Canal St.", fate: "UNSETTLED. Notes: “straightens every hat brim she passes.”" },
   { no: 21, name: "Marek, D.", trade: "The Doorman", placed: "River shed, Granite St.", fate: "UNSETTLED. Notes: “will not sit with his back to a door.”" },
-  { no: 22, name: "Pike, W.", trade: "The Wren", placed: "The hangar, Londonderry field", fate: "UNSETTLED. Notes: “tests the wind with a wet finger, even indoors.”" },
+  { no: 22, name: "Pike, W.", trade: "The Runner", placed: "Merchants' Row, rooms", fate: "UNSETTLED. Notes: “glances at the clock whenever a door opens.”" },
 ];
 
 const listBody = [
@@ -66,11 +66,11 @@ export const exhibits: Exhibit[] = [
       "$40 a name, half in advance, half on the word “settled.”",
       "Advance drawn from the Teller's share (B. Crane, No. 18). “His own money pays for it. Fitting.”",
       "Charged to my account: one grey Hudson (J. Hudson & Co.); one short-barrel revolver (Ouldsfiya Arms).",
-      "Charged to the Wren's account: one mechanic, paid to be careless, 3 March 1925.",
+      "Charged to the Runner's share (Pike, W.): one boatman, paid to be careless, 21 March 1925.",
       "",
       "Filing code: UMRJT",
     ],
-    supports: ["hitman", "motive-18", "motive-22"],
+    supports: ["hitman", "motive-18", "motive-21", "motive-22"],
   },
   {
     id: "books",
@@ -141,20 +141,36 @@ export const exhibits: Exhibit[] = [
   {
     id: "invite",
     code: "4U2J3",
-    title: "A loose note: “not mine”",
-    where: "binder",
-    appears: "start",
+    title: "A note from the dead man's jacket",
+    where: "scene",
+    appears: "scene",
     body: [
       "On Veil paper, unsigned, but the hand is the Keeper's:",
-      "“Black envelopes in Elm Street and the West Side. They are not mine. Whoever sent them knows who is alive.",
-      "I will go. I must have her, and the dial.”",
+      "“I sent them. Every one of them owes me, and I know why. By half past nine they will sign for me, and the Veil is mine.",
+      "The only things I lack are the lady and her dial. A court will call her dead by Christmas, and then I need neither.”",
       "",
       "Filing code: 4U2J3",
     ],
-    supports: ["invites-cassie", "kit-why"],
+    supports: ["kit-invites", "kit-why", "succession"],
   },
 
   // ---- the Keeper's table ----
+  {
+    id: "veil-roll",
+    code: "4EA24",
+    title: "The Roll of the Veil",
+    where: "table",
+    appears: "start",
+    body: [
+      "THE ROLL OF THE VEIL",
+      "We, the undersigned, being persons of standing in the town of Manchester, acknowledge K. Kessler, Keeper, as head of the Black Veil, its House, its books and its vault, and bind ourselves to his word.",
+      "",
+      ...Array.from({ length: 19 }, (_, index) => `${String(index + 1).padStart(2, " ")}.  ______________________________`),
+      "",
+      "Filing code: 4EA24",
+    ],
+    supports: ["succession", "kit-invites", "kit-why"],
+  },
   {
     id: "nightcap",
     code: "T7MYM",
@@ -298,7 +314,7 @@ export const exhibits: Exhibit[] = [
     body: [
       "The Evening Farrago · the week of All Hallows' Eve, 1925",
       "Two memorial notices were withdrawn before press time by those who placed them:",
-      "“In memoriam, Bertrand Crane.”     “In memoriam, Sylvester Ballard.”",
+      "“In memoriam, Bertrand Crane.”     “In memoriam, Sylvia Ballard.”",
       "Neither name could be traced to a family or a grave.",
       "",
       "Filing code: 8C7CN",

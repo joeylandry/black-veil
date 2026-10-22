@@ -101,8 +101,12 @@ export function PrivateTab({ card, secretsReleased, open, saved, onSaved }: { ca
           <p>{p.survivor.realStory}</p>
           <p>{p.survivor.escape}</p>
           <p className="game-tell"><strong>Your tell.</strong> {p.survivor.tell}</p>
-          <h4>The others</h4>
-          <ul>{p.survivor.rivals.map((rival) => <li key={rival.name}>{rival.name} <small>· {rival.circle}</small></li>)}</ul>
+          {p.survivor.rivals.length > 0 && (
+            <>
+              <h4>The others</h4>
+              <ul>{p.survivor.rivals.map((rival) => <li key={rival.name}>{rival.name} <small>· {rival.circle}</small></li>)}</ul>
+            </>
+          )}
           <h4>How the night works for you</h4>
           <ol>{p.survivor.rules.map((rule) => <li key={rule}>{rule}</li>)}</ol>
           <CodeBox endpoint="/api/game/dose" label="The nightcap: the code under the glass's coaster" button="Pour" placeholder="Code" />

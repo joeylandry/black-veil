@@ -115,6 +115,11 @@ export function seek(id: string, pairs: [GuestId, GuestId][]): Objective {
   };
 }
 
+/** A deal that a printed slip proves: the code on the slip you are handed. */
+export function deal(id: string, partners: GuestId[], title: string, text: string, ask: string, receives: PropId[]): Objective {
+  return { id, kind: "role", title, text, ask, points: POINTS, with: [partners[0]], alsoFrom: partners.slice(1), check: { kind: "code", codes: receives.map(codeOf) } };
+}
+
 export function story(
   id: string,
   title: string,
@@ -143,7 +148,7 @@ export function nightcapChain(id: string): Objective {
     ask: "The hour of his nightcap",
     points: POINTS,
     with: ["rebecca"],
-    alsoFrom: ["mihir", "molly", "anika"],
+    alsoFrom: ["anika", "silas"],
     check: { kind: "pattern", all: [["nine", "9", "9:00", "900", "9 00", "nine oclock", "9 oclock", "9pm", "9 pm"]] },
   };
 }

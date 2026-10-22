@@ -28,6 +28,7 @@ import {
   standingsNow,
   unpublishResults,
 } from "@/lib/game/service";
+import { tieBreaker } from "@/data/game/story";
 import type { GameDb } from "@/lib/game/service";
 
 const [command, ...args] = process.argv.slice(2);
@@ -74,6 +75,18 @@ async function main() {
       const rows = standings.standings.map((row) => ({ rank: row.rank, name: row.name, circle: row.circle, total: row.total, errands: row.tiers.objectives, pages: row.tiers.exhibits, survivors: row.tiers.survivors, mysteries: row.tiers.mysteries, poisoner: row.tiers.poisoner }));
       console.table(rows);
       print({ winner: standings.winner, killer: standings.killer, pendingReview: standings.pendingReview, awards: standings.awards });
+      const level = standings.standings.filter((row) => row.total > 0 && row.total === standings.standings[0].total);
+      if (level.length > 1) {
+        print({
+          tieBreaker: "TIED FOR FIRST. Ask the tied guests the secret tie-breaker aloud; only someone who searched the jacket lining knows it.",
+          tied: level.map((row) => row.name),
+          total: level[0].total,
+          ask: tieBreaker.question,
+          answer: tieBreaker.answer,
+          where: tieBreaker.clue,
+          ifStillLevel: "The standings above are already sorted by the full tie order (mysteries, the who question, survivors, errands, pages, earliest, then a hash), so the top row stands.",
+        });
+      }
       break;
     }
     case "publish": {

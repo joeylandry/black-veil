@@ -7,384 +7,384 @@
 
 | Character | Real guest | Role | Starts with | Small secret (what others can learn) |
 |---|---|---|---|---|
-| **Anika Mahns of Mahns Manor**<br>Heir to the Mahns fortune, and host | Anika Mahns |  | $40; mahns-spoon | You pawned your mother's pearls at Dutton's Pawn and told the whole North End they were at the cleaners. (confidant: Rhea “Emporium” Mallya) |
-| **J. Bruce Wayne**<br>Oil tycoon | Joel Indipiginja | **SURVIVOR** Walter “Wren” Pike, The Wren, marker 22 | $200 | Wayne Petroleum owns exactly one leased derrick, near Beaumont, Texas. It has never struck oil. (confidant: Mihir “Nag” Nagarkatti) |
-| **Mihir “Nag” Nagarkatti**<br>Racetrack bookmaker and businessman | Mihir Nagarkatti |  | $200 | You fixed the fourth at Rockingham Park by buying off a jockey to ride the long shot Marigold's Pride. (confidant: Angelos “Bowled Over” Boules) |
-| **Rhea “Emporium” Mallya**<br>Owner, Mallya's Department Emporium | Rhea Mallya |  | $150; silk-handkerchief | The Emporium is mortgaged to the Granite State Trust, and the sign still says “Established, Unencumbered.” (confidant: Anika Mahns of Mahns Manor) |
-| **John “Jack” Hudson (no relation to the motorcar)**<br>Automobile dealer | Jack Hudson |  | $120; hudson-key | The “gleaming new” Hudson on your showroom floor is rebuilt from a Lowell salvage-yard wreck. (confidant: Tiffany Liu, of the Lamps) |
+| **Anika Mahns of Mahns Manor**<br>Heir | Anika Mahns |  | $40; mahns-spoon, fee-voucher | You wear your father's brass key on a ribbon under your collar and have never once tried it in a lock. (confidant: Sidd Airwind) |
+| **J. Bruce Wayne**<br>Wealthy playboy | Joel Indipiginja |  | $200 | Your “office” is the back room of a hat shop, and the Keeper once used its telephone to call Boston. (confidant: Tiffany Liu of the Lamps) |
+| **Mihir Nagarkatti of Nag Oil**<br>Oil master | Mihir Nagarkatti | **SURVIVOR** Bertrand “Barty” Crane, The Teller, marker 18 | $200 | Your “gusher” was a burst water main, and you lost a bet to the Keeper over it. (confidant: Anthony Hung, Esq.) |
+| **Krrish Vermouth**<br>Wine importer | Krrish Verma |  | $120; vault-key, crate-receipt | You delivered a crate of wine in November 1924 on a draft signed K. Kessler to a grey Hudson that later turned up in the river. (confidant: Dr. Emmerich Sunner) |
+| **Angelos Bowles**<br>Card sharp | Angelos Boules |  | $120; casino-chip | You know the Keeper touches his watch when he bluffs, and it has not run since 1924. (confidant: Luke Shelldon) |
 
 ## Order & Letters
-*Officials, professionals and the people who sign things.*
+*Officials, professionals and the people who sign or print things.*
 
 | Character | Real guest | Role | Starts with | Small secret (what others can learn) |
 |---|---|---|---|---|
-| **Sheriff Theodor “Farrago” Farag**<br>Sheriff of Hillsborough County | Theodor Farag | sheriff | $100 | You keep your revolver's bullets in your sock; the gun itself has never been loaded. (confidant: Adam “Holds Fire” Ouldsfiya) |
-| **Judge Eric “Leeway” Li**<br>Municipal court judge | Eric Li | **SURVIVOR** Sylvester Ballard, The Maestro, marker 20 | $150 | The gavel you bang is a doorstop from your mother's kitchen. (confidant: Anthony “Hung Jury” Huang) |
-| **Anthony “Hung Jury” Huang**<br>Defence attorney | Anthony Huang |  | $120 | Your office sits above Dr. Pettibone the dentist, and every client leaves with a numb jaw and a retainer. (confidant: Sheriff Theodor “Farrago” Farag) |
-| **Dr. Emre “Sooner or Later” Sunar**<br>County physician | Emre Sunar | doctor | $100 | You prescribe “medicinal whiskey” from Horne's Pharmacy, and Horne gives you a cut. (confidant: Rhea “Emporium” Mallya) |
+| **Sheriff Theodor Farrago**<br>Sheriff | Theodor Farag | sheriff | $100; citation | You keep a shoebox with seventeen “accidents” in it and have told no one. (confidant: Molly Daniel of the Manchester Union) |
+| **Judge Eric Leeway**<br>Judge | Eric Li |  | $150; dismissal | You let three “orders in C.C.'s hand” stand, though the clerk swore the i's had rings. (confidant: Anthony Hung, Esq.) |
+| **Anthony Hung, Esq.**<br>Defense attorney | Anthony Huang |  | $120 | You drew name-change papers for a dozen strangers, paid in gold by “a friend,” and kept the carbon. (confidant: Rhea Mallya of Mallya's Emporium) |
+| **Dr. Emmerich Sunner**<br>Doctor | Emre Sunar | doctor | $100 | You ate beet sandwiches for a week to prove the “blood” was beets and sugar. (confidant: Tim McGinley, Baron of Bathtub Gin) |
+| **Molly Daniel of the Manchester Union**<br>Newsie | Molly Daniel | **SURVIVOR** Winifred “Winnie” Pike, The Runner, marker 22 | $90 | You kept the unprinted line the city desk cut: no coroner, no ambulance. (confidant: Joshua Kamin-Sky) |
 
 ## The Wire & the Stage
-*Performers, newsies and the people who carry news.*
+*Performers, flyers and the people who carry news.*
 
 | Character | Real guest | Role | Starts with | Small secret (what others can learn) |
 |---|---|---|---|---|
-| **Molly “Extra!” Daniel**<br>Newsie, The Evening Farrago | Molly Daniel |  | $90 | The still in the Mahns Manor cellar is named Dolly, and she turns out forty gallons a month. (confidant: Anika Mahns of Mahns Manor) |
-| **Leon “Gee-Whiz” Ge**<br>Radio announcer, WFEA | Leon Ge |  | $100 | WFEA's second transmitter, the unlicensed one the Sheriff suspects, sits in the bell tower of St. Anne's. (confidant: Ananya “The Code-Ruler” Koduru) |
-| **Ananya “The Code-Ruler” Koduru**<br>Cipher clerk, Western Union | Ananya Koduru |  | $100; telegram-form | You keep carbon copies of every wire in a hatbox under your bed. (confidant: Leon “Gee-Whiz” Ge) |
-| **Luke “Shell Game” Sheldon**<br>Carnival barker | Luke Sheldon |  | $100; carnival-ticket | The world's strongest man, Goliath, is a hollow plaster dummy and you do the voice. (confidant: Silas “Duke” Palmer) |
-| **Silas “Duke” Palmer**<br>Jazz bandleader and scat singer | Silas Palmer | **SURVIVOR** Edmund Lyle, The Notary, marker 19 | $120 | Your “originals” are lifted note for note from a Hartford songbook. (confidant: Leon “Gee-Whiz” Ge) |
+| **Leon Gee of WFEA**<br>Radio announcer | Leon Ge |  | $100; served-stub | You read “I am well” items on the air for two months and thought they were a lonely hearts code. (confidant: Silas Palmer of the Palm Court) |
+| **Ananya Codru and Charlie Wakem**<br>Night telegraph office | Ananya Koduru |  | $100; telegram-form | You once filed a Montreal telegram, paid in advance, with no sender. (confidant: Rebecca Chow, Butler of the Black Veil) |
+| **Luke Shelldon**<br>Carnival barker | Luke Sheldon | **SURVIVOR** Edmund Lyle, The Notary, marker 19 | $100 | You built stage blood for a “private masquerade” billed to a post-office box. (confidant: Diwakar Sandbagg) |
+| **Silas Palmer of the Palm Court**<br>Jazz scat singer | Silas Palmer |  | $120; request-card | You have sung the same scat phrase at every club since 1921, and it was Cassie's own call. (confidant: Arjun Bat) |
+| **Sidd Airwind**<br>Barnstormer | Siddarth Arvind |  | $140 | You trained a mechanic who was later paid to be careless once. (confidant: Mihir Nagarkatti of Nag Oil) |
 
 ## The Working Folk
 *Hands, trades and the muscle of Manchester.*
 
 | Character | Real guest | Role | Starts with | Small secret (what others can learn) |
 |---|---|---|---|---|
-| **Joshua “Chimney Sweep” Kaminsky**<br>Chimney sweep | Josh Kaminsky |  | $80; brass-brush | Your horse, Pumpernickel, is the only horse in Manchester who has been to the opera. (confidant: Adam “Holds Fire” Ouldsfiya) |
-| **Arjun “The Bat” Bhat**<br>Slugger, Manchester Textiles baseball club | Arjun Bhat |  | $80; baseball | You struck out on purpose on August 14 for $500. (confidant: Joshua “Chimney Sweep” Kaminsky) |
-| **Adam “Holds Fire” Ouldsfiya**<br>Gunsmith and hardware, West Side | Adam Ouldsfiya |  | $100; cartridge-box | You fired a gun once, at a pigeon, and missed. (confidant: Sheriff Theodor “Farrago” Farag) |
-| **Tiffany Liu, of the Lamps**<br>Stained-glass artisan | Tiffany Liu |  | $100; glass-charm | Every window you make hides a tiny frog in the glass as your signature. (confidant: Joshua “Chimney Sweep” Kaminsky) |
-| **Diwakar “Sandbag” Sandhu**<br>Prizefighter | Diwakar Sandhu | **SURVIVOR** Bertrand “Barty” Crane, The Teller, marker 18 | $100 | You've thrown eleven fights, and the next one you plan to win for real. (confidant: Mihir “Nag” Nagarkatti) |
+| **Joshua Kamin-Sky**<br>Soothsayer | Josh Kaminsky |  | $80; sooth-charm | You read tea leaves off half-burned pages you swept from an empty flue. (confidant: Krrish Vermouth) |
+| **Arjun Bat**<br>Slugger | Arjun Bhat |  | $80; baseball | You hauled bricks in 1921 for a wall in the Merrimack Room that is too thick. (confidant: Sheriff Theodor Farrago) |
+| **Adam Holdsfire**<br>Gunsmith | Adam Ouldsfiya | **SURVIVOR** Dominic Marek, The Doorman, marker 21 | $100 | You sold six boxes of blanks to a lady's agent for cash and never asked why. (confidant: Judge Eric Leeway) |
+| **Tiffany Liu of the Lamps**<br>Stained-glass artist | Tiffany Liu |  | $100; earring, pardon-slip, pardon-receipt | You cut the brass plate “KEEPER · K.K.” and your chisel slipped on the second K. (confidant: Mihir Nagarkatti of Nag Oil) |
+| **Diwakar Sandbagg**<br>Prizefighter | Diwakar Sandhu |  | $100; giraffe | You were paid to take a fall on Halloween 1924 and told to stay down until the music stopped. (confidant: Ananya Codru and Charlie Wakem) |
 
 ## The River Trade
 *Everyone who profits from what the river carries.*
 
 | Character | Real guest | Role | Starts with | Small secret (what others can learn) |
 |---|---|---|---|---|
-| **Timothy “Gin” McGinley**<br>Bathtub-gin baron | Tim McGinley |  | $150; gin-flask | Your gin travels in the hearse of Dolan's Funeral Home, where a coffin holds forty bottles. (confidant: Rebecca “Chow” Chou) |
-| **Rebecca “Chow” Chou**<br>Butler of the Black Veil | Rebecca Chou | butler | $120 | The House whiskey is cut with cold tea; nobody has ever noticed. (confidant: Timothy “Gin” McGinley) |
-| **Angelos “Bowled Over” Boules**<br>Lawn-bowls hustler | Angelos Boules |  | $120; lucky-boule | Your lucky boule, Sophia, is weighted with lead. (confidant: Luke “Shell Game” Sheldon) |
-| **Erika “On the” Lam**<br>Fugitive | Erika Lam |  | $60; false-papers | You are wanted in Vermont for stealing a church organ. (confidant: Rebecca “Chow” Chou) |
-| **Siddarth “Air-Wind” Arvind**<br>Aviator and barnstormer | Siddarth Arvind | **SURVIVOR** Dominic Marek, The Doorman, marker 21 | $140 | You get airsick above a thousand feet. (confidant: Molly “Extra!” Daniel) |
+| **Tim McGinley, Baron of Bathtub Gin**<br>Gin baron | Tim McGinley |  | $150; gin-jar | Two passengers went down the river steps that night; one came back alone with blood on his cuff. (confidant: Krrish Vermouth) |
+| **Rebecca Chow, Butler of the Black Veil**<br>Butler | Rebecca Chou | butler | $120; fee-receipt | The House whiskey is cold tea, and you took $200 to forget Room 3. (confidant: Tim McGinley, Baron of Bathtub Gin) |
+| **Rhea Mallya of Mallya's Emporium**<br>Department store owner | Rhea Mallya | **SURVIVOR** Sylvia Ballard, The Milliner, marker 20 | $150 | You sold the House its last bottle of nux vomica and rang it up as “river rats” without asking how many. (confidant: Adam Holdsfire) |
+| **Erika Lamm**<br>Fugitive | Erika Lam |  | $60; false-papers, alibi-note | You bought a name at the river steps for $20 and were told at least twenty others did too. (confidant: Rebecca Chow, Butler of the Black Veil) |
 
 ## The five survivors
 
 | Cover | Real identity | Tell (do it 3 times) | Skill that leaks | Why they want him dead (their errand to learn) |
 |---|---|---|---|---|
-| J. Bruce Wayne | Walter “Wren” Pike, The Wren (marker 22) | You wet a fingertip and lift it, as if to test the wind, even indoors, when you think. | You can name an engine by ear and you know what the upper air is doing. | The Keeper paid a mechanic to cut the fuel line of the aeroplane you and Cal Yates were flying. Cal drowned. You lived to remember it. |
-| Judge Eric “Leeway” Li | Sylvester Ballard, The Maestro (marker 20) | You beat time in four-four with two fingers whenever there is music, or rhythm, or a long pause. | You hear a wrong note across a room and cannot stop yourself from conducting. | The Keeper had your band killed, one player at a time, so there would be nobody left to say who played at the Exit. |
-| Silas “Duke” Palmer | Edmund Lyle, The Notary (marker 19) | You dot every i with a tiny ring and tap your pen twice after you sign anything. | You spot a false signature at ten paces and could write any hand in the room. | The Keeper made you forge Cassie's orders under duress, framed her with your own ring-dotted hand, and put you on the List anyway. |
-| Diwakar “Sandbag” Sandhu | Bertrand “Barty” Crane, The Teller (marker 18) | You count invisible bills with your thumb across your fingertips whenever money, a price or the odds come up. | You can count a stack of bills by feel and know any sum to the cent. | The Keeper paid the hitman out of your own share of the exit money. Your savings bought the bullets. |
-| Siddarth “Air-Wind” Arvind | Dominic Marek, The Doorman (marker 21) | You never sit with your back to a door, and you count the exits in every room you enter. | You remember every face and name after a single introduction, and you can tell a lie by the feet. | The Keeper had Ignatius Bell shot in the shed on Granite Street. Bell had held the second door beside you for three years. |
+| Mihir Nagarkatti of Nag Oil | Bertrand “Barty” Crane, The Teller (marker 18) | You count invisible bills with your thumb across your fingertips whenever money, a price or the odds come up. | You can count a stack of bills by feel and know any sum to the cent. | The Keeper paid the hitman out of your own share of the exit money. Your savings bought the bullets. |
+| Molly Daniel of the Manchester Union | Winifred “Winnie” Pike, The Runner (marker 22) | You glance at the nearest clock every time a door opens, and again when it closes. | You know every street, back stair and short cut in Manchester, and you can read a newspaper upside down. | The Keeper had Pat Dunn, your running partner, thrown into the river in March 1925, paid for out of your own share. You were meant to be the next to carry a message and not come back. |
+| Luke Shelldon | Edmund Lyle, The Notary (marker 19) | You dot every i with a tiny ring and tap your pen twice after you sign anything. | You spot a false signature at ten paces and could write any hand in the room. | The Keeper made you forge Cassie's orders under duress, framed her with your own ring-dotted hand, and put you on the List anyway. |
+| Adam Holdsfire | Dominic Marek, The Doorman (marker 21) | You never sit with your back to a door, and you count the exits in every room you enter. | You remember every face and name after a single introduction, and you can tell a lie by the feet. | The Keeper had Ignatius Bell shot in the shed on Granite Street. Bell had held the second door beside you for three years. |
+| Rhea Mallya of Mallya's Emporium | Sylvia Ballard, The Milliner (marker 20) | You straighten any hat brim you pass, your own or a stranger's, without thinking. | You can name a stitch, a dye lot and a maker at a glance, and you cannot stop pricing what people are wearing. | The Keeper had your seamstresses killed one at a time, so there would be nobody left to say who sewed the masks for the Exit. |
 
 ## Decoys (innocent people with a survivor's habit)
 
-- **Mihir “Nag” Nagarkatti**: You count money left-handed with a flick of the thumb, the bookmaker's way. Do it whenever bills change hands.
-- **Sheriff Theodor “Farrago” Farag**: You check the exits of every room you enter, a lawman's habit. Let people see you do it.
-- **Anthony “Hung Jury” Huang**: You sign everything with a large flourish. Do it at every chance, on napkins if you must.
-- **Molly “Extra!” Daniel**: You chant your headlines in a steady four-four beat, as you do on the corner. Do it whenever you sell a paper.
-- **Arjun “The Bat” Bhat**: You wet a finger and hold it up to check the wind, a batter's habit. Do it whenever you are thinking.
-- **Erika “On the” Lam**: You check the exits wherever you go and sit where you can see the door. A fugitive's habit.
+- **Angelos Bowles**: You roll a casino chip across your knuckles and count the pot with your thumb across your fingertips, a card sharp's habit. Do it whenever chips or money are on the table.
+- **Sheriff Theodor Farrago**: You check the exits of every room you enter, a lawman's habit. Let people see you do it.
+- **Dr. Emmerich Sunner**: You dot every i with a tiny ring when you write, as you were taught writing prescriptions. Do it on anything you sign or note.
+- **Silas Palmer of the Palm Court**: You tip your hat to everyone you pass and set it straight by the brim afterward, a bandleader's courtesy. Do it at every greeting.
+- **Sidd Airwind**: You glance at your wristwatch every time a door opens, a flier's habit. Do it whenever someone comes or goes.
+- **Erika Lamm**: You check the exits wherever you go and sit where you can see the door. A fugitive's habit.
 
 ## Public bios and backgrounds
 
 ### Anika Mahns of Mahns Manor
-*Heir to the Mahns fortune, and host* · The Gilded
+*Heir* · The Gilded
 
-**Public.** Lives in the largest house in the North End and reminds everyone of it. The Mahns Manor garden party is the only invitation harder to get than this one.
+**Public.** Mahns Manor has more rooms than guests and more portraits than friends. The fortune does most of the talking.
 
 **Background.** Your late father was the Black Veil's Silent Partner from the first night: the standing reservation upstairs, the drafts paid to a vault and never to a bank. He left you the Manor, its mortgage, and a brass key on a ribbon he called “the Silent Partner's tooth.”
 
-- Jack Hudson: the Hudson dealer who took your crested spoon in trade and means to sell it back to you at a profit.
+- Silas Palmer: the bandleader whose band you quietly underwrite.
 - Molly Daniel: rents your cellar for a still of her own, and pays you in gossip.
-- J. Bruce Wayne: the oil man who holds your mortgage and has never once mentioned it.
+- J. Bruce Wayne: the playboy who holds your mortgage and has never once mentioned it.
 
 **Wear.** A black velvet ribbon at the throat, gloves, and the airs of a woman who does not need to count.
 
 ### J. Bruce Wayne
-*Oil tycoon* · The Gilded
+*Wealthy playboy* · The Gilded
 
-**Public.** New money from a place nobody can quite name. Holds the Mahns mortgage, buys rounds without looking at the bill, and is always somewhere you cannot see him.
+**Public.** Always in the society pages, never at the office. Nobody can say what J. Bruce does, only where.
 
-**Background.** Wayne Petroleum arrived in Manchester in 1925 with a leased derrick, a Packard, and no past anyone has been able to find. J. Bruce Wayne bought the Mahns mortgage the week he arrived, and nobody has asked why.
+**Background.** J. Bruce Wayne is in every society column and in no office. You bought the Mahns mortgage the week you arrived in Manchester in 1925, and nobody has asked why.
 
 - Anika Mahns: your mortgage, and your reason to be seen at her parties.
-- Mihir Nagarkatti: the other money in the room; you do not like how he looks at your books.
-- Jack Hudson: sold you the Packard and talks about engines more than you would like.
+- Mihir Nagarkatti: the oilman whose money is louder than yours, and older.
+- Krrish Vermouth: delivers your vermouth and has never once been paid on time.
 
-**Wear.** Dinner jacket, a tycoon's cigar you never light, and a black mask that does not quite cover your eyes.
+**Wear.** Dinner jacket, a cigar you never light, and a black mask that does not quite cover your eyes.
 
-### Mihir “Nag” Nagarkatti
-*Racetrack bookmaker and businessman* · The Gilded
+### Mihir Nagarkatti of Nag Oil
+*Oil master* · The Gilded
 
-**Public.** Takes bets on horses, fights and the weather, and never loses a ledger. Famously cheerful about other people's luck.
+**Public.** One gusher made a fortune, and the whole town has heard the story twice. Wells run dry; the swagger never does.
 
-**Background.** You have run a book at Rockingham Park since 1919 and have lent money to half this room. A private ledger stays with you at all times; you have never shown it to anyone.
+**Background.** Nag Oil struck one gusher in 1923 and the whole town has heard the story twice. The wells have run dry since, and you have kept that quiet.
 
-- Angelos Boules: your best customer and your worst loser.
-- Diwakar Sandhu: the prizefighter whose losses you bank on, and are curious about.
-- Arjun Bhat: a slugger who owes you a favour from the Textiles championship.
+- Angelos Bowles: the card sharp who owes you for a night you both remember differently.
+- Diwakar Sandbagg: the prizefighter whose purses you stake, and are curious about.
+- Eric Leeway: the judge who rules on your drilling leases, and on little else you do.
 
-**Wear.** A bookmaker's check waistcoat, a pocket full of bills in a tidy roll, and a black half-mask.
+**Wear.** An oilman's cream suit with a derrick-shaped tie pin, a pocket full of bills in a tidy roll, and a black half-mask.
 
-### Rhea “Emporium” Mallya
-*Owner, Mallya's Department Emporium* · The Gilded
+### Krrish Vermouth
+*Wine importer* · The Gilded
 
-**Public.** Sells everything a lady needs and several things a gentleman shouldn't ask about. The Emporium's sign says “Established, Unencumbered.”
+**Public.** Fine wine and vermouth arrive in Manchester by the crate, no questions asked and none answered.
 
-**Background.** Mallya's Emporium has three floors, a druggist's counter, and a standing account with half this room. You know what everyone buys, which is more than most of them know about themselves.
+**Background.** Fine wine and vermouth reach Manchester by the crate, and you are the reason, no questions asked and none answered. You keep your invoices in four languages and your customers in three social classes.
 
-- Tim McGinley: you stock his gin in the back room under the label of a tonic.
-- Anika Mahns: an unpaid account the size of a small house.
-- Silas “Duke” Palmer: dresses his band at your counter, on a ring-dotted signature.
+- Eric Leeway: a regular at your cellar door on Fridays, for reasons neither of you states.
+- J. Bruce Wayne: buys your vermouth and pays in compliments.
+- Anika Mahns: the Manor's cellar is the best customer you cannot say you have.
 
-**Wear.** The newest silk you stock, a mask in a matching shade, and an air of closing a sale.
+**Wear.** A wine merchant's grey frock coat, a corkscrew on a chain, and a half-mask the colour of burgundy.
 
-### John “Jack” Hudson (no relation to the motorcar)
-*Automobile dealer* · The Gilded
+### Angelos Bowles
+*Card sharp* · The Gilded
 
-**Public.** Sells the new Hudson to anyone with a down payment and the old Hudson to anyone who didn't read the contract. Insists, at some length, that he is no relation to the motorcar.
+**Public.** Deals fast, bets faster, and always has one more hand to play. The smile across the table is part of the game.
 
-**Background.** Hudson & Co. sells more cars than any dealer between Concord and Nashua, and keeps a sales book that records the buyer, the draft and the colour. You never forget a draft.
+**Background.** You read tells for a living: a twitch, a hesitation, a glass left untouched. You deal fast and bet faster, and you have sat across a table from every guest here at least once.
 
-- Anika Mahns: you took her crested spoon in trade for a Packard and have been looking for a buyer since.
-- Tiffany Liu: has been commissioning a showroom lamp for a year, and is not quite finished.
-- J. Bruce Wayne: the Packard buyer who diagnosed his own engine by ear.
+- Mihir Nagarkatti: your backer, and your best friend, in that order.
+- Diwakar Sandbagg: the prizefighter whose hands you cannot stop watching.
+- Silas Palmer: plays the room where you work the back table.
 
-**Wear.** A salesman's checked suit, a Hudson pin, a half-mask and a handshake that lasts one second too long.
+**Wear.** A bowler hat, a waistcoat full of loose coin, and a casino chip you roll across your knuckles.
 
-### Sheriff Theodor “Farrago” Farag
-*Sheriff of Hillsborough County* · Order & Letters
+### Sheriff Theodor Farrago
+*Sheriff* · Order & Letters
 
-**Public.** A lawman who reads the paper before the case file. Famous for never having lost an election and never having won an argument with WFEA's Leon Ge.
+**Public.** A tin star, a quiet office and a long memory. Knows everyone's business and writes down very little.
 
-**Background.** You have held the star for six years and your county has never been quiet. A feud with Leon Ge, who mocks your department on the radio every night, has become the best entertainment in the county.
+**Background.** You have held the star for six years and your county has never been quiet. A feud with Leon Gee, who mocks your department on the radio every night, has become the best entertainment in the county.
 
-- Leon Ge: you suspect a second, unlicensed transmitter somewhere in town, and you intend to find it.
-- Dr. Emre Sunar: the county physician reports to you, and examines every body you find.
-- Adam Ouldsfiya: the gunsmith who sold you the revolver you have never fired.
+- Leon Gee: you suspect a second, unlicensed transmitter somewhere in town, and you intend to find it.
+- Emmerich Sunner: the county physician reports to you and examines every body you find.
+- Tiffany Liu: the windows of your office are hers, and so, you suspect, is some of the gossip about you.
 
-**Wear.** A tin star (a paper one is in your envelope), a Sheriff's hat, and a stern face for the photographs.
+**Wear.** A black cowboy hat, a tin star, handcuffs on your belt, and a stern face for the photographs.
 
-### Judge Eric “Leeway” Li
-*Municipal court judge* · Order & Letters
+### Judge Eric Leeway
+*Judge* · Order & Letters
 
-**Public.** Has dismissed every case that ever came before the bench, usually before the lawyers finished sitting down. Believes in giving everyone a little leeway.
+**Public.** Light sentences, long lunches, and a gavel that rarely gets raised. Everyone leaves this courtroom smiling.
 
 **Background.** You came to the bench in 1925 with excellent references and no previous court record anywhere. Your gavel falls like a metronome and the docket moves faster than any in the state.
 
-- Anthony Huang: argues before you and has never won an acquittal.
-- Theodor Farag: the Sheriff, who watches your bench more closely than he admits.
-- Mihir Nagarkatti: a regular in your corridors, and a decent source of racetrack tips.
+- Anthony Hung: argues before you and has never won an acquittal.
+- Theodor Farrago: the Sheriff, who watches your bench more closely than he admits.
+- Krrish Vermouth: sends the bench a crate of wine every Friday, and you never ask why.
 
 **Wear.** Judge's black robes, a powdered wig if you can find one, and a small half-mask.
 
-### Anthony “Hung Jury” Huang
-*Defence attorney* · Order & Letters
+### Anthony Hung, Esq.
+*Defense attorney* · Order & Letters
 
-**Public.** Has never won an acquittal and never lost a conviction, because every jury he faces deadlocks. Clients pay for juries that argue.
+**Public.** Has never lost a case, only a jury. Charges by the word, and every word is worth it.
 
 **Background.** You practise from a second-floor office above a dentist and read every contract twice. You have drawn papers for half the people in this room and remember what each of them tried to hide.
 
-- Rhea Mallya: the Emporium's counsel; you read her leases and you are not telling anyone what is in them.
-- Eric Li: the judge who dismisses your cases and has never read your briefs.
+- Rhea Mallya: the Emporium's counsel is you; you read her leases and are not telling anyone what is in them.
+- Eric Leeway: the judge who dismisses your cases and has never read your briefs.
 - Tim McGinley: a client you have defended three times and billed once.
 
 **Wear.** A lawyer's three-piece suit, a flourish of a signature on every page, and a mask with an air of reasonable doubt.
 
-### Dr. Emre “Sooner or Later” Sunar
-*County physician* · Order & Letters
+### Dr. Emmerich Sunner
+*Doctor* · Order & Letters
 
-**Public.** Every patient is told the same thing: sooner or later, it will pass. Known to be right more often than the other doctors in the county.
+**Public.** Steady hands, a black bag, and a bedside manner that talks patients out of a fuss. Will see you sooner or later.
 
 **Background.** You have been the county physician for four years and the Sheriff's examiner for three. You have seen what a stage looks like and what a body looks like, and you can tell the two apart.
 
-- Theodor Farag: the Sheriff, who asks you what killed them and rarely likes the answer.
+- Theodor Farrago: the Sheriff, who asks you what killed them and rarely likes the answer.
 - Rhea Mallya: the Emporium's druggist fills your prescriptions.
 - Silas Palmer: the bandleader whose throat you treat.
 
 **Wear.** A doctor's bag, a stethoscope, a white coat over a dinner jacket, and a small black mask.
 
-### Molly “Extra!” Daniel
-*Newsie, The Evening Farrago* · The Wire & the Stage
+### Molly Daniel of the Manchester Union
+*Newsie* · Order & Letters
 
-**Public.** Sells the news before it happens. Has never once been wrong about a rumour, only early.
+**Public.** Hollers the headlines from the corner before the ink is dry. If it's news, Molly has it, and so does everyone within three blocks.
 
 **Background.** You have sold the Farrago on the corner of Elm and Hanover since 1919, and your papers reach every door in this room. A still in the Mahns Manor cellar pays for the dress you are wearing.
 
 - Anika Mahns: your landlady in the cellar, and your best customer.
-- Leon Ge: your headlines run on his radio the next morning, without credit.
-- Eric Li: pays you to keep his name off the court column.
+- Leon Gee: your headlines run on his radio the next morning, without credit.
+- Eric Leeway: pays you to keep his name off the court column.
 
 **Wear.** A newsboy cap, a satchel of papers, and a bundle of the Extra to sell at the right moment.
 
-### Leon “Gee-Whiz” Ge
-*Radio announcer, WFEA* · The Wire & the Stage
+### Leon Gee of WFEA
+*Radio announcer* · The Wire & the Stage
 
-**Public.** The voice of WFEA, and the only man in Manchester who mocks the Sheriff nightly. Rarely wrong; always loud.
+**Public.** The voice of WFEA, smooth enough to sell soap and loud enough to wake the dead. Half the town trusts every word; the other half just likes the sound.
 
 **Background.** You came from Canton by way of Montreal. A certain lady sponsored your papers and your radio licence, and you owe her everything. You read the news at ten and a quiet message on alternate Sundays.
 
-- Theodor Farag: the Sheriff, who thinks you have a second transmitter and is correct.
-- Ananya Koduru: your friend in the telegraph office; she keeps your secrets and you keep hers.
+- Theodor Farrago: the Sheriff, who thinks you have a second transmitter and is correct.
+- Ananya Codru: your friend at the telegraph office; she keeps your secrets and you keep hers.
 - Silas Palmer: the bandleader whose scat you recognise from somewhere you cannot place.
 
 **Wear.** A microphone prop if you have one, a headset, a snappy suit, and a white carnation.
 
-### Ananya “The Code-Ruler” Koduru
-*Cipher clerk, Western Union* · The Wire & the Stage
+### Ananya Codru and Charlie Wakem
+*Night telegraph office* · The Wire & the Stage
 
-**Public.** Reads Morse faster than most people read English. Every telegram in Manchester passes under her pencil.
+**Public.** Every wire in town crosses their desk after dark. News travels fast, and these two are first to read it.
 
-**Background.** Every telegram that has gone in or out of Manchester has passed through your hands. You decoded a wire in 1924 and were told to forget it. You wrote it down instead.
+**Background.** Every wire that goes in or out of Manchester after dark passes through your hands. You decoded one in 1924 and were told to forget it. You wrote it down instead. Charlie, who works the key beside you, keeps the night shift company.
 
-- Leon Ge: your colleague at WFEA who sends messages that look innocent and are not.
-- Luke Sheldon: sends coded wires to his carnival partners, and tips well.
-- Erika Lam: wanted; has bought a telegram form from you and does not say why.
+- Leon Gee: your friend at WFEA, who sends messages that look innocent and are not.
+- J. Bruce Wayne: wires his tailor in London, and tips like a man who wants to be remembered.
+- Erika Lamm: wanted; has bought a telegram form from you and does not say why.
 
 **Wear.** A clerk's visor and sleeve garters, a telegraph pencil behind the ear, and a single green glove.
 
-### Luke “Shell Game” Sheldon
+### Luke Shelldon
 *Carnival barker* · The Wire & the Stage
 
-**Public.** The loudest voice at every fair in the county. Will sell you a prize you cannot win and a smile you cannot refuse.
+**Public.** Hollers outside the tent until the whole street is inside it. Could sell you the show, the ticket and the change.
 
-**Background.** You have run the carnival's midway for six summers, and the stage effects for its sideshow. In October 1924 you built stage blood and breakaway furniture for a “private masquerade” and billed a post-office box. You never asked what it was for.
+**Background.** You have run the carnival's midway for six summers, and you hand-paint every handbill yourself. In October 1924 you built stage blood and breakaway furniture for a “private masquerade” and billed a post-office box. You never asked what it was for.
 
-- Angelos Boules: your hustling partner on the midway; he reads the marks, you work the shell.
+- Angelos Bowles: sits at the back table of every midway you have worked, and reads the marks.
 - Silas Palmer: leads the band that plays your carnival, and cannot play a Charleston.
-- Ananya Koduru: sends your wires to the carnival's other towns, and keeps your accounts straight.
+- Ananya Codru: sends your wires to the carnival's other towns and keeps your accounts straight.
 
 **Wear.** A barker's straw boater, a striped coat, a cane, and a mask with a painted grin.
 
-### Silas “Duke” Palmer
-*Jazz bandleader and scat singer* · The Wire & the Stage
+### Silas Palmer of the Palm Court
+*Jazz scat singer* · The Wire & the Stage
 
-**Public.** Leads the finest dance orchestra in New England, with an Ellington-style polish: white tie, a long cigarette holder, and a piano he insists is a jungle of sound.
+**Public.** Sings the words nobody wrote, ba-doo-be-da and all, and leads the band that keeps the floor moving.
 
-**Background.** You have led the band since 1925 and are known for the scat that carries over any room. The papers like you; the booking agents like you more, because you never ask to be paid in anything but cash.
+**Background.** You lead the band at the Palm Court and sing the scat that carries over any room. The papers like you; the booking agents like you more, because you never ask to be paid in anything but cash.
 
-- Leon Ge: broadcasts your records on WFEA, and says the scat reminds him of someone.
-- Rhea Mallya: dresses your band at her counter on a signature you are careful about.
-- Luke Sheldon: books your orchestra for the carnival.
+- Leon Gee: broadcasts your records on WFEA, and says the scat reminds him of someone.
+- Anika Mahns: a patron of the band, and not one who explains herself.
+- Luke Shelldon: books your orchestra for the carnival.
 
-**Wear.** White tie and tails, a long cigarette holder, and a mask in black lace.
+**Wear.** White tie and tails, a long cigarette holder, a hat you tip to everyone, and a mask in black lace.
 
-### Joshua “Chimney Sweep” Kaminsky
-*Chimney sweep* · The Working Folk
+### Sidd Airwind
+*Barnstormer* · The Wire & the Stage
 
-**Public.** Knows every roof in Manchester and every secret that ever went up a flue. Nobody looks at a sweep, which suits him.
+**Public.** Flies from town to town in a patched-up plane, selling rides and thrills to anyone with a dollar. Has seen every field in New England from above, and doesn't much like the ground.
 
-**Background.** Your family came from Poland to work the mills; you took the brush instead. A sweep sees every room's chimney and every room's fire, and notices what people burn.
+**Background.** You barnstorm the county's fairs and carry mail when the roads are mud. You are always the first to ask which way the door is, and the last to say why.
 
-- Tiffany Liu: your windows-and-roofs partner; you fix what she makes.
-- Arjun Bhat: a fellow mill family; you have known him since you were both small.
-- Adam Ouldsfiya: you sweep his shop's chimney and he sweeps your debts.
+- Krrish Vermouth: ships you the vermouth you pour over the fairgrounds on a good day.
+- Tiffany Liu: sold you a lamp for your hangar, and a story for it.
+- Leon Gee: reads your weather on the air, wrongly.
 
-**Wear.** A sweep's soot-streaked coat, a top hat and a brush over one shoulder. It is a Friday night, so you feel the Sabbath keenly.
+**Wear.** A flying jacket and leather helmet, goggles pushed up on your forehead, a wristwatch you glance at constantly, and a white silk scarf.
 
-### Arjun “The Bat” Bhat
-*Slugger, Manchester Textiles baseball club* · The Working Folk
+### Joshua Kamin-Sky
+*Soothsayer* · The Working Folk
 
-**Public.** Hit .412 last season and wants a word with anyone who mentions the Babe. Brought the bat to the party for “sentimental reasons.”
+**Public.** Reads fortunes in palms, clouds and the bottom of a teacup, and is right more often than is comfortable.
+
+**Background.** You read palms, clouds and the bottom of a teacup, and now and then the soot in a chimney. Your family came from Poland to work the mills, and a star-marked box of salt is on your mother's shelf. A soothsayer notices what people burn.
+
+- Tiffany Liu: your partner in windows and roofs; you read the glass, she makes it.
+- Arjun Bat: a fellow mill family; you have known him since you were both small.
+- Adam Holdsfire: you read the soot in his shop's chimney and he reads your debts.
+
+**Wear.** A shawl of rich colours, a turban, a crystal you do not believe in, and a six-pointed star pinned to your lapel. It is a Friday night, so you feel the Sabbath keenly.
+
+### Arjun Bat
+*Slugger* · The Working Folk
+
+**Public.** Has never met a pitch that didn't deserve a swing, or a fence that didn't deserve a dent. The ball usually gets the worst of it.
 
 **Background.** You grew up in a mill family and hauled bricks as a boy. You were offered $500 to strike out in the 1925 mill championship and never quite decided whether the money was taken.
 
-- Josh Kaminsky: a boyhood friend and the only person who laughs at your jokes.
-- Mihir Nagarkatti: the bookmaker whose offer you took, or did not.
-- Adam Ouldsfiya: sold you your first glove and has opinions about your swing.
+- Joshua Kamin-Sky: a boyhood friend and the only person who laughs at your jokes.
+- Mihir Nagarkatti: the oilman whose offer you took, or did not.
+- Adam Holdsfire: sold you your first glove and has opinions about your swing.
 
 **Wear.** A Textiles team jersey, a cap, and a bat you insist is for sentimental reasons.
 
-### Adam “Holds Fire” Ouldsfiya
-*Gunsmith and hardware, West Side* · The Working Folk
+### Adam Holdsfire
+*Gunsmith* · The Working Folk
 
-**Public.** Makes the finest revolvers in Hillsborough County and has famously never fired one. His motto: a good gun, like a good argument, works best when it stays holstered.
+**Public.** Builds the finest revolvers in the county and has never fired one. A good gun, like a good argument, is best left in the holster.
 
 **Background.** You sell guns, locks and nails. You keep a register of every poison and every cartridge you have ever sold, and you have a very long memory for who bought what.
 
-- Theodor Farag: the Sheriff whose revolver you built and who has never loaded it.
-- Josh Kaminsky: sweeps your chimney; taught you a Yiddish word you are proud of.
-- Arjun Bhat: bought his bat from your hardware counter.
+- Theodor Farrago: the Sheriff whose revolver you built and who has never loaded it.
+- Joshua Kamin-Sky: reads the soot in your chimney; taught you a Yiddish word you are proud of.
+- Arjun Bat: bought his bat from your hardware counter.
 
 **Wear.** A gunsmith's leather apron over a good shirt, a monocle, and a half-mask with a brass finish.
 
-### Tiffany Liu, of the Lamps
-*Stained-glass artisan* · The Working Folk
+### Tiffany Liu of the Lamps
+*Stained-glass artist* · The Working Folk
 
-**Public.** Makes the lamps that light half the Manchester drawing rooms and the windows of most of its churches. Reads a monogram under a loupe faster than a clerk reads a ledger.
+**Public.** Turns broken glass into lamps and windows people stop and stare at. Everything made here glows a little like a secret.
 
 **Background.** You have your own glass studio and a loupe you never leave behind. Your lamps hang in the Sheriff's office and your windows hang in the churches, and you have cut a brass plate or two for the Veil itself.
 
-- Jack Hudson: has been waiting a year for a showroom lamp, and will wait longer.
-- Josh Kaminsky: sweeps what your windows let in.
-- Theodor Farag: the Sheriff's office windows are yours.
+- Leon Gee: a neighbour in the glass; you suspect his antenna is in your bell tower's shadow.
+- Joshua Kamin-Sky: reads the glass you make.
+- Theodor Farrago: the Sheriff's office windows are yours.
 
 **Wear.** A glassworker's apron, a loupe on a ribbon, and a mask of stained-glass shards.
 
-### Diwakar “Sandbag” Sandhu
+### Diwakar Sandbagg
 *Prizefighter* · The Working Folk
 
-**Public.** Undefeated in every fight he was supposed to win and mysteriously knocked out in every one with real money on it.
+**Public.** Takes a punch the way other people take a compliment: calmly, with a plan, and for a fee.
 
 **Background.** You fight the river-town circuit and nobody has ever seen you in the Manchester ring. You are a man who loses in the third round exactly when the odds say you should.
 
-- Mihir Nagarkatti: the bookmaker who keeps your fights, and does not ask why.
-- Angelos Boules: studies you at every table.
-- Arjun Bhat: a fellow sportsman who trades stories and bruises.
+- Mihir Nagarkatti: the oilman who stakes your fights, and does not ask why.
+- Angelos Bowles: studies you at every table.
+- Arjun Bat: a fellow sportsman who trades stories and bruises.
 
 **Wear.** A boxer's robe over a dinner jacket, taped knuckles, and a mask that is not meant to hide a broken nose.
 
-### Timothy “Gin” McGinley
-*Bathtub-gin baron* · The River Trade
+### Tim McGinley, Baron of Bathtub Gin
+*Gin baron* · The River Trade
 
-**Public.** The man who made the cheapest gin in New Hampshire into the most respectable. Claims to be going straight.
+**Public.** The finest gin in Manchester comes out of the biggest bathtub, delivered with a smile and no questions.
 
 **Background.** You are in your second year of going straight, which means your gin now has a license plate. You ran the launch at the foot of the river steps in 1924 and have been trying to forget what you saw.
 
-- Rebecca Chou: the House's Butler; you supply the House, and what it does not know about your gin is little.
+- Rebecca Chow: the House's Butler; you supply the House, and what it does not know about your gin is little.
 - Rhea Mallya: stocks your gin in the Emporium's back room under the label of a tonic.
-- Anthony Huang: your lawyer; you do not pay him on time.
+- Anthony Hung: your lawyer; you do not pay him on time.
 
 **Wear.** A gangster's pinstripe, a flask-shaped bulge, and a black half-mask with a gin-green ribbon.
 
-### Rebecca “Chow” Chou
-*Butler of the Black Veil* · The River Trade
+### Rebecca Chow, Butler of the Black Veil
+*Butler* · The River Trade
 
-**Public.** The Black Veil's Butler: keeper of its keys, its tin, and every secret that ever crossed the bar. Self-made, a little sketchy, and for sale to anyone who can pay.
+**Public.** Runs the house, pours the drinks, keeps the secrets. Hears everything, repeats nothing, and holds the keys to every room.
 
 **Background.** You run the House: the bar, the locks, the tin box that holds the night's takings. You also keep a boarding house on the West Side, which is where a certain lady hid on the night of 31 October 1924 with a bandaged shoulder. Someone paid you $200 to forget her.
 
 - Tim McGinley: supplies the House, and has seen what is under your bar.
-- Leon Ge: you have a message of his you have never delivered.
-- Erika Lam: a boarder you hid at the House once, and would again, for the right fee.
+- Leon Gee: you have a message of his you have never delivered.
+- Erika Lamm: a boarder you hid at the House once, and would again, for the right fee.
 
 **Wear.** A Butler's black coat with silver buttons, white gloves, a ring of keys, and an expression of discretion for hire.
 
-### Angelos “Bowled Over” Boules
-*Lawn-bowls hustler* · The River Trade
+### Rhea Mallya of Mallya's Emporium
+*Department store owner* · The River Trade
 
-**Public.** Has never lost a game of boules with money on it. Has lost several without, on purpose, to raise the stakes.
+**Public.** Everything under one roof, from hats to hatboxes, under a sign that says the customer is always right. The prices say otherwise.
 
-**Background.** You read tells for a living: a twitch, a hesitation, a glass left untouched. You hustle boules on the lawn and cards in the back room and you have sat across from every guest here at least once.
+**Background.** Mallya's Emporium has three floors, a druggist's counter, and a standing account with half this room. You know what everyone buys, which is more than most of them know about themselves.
 
-- Luke Sheldon: your partner on the midway; he works the shell while you read the mark.
-- Mihir Nagarkatti: your bookmaker and your best friend, in that order.
-- Diwakar Sandhu: the prizefighter whose hands you cannot stop watching.
+- Tim McGinley: you stock his gin in the back room under the label of a tonic.
+- Anika Mahns: an unpaid account the size of a small house.
+- Silas Palmer: dresses his band at your counter.
 
-**Wear.** A bowler hat, a waistcoat full of loose coin, and a single lucky boule in your pocket.
+**Wear.** The newest silk you stock, a mask in a matching shade, and an air of closing a sale.
 
-### Erika “On the” Lam
+### Erika Lamm
 *Fugitive* · The River Trade
 
-**Public.** Has been “on the lam” since the spring and sees no reason to stop now. The authorities have a sketch; so far it looks like several people.
+**Public.** Never far from a door, and never in one town for long. Always seems to be leaving, even when arriving.
 
 **Background.** You bought a false name from a masked man at the river steps on 31 October 1924 and you have been using a different one every season since. You hid at Rebecca's boarding house more than once.
 
-- Rebecca Chou: has hidden you, for money, and will again.
-- Ananya Koduru: sold you a blank telegram form without asking why.
-- Theodor Farag: the Sheriff who wants you, and has never recognised you in a hat.
+- Rebecca Chow: has hidden you, for money, and will again.
+- Ananya Codru: sold you a blank telegram form without asking why.
+- Theodor Farrago: the Sheriff who wants you, and has never recognised you in a hat.
 
 **Wear.** A travelling coat with the collar up, a hat pulled low, and a false moustache you may or may not wear.
-
-### Siddarth “Air-Wind” Arvind
-*Aviator and barnstormer* · The River Trade
-
-**Public.** Flies anything that will lift him off the ground, and a few things that won't. Has landed in every field in New England and is still looking for a better one.
-
-**Background.** You barnstorm the county's fairs and carry mail when the roads are mud. You are always the first to ask which way the door is, and the last to say why.
-
-- Jack Hudson: the motorcar man who says cars will beat planes and has the loudest laugh in the room.
-- Tiffany Liu: sold you a lamp for your hangar, and a story for it.
-- Leon Ge: reads your weather on the air, wrongly.
-
-**Wear.** A flying jacket and leather helmet, goggles pushed up on your forehead, and a white silk scarf.
