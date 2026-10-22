@@ -47,7 +47,7 @@ describe("the roster", () => {
     for (const entry of roster) assert.ok(!/["“”]/.test(entry.name), entry.name);
     assert.deepEqual(roster.filter((entry) => entry.reserve).map((entry) => entry.slug), ["jack"]);
     assert.match(roster.find((entry) => entry.slug === "silas")!.role, /scat/i);
-    assert.equal(roster.length, 25);
+    assert.equal(roster.length, 26);
   });
 });
 
@@ -87,6 +87,24 @@ describe("who is coming", () => {
 
     await setReleased(db, false);
     assert.equal((await readRosterFlags(db)).released, false);
+  });
+
+  it("lists each character once, and the host as Bartend Joe", async () => {
+    const db = await freshDb();
+    for (const name of ["Ananya Koduru", "Charlie Wakim", "Eric Li"]) {
+      const email = `${name.split(" ")[0].toLowerCase()}@example.test`;
+      await db.insert(guests).values({ email, fullName: name });
+      await db.insert(rsvps).values({ fullName: name, email, attending: "yes", recordedAt: new Date() });
+    }
+    const cast = await castList(db);
+    const charlie = cast.find((row) => row.fullName === "Charlie Wakim")!;
+    await setReleased(db, true);
+    const view = await rosterViewFor(db, charlie.guestId);
+    assert.equal(view.rows.filter((row) => row.name === "Ananya Codru and Charlie Wakem").length, 1);
+    assert.equal(view.rows.find((row) => row.name === "Ananya Codru and Charlie Wakem")?.isYou, true);
+    assert.equal(view.rows.filter((row) => row.name === "Bartend Joe").length, 1);
+    assert.equal(view.rows.length, 3);
+    assert.equal(rosterForName("Joey Landry")?.slug, "joe");
   });
 
   it("lets the host cast a guest by hand and hand them back", async () => {

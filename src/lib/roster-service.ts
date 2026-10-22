@@ -117,13 +117,29 @@ export async function rosterViewFor(db: GameDb, guestId: string): Promise<Roster
   const flags = await readRosterFlags(db);
   const cast = await castList(db, flags);
   const coming = cast.filter((row) => row.attending !== "no");
-  const rows = coming.map((row) => {
-    if (!flags.released) return { name: row.fullName, role: null, background: null, isYou: row.guestId === guestId };
-    if (!row.entry) return { name: "A character still to be chosen", role: null, background: null, isYou: row.guestId === guestId };
-    return { name: row.entry.name, role: row.entry.role, background: row.entry.background, isYou: row.guestId === guestId };
-  });
-  // after release the order follows the characters, so it can never spell out who is who
-  if (flags.released) rows.sort((a, b) => a.name.localeCompare(b.name));
+  let rows: RosterView["rows"];
+  if (!flags.released) {
+    rows = coming.map((row) => ({ name: row.fullName, role: null, background: null, isYou: row.guestId === guestId }));
+  } else {
+    // one row per character: two guests who share a character (or the host, once registered) never list it twice
+    const bySlug = new Map<string, RosterView["rows"][number]>();
+    const unmatched: RosterView["rows"] = [];
+    for (const row of coming) {
+      const isYou = row.guestId === guestId;
+      if (!row.entry) {
+        unmatched.push({ name: "A character still to be chosen", role: null, background: null, isYou });
+        continue;
+      }
+      const seen = bySlug.get(row.entry.slug);
+      if (seen) seen.isYou ||= isYou;
+      else bySlug.set(row.entry.slug, { name: row.entry.name, role: row.entry.role, background: row.entry.background, isYou });
+    }
+    for (const entry of roster) {
+      if (entry.host && !bySlug.has(entry.slug)) bySlug.set(entry.slug, { name: entry.name, role: entry.role, background: entry.background, isYou: false });
+    }
+    // after release the order follows the characters, so it can never spell out who is who
+    rows = [...bySlug.values(), ...unmatched].sort((a, b) => a.name.localeCompare(b.name));
+  }
   const mine = cast.find((row) => row.guestId === guestId);
   return { released: flags.released, you: flags.released && mine?.entry ? publicCard(mine.entry) : null, rows };
 }
