@@ -33,7 +33,7 @@ No. 20 · Ballard, S. · The Maestro · placed: The Brass Rail, Canal St. · UNS
 No. 21 · Marek, D. · The Doorman · placed: River shed, Granite St. · UNSETTLED. Notes: “will not sit with his back to a door.”
 No. 22 · Pike, W. · The Wren · placed: The hangar, Londonderry field · UNSETTLED. Notes: “tests the wind with a wet finger, even indoors.”
 
-In a later hand, 26 Feb 1925: “Q. reports all twenty-two settled. Five he cannot show me. No bodies. I do not believe him.”
+In a later hand, 30 Sep 1925: “Q. reports all twenty-two settled. Five he cannot show me. No bodies. I do not believe him.”
 In the margin: “Markers 18 to 22 never came back to the House. Whoever holds one still has a claim on it.”
 
 Filing code: EWWXP

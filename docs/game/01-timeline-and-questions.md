@@ -11,8 +11,8 @@
 - **4 Nov 1924**: Kit prepares the List of twenty-two. A. Quill is retained on the 8th, paid from the Teller's own share.
 - **Dec 1924 – Sep 1925**: Seventeen members are settled in “accidents.” Three orders in Cassie's hand are shown to a court; they are forged by the Notary under duress.
 - **3 Mar 1925**: The Wren's aeroplane falls into Lake Massabesic. The Wren survives; Cal Yates does not.
-- **Feb 1925**: Quill reports all twenty-two settled; he cannot show five. He is killed by the survivors. Kit does not believe him.
-- **Oct 1925**: Two memorial notices (Crane, Ballard) are placed in the Farrago and withdrawn. The survivors have gone under new names.
+- **30 Sep 1925**: Quill reports all twenty-two settled; he cannot show five. Kit does not believe him.
+- **Oct 1925**: The survivors find Quill first and kill him. Two memorial notices (Crane, Ballard) are placed in the Farrago and withdrawn. The survivors have gone under new names.
 - **22 Dec 1925**: Cassie's Christmas card, postmarked Manchester.
 - **7 Oct 1926**: Black envelopes appear in Elm Street and on the West Side. A Montreal wire asks WHO PREPARED THE LIST.
 - **22 Oct 1926**: Kit Kessler returns to Manchester and asks the Butler for the Merrimack Room and a rye at nine o'clock.

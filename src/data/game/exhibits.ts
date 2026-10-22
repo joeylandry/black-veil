@@ -40,7 +40,7 @@ const listBody = [
     (row) => `No. ${String(row.no).padStart(2, "0")} · ${row.name} · ${row.trade} · placed: ${row.placed} · ${row.fate}`,
   ),
   "",
-  "In a later hand, 26 Feb 1925: “Q. reports all twenty-two settled. Five he cannot show me. No bodies. I do not believe him.”",
+  "In a later hand, 30 Sep 1925: “Q. reports all twenty-two settled. Five he cannot show me. No bodies. I do not believe him.”",
   "In the margin: “Markers 18 to 22 never came back to the House. Whoever holds one still has a claim on it.”",
 ];
 
