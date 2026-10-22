@@ -2,20 +2,22 @@
 
 Source of truth for the story is what is already in the code: `src/data/game/story.ts` (the public brief, Cassie's letter, the timeline), `facts.ts` (who knows what), `exhibits.ts` (every printed page) and `questions.ts` (the Reckoning). Nothing below invents a new 1924. Where your new decisions differ from the code, the list at the end says what would change.
 
-## 1. What changed from your last message
-- **Cassie's invitation is unsigned.** Survivors work out that only Cassie knew their new names; that is how they learn she lives. (Code today: the wire and the letter are signed "C." That stays for the letter read at the end; the invitations go out unsigned. The "The veil lifts" closing phrase, which Leon recognises, is the tell.)
-- **Survivors know only their own survival.** Not the Exit plan, not the fake receipts, not Cassie. (Code today tells each survivor who the other four are: that line comes out.)
-- **Affairs:** one only, Ananya and Luke. The other two pairs become partnerships and friendships (section 6).
-- **Objects:** your list from the last two messages is in section 7. Not used: martini glasses, trumpet photo, merlot, shears, plates, orange slices, holy water, the decanters.
+## 1. What changed from your last messages
+- **Cassie's invitation is unsigned.** Survivors work out that only Cassie knew their new names; that is how they learn she lives.
+- **Survivors know only their own survival.** Not the Exit plan, not the fake receipts, not Cassie. (The code today tells each survivor who the other four are: that line comes out.)
+- **Scoring groups:** each survivor sits in one of the five persona groups for the party, but for the final scoring the five survivors are ranked together as their own group of five. The killer is one point above the other four. The other guests are ranked inside their persona groups. See section 5.
+- **Affairs:** one only, Ananya and Luke. The other pairs are partnerships and friendships (section 6).
+- **Timeline hole fixed** (PR #42): Quill now lives until the last accident, and the survivors kill him in October 1925.
+- **Objects:** your list is in section 7. Not used: martini glasses, trumpet photo, merlot, shears, plates, orange slices, holy water, the decanters.
 - **Characters:** one row per character on the site and Bartend Joe added (PR #41, ready to merge). Joe is the host, not a suspect, and scores nothing.
-
+- **Receipts:** each now says outright what it implies (section 2).
 ## 2. The receipts: what each set proves and how a guest tells them apart
 
 The story already has the pieces: three "orders in C.C.'s hand" (Nov 1924, Mar 1925, Aug 1925) that were forged under duress, and Cassie's real hand in the Christmas card and her roll. The receipts are the paper trail behind those orders.
 
 | | **Fake receipts** (on the wall, in plain sight) | **Real receipts** (under the portrait) |
 |---|---|---|
-| What they say | "Received of Miss C. Castello, twenty dollars, in advance, for one name, as directed." Three of them (8 Nov 1924, 5 Dec 1924, 19 Jan 1925), signed only "for the bearer", so the hitman's name is not handed out for free | "Received of C.C., in gold: five sets of papers and five fares, for the holders of markers 18, 19, 20, 21 and 22. Names withheld." One receipt, dated November 1924 |
+| What they say | "Received of Miss C. Castello, twenty dollars, in advance, for the removal of one name from the Veil's roll, as directed. To be settled for good." Three of them (8 Nov 1924, 5 Dec 1924, 19 Jan 1925), signed only "for the bearer", so the hitman's name is not handed out for free | "Paid in full by C.C., in gold, to get five persons safely out of Manchester alive: a new name, papers and a fare for each. The holders of markers 18, 19, 20, 21 and 22. Names withheld." One receipt, dated 2 November 1924 |
 | What they prove (to the town) | Cassie paid for the killings | Cassie paid to hide the five who got away, so she is the opposite of a killer, and she was alive and acting after the "massacre" |
 | How to tell them apart | Drawn on the Merchants' Trust, Boston, which is the Keeper's bank (his rent counterfoils use it). Every i is dotted with a ring. A smudged embossing mark under each "C." The signature is too neat | Plain dots on every i, exactly like the Christmas card (Rebecca holds it) and Cassie's roll (Leon holds it). No bank. Paid in gold. A plain "C." |
 | Who can crack it | Anthony (saw the ringed i's in court), Rebecca (the card), Leon ("she hated rings"), Ananya (the telegram), Rhea | Whoever finds them. Reading the markers' numbers ties them to the five on the List |
@@ -39,31 +41,38 @@ Printable pages are in `docs/print/`: `wall-of-cassie.pdf` (six pages, the first
 | One unsigned handwritten note tucked in the frame | Hand uses plain dots | Text: "They have not forgotten you. Neither have I." |
 | **Under the portrait, not on the wall:** the real receipt | Section 2 | |
 
-## 4. The old man's plan (already in the code, written out)
+## 4. The old man's plan (proposed: needs your yes before I change any code)
 
-Kit Kessler, the Keeper, came back on 22 October because the black envelopes mean someone alive knows who prepared the List. His own note (found in his jacket): "They are not mine. Whoever sent them knows who is alive. I will go. I must have her, and the dial."
+What you said: the old man has everyone's secrets, he sent the invitations to the 19 regular guests, he wants to do something bad, and he does not know the five are there. Cassie sends the five their own unsigned invitations.
 
-1. **Find Cassie.** The envelopes mean she lives. He needs her diamond bar pin (the third key) and the combination that only she sets.
-2. **Open the vault** behind the Merrimack Room's second window: his ring, the Silent Partner's brass key (Anika's family), her pin, then the dial. The books in it expose him.
-3. **Use the guests' secrets as leverage.** He has been collecting them for two years: that is how he got everyone into one room. At nine, over his nightcap, he meant to read them out one at a time until somebody gave up where she is.
-4. **Finish the List.** Five markers never came back. He wanted to know which of the guests wear them.
+That conflicts with the code today, which says **Cassie** sent every black envelope and the Keeper's jacket note says "They are not mine". If you want the old man as the sender, this is what changes: his note becomes "I sent them. Every one of them owes me, and I know why." and the question "Who sent the invitations?" splits into two (the House sent the 19, Cassie sent the five).
 
-He did not plan for the five to be in the room already, or for the House to sell the bottle.
+Proposed plan, using only what is already in the story:
+1. **Why he invited them.** Over two years he collected a secret from each of the 19 people who ever touched the Veil: suppliers, officials, performers. He invited them all to one room so he could call in every favor at once, under the cover of a party.
+2. **What he wants.** He is holding the Veil's books but cannot open them: the vault takes his ring, the Silent Partner's brass key, Cassie's diamond pin and a dial only she can set. He needs Cassie. He suspects someone in the room can reach her (Leon's "I am well" signals, Rebecca's boarding house, Ananya's Montreal telegrams).
+3. **What happens at nine.** After his nightcap, he planned to read the guests' secrets aloud, one at a time, until somebody told him where she is. Whoever gave her up would keep their secret.
+4. **What he does not know.** That five of the people he tried to kill in 1924 are in the room, under new names, invited by Cassie. That is why he does not see the murder coming.
 
-## 5. Replacing the questions the killer and the Butler already know the answer to
+If you would rather the "something bad" be different (for example, he means to frame one guest for Cassie's murder), tell me and I will rewrite step 2 and 3.
+## 5. Scoring: the two replacement questions, and the groups
 
-Today the Butler knows who bought the vial and the killer knows who poured it, so "Who poisoned the Keeper?" (16) and "How, and where did the poison come from?" (12) are free for them. Instead of giving them anything free, **both of them answer two other questions, worth the same, that nobody gets by being in the role:**
+**What "Question A" and "Question B" mean.** The Butler knows who bought the vial and the killer knows who poured it, so two of the normal questions are free for them: "Who poisoned the Keeper?" (16 points) and "How was he poisoned and where did the poison come from?" (12 points). Instead of giving them free points, both of them answer these two other questions, worth the same:
 
 **Question A (16 points, in place of "Who poisoned him?"):** *What did the Keeper come to the Black Veil to get tonight, and how did he mean to get it?*
-Answer: Cassie's diamond pin and the dial, to open the vault and take the books (6). He had to find her, and the envelopes told him she is alive (4). He meant to use the guests' secrets as leverage (3). He also wanted to know which guests were the five who escaped (3).
-Sources for it: his jacket note, the vault memorandum, the 1923 books page, the nightcap chart, Anika's brass key, Josh's flue, Adam's lock.
+Answer: Cassie's diamond pin and the dial, to open the vault and take the books (6). He had to find Cassie (4). He meant to use the guests' secrets as leverage, reading them out until someone gave her up (6). It does **not** include the five: he does not know they are there.
+Sources: his jacket note, the vault memorandum, the 1923 books page, the nightcap chart, Anika's brass key, Josh's flue, Adam's lock.
 
-**Question B (12 points, in place of "How was he poisoned and where did it come from?"):** *Where are the Keeper's books, and what does it take to open them?*
+**Question B (12 points, in place of "How was he poisoned?"):** *Where are the Keeper's books, and what does it take to open them?*
 Answer: In the vault behind the Merrimack Room's second window (4). Three keys: the Keeper's ring, the Silent Partner's brass key, Cassie's diamond pin (5). Then a dial that only Cassie can set (3).
-Sources: the vault memorandum, Anika, Adam, Josh, Arjun.
+**Is that real?** The vault is story only. Nobody opens a vault at your party, and you do not need one. The answer is just a fact the guests piece together from clues (Anika's brass key, Adam's lock, Josh's flue, Arjun's bricks, the memorandum). If you would rather have no vault, I can swap Question B for another question about the old man's plan. If you want it to feel real, the three keys can be physical: the key you can dig up is the Silent Partner's brass key (Anika wears it on a ribbon), the Keeper's ring is in his jacket, and Cassie's pin is a pin you pin to the portrait.
 
-**Is the killer's 16 fair?** You are right that it is not: each of the five survivors has about a one-in-five chance of ending up the killer, and a free 16 for whoever gets there is a lottery, not a reward for doing anything. This fixes it: the killer and the Butler get no automatic points, and the poisoning itself earns nothing extra (every survivor already gets the same 12 points for each step of the same chain). My recommendation is to drop the automatic 16. If you would rather keep a prize for the deed, the clean way is a small flat bonus for the poisoner, equal to what any survivor could earn from their own chain, but that brings the lottery back.
+**Is the killer's 16 fair?** No: each of the five survivors has about a one-in-five chance of ending up the killer, so a free 16 is a lottery. So: no automatic points for the killer or the Butler. The killer's reward is the extra point that puts them one above the other survivors.
 
+**Who is graded against whom.**
+- The five survivors are ranked together as one group of five. The killer is one point above the best of the other four.
+- Each of the other guests is ranked inside their persona group (four people each, because each group's fifth member is a survivor).
+- Each persona group's top scorer is its winner, and the killer is the survivors' winner. Everyone has the same 60 points of objectives; the three mysteries (100 points) decide who is on top.
+- One question for you: is there also one overall winner, or only these group winners?
 ## 6. Pairs: one affair, the rest partnerships and friendships
 
 | Pair | Type | What the card says |
@@ -103,7 +112,22 @@ Seekers (the ones who must find the affair): Angelos, Krrish, Rhea. Each pair's 
 | Beaded lamp, red desk lamp, globe, octopus stand, wooden duck, chess box, cake dome, Falstaff poster, portrait | As in the Round 2 list | Same users as before |
 | Nikon D3500 | Too good: a press card on paper for Molly instead | Molly |
 
-The code needs 18 hidden finds and 12 carried swap items. That list covers about 14 hidden and 9 carried; I need about four more hidden finds and three more carried items (small things: a glove, a key, a mirror, a ribbon, a coin).
+**Recount (I said earlier I needed four more hidden finds; that was wrong).** The code needs 18 hidden finds and 12 carried items (6 swap pairs). The hidden finds are covered: candle, jack-o'-lantern, elephant, conch, mask, candy jar, cardinal, cake dome, octopus stand, wooden duck, globe, Falstaff poster, beaded lamp, red desk lamp, chess box with the rook, pocket Constitution, pocket Bill of Rights, record player, golden dumbbell, and the portrait's back. That is 20, so you are fine.
+
+The carried items, by swap pair (Jack cannot come, so Anika's partner becomes Krrish):
+
+| Pair | One carries | The other carries |
+|---|---|---|
+| Anika and Krrish | Metal spoon (the Mahns crested spoon) | Lit-up wine bottle |
+| Rhea and Tim | A handkerchief or cloth napkin **(still needed)** | The little jar (the gin jar) |
+| Angelos and Luke | Casino chip | Giraffe whittling |
+| Erika and Ananya | Printed false papers in a black envelope | Printed telegram form |
+| Josh and Tiffany | Kosher salt | A glass bead or marble **(still needed)** |
+| Arjun and Adam | A baseball **(still needed)** | The little brown box (empty cartridge box) |
+
+So I need three small things only: a handkerchief or napkin, a glass bead or marble, and a baseball (or a ball). The key you can dig up and Emily's glove are spare, and the House Tin is the small round tin.
+
+Costume and role props are separate: Theodor's black cowboy hat, badge and handcuffs; the doctor's bag; the Butler's tin and vial.
 
 ## 8. Secrets, one per character
 
@@ -156,9 +180,11 @@ The code's own checker (`npm run game:check`) passes all 21 checks on the curren
 
 A hole I found while writing the receipts: the code's timeline says the hitman (Quill) was killed by the survivors in February 1925, but the 17 "accidents" run to September 1925. Somebody finished the job after Quill. The simplest answer is the Keeper did it himself or hired a second man. I dated the fake receipts before February 1925 so they do not make it worse, and the story needs one line on who finished the job.
 
+The timeline hole is fixed in PR #42 (Quill is killed by the survivors in October 1925, after the last accident).
+
 What it has not seen yet, and what I have to fix when I load your changes:
-- **Krrish is missing and Jack (who cannot come) is still in.** The code has 24 characters but not Krrish. Jack holds a clue about the grey Hudson; that moves to Krrish.
-- Questions A and B, the unsigned invitation, the one-affair change, the new secrets and the real props all have to be added and the checker re-run.
+- The site's character list (the roster) is right: Krrish is in and Jack is held in reserve. The older game data (clues, objectives, the cast files) was written before that and still has no Krrish and still has Jack, so its clue lines have to move over to Krrish.
+- Questions A and B, the unsigned invitation, the old man sending the invitations, the one-affair change, the new secrets and the real props all have to be added and the checker re-run.
 - Whether the five survivors in the code are the right five: it currently has Joel, Eric, Silas, Diwakar and Sidd, one per group. That is a placeholder for you to confirm or change.
 
 ## 11. What I will change in the code when you say go
