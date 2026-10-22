@@ -265,3 +265,49 @@ Whoever the five survivors are keep their FIND and SWAP and swap the other three
 - The old man's plan tonight.
 - The secrets themselves (the LEARN objectives need them written).
 - Which of these house objects are really available. More photos are coming.
+
+---
+
+## Round 2: the second batch of photos
+
+Proposed upgrades to the FIND/SWAP lines above. Nothing here replaces anything until you say so.
+
+| House object | 1926 identity | Who uses it | Objective |
+| --- | --- | --- | --- |
+| Blue kosher-salt box with the star | The star-marked salt | Joshua | Find it, then "read the salt": ring the Veil candle with it and tell one guest what it says |
+| Brass candlestick with salt in the dish | The Veil candle | Joshua, everyone | Already the Veil candle; the salt ring is its ward |
+| Four small glass apothecary bottles on the rack | Four vials | Rebecca, Emmerich | Colored water. One is the real vial, three are decoys. Emmerich must tell which by its tag |
+| Small "agua bendita" water bottle | The fifth, decoy tonic | Rebecca | She sells it as the "cure" |
+| Dried orange slices | Garnish for the nightcap | Rebecca | Each nightcap gets a slice; the slice is a token the guest types in |
+| Glass cake dome on marble stand | The Keeper's cloche, the vault | Mihir, Rhea | Fake money stack under it. Money objective: buy something from the vault |
+| Large sepia portrait of a woman | Cassie | Theodor, Eric | Real receipts behind it. "Have you seen this woman" |
+| Black table with the dummy in the chair | The old man's table | everyone at 9:00 | Staging only |
+| Silver skull decanter | The Keeper's decanter | the old man's chain | Already in the draft |
+| Cut-crystal ship's decanter | Tim's gin decanter | Tim | Swap with Krrish for the wine |
+| Octopus candle stand | Tim's "Kraken Cove" sign | Tim | Something taped underneath |
+| Carved wooden duck with a lid | Adam's decoy | Adam | He finds a key inside |
+| Chess box, plus the loose white rook on the table | The Judge's board | Eric | Return the missing rook before 9:00 |
+| Pocket Constitution | The Eighteenth Amendment | Eric, Theodor | A page marker at the amendment that started Prohibition |
+| Pocket Bill of Rights | The Sixth and Fifth | Anthony | A card tucked inside naming who needs a lawyer |
+| Two Bicycle decks, one red and one blue | The house decks | Angelos, Luke | One deck has a pencil mark. Luke must spot it, Angelos must hide it |
+| Scrimshaw tie slide that reads "JOE" | Joel's ship | Joel, Silas | Swap it for Silas's trumpet photo |
+| Illuminated globe with a time-zone ring | The route map | Sidd, Erika | Sidd pins a landing field; Erika finds a ticket under the stand |
+| Gilt elephant bookend | Luck | Sidd | Optional charm |
+| Beaded red-glass hanging lamp | Tiffany's own lamp | Tiffany | Something taped under the base |
+| Red brass bouillotte lamp | The night desk lamp | Ananya and Charlie | A telegram taped under it |
+| Vinyl records (Armstrong, Zutty Singleton, Red Allen, New Orleans jazz) | The band's records | Silas, Leon | Silas finds the card in the right sleeve; Leon reads its label on air |
+| Carved masks, giraffe mask | The sideshow masks | Luke | Put the giraffe mask on the old man |
+| Falstaff opera poster | The opera bill | Silas | A card behind it |
+| Crystal lidded dish | Anika's heirloom dish | Anika | The key from the user's drawer goes inside |
+| Two small lidded porcelain jars (cardinal, bluebird) | A matched pair | any swap pair | Sealed notes inside |
+| Pietà, icon, blessed candle, bead bracelets | Chapel shelf | Joshua | Fortune cards, nothing mocking |
+
+Left alone: pothos plants (read as parlor plants), mushroom lamp, water bottle, camera battery, Lego White House, Sonos and thermometer, and everything cannabis-related. Take those off the tables before guests arrive.
+
+### Ask the host
+- Do you have a record player or gramophone? (Silas and Leon)
+- A notebook or ledger? (the Keeper's books)
+- A typewriter, rotary phone or radio? (Molly, Ananya and Charlie, Leon)
+- A camera? There was a Nikon battery. (Molly)
+- A gavel, handcuffs, a baseball, boxing gloves, a hip flask, a suitcase, a pocket watch or clock?
+- Envelopes, a wax seal, pearls, gloves (Emily's), a fedora?
