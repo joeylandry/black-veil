@@ -24,6 +24,8 @@ export type RosterEntry = {
   match: RosterMatch[];
   /** A character held back for someone who may yet be able to come. */
   reserve?: boolean;
+  /** The host's own character: listed in the cast once names are released, registered or not. */
+  host?: boolean;
 };
 
 export const roster: RosterEntry[] = [
@@ -197,6 +199,14 @@ export const roster: RosterEntry[] = [
     role: "Wine importer",
     background: "Fine wine and vermouth arrive in Manchester by the crate, no questions asked and none answered.",
     match: [{ first: ["krrish"], last: ["verma"] }],
+  },
+  {
+    slug: "joe",
+    name: "Bartend Joe",
+    role: "Bartender",
+    background: "Pours the drinks, polishes the glasses and never takes a side. Whatever you tell him stays behind the bar, mostly.",
+    match: [{ first: ["joey", "joe", "joseph"], last: ["landry"] }],
+    host: true,
   },
   {
     slug: "jack",
