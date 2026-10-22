@@ -141,7 +141,7 @@ type Ex = (typeof exhibits)[number];
 const codeLine = (ex: Ex) => {
   const last = [...ex.body].reverse().find((l) => l.trim() !== "") ?? "";
   const m = last.match(/^Filing code: ([A-Z0-9]{5})$/);
-  if (!m || m[1] !== ex.code) fail(`exhibit ${ex.id}: body filing code (${last}) does not match its code ${ex.code}`);
+  if (!m || m[1] !== ex.code) throw new Error(`exhibit ${ex.id}: body filing code (${last}) does not match its code ${ex.code}`);
   return m[1];
 };
 const bodyLines = (ex: Ex) => {
@@ -454,10 +454,10 @@ function buildTags() {
 }
 
 function buildTagKey() {
-  const order = { hidden: 0, carried: 1, table: 2 } as const;
+  const order = { hidden: 0, carried: 1, table: 2, bar: 3 } as const;
   const sorted = [...props].sort((a, b) => order[a.placement] - order[b.placement]);
   const row = (p: (typeof props)[number]) => {
-    const who = p.placement === "carried" ? `carried by ${publicName(p.carriedBy ?? "?")}` : p.placement === "hidden" ? `hide: ${p.hint}` : p.id === "scene-card" ? "on the black table in the Merrimack Room" : "under the Keeper's nightcap glass";
+    const who = p.placement === "carried" ? `carried by ${publicName(p.carriedBy ?? "?")}` : p.placement === "hidden" ? `hide: ${p.hint}` : p.placement === "bar" ? `at the bar${p.hint ? `: ${p.hint}` : ""}` : p.id === "scene-card" ? "on the black table in the Merrimack Room" : "under the Keeper's nightcap glass";
     return `<tr><td><span class="code" data-pid="${p.id}" data-code="${p.code}">${p.code}</span></td><td>${esc(p.name)}</td><td>${esc(p.generic)}</td><td>${p.placement}${p.placement === "hidden" ? " (2 tags)" : ""}</td><td>${esc(who)}</td></tr>`;
   };
   const html = `<div style="padding:.45in .5in"><h1>HOST KEY: which tag goes on which object</h1>
