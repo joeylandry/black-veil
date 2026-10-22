@@ -7,28 +7,25 @@
  * tell "it was Kit, not Cassie" from "it was Cassie, not Kit". Guests never see any of this
  * until results are published, so there is nothing to brute-force.
  */
-import { alternateOf, characterById, characters, exhibits, findGuests, questions, survivorIds } from "@/data/game";
+import { alternateOf, characterById, characters, findGuests, objectiveById, questions, races, survivorIds } from "@/data/game";
+import { propById } from "@/data/game/props";
 import type { Check, Objective, Question, RubricElement } from "@/data/game";
-import { matchesAny, matchesPattern, normalizeCode, parseClock, parseMoney } from "./text";
+import { matchesAny, matchesPattern, normalize, normalizeCode, parseClock, parseMoney, round2 } from "./text";
 import type { GameEvent, GradeItem, Submission, Truth, Verdict } from "./types";
 
 export const POINTS = {
-  exhibit: 2,
-  exhibitCap: 12,
-  pickRight: 4,
-  pickWrong: -2,
-  pickMin: -10,
-  pickMax: 20,
-  coverMax: 20,
-  coverPerAccuser: 2,
-  /** One point above the rest of the survivors: the killer is a point ahead of their group. */
-  poisoner: 1,
-  hideLoss: 6,
-  maxPicks: 5,
+  /** Every guest, survivors included, names up to four survivors: +1 for each right, -0.5 for each wrong, never below zero. */
+  pickRight: 1,
+  pickWrong: -0.5,
+  maxPicks: 4,
+  /** The first member of each group to finish its race earns one point. */
+  race: 1,
+  hideLoss: 1,
   longAnswer: 500,
   /** Share of a point a survivor (or the Butler) earns on an answer they already knew from the inside. */
   insiderCredit: 0.7,
 } as const;
+
 
 export type GradingInput = { submissions: Submission[]; events: GameEvent[]; truth: Truth };
 
@@ -103,9 +100,22 @@ function gradeObjective(guest: string, objective: Objective, context: Context): 
     case "hide": {
       const pair = pairKey(guest, check.partner);
       const hits = context.seekHits.get(pair)?.size ?? 0;
-      const points = Math.max(0, max - POINTS.hideLoss * hits);
+      const points = Math.max(0, round2(max - POINTS.hideLoss * hits));
       const verdict: Verdict = hits === 0 ? "accept" : points > 0 ? "partial" : "reject";
       return item(guest, "objective", id, verdict, points, max, hits === 0 ? "Nobody named the pair." : `${hits} seeker${hits === 1 ? "" : "s"} named the pair.`);
+    }
+    case "keep": {
+      // scored from the two seekers' own answers: the one you chose learned it, the rival did not
+      const present = new Set(context.truth.present);
+      const seekerObjective = objectiveById.get(check.seekerObjective);
+      const rivalObjective = objectiveById.get(check.rivalObjective);
+      if (!seekerObjective || !rivalObjective) return item(guest, "objective", id, "reject", 0, max, "The seekers' objectives could not be found.", true);
+      if (!present.has(check.seeker)) return item(guest, "objective", id, "accept", max, max, "Your chosen seeker did not come, so this one is yours.");
+      const told = gradeObjective(check.seeker, seekerObjective, context).verdict === "accept";
+      const leaked = present.has(check.rival) && gradeObjective(check.rival, rivalObjective, context).verdict === "accept";
+      if (!told) return item(guest, "objective", id, "reject", 0, max, "The seeker you were to tell never learned it.");
+      if (leaked) return item(guest, "objective", id, "reject", 0, max, "The seeker learned it, but so did the rival you were to keep it from.");
+      return item(guest, "objective", id, "accept", max, max, "The seeker learned it and the rival did not.");
     }
     default:
       break;
@@ -153,6 +163,10 @@ function gradeObjective(guest: string, objective: Objective, context: Context): 
         ? item(guest, "objective", id, "accept", max, max, "The time is inside the window.")
         : item(guest, "objective", id, "reject", 0, max, "The time is outside the window.");
     }
+    case "approval":
+      return normalize(answer) === normalize(check.word)
+        ? item(guest, "objective", id, "accept", max, max, "The host confirmed it and gave the approval word.")
+        : item(guest, "objective", id, "reject", 0, max, "That is not the host's approval word.");
     case "seek": {
       const outcome = seekOutcome(check, answer);
       return item(guest, "objective", id, outcome.verdict, outcome.verdict === "accept" ? max : 0, max, outcome.why, outcome.review);
@@ -205,11 +219,11 @@ function gradeMystery(guest: string, question: Question, context: Context): Grad
     const lived = isSurvivor && (element.survivorKnows === true || (element.survivorKnows === "killer" && context.truth.killer === guest));
     if (!lived) return element.points;
     discounted += 1;
-    return Math.round(element.points * POINTS.insiderCredit);
+    return round2(element.points * POINTS.insiderCredit);
   };
-  const points = earned.reduce((sum, element) => sum + worth(element), 0);
+  const points = round2(earned.reduce((sum, element) => sum + worth(element), 0));
   const long = answer.length > POINTS.longAnswer;
-  const cap = long ? Math.floor(max / 2) : max;
+  const cap = long ? round2(max / 2) : max;
   const given = Math.min(points, cap);
   const verdict: Verdict = given >= max ? "accept" : given > 0 ? "partial" : "reject";
   const why = earned.length
@@ -240,6 +254,39 @@ export function parsePicks(answer: string, exclude?: string): string[] {
 
 // ---------------------------------------------------------------- the whole night
 
+/** Every code in a free-text answer, normalised: "kk8hx, pjypa tdr9h" gives three codes. */
+function codesIn(answer: string): Set<string> {
+  return new Set(answer.split(/[^A-Za-z0-9]+/).map(normalizeCode).filter(Boolean));
+}
+
+/**
+ * The race for the extra point: the first member of each group to finish it. The survivors race for
+ * the vial, which the House's log decides; the others must submit every code of their group's race,
+ * and the earliest such submission (by any member, looking at every attempt, not just the newest) wins.
+ */
+function gradeRaces(input: GradingInput, presentIds: Set<string>): GradeItem[] {
+  const items: GradeItem[] = [];
+  for (const race of races) {
+    if (race.circle === "survivors") {
+      const winner = input.truth.killer;
+      if (winner && presentIds.has(winner)) items.push(item(winner, "bonus", "race", "accept", POINTS.race, POINTS.race, "Bought the House's vial first."));
+      continue;
+    }
+    const wanted = new Set(race.tokens.map((token) => normalizeCode(propById.get(token)?.code ?? "")));
+    let best: Submission | null = null;
+    for (const submission of input.submissions) {
+      if (submission.kind !== "objective" || submission.itemId !== "race") continue;
+      const owner = characterById.get(submission.guest);
+      if (!owner || owner.circle !== race.circle || !presentIds.has(owner.id)) continue;
+      const have = codesIn(submission.answer);
+      if (![...wanted].every((code) => have.has(code))) continue;
+      if (!best || submission.at < best.at) best = submission;
+    }
+    if (best) items.push(item(best.guest, "bonus", "race", "accept", POINTS.race, POINTS.race, `First in the group to finish "${race.title}".`));
+  }
+  return items;
+}
+
 /** Grades every present guest. Pure: the same input always gives the same items, in the same order. */
 export function autoGrade(input: GradingInput): GradeItem[] {
   const latest = latestSubmissions(input.submissions);
@@ -261,84 +308,34 @@ export function autoGrade(input: GradingInput): GradeItem[] {
     }
   }
 
-  // who named each survivor (non-survivors only; survivors know each other)
-  const accusers = new Map<string, number>();
-  const picksBy = new Map<string, string[]>();
-  for (const character of present) {
-    if (character.survivor) continue;
-    const submission = latest.get(key(character.id, "survivors", "picks"));
-    const picks = submission ? parsePicks(submission.answer, character.id) : [];
-    picksBy.set(character.id, picks);
-    for (const pick of picks) if (survivorIds.includes(pick)) accusers.set(pick, (accusers.get(pick) ?? 0) + 1);
-  }
-
   const items: GradeItem[] = [];
   for (const character of present) {
     const guest = character.id;
 
     for (const objective of character.objectives) items.push(gradeObjective(guest, objective, context));
 
-    // exhibits: two points each, six at most, never for a page you were handed or already earned by an objective
-    const ownCodes = new Set(
-      character.objectives.flatMap((objective) => (objective.check.kind === "code" ? objective.check.codes.map(normalizeCode) : [])),
-    );
-    const filed = new Map<string, Submission>();
-    for (const submission of latest.values()) {
-      if (submission.guest === guest && submission.kind === "exhibit") filed.set(normalizeCode(submission.answer), submission);
-    }
-    let earnedExhibits = 0;
-    const exhibitItems: GradeItem[] = [];
-    for (const [code, submission] of [...filed.entries()].sort((a, b) => a[1].at - b[1].at)) {
-      const exhibit = exhibits.find((candidate) => normalizeCode(candidate.code) === code);
-      if (!exhibit) {
-        exhibitItems.push(item(guest, "exhibit", code || submission.itemId, "reject", 0, POINTS.exhibit, "That code is not on any exhibit."));
-        continue;
-      }
-      if (exhibit.heldBy === guest) {
-        exhibitItems.push(item(guest, "exhibit", exhibit.id, "reject", 0, POINTS.exhibit, "You were handed this page; filing it earns nothing."));
-        continue;
-      }
-      if (ownCodes.has(code)) {
-        exhibitItems.push(item(guest, "exhibit", exhibit.id, "reject", 0, POINTS.exhibit, "This code already earned you an objective."));
-        continue;
-      }
-      if (earnedExhibits * POINTS.exhibit >= POINTS.exhibitCap) {
-        exhibitItems.push(item(guest, "exhibit", exhibit.id, "reject", 0, POINTS.exhibit, "You are past the six-exhibit cap."));
-        continue;
-      }
-      earnedExhibits += 1;
-      exhibitItems.push(item(guest, "exhibit", exhibit.id, "accept", POINTS.exhibit, POINTS.exhibit, `Filed "${exhibit.title}".`));
-    }
-    items.push(...exhibitItems);
-
-    // the survivors tier
-    if (character.survivor) {
-      const named = accusers.get(guest) ?? 0;
-      const points = Math.max(0, POINTS.coverMax - POINTS.coverPerAccuser * named);
-      items.push(item(guest, "survivors", "cover", points >= POINTS.coverMax ? "accept" : points > 0 ? "partial" : "reject", points, POINTS.coverMax, `${named} guest${named === 1 ? "" : "s"} named you as a survivor.`));
-    } else {
-      const picks = picksBy.get(guest) ?? [];
-      if (!picks.length) items.push(none(guest, "survivors", "picks", POINTS.pickMax, "No survivors were named."));
-      else {
-        const right = picks.filter((pick) => survivorIds.includes(pick)).length;
-        const wrong = picks.length - right;
-        const raw = right * POINTS.pickRight + wrong * POINTS.pickWrong;
-        const points = Math.max(POINTS.pickMin, Math.min(POINTS.pickMax, raw));
-        items.push(item(guest, "survivors", "picks", right === picks.length && right > 0 ? (right === survivorIds.length ? "accept" : "partial") : right > 0 ? "partial" : "reject", points, POINTS.pickMax, `${right} right, ${wrong} wrong of ${picks.length} named.`));
-      }
+    // the survivors tier: everyone, survivors too, names up to four
+    const submission = latest.get(key(guest, "survivors", "picks"));
+    const picks = submission ? parsePicks(submission.answer, guest) : [];
+    const pickMax = POINTS.maxPicks * POINTS.pickRight;
+    if (!picks.length) items.push(none(guest, "survivors", "picks", pickMax, "No survivors were named."));
+    else {
+      const right = picks.filter((pick) => survivorIds.includes(pick)).length;
+      const wrong = picks.length - right;
+      const points = Math.max(0, round2(right * POINTS.pickRight + wrong * POINTS.pickWrong));
+      items.push(item(guest, "survivors", "picks", right === picks.length && right > 0 ? "accept" : right > 0 ? "partial" : "reject", points, pickMax, `${right} right, ${wrong} wrong of ${picks.length} named.`));
     }
 
-    // the three mysteries. The Butler and the killer know "who" and "how" from the inside, so they answer
+    // the mysteries. The Butler and the killer know "who" and "how" from the inside, so they answer
     // the replacement questions instead, which are worth the same and cannot be known by playing the part.
     const insider = character.role === "butler" || input.truth.killer === guest;
     for (const question of questions) {
       if (question.alternateFor ? !insider : insider && alternateOf.has(question.id)) continue;
       items.push(gradeMystery(guest, question, context));
     }
-
-    // the poisoner's bonus
-    if (input.truth.killer === guest) items.push(item(guest, "bonus", "poisoner", "accept", POINTS.poisoner, POINTS.poisoner, "Bought the House's vial and poisoned the Keeper."));
   }
+
+  items.push(...gradeRaces(input, new Set(present.map((character) => character.id))));
   return items;
 }
 

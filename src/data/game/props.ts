@@ -63,15 +63,27 @@ export const props: Prop[] = [
   C("request-card", "RKRGA", "request card", "a printed card", "silas"),
   C("crate-receipt", "ATCTU", "crate receipt", "a printed receipt", "krrish"),
   C("dismissal", "VMX7X", "notice of dismissal", "a printed notice", "eric"),
-  C("alibi-note", "XPD6N", "sworn alibi note", "a printed note", "erika"),
-  C("fee-receipt", "PJEYU", "House receipt", "a printed receipt", "rebecca"),
   C("pardon-slip", "U7WNK", "Pardon slip", "a printed slip", "tiffany"),
   C("pardon-receipt", "RU647", "go-between's receipt", "a printed receipt", "tiffany"),
   C("citation", "MKPAE", "Nuisance Citation", "a printed citation", "theodor"),
-  C("served-stub", "T78W7", "served stub", "a printed stub", "leon"),
+
+  // ---- group race slips: printed paper handed to anyone in the racing group who asks ----
+  C("witness-joel", "KK8HX", "Witness slip", "a printed slip", "joel"),
+  C("witness-arjun", "PJYPA", "Witness slip", "a printed slip", "arjun"),
+  C("witness-tim", "TDR9H", "Witness slip", "a printed slip", "tim"),
+  C("reply-eric", "MPMYK", "Reply slip", "a printed slip", "eric"),
+  C("reply-diwakar", "YPCYR", "Reply slip", "a printed slip", "diwakar"),
+  C("reply-erika", "AFU2R", "Reply slip", "a printed slip", "erika"),
+  C("tool-anthony", "FM7CM", "Tool token", "a printed token", "anthony"),
+  C("tool-sidd", "JYTK8", "Tool token", "a printed token", "sidd"),
+  C("tool-krrish", "P6NCY", "Tool token", "a printed token", "krrish"),
+  C("trade-emre", "A6KK8", "Trade slip", "a printed slip", "emre"),
+  C("trade-silas", "4F7W3", "Trade slip", "a printed slip", "silas"),
+  C("trade-tiffany", "6W26Y", "Trade slip", "a printed slip", "tiffany"),
 
   // ---- table and scene ----
   { id: "glass-coaster", code: "8YUR2", name: "nightcap glass coaster", generic: "a coaster", placement: "table", hint: "" },
+  { id: "charter", code: "4JNW7", name: "charter", generic: "a printed charter card, signed at the wrap-up", placement: "table", hint: "" },
   { id: "scene-card", code: "AYTHC", name: "scene card", generic: "a printed card on the black table", placement: "table", hint: "" },
 ];
 

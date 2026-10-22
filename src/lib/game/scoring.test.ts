@@ -1,7 +1,8 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
-import { alternateOf, characterById, characters, circles, questions, survivorIds } from "@/data/game";
+import { alternateOf, characterById, characters, circles, OBJECTIVE_TOTAL, questions, survivorIds } from "@/data/game";
 import { autoGrade, POINTS } from "./grading";
+import { round2 } from "./text";
 import { applyOverrides, computeStandings, tieHash } from "./scoring";
 import { correctAnswer, correctMystery, gradeNight, PROFILES, simulateNight } from "./sim";
 import { MYSTERY_POINTS } from "@/data/game/questions";
@@ -14,8 +15,8 @@ const killer = survivorIds[0];
 const bystander = survivorIds[1];
 const butler = characters.find((character) => character.role === "butler")!.id;
 const truth: Truth = { killer, present: everyone, seed: "black-veil-1926" };
-// "perfect errands" can only cover what scores itself: hide, vial and sale are not typed in, and manual never scores
-const typedIn = (o: { check: { kind: string } }) => !["hide", "vial-attempt", "butler-sale", "manual"].includes(o.check.kind);
+// "perfect objectives" can only cover what scores itself: hide, keep, vial and sale are not typed in
+const typedIn = (o: { check: { kind: string } }) => !["hide", "keep", "vial-attempt", "butler-sale", "manual"].includes(o.check.kind);
 let clock = 0;
 const sub = (guest: string, kind: Submission["kind"], itemId: string, answer: string): Submission => ({ guest, kind, itemId, answer, proof: "", at: (clock += 10) });
 
@@ -57,8 +58,8 @@ describe("the ladder", () => {
     assert.equal(result.winner, detective);
   });
 
-  it("makes the three mysteries worth more than every errand together", () => {
-    assert.ok(questions.reduce((sum, question) => sum + question.points, 0) > 60);
+  it("makes the three mysteries worth double every objective together", () => {
+    assert.equal(questions.filter((question) => !question.alternateFor).reduce((sum, question) => sum + question.points, 0), 2 * OBJECTIVE_TOTAL);
   });
 
   it("lets a guest who does both outscore a guest who does only one", () => {
@@ -71,35 +72,35 @@ describe("the ladder", () => {
     assert.ok(rank(both) < rank(only));
   });
 
-  it("scores at most 192 for a non-survivor and caps the survivors' tier at twenty", () => {
+  it("scores at most 20 for anyone: 5 objectives, 4 survivors, 10 mysteries and 1 for the race", () => {
     const best = "anika";
     const submissions = [...errandsOnly(best), ...mysteries(best), sub(best, "survivors", "picks", JSON.stringify(survivorIds))];
     const items = autoGrade({ submissions, events: [], truth });
     const standing = computeStandings(items, submissions, truth).standings.find((row) => row.guest === best)!;
-    assert.equal(standing.tiers.survivors, 20);
-    assert.equal(standing.tiers.mysteries, 100);
-    assert.ok(standing.tiers.objectives <= 60);
-    assert.ok(standing.total <= 60 + 12 + 20 + 100);
+    assert.equal(standing.tiers.survivors, 4);
+    assert.equal(standing.tiers.mysteries, 10);
+    assert.ok(standing.tiers.objectives <= 5);
+    assert.ok(standing.total <= 5 + 4 + 10 + 1);
   });
 });
 
 describe("what the room knows from the inside", () => {
   /** What a survivor is paid for a full-marks answer: 70% on the parts they lived, full price on the rest. */
   const survivorPay = (questionId: string) =>
-    questions.find((question) => question.id === questionId)!.rubric.reduce((sum, element) => sum + (element.survivorKnows === true ? Math.round(element.points * POINTS.insiderCredit) : element.points), 0);
+    questions.find((question) => question.id === questionId)!.rubric.reduce((sum, element) => sum + (element.survivorKnows === true ? round2(element.points * POINTS.insiderCredit) : element.points), 0);
 
   it("pays a survivor 70% for the parts of the story they lived, and full price for the rest", () => {
     const guest = bystander;
     const submissions = mysteries(guest);
     const items = autoGrade({ submissions, events: [], truth });
     const get = (id: string) => items.find((entry) => entry.guest === guest && entry.itemId === id)!.points;
-    assert.equal(get("old-3"), Math.round(5 * POINTS.insiderCredit) + Math.round(2 * POINTS.insiderCredit) + 3, "Kit and the hitman are lived; the frame is not");
-    assert.equal(get("con-1"), Math.round(4 * POINTS.insiderCredit) + Math.round(3 * POINTS.insiderCredit) + 3);
-    assert.equal(get("con-2"), Math.round(5 * POINTS.insiderCredit) + Math.round(3 * POINTS.insiderCredit) + Math.round(2 * POINTS.insiderCredit), "all three parts are lived");
-    for (const id of ["old-3", "con-1", "con-2"]) assert.equal(get(id), survivorPay(id), id);
-    assert.equal(get("con-3"), 10, "the invitation's sender is news to a survivor");
-    assert.equal(get("new-1"), 16, "a survivor who did not buy the vial must still work out who did");
-    assert.equal(get("new-3"), 12, "only the killer lived the grievance");
+    assert.equal(get("old-3"), round2(0.5 * POINTS.insiderCredit) + round2(0.2 * POINTS.insiderCredit) + 0.3, "Kit and the hitmen are lived; the frame is not");
+    assert.equal(get("con-1"), round2(0.4 * POINTS.insiderCredit) + round2(0.3 * POINTS.insiderCredit) + 0.3);
+    assert.equal(get("con-2"), round2(0.5 * POINTS.insiderCredit) + round2(0.3 * POINTS.insiderCredit) + round2(0.2 * POINTS.insiderCredit), "all three parts are lived");
+    for (const id of ["old-3", "con-1", "con-2"]) assert.equal(round2(get(id)), round2(survivorPay(id)), id);
+    assert.equal(get("con-3"), 1, "the invitation's sender is news to a survivor");
+    assert.equal(get("new-1"), 2, "a survivor who did not buy the vial must still work out who did");
+    assert.equal(get("new-3"), 1, "only the killer lived the grievance");
   });
   it("charges only the killer for knowing their own grievance", () => {
     const grievance = characterById.get(killer)!.survivor!.grievance;
@@ -110,8 +111,8 @@ describe("what the room knows from the inside", () => {
     });
     const k = items.find((entry) => entry.guest === killer && entry.itemId === "new-3")!;
     const other = items.find((entry) => entry.guest === bystander && entry.itemId === "new-3")!;
-    assert.equal(k.points, Math.round(6 * POINTS.insiderCredit) * 2);
-    assert.equal(other.points, 12);
+    assert.equal(k.points, round2(0.5 * POINTS.insiderCredit) * 2);
+    assert.equal(other.points, 1);
   });
   it("grades the Butler and the killer on the replacement questions instead of 'who' and 'how'", () => {
     const outsider = "anika";
@@ -129,8 +130,8 @@ describe("what the room knows from the inside", () => {
       assert.ok(ids(outsider).includes(original));
       assert.ok(!ids(outsider).includes(alternate), `an outsider has no ${alternate}`);
     }
-    assert.equal(get(outsider, "new-1").points, 16);
-    // the substitution costs the Butler and the killer nothing: the mysteries still total 100
+    assert.equal(get(outsider, "new-1").points, 2);
+    // the substitution costs the Butler and the killer nothing: the mysteries still total 10
     for (const guest of [butler, killer, outsider]) {
       const standing = computeStandings(items, submissions, truth).standings.find((row) => row.guest === guest)!;
       assert.ok(standing.tiers.mysteries <= MYSTERY_POINTS, `${guest} ${standing.tiers.mysteries}`);
@@ -148,23 +149,23 @@ describe("overrides", () => {
     const { items } = base();
     const before = items.find((entry) => entry.guest === "anika" && entry.itemId === "old-3")!;
     assert.equal(before.needsReview, true);
-    const result = applyOverrides(items, [{ guest: "anika", kind: "mystery", itemId: "old-3", verdict: "accept", points: 9, rationale: "Names Kit and the Keeper's role clearly.", source: "claude" }]);
+    const result = applyOverrides(items, [{ guest: "anika", kind: "mystery", itemId: "old-3", verdict: "accept", points: 0.9, rationale: "Names Kit and the Keeper's role clearly.", source: "claude" }]);
     const after = result.items.find((entry) => entry.guest === "anika" && entry.itemId === "old-3")!;
-    assert.equal(after.points, 9);
+    assert.equal(after.points, 0.9);
     assert.equal(after.needsReview, false);
     assert.equal(after.source, "claude");
-    assert.equal(before.points, 5, "the original array is untouched");
+    assert.equal(before.points, 0.5, "the original array is untouched");
   });
   it("rejects points outside the item's range and reports unknown items", () => {
     const { items } = base();
     const result = applyOverrides(items, [
-      { guest: "anika", kind: "mystery", itemId: "old-3", verdict: "accept", points: 11, rationale: "too many", source: "claude" },
+      { guest: "anika", kind: "mystery", itemId: "old-3", verdict: "accept", points: 1.5, rationale: "too many", source: "claude" },
       { guest: "anika", kind: "mystery", itemId: "old-3", verdict: "accept", points: -1, rationale: "negative", source: "claude" },
       { guest: "nobody", kind: "mystery", itemId: "old-3", verdict: "accept", points: 1, rationale: "unknown guest", source: "staff" },
     ]);
     assert.equal(result.invalid.length, 2);
     assert.equal(result.unmatched.length, 1);
-    assert.equal(result.items.find((entry) => entry.guest === "anika" && entry.itemId === "old-3")!.points, 5);
+    assert.equal(result.items.find((entry) => entry.guest === "anika" && entry.itemId === "old-3")!.points, 0.5);
   });
   it("changes the standings", () => {
     const { items, submissions } = base();
@@ -180,7 +181,11 @@ describe("ties", () => {
   it("always produces exactly one winner, even when everybody ties", () => {
     for (const seed of ["a", "b", "c", "d"]) {
       const tied: Truth = { killer: null, present: everyone, seed };
-      const submissions = everyone.map((id) => sub(id, "exhibit", "EWWXP", "EWWXP"));
+      // everybody finds the same kind of thing and earns exactly one point
+      const submissions = everyone.map((id) => {
+        const find = characterById.get(id)!.objectives.find((objective) => objective.kind === "find")!;
+        return sub(id, "objective", find.id, correctAnswer(characterById.get(id)!, find));
+      });
       const items = autoGrade({ submissions, events: [], truth: tied });
       const result = computeStandings(items, submissions, tied);
       const ranks = result.standings.map((row) => row.rank);
@@ -193,13 +198,13 @@ describe("ties", () => {
     const a = "anika";
     const b = "silas";
     // equal totals by construction: a has more mystery points, b has more errand points
-    const mysteryA = [sub(a, "mystery", "old-3", "Kit Kessler the Keeper hired a hitman, Quill, and framed Cassie with forged orders.")];
+    const mysteryA = [sub(a, "mystery", "old-3", "Kit Kessler the Keeper hired hitmen, and framed Cassie with forged orders.")];
     const errand = errandsOnly(b)[0];
     const submissions = [...mysteryA, errand];
     const items = autoGrade({ submissions, events: [], truth });
     const adjusted = items.map((entry) => {
-      if (entry.guest === a && entry.itemId === "old-3") return { ...entry, points: 12, max: 12 };
-      if (entry.guest === b && entry.itemId === errand.itemId) return { ...entry, points: 12 };
+      if (entry.guest === a && entry.itemId === "old-3") return { ...entry, points: 1, max: 1 };
+      if (entry.guest === b && entry.itemId === errand.itemId) return { ...entry, points: 1 };
       return entry;
     });
     const result = computeStandings(adjusted, submissions, truth);
@@ -266,7 +271,7 @@ describe("fairness, by simulation", () => {
       return totals.reduce((sum, value) => sum + value, 0) / totals.length;
     };
     const gap = Math.abs(average(true) - average(false));
-    assert.ok(gap < 8, `detective survivors and non-survivors differ by ${gap}`);
+    assert.ok(gap < 1, `detective survivors and non-survivors differ by ${gap}`);
   });
 
   it("does not hand the murderer the night", () => {

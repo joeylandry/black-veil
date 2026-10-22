@@ -50,21 +50,21 @@ export const facts: Fact[] = [
   {
     id: "hitman",
     kind: "old",
-    truth: "Kit hired a hitman, Augustus Quill, who settled seventeen members of the Veil over eleven months.",
+    truth: "Kit hired hitmen, who settled seventeen members of the Veil over eleven months.",
     holders: [
-      { guest: "krrish", share: "trade", line: "In November 1924 you delivered a crate of wine, billed to K. Kessler, to a grey Hudson waiting at the river steps. The driver was a man called Quill. The car turned up wrecked in the Merrimack that March." },
-      { guest: "adam", share: "trade", line: "A man called Quill bought a short-barrel revolver from you, billed to “K. Kessler, c/o Fitch & Fitch, Boston.” You remember because nobody ever questioned the invoice." },
+      { guest: "krrish", share: "trade", line: "In November 1924 you delivered a crate of wine, billed to K. Kessler, to a grey Hudson waiting at the river steps. The driver never gave a name. The car turned up wrecked in the Merrimack that March." },
+      { guest: "adam", share: "trade", line: "A stranger bought a short-barrel revolver from you, billed to “K. Kessler, c/o Fitch & Fitch, Boston.” You remember because nobody ever questioned the invoice." },
       { guest: "theodor", share: "free", line: "Between December 1924 and September 1925 seventeen people with no records and no families died in “accidents” in your county: a fire, a fall, a drowning, an aeroplane. You never found a link." },
       { guest: "emre", share: "trade", line: "You reviewed several of those “accidents” and noticed the same thing in each: a small number sewn inside the coat lining, running from 1 to 17 and never beyond." },
     ],
-    exhibits: ["quill"],
+    exhibits: ["receipts"],
   },
   {
     id: "forged",
     kind: "old",
     truth: "The kill orders and receipts blamed on Cassie were forged. Her real hand dots its i's plainly; the forger dots every i with a ring.",
     holders: [
-      { guest: "rebecca", share: "trade", line: "You keep Cassie's Christmas card from 1925. She dots every i with a plain dot, never a ring." },
+      { guest: "rebecca", share: "trade", line: "You keep the note Cassie left on your pillow in Room 3: “Thank you for the shoulder. — C.” She dots every i with a plain dot, never a ring." },
       { guest: "anthony", share: "trade", line: "In 1925 the court showed you three “orders in Cassie's hand.” You noticed the i's were dotted with tiny rings and the signature was too neat to be hers." },
       { guest: "ananya", share: "trade", line: "The telegram said to carry Cassie's orders was filed at Boston North Station in a clerk's block capitals, paid by a Boston account, on a day Cassie was last seen in Manchester." },
       { guest: "leon", share: "free", line: "Cassie signed with a plain “C.” and never a ring. She called anyone who dotted an i with a ring a show-off." },
@@ -74,12 +74,12 @@ export const facts: Fact[] = [
   {
     id: "cassie-alive",
     kind: "old",
-    truth: "Cassie is alive and in hiding in Montreal.",
+    truth: "Cassie is alive and in hiding.",
     holders: [
-      { guest: "leon", share: "secret", line: "Every other Sunday you read an innocent “I am well” item on WFEA, a code Cassie arranged to say she lives. The items come from Montreal and end with her old scat call." },
-      { guest: "rebecca", share: "secret", line: "Cassie hid in your boarding house on the night of 31 October with a bandaged shoulder. She lived. A Christmas card came the next year." },
-      { guest: "ananya", share: "trade", line: "Every “I am well” item Leon airs was filed from Montreal, in Cassie's code. You have seen the stamp on the telegram slip." },
-      { guest: "sidd", share: "trade", line: "In 1925 you flew a mail sack from Montreal addressed to a boarding house on the West Side. Inside was a card that said only “I am well.” It was signed with a plain C." },
+      { guest: "tim", share: "trade", line: "You ran the launch the night of 31 October and saw a woman with a bandaged shoulder pull herself out of the water at the foot of the river steps, alive, while the Keeper's car drove away without her." },
+      { guest: "rebecca", share: "secret", line: "Cassie hid in your boarding house on the night of 31 October with a bandaged shoulder. She lived, and left a note on your pillow." },
+      { guest: "ananya", share: "trade", line: "The five unsigned envelopes were handed in at your counter by a woman in a veil with a stiff left shoulder. She paid in advance, in gold, and said they were from someone who was 'quite well.'" },
+      { guest: "sidd", share: "trade", line: "Last winter you flew a woman with a stiff shoulder and a veil to a field outside Boston, no questions asked. She paid in gold and signed the logbook with a plain C." },
     ],
     exhibits: ["card", "wire"],
   },
@@ -165,12 +165,12 @@ export const facts: Fact[] = [
     kind: "connection",
     truth: "Kit prepared the List of twenty-two members to be placed and settled.",
     holders: [
-      { guest: "ananya", share: "trade", line: "Cassie's wire asked only WHO PREPARED THE LIST. The List is in the binder on the Keeper's table; you did not understand the wire until you saw the name at the top." },
-      { guest: "molly", share: "trade", line: "Two memorial notices ran and were withdrawn in the Farrago on the same day: for “Bertrand Crane” and “Sylvia Ballard,” names nobody could trace. You kept the proofs." },
+      { guest: "ananya", share: "trade", line: "In 1925 an old man dictated twenty-two names for you to wire to a Boston lawyer. You wired them and kept the carbon; you understood only when you saw the same hand at the top of the Roll of Placements." },
+      { guest: "molly", share: "trade", line: "A Boston courier left a ledger page with you in 1925 headed “Roll of Placements”: twenty-two names, seventeen crossed out in a clerk's hand. You kept it and told no one." },
       { guest: "joel", share: "trade", line: "In 1925 an old man wrote a list of twenty-two names on the counter of your hat shop and crossed them off one by one as the months went by." },
       { guest: "eric", share: "trade", line: "In 1925 a list of twenty-two names, in Kit Kessler's hand, crossed out one by one, came across your bench in a case that was never tried." },
     ],
-    exhibits: ["list", "wire", "memorials"],
+    exhibits: ["list", "roll"],
   },
   {
     id: "survivors-exist",
@@ -179,10 +179,10 @@ export const facts: Fact[] = [
     holders: [
       { guest: "theodor", share: "trade", line: "You counted seventeen “accidents.” A clerk's note you found says “twenty-two to be placed.” Five are unaccounted for." },
       { guest: "emre", share: "trade", line: "The numbers sewn into the coat linings ran 1 to 17. Never 18 to 22." },
-      { guest: "molly", share: "trade", line: "The two memorial notices in the Farrago both named people with no grave, for names that later turned up on nobody's census." },
+      { guest: "molly", share: "trade", line: "Selling the Farrago outside the cemetery gate in 1925, you counted the new graves of the Veil's people: seventeen. A clerk's note you found said “twenty-two to be placed.”" },
       { guest: "leon", share: "trade", line: "Cassie's roll lists twenty-two names and puts a star beside five. “Bring them,” she wrote." },
     ],
-    exhibits: ["roll", "memorials", "list"],
+    exhibits: ["roll", "list"],
   },
   {
     id: "kit-invites",
@@ -203,7 +203,7 @@ export const facts: Fact[] = [
       { guest: "theodor", share: "trade", line: "Your invitation carried a private line from the House: be ready at half past nine to swear a man in. It did not say who." },
       { guest: "eric", share: "trade", line: "Your invitation carried a private line from the House: be ready at half past nine to sign a charter. It did not say whose." },
       { guest: "emre", share: "trade", line: "Your invitation carried a private line from the House: be ready at half past nine to certify a death. It did not say whose." },
-      { guest: "leon", share: "trade", line: "Your invitation carried a private line from the House: be ready at half past nine to read a bulletin on the air, and the House would supply the text." },
+      { guest: "leon", share: "trade", line: "Your invitation carried a private line from the House: be ready at half past nine to read a bulletin aloud, and the House would supply the text." },
       { guest: "ananya", share: "trade", line: "Your invitation carried a private line from the House: be ready at half past nine to wire a piece of news to every paper in New England." },
       { guest: "rebecca", share: "trade", line: "Your invitation carried a private line from the House: be ready at half past nine to hand the House's keys to its new master." },
       { guest: "tiffany", share: "trade", line: "Your invitation carried a private line from the House: be ready at half past nine to engrave a seal. It did not say for whom." },
@@ -214,11 +214,11 @@ export const facts: Fact[] = [
   {
     id: "invites-cassie",
     kind: "connection",
-    truth: "Cassie, from Montreal, sent the five survivors their own unsigned invitations, ending “The veil lifts,” and the wire that asked who prepared the List.",
+    truth: "Cassie, in hiding, sent the five survivors their own unsigned invitations, ending “The veil lifts.”",
     holders: [
-      { guest: "ananya", share: "trade", line: "The wire asking WHO PREPARED THE LIST was filed, and paid for, in Montreal before the black envelopes existed. Montreal, and nobody in Manchester." },
-      { guest: "leon", share: "trade", line: "“The veil lifts” is the closing phrase Cassie ended every note with, and the same one ends the Montreal items you air. Nobody else writes it that way." },
-      { guest: "silas", share: "free", line: "“The veil lifts” was Cassie's own toast to the band every closing night. You would know it anywhere, from a hotel in Montreal or a card in a stranger's hand." },
+      { guest: "ananya", share: "trade", line: "On 7 October twenty-four envelopes crossed your counter: nineteen signed “The House,” paid for by a Boston account, and five unsigned, in a woman's hand, ending “The veil lifts.”" },
+      { guest: "leon", share: "trade", line: "“The veil lifts” is the closing phrase Cassie ended every note with, and it ended the five unsigned envelopes you saw on Ananya's counter. Nobody else writes it that way." },
+      { guest: "silas", share: "free", line: "“The veil lifts” was Cassie's own toast to the band every closing night. You would know it anywhere, even in a stranger's hand on an unsigned card." },
     ],
     exhibits: ["wire", "roll"],
   },
@@ -246,7 +246,7 @@ export const facts: Fact[] = [
       { guest: "anika", share: "free", line: "At your table he fingers the air like a bank teller counting whenever a bill is mentioned, before the number is finished." },
       { guest: "joel", share: "free", line: "At the club he rubs thumb across fingers whenever anyone says “purse” or “stake,” the way a teller counts." },
     ],
-    exhibits: ["list", "memorials"],
+    exhibits: ["list"],
   },
   {
     id: "crack-18",
@@ -273,11 +273,11 @@ export const facts: Fact[] = [
     kind: "motive",
     truth: "Kit paid the hitman out of the Teller's own share of the exit money.",
     holders: [
-      { guest: "krrish", share: "trade", line: "The draft that bought Quill's grey Hudson was drawn on an account stubbed “Crane, advance.” The money was somebody's own share." },
+      { guest: "krrish", share: "trade", line: "The draft that bought the hitman's grey Hudson was drawn on an account stubbed “Crane, advance.” The money was somebody's own share." },
       { guest: "anthony", share: "trade", line: "You drew the advance papers in 1924. The Teller's share sat in an account stubbed “Crane, advance,” and later you saw the same stub on the hitman's bills." },
       { guest: "tim", share: "trade", line: "The launch fare for the vault advance was paid out of “the Teller's share.” Later you learned that same share paid the hitman." },
     ],
-    exhibits: ["quill"],
+    exhibits: ["receipts"],
   },
 
   // 19 · the Notary, in the guise of the carnival barker Luke Shelldon
@@ -334,7 +334,7 @@ export const facts: Fact[] = [
       { guest: "joel", share: "free", line: "She turned your hat a quarter inch in the cloakroom and did not say sorry." },
       { guest: "krrish", share: "free", line: "In your cellar she set a customer's hat straight on her way past and never broke step." },
     ],
-    exhibits: ["list", "memorials"],
+    exhibits: ["list"],
   },
   {
     id: "crack-20",
@@ -365,7 +365,7 @@ export const facts: Fact[] = [
       { guest: "emre", share: "trade", line: "You certified Olive Brandt, a seamstress, in February 1925 after a carriage ran her down. The pins in her hem were the Veil's masks. Every girl in her room died within the year." },
       { guest: "silas", share: "trade", line: "The girls who sewed the band's costumes were killed one by one that winter. You asked the costume mistress to dress the band again; she had vanished." },
     ],
-    exhibits: ["list", "memorials"],
+    exhibits: ["list"],
   },
 
   // 21 · the Doorman, in the guise of the gunsmith Adam Holdsfire
@@ -413,13 +413,13 @@ export const facts: Fact[] = [
   {
     id: "motive-21",
     kind: "motive",
-    truth: "Kit's hitman killed the Doorman's partner, Ignatius Bell, who held the second door.",
+    truth: "Kit's hitmen killed the Doorman's partner, Ignatius Bell, who held the second door.",
     holders: [
       { guest: "theodor", share: "trade", line: "On 15 September 1925 a man named Ignatius Bell was shot in a “brawl” at a Granite Street shed. Nobody claimed his body." },
       { guest: "sidd", share: "trade", line: "A flier who barnstormed the Granite Street fairground that fall heard that Ignatius Bell, who held the second door at the Veil, was shot in the shed behind it, and that the big man who worked the other door was never found." },
       { guest: "angelos", share: "trade", line: "Ignatius Bell, who held the second door at the Veil, owed you twenty dollars. He was shot in a Granite Street shed, and the big man who worked the other door was never found." },
     ],
-    exhibits: ["quill"],
+    exhibits: ["receipts"],
   },
 
   // 22 · the Runner, in the guise of the newsie Molly Daniel
@@ -457,13 +457,13 @@ export const facts: Fact[] = [
   {
     id: "motive-22",
     kind: "motive",
-    truth: "Kit had the Runner's partner, Pat Dunn, thrown into the river in March 1925, paid for out of the Runner's own share.",
+    truth: "Kit had the Veil's runners killed one at a time, the last thrown into the river off the Granite Street steps, and paid for it out of the Runner's own share.",
     holders: [
-      { guest: "tim", share: "trade", line: "On 21 March 1925 a runner named Pat Dunn was thrown into the river off the Granite Street steps. The boatman who did it bragged that it was paid for out of his partner's own share." },
-      { guest: "theodor", share: "trade", line: "On 21 March 1925 a runner named Pat Dunn drowned in the river; the coroner said accident. His running partner, a girl, was never found." },
-      { guest: "erika", share: "trade", line: "You hid on the river road that spring and saw two runners; one was thrown off the steps, and the girl ran. The man who drowned was named Pat." },
+      { guest: "tim", share: "trade", line: "That winter the Veil's runners died one at a time. The last was thrown into the river off the Granite Street steps, and the boatman who did it bragged that it was paid for out of the other runner's own share." },
+      { guest: "theodor", share: "trade", line: "Three of your 1925 “accidents” were runners who carried messages for the Veil; the last drowned in the river and the coroner said accident. The girl who ran with them was never found." },
+      { guest: "erika", share: "trade", line: "You hid on the river road that winter and watched the Veil's runners go one by one; the last was thrown off the steps, and the girl who ran with him ran." },
     ],
-    exhibits: ["quill"],
+    exhibits: ["receipts"],
   },
 ];
 

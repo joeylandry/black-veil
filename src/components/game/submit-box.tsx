@@ -4,7 +4,7 @@ import { FormEvent, useState } from "react";
 import type { SavedAnswer } from "./game-types";
 
 type Props = {
-  kind: "objective" | "exhibit" | "mystery" | "survivors";
+  kind: "objective" | "mystery" | "survivors";
   itemId: string;
   label: string;
   initial?: SavedAnswer;
@@ -47,7 +47,7 @@ export function SubmitBox({ kind, itemId, label, initial, disabled, multiline, p
       setState({ phase: "error", message: body?.error ?? "That did not go through. Try again." });
       return;
     }
-    const entry = { answer: kind === "exhibit" ? current.toUpperCase() : current, proof, at: body.at as string };
+    const entry = { answer: current, proof, at: body.at as string };
     setSaved(entry);
     setState({ phase: "idle" });
     onSaved?.({ kind, itemId, answer: entry.answer, proof, at: entry.at });

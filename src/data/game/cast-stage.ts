@@ -1,6 +1,5 @@
 /** The Wire & the Stage: performers, flyers, and the people who carry news. */
-import { deal, find, hide, money, motiveChain, nightcapChain, offerChain, role, secretOf, seek, story, swap } from "./build";
-import { sceneCode } from "./props";
+import { approval, deal, find, hide, keep, money, motiveChain, nightcapChain, offerChain, secretOf, seek, story, swap, who } from "./build";
 import type { Character } from "./types";
 
 export const stage: Character[] = [
@@ -12,27 +11,26 @@ export const stage: Character[] = [
     occupation: "Radio announcer",
     publicBio: "The voice of WFEA, smooth enough to sell soap and loud enough to wake the dead. Half the town trusts every word; the other half just likes the sound.",
     background: {
-      history: "You came from Canton by way of Montreal. A certain lady sponsored your papers and your radio licence, and you owe her everything. You read the news at ten and a quiet message on alternate Sundays.",
+      history: "You came from Canton by way of Boston. A certain lady sponsored your papers and your radio licence, and you owe her everything. You read the news at ten and the weather at eleven, and you are fond of both.",
       people: [
-        "Theodor Farrago: the Sheriff, who thinks you have a second transmitter and is correct.",
+        "Theodor Farrago: the Sheriff, who thinks you are insufferable on the air and is correct.",
         "Ananya Codru: your friend at the telegraph office; she keeps your secrets and you keep hers.",
         "Silas Palmer: the bandleader whose scat you recognise from somewhere you cannot place.",
       ],
       wardrobe: "A microphone prop if you have one, a headset, a snappy suit, and a white carnation.",
     },
     secrets: [
-      { text: "You read “I am well” items on the air for two months and thought they were a lonely hearts code.", share: "secret" },
-      { text: "WFEA's second transmitter, the unlicensed one the Sheriff suspects, sits in the bell tower of St. Anne's.", share: "secret" },
+      { text: "You once read the Sheriff's private mail aloud on the air by mistake, and he has never forgiven it.", share: "secret" },
     ],
-    smallSecret: { text: "You read “I am well” items on the air for two months and thought they were a lonely hearts code.", key: ["lonely hearts", "lonely-hearts"], confidant: "silas" },
+    smallSecret: { text: "You once read the Sheriff's private mail aloud on the air by mistake, and he has never forgiven it.", key: ["private mail", "mail"], confidant: "silas" },
     startingCash: 100,
-    carries: ["served-stub"],
+    carries: [],
     objectives: [
-      find("leon-1", "conch"),
-      secretOf("leon-2", "theodor", "molly", ["shoebox", "shoe box"]),
-      deal("leon-3", ["tiffany", "theodor"], "Out of the cell", "Sheriff Farrago holds a citation against you, for being insufferable on the air. Pay a go-between at least $50 in House bills to broker a pardon. Tiffany Liu is the best choice. She hands you a go-between's receipt: read its code.", "The code on the receipt", ["pardon-receipt"]),
-      story("leon-4", "Who is K. Kessler?", "A Boston firm took instructions from one “K. Kessler.” Learn from someone who knew him what he was.", "His name and trade", "tiffany", ["rebecca"], [["kessler"], ["keeper"]]),
-      story("leon-5", "The Montreal postmark", "A wire about the List was filed from a certain city. Learn which, from someone who has seen the slip.", "The city", "ananya", ["silas"], [["montreal"]]),
+      find("leon-find", "conch"),
+      deal("leon-deal", ["tiffany", "theodor"], "Out of the cell", "Sheriff Farrago holds a citation against you, for being insufferable on the air. Pay a go-between at least $50 in House bills to broker a pardon. Tiffany Liu is the best choice. She hands you a go-between's receipt: read its code.", "The code on the receipt", ["pardon-receipt"]),
+      secretOf("leon-secret", "emre", "tim", ["beet", "beets"]),
+      seek("leon-gossip", [["ananya", "joel"]]),
+      approval("leon-bulletin", "Read the bulletin", "At the wrap-up the host hands you the bulletin. Read it aloud to the room, microphone or no. Then claim this point. The host will confirm it and give you an approval word.", "gazette"),
     ],
   },
   {
@@ -58,17 +56,17 @@ export const stage: Character[] = [
     startingCash: 100,
     carries: ["telegram-form"],
     objectives: [
-      find("ananya-1", "cloche"),
-      secretOf("ananya-2", "angelos", "luke", ["bluffs"]),
-      swap("ananya-3", "erika", "telegram-form", "false-papers"),
-      hide("ananya-4", "joel"),
-      story("ananya-5", "Cassie's hand", "Cassie signed her notes in a particular way. Learn how, from someone who kept her correspondence.", "How she signed", "leon", ["rebecca"], [["plain"]]),
+      find("ananya-find", "cloche"),
+      swap("ananya-swap", "erika", "telegram-form", "false-papers"),
+      secretOf("ananya-secret", "rebecca", "tim", ["cold tea"]),
+      keep("ananya-keep", "angelos", "angelos-secret", "anika", "anika-secret"),
+      hide("ananya-hide", "joel"),
     ],
   },
   {
     id: "luke",
     realNames: ["Luke Sheldon", "Luke"],
-    circle: "stage",
+    circle: "survivors",
     name: "Luke Shelldon",
     occupation: "Carnival barker",
     publicBio: "Hollers outside the tent until the whole street is inside it. Could sell you the show, the ticket and the change.",
@@ -101,11 +99,11 @@ export const stage: Character[] = [
       motiveFact: "motive-19",
     },
     objectives: [
-      find("luke-1", "lantern"),
-      secretOf("luke-2", "rebecca", "tim", ["cold tea"]),
-      nightcapChain("luke-3"),
-      offerChain("luke-4"),
-      motiveChain("luke-5", ["anthony", "ananya", "josh"], [["forged", "forge", "forger", "forgery", "forging"], ["orders", "order", "cassie", "framed", "frame", "blame", "blamed"]]),
+      find("luke-find", "lantern"),
+      who("luke-who", "You have worn this cover for a year. Learn what you really were before you took this name: some guests have noticed what a cover cannot hide.", ["anthony", "erika", "silas"], [["notary", "forger", "forgers", "forge", "signature", "statute"]]),
+      motiveChain("luke-why", ["anthony", "ananya", "josh"], [["forged", "forge", "forger", "forgery", "forging"], ["orders", "order", "cassie", "framed", "frame", "blame", "blamed"]]),
+      nightcapChain("luke-hour"),
+      offerChain("luke-offer"),
     ],
   },
   {
@@ -129,14 +127,14 @@ export const stage: Character[] = [
     ],
     smallSecret: { text: "You have sung the same scat phrase at every club since 1921, and it was Cassie's own call.", key: ["1921"], confidant: "arjun" },
     startingCash: 120,
-    carries: ["request-card"],
+    carries: ["request-card", "trade-silas"],
     habit: "You tip your hat to everyone you pass and set it straight by the brim afterward, a bandleader's courtesy. Do it at every greeting.",
     objectives: [
-      find("silas-1", "opera-bill"),
-      secretOf("silas-2", "emre", "tim", ["beet", "beets"]),
-      deal("silas-3", ["anika"], "A sneaky request", "Anika Mahns wants to know who in this room knew her father. Take her $30 voucher, play her father's signature tune around half past eight, and call it a request from the room. Hand her the request card and keep the voucher: read its code. Nobody is to know.", "The code on the voucher", ["fee-voucher"]),
-      role("silas-4", "The spotlight", "Around half past eight, take the floor for five minutes, with the band or without it. Type the time you finished.", "The time you finished (e.g. 8:36)", { kind: "clock", from: "20:25", to: "20:50" }),
-      story("silas-5", "Whose signal?", "Leon airs a signal with a scat phrase you know. Learn whose signal it is, from someone who set it up.", "Whose signal", "leon", ["ananya"], [["cassie"]]),
+      money("silas-money", 180, "Sing for your supper, and pass the hat. Leave with at least $180."),
+      find("silas-find", "opera-bill"),
+      deal("silas-deal", ["anika"], "A sneaky request", "Anika Mahns wants to know who in this room knew her father. Take her $30 voucher, play her father's signature tune around half past eight, and call it a request from the room. Hand her the request card and keep the voucher: read its code. Nobody is to know.", "The code on the voucher", ["fee-voucher"]),
+      secretOf("silas-secret", "eric", "anthony", ["clerk"]),
+      approval("silas-spotlight", "The spotlight", "Around half past eight, take the floor for five minutes, with the band or without it. When you have finished, claim this point. The host will confirm it and give you an approval word.", "encore"),
     ],
   },
   {
@@ -160,14 +158,14 @@ export const stage: Character[] = [
     ],
     smallSecret: { text: "You trained a mechanic who was later paid to be careless once.", key: ["mechanic"], confidant: "mihir" },
     startingCash: 140,
-    carries: [],
+    carries: ["tool-sidd"],
     habit: "You glance at your wristwatch every time a door opens, a flier's habit. Do it whenever someone comes or goes.",
     objectives: [
-      find("sidd-1", "globe"),
-      secretOf("sidd-2", "mihir", "anthony", ["water main", "watermain"]),
-      money("sidd-3", 220, "Sell rides in your plane to anyone with a dollar. Leave with at least $220."),
-      seek("sidd-4", [["ananya", "joel"]]),
-      story("sidd-5", "How many were there?", "Seventeen strangers died in accidents in one county. Learn the count from someone who counted.", "The number", "theodor", ["emre"], [["seventeen", "17"]]),
+      money("sidd-money", 200, "Sell rides in your plane to anyone with a dollar. Leave with at least $200."),
+      find("sidd-find", "globe"),
+      secretOf("sidd-secret", "eric", "anthony", ["clerk"]),
+      seek("sidd-gossip", [["ananya", "joel"]]),
+      story("sidd-story", "How many were there?", "Seventeen strangers died in accidents in one county. Learn the count from someone who counted.", "The number", "theodor", ["emre"], [["seventeen", "17"]]),
     ],
   },
 ];

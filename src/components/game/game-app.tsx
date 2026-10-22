@@ -118,10 +118,9 @@ export function GameApp() {
   return (
     <div className="game-app">
       <header className="game-header">
-        <p className="eyebrow">Your identity for the evening · {card.circle.name}</p>
+        <p className="eyebrow">Your identity for the evening</p>
         <h1>{card.name}</h1>
         <p className="game-occupation">{card.occupation}</p>
-        <p className="game-circle">{card.circle.blurb}</p>
       </header>
 
       <nav className="game-tabs" role="tablist" aria-label="Your card">
@@ -148,7 +147,7 @@ export function GameApp() {
             <ul>{card.background.people.map((line) => <li key={line}>{line}</li>)}</ul>
             <h4>What to wear or bring</h4>
             <p>{card.background.wardrobe}</p>
-            <p className="game-note">Your Private tab, with your secrets and errands, unlocks when the doors open on the night.</p>
+            <p className="game-note">Your Private tab, with your secrets and objectives, unlocks when the host starts the game.</p>
           </section>
         )}
         {tab === "private" && <PrivateTab card={card} secretsReleased={secretsReleased} open={open} saved={saved} onSaved={onSaved} />}

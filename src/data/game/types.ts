@@ -14,13 +14,23 @@ export type FactId = string;
 export type ExhibitId = string;
 export type PropId = string;
 
-export type CircleId = "gilded" | "order" | "stage" | "working" | "river";
+export type CircleId = "survivors" | "order" | "stage" | "working" | "river";
 
 export type Circle = {
   id: CircleId;
   name: string;
   /** One line shown on the public card: the world this circle moves in. */
   blurb: string;
+};
+
+/** A group's race for one extra point: the first member to finish it wins. */
+export type Race = {
+  circle: CircleId;
+  title: string;
+  text: string;
+  ask: string;
+  /** Slips the racer must collect (all of them). Empty for the survivors, whose race is the vial. */
+  tokens: PropId[];
 };
 
 /** How freely a card line may be repeated. Private cards mark each line, so guests know what is theirs to trade. */
@@ -83,6 +93,8 @@ export type ObjectiveKind =
   | "story"
   | "chain"
   | "motive"
+  | "keep"
+  | "approval"
   | "role";
 
 export type Check =
@@ -104,6 +116,17 @@ export type Check =
   | { kind: "butler-sale" }
   /** The answer is a clock time on the party night, from `from` to `to` inclusive, as "HH:MM" on a 24-hour clock. */
   | { kind: "clock"; from: string; to: string }
+  /**
+   * Something the game master confirms in person. The guest claims the point on their phone and types
+   * the approval word the host gives them once it has really happened. The word never leaves the server.
+   */
+  | { kind: "approval"; word: string }
+  /**
+   * Keep your own small secret: it counts when the seeker you chose learned it (their answer to
+   * `seekerObjective` is accepted) and the rival did not (their answer to `rivalObjective` is not).
+   * Scored from the other two guests' answers, not from anything you type.
+   */
+  | { kind: "keep"; seeker: GuestId; seekerObjective: string; rival: GuestId; rivalObjective: string }
   /** Nothing automatic can judge it: always sent to Claude or staff. */
   | { kind: "manual"; rubric: string };
 
@@ -145,8 +168,6 @@ export type Survivor = {
   motiveKeys: Pattern;
   /** The fact id that lets other guests learn this motive. */
   motiveFact: FactId;
-  /** The withdrawn memorial notice, if any. */
-  memorial?: string;
 };
 
 export type Character = {

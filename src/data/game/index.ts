@@ -3,7 +3,7 @@
  * code gets the redacted shapes from `buildCard` and `listDirectory`, never the raw data.
  */
 import { normalize } from "@/lib/game/text";
-import { circles } from "./circles";
+import { circles, races } from "./circles";
 import { gilded } from "./cast-gilded";
 import { order } from "./cast-order";
 import { river } from "./cast-river";
@@ -15,7 +15,7 @@ import { markers, propById, props } from "./props";
 import { alternateOf, MYSTERY_POINTS, questionById, questions } from "./questions";
 import type { Character, Circle, CircleId, Line, Objective, Share } from "./types";
 
-export { alternateOf, circles, exhibits, facts, markers, MYSTERY_POINTS, props, questionById, questions };
+export { alternateOf, circles, exhibits, facts, markers, MYSTERY_POINTS, props, questionById, questions, races };
 export * from "./types";
 
 export const characters: Character[] = [...gilded, ...order, ...stage, ...working, ...river];
@@ -25,8 +25,8 @@ export const circleById = new Map<CircleId, Circle>(circles.map((circle) => [cir
 export const survivors = characters.filter((character) => character.survivor);
 export const survivorIds = survivors.map((character) => character.id);
 
-/** Points a guest can earn from errands: five objectives of equal weight, the same for everyone. */
-export const OBJECTIVE_TOTAL = 60;
+/** Points a guest can earn from errands: five objectives of one point each, the same for everyone. */
+export const OBJECTIVE_TOTAL = 5;
 
 // ---------------------------------------------------------------- text helpers
 
@@ -115,13 +115,17 @@ export type RenderedObjective = {
   withNames: string[];
   /** True when the House's own log, not the guest's answer, decides it. */
   house: boolean;
+  /** True when the host confirms it in person and gives an approval word to type. */
+  approval: boolean;
+  /** True when nothing needs typing at all: it is scored from other guests' answers. */
+  automatic: boolean;
 };
 
 export type CardView = {
   id: string;
   name: string;
   occupation: string;
-  circle: { id: CircleId; name: string; blurb: string };
+  circle: { id: string; name: string; blurb: string };
   publicBio: string;
   background: { history: string; people: string[]; wardrobe: string };
   private: {
@@ -143,6 +147,8 @@ export type CardView = {
     };
     objectives: RenderedObjective[];
     totalPoints: number;
+    /** This group's race for one extra point. */
+    race: { group: string; title: string; text: string; ask: string; house: boolean; points: number; slips: string[] };
   };
 };
 
@@ -218,8 +224,19 @@ export function buildCard(id: string): CardView | null {
         : undefined,
       objectives: character.objectives.map(renderObjective),
       totalPoints: character.objectives.reduce((total, objective) => total + objective.points, 0),
+      race: raceFor(character),
     },
   };
+}
+
+/** The race card for a character's group, and the slips this character is carrying for other groups' races. */
+function raceFor(character: Character) {
+  const race = races.find((candidate) => candidate.circle === character.circle)!;
+  const slips = character.carries
+    .map((propId) => races.find((candidate) => candidate.tokens.includes(propId)))
+    .filter((candidate): candidate is NonNullable<typeof candidate> => Boolean(candidate))
+    .map((candidate) => `${propById.get(character.carries.find((propId) => candidate.tokens.includes(propId))!)?.name ?? "slip"}: hand it to anyone who asks for it by name.`);
+  return { group: circleById.get(character.circle)!.name, title: race.title, text: race.text, ask: race.ask, house: race.circle === "survivors", points: 1, slips };
 }
 
 export function renderObjective(objective: Objective): RenderedObjective {
@@ -233,17 +250,18 @@ export function renderObjective(objective: Objective): RenderedObjective {
     points: objective.points,
     prop: prop && objective.kind === "find" ? { name: prop.name } : undefined,
     withNames: objective.with.map((guest) => characterById.get(guest)?.name ?? guest),
-    house: ["hide", "vial-attempt", "butler-sale"].includes(objective.check.kind),
+    house: ["hide", "keep", "vial-attempt", "butler-sale"].includes(objective.check.kind),
+    approval: objective.check.kind === "approval",
+    automatic: objective.check.kind === "keep",
   };
 }
 
-/** The roster every guest may see: who is in the room. Survivors and killers are never marked. */
+/** The roster every guest may see: who is in the room. Survivors and killers are never marked, and groups are never listed (the survivors are a group of their own). */
 export function listDirectory() {
   return characters.map((character) => ({
     id: character.id,
     name: character.name,
     occupation: character.occupation,
-    circle: character.circle,
   }));
 }
 

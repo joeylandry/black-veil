@@ -4,6 +4,7 @@
  */
 
 export type SubmissionKind = "objective" | "exhibit" | "mystery" | "survivors";
+// "exhibit" is kept so old rows still load; filing pages no longer scores and new filings are refused.
 
 /** One thing a guest typed. Guests may submit as often as they like; the latest per item counts. */
 export type Submission = {
@@ -65,10 +66,10 @@ export type Truth = {
 
 export type Tiers = {
   objectives: number;
-  exhibits: number;
   survivors: number;
   mysteries: number;
-  poisoner: number;
+  /** The extra point for winning the group's race. */
+  race: number;
 };
 
 export type Standing = {

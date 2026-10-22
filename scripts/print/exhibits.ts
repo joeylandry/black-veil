@@ -186,7 +186,7 @@ function renderExhibit(ex: Ex): string {
         <div class="tail"><div class="notes">${tail.map((t) => `<p>${esc(t)}</p>`).join("")}</div>${f}</div></div>`;
       return P("list", html, { w: 10.4, h: 7.8, seed, edges: "trbl", amp: 3 });
     }
-    case "quill":
+    case "receipts":
     case "books":
     case "vault":
     case "drafts":
@@ -201,7 +201,6 @@ function renderExhibit(ex: Ex): string {
     case "roll":
     case "boarding":
     case "housebook":
-    case "memorials":
     case "report":
     case "watch":
     case "vial":
@@ -216,7 +215,7 @@ function renderExhibit(ex: Ex): string {
 
 function renderNamed(ex: Ex, L: string[], f: string, P: (cls: string, inner: string, o: Partial<PaperOpts> & { w: number }) => string): string {
   switch (ex.id) {
-    case "quill": {
+    case "receipts": {
       const [head, ...rest] = L;
       const [t, who] = head.split(" · ");
       const html = `<div class="perf"></div><div class="pad"><div class="rh"><h1>${esc(t)}</h1><span>${esc(who ?? "")}</span></div>
@@ -341,14 +340,6 @@ function renderNamed(ex: Ex, L: string[], f: string, P: (cls: string, inner: str
         <div class="rule hand">${esc(sm ? sm[1] : sale)} <span class="blank"></span> ${sm && sm[2] ? `<span class="pen">${esc(sm[2])}</span>` : ""}</div>${f}</div>`;
       return P("housebook", html, { w: 7.1, edges: "tb", amp: 2 });
     }
-    case "memorials": {
-      const [h0, intro, notices, after] = L;
-      const [name, when] = h0.split(" · ");
-      const boxes = notices.trim().split(/\s{3,}/).map((n) => `<div class="box">${esc(stripQuotes(n))}</div>`);
-      const html = `<div class="pad"><div class="mast"><h1>${esc(name)}</h1></div><div class="dateline"><span>${esc(when ?? "")}</span><span>Manchester, N. H.</span></div>
-        <div class="head" style="font-size:19pt">${esc(stripQuotes(ex.title))}</div><p style="font:13pt/1.36 var(--serif);text-align:justify">${esc(intro)}</p>${boxes.join("")}<p style="font:italic 12.5pt/1.34 var(--serif);text-align:center">${esc(after)}</p>${f}</div>`;
-      return P("news small", html, { w: 5.8, rot: 0.5, edges: "trbl", amp: 4 });
-    }
     case "report": {
       const [h0, ...rest] = L;
       const [t, sub] = h0.split(" · ");
@@ -375,9 +366,9 @@ function renderNamed(ex: Ex, L: string[], f: string, P: (cls: string, inner: str
 
 // ---- the page plan: group order binder, table, held, scene; pieces on one page are cut apart
 const plan: string[][] = [
-  ["list"], ["books"], ["quill", "vault"], ["forged"], ["drafts"],
+  ["list"], ["books"], ["receipts", "vault"], ["forged"], ["drafts"],
   ["veil-roll"], ["clipping"], ["nightcap"],
-  ["register"], ["card", "boarding"], ["housebook", "wire"], ["roll", "memorials"], ["report"],
+  ["register"], ["card", "boarding"], ["housebook", "wire"], ["roll"], ["report"],
   ["watch", "vial", "ticket"], ["invite"],
 ];
 const planned = plan.flat();
@@ -475,7 +466,7 @@ function buildTagKey() {
 }
 
 // ---------------------------------------------------------------- slips
-const slipIds = ["fee-voucher", "request-card", "crate-receipt", "dismissal", "alibi-note", "fee-receipt", "pardon-slip", "pardon-receipt", "citation", "served-stub", "false-papers", "telegram-form"] as const;
+const slipIds = ["fee-voucher", "request-card", "crate-receipt", "dismissal", "pardon-slip", "pardon-receipt", "citation", "false-papers", "telegram-form", "witness-joel", "witness-arjun", "witness-tim", "reply-eric", "reply-diwakar", "reply-erika", "tool-anthony", "tool-sidd", "tool-krrish", "trade-emre", "trade-silas", "trade-tiffany", "charter"] as const;
 function slipHtml(id: (typeof slipIds)[number], copy: number): string {
   const p = props.find((q) => q.id === id) ?? fail(`prop ${id} missing`);
   const cl = `<div class="codeline">Code:<span class="code" data-pid="${p.id}" data-code="${p.code}" data-copy="${copy}">${p.code}</span></div>`;
@@ -490,20 +481,32 @@ function slipHtml(id: (typeof slipIds)[number], copy: number): string {
       return wrap("rcpt", `<h1>Receipt</h1><div class="rule"></div><p>Received: <b>one crate of wine</b>.</p><p>Billed to: <b>the Bench</b>.</p><p>Delivery: <b>Fridays</b>.</p><div class="grow"></div><p style="text-align:center">&mdash; paid in full, with thanks &mdash;</p>`);
     case "dismissal":
       return wrap("court", `<h1 style="font-size:15pt">Municipal Court</h1><h2>Notice of Dismissal</h2><div class="rule"></div><p style="text-align:center;font:bold 14pt var(--serif);letter-spacing:.08em">CASE DISMISSED</p><p style="text-align:center">Case dismissed on form.</p><p style="text-align:center;font-style:italic">By order of the Bench.</p><div class="grow"></div><div class="sigline">The Bench</div>`);
-    case "alibi-note":
-      return wrap("alibi", `<h1 style="font-size:15pt">Sworn Statement</h1><div class="rule"></div><p>I swear that I was in the company of the bearer when the body was found, and that I can account for every minute of it.</p><p style="font-style:italic">Sworn and subscribed.</p><div class="grow"></div><div class="sigline">Witness</div>`);
-    case "fee-receipt":
-      return wrap("card", `<h1 style="font-size:15pt">The Black Veil</h1><h2>the House &middot; Receipt</h2><div class="rule"></div><p style="text-align:center">Received, with thanks:</p><p style="text-align:center;font:bold 26pt var(--serif);margin:.04in 0">$20</p><p style="text-align:center">Twenty dollars, for services rendered.</p><div class="grow"></div><div class="sigline">The House</div>`);
     case "pardon-slip":
       return wrap("note", `<div class="tape"></div><h1 style="font-size:20pt">Pardon</h1><div class="rule"></div><p>Be it known that the matter named in the bearer's citation is hereby pardoned, and may be torn up.</p><p style="font-style:italic">To be presented to the officer who holds the citation.</p><div class="grow"></div><div class="sigline">By a go-between</div>`);
     case "pardon-receipt":
       return wrap("rcpt", `<h1 style="font-size:15pt">Go-between's Receipt</h1><div class="rule"></div><p>Received of the bearer, in House bills, the fee for brokering a pardon.</p><p>No questions asked. No answers given.</p><div class="grow"></div><div class="sigline">The go-between</div>`);
     case "citation":
       return wrap("cit", `<h1 style="font-size:17pt">Nuisance Citation</h1><h2>Office of the Sheriff</h2><div class="rule"></div><p>Cited: <b>${esc(leon)}</b>,</p><p style="font-weight:bold">for being insufferable on the air.</p><div class="stamp">One use only</div><div class="grow"></div><div class="sigline">The Sheriff</div>`);
-    case "served-stub":
-      return wrap("stubby", `<h1>Served</h1><h2>stub</h2><div class="rule"></div><p>Citation served in person upon <b>${esc(leon)}</b>.</p><p>Received by hand, protest noted, nuisance acknowledged.</p><div class="grow"></div><div class="sigline">Received by</div>`);
     case "false-papers":
       return wrap("travel", `<div class="fold"></div><h1 style="font-size:17pt">Travel Paper</h1><h2>folded &middot; not to be opened at the door</h2><div class="rule"></div><p>The bearer is permitted to travel and to lodge under the name entered within.</p><div class="stamp" style="color:#2a2a4a;border-color:#2a2a4a">Examined</div><div class="grow"></div><div class="sigline">Issuing office</div>`);
+    case "witness-joel":
+    case "witness-arjun":
+    case "witness-tim":
+      return wrap("court", `<h1 style="font-size:15pt">Witness Slip</h1><h2>I will swear to it</h2><div class="rule"></div><p style="text-align:center">The bearer has asked me to swear to what I saw tonight, and I have said I will.</p><div class="grow"></div><div class="sigline">Witness</div>`);
+    case "reply-eric":
+    case "reply-diwakar":
+    case "reply-erika":
+      return wrap("wiref", `<h1>REPLY</h1><div class="fld">Received your message.</div><div class="fld">Answer: yes.</div><div class="fld">&nbsp;</div><div class="grow"></div><div class="sigline">Replied</div>`);
+    case "tool-anthony":
+    case "tool-sidd":
+    case "tool-krrish":
+      return wrap("card", `<h1 style="font-size:15pt">Tool Token</h1><h2>good for one loan</h2><div class="rule"></div><p style="text-align:center">One tool, lent to the bearer for the night: a hammer, a chisel, a file.</p><div class="grow"></div><div class="sigline">Lent by</div>`);
+    case "trade-emre":
+    case "trade-silas":
+    case "trade-tiffany":
+      return wrap("rcpt", `<h1 style="font-size:15pt">Trade Slip</h1><div class="rule"></div><p>One deal done, fair and square, between the bearer and the signer.</p><p>No grabbing. No regrets.</p><div class="grow"></div><div class="sigline">Dealt with</div>`);
+    case "charter":
+      return wrap("court", `<h1 style="font-size:16pt">The Charter</h1><h2>of the Black Veil</h2><div class="rule"></div><p style="text-align:center">The undersigned acknowledge that the Veil's old members live, under the names they now bear, and that the House has lifted its veil.</p><div class="grow"></div><div class="sigline">Signed, the Bench</div>`);
     case "telegram-form":
       return wrap("wiref", `<h1>TELEGRAM</h1><div class="fld">To:</div><div class="fld">&nbsp;</div><div class="fld">Message:</div><div class="fld">&nbsp;</div><div class="fld">&nbsp;</div><div class="fld">Sender:</div><div class="grow"></div>`);
   }

@@ -15,6 +15,8 @@ import {
   runGrading,
   seedCast,
   standingsNow,
+  startGame,
+  stopGame,
   unpublishResults,
   writeFlag,
 } from "@/lib/game/service";
@@ -53,6 +55,12 @@ export async function POST(request: NextRequest) {
     switch (action) {
       case "setup-database":
         return reply({ ok: true, ...(await setupGameDatabase(db)) });
+      case "start-game":
+        await startGame(db);
+        return reply({ ok: true });
+      case "stop-game":
+        await stopGame(db);
+        return reply({ ok: true });
       case "seed-cast": {
         const seeded = await seedCast(db);
         const cast = await castByName(db);

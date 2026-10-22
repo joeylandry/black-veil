@@ -2,7 +2,8 @@
  * Test and simulation helpers. They know the answers (they read the game bible), so this
  * module is only ever imported by tests and scripts, never by the application.
  */
-import { alternateOf, characterById, characters, exhibits, questions, survivorIds } from "@/data/game";
+import { alternateOf, characterById, characters, questions, races, survivorIds } from "@/data/game";
+import { propById } from "@/data/game/props";
 import type { Character, Objective, Question } from "@/data/game";
 import { autoGrade } from "./grading";
 import { computeStandings } from "./scoring";
@@ -36,7 +37,10 @@ export function correctAnswer(character: Character, objective: Objective): strin
       const [a, b] = check.pairs[0];
       return `${characterById.get(a)!.realNames[0]} and ${characterById.get(b)!.realNames[0]}`;
     }
+    case "approval":
+      return check.word;
     case "hide":
+    case "keep":
     case "vial-attempt":
     case "butler-sale":
       return "done";
@@ -54,7 +58,7 @@ export function correctMystery(question: Question, killer: string): string {
     case "old-2":
       return "They were promised new names and a payout from the vault, to be thought dead; they trusted Cassie, their boss.";
     case "old-3":
-      return "Kit Kessler the Keeper hired a hitman, Quill, and framed Cassie with forged orders.";
+      return "Kit Kessler the Keeper hired a hitmen, and framed Cassie with forged orders.";
     case "new-1":
       return killer;
     case "new-2":
@@ -66,7 +70,7 @@ export function correctMystery(question: Question, killer: string): string {
     case "con-2":
       return "They are the five survivors who escaped his hitman, members of the Veil thought dead, who came for revenge.";
     case "con-3":
-      return "Kit, writing as the House, invited the nineteen guests to be witnesses who had to sign for his succession, and Cassie sent the five survivors their own invitations from Montreal.";
+      return "Kit, writing as the House, invited the nineteen guests to be witnesses who had to sign for his succession, and Cassie, in hiding, sent the five survivors their own invitations.";
     case "alt-1":
       return "He meant to crown himself the new head of the Black Veil, with the nineteen guests as witnesses who had to sign, held by their secrets, and Cassie declared dead so the vault would pass to him.";
     case "alt-2":
@@ -83,15 +87,15 @@ export type Profile = {
   mystery: number;
   /** Chance that each survivor pick is right (non-survivors) */
   eye: number;
-  /** Whether the guest files exhibits, and how many */
-  exhibits: number;
+  /** Chance that the guest finishes their group's race when they try. */
+  race: number;
 };
 
 export const PROFILES: Record<string, Profile> = {
-  errandRunner: { errands: 0.95, mystery: 0.1, eye: 0.15, exhibits: 2 },
-  detective: { errands: 0.5, mystery: 0.85, eye: 0.6, exhibits: 6 },
-  balanced: { errands: 0.75, mystery: 0.5, eye: 0.35, exhibits: 4 },
-  casual: { errands: 0.4, mystery: 0.2, eye: 0.2, exhibits: 1 },
+  errandRunner: { errands: 0.95, mystery: 0.1, eye: 0.15, race: 0.5 },
+  detective: { errands: 0.5, mystery: 0.85, eye: 0.6, race: 0.2 },
+  balanced: { errands: 0.75, mystery: 0.5, eye: 0.35, race: 0.3 },
+  casual: { errands: 0.4, mystery: 0.2, eye: 0.2, race: 0.05 },
 };
 
 export type Night = { submissions: Submission[]; events: GameEvent[]; truth: Truth; profiles: Record<string, string> };
@@ -116,11 +120,10 @@ export function simulateNight(options: { seed: number; killer?: string; profiles
         submissions.push({ guest: character.id, kind: "objective", itemId: objective.id, answer: correctAnswer(character, objective), proof: "", at: (clock += 1000) });
       }
     }
-    // exhibits: pick a few that are not held by the guest
-    const pool = exhibits.filter((exhibit) => exhibit.heldBy !== character.id);
-    for (let i = 0; i < p.exhibits; i += 1) {
-      const exhibit = pool[Math.floor(random() * pool.length)];
-      submissions.push({ guest: character.id, kind: "exhibit", itemId: exhibit.code, answer: exhibit.code, proof: "", at: (clock += 1000) });
+    // the group race: some guests collect their group's slips
+    const race = races.find((candidate) => candidate.circle === character.circle && candidate.tokens.length);
+    if (race && random() < p.race) {
+      submissions.push({ guest: character.id, kind: "objective", itemId: "race", answer: race.tokens.map((token) => propById.get(token)!.code).join(" "), proof: "", at: (clock += 1000) });
     }
     // mysteries
     const insider = character.role === "butler" || character.id === killer;
@@ -136,12 +139,12 @@ export function simulateNight(options: { seed: number; killer?: string; profiles
         submissions.push({ guest: character.id, kind: "mystery", itemId: question.id, answer: question.type === "guest" ? "nobody" : "Cassie did everything, I think", proof: "", at: (clock += 1000) });
       }
     }
-    // survivor picks
-    if (!character.survivor) {
+    // survivor picks: four guesses each, survivors too (a survivor cannot name themselves)
+    {
       const picks: string[] = [];
-      for (let i = 0; i < 5; i += 1) {
+      for (let i = 0; i < 4; i += 1) {
         if (random() < p.eye) {
-          const unpicked = survivorIds.filter((id) => !picks.includes(id));
+          const unpicked = survivorIds.filter((id) => !picks.includes(id) && id !== character.id);
           if (unpicked.length) picks.push(unpicked[Math.floor(random() * unpicked.length)]);
         } else {
           const others = characters.filter((c) => !c.survivor && c.id !== character.id && !picks.includes(c.id));

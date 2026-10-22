@@ -28,6 +28,7 @@ import { autoGrade, parsePicks } from "./grading";
 import { buildPacket, parseVerdicts } from "./packet";
 import type { Packet } from "./packet";
 import { applyOverrides, computeStandings } from "./scoring";
+import { setReleased } from "@/lib/roster-service";
 import { finalEdition } from "@/data/game/story";
 import { normalizeCode } from "./text";
 import type { GameEvent, GradeItem, Standings, Submission, SubmissionKind, Truth } from "./types";
@@ -128,9 +129,9 @@ function tri(value: unknown): boolean | undefined {
 }
 
 export function deriveState(flags: Record<string, unknown>, now = new Date()): GameState {
+  // The game starts when the host presses one button (see startGame); nothing opens on a clock.
   const identitiesReleased = eventConfig.charactersReleased || tri(flags.identitiesReleased) === true;
-  const forcedSecrets = tri(flags.secretsReleased);
-  const secretsReleased = identitiesReleased && (forcedSecrets ?? now.getTime() >= new Date(eventConfig.secretsReleaseAt).getTime());
+  const secretsReleased = identitiesReleased && tri(flags.secretsReleased) === true;
   const forcedClosed = tri(flags.submissionsClosed);
   const closed = forcedClosed ?? now.getTime() >= new Date(eventConfig.submissionsCloseAt).getTime();
   return {
@@ -143,6 +144,29 @@ export function deriveState(flags: Record<string, unknown>, now = new Date()): G
     seed: typeof flags.seed === "string" && flags.seed ? flags.seed : "black-veil-1926",
     killerOverride: typeof flags.killerOverride === "string" ? flags.killerOverride : null,
   };
+}
+
+/**
+ * The one button: releases every guest's public card, private card and objectives, and opens the
+ * answer boxes. Safe to press twice. (The book still closes by itself at the closing time.)
+ */
+export async function startGame(db: GameDb, now = new Date()): Promise<void> {
+  // make sure every character exists and every registered guest is dealt theirs by name before the doors open
+  await seedCast(db);
+  await castByName(db);
+  await writeFlag(db, "identitiesReleased", true);
+  await writeFlag(db, "secretsReleased", true);
+  await writeFlag(db, "submissionsClosed", null);
+  await writeFlag(db, "gameStartedAt", now.toISOString());
+  await setReleased(db, true);
+}
+
+/** Takes the game back to sealed (for a rehearsal). */
+export async function stopGame(db: GameDb): Promise<void> {
+  await writeFlag(db, "identitiesReleased", null);
+  await writeFlag(db, "secretsReleased", null);
+  await writeFlag(db, "gameStartedAt", null);
+  await setReleased(db, false);
 }
 
 export async function getState(db: GameDb, now = new Date()): Promise<GameState> {
@@ -282,7 +306,12 @@ export async function cardFor(db: GameDb, guestId: string, now = new Date()): Pr
   // before the night the private tab is withheld entirely, never merely hidden by the client
   const card = state.secretsReleased
     ? full
-    : { ...full, private: { ...full.private, secrets: [], knows: [], habit: undefined, role: undefined, survivor: undefined, objectives: [], carries: [], totalPoints: 0 } };
+    : {
+        ...full,
+        // the survivors do not learn what they are until the game starts, so the group is withheld too
+        circle: { id: "sealed", name: "", blurb: "" },
+        private: { ...full.private, secrets: [], knows: [], habit: undefined, role: undefined, survivor: undefined, objectives: [], carries: [], totalPoints: 0, race: { group: "", title: "", text: "", ask: "", house: true, points: 1, slips: [] } },
+      };
   return {
     status: "ok",
     card,
@@ -315,18 +344,14 @@ export async function submit(db: GameDb, guestId: string, input: SubmitInput, no
   let itemId = (input.itemId ?? "").toString();
   let stored = answer;
   switch (input.kind) {
-    case "objective":
-      if (!character.objectives.some((objective) => objective.id === itemId) || !objectiveById.has(itemId)) return { ok: false, code: "invalid", message: "That is not one of your errands." };
-      break;
-    case "exhibit": {
-      const code = normalizeCode(answer);
-      if (code.length < 4 || code.length > 8) return { ok: false, code: "invalid", message: "An exhibit code is the short code printed at the foot of the page." };
-      itemId = code;
-      stored = code;
-      const filed = await db.select({ itemId: gameSubmissions.itemId }).from(gameSubmissions).where(and(eq(gameSubmissions.guestId, guestId), eq(gameSubmissions.kind, "exhibit")));
-      if (new Set(filed.map((row) => row.itemId)).size >= 40 && !filed.some((row) => row.itemId === code)) return { ok: false, code: "invalid", message: "That is plenty of exhibits." };
+    case "objective": {
+      // the group race is not one of the five errands; the survivors' race is the vial and takes no answer
+      const isRace = itemId === "race" && character.circle !== "survivors";
+      if (!isRace && (!character.objectives.some((objective) => objective.id === itemId) || !objectiveById.has(itemId))) return { ok: false, code: "invalid", message: "That is not one of your errands." };
       break;
     }
+    case "exhibit":
+      return { ok: false, code: "invalid", message: "Pages are no longer filed; just use what they tell you." };
     case "mystery":
       if (!questionById.has(itemId)) return { ok: false, code: "invalid", message: "That is not one of the final questions." };
       if (!answer) return { ok: false, code: "invalid", message: "Write an answer first." };
@@ -680,6 +705,12 @@ export async function adminOverview(db: GameDb) {
       dosed,
     },
     killer: night.truth.killer,
+    /** The words the host gives out once something has really happened. Staff only. */
+    approvals: characters.flatMap((character) =>
+      character.objectives
+        .filter((objective) => objective.check.kind === "approval")
+        .map((objective) => ({ guest: character.name, title: objective.title, word: (objective.check as { word: string }).word })),
+    ),
     castCount: castSlugs.size,
     grades: grades.map((row) => ({ source: row.source, needsReview: row.needsReview, count: Number(row.n) })),
     resultsPublished: state.resultsPublished,

@@ -3,7 +3,7 @@ import { submit } from "@/lib/game/service";
 import type { SubmitInput } from "@/lib/game/service";
 import { gameDb, json, requireGuest } from "@/lib/game/http";
 
-const kinds = new Set(["objective", "exhibit", "mystery", "survivors"]);
+const kinds = new Set(["objective", "mystery", "survivors"]);
 
 /**
  * Records an answer. The reply never says whether it was right: only that it was received, or

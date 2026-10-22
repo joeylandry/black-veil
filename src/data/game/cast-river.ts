@@ -1,6 +1,5 @@
 /** The River Trade: everyone who profits from what the river carries. */
-import { deal, find, hide, money, motiveChain, nightcapChain, offerChain, role, secretOf, seek, story, swap } from "./build";
-import { sceneCode } from "./props";
+import { approval, find, keep, money, motiveChain, nightcapChain, offerChain, role, secretOf, swap, who } from "./build";
 import type { Character } from "./types";
 
 export const river: Character[] = [
@@ -25,13 +24,13 @@ export const river: Character[] = [
     ],
     smallSecret: { text: "Two passengers went down the river steps that night; one came back alone with blood on his cuff.", key: ["cuff"], confidant: "krrish" },
     startingCash: 150,
-    carries: ["gin-jar"],
+    carries: ["gin-jar", "witness-tim"],
     objectives: [
-      find("tim-1", "conch"),
-      secretOf("tim-2", "josh", "krrish", ["tea leaves"]),
-      swap("tim-3", "arjun", "gin-jar", "baseball"),
-      money("tim-4", 230, "A baron's business is the margin. Sell, trade and bargain. Leave with at least $230."),
-      story("tim-5", "A wall too thick", "Somebody knows why a wall in the Merrimack Room is thicker than it should be. Learn the word they use for it.", "How the wall is described", "josh", ["arjun"], [["thick"]]),
+      money("tim-money", 210, "A baron's business is the margin. Sell, trade and bargain. Leave with at least $210."),
+      find("tim-find", "conch"),
+      swap("tim-swap", "arjun", "gin-jar", "baseball"),
+      secretOf("tim-secret", "diwakar", "ananya", ["stay down"]),
+      keep("tim-keep", "erika", "erika-secret", "diwakar", "diwakar-secret"),
     ],
   },
   {
@@ -57,7 +56,7 @@ export const river: Character[] = [
     ],
     smallSecret: { text: "The House whiskey is cold tea, and you took $200 to forget Room 3.", key: ["cold tea"], confidant: "tim" },
     startingCash: 120,
-    carries: ["fee-receipt"],
+    carries: [],
     role: "butler",
     roleCard: [
       "You are the Butler. At the bar you hold the House Tin, the House Book and a single bottle of the House's own tincture for “river rats.”",
@@ -67,17 +66,17 @@ export const river: Character[] = [
       "Nobody takes the marker from you, and you take nothing from anyone: it is all deals, always.",
     ],
     objectives: [
-      find("rebecca-1", "cloche"),
-      secretOf("rebecca-2", "silas", "arjun", ["1921"]),
-      deal("rebecca-3", ["erika"], "A bought alibi", "Buy an alibi for $20 from Erika Lamm: she swears she was with you when the body was found. Hand her a House receipt and keep her sworn note: read the code on the note.", "The code on the sworn note", ["alibi-note"]),
-      role("rebecca-4", "The House's one sale", "Sell the House's single bottle to the owner of a numbered marker, once, before the nightcap is served at nine o'clock. Record the sale on your House panel.", "In a sentence, who did you sell to?", { kind: "butler-sale" }),
-      role("rebecca-5", "The scream", "At a quarter past nine, go to the Merrimack Room, find the Keeper and scream. Submit the time you screamed.", "The time you screamed (e.g. 9:16)", { kind: "clock", from: "21:14", to: "21:22" }),
+      find("rebecca-find", "cloche"),
+      secretOf("rebecca-secret", "theodor", "molly", ["shoebox", "shoe box"]),
+      keep("rebecca-keep", "tiffany", "tiffany-secret", "ananya", "ananya-secret"),
+      role("rebecca-sale", "The House's one sale", "Sell the House's single bottle to the owner of a numbered marker, once, before the nightcap is served at nine o'clock. Record the sale on your House panel.", "In a sentence, who did you sell to?", { kind: "butler-sale" }),
+      approval("rebecca-scream", "The scream", "At a quarter past nine, go to the Merrimack Room, find the Keeper and scream. Then claim this point. The host will confirm it and give you an approval word.", "banshee"),
     ],
   },
   {
     id: "rhea",
     realNames: ["Rhea Mallya", "Rhea"],
-    circle: "river",
+    circle: "survivors",
     name: "Rhea Mallya of Mallya's Emporium",
     occupation: "Department store owner",
     publicBio: "Everything under one roof, from hats to hatboxes, under a sign that says the customer is always right. The prices say otherwise.",
@@ -104,18 +103,17 @@ export const river: Character[] = [
       tell: "You straighten any hat brim you pass, your own or a stranger's, without thinking.",
       skillLeak: "You can name a stitch, a dye lot and a maker at a glance, and you cannot stop pricing what people are wearing.",
       realStory: "You are Sylvia Ballard, the Black Veil's Milliner and costume mistress: the masks, the gowns and the hats for the masquerade. On 31 October 1924 you dressed the Veil's people for the Exit. A department store is the one place where nobody asks who made the clothes.",
-      escape: "You were fitting a gown on Canal Street when Quill's man came for your girls. You left by the coal cellar with a hatbox and a bolt of silk. A memorial notice, “Sylvia Ballard,” ran in the Farrago the following autumn; you placed it yourself and had it pulled before it printed twice.",
+      escape: "You were fitting a gown on Canal Street when the hitman's man came for your girls. You left by the coal cellar with a hatbox and a bolt of silk, and never went back.",
       grievance: "The Keeper had your seamstresses killed one at a time, so there would be nobody left to say who sewed the masks for the Exit.",
       motiveKeys: [["seamstress", "seamstresses", "girls", "milliner", "costume", "dressmaker", "tailor", "sewing", "masks"], ["killed", "murdered", "dead", "died", "killings", "murder"]],
       motiveFact: "motive-20",
-      memorial: "In memoriam, Sylvia Ballard",
     },
     objectives: [
-      find("rhea-1", "duck"),
-      secretOf("rhea-2", "krrish", "emre", ["grey hudson", "grey"]),
-      nightcapChain("rhea-3"),
-      offerChain("rhea-4"),
-      motiveChain("rhea-5", ["anika", "emre", "silas"], [["seamstress", "seamstresses", "girls", "milliner", "costume", "dressmaker", "tailor", "sewing", "masks"], ["killed", "murdered", "dead", "died", "killings", "murder"]]),
+      find("rhea-find", "duck"),
+      who("rhea-who", "You have worn this cover for a year. Learn what you really were before you took this name: some guests have noticed what a cover cannot hide.", ["tiffany", "silas", "emre"], [["seamstress", "dressmaker", "tailor", "dye lot", "stitch", "pin-pricks", "cut"]]),
+      motiveChain("rhea-why", ["anika", "emre", "silas"], [["seamstress", "seamstresses", "girls", "milliner", "costume", "dressmaker", "tailor", "sewing", "masks"], ["killed", "murdered", "dead", "died", "killings", "murder"]]),
+      nightcapChain("rhea-hour"),
+      offerChain("rhea-offer"),
     ],
   },
   {
@@ -139,14 +137,14 @@ export const river: Character[] = [
     ],
     smallSecret: { text: "You bought a name at the river steps for $20 and were told at least twenty others did too.", key: ["twenty others"], confidant: "rebecca" },
     startingCash: 60,
-    carries: ["false-papers", "alibi-note"],
+    carries: ["false-papers", "reply-erika"],
     habit: "You check the exits wherever you go and sit where you can see the door. A fugitive's habit.",
     objectives: [
-      find("erika-1", "mask"),
-      secretOf("erika-2", "molly", "josh", ["unprinted"]),
-      swap("erika-3", "ananya", "false-papers", "telegram-form"),
-      deal("erika-4", ["rebecca"], "A bought alibi", "Swear to Rebecca Chow that you were with her when the body was found, so the Butler is not suspected. She pays $20 and hands you a House receipt: read its code. Do not be seen taking the money.", "The code on the House receipt", ["fee-receipt"]),
-      story("erika-5", "The Montreal postmark", "A wire about the List was filed from a certain city. Learn which, from someone who has seen the slip.", "The city", "ananya", ["leon"], [["montreal"]]),
+      money("erika-money", 120, "Earn a little without being noticed. Leave with at least $120."),
+      find("erika-find", "mask"),
+      swap("erika-swap", "ananya", "false-papers", "telegram-form"),
+      secretOf("erika-secret", "tim", "krrish", ["cuff"]),
+      approval("erika-steal", "Steal something", "Take something small from a guest without being caught: a slip, a glove, a prop. Hand it back before the night ends. Then claim this point. The host will confirm it with whoever you robbed and give you an approval word.", "sleight"),
     ],
   },
 ];

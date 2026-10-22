@@ -2,9 +2,9 @@ import assert from "node:assert/strict";
 import { after, before, describe, it } from "node:test";
 import { PGlite } from "@electric-sql/pglite";
 import { drizzle } from "drizzle-orm/pglite";
+import { eq } from "drizzle-orm";
 import { migrate } from "drizzle-orm/pglite/migrator";
 import { characters, markers, survivorIds, questions, characterById, alternateOf } from "@/data/game";
-import { POINTS } from "./grading";
 import { guests, gameSubmissions, rsvps } from "@/lib/db/schema";
 import { correctAnswer, correctMystery } from "./sim";
 import {
@@ -31,6 +31,8 @@ import {
   runGrading,
   seedCast,
   standingsNow,
+  startGame,
+  stopGame,
   submit,
   unpublishResults,
   writeFlag,
@@ -130,25 +132,69 @@ async function seedGuestsOnce(db: GameDb) {
 }
 
 describe("release flags", () => {
-  it("keeps everything sealed until the flags or the clock say otherwise", () => {
+  it("keeps everything sealed until the host starts the game, whatever the clock says", () => {
     assert.equal(deriveState({}, BEFORE).identitiesReleased, false);
-    assert.equal(deriveState({}, BEFORE).secretsReleased, false);
-    const released = deriveState({ identitiesReleased: true }, BEFORE);
+    assert.equal(deriveState({}, NIGHT).secretsReleased, false, "nothing opens on a clock");
+    assert.equal(deriveState({}, NIGHT).submissionsOpen, false);
+    const released = deriveState({ identitiesReleased: true }, NIGHT);
     assert.equal(released.identitiesReleased, true);
-    assert.equal(released.secretsReleased, false, "the private tab waits for the night");
-    const night = deriveState({ identitiesReleased: true }, NIGHT);
-    assert.equal(night.secretsReleased, true);
-    assert.equal(night.submissionsOpen, true);
+    assert.equal(released.secretsReleased, false, "the private tab waits for the start");
+    const started = deriveState({ identitiesReleased: true, secretsReleased: true }, NIGHT);
+    assert.equal(started.secretsReleased, true);
+    assert.equal(started.submissionsOpen, true);
   });
-  it("lets the game master hold or force each switch", () => {
+  it("lets the game master hold or close the book", () => {
     assert.equal(deriveState({ identitiesReleased: true, secretsReleased: false }, NIGHT).secretsReleased, false);
-    assert.equal(deriveState({ identitiesReleased: true, secretsReleased: true }, BEFORE).secretsReleased, true);
-    assert.equal(deriveState({ identitiesReleased: true, submissionsClosed: true }, NIGHT).submissionsOpen, false);
-    assert.equal(deriveState({ identitiesReleased: true }, LATE).submissionsOpen, false, "the book closes on its own");
-    assert.equal(deriveState({ identitiesReleased: true, submissionsClosed: false }, LATE).submissionsOpen, true, "staff can reopen it");
-    assert.equal(deriveState({ identitiesReleased: true, resultsPublished: true }, NIGHT).submissionsOpen, false);
+    assert.equal(deriveState({ identitiesReleased: true, secretsReleased: true }, BEFORE).secretsReleased, true, "started means started");
+    assert.equal(deriveState({ identitiesReleased: true, secretsReleased: true, submissionsClosed: true }, NIGHT).submissionsOpen, false);
+    assert.equal(deriveState({ identitiesReleased: true, secretsReleased: true }, LATE).submissionsOpen, false, "the book closes on its own");
+    assert.equal(deriveState({ identitiesReleased: true, secretsReleased: true, submissionsClosed: false }, LATE).submissionsOpen, true, "staff can reopen it");
+    assert.equal(deriveState({ identitiesReleased: true, secretsReleased: true, resultsPublished: true }, NIGHT).submissionsOpen, false);
   });
 });
+
+describe("the start button", () => {
+  let ctx: Awaited<ReturnType<typeof freshDb>>;
+  before(async () => {
+    ctx = await freshDb();
+    for (const character of characters) await ctx.db.insert(guests).values({ email: `${character.id}@example.test`, fullName: character.realNames[0] });
+  });
+  after(async () => ctx.client.close());
+
+  it("starts as sealed, and one press releases every card, deals every character and opens the answer boxes", async () => {
+    assert.equal((await getState(ctx.db, NIGHT)).secretsReleased, false);
+    assert.equal((await cardFor(ctx.db, await guestIdFor(ctx.db, "anika@example.test"), NIGHT)).status, "sealed");
+    await startGame(ctx.db, NIGHT);
+    const state = await getState(ctx.db, NIGHT);
+    assert.equal(state.identitiesReleased, true);
+    assert.equal(state.secretsReleased, true);
+    assert.equal(state.submissionsOpen, true);
+    const response = await cardFor(ctx.db, await idOf(ctx.db, "anika"), NIGHT);
+    assert.equal(response.status, "ok");
+    if (response.status === "ok") {
+      assert.equal(response.card.private.objectives.length, 5);
+      assert.ok(response.card.private.race.title);
+    }
+    assert.equal((await castByName(ctx.db)).uncastCharacters.length, 0);
+    assert.equal((await readFlags(ctx.db)).rosterReleased, true, "the public cast list opens with it");
+  });
+
+  it("is safe to press twice, and can be taken back for a rehearsal", async () => {
+    await startGame(ctx.db, NIGHT);
+    assert.equal((await getState(ctx.db, NIGHT)).secretsReleased, true);
+    await stopGame(ctx.db);
+    const state = await getState(ctx.db, NIGHT);
+    assert.equal(state.identitiesReleased, false);
+    assert.equal(state.secretsReleased, false);
+    assert.equal(state.submissionsOpen, false);
+    await startGame(ctx.db, NIGHT);
+  });
+});
+
+async function guestIdFor(db: GameDb, email: string) {
+  const [row] = await db.select({ id: guests.id }).from(guests).where(eq(guests.email, email));
+  return row.id;
+}
 
 describe("the guest's card", () => {
   const SURVIVOR = survivorIds[3]; // adam, marker 21, the Doorman
@@ -179,10 +225,11 @@ describe("the guest's card", () => {
     assert.equal(response.directory, null);
     const text = JSON.stringify(response);
     const info = characterById.get(SURVIVOR)!.survivor!;
-    for (const secret of [info.veilTitle, info.markerCode, info.realStory, info.grievance, info.escape, "markerCode", "Quill"]) assert.ok(!text.includes(secret), `the pre-party card leaked "${secret}"`);
+    for (const secret of [info.veilTitle, info.markerCode, info.realStory, info.grievance, info.escape, "markerCode", "Quill", "The Survivors"]) assert.ok(!text.includes(secret), `the pre-party card leaked "${secret}"`);
   });
 
-  it("opens the private tab on the night, with errands but never answers", async () => {
+  it("opens the private tab when the game starts, with objectives but never answers", async () => {
+    await startGame(ctx.db, NIGHT);
     const response = await cardFor(ctx.db, await idOf(ctx.db, SURVIVOR), NIGHT);
     assert.equal(response.status, "ok");
     if (response.status !== "ok") return;
@@ -192,6 +239,8 @@ describe("the guest's card", () => {
     assert.ok(response.directory && response.directory.length === 24);
     const text = JSON.stringify(response);
     assert.ok(!/"check"|"codes"|"motiveKeys"|"alsoFrom"|AJTN9/.test(text), "answer keys must never reach a guest");
+    const approvalWords = characters.flatMap((character) => character.objectives.filter((objective) => objective.check.kind === "approval").map((objective) => (objective.check as { word: string }).word));
+    for (const word of approvalWords) assert.ok(!text.includes(word), `the host's approval word "${word}" reached a guest`);
     assert.ok(!/"killer"|"buyer"|"soldTo"/.test(text), "the card never carries who bought the vial");
   });
 
@@ -229,7 +278,7 @@ describe("the guest's card", () => {
     const response = await cardFor(ctx.db, await idOf(ctx.db, "anika"), NIGHT);
     assert.equal(response.status, "ok");
     if (response.status !== "ok") return;
-    for (const row of response.directory!) assert.deepEqual(Object.keys(row).sort(), ["circle", "id", "name", "occupation"]);
+    for (const row of response.directory!) assert.deepEqual(Object.keys(row).sort(), ["id", "name", "occupation"]);
   });
 
   it("tells an uncast guest they have no character yet", async () => {
@@ -244,60 +293,61 @@ describe("submissions", () => {
   before(async () => {
     ctx = await freshDb();
     await seedGuests(ctx.db);
-    await writeFlag(ctx.db, "identitiesReleased", true);
   });
   after(async () => ctx.client.close());
 
-  it("refuses answers before the night and after the book closes", async () => {
+  it("refuses answers before the game starts and after the book closes", async () => {
     const anika = await idOf(ctx.db, "anika");
-    const early = await submit(ctx.db, anika, { kind: "objective", itemId: "anika-2", answer: "Sophia" }, BEFORE);
-    assert.equal(early.ok, false);
-    const late = await submit(ctx.db, anika, { kind: "objective", itemId: "anika-2", answer: "Sophia" }, LATE);
+    const early = await submit(ctx.db, anika, { kind: "objective", itemId: "anika-secret", answer: "Sophia" }, NIGHT);
+    assert.equal(early.ok, false, "even on the night, nothing opens until the host presses start");
+    await startGame(ctx.db, NIGHT);
+    const late = await submit(ctx.db, anika, { kind: "objective", itemId: "anika-secret", answer: "Sophia" }, LATE);
     assert.equal(late.ok, false);
   });
 
-  it("accepts only your own errands, the real questions and well-formed exhibit codes", async () => {
+  it("accepts only your own objectives, the group race, the real questions, and no more page filing", async () => {
     const anika = await idOf(ctx.db, "anika");
-    assert.equal((await submit(ctx.db, anika, { kind: "objective", itemId: "anika-2", answer: "Sophia" }, NIGHT)).ok, true);
-    assert.equal((await submit(ctx.db, anika, { kind: "objective", itemId: "molly-2", answer: "x" }, NIGHT)).ok, false, "someone else's errand");
+    assert.equal((await submit(ctx.db, anika, { kind: "objective", itemId: "anika-secret", answer: "Sophia" }, NIGHT)).ok, true);
+    assert.equal((await submit(ctx.db, anika, { kind: "objective", itemId: "molly-who", answer: "x" }, NIGHT)).ok, false, "someone else's objective");
+    assert.equal((await submit(ctx.db, anika, { kind: "objective", itemId: "race", answer: "AAAAA BBBBB CCCCC" }, NIGHT)).ok, true, "a group race entry");
+    assert.equal((await submit(ctx.db, await idOf(ctx.db, "molly"), { kind: "objective", itemId: "race", answer: "x" }, NIGHT)).ok, false, "the survivors' race is the vial, not a box");
     assert.equal((await submit(ctx.db, anika, { kind: "objective", itemId: "nope", answer: "x" }, NIGHT)).ok, false);
     assert.equal((await submit(ctx.db, anika, { kind: "mystery", itemId: "old-1", answer: "staged" }, NIGHT)).ok, true);
     assert.equal((await submit(ctx.db, anika, { kind: "mystery", itemId: "old-1", answer: "  " }, NIGHT)).ok, false);
     assert.equal((await submit(ctx.db, anika, { kind: "mystery", itemId: "bogus", answer: "x" }, NIGHT)).ok, false);
-    assert.equal((await submit(ctx.db, anika, { kind: "exhibit", itemId: "", answer: "ew-wxp" }, NIGHT)).ok, true);
-    assert.equal((await submit(ctx.db, anika, { kind: "exhibit", itemId: "", answer: "x" }, NIGHT)).ok, false);
-    assert.equal((await submit(ctx.db, anika, { kind: "objective", itemId: "anika-2", answer: "x".repeat(601) }, NIGHT)).ok, false);
+    assert.equal((await submit(ctx.db, anika, { kind: "exhibit", itemId: "", answer: "ew-wxp" }, NIGHT)).ok, false, "pages are no longer filed");
+    assert.equal((await submit(ctx.db, anika, { kind: "objective", itemId: "anika-secret", answer: "x".repeat(601) }, NIGHT)).ok, false);
   });
 
   it("tells a guest nothing but that the answer was received", async () => {
     const anika = await idOf(ctx.db, "anika");
-    const right = await submit(ctx.db, anika, { kind: "objective", itemId: "anika-2", answer: "Sophia" }, NIGHT);
-    const wrong = await submit(ctx.db, anika, { kind: "objective", itemId: "anika-2", answer: "nonsense" }, NIGHT);
+    const right = await submit(ctx.db, anika, { kind: "objective", itemId: "anika-secret", answer: "Sophia" }, NIGHT);
+    const wrong = await submit(ctx.db, anika, { kind: "objective", itemId: "anika-secret", answer: "nonsense" }, NIGHT);
     assert.deepEqual(Object.keys(right).sort(), Object.keys(wrong).sort());
     assert.deepEqual(Object.keys(right).sort(), ["at", "ok"]);
   });
 
   it("remembers every submission but returns only the newest for each item", async () => {
     const molly = await idOf(ctx.db, "molly");
-    await submit(ctx.db, molly, { kind: "objective", itemId: "molly-2", answer: "first" }, new Date(NIGHT.getTime() + 1000));
-    await submit(ctx.db, molly, { kind: "objective", itemId: "molly-2", answer: "second" }, new Date(NIGHT.getTime() + 2000));
+    await submit(ctx.db, molly, { kind: "objective", itemId: "molly-who", answer: "first" }, new Date(NIGHT.getTime() + 1000));
+    await submit(ctx.db, molly, { kind: "objective", itemId: "molly-who", answer: "second" }, new Date(NIGHT.getTime() + 2000));
     const mine = await mySubmissions(ctx.db, molly);
-    const entry = mine.find((row) => row.itemId === "molly-2");
+    const entry = mine.find((row) => row.itemId === "molly-who");
     assert.equal(entry?.answer, "second");
-    assert.equal(mine.filter((row) => row.itemId === "molly-2").length, 1);
+    assert.equal(mine.filter((row) => row.itemId === "molly-who").length, 1);
     const all = await ctx.db.select().from(gameSubmissions);
-    assert.ok(all.filter((row) => row.itemId === "molly-2").length >= 2, "the history is kept");
+    assert.ok(all.filter((row) => row.itemId === "molly-who").length >= 2, "the history is kept");
   });
 
-  it("stores survivor picks as character ids, ignoring yourself and anything beyond five", async () => {
+  it("stores survivor picks as character ids, ignoring yourself and anything beyond four", async () => {
     const tim = await idOf(ctx.db, "tim");
     const name = (id: string) => characterById.get(id)!.name;
     const [a, b, c, d, e] = survivorIds;
-    // yourself is skipped, and the sixth and seventh names fall beyond the five
+    // yourself is skipped, and the fifth and later names fall beyond the four
     const answer = [name(a), name(b), name("tim"), name(c), name(d), name(e), name("anika")].join(", ");
     await submit(ctx.db, tim, { kind: "survivors", itemId: "ignored", answer }, NIGHT);
     const picks = (await mySubmissions(ctx.db, tim)).find((row) => row.kind === "survivors")!;
-    assert.deepEqual(JSON.parse(picks.answer), [a, b, c, d, e]);
+    assert.deepEqual(JSON.parse(picks.answer), [a, b, c, d]);
   });
 
   it("slows a guest who hammers the button", async () => {
@@ -405,7 +455,7 @@ describe("grading the night, end to end", () => {
   before(async () => {
     ctx = await freshDb();
     await seedGuests(ctx.db);
-    await writeFlag(ctx.db, "identitiesReleased", true);
+    await startGame(ctx.db, NIGHT);
     // the night: the Doorman (marker 21) buys the vial
     await butlerSell(ctx.db, await idOf(ctx.db, "rebecca"), markers.find((marker) => marker.no === 21)!.code, NIGHT);
     for (const id of survivorIds.filter((id) => id !== KILLER)) await butlerSell(ctx.db, null, markers.find((marker) => marker.no === characterById.get(id)!.survivor!.markerNo)!.code, NIGHT);
@@ -430,10 +480,10 @@ describe("grading the night, end to end", () => {
     const { standings } = await standingsNow(ctx.db);
     assert.equal(standings.killer, KILLER);
     const anika = standings.standings.find((row) => row.guest === "anika")!;
-    assert.equal(anika.tiers.mysteries, 100);
-    assert.equal(anika.tiers.survivors, 20);
+    assert.equal(anika.tiers.mysteries, 10);
+    assert.equal(anika.tiers.survivors, 4);
     const killer = standings.standings.find((row) => row.guest === KILLER)!;
-    assert.equal(killer.tiers.poisoner, POINTS.poisoner);
+    assert.equal(killer.tiers.race, 1, "the vial is the survivors' race");
     assert.equal(standings.winner, "anika");
   });
 
@@ -571,7 +621,7 @@ describe("the guest ledger", () => {
 
   it("stays at zero while the night is graded, and shows final scores only once published", async () => {
     await butlerSell(ctx.db, null, markers.find((marker) => marker.no === 21)!.code, NIGHT);
-    await submit(ctx.db, await idOf(ctx.db, "anika"), { kind: "objective", itemId: "anika-2", answer: "Sophia" }, NIGHT);
+    await submit(ctx.db, await idOf(ctx.db, "anika"), { kind: "objective", itemId: "anika-secret", answer: "Sophia" }, NIGHT);
     await runGrading(ctx.db);
     assert.ok((await ledgerFor(ctx.db, await idOf(ctx.db, "anika"), NIGHT)).rows.every((row) => row.points === 0), "grading alone changes nothing a guest can see");
     await publishResults(ctx.db, { force: true });

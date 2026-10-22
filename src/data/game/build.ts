@@ -10,7 +10,7 @@ import type { AnyOf, Pattern } from "@/lib/game/text";
 import type { GuestId, Objective, PropId } from "./types";
 import { props } from "./props";
 
-export const POINTS = 12;
+export const POINTS = 1;
 
 const codeOf = (propId: PropId) => {
   const prop = props.find((item) => item.id === propId);
@@ -175,6 +175,40 @@ export function motiveChain(id: string, holders: GuestId[], keys: Pattern): Obje
     title: "Why you?",
     text: "You came to be the one, and you are not sure you remember why. Find out what the Keeper took from you. Someone here saw part of it.",
     ask: "What did he do?",
+    points: POINTS,
+    with: [holders[0]],
+    alsoFrom: holders.slice(1),
+    check: { kind: "pattern", all: keys },
+  };
+}
+
+/** Something the host confirms in person. The guest claims it on their phone and types the host's approval word. */
+export function approval(id: string, title: string, text: string, word: string, withGuests: GuestId[] = []): Objective {
+  return { id, kind: "approval", title, text, ask: "The approval word from the host", points: POINTS, with: withGuests, check: { kind: "approval", word } };
+}
+
+/** Your own small secret: tell the seeker you chose, keep it from the rival. Scored from their answers (see the `keep` check). */
+export function keep(id: string, seeker: GuestId, seekerObjective: string, rival: GuestId, rivalObjective: string): Objective {
+  return {
+    id,
+    kind: "keep",
+    title: "Your own secret",
+    text: `Your small secret is yours to spend. Let {name:${seeker}} earn it from you, and make sure {name:${rival}} never does. You will not be asked anything: it is scored from what they each learn.`,
+    ask: "In a sentence, how did you manage it? (optional)",
+    points: POINTS,
+    with: [seeker],
+    check: { kind: "keep", seeker, seekerObjective, rival, rivalObjective },
+  };
+}
+
+/** Who you really were: learn your own old trade from guests who saw through your cover. */
+export function who(id: string, text: string, holders: GuestId[], keys: Pattern): Objective {
+  return {
+    id,
+    kind: "learn",
+    title: "Who were you?",
+    text,
+    ask: "What was your real trade?",
     points: POINTS,
     with: [holders[0]],
     alsoFrom: holders.slice(1),

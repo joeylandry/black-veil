@@ -19,6 +19,7 @@ import {
   markers,
   props,
   questions,
+  races,
   survivorRules,
   survivors,
   OBJECTIVE_TOTAL,
@@ -101,9 +102,11 @@ export function runValidation(root = process.cwd()): Report {
     if (sizes.some((size) => size < 4 || size > 5)) problems.push(`circle sizes must be 4 or 5, got ${sizes.join(",")}`);
     for (const circle of circles) {
       const count = characters.filter((character) => character.circle === circle.id && character.survivor).length;
-      if (count !== 1) problems.push(`circle ${circle.id} has ${count} survivors (needs exactly 1)`);
+      if (circle.id === "survivors") {
+        if (count !== 5 || characters.filter((character) => character.circle === "survivors").length !== 5) problems.push(`the survivors group should be exactly the five survivors, found ${count}`);
+      } else if (count !== 0) problems.push(`circle ${circle.id} has ${count} survivors (the survivors are a group of their own)`);
     }
-    add("Roster: 24 guests, five circles of 4 to 5, one survivor in each", problems);
+    add("Roster: 24 guests, five groups of 4 to 5, the five survivors as one of them", problems);
   }
 
   // ------------------------------------------------------------ roles
@@ -186,17 +189,7 @@ export function runValidation(root = process.cwd()): Report {
     }
     const settled = listText.split("\n").filter((line) => /^No\. \d+ .*SETTLED/.test(line) && !line.includes("UNSETTLED")).length;
     if (settled !== 17) problems.push(`expected 17 settled rows, found ${settled}`);
-    for (const survivor of survivors) {
-      const memorial = survivor.survivor!.memorial;
-      if (memorial) {
-        const text = exhibits.find((exhibit) => exhibit.id === "memorials")?.body.join(" ") ?? "";
-        const name = memorial.replace("In memoriam, ", "");
-        if (!text.includes(name.split(" ").at(-1)!)) problems.push(`memorial for ${name} is not in the withdrawn-notices exhibit`);
-      }
-    }
-    stats["memorials"] = survivors.filter((survivor) => survivor.survivor!.memorial).length;
-    if (survivors.filter((survivor) => survivor.survivor!.memorial).length !== 2) problems.push("canon says exactly two memorial notices were withdrawn");
-    add("The List: 17 settled and 5 unsettled rows match the survivors' names, titles and tells; two memorials", problems);
+    add("The List: 17 settled and 5 unsettled rows match the survivors' names, titles and tells", problems);
   }
 
   // ------------------------------------------------------------ objectives: shape
@@ -220,7 +213,7 @@ export function runValidation(root = process.cwd()): Report {
       }
     }
     stats["objectives"] = allObjectives.length;
-    add("Objectives: five per guest, 12 points each, 60 for everyone, all references valid", problems);
+    add("Objectives: five per guest, one point each, 5 for everyone, all references valid", problems);
   }
 
   // ------------------------------------------------------------ objectives: answerable
@@ -265,6 +258,9 @@ export function runValidation(root = process.cwd()): Report {
           if (check.min <= start) problems.push(`${objective.id}: target $${check.min} is not above the starting $${start}`);
           if (check.min - start > 130) problems.push(`${objective.id}: target is $${check.min - start} above start; too steep`);
         }
+        if (check.kind === "approval") {
+          if (!check.word.trim() || /\s/.test(check.word.trim())) problems.push(`${objective.id}: the approval word must be a single word`);
+        }
         if (check.kind === "clock") {
           const ok = /^\d{2}:\d{2}$/.test(check.from) && /^\d{2}:\d{2}$/.test(check.to) && check.from <= check.to;
           if (!ok) problems.push(`${objective.id}: bad clock window`);
@@ -308,8 +304,13 @@ export function runValidation(root = process.cwd()): Report {
     for (const prop of props.filter((item) => item.placement === "carried")) {
       if (!carried.has(prop.id)) problems.push(`carried prop ${prop.id} is held by nobody`);
     }
+    const raceSlips = new Set(races.flatMap((race) => race.tokens));
+    const used = new Set(allObjectives.flatMap((objective) => (objective.check.kind === "code" ? objective.check.codes : [])));
+    for (const prop of props.filter((item) => item.placement === "carried" && !raceSlips.has(item.id))) {
+      if (!used.has(prop.code) && !allObjectives.some((objective) => objective.prop === prop.id)) problems.push(`carried prop ${prop.id} is not used by any objective`);
+    }
     stats["swap pairs"] = swaps.length / 2;
-    add("Swaps: every swap is mirrored, every carried prop is carried by its owner and used once", problems);
+    add("Swaps: every swap is mirrored, every carried prop is carried by its owner, and none is left unused", problems);
   }
 
   // ------------------------------------------------------------ secret affairs
@@ -349,6 +350,82 @@ export function runValidation(root = process.cwd()): Report {
     const attempts = allObjectives.filter((objective) => objective.check.kind === "vial-attempt");
     if (attempts.length !== 5) problems.push(`expected 5 vial-attempt objectives, found ${attempts.length}`);
     add("Survivors: each has find, learn, two chain steps and a motive; the Butler's sale is an objective", problems);
+  }
+
+  // ------------------------------------------------------------ the group races
+  {
+    const problems: string[] = [];
+    const holders = new Map<string, number>();
+    for (const circle of circles) {
+      const race = races.find((candidate) => candidate.circle === circle.id);
+      if (!race) {
+        problems.push(`group ${circle.id} has no race`);
+        continue;
+      }
+      if (circle.id === "survivors") {
+        if (race.tokens.length) problems.push("the survivors race for the vial and need no slips");
+        continue;
+      }
+      if (race.tokens.length !== 3) problems.push(`${circle.id}'s race needs three slips, has ${race.tokens.length}`);
+      const outsiders = new Set<string>();
+      for (const token of race.tokens) {
+        const prop = props.find((item) => item.id === token);
+        if (!prop || prop.placement !== "carried" || !prop.carriedBy) {
+          problems.push(`${circle.id}: race slip ${token} is not a carried prop`);
+          continue;
+        }
+        const holder = characterById.get(prop.carriedBy);
+        if (!holder) continue;
+        if (holder.circle === circle.id) problems.push(`${circle.id}: slip ${token} is held by a member of the racing group (${holder.id})`);
+        if (holder.survivor) problems.push(`${circle.id}: slip ${token} is held by a survivor (${holder.id}), who has enough to do`);
+        if (!holder.carries.includes(token)) problems.push(`${holder.id} does not carry ${token}`);
+        outsiders.add(holder.id);
+        holders.set(holder.id, (holders.get(holder.id) ?? 0) + 1);
+      }
+      if (outsiders.size !== race.tokens.length) problems.push(`${circle.id}: the three slips must be held by three different guests`);
+    }
+    for (const [holder, count] of holders) if (count > 1) problems.push(`${holder} holds ${count} race slips`);
+    stats["race slips"] = holders.size;
+    add("Races: each group has one race; the four trades each need three slips from three different outsiders, one slip per holder", problems);
+  }
+
+  // ------------------------------------------------------------ host-approved objectives
+  {
+    const problems: string[] = [];
+    const approvals = allObjectives.filter((objective) => objective.check.kind === "approval");
+    const words = new Map<string, string>();
+    const cardText = characters.flatMap((character) => [character.publicBio, character.background.history, character.background.wardrobe, ...character.background.people, ...character.secrets.map((line) => line.text), ...knowsFor(character).map((line) => line.text), ...(character.roleCard ?? []), ...character.objectives.map((objective) => `${objective.title} ${objective.text} ${objective.ask}`)]).join(" ").toLowerCase();
+    for (const objective of approvals) {
+      const word = (objective.check as { word: string }).word.toLowerCase();
+      const previous = words.get(word);
+      if (previous) problems.push(`${objective.id} reuses the approval word of ${previous}`);
+      words.set(word, objective.id);
+      if (new RegExp(`\\b${word}\\b`).test(cardText)) problems.push(`${objective.id}: the approval word "${word}" is printed on a card, so anyone could type it`);
+    }
+    stats["host-approved objectives"] = approvals.length;
+    add("Approvals: every host-confirmed objective has its own one-word approval, and no word appears on any card", problems);
+  }
+
+  // ------------------------------------------------------------ secrets that are kept
+  {
+    const problems: string[] = [];
+    for (const objective of allObjectives.filter((item) => item.check.kind === "keep")) {
+      const check = objective.check as Extract<Objective["check"], { kind: "keep" }>;
+      const owner = objective.id.split("-")[0];
+      const seekerObjective = allObjectives.find((item) => item.id === check.seekerObjective);
+      const rivalObjective = allObjectives.find((item) => item.id === check.rivalObjective);
+      if (!seekerObjective || !rivalObjective) {
+        problems.push(`${objective.id}: its seeker or rival objective does not exist`);
+        continue;
+      }
+      for (const [label, other, who] of [["seeker", seekerObjective, check.seeker], ["rival", rivalObjective, check.rival]] as const) {
+        if (other.id.split("-")[0] !== who) problems.push(`${objective.id}: the ${label}'s objective ${other.id} does not belong to ${who}`);
+        if (other.kind !== "learn" || !other.with.includes(owner)) problems.push(`${objective.id}: the ${label}'s objective ${other.id} is not a search for ${owner}'s secret`);
+      }
+      if (check.seeker === check.rival) problems.push(`${objective.id}: the seeker and the rival are the same guest`);
+      if (characterById.get(check.seeker)?.survivor || characterById.get(check.rival)?.survivor) problems.push(`${objective.id}: a survivor is the seeker or the rival`);
+    }
+    add("Kept secrets: each holder's seeker and rival both search for exactly that secret", problems);
   }
 
   // ------------------------------------------------------------ props and codes
@@ -438,13 +515,13 @@ export function runValidation(root = process.cwd()): Report {
     const total = counted.reduce((sum, question) => sum + question.points, 0);
     const byMystery = (id: string) => counted.filter((question) => question.mystery === id).reduce((sum, question) => sum + question.points, 0);
     stats["mystery points"] = `${byMystery("old")}+${byMystery("new")}+${byMystery("connection")}=${total}`;
-    if (total !== 100) problems.push(`the three mysteries should total 100 points, got ${total}`);
-    if (total <= OBJECTIVE_TOTAL) problems.push("the mysteries must be worth more than all the objectives together");
+    if (Math.abs(total - 10) > 0.001) problems.push(`the three mysteries should total 10 points, got ${total}`);
+    if (Math.abs(total - 2 * OBJECTIVE_TOTAL) > 0.001) problems.push(`the mysteries (${total}) must be worth double all the objectives together (${OBJECTIVE_TOTAL})`);
     for (const question of questions) {
       const rubric = question.rubric.reduce((sum, element) => sum + element.points, 0);
-      if (question.type === "text" && !question.fromKillerMotive && rubric !== question.points) problems.push(`${question.id}: rubric totals ${rubric}, not ${question.points}`);
+      if (question.type === "text" && !question.fromKillerMotive && Math.abs(rubric - question.points) > 0.001) problems.push(`${question.id}: rubric totals ${rubric}, not ${question.points}`);
     }
-    add("Reckoning: every question stands on at least three independent sources; the mysteries are worth 100", problems);
+    add("Reckoning: every question stands on at least three independent sources; the mysteries are worth 10, double the objectives", problems);
   }
 
   // ------------------------------------------------------------ identity routes
@@ -611,7 +688,7 @@ export function runValidation(root = process.cwd()): Report {
   // ------------------------------------------------------------ nothing early leaks the solution
   {
     const problems: string[] = [];
-    const secretWords = ["survivor", "marker", "kessler", "quill", "vial", "tincture", "veil name", "the list", "poison", "unsettled", "killer", "murderer"];
+    const secretWords = ["survivor", "marker", "kessler", "vial", "tincture", "veil name", "the list", "poison", "unsettled", "killer", "murderer"];
     for (const character of characters) {
       const early = [character.publicBio, character.name, character.occupation, character.background.history, character.background.wardrobe, ...character.background.people].join(" ").toLowerCase();
       if (character.survivor) {
@@ -664,7 +741,7 @@ export function runValidation(root = process.cwd()): Report {
         ...exhibits.map((exhibit) => exhibit.code),
         ...survivors.map((survivor) => survivor.survivor!.veilName),
         "Kessler",
-        "Quill",
+        ...allObjectives.filter((objective) => objective.check.kind === "approval").map((objective) => (objective.check as { word: string }).word),
         "motiveKeys",
         "nux vomica",
       ];

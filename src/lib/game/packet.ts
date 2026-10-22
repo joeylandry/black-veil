@@ -6,7 +6,7 @@
  * instructions. Claude Code reads it, writes a verdicts file, and `-- verdicts` applies it.
  * SERVER-ONLY: the packet holds the solution.
  */
-import { characterById, characters, exhibits, objectiveById, questionById } from "@/data/game";
+import { characterById, characters, objectiveById, questionById } from "@/data/game";
 import type { Check } from "@/data/game";
 import { rubricFor } from "./grading";
 import type { GradeItem, Submission, Truth, VerdictOverride } from "./types";
@@ -62,6 +62,9 @@ function describeCheck(check: Check): string {
       return `The answer must name exactly the two guests of one true secret pair: ${check.pairs.map(([a, b]) => `${characterById.get(a)?.name} and ${characterById.get(b)?.name}`).join(", or ")}.`;
     case "manual":
       return check.rubric;
+    case "approval":
+      return "Decided by the host's approval word, not by the guest's own words.";
+    case "keep":
     case "hide":
     case "vial-attempt":
     case "butler-sale":
@@ -95,9 +98,6 @@ export function buildPacket(items: GradeItem[], submissions: Submission[], truth
           const rubric = rubricFor(question, truth);
           answerKey = rubric.map((element) => `${element.points} pts: ${element.label}. Ideas: ${element.all.map((group) => `[${group.join(" | ")}]`).join(" AND ")}`).join("\n");
         }
-      } else if (item.kind === "exhibit") {
-        prompt = "A filed exhibit code.";
-        answerKey = `Valid codes: ${exhibits.map((exhibit) => `${exhibit.code}=${exhibit.title}`).join("; ")}.`;
       } else {
         prompt = `${item.kind} ${item.itemId}`;
       }

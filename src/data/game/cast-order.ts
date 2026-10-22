@@ -1,6 +1,5 @@
 /** Order & Letters: officials, professionals, and the people who sign or print things. */
-import { deal, find, hide, money, motiveChain, nightcapChain, offerChain, role, secretOf, seek, story, swap } from "./build";
-import { sceneCode } from "./props";
+import { approval, deal, find, keep, money, motiveChain, nightcapChain, offerChain, role, secretOf, story, who } from "./build";
 import type { Character } from "./types";
 
 export const order: Character[] = [
@@ -14,7 +13,7 @@ export const order: Character[] = [
     background: {
       history: "You have held the star for six years and your county has never been quiet. A feud with Leon Gee, who mocks your department on the radio every night, has become the best entertainment in the county.",
       people: [
-        "Leon Gee: you suspect a second, unlicensed transmitter somewhere in town, and you intend to find it.",
+        "Leon Gee: you would happily arrest him for being insufferable on the radio, and he knows what that is worth.",
         "Emmerich Sunner: the county physician reports to you and examines every body you find.",
         "Tiffany Liu: the windows of your office are hers, and so, you suspect, is some of the gossip about you.",
       ],
@@ -35,11 +34,11 @@ export const order: Character[] = [
     ],
     habit: "You check the exits of every room you enter, a lawman's habit. Let people see you do it.",
     objectives: [
-      find("theodor-1", "constitution"),
-      secretOf("theodor-2", "tim", "krrish", ["cuff"]),
-      role("theodor-3", "First Responder", "When you hear the scream, reach the body fast, walk, do not run, and read the scene code on the card by the table.", "The scene code", { kind: "code", codes: [sceneCode] }),
-      role("theodor-4", "The Coroner's Folder", "Open the Coroner's Folder at the scene. File the report: type the filing code printed at the foot of the page.", "The filing code", { kind: "code", codes: ["YMYKK"] }),
-      deal("theodor-5", ["leon", "tiffany"], "The Leon matter", "You hold a Nuisance Citation against Leon Gee. Either serve it on him (he hands you a served stub), or take a Pardon slip from a go-between and tear the citation up. Type the code of whichever you are handed.", "The code on the slip or stub", ["pardon-slip", "served-stub"]),
+      find("theodor-find", "constitution"),
+      deal("theodor-deal", ["leon", "tiffany"], "The Leon matter", "You hold a Nuisance Citation against Leon Gee for being insufferable. Take a bribe from a go-between and tear the citation up: the go-between hands you a Pardon slip. Type the code on the slip.", "The code on the Pardon slip", ["pardon-slip"]),
+      secretOf("theodor-secret", "krrish", "emre", ["grey hudson", "grey"]),
+      keep("theodor-keep", "anthony", "anthony-secret", "rebecca", "rebecca-secret"),
+      approval("theodor-arrest", "Make the arrest", "When the body is found, take charge, question the room, and make an arrest by a quarter past ten. Do it for real, then claim this point. The host will confirm it and give you an approval word.", "handcuff"),
     ],
   },
   {
@@ -63,13 +62,13 @@ export const order: Character[] = [
     ],
     smallSecret: { text: "You let three “orders in C.C.'s hand” stand, though the clerk swore the i's had rings.", key: ["clerk"], confidant: "anthony" },
     startingCash: 150,
-    carries: ["dismissal"],
+    carries: ["dismissal", "reply-eric"],
     objectives: [
-      find("eric-1", "chess-box"),
-      secretOf("eric-2", "erika", "rebecca", ["twenty others"]),
-      deal("eric-3", ["krrish"], "The Friday crate", "Accept Krrish Vermouth's Friday crate of wine and quietly dismiss his cases. Keep his crate receipt and hand him a notice of dismissal: read the code on the receipt. Nobody is to know.", "The code on the crate receipt", ["crate-receipt"]),
-      story("eric-4", "Who is K. Kessler?", "A Boston firm took instructions from one “K. Kessler.” Learn from someone who knew him what he was.", "His name and trade", "tiffany", ["rebecca"], [["kessler"], ["keeper"]]),
-      money("eric-5", 220, "A judge's fines are a judge's pocket money. Settle a few quiet matters for cash. Leave with at least $220."),
+      find("eric-find", "chess-box"),
+      deal("eric-deal", ["krrish"], "The Friday crate", "Accept Krrish Vermouth's Friday crate of wine and quietly dismiss his cases. Keep his crate receipt and hand him a notice of dismissal: read the code on the receipt. Nobody is to know.", "The code on the crate receipt", ["crate-receipt"]),
+      secretOf("eric-secret", "emre", "tim", ["beet", "beets"]),
+      keep("eric-keep", "silas", "silas-secret", "sidd", "sidd-secret"),
+      role("eric-charter", "Sign the charter", "At the wrap-up the host hands you the charter. Sign it, and type the code printed on it.", "The code on the charter", { kind: "code", codes: ["4JNW7"] }),
     ],
   },
   {
@@ -93,13 +92,13 @@ export const order: Character[] = [
     ],
     smallSecret: { text: "You drew name-change papers for a dozen strangers, paid in gold by “a friend,” and kept the carbon.", key: ["carbon"], confidant: "rhea" },
     startingCash: 120,
-    carries: [],
+    carries: ["tool-anthony"],
     objectives: [
-      find("anthony-1", "bill-of-rights"),
-      secretOf("anthony-2", "luke", "diwakar", ["post-office box", "post office box", "postoffice box"]),
-      money("anthony-3", 210, "Charge by the word. Sell advice, draw a paper, collect a retainer. Leave with at least $210."),
-      story("anthony-4", "The hand that was not hers", "You saw three orders in a court. Learn what Cassie's real hand looks like from someone who knows it.", "What is different about her hand", "leon", ["rebecca"], [["plain"]]),
-      story("anthony-5", "How many were there?", "Seventeen strangers died in accidents in one county. Learn the count from someone who counted.", "The number", "emre", ["theodor"], [["seventeen", "17"]]),
+      money("anthony-money", 180, "Charge by the word. Sell advice, draw a paper, collect a retainer. Leave with at least $180."),
+      find("anthony-find", "bill-of-rights"),
+      secretOf("anthony-secret", "theodor", "molly", ["shoebox", "shoe box"]),
+      story("anthony-story", "The hand that was not hers", "You saw three orders in a court. Learn what Cassie's real hand looks like from someone who knows it.", "What is different about her hand", "leon", ["rebecca"], [["plain"]]),
+      story("anthony-story2", "How many were there?", "Seventeen strangers died in accidents in one county. Learn the count from someone who counted.", "The number", "emre", ["theodor"], [["seventeen", "17"]]),
     ],
   },
   {
@@ -123,7 +122,7 @@ export const order: Character[] = [
     ],
     smallSecret: { text: "You ate beet sandwiches for a week to prove the “blood” was beets and sugar.", key: ["beet", "beets"], confidant: "tim" },
     startingCash: 100,
-    carries: [],
+    carries: ["trade-emre"],
     role: "doctor",
     roleCard: [
       "You are the only one who may examine the body. When the Sheriff opens the scene, take your time and do it properly.",
@@ -132,17 +131,17 @@ export const order: Character[] = [
     ],
     habit: "You dot every i with a tiny ring when you write, as you were taught writing prescriptions. Do it on anything you sign or note.",
     objectives: [
-      find("emre-1", "duck"),
-      secretOf("emre-2", "tiffany", "mihir", ["chisel"]),
-      role("emre-3", "The examination", "Examine the body. State what killed him, and what it was carried in.", "Cause of death", { kind: "pattern", all: [["strychnine", "nux vomica"], ["rye", "whiskey", "nightcap", "glass", "drink"]] }, ["theodor"]),
-      role("emre-4", "The time", "State when the poison was taken, as closely as you can.", "Time the poison was taken", { kind: "pattern", all: [["nine", "9", "9:00", "900", "9 00", "nine oclock", "9 oclock", "9pm", "9 pm"]] }),
-      story("emre-5", "Where did it come from?", "The report says a house stock, not a druggist's pack. Learn whose house.", "Whose stock it was", "tim", ["rhea"], [["butler", "house", "chow", "rebecca"]]),
+      find("emre-find", "duck"),
+      secretOf("emre-secret", "luke", "diwakar", ["post-office box", "post office box", "postoffice box"]),
+      keep("emre-keep", "eric", "eric-secret", "leon", "leon-secret"),
+      role("emre-exam", "The examination", "Examine the body. State what killed him, and what it was carried in.", "Cause of death", { kind: "pattern", all: [["strychnine", "nux vomica"], ["rye", "whiskey", "nightcap", "glass", "drink"]] }, ["theodor"]),
+      role("emre-time", "The time", "State when the poison was taken, as closely as you can.", "Time the poison was taken", { kind: "pattern", all: [["nine", "9", "9:00", "900", "9 00", "nine oclock", "9 oclock", "9pm", "9 pm"]] }),
     ],
   },
   {
     id: "molly",
     realNames: ["Molly Daniel", "Molly"],
-    circle: "order",
+    circle: "survivors",
     name: "Molly Daniel of the Manchester Union",
     occupation: "Newsie",
     publicBio: "Hollers the headlines from the corner before the ink is dry. If it's news, Molly has it, and so does everyone within three blocks.",
@@ -169,17 +168,17 @@ export const order: Character[] = [
       tell: "You glance at the nearest clock every time a door opens, and again when it closes.",
       skillLeak: "You know every street, back stair and short cut in Manchester, and you can read a newspaper upside down.",
       realStory: "You are Winifred “Winnie” Pike, the Black Veil's Runner: the Canadian mail, the late editions, the messages that could not be telephoned. You carried the invitations to the Exit on 31 October 1924.",
-      escape: "You were on a back road with a message when Quill's boatman came. You ran, hid under a newsie's bundle, and cried the late edition on a corner until the corner was your own.",
-      grievance: "The Keeper had Pat Dunn, your running partner, thrown into the river in March 1925, paid for out of your own share. You were meant to be the next to carry a message and not come back.",
-      motiveKeys: [["pat", "dunn", "partner", "running partner", "friend", "runner", "courier"], ["drowned", "river", "thrown", "killed", "murdered", "murder"]],
+      escape: "You were on a back road with a message when the hitman's boatman came. You ran, hid under a newsie's bundle, and cried the late edition on a corner until the corner was your own.",
+      grievance: "The Keeper had the Veil's runners killed one at a time, the last thrown into the river off the Granite Street steps, and paid for it out of your own share. You were meant to be the next to carry a message and not come back.",
+      motiveKeys: [["runner", "runners", "messenger", "messengers", "courier", "couriers", "partner"], ["killed", "drowned", "murdered", "murder", "thrown"]],
       motiveFact: "motive-22",
     },
     objectives: [
-      find("molly-1", "mask"),
-      secretOf("molly-2", "adam", "eric", ["six boxes"]),
-      nightcapChain("molly-3"),
-      offerChain("molly-4"),
-      motiveChain("molly-5", ["tim", "theodor", "erika"], [["pat", "dunn", "partner", "running partner", "friend", "runner", "courier"], ["drowned", "river", "thrown", "killed", "murdered", "murder"]]),
+      find("molly-find", "mask"),
+      who("molly-who", "You have worn this cover for a year. Learn what you really were before you took this name: some guests have noticed what a cover cannot hide.", ["diwakar", "tim", "sidd"], [["courier", "runner"]]),
+      motiveChain("molly-why", ["tim", "theodor", "erika"], [["runner", "runners", "messenger", "messengers", "courier", "couriers", "partner"], ["killed", "drowned", "murdered", "murder", "thrown"]]),
+      nightcapChain("molly-hour"),
+      offerChain("molly-offer"),
     ],
   },
 ];

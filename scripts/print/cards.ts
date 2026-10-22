@@ -44,9 +44,8 @@ const banner = (sub = "") => `<div class="banner">THE BLACK VEIL${sub ? `<small>
 const typeLine = () => `Type your answers on your phone${SITE ? ` at <b>${esc(SITE)}</b>` : ""} whenever you like. Only your last answer counts.`;
 const tagText = { free: "Yours to share", trade: "Trade it, don't give it away", secret: "Never say it aloud" } as const;
 const lines = (xs: { text: string; share: keyof typeof tagText }[]) => xs.map((l) => `<div class="line"><span class="tag ${l.share}">${tagText[l.share]}</span>${esc(l.text)}</div>`).join("");
-const errandHtml = (o: CardView["private"]["objectives"][number]) => {
-  const n = o.id.split("-").pop();
-  return `<div class="errand"><div class="t"><span class="lab">Errand ${n}</span>${esc(o.title)}</div><div>${esc(o.text)}</div><div class="a"><span>Type: <em>${esc(o.ask)}</em></span><b>${o.points} POINTS</b></div></div>`;
+const errandHtml = (o: CardView["private"]["objectives"][number], n: number) => {
+  return `<div class="errand"><div class="t"><span class="lab">Objective ${n}</span>${esc(o.title)}</div><div>${esc(o.text)}</div><div class="a"><span>Type: <em>${esc(o.ask)}</em></span><b>${o.points} ${o.points === 1 ? "POINT" : "POINTS"}</b></div></div>`;
 };
 const summaryHtml = () =>
   `<div class="summary">${brief1924
@@ -54,7 +53,8 @@ const summaryHtml = () =>
     .map((b) => `<h4>${esc(b.heading)}</h4>${b.bullets.map((t) => `<p>${esc(t)}</p>`).join("")}`)
     .join("")}</div>`;
 
-const num = (o: { id: string }) => Number(o.id.split("-").pop());
+/** Objectives 1 and 2 ride on the card; 3 to 5 are sealed in the black envelope. Numbered by their place on the card. */
+const numbered = (objectives: CardView["private"]["objectives"]) => objectives.map((o, index) => ({ o, n: index + 1 }));
 
 // ------------------------------------------------------------------ 1. character cards
 function cardPages(): string[] {
@@ -70,14 +70,14 @@ function cardPages(): string[] {
       <ul>${k.background.people.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>
       <p><span class="lab">What to wear</span> &nbsp;${esc(k.background.wardrobe)}</p>
     </div></div></div>`);
-    const errands = p.objectives.filter((o) => num(o) <= 2).sort((a, b) => num(a) - num(b));
+    const errands = numbered(p.objectives).filter(({ n }) => n <= 2);
     pages.push(`<div class="page"><div class="sheet">${banner(`${k.name} · Private`)}<div class="fit" style="--base:11.5pt">
       <h2>Private</h2>${lines(p.secrets)}
       <h2>What you know</h2><div class="${p.knows.length > 6 ? "cols2" : ""}">${lines(p.knows)}</div>
       ${p.habit ? `<p style="margin-top:.4em"><span class="lab">Your habit</span> &nbsp;${esc(p.habit)}</p>` : ""}
       <div class="cash"><span class="t">You start with</span><span class="amt">$${p.startingCash}</span><span class="t">in House notes</span></div>
-      <h2>Your errands</h2>${errands.map(errandHtml).join("")}
-      <div class="box">Errands 3 to 5 are in your black envelope</div>
+      <h2>Your objectives</h2>${errands.map(({ o, n }) => errandHtml(o, n)).join("")}
+      <div class="box">Objectives 3 to 5 are in your black envelope</div>
       <div class="flapbox">If you are one of the five, your private page already knows. Everyone else's has the same sealed flap with nothing behind it.</div>
       <div class="type">${typeLine()}</div>
     </div></div></div>`);
@@ -90,10 +90,11 @@ function envelopePages(): string[] {
   return sorted.map((c) => {
     const k = buildCard(c.id)!;
     const p = k.private;
-    const errands = p.objectives.filter((o) => num(o) >= 3).sort((a, b) => num(a) - num(b));
+    const errands = numbered(p.objectives).filter(({ n }) => n >= 3);
     return `<div class="page"><div class="sheet">${banner(k.name)}<div class="fit" style="--base:12pt">
-      <div class="name" style="font-size:2.1em">Your black envelope</div><div class="occ">Errands 3 to 5</div><div class="rule"></div>
-      ${errands.map(errandHtml).join("")}
+      <div class="name" style="font-size:2.1em">Your black envelope</div><div class="occ">Objectives 3 to 5</div><div class="rule"></div>
+      ${errands.map(({ o, n }) => errandHtml(o, n)).join("")}
+      <h2>Your group's race: ${esc(p.race.title)} · 1 extra point</h2><p>${esc(p.race.text)}</p>${p.race.slips.map((slip) => `<p><b>${esc(slip)}</b></p>`).join("")}
       ${p.role ? `<h2>${esc(p.role.title)}</h2><ol class="rules">${p.role.rules.map((r) => `<li>${esc(r)}</li>`).join("")}</ol>` : ""}
       ${p.carries.length ? `<div class="box" style="margin-top:.7em">You will be handed at the door: ${p.carries.map(esc).join(", ")}</div>` : ""}
       <div class="flapbox">What is in this envelope is for you alone. Keep a straight face, and enjoy the night.</div>

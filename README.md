@@ -28,12 +28,12 @@ npm run build
 - `/archive/[slug]` — full-size physical artifact view with prior/next record navigation
 - `/guest-ledger` — real-name RSVP, persisted to Postgres and signed in for this device
 - `/invitation` — private invitation revealed after archive access and RSVP
-- `/game` — the guest's night: three-tab character card ("Characters coming very soon" until released), errands, final answers, results. See `docs/game/README.md`
+- `/game` — the guest's night: three-tab character card ("Characters coming very soon" until the host presses Start game), objectives, final answers, results. See `docs/game/README.md`
 - `/black-frog` — the seven-trial CTF (server-verified flags) and in-person point claims
 - `/postscript` — the unlisted bonus flag (footer link once the register is unsealed; the flag is in the unlocked terminal ledger)
 - `/bench/[ticket]` — one restoration bench: a graded engineering exercise (RST-01 … RST-12)
 - `/resume` — request a magic-link sign-in to restore your register on a new device
-- `/admin` — staff-only, passcode-gated cast page: who is coming, their character, sign in as them, and the switch that releases character names (linked from the footer)
+- `/admin` — staff-only, passcode-gated cast page: who is coming, their character, sign in as them, and the one **Start game** button that releases every card and objective (linked from the footer)
 - unmatched routes — custom in-world 404
 
 ## Archive system

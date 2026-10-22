@@ -14,7 +14,11 @@ export type Errand = {
   prop?: { name: string };
   withNames: string[];
   house: boolean;
+  approval: boolean;
+  automatic: boolean;
 };
+
+export type RaceCard = { group: string; title: string; text: string; ask: string; house: boolean; points: number; slips: string[] };
 
 export type SurvivorCard = {
   veilName: string;
@@ -44,11 +48,12 @@ export type Card = {
     survivor?: SurvivorCard;
     objectives: Errand[];
     totalPoints: number;
+    race: RaceCard;
   };
 };
 
 export type FinalQuestion = { id: string; mystery: string; prompt: string; hint: string; points: number; type: "text" | "guest" };
-export type DirectoryEntry = { id: string; name: string; occupation: string; circle: string };
+export type DirectoryEntry = { id: string; name: string; occupation: string };
 
 export type CardResponse =
   | { status: "sealed" | "uncast"; message: string }
@@ -66,7 +71,7 @@ export type SavedAnswer = { kind: string; itemId: string; answer: string; proof:
 export type ResultItem = { guest: string; kind: string; itemId: string; verdict: string; points: number; max: number; rationale: string; source: string };
 export type Results = {
   publishedAt: string;
-  you: { guest: string; name: string; total: number; rank: number; circleRank: number; tiers: { objectives: number; exhibits: number; survivors: number; mysteries: number; poisoner: number }; items: ResultItem[] } | null;
+  you: { guest: string; name: string; total: number; rank: number; circleRank: number; tiers: { objectives: number; survivors: number; mysteries: number; race: number }; items: ResultItem[] } | null;
   board: { guest: string; name: string; circle: string; survivor: boolean; total: number; rank: number; circleRank: number; isYou: boolean }[];
   winner: string | null;
   killer: string | null;
