@@ -428,7 +428,7 @@ function buildIndex() {
     <table><thead><tr><th>Page</th><th>Id</th><th>Exhibit</th><th>Code</th><th>Where it goes</th><th>How</th><th>Holder</th></tr></thead><tbody>${body}
     ${tr([String(tieBreakerPage), "<b>tie-breaker</b>", "Second rail stub (secret)", "none", "in the LINING of the dead man's jacket", "sewn in", ""], "tb")}</tbody></table>
     <p class="tbq"><b>Tie-breaker.</b> Only if two guests tie on points, ask the tied guests aloud: &ldquo;${esc(tieBreaker.question)}&rdquo; Answer: <b>${esc(tieBreaker.answer)}</b>. ${esc(tieBreaker.clue)}</p>
-    <p class="warn">Print order in the Keeper's binder: list, books, receipts, vault memo, forged orders, counterfoils (and the note from the jacket stays out of the binder: it is laid out at the scene).</p></div>`;
+</div>`;
   const css = `body{font-family:"Liberation Sans",Arial,sans-serif;font-size:9.5pt;color:#000;-webkit-print-color-adjust:exact}.page{width:8.5in;height:11in;overflow:hidden}h1{font-size:15pt;margin:0 0 .06in}table{border-collapse:collapse;width:100%;margin-top:.1in}th,td{border:.6px solid #777;padding:3px 5px;text-align:left;vertical-align:top;font-size:9.5pt}th{background:#e8e8e8}.code{font:bold 11pt "FreeMono",monospace}.warn{font-size:9pt;color:#444;margin:.06in 0}tr.tb td{background:#f3e0e0}.tbq{font-size:10pt;margin:.12in 0}`;
   return build("exhibits-index", doc("Black Veil host index", html, css, true));
 }
@@ -563,7 +563,7 @@ function menuBody(card: boolean) {
   const it = (m: { name: string; desc: string }) => `<div class="it"><span class="nm">${esc(m.name)}</span><span class="dots"></span><span class="pr">${esc(menuPriceNote)}</span></div><div class="ds">${esc(m.desc)}</div>`;
   const band = `<div class="band"><h1>${esc(menuTitle)}</h1><div class="by">${esc(menuBy)}</div><div class="med">${esc(menuNotice)}</div></div>`;
   const drinks = `<div><h2>Tonics &amp; Medicines</h2>${menuDrinks.map(it).join("")}</div>`;
-  const bites = `<div><h2>${esc(menuBitesTitle)}</h2><div class="bites">${menuBites.map(it).join("")}</div></div>`;
+  const bites = `<div><h2>${esc(menuBitesTitle)}</h2><div class="bites">${menuBites.map((b) => `<div>${it(b)}</div>`).join("")}</div></div>`;
   const foot = `<div class="foot">All prices: ${esc(menuPriceNote)}. The House reserves the right to ask no questions.</div>`;
   if (card) {
     const half = Math.ceil(menuDrinks.length / 2);
@@ -576,7 +576,7 @@ function menuBody(card: boolean) {
 function buildMenu() {
   const full = `<div class="page"><div class="menu">${menuBody(false)}</div></div>`;
   const a = build("menu", doc("Black Veil menu", full));
-  const cards = `<div class="page"><div class="mcard" style="position:absolute;left:0;top:0">${menuBody(true)}</div><div class="cutpage"></div><div class="mcard" style="position:absolute;left:0;top:5.5in">${menuBody(true)}</div></div>`;
+  const cards = `<div class="page"><div class="menu mcard chk" style="left:0;top:0">${menuBody(true)}</div><div class="cutpage"></div><div class="menu mcard chk" style="left:0;top:5.5in">${menuBody(true)}</div></div>`;
   const b = build("menu-table-card", doc("Black Veil table card", cards));
   return a + b;
 }
