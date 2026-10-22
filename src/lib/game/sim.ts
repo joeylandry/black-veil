@@ -2,7 +2,7 @@
  * Test and simulation helpers. They know the answers (they read the game bible), so this
  * module is only ever imported by tests and scripts, never by the application.
  */
-import { characterById, characters, exhibits, questions, survivorIds } from "@/data/game";
+import { alternateOf, characterById, characters, exhibits, questions, survivorIds } from "@/data/game";
 import type { Character, Objective, Question } from "@/data/game";
 import { autoGrade } from "./grading";
 import { computeStandings } from "./scoring";
@@ -31,7 +31,7 @@ export function correctAnswer(character: Character, objective: Objective): strin
     case "money":
       return `$${check.min + 5}`;
     case "clock":
-      return "9:16 pm";
+      return check.from;
     case "seek": {
       const [a, b] = check.pairs[0];
       return `${characterById.get(a)!.realNames[0]} and ${characterById.get(b)!.realNames[0]}`;
@@ -66,7 +66,11 @@ export function correctMystery(question: Question, killer: string): string {
     case "con-2":
       return "They are the five survivors who escaped his hitman, members of the Veil thought dead, who came for revenge.";
     case "con-3":
-      return "Cassie sent them from Montreal to lure the Keeper and the survivors in front of witnesses.";
+      return "Kit, writing as the House, invited the nineteen guests to be witnesses who had to sign for his succession, and Cassie sent the five survivors their own invitations from Montreal.";
+    case "alt-1":
+      return "He meant to crown himself the new head of the Black Veil, with the nineteen guests as witnesses who had to sign, held by their secrets, and Cassie declared dead so the vault would pass to him.";
+    case "alt-2":
+      return "In the vault behind the Merrimack Room's second window: three keys, the Keeper's ring, the Silent Partner's brass key and Cassie's pin, then a dial only Cassie sets.";
     default:
       return "";
   }
@@ -119,12 +123,13 @@ export function simulateNight(options: { seed: number; killer?: string; profiles
       submissions.push({ guest: character.id, kind: "exhibit", itemId: exhibit.code, answer: exhibit.code, proof: "", at: (clock += 1000) });
     }
     // mysteries
+    const insider = character.role === "butler" || character.id === killer;
     for (const question of questions) {
-      // survivors lived the story, the killer knows their own grievance, and the Butler saw the sale
+      if (question.alternateFor ? !insider : insider && alternateOf.has(question.id)) continue;
+      // survivors lived part of the story, and the killer knows their own grievance
       const lived =
         (character.survivor && question.rubric.some((element) => element.survivorKnows === true)) ||
-        (character.survivor && question.id === "new-3" && character.id === killer) ||
-        (character.role === "butler" && question.butlerKnows);
+        (character.survivor && question.id === "new-3" && character.id === killer);
       if (lived || random() < p.mystery) {
         submissions.push({ guest: character.id, kind: "mystery", itemId: question.id, answer: correctMystery(question, killer), proof: "", at: (clock += 1000) });
       } else if (random() < 0.4) {

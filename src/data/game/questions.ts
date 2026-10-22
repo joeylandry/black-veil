@@ -20,9 +20,9 @@ export const questions: Question[] = [
     points: 10,
     type: "text",
     rubric: [
-      { id: "staged", label: "It was staged: stage blood, blanks, a show", points: 5, all: [["staged", "stage", "fake", "faked", "hoax", "fabricated", "pretend", "pretended", "theatre", "theater", "blanks", "stage blood", "trick", "trickery", "a show"]], survivorKnows: true },
-      { id: "nodeaths", label: "Nobody actually died that night", points: 3, all: [["nobody died", "no one died", "no deaths", "no bodies", "no body", "nobody was killed", "no one was killed", "everyone survived", "everyone lived", "nobody was hurt", "alive", "still alive"]], survivorKnows: true },
-      { id: "cassie", label: "Cassie planned it", points: 2, all: [["cassie", "cassandra", "castello"]], survivorKnows: true },
+      { id: "staged", label: "It was staged: stage blood, blanks, a show", points: 5, all: [["staged", "stage", "fake", "faked", "hoax", "fabricated", "pretend", "pretended", "theatre", "theater", "blanks", "stage blood", "trick", "trickery", "a show"]] },
+      { id: "nodeaths", label: "Nobody actually died that night", points: 3, all: [["nobody died", "no one died", "no deaths", "no bodies", "no body", "nobody was killed", "no one was killed", "everyone survived", "everyone lived", "nobody was hurt", "alive", "still alive"]] },
+      { id: "cassie", label: "Cassie planned it", points: 2, all: [["cassie", "cassandra", "castello"]] },
     ],
   },
   {
@@ -33,9 +33,9 @@ export const questions: Question[] = [
     points: 10,
     type: "text",
     rubric: [
-      { id: "newnames", label: "New names, a fresh start, to be thought dead", points: 4, all: [["new name", "new names", "new identity", "new identities", "fresh start", "false name", "false names", "disappear", "disappeared", "thought dead", "believed dead", "fake their deaths", "faked their deaths", "die publicly", "new life", "new lives"]], survivorKnows: true },
-      { id: "payout", label: "A payout from the vault", points: 4, all: [["payout", "paid out", "paid", "money", "share", "shares", "vault", "advance", "cash", "payment"]], survivorKnows: true },
-      { id: "trust", label: "They trusted her as the boss", points: 2, all: [["trust", "trusted", "boss", "followed", "loyal", "loyalty", "leader"]], survivorKnows: true },
+      { id: "newnames", label: "New names, a fresh start, to be thought dead", points: 4, all: [["new name", "new names", "new identity", "new identities", "fresh start", "false name", "false names", "disappear", "disappeared", "thought dead", "believed dead", "fake their deaths", "faked their deaths", "die publicly", "new life", "new lives"]] },
+      { id: "payout", label: "A payout from the vault", points: 4, all: [["payout", "paid out", "paid", "money", "share", "shares", "vault", "advance", "cash", "payment"]] },
+      { id: "trust", label: "They trusted her as the boss", points: 2, all: [["trust", "trusted", "boss", "followed", "loyal", "loyalty", "leader"]] },
     ],
   },
   {
@@ -61,7 +61,6 @@ export const questions: Question[] = [
     points: 16,
     type: "guest",
     truth: "killer",
-    butlerKnows: true,
     rubric: [],
   },
   {
@@ -72,9 +71,9 @@ export const questions: Question[] = [
     points: 12,
     type: "text",
     rubric: [
-      { id: "vehicle", label: "In his nightcap (rye / whiskey)", points: 4, all: [["nightcap", "night cap", "rye", "whiskey", "whisky", "drink", "drank", "honey"]], survivorKnows: true },
-      { id: "poison", label: "Strychnine / nux vomica tincture", points: 3, all: [["strychnine", "nux vomica", "poison", "tincture", "vial"]], survivorKnows: true },
-      { id: "butler", label: "Bought from the Butler / the House's stock", points: 5, all: [["butler", "rebecca", "chow", "house stock", "the house", "house tincture", "house bottle"]], survivorKnows: true },
+      { id: "vehicle", label: "In his nightcap (rye / whiskey)", points: 4, all: [["nightcap", "night cap", "rye", "whiskey", "whisky", "drink", "drank", "honey"]] },
+      { id: "poison", label: "Strychnine / nux vomica tincture", points: 3, all: [["strychnine", "nux vomica", "poison", "tincture", "vial"]] },
+      { id: "butler", label: "Bought from the Butler / the House's stock", points: 5, all: [["butler", "rebecca", "chow", "house stock", "the house", "house tincture", "house bottle"]] },
     ],
   },
   {
@@ -119,16 +118,53 @@ export const questions: Question[] = [
     id: "con-3",
     mystery: "connection",
     prompt: "Who sent the invitations, and why?",
-    hint: "Where was it sent from, and what did the sender want?",
+    hint: "There were two senders. What did each of them want?",
     points: 10,
     type: "text",
     rubric: [
-      { id: "cassie", label: "Cassie sent them (from Montreal)", points: 6, all: [["cassie", "cassandra", "castello", "montreal"]] },
-      { id: "lure", label: "To lure the Keeper and the survivors, with witnesses", points: 4, all: [["lure", "lured", "trap", "bait", "expose", "exposed", "confront", "witness", "witnesses", "draw out", "bring them", "gather", "gathered"]] },
+      { id: "kit", label: "Kit, writing as the House, invited the nineteen regular guests", points: 3, all: [["kit", "kessler", "keeper", "old man", "the old man", "the house", "the dead man"]] },
+      { id: "witnesses", label: "To be witnesses to his succession: they had to sign for him", points: 3, all: [["witness", "witnesses", "sign", "signed", "crown", "crowned", "succession", "succeed", "head of the veil", "take over", "charter"]] },
+      { id: "cassie", label: "Cassie, from Montreal, invited the five survivors", points: 4, all: [["cassie", "cassandra", "castello", "montreal"]] },
+    ],
+  },
+
+  // ---------------- THE REPLACEMENT QUESTIONS (the Butler and the killer only) ----------------
+  // The Butler knows who bought the vial and the killer knows who poured it, so "who" and "how" are free
+  // for them. They answer these two instead, worth the same, which nobody can know just by playing the part.
+  {
+    id: "alt-1",
+    mystery: "new",
+    alternateFor: "new-1",
+    prompt: "What did the Keeper come to the Black Veil to do tonight, and how did he mean to do it?",
+    hint: "Think about what he wanted, who he needed in the room, and why.",
+    points: 16,
+    type: "text",
+    rubric: [
+      { id: "crown", label: "He meant to crown himself the new head of the Black Veil", points: 6, all: [["crown", "crowned", "head of the veil", "head of the black veil", "take over the veil", "take the veil", "new head", "become the head", "succession", "succeed", "take the club"]] },
+      { id: "witnesses", label: "With the nineteen guests as witnesses, who had to sign, held by their secrets", points: 5, all: [["witness", "witnesses", "sign", "signed", "signature", "signatures", "swear", "charter", "roll", "secrets", "leash", "blackmail"]] },
+      { id: "dead", label: "Cassie had to be declared dead so the vault and books would pass to him", points: 5, all: [["declared dead", "declare her dead", "declare cassie dead", "legally dead", "certify", "certificate", "death certificate", "dead by christmas", "declared cassie dead"]] },
+    ],
+  },
+  {
+    id: "alt-2",
+    mystery: "new",
+    alternateFor: "new-2",
+    prompt: "Where are the Keeper's books, and what does it take to open them?",
+    hint: "A place, some keys, and one thing only one person could set.",
+    points: 12,
+    type: "text",
+    rubric: [
+      { id: "where", label: "In the vault behind the Merrimack Room's second window", points: 4, all: [["vault", "safe"], ["merrimack", "second window", "behind the window", "wall", "flue"]] },
+      { id: "keys", label: "Three keys: the Keeper's ring, the Silent Partner's brass key, Cassie's pin", points: 5, all: [["three keys", "3 keys", "keeper's ring", "keepers ring", "silent partner", "brass key", "pin", "diamond"]] },
+      { id: "dial", label: "A dial only Cassie can set", points: 3, all: [["dial", "combination"]] },
     ],
   },
 ];
 
 export const questionById = new Map(questions.map((question) => [question.id, question]));
 
-export const MYSTERY_POINTS = questions.reduce((total, question) => total + question.points, 0);
+/** Which questions are replaced for the Butler and the killer. */
+export const alternateOf = new Map(questions.filter((question) => question.alternateFor).map((question) => [question.alternateFor!, question.id]));
+
+/** The mysteries are worth 100: the replacement questions stand in for questions already counted. */
+export const MYSTERY_POINTS = questions.filter((question) => !question.alternateFor).reduce((total, question) => total + question.points, 0);

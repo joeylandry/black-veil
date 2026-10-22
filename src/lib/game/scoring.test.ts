@@ -1,13 +1,21 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
-import { characterById, characters, circles, questions, survivorIds } from "@/data/game";
+import { alternateOf, characterById, characters, circles, questions, survivorIds } from "@/data/game";
 import { autoGrade, POINTS } from "./grading";
 import { applyOverrides, computeStandings, tieHash } from "./scoring";
 import { correctAnswer, correctMystery, gradeNight, PROFILES, simulateNight } from "./sim";
+import { MYSTERY_POINTS } from "@/data/game/questions";
+import type { Question } from "@/data/game";
 import type { GradeItem, Submission, Truth } from "./types";
 
 const everyone = characters.map((character) => character.id);
-const truth: Truth = { killer: "sidd", present: everyone, seed: "black-veil-1926" };
+// the killer is always one of the five survivors; a second survivor is the bystander
+const killer = survivorIds[0];
+const bystander = survivorIds[1];
+const butler = characters.find((character) => character.role === "butler")!.id;
+const truth: Truth = { killer, present: everyone, seed: "black-veil-1926" };
+// "perfect errands" can only cover what scores itself: hide, vial and sale are not typed in, and manual never scores
+const typedIn = (o: { check: { kind: string } }) => !["hide", "vial-attempt", "butler-sale", "manual"].includes(o.check.kind);
 let clock = 0;
 const sub = (guest: string, kind: Submission["kind"], itemId: string, answer: string): Submission => ({ guest, kind, itemId, answer, proof: "", at: (clock += 10) });
 
@@ -15,13 +23,22 @@ function errandsOnly(guest: string): Submission[] {
   const character = characterById.get(guest)!;
   return character.objectives.filter((o) => o.check.kind !== "hide" && o.check.kind !== "vial-attempt" && o.check.kind !== "butler-sale").map((o) => sub(guest, "objective", o.id, correctAnswer(character, o)));
 }
+/** sim.ts has no canned answer for the replacement questions, so build one from the rubric: the first phrase of every element. */
+function fullAnswer(question: Question): string {
+  const canned = correctMystery(question, killer);
+  return canned || question.rubric.map((element) => element.all.map((group) => group[0]).join(" ")).join(". ");
+}
+/** Full-credit answers to the questions this guest is actually graded on (the Butler and the killer get the alternates). */
 function mysteries(guest: string): Submission[] {
-  return questions.map((question) => sub(guest, "mystery", question.id, correctMystery(question, "sidd")));
+  const insider = guest === butler || guest === killer;
+  return questions
+    .filter((question) => (question.alternateFor ? insider : !(insider && alternateOf.has(question.id))))
+    .map((question) => sub(guest, "mystery", question.id, fullAnswer(question)));
 }
 
 describe("the ladder", () => {
   it("cannot be won by finishing every errand and never working out the story", () => {
-    const runner = "mihir";
+    const runner = "joel";
     const detective = "anika";
     // the detective skips every errand, but solves all three mysteries and names survivors
     const submissions = [
@@ -33,7 +50,8 @@ describe("the ladder", () => {
     const result = computeStandings(items, submissions, truth);
     const a = result.standings.find((row) => row.guest === runner)!;
     const b = result.standings.find((row) => row.guest === detective)!;
-    assert.ok(a.tiers.objectives >= 48, "the runner did their errands");
+    const reachable = characterById.get(runner)!.objectives.filter(typedIn).reduce((sum, o) => sum + o.points, 0);
+    assert.ok(a.tiers.objectives >= reachable, "the runner did their errands");
     assert.equal(b.tiers.objectives, 0);
     assert.ok(b.total > a.total, `detective ${b.total} should beat runner ${a.total}`);
     assert.equal(result.winner, detective);
@@ -44,7 +62,7 @@ describe("the ladder", () => {
   });
 
   it("lets a guest who does both outscore a guest who does only one", () => {
-    const both = "luke";
+    const both = "silas";
     const only = "josh";
     const submissions = [...errandsOnly(both), ...mysteries(both), ...errandsOnly(only), ...mysteries(only).slice(0, 1)];
     const items = autoGrade({ submissions, events: [], truth });
@@ -53,7 +71,7 @@ describe("the ladder", () => {
     assert.ok(rank(both) < rank(only));
   });
 
-  it("scores 192 at most for a non-survivor and caps the survivors' tier at twenty", () => {
+  it("scores at most 192 for a non-survivor and caps the survivors' tier at twenty", () => {
     const best = "anika";
     const submissions = [...errandsOnly(best), ...mysteries(best), sub(best, "survivors", "picks", JSON.stringify(survivorIds))];
     const items = autoGrade({ submissions, events: [], truth });
@@ -66,31 +84,58 @@ describe("the ladder", () => {
 });
 
 describe("what the room knows from the inside", () => {
+  /** What a survivor is paid for a full-marks answer: 70% on the parts they lived, full price on the rest. */
+  const survivorPay = (questionId: string) =>
+    questions.find((question) => question.id === questionId)!.rubric.reduce((sum, element) => sum + (element.survivorKnows === true ? Math.round(element.points * POINTS.insiderCredit) : element.points), 0);
+
   it("pays a survivor 70% for the parts of the story they lived, and full price for the rest", () => {
-    const guest = "joel";
+    const guest = bystander;
     const submissions = mysteries(guest);
     const items = autoGrade({ submissions, events: [], truth });
     const get = (id: string) => items.find((entry) => entry.guest === guest && entry.itemId === id)!.points;
-    assert.equal(get("old-1"), Math.round(2 * POINTS.insiderCredit) + Math.round(3 * POINTS.insiderCredit) + Math.round(5 * POINTS.insiderCredit));
+    assert.equal(get("old-3"), Math.round(5 * POINTS.insiderCredit) + Math.round(2 * POINTS.insiderCredit) + 3, "Kit and the hitman are lived; the frame is not");
+    assert.equal(get("con-1"), Math.round(4 * POINTS.insiderCredit) + Math.round(3 * POINTS.insiderCredit) + 3);
+    assert.equal(get("con-2"), Math.round(5 * POINTS.insiderCredit) + Math.round(3 * POINTS.insiderCredit) + Math.round(2 * POINTS.insiderCredit), "all three parts are lived");
+    for (const id of ["old-3", "con-1", "con-2"]) assert.equal(get(id), survivorPay(id), id);
     assert.equal(get("con-3"), 10, "the invitation's sender is news to a survivor");
     assert.equal(get("new-1"), 16, "a survivor who did not buy the vial must still work out who did");
+    assert.equal(get("new-3"), 12, "only the killer lived the grievance");
   });
   it("charges only the killer for knowing their own grievance", () => {
-    const grievance = characterById.get("sidd")!.survivor!.grievance;
+    const grievance = characterById.get(killer)!.survivor!.grievance;
     const items = autoGrade({
-      submissions: [sub("sidd", "mystery", "new-3", grievance), sub("joel", "mystery", "new-3", grievance)],
+      submissions: [sub(killer, "mystery", "new-3", grievance), sub(bystander, "mystery", "new-3", grievance)],
       events: [],
       truth,
     });
-    const killer = items.find((entry) => entry.guest === "sidd" && entry.itemId === "new-3")!;
-    const other = items.find((entry) => entry.guest === "joel" && entry.itemId === "new-3")!;
-    assert.equal(killer.points, Math.round(6 * POINTS.insiderCredit) * 2);
+    const k = items.find((entry) => entry.guest === killer && entry.itemId === "new-3")!;
+    const other = items.find((entry) => entry.guest === bystander && entry.itemId === "new-3")!;
+    assert.equal(k.points, Math.round(6 * POINTS.insiderCredit) * 2);
     assert.equal(other.points, 12);
   });
-  it("discounts the Butler's 'who did it', because she saw the sale", () => {
-    const items = autoGrade({ submissions: [sub("rebecca", "mystery", "new-1", "sidd"), sub("anika", "mystery", "new-1", "sidd")], events: [], truth });
-    assert.equal(items.find((entry) => entry.guest === "rebecca" && entry.itemId === "new-1")!.points, Math.round(16 * POINTS.insiderCredit));
-    assert.equal(items.find((entry) => entry.guest === "anika" && entry.itemId === "new-1")!.points, 16);
+  it("grades the Butler and the killer on the replacement questions instead of 'who' and 'how'", () => {
+    const outsider = "anika";
+    const submissions = [butler, killer, outsider].flatMap((guest) => mysteries(guest));
+    const items = autoGrade({ submissions, events: [], truth });
+    const ids = (guest: string) => items.filter((entry) => entry.guest === guest && entry.kind === "mystery").map((entry) => entry.itemId);
+    const get = (guest: string, id: string) => items.find((entry) => entry.guest === guest && entry.itemId === id)!;
+    for (const guest of [butler, killer]) {
+      for (const [original, alternate] of alternateOf) {
+        assert.ok(!ids(guest).includes(original), `${guest} has no ${original}`);
+        assert.equal(get(guest, alternate).points, questions.find((question) => question.id === alternate)!.points, `${guest} earns full marks on ${alternate}`);
+      }
+    }
+    for (const [original, alternate] of alternateOf) {
+      assert.ok(ids(outsider).includes(original));
+      assert.ok(!ids(outsider).includes(alternate), `an outsider has no ${alternate}`);
+    }
+    assert.equal(get(outsider, "new-1").points, 16);
+    // the substitution costs the Butler and the killer nothing: the mysteries still total 100
+    for (const guest of [butler, killer, outsider]) {
+      const standing = computeStandings(items, submissions, truth).standings.find((row) => row.guest === guest)!;
+      assert.ok(standing.tiers.mysteries <= MYSTERY_POINTS, `${guest} ${standing.tiers.mysteries}`);
+      if (guest !== killer) assert.equal(standing.tiers.mysteries, MYSTERY_POINTS, `${guest} can still reach the full ${MYSTERY_POINTS}`);
+    }
   });
 });
 
@@ -146,14 +191,15 @@ describe("ties", () => {
   });
   it("breaks ties by mysteries, then the killer question, then the survivors tier, then errands", () => {
     const a = "anika";
-    const b = "mihir";
+    const b = "silas";
     // equal totals by construction: a has more mystery points, b has more errand points
     const mysteryA = [sub(a, "mystery", "old-3", "Kit Kessler the Keeper hired a hitman, Quill, and framed Cassie with forged orders.")];
-    const submissions = [...mysteryA, ...errandsOnly(b).slice(0, 1)];
+    const errand = errandsOnly(b)[0];
+    const submissions = [...mysteryA, errand];
     const items = autoGrade({ submissions, events: [], truth });
     const adjusted = items.map((entry) => {
       if (entry.guest === a && entry.itemId === "old-3") return { ...entry, points: 12, max: 12 };
-      if (entry.guest === b && entry.itemId === "mihir-1") return { ...entry, points: 12 };
+      if (entry.guest === b && entry.itemId === errand.itemId) return { ...entry, points: 12 };
       return entry;
     });
     const result = computeStandings(adjusted, submissions, truth);

@@ -25,26 +25,26 @@ PASS  Bundles: only API routes import the game bible, never a client component o
 PASS  Built client: no marker code, exhibit code, survivor name or answer key appears in any shipped JavaScript
 PASS  Money: the room holds enough cash for every money objective to be won without ruining anyone
 
-  circle sizes: 5/4/5/5/5
+  circle sizes: 5/5/5/5/4
   memorials: 2
   objectives: 120
-  pattern objectives: 60
-  swap pairs: 6
-  secret pairs: 2
+  pattern objectives: 53
+  swap pairs: 5
+  secret pairs: 1
   seekers: 3
-  printed codes: 57
-  facts: 36
-  fact lines: 120
+  printed codes: 66
+  facts: 39
+  fact lines: 140
   mystery points: 30+40+30=100
   decoys: 6
-  clue lines per guest: 3–9
-  web ties per guest: 7–15
+  clue lines per guest: 3–8
+  web ties per guest: 6–14
   worst stranded objectives per guest (3 or 5 absent, 8000 trials): 2
   worst facts with no live holder and no printed page: 0
   trials where a survivor kept fewer than two identity routes: 0
-  client files scanned for secrets: 64
+  client files scanned for secrets: 24
   cash in the room: $2740
-  total money the objectives ask players to win: $445
+  total money the objectives ask players to win: $570
 
 ALL 21 CHECKS PASSED
 ```

@@ -15,7 +15,8 @@
     "game:check": "tsx scripts/game-check.ts",
     "game:test": "tsx --test \"src/lib/game/**/*.test.ts\"",
     "game:grade": "tsx --env-file-if-exists=.env.local scripts/game-grade.ts",
-    "game:docs": "tsx scripts/game-docs.ts"
+    "game:docs": "tsx scripts/game-docs.ts",
+    "game:print": "tsx scripts/print/cards.ts && tsx scripts/print/exhibits.ts"
   },
   "dependencies": {
     "@electric-sql/pglite": "^0.5.8",

@@ -3,7 +3,8 @@ import { after, before, describe, it } from "node:test";
 import { PGlite } from "@electric-sql/pglite";
 import { drizzle } from "drizzle-orm/pglite";
 import { migrate } from "drizzle-orm/pglite/migrator";
-import { characters, markers, survivorIds, questions, characterById } from "@/data/game";
+import { characters, markers, survivorIds, questions, characterById, alternateOf } from "@/data/game";
+import { POINTS } from "./grading";
 import { guests, gameSubmissions, rsvps } from "@/lib/db/schema";
 import { correctAnswer, correctMystery } from "./sim";
 import {
@@ -150,6 +151,7 @@ describe("release flags", () => {
 });
 
 describe("the guest's card", () => {
+  const SURVIVOR = survivorIds[3]; // adam, marker 21, the Doorman
   let ctx: Awaited<ReturnType<typeof freshDb>>;
   before(async () => {
     ctx = await freshDb();
@@ -166,30 +168,61 @@ describe("the guest's card", () => {
 
   it("shows the public and background tabs once identities are released, with the private tab empty", async () => {
     await writeFlag(ctx.db, "identitiesReleased", true);
-    const response = await cardFor(ctx.db, await idOf(ctx.db, "sidd"), BEFORE);
+    const response = await cardFor(ctx.db, await idOf(ctx.db, SURVIVOR), BEFORE);
     assert.equal(response.status, "ok");
     if (response.status !== "ok") return;
-    assert.equal(response.card.id, "sidd");
+    assert.equal(response.card.id, SURVIVOR);
     assert.ok(response.card.publicBio.length > 20);
     assert.ok(response.card.background.history.length > 20);
     assert.deepEqual(response.card.private.objectives, []);
     assert.equal(response.card.private.survivor, undefined);
     assert.equal(response.directory, null);
     const text = JSON.stringify(response);
-    for (const secret of ["Marek", "Doorman", "markerCode", "H3T4V", "Quill", "grievance", "airsick"]) assert.ok(!text.includes(secret), `the pre-party card leaked "${secret}"`);
+    const info = characterById.get(SURVIVOR)!.survivor!;
+    for (const secret of [info.veilTitle, info.markerCode, info.realStory, info.grievance, info.escape, "markerCode", "Quill"]) assert.ok(!text.includes(secret), `the pre-party card leaked "${secret}"`);
   });
 
   it("opens the private tab on the night, with errands but never answers", async () => {
-    const response = await cardFor(ctx.db, await idOf(ctx.db, "sidd"), NIGHT);
+    const response = await cardFor(ctx.db, await idOf(ctx.db, SURVIVOR), NIGHT);
     assert.equal(response.status, "ok");
     if (response.status !== "ok") return;
     assert.equal(response.card.private.objectives.length, 5);
-    assert.equal(response.card.private.survivor?.veilTitle, "The Doorman");
-    assert.equal(response.card.private.survivor?.rivals.length, 4);
+    assert.equal(response.card.private.survivor?.veilTitle, characterById.get(SURVIVOR)!.survivor!.veilTitle);
+    assert.deepEqual(response.card.private.survivor?.rivals, [], "survivors do not know each other");
     assert.ok(response.directory && response.directory.length === 24);
     const text = JSON.stringify(response);
-    assert.ok(!/"check"|"codes"|"motiveKeys"|"alsoFrom"|AJTN9|nux vomica/.test(text), "answer keys must never reach a guest");
+    assert.ok(!/"check"|"codes"|"motiveKeys"|"alsoFrom"|AJTN9/.test(text), "answer keys must never reach a guest");
     assert.ok(!/"killer"|"buyer"|"soldTo"/.test(text), "the card never carries who bought the vial");
+  });
+
+  it("asks the nine counted questions of most guests, and the two replacements of the Butler and the vial buyer", async () => {
+    const counted = questions.filter((question) => !question.alternateFor).map((question) => question.id);
+    const replacements = [...alternateOf.values()];
+    const replaced = [...alternateOf.keys()];
+    assert.equal(counted.length, 9);
+    assert.deepEqual(replacements.sort(), ["alt-1", "alt-2"]);
+    assert.deepEqual(replaced.sort(), ["new-1", "new-2"]);
+    const asked = async (slug: string) => {
+      const response = await cardFor(ctx.db, await idOf(ctx.db, slug), NIGHT);
+      assert.equal(response.status, "ok");
+      if (response.status !== "ok") throw new Error("no card");
+      return response.questions!.map((question) => question.id);
+    };
+    // before any sale only the Butler is an insider
+    assert.deepEqual((await asked("anika")).sort(), [...counted].sort());
+    const butler = await asked("rebecca");
+    for (const id of replacements) assert.ok(butler.includes(id), `the Butler is asked ${id}`);
+    for (const id of replaced) assert.ok(!butler.includes(id), `the Butler is not asked ${id}`);
+    assert.equal(butler.length, counted.length);
+    // the vial buyer joins them
+    await butlerSell(ctx.db, null, markers.find((marker) => marker.no === characterById.get(SURVIVOR)!.survivor!.markerNo)!.code, NIGHT);
+    const buyer = await asked(SURVIVOR);
+    for (const id of replacements) assert.ok(buyer.includes(id), `the buyer is asked ${id}`);
+    for (const id of replaced) assert.ok(!buyer.includes(id), `the buyer is not asked ${id}`);
+    const other = await asked(survivorIds[0]);
+    assert.deepEqual([...other].sort(), [...counted].sort(), "a survivor who did not buy is asked the counted nine");
+    for (const id of replacements) assert.ok(!(await asked("anika")).includes(id));
+    await resetVial(ctx.db);
   });
 
   it("never marks a survivor in the directory", async () => {
@@ -258,16 +291,21 @@ describe("submissions", () => {
 
   it("stores survivor picks as character ids, ignoring yourself and anything beyond five", async () => {
     const tim = await idOf(ctx.db, "tim");
-    await submit(ctx.db, tim, { kind: "survivors", itemId: "ignored", answer: "Judge Li, Duke Palmer, Tim McGinley, Sandbag, J. Bruce Wayne, Air-Wind Arvind, Anika" }, NIGHT);
+    const name = (id: string) => characterById.get(id)!.name;
+    const [a, b, c, d, e] = survivorIds;
+    // yourself is skipped, and the sixth and seventh names fall beyond the five
+    const answer = [name(a), name(b), name("tim"), name(c), name(d), name(e), name("anika")].join(", ");
+    await submit(ctx.db, tim, { kind: "survivors", itemId: "ignored", answer }, NIGHT);
     const picks = (await mySubmissions(ctx.db, tim)).find((row) => row.kind === "survivors")!;
-    assert.deepEqual(JSON.parse(picks.answer), ["eric", "silas", "diwakar", "joel", "sidd"]);
+    assert.deepEqual(JSON.parse(picks.answer), [a, b, c, d, e]);
   });
 
   it("slows a guest who hammers the button", async () => {
-    const jack = await idOf(ctx.db, "jack");
+    const hammerer = await idOf(ctx.db, "leon");
+    const errand = characterById.get("leon")!.objectives[1].id;
     let refused = 0;
     for (let i = 0; i < 45; i += 1) {
-      const result = await submit(ctx.db, jack, { kind: "objective", itemId: "jack-2", answer: `try ${i}` }, NIGHT);
+      const result = await submit(ctx.db, hammerer, { kind: "objective", itemId: errand, answer: `try ${i}` }, NIGHT);
       if (!result.ok && result.code === "slow-down") refused += 1;
     }
     assert.ok(refused >= 4);
@@ -277,6 +315,7 @@ describe("submissions", () => {
 describe("the House: one bottle, one sale", () => {
   let ctx: Awaited<ReturnType<typeof freshDb>>;
   const code = (no: number) => markers.find((marker) => marker.no === no)!.code;
+  const survivorAt = (no: number) => survivorIds.find((id) => characterById.get(id)!.survivor!.markerNo === no)!;
   before(async () => {
     ctx = await freshDb();
     await seedGuests(ctx.db);
@@ -287,7 +326,7 @@ describe("the House: one bottle, one sale", () => {
   it("refuses a code that is not a marker, and names no one when it does", async () => {
     const result = await butlerSell(ctx.db, null, "ABCDE", NIGHT);
     assert.equal(result.status, "unknown");
-    assert.doesNotMatch(result.message, /survivor|joel|eric|silas/i);
+    assert.doesNotMatch(result.message, new RegExp(`survivor|${survivorIds.join("|")}`, "i"));
   });
 
   it("sells to the first marker and tells everyone after that the House has none left", async () => {
@@ -299,9 +338,9 @@ describe("the House: one bottle, one sale", () => {
     const again = await butlerSell(ctx.db, rebecca, code(20), NIGHT);
     assert.equal(again.status, "sold-out", "even the buyer cannot buy twice");
     const overview = await adminOverview(ctx.db);
-    assert.equal(overview.vial.soldTo?.slug, "eric");
+    assert.equal(overview.vial.soldTo?.slug, survivorAt(20));
     assert.equal(overview.vial.attempts.length, 3, "every offer is on the House's log");
-    assert.equal(overview.killer, "eric");
+    assert.equal(overview.killer, survivorAt(20));
   });
 
   it("allows exactly one sale when five phones tap at once", async () => {
@@ -326,8 +365,8 @@ describe("the House: one bottle, one sale", () => {
   it("lets only the buyer dose the nightcap, and says nothing either way", async () => {
     await resetVial(ctx.db);
     await butlerSell(ctx.db, null, code(19), NIGHT);
-    const buyer = await idOf(ctx.db, "silas");
-    const rival = await idOf(ctx.db, "joel");
+    const buyer = await idOf(ctx.db, survivorAt(19));
+    const rival = await idOf(ctx.db, survivorAt(18));
     await dose(ctx.db, rival, "8YUR2", NIGHT);
     assert.equal((await adminOverview(ctx.db)).vial.dosed, false);
     await dose(ctx.db, buyer, "WRONG", NIGHT);
@@ -339,15 +378,15 @@ describe("the House: one bottle, one sale", () => {
 
   it("lets staff assign the vial when the Butler is absent, replacing any earlier sale", async () => {
     await resetVial(ctx.db);
-    assert.equal(await assignVial(ctx.db, "diwakar", NIGHT), true);
+    assert.equal(await assignVial(ctx.db, survivorAt(18), NIGHT), true);
     assert.equal(await assignVial(ctx.db, "anika", NIGHT), false, "only a survivor can hold the vial");
-    assert.equal(await assignVial(ctx.db, "sidd", NIGHT), true);
-    assert.equal((await adminOverview(ctx.db)).killer, "sidd");
+    assert.equal(await assignVial(ctx.db, survivorAt(21), NIGHT), true);
+    assert.equal((await adminOverview(ctx.db)).killer, survivorAt(21));
   });
 
   it("lets staff override the killer without touching the House log", async () => {
-    await writeFlag(ctx.db, "killerOverride", "joel");
-    assert.equal((await adminOverview(ctx.db)).killer, "joel");
+    await writeFlag(ctx.db, "killerOverride", survivorAt(22));
+    assert.equal((await adminOverview(ctx.db)).killer, survivorAt(22));
     await writeFlag(ctx.db, "killerOverride", null);
   });
 
@@ -361,14 +400,15 @@ describe("the House: one bottle, one sale", () => {
 });
 
 describe("grading the night, end to end", () => {
+  const KILLER = survivorIds.find((id) => characterById.get(id)!.survivor!.markerNo === 21)!;
   let ctx: Awaited<ReturnType<typeof freshDb>>;
   before(async () => {
     ctx = await freshDb();
     await seedGuests(ctx.db);
     await writeFlag(ctx.db, "identitiesReleased", true);
-    // the night: sidd buys the vial
+    // the night: the Doorman (marker 21) buys the vial
     await butlerSell(ctx.db, await idOf(ctx.db, "rebecca"), markers.find((marker) => marker.no === 21)!.code, NIGHT);
-    for (const id of survivorIds.filter((id) => id !== "sidd")) await butlerSell(ctx.db, null, markers.find((marker) => marker.no === characterById.get(id)!.survivor!.markerNo)!.code, NIGHT);
+    for (const id of survivorIds.filter((id) => id !== KILLER)) await butlerSell(ctx.db, null, markers.find((marker) => marker.no === characterById.get(id)!.survivor!.markerNo)!.code, NIGHT);
     // every guest does their errands; a few mystery answers
     for (const character of characters) {
       const guestId = await idOf(ctx.db, character.id);
@@ -378,22 +418,22 @@ describe("grading the night, end to end", () => {
       }
     }
     const anika = await idOf(ctx.db, "anika");
-    for (const question of questions) await submit(ctx.db, anika, { kind: "mystery", itemId: question.id, answer: correctMystery(question, "sidd") }, NIGHT);
+    for (const question of questions) await submit(ctx.db, anika, { kind: "mystery", itemId: question.id, answer: correctMystery(question, KILLER) }, NIGHT);
     await submit(ctx.db, anika, { kind: "survivors", itemId: "picks", answer: JSON.stringify(survivorIds) }, NIGHT);
   });
   after(async () => ctx.client.close());
 
   it("grades everyone present and finds the killer from the House's log", async () => {
     const run = await runGrading(ctx.db);
-    assert.equal(run.killer, "sidd");
+    assert.equal(run.killer, KILLER);
     assert.ok(run.graded > characters.length * 8);
     const { standings } = await standingsNow(ctx.db);
-    assert.equal(standings.killer, "sidd");
+    assert.equal(standings.killer, KILLER);
     const anika = standings.standings.find((row) => row.guest === "anika")!;
     assert.equal(anika.tiers.mysteries, 100);
     assert.equal(anika.tiers.survivors, 20);
-    const sidd = standings.standings.find((row) => row.guest === "sidd")!;
-    assert.equal(sidd.tiers.poisoner, 6);
+    const killer = standings.standings.find((row) => row.guest === KILLER)!;
+    assert.equal(killer.tiers.poisoner, POINTS.poisoner);
     assert.equal(standings.winner, "anika");
   });
 
@@ -408,7 +448,7 @@ describe("grading the night, end to end", () => {
 
   it("exports a packet with the answer key, and keeps Claude's verdicts through a re-grade", async () => {
     const packet = await makePacket(ctx.db);
-    assert.equal(packet.truth.killer, "sidd");
+    assert.equal(packet.truth.killer, KILLER);
     assert.ok(packet.items.length >= 8);
     const item = packet.items.find((entry) => entry.itemId === "old-3")!;
     assert.match(item.answerKey, /kit/i);
@@ -444,7 +484,7 @@ describe("grading the night, end to end", () => {
     const results = await resultsFor(ctx.db, await idOf(ctx.db, "anika"));
     assert.ok(results);
     assert.equal(results!.winner, characterById.get("anika")!.name);
-    assert.equal(results!.killer, characterById.get("sidd")!.name);
+    assert.equal(results!.killer, characterById.get(KILLER)!.name);
     assert.equal(results!.you?.guest, "anika");
     assert.ok(results!.you!.items.length > 10);
     assert.equal(results!.board.length, characters.length);
@@ -501,7 +541,7 @@ describe("the guest ledger", () => {
     await seedGuests(ctx.db);
     await ctx.db.insert(rsvps).values(characters.map((character) => ({ fullName: character.realNames[0], email: `${character.id}@example.test`, attending: "yes" as const, recordedAt: new Date() })));
     // Luke changed his mind
-    await ctx.db.insert(rsvps).values({ fullName: "Luke Sheldon", email: "luke@example.test", attending: "no", recordedAt: new Date() });
+    await ctx.db.insert(rsvps).values({ fullName: characterById.get("luke")!.realNames[0], email: "luke@example.test", attending: "no", recordedAt: new Date() });
   });
   after(async () => ctx.client.close());
 
@@ -509,7 +549,7 @@ describe("the guest ledger", () => {
     const ledger = await ledgerFor(ctx.db, await idOf(ctx.db, "anika"), BEFORE);
     assert.equal(ledger.released, false);
     assert.equal(ledger.rows.length, characters.length - 1, "a guest whose latest RSVP is no is left off");
-    assert.ok(!ledger.rows.some((row) => row.name === "Luke Sheldon"));
+    assert.ok(!ledger.rows.some((row) => row.name === characterById.get("luke")!.realNames[0]));
     for (const row of ledger.rows) {
       assert.equal(row.points, 0);
       assert.equal(row.character, null);
@@ -523,8 +563,8 @@ describe("the guest ledger", () => {
     await writeFlag(ctx.db, "identitiesReleased", true);
     const ledger = await ledgerFor(ctx.db, await idOf(ctx.db, "anika"), BEFORE);
     assert.equal(ledger.released, true);
-    const sidd = ledger.rows.find((row) => row.name === "Siddarth Arvind")!;
-    assert.match(sidd.character!, /Air-Wind/);
+    const sidd = ledger.rows.find((row) => row.name === characterById.get("sidd")!.realNames[0])!;
+    assert.equal(sidd.character, characterById.get("sidd")!.name);
     assert.equal(sidd.points, 0);
     for (const row of ledger.rows) assert.equal(row.points, 0);
   });

@@ -7,7 +7,7 @@
  * tell "it was Kit, not Cassie" from "it was Cassie, not Kit". Guests never see any of this
  * until results are published, so there is nothing to brute-force.
  */
-import { characterById, characters, exhibits, findGuests, questions, survivorIds } from "@/data/game";
+import { alternateOf, characterById, characters, exhibits, findGuests, questions, survivorIds } from "@/data/game";
 import type { Check, Objective, Question, RubricElement } from "@/data/game";
 import { matchesAny, matchesPattern, normalizeCode, parseClock, parseMoney } from "./text";
 import type { GameEvent, GradeItem, Submission, Truth, Verdict } from "./types";
@@ -21,7 +21,8 @@ export const POINTS = {
   pickMax: 20,
   coverMax: 20,
   coverPerAccuser: 2,
-  poisoner: 6,
+  /** One point above the rest of the survivors: the killer is a point ahead of their group. */
+  poisoner: 1,
   hideLoss: 6,
   maxPicks: 5,
   longAnswer: 500,
@@ -189,10 +190,6 @@ function gradeMystery(guest: string, question: Question, context: Context): Grad
     if (!killer) return item(guest, "mystery", question.id, "reject", 0, max, "No killer has been determined yet.", true);
     const named = findGuests(answer);
     if (named.length === 1 && named[0] === killer) {
-      if (question.butlerKnows && characterById.get(guest)?.role === "butler") {
-        const credited = Math.round(max * POINTS.insiderCredit);
-        return item(guest, "mystery", question.id, "partial", credited, max, `Named the killer, but the Butler saw the sale, so it counts for ${Math.round(POINTS.insiderCredit * 100)}%.`);
-      }
       return item(guest, "mystery", question.id, "accept", max, max, "Named the killer.");
     }
     if (named.includes(killer)) return item(guest, "mystery", question.id, "reject", 0, max, "Named several guests, one of them the killer.", true);
@@ -331,8 +328,13 @@ export function autoGrade(input: GradingInput): GradeItem[] {
       }
     }
 
-    // the three mysteries
-    for (const question of questions) items.push(gradeMystery(guest, question, context));
+    // the three mysteries. The Butler and the killer know "who" and "how" from the inside, so they answer
+    // the replacement questions instead, which are worth the same and cannot be known by playing the part.
+    const insider = character.role === "butler" || input.truth.killer === guest;
+    for (const question of questions) {
+      if (question.alternateFor ? !insider : insider && alternateOf.has(question.id)) continue;
+      items.push(gradeMystery(guest, question, context));
+    }
 
     // the poisoner's bonus
     if (input.truth.killer === guest) items.push(item(guest, "bonus", "poisoner", "accept", POINTS.poisoner, POINTS.poisoner, "Bought the House's vial and poisoned the Keeper."));

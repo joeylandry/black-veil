@@ -168,7 +168,7 @@ export function runValidation(root = process.cwd()): Report {
     const problems: string[] = [];
     const list = exhibits.find((exhibit) => exhibit.id === "list");
     const listText = list?.body.join("\n") ?? "";
-    const tellKeywords: Record<number, string[]> = { 18: ["thumb", "count"], 19: ["ring", "tap"], 20: ["two fingers", "time"], 21: ["back to a door"], 22: ["wet finger", "wind"] };
+    const tellKeywords: Record<number, string[]> = { 18: ["thumb", "count"], 19: ["ring", "tap"], 20: ["hat", "brim"], 21: ["back to a door"], 22: ["clock"] };
     for (const survivor of survivors) {
       const info = survivor.survivor!;
       const row = listText.split("\n").find((line) => line.startsWith(`No. ${info.markerNo} `));
@@ -418,7 +418,9 @@ export function runValidation(root = process.cwd()): Report {
       "new-3": ["motive-18", "motive-19", "motive-20", "motive-21", "motive-22"],
       "con-1": ["dead-kit", "list-prepared", "kit-ouster"],
       "con-2": ["survivors-exist", "list-prepared", "marker-map"],
-      "con-3": ["invites-cassie", "cassie-alive"],
+      "con-3": ["kit-invites", "invites-cassie", "cassie-alive"],
+      "alt-1": ["succession", "kit-why", "kit-invites"],
+      "alt-2": ["vault", "kit-why"],
     };
     for (const question of questions) {
       for (const factId of need[question.id] ?? []) {
@@ -432,8 +434,9 @@ export function runValidation(root = process.cwd()): Report {
       }
       if (!need[question.id]) problems.push(`${question.id} has no fact ladder`);
     }
-    const total = questions.reduce((sum, question) => sum + question.points, 0);
-    const byMystery = (id: string) => questions.filter((question) => question.mystery === id).reduce((sum, question) => sum + question.points, 0);
+    const counted = questions.filter((question) => !question.alternateFor);
+    const total = counted.reduce((sum, question) => sum + question.points, 0);
+    const byMystery = (id: string) => counted.filter((question) => question.mystery === id).reduce((sum, question) => sum + question.points, 0);
     stats["mystery points"] = `${byMystery("old")}+${byMystery("new")}+${byMystery("connection")}=${total}`;
     if (total !== 100) problems.push(`the three mysteries should total 100 points, got ${total}`);
     if (total <= OBJECTIVE_TOTAL) problems.push("the mysteries must be worth more than all the objectives together");
@@ -460,7 +463,7 @@ export function runValidation(root = process.cwd()): Report {
     const decoys = characters.filter((character) => character.habit);
     const vouches = facts.filter((fact) => fact.kind === "decoy");
     if (decoys.length < 5) problems.push(`expected at least five decoy habits, found ${decoys.length}`);
-    for (const decoy of ["mihir", "anthony", "molly", "theodor", "arjun"]) {
+    for (const decoy of ["angelos", "emre", "silas", "erika", "sidd"]) {
       if (!characterById.get(decoy)?.habit) problems.push(`${decoy} should have a decoy habit`);
       if (!vouches.some((fact) => fact.id.startsWith("vouch-") && fact.id.endsWith(decoy))) problems.push(`no vouch fact clears ${decoy}`);
     }

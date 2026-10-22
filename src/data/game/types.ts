@@ -207,8 +207,11 @@ export type Question = {
   truth?: "killer";
   /** For "why" questions: build the rubric from the killer's motive instead. */
   fromKillerMotive?: boolean;
-  /** The Butler sees who buys the vial, so she earns a reduced share of "who did it". */
-  butlerKnows?: boolean;
+  /**
+   * For the Butler and the killer only: this question stands in for another one (their "who" and "how"
+   * are free for them), is worth the same, and is not counted for anyone else.
+   */
+  alternateFor?: string;
 };
 
 export type Truth = {

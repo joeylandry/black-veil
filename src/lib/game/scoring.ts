@@ -71,7 +71,7 @@ export function computeStandings(items: GradeItem[], submissions: Submission[], 
         survivor: Boolean(character.survivor),
         total,
         tiers,
-        killerPoints: mine.find((entry) => entry.kind === "mystery" && entry.itemId === "new-1")?.points ?? 0,
+        killerPoints: mine.find((entry) => entry.kind === "mystery" && (entry.itemId === "new-1" || entry.itemId === "alt-1"))?.points ?? 0,
         lastSubmissionAt: lastBy.get(character.id) ?? Number.MAX_SAFE_INTEGER,
         rank: 0,
         circleRank: 0,
@@ -94,14 +94,20 @@ export function computeStandings(items: GradeItem[], submissions: Submission[], 
   rows.forEach((row, index) => {
     row.rank = index + 1;
   });
+  // each circle is ranked among its own non-survivors; the five survivors are ranked together as one group
   const circleChampions: Record<string, string | null> = {};
   for (const circle of circles) {
-    const members = rows.filter((row) => row.circle === circle.id);
+    const members = rows.filter((row) => row.circle === circle.id && !row.survivor);
     members.forEach((row, index) => {
       row.circleRank = index + 1;
     });
     circleChampions[circle.id] = members[0]?.total > 0 ? members[0].guest : null;
   }
+  const survivorGroup = rows.filter((row) => row.survivor);
+  survivorGroup.forEach((row, index) => {
+    row.circleRank = index + 1;
+  });
+  circleChampions["survivors"] = survivorGroup[0]?.total > 0 ? survivorGroup[0].guest : null;
 
   const top = rows[0];
   const winner = top && top.total > 0 ? top.guest : null;
@@ -111,6 +117,8 @@ export function computeStandings(items: GradeItem[], submissions: Submission[], 
     const champion = circleChampions[circle.id];
     awards.push({ id: `circle-${circle.id}`, title: `Champion of ${circle.name}`, guest: champion, detail: champion ? `${rows.find((row) => row.guest === champion)!.total} points.` : "Nobody scored." });
   }
+  const survivorChampion = circleChampions["survivors"];
+  awards.push({ id: "circle-survivors", title: "Champion of the Survivors", guest: survivorChampion, detail: survivorChampion ? `${rows.find((row) => row.guest === survivorChampion)!.total} points.` : "Nobody scored." });
   const perfect = rows.filter((row) => row.tiers.objectives >= 60);
   awards.push({ id: "perfect-errands", title: "Perfect Errands", guest: perfect[0]?.guest ?? null, detail: perfect.length ? `${perfect.length} guest${perfect.length === 1 ? "" : "s"} finished every errand.` : "Nobody finished all five." });
   const covers = rows.filter((row) => row.survivor).sort((a, b) => b.tiers.survivors - a.tiers.survivors || (a.hash < b.hash ? -1 : 1));
