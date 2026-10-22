@@ -1,0 +1,55 @@
+<!doctype html><html><head><meta charset="utf-8"><title>The wall around Cassie</title>
+<style>@page { size: Letter; margin: 0 }
+* { box-sizing: border-box }
+html, body { margin: 0; background: #fff }
+body { font-family: "Liberation Serif", "Bitstream Charter", serif; color: #1c1710 }
+.page { width: 8.5in; height: 11in; padding: 0.55in; position: relative; page-break-after: always; overflow: hidden; background: #fff }
+.paper { background:
+  radial-gradient(ellipse at 20% 15%, rgba(150,110,50,.14), transparent 55%),
+  radial-gradient(ellipse at 85% 90%, rgba(120,80,30,.20), transparent 50%),
+  #eadfc2; box-shadow: inset 0 0 60px rgba(90,55,15,.35) }
+.torn { clip-path: var(--tear) }
+.ri { position: relative; display: inline-block }
+.ri::after { content: ""; position: absolute; left: 50%; top: .02em; width: .2em; height: .2em; margin-left: -.1em; border: .045em solid currentColor; border-radius: 50% }
+.mono { font-family: "FreeMono", "Courier 10 Pitch", monospace }
+.bar { display: inline-block; background: #161210; color: transparent; border-radius: 1px; user-select: none; padding: 0 .1em }
+.cut { outline: 1px dashed #999; outline-offset: 6px }
+.how { font-family: "Liberation Sans", sans-serif; font-size: 11pt; line-height: 1.45 }
+.how h1 { font-size: 20pt; margin: 0 0 6pt } .how h2 { font-size: 12pt; margin: 14pt 0 3pt } .how li { margin: 3pt 0 }
+.note-hand { font-family: "Bitstream Charter", serif; font-style: italic }
+
+.farrago { padding: .45in .5in } .masthead { text-align:center; border-bottom: 3px double #1c1710; padding-bottom: 8pt }
+.masthead h1 { font-family: "Liberation Serif"; font-size: 44pt; margin: 0; letter-spacing: 1pt; font-variant: small-caps }
+.masthead p { margin: 2pt 0 0; font-size: 10pt; letter-spacing: 1pt; text-transform: uppercase }
+.head { font-size: 40pt; line-height: 1; text-align:center; margin: 18pt 0 8pt; font-weight: 700 }
+.sub { text-align:center; font-style: italic; font-size: 15pt; border-top: 1px solid #1c1710; border-bottom: 1px solid #1c1710; padding: 6pt 0; margin: 0 0 14pt }
+.cols { columns: 2; column-gap: .3in; column-rule: 1px solid #8a7a58; font-size: 12.5pt; line-height: 1.32; text-align: justify }
+.cols p { margin: 0 0 8pt } .cols h3 { font-size: 11pt; text-transform: uppercase; letter-spacing: 1pt; margin: 10pt 0 4pt; border-bottom: 1px solid #1c1710 }
+.ad { border: 2px solid #1c1710; padding: 6pt 8pt; margin: 10pt 0; text-align:center; break-inside: avoid; font-size: 11.5pt }
+.ad b { display:block; font-size: 15pt; font-variant: small-caps }
+.bulletin { border: 4px double #1c1710; padding: .3in; margin: 0 0 .3in; text-align:center }
+.bulletin h2 { font-size: 30pt; margin: 0 0 4pt; letter-spacing: 2pt } .bulletin h3 { font-size: 24pt; margin: 14pt 0 4pt }
+.closure { display:inline-block; width: 3.3in; margin: 0 .1in .2in 0; padding: .22in; border: 3px solid #1c1710; text-align:center; vertical-align: top; background: #efe6cc }
+.closure h4 { font-size: 22pt; margin: 0 0 6pt } .closure p { margin: 0; font-size: 12pt }
+.rcpt { width: 7.1in; margin: 0 auto .32in; padding: .22in .3in; border: 1.5px solid #3a3224; background: #f1e9d0; position: relative; font-size: 14pt; line-height: 1.5 }
+.rcpt .bank { text-align:center; font-variant: small-caps; letter-spacing: 2pt; font-size: 15pt; border-bottom: 1px solid #3a3224; padding-bottom: 4pt; margin-bottom: 8pt }
+.rcpt .no { position:absolute; right: .3in; top: .55in; font-family: FreeMono, monospace; font-size: 11pt }
+.sig { font-style: italic; font-size: 20pt; margin-top: 6pt; position: relative; display: inline-block }
+.emboss { position:absolute; left: -10pt; top: -4pt; width: 44pt; height: 44pt; border-radius: 50%; border: 2px solid rgba(80,60,30,.28); box-shadow: inset 0 0 6px rgba(80,60,30,.25), 0 0 4px rgba(255,255,255,.4); opacity:.8 }
+.cards { display: grid; grid-template-columns: 1fr 1fr; gap: .35in .3in }
+.admit { border: 3px double #2a1d0e; padding: .25in; text-align: center; background: #e6d8b3; box-shadow: inset 0 0 40px rgba(0,0,0,.45) }
+.admit h4 { margin: 0; font-size: 22pt; font-variant: small-caps; letter-spacing: 2pt } .admit p { margin: 5pt 0; font-size: 12pt }
+.vigil { border: 10px solid #111; padding: .35in .2in; text-align: center; background: #f1ecdc }
+.vigil h4 { font-size: 20pt; font-variant: small-caps; letter-spacing: 3pt; margin: 0 0 8pt } .vigil p { margin: 0; font-size: 14pt; font-style: italic }
+.plate { background: linear-gradient(#c9a24a,#8c6d22 60%,#b8923a); border: 3px solid #5b4510; padding: .15in .25in; text-align: center; color: #2b1f06; font-variant: small-caps; letter-spacing: 1.5pt; grid-column: span 2; font-size: 15pt }
+.slip { padding: .35in .3in; font-size: 18pt; background:#f4efe0; border: 1px solid #aaa; transform: rotate(-1.5deg); line-height: 1.5 }
+.books { padding: .6in .6in; font-size: 14pt; line-height: 1.6 }
+.books h3 { font-size: 15pt; letter-spacing: 2pt; text-align:center; border-bottom: 1px solid #1c1710; padding-bottom: 6pt }
+</style></head><body>
+<div class="page"><div style="padding:1.2in .8in">
+<p class="how" style="text-align:center;font-size:11pt">HIDE THIS ONE. Tape it to the back of the portrait, or under it. Fold it twice first.</p>
+<div style="margin:.4in auto; width:6.3in; padding:.5in .5in; background:#f0e8d2; border:1px solid #bbb; font-size:19pt; line-height:1.7; transform:rotate(.7deg); box-shadow: 0 0 14px rgba(0,0,0,.25)" class="note-hand">
+<div style="font-family:FreeMono,monospace; font-size:11pt; font-style:normal; letter-spacing:1pt">2 NOVEMBER 1924</div>
+Paid in full by C.C., in gold, to get five persons safely out of Manchester alive: a new name, papers and a fare for each. The holders of markers 18, 19, 20, 21 and 22. Names withheld.
+<div style="margin-top:14pt; font-size:24pt">C.</div></div>
+</div></div></body></html>

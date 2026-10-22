@@ -1,0 +1,134 @@
+<!doctype html><html><head><meta charset="utf-8"><title>The wall around Cassie</title>
+<style>@page { size: Letter; margin: 0 }
+* { box-sizing: border-box }
+html, body { margin: 0; background: #fff }
+body { font-family: "Liberation Serif", "Bitstream Charter", serif; color: #1c1710 }
+.page { width: 8.5in; height: 11in; padding: 0.55in; position: relative; page-break-after: always; overflow: hidden; background: #fff }
+.paper { background:
+  radial-gradient(ellipse at 20% 15%, rgba(150,110,50,.14), transparent 55%),
+  radial-gradient(ellipse at 85% 90%, rgba(120,80,30,.20), transparent 50%),
+  #eadfc2; box-shadow: inset 0 0 60px rgba(90,55,15,.35) }
+.torn { clip-path: var(--tear) }
+.ri { position: relative; display: inline-block }
+.ri::after { content: ""; position: absolute; left: 50%; top: .0em; width: .3em; height: .3em; margin-left: -.15em; border: .07em solid currentColor; border-radius: 50% }
+.mono { font-family: "FreeMono", "Courier 10 Pitch", monospace }
+.bar { display: inline-block; background: #161210; color: transparent; border-radius: 1px; user-select: none; padding: 0 .1em }
+.cut { outline: 1px dashed #999; outline-offset: 6px }
+.how { font-family: "Liberation Sans", sans-serif; font-size: 11pt; line-height: 1.45 }
+.how h1 { font-size: 20pt; margin: 0 0 6pt } .how h2 { font-size: 12pt; margin: 14pt 0 3pt } .how li { margin: 3pt 0 }
+.note-hand { font-family: "Bitstream Charter", serif; font-style: italic }
+
+.farrago { padding: .45in .5in } .masthead { text-align:center; border-bottom: 3px double #1c1710; padding-bottom: 8pt }
+.masthead h1 { font-family: "Liberation Serif"; font-size: 44pt; margin: 0; letter-spacing: 1pt; font-variant: small-caps }
+.masthead p { margin: 2pt 0 0; font-size: 10pt; letter-spacing: 1pt; text-transform: uppercase }
+.head { font-size: 40pt; line-height: 1; text-align:center; margin: 18pt 0 8pt; font-weight: 700 }
+.sub { text-align:center; font-style: italic; font-size: 15pt; border-top: 1px solid #1c1710; border-bottom: 1px solid #1c1710; padding: 6pt 0; margin: 0 0 14pt }
+.cols { columns: 2; column-gap: .3in; column-rule: 1px solid #8a7a58; font-size: 12.5pt; line-height: 1.32; text-align: justify }
+.cols p { margin: 0 0 8pt } .cols h3 { font-size: 11pt; text-transform: uppercase; letter-spacing: 1pt; margin: 10pt 0 4pt; border-bottom: 1px solid #1c1710 }
+.ad { border: 2px solid #1c1710; padding: 6pt 8pt; margin: 10pt 0; text-align:center; break-inside: avoid; font-size: 11.5pt }
+.ad b { display:block; font-size: 15pt; font-variant: small-caps }
+.bulletin { border: 4px double #1c1710; padding: .3in; margin: 0 0 .3in; text-align:center }
+.bulletin h2 { font-size: 30pt; margin: 0 0 4pt; letter-spacing: 2pt } .bulletin h3 { font-size: 24pt; margin: 14pt 0 4pt }
+.closure { display:inline-block; width: 3.3in; margin: 0 .1in .2in 0; padding: .22in; border: 3px solid #1c1710; text-align:center; vertical-align: top; background: #efe6cc }
+.closure h4 { font-size: 22pt; margin: 0 0 6pt } .closure p { margin: 0; font-size: 12pt }
+.rcpt { width: 100%; margin: 0 auto .2in; padding: .16in .3in; border: 1.5px solid #3a3224; background: #f1e9d0; position: relative; font-size: 13pt; line-height: 1.4 }
+.rcpt .bank { text-align:center; font-variant: small-caps; letter-spacing: 2pt; font-size: 15pt; border-bottom: 1px solid #3a3224; padding-bottom: 4pt; margin-bottom: 8pt }
+.rcpt .no { position:absolute; right: .3in; top: .55in; font-family: FreeMono, monospace; font-size: 11pt }
+.sig { font-style: italic; font-size: 20pt; margin-top: 6pt; position: relative; display: inline-block }
+.emboss { position:absolute; left: -10pt; top: -4pt; width: 44pt; height: 44pt; border-radius: 50%; border: 2px solid rgba(80,60,30,.28); box-shadow: inset 0 0 6px rgba(80,60,30,.25), 0 0 4px rgba(255,255,255,.4); opacity:.8 }
+.cards { display: grid; grid-template-columns: 1fr 1fr; gap: .35in .3in }
+.admit { border: 3px double #2a1d0e; padding: .25in; text-align: center; background: #e6d8b3; box-shadow: inset 0 0 40px rgba(0,0,0,.45) }
+.admit h4 { margin: 0; font-size: 22pt; font-variant: small-caps; letter-spacing: 2pt } .admit p { margin: 5pt 0; font-size: 12pt }
+.vigil { border: 10px solid #111; padding: .35in .2in; text-align: center; background: #f1ecdc }
+.vigil h4 { font-size: 20pt; font-variant: small-caps; letter-spacing: 3pt; margin: 0 0 8pt } .vigil p { margin: 0; font-size: 14pt; font-style: italic }
+.plate { background: linear-gradient(#c9a24a,#8c6d22 60%,#b8923a); border: 3px solid #5b4510; padding: .15in .25in; text-align: center; color: #2b1f06; font-variant: small-caps; letter-spacing: 1.5pt; grid-column: span 2; font-size: 15pt }
+.slip { padding: .35in .3in; font-size: 18pt; background:#f4efe0; border: 1px solid #aaa; transform: rotate(-1.5deg); line-height: 1.5 }
+.books { padding: .6in .6in; font-size: 14pt; line-height: 1.6 }
+.books h3 { font-size: 15pt; letter-spacing: 2pt; text-align:center; border-bottom: 1px solid #1c1710; padding-bottom: 6pt }
+</style></head><body>
+
+<div class="page how">
+<h1>The wall around Cassie: how to hang it</h1>
+<p>Print every page on cream or light-tan paper at 100% (not "fit to page"). Staining a page with weak tea and drying it flat makes it look 1924. Cut along the dotted lines where there are any.</p>
+<h2>Hang these in plain sight, around the portrait</h2>
+<ul>
+<li><b>Page 2: the Farrago front page.</b> Biggest piece. Pin it to the wall beside her.</li>
+<li><b>Page 3: the police bulletin, and three closure notices.</b> Hang the bulletin by the Farrago. Put the three closure notices in <i>three different places</i> in the house (the site says the notice was posted in three places).</li>
+<li><b>Page 4: three receipts.</b> Pin them next to her face. These are the fakes: they make Cassie look guilty.</li>
+<li><b>Page 5: the admission card, vigil card, portrait plate and note.</b> Cut them out. Plate goes on the frame, vigil card on the table in front, admission card next to the candle. Tuck the note into the corner of the frame so just an edge shows.</li>
+<li><b>Page 6: torn page from the 1923 books.</b> Tape it to the wall low, off to one side.</li>
+</ul>
+<h2>Hide this one</h2>
+<ul><li><b>The real receipt is in its own file</b> (<code>real-receipt-under-portrait.pdf</code>). Tape it to the back of the portrait, or under it. Do not hang it on the wall.</li></ul>
+<h2>Do not</h2>
+<ul><li>Put any filing codes, names of survivors, or the word "Keeper" on the wall. The pages are already written without them.</li></ul>
+</div>
+
+<div class="page"><div class="paper farrago torn" style="height:100%">
+<div class="masthead"><h1>The Evening Farrago</h1><p>Manchester, N.H. · Saturday, 1 November 1924 · Two Cents</p></div>
+<div class="head">TERROR AT THE BLACK VEIL</div>
+<div class="sub">“Massacre,” Say Guests</div>
+<div class="cols">
+<p><b>MANCHESTER.</b> Guests who fled the Black Veil supper club on Elm Street late last night described gunfire in the dark and blood on the floor.</p>
+<p>No coroner was called. No ambulance came. No undertaker was summoned. No body has been found and no name has been given.</p>
+<p>The proprietress, Miss Castello, cannot be found.</p>
+<h3>Weather</h3><p>Colder tonight, with a chance of rain by morning. Fair and cold on Sunday.</p>
+<div class="ad"><b>Mallya’s Emporium</b>Everything under one roof. The customer is always right.</div>
+<h3>Amusements</h3><p>The Palm Court, nightly. Dancing till late. Ladies free before nine.</p>
+<div class="ad"><b>Hudson Motors</b>The shiniest cars in Manchester. (No relation.)</div>
+<h3>On the Wireless</h3><p>WFEA, the voice of the Merrimack Valley, signs on at six with the evening bulletin.</p>
+<div class="ad"><b>Nag Oil</b>The well that never ran dry. Ask about our shares.</div>
+</div></div></div>
+
+<div class="page"><div class="paper torn" style="padding:.5in;height:100%">
+<div class="bulletin">
+<div style="letter-spacing:3pt;font-size:12pt">MANCHESTER POLICE DEPARTMENT · BULLETIN · 2 NOVEMBER 1924</div>
+<h2>PERSON OF INTEREST</h2>
+<h3>Cassandra “Cassie” Castello</h3>
+<p style="font-size:15pt">Proprietress of the Black Veil, Elm Street.<br>Last seen on the evening of 31 October.</p>
+<p style="font-size:15pt">Anyone with information is asked to come forward.<br><b>No warrant has been issued.</b></p>
+</div>
+<p style="text-align:center;font-size:11pt;letter-spacing:2pt">— THREE COPIES BELOW: CUT APART, HANG IN THREE DIFFERENT PLACES —</p>
+<div>
+<div class="closure cut"><h4>NOTICE</h4><p>THESE PREMISES ARE CLOSED UNTIL FURTHER NOTICE.</p><p style="margin-top:8pt;font-style:italic">By order.</p></div><div class="closure cut"><h4>NOTICE</h4><p>THESE PREMISES ARE CLOSED UNTIL FURTHER NOTICE.</p><p style="margin-top:8pt;font-style:italic">By order.</p></div><div class="closure cut"><h4>NOTICE</h4><p>THESE PREMISES ARE CLOSED UNTIL FURTHER NOTICE.</p><p style="margin-top:8pt;font-style:italic">By order.</p></div>
+</div></div></div>
+<div class="page"><div class="paper torn" style="padding:.5in .45in;height:100%">
+<p style="text-align:center;font-size:11pt;letter-spacing:2pt;margin:0 0 .25in">— CUT APART. PIN NEXT TO HER FACE —</p>
+<div class="rcpt cut"><div class="bank">Merchants’ Trust Company · Boston</div><div class="no">No. 0412</div>
+<div class="mono" style="font-size:11pt">8 November 1924</div><p style="margin:6pt 0">Rece<span class="ri">ı</span>ved of M<span class="ri">ı</span>ss C. Castello, twenty dollars ($20.00), <span class="ri">ı</span>n advance, for the k<span class="ri">ı</span>ll<span class="ri">ı</span>ng of one name on the Ve<span class="ri">ı</span>l’s roll, as d<span class="ri">ı</span>rected. To be done qu<span class="ri">ı</span>etly.</p>
+<div class="sig">For the bearer</div>
+<div style="text-align:right;margin-top:-26pt"><span class="sig"><span class="emboss" style="left:-14pt;top:-8pt"></span>C. Castello</span></div></div>
+<div class="rcpt cut"><div class="bank">Merchants’ Trust Company · Boston</div><div class="no">No. 0431</div>
+<div class="mono" style="font-size:11pt">5 December 1924</div><p style="margin:6pt 0">Rece<span class="ri">ı</span>ved of M<span class="ri">ı</span>ss C. Castello, twenty dollars ($20.00), <span class="ri">ı</span>n advance, for the k<span class="ri">ı</span>ll<span class="ri">ı</span>ng of one name on the Ve<span class="ri">ı</span>l’s roll, as d<span class="ri">ı</span>rected. To be done qu<span class="ri">ı</span>etly.</p>
+<div class="sig">For the bearer</div>
+<div style="text-align:right;margin-top:-26pt"><span class="sig"><span class="emboss" style="left:-14pt;top:-8pt"></span>C. Castello</span></div></div>
+<div class="rcpt cut"><div class="bank">Merchants’ Trust Company · Boston</div><div class="no">No. 0466</div>
+<div class="mono" style="font-size:11pt">19 January 1925</div><p style="margin:6pt 0">Rece<span class="ri">ı</span>ved of M<span class="ri">ı</span>ss C. Castello, twenty dollars ($20.00), <span class="ri">ı</span>n advance, for the k<span class="ri">ı</span>ll<span class="ri">ı</span>ng of one name on the Ve<span class="ri">ı</span>l’s roll, as d<span class="ri">ı</span>rected. To be done qu<span class="ri">ı</span>etly.</p>
+<div class="sig">For the bearer</div>
+<div style="text-align:right;margin-top:-26pt"><span class="sig"><span class="emboss" style="left:-14pt;top:-8pt"></span>C. Castello</span></div></div>
+</div></div><div class="page"><div style="padding:.2in .1in">
+<p style="text-align:center;font-size:11pt;letter-spacing:2pt;margin:0 0 .25in">— CUT OUT ALONG THE DOTTED LINES —</p>
+<div class="cards">
+<div class="plate cut">Cassandra “Cassie” Castello · Proprietress · The Black Veil · 1921 –</div>
+<div class="admit cut"><h4>The Black Veil</h4><p>MASQUERADE</p><p><b>All Hallows’ Eve, 1924</b></p><p>Admit one · by the river door</p><p style="font-size:10pt">The orchestra is admitted at ten past ten.</p></div>
+<div class="vigil cut"><h4>In Memory</h4><p>Of the Black Veil,<br>31 October 1924.</p><p style="margin-top:8pt">Gone, but not named.</p></div>
+<div class="slip cut note-hand" style="grid-column: span 2">They have not forgotten you.<br>Neither have I.</div>
+</div></div></div>
+<div class="page"><div class="paper torn books" style="height:8.2in;width:7.4in;margin:.3in auto">
+<h3>THE VEIL · BOOKS · extract, 1923</h3>
+<p>Receipts: Canadian, <span class="bar">river-side</span>, by the case. Protection, the <span class="bar">Mill’s friend</span>, by the quarter.</p>
+<p>Deposits, <span class="bar">the Silent Partner (Mr. M.)</span>: by draft, to the <span class="bar">vault</span>, never to the bank.</p>
+<p style="font-style:italic">“The books show more than the club should be able to afford. In the wrong hands they show why.”</p>
+<p style="text-align:right">Signed: <span class="bar">K.K.</span></p>
+</div></div>
+<script>// jagged "torn" edges: gives every .torn element a random clip-path
+document.querySelectorAll('.torn').forEach((el, n) => {
+  let seed = 7 + n * 13; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  const pts = [], steps = 28, j = 1.4;
+  for (let i = 0; i <= steps; i++) pts.push(`${(i / steps) * 100}% ${rnd() * j}%`);
+  for (let i = 1; i <= steps; i++) pts.push(`${100 - rnd() * j}% ${(i / steps) * 100}%`);
+  for (let i = steps - 1; i >= 0; i--) pts.push(`${(i / steps) * 100}% ${100 - rnd() * j}%`);
+  for (let i = steps - 1; i > 0; i--) pts.push(`${rnd() * j}% ${(i / steps) * 100}%`);
+  el.style.setProperty('--tear', `polygon(${pts.join(',')})`);
+});
+</script></body></html>

@@ -1,0 +1,18 @@
+@page { size: Letter; margin: 0 }
+* { box-sizing: border-box }
+html, body { margin: 0; background: #fff }
+body { font-family: "Liberation Serif", "Bitstream Charter", serif; color: #1c1710 }
+.page { width: 8.5in; height: 11in; padding: 0.55in; position: relative; page-break-after: always; overflow: hidden; background: #fff }
+.paper { background:
+  radial-gradient(ellipse at 20% 15%, rgba(150,110,50,.14), transparent 55%),
+  radial-gradient(ellipse at 85% 90%, rgba(120,80,30,.20), transparent 50%),
+  #eadfc2; box-shadow: inset 0 0 60px rgba(90,55,15,.35) }
+.torn { clip-path: var(--tear) }
+.ri { position: relative; display: inline-block }
+.ri::after { content: ""; position: absolute; left: 50%; top: .02em; width: .2em; height: .2em; margin-left: -.1em; border: .045em solid currentColor; border-radius: 50% }
+.mono { font-family: "FreeMono", "Courier 10 Pitch", monospace }
+.bar { display: inline-block; background: #161210; color: transparent; border-radius: 1px; user-select: none; padding: 0 .1em }
+.cut { outline: 1px dashed #999; outline-offset: 6px }
+.how { font-family: "Liberation Sans", sans-serif; font-size: 11pt; line-height: 1.45 }
+.how h1 { font-size: 20pt; margin: 0 0 6pt } .how h2 { font-size: 12pt; margin: 14pt 0 3pt } .how li { margin: 3pt 0 }
+.note-hand { font-family: "Bitstream Charter", serif; font-style: italic }
