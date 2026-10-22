@@ -563,7 +563,7 @@ function menuBody(card: boolean) {
   const it = (m: { name: string; desc: string }) => `<div class="it"><span class="nm">${esc(m.name)}</span><span class="dots"></span><span class="pr">${esc(menuPriceNote)}</span></div><div class="ds">${esc(m.desc)}</div>`;
   const band = `<div class="band"><h1>${esc(menuTitle)}</h1><div class="by">${esc(menuBy)}</div><div class="med">${esc(menuNotice)}</div></div>`;
   const drinks = `<div><h2>Tonics &amp; Medicines</h2>${menuDrinks.map(it).join("")}</div>`;
-  const bites = `<div><h2>${esc(menuBitesTitle)}</h2>${menuBites.map(it).join("")}</div>`;
+  const bites = `<div><h2>${esc(menuBitesTitle)}</h2><div class="bites">${menuBites.map(it).join("")}</div></div>`;
   const foot = `<div class="foot">All prices: ${esc(menuPriceNote)}. The House reserves the right to ask no questions.</div>`;
   if (card) {
     const half = Math.ceil(menuDrinks.length / 2);
