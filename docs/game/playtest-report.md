@@ -6,16 +6,16 @@
 
 | Night | Absent | Chats each | Killer | Winner (score) | Top 3 | Lowest | Mystery full marks (new-1 right) | Objectives done |
 |---|---|---|---|---|---|---|---|---|
-| 1 | 0 | 12 | Molly | Anthony (19.00, detective) | 19.0 / 19.0 / 19.0 | 13.0 | 22 of 24 | 71% |
-| 2 | 0 | 16 | Luke | Anthony (20.00, errandRunner) | 20.0 / 19.5 / 19.0 | 14.5 | 22 of 24 | 71% |
-| 3 | 1 | 10 | Molly | Sheriff (20.00, balanced) | 20.0 / 20.0 / 19.0 | 16.0 | 21 of 23 | 79% |
-| 4 | 2 | 14 | Molly | Joshua (19.00, balanced) | 19.0 / 19.0 / 19.0 | 15.8 | 20 of 22 | 77% |
-| 5 | 2 | 18 | Adam | Anika (20.00, errandRunner) | 20.0 / 19.0 / 19.0 | 15.5 | 20 of 22 | 71% |
-| 6 | 3 | 12 | Molly | Tim (19.00, balanced) | 19.0 / 19.0 / 19.0 | 15.8 | 19 of 21 | 76% |
-| 7 | 3 | 10 | Rhea | Anthony (19.70, errandRunner) | 19.7 / 19.5 / 19.0 | 16.8 | 19 of 21 | 80% |
-| 8 | 4 | 15 | Adam | Judge (20.00, errandRunner) | 20.0 / 19.5 / 19.0 | 15.5 | 18 of 20 | 82% |
-| 9 | 5 | 11 | Adam | Sidd (17.00, detective) | 17.0 / 17.0 / 16.0 | 14.0 | 17 of 19 | 82% |
-| 10 | 5 | 9 | Adam | Krrish (19.00, errandRunner) | 19.0 / 19.0 / 19.0 | 14.5 | 15 of 19 | 75% |
+| 1 | 0 | 12 | Molly | Luke (19.28, errandRunner) | 19.3 / 19.0 / 19.0 | 15.0 | 20 of 24 | 73% |
+| 2 | 0 | 16 | Luke | Erika (20.00, balanced) | 20.0 / 20.0 / 19.7 | 14.7 | 21 of 24 | 77% |
+| 3 | 1 | 10 | Molly | Angelos (20.00, errandRunner) | 20.0 / 20.0 / 20.0 | 16.8 | 21 of 23 | 80% |
+| 4 | 2 | 14 | Molly | Ananya (21.00, balanced) | 21.0 / 20.0 / 19.0 | 15.5 | 20 of 22 | 75% |
+| 5 | 2 | 18 | Adam | Joshua (21.00, errandRunner) | 21.0 / 19.5 / 19.3 | 16.5 | 20 of 22 | 77% |
+| 6 | 3 | 12 | Molly | Ananya (20.00, balanced) | 20.0 / 20.0 / 20.0 | 15.8 | 19 of 21 | 77% |
+| 7 | 3 | 10 | Rhea | Dr. (19.50, balanced) | 19.5 / 19.5 / 19.3 | 14.8 | 17 of 21 | 75% |
+| 8 | 4 | 15 | Adam | Arjun (20.00, errandRunner) | 20.0 / 20.0 / 20.0 | 14.5 | 18 of 20 | 80% |
+| 9 | 5 | 11 | Adam | Tiffany (17.50, errandRunner) | 17.5 / 17.0 / 16.5 | 13.0 | 17 of 19 | 74% |
+| 10 | 5 | 9 | Adam | Krrish (20.00, errandRunner) | 20.0 / 19.5 / 19.5 | 11.7 | 15 of 19 | 72% |
 
 ## Could they work out each mystery question?
 
@@ -23,60 +23,60 @@ Share of the guests asked who earned **full marks**, averaged over the nights (a
 
 | Question | Full marks | Some credit |
 |---|---|---|
-| old-1: What really happened at the Black Veil on All Hallows' Eve, 1924? | 100% | 100% |
-| old-2: Why did the Veil's members all leave with Cassie that night? | 100% | 100% |
+| old-1: What really happened at the Black Veil on All Hallows' Eve, 1924? | 99% | 100% |
+| old-2: Why did the Veil's members all leave with Cassie that night? | 99% | 100% |
 | old-3: Who killed the members afterward, and how did it look like someone els… | 77% | 100% |
-| new-1: Who poisoned the Keeper? | 99% | 99% |
+| new-1: Who poisoned the Keeper? | 96% | 96% |
 | new-2: How was he poisoned, and where did the poison come from? | 100% | 100% |
-| new-3: Why did the killer do it? What had the Keeper done to them? | 93% | 98% |
-| con-1: Who was the dead man to the Veil, and what had he done? | 78% | 100% |
+| new-3: Why did the killer do it? What had the Keeper done to them? | 93% | 97% |
+| con-1: Who was the dead man to the Veil, and what had he done? | 77% | 100% |
 | con-2: How do the five survivors connect to him? | 80% | 100% |
-| con-3: Who sent the invitations, and why? | 100% | 100% |
+| con-3: Who sent the invitations, and why? | 98% | 100% |
 | alt-1: What did the Keeper come to the Black Veil to do tonight, and how did … | 100% | 100% |
-| alt-2: Where are the Keeper's books, and what does it take to open them? | 100% | 100% |
+| alt-2: Where are the Keeper's books, and what does it take to open them? | 90% | 90% |
 
 ## Score by kind of player
 
-| Player | Mystery points (of 10) | Objectives (of 5) | Survivors named (of 4) | Total (of 20) |
+| Player | Mystery points (of 10) | Objectives (of 5) | Survivors named (of 4) | Total (of 21) |
 |---|---|---|---|---|
-| detective | 9.9 | 3.8 | 3.4 | 17.3 |
-| balanced | 9.8 | 4.1 | 3.8 | 17.9 |
-| errandRunner | 9.8 | 4.4 | 3.4 | 17.9 |
-| casual | 9.7 | 3.1 | 3.8 | 16.7 |
-| *survivors* | 9.2 | 4.7 | 3.2 | 17.3 |
-| *everyone else* | 9.9 | 3.7 | 3.7 | 17.6 |
+| detective | 9.8 | 3.5 | 3.4 | 17.1 |
+| balanced | 9.8 | 4.2 | 3.8 | 18.3 |
+| errandRunner | 9.7 | 4.6 | 3.5 | 18.3 |
+| casual | 9.5 | 3.2 | 3.8 | 16.9 |
+| *survivors* | 9.1 | 4.7 | 3.3 | 17.8 |
+| *everyone else* | 9.9 | 3.8 | 3.7 | 17.8 |
 
 ## Objectives that were completed, by kind
 
 | Kind | Completed |
 |---|---|
-| approval | 77% (57 of 74) |
+| approval | 74% (55 of 74) |
 | butler-sale | 100% (10 of 10) |
-| code | 73% (278 of 379) |
-| keep | 35% (29 of 83) |
-| money | 67% (64 of 96) |
-| pattern | 87% (338 of 390) |
+| code | 75% (284 of 379) |
+| keep | 34% (28 of 83) |
+| money | 60% (58 of 96) |
+| pattern | 87% (339 of 390) |
 | vial-attempt | 100% (43 of 43) |
 
 ## Group races: who won
 
 | Night | survivors | order | stage | working | river |
 |---|---|---|---|---|---|
-| 1 | Molly | Anika | Silas | nobody | Krrish |
-| 2 | Luke | Anthony | Leon | Tiffany | Angelos |
-| 3 | Molly | Sheriff | Sidd | Arjun | Angelos |
-| 4 | Molly | Anika | Silas | Tiffany | Erika |
-| 5 | Adam | Anika | Ananya | Joshua | Angelos |
-| 6 | Molly | Anthony | J. | nobody | Angelos |
-| 7 | Rhea | Anthony | Leon | Joshua | Rebecca |
-| 8 | Adam | Judge | Sidd | Diwakar | Tim |
-| 9 | Adam | Anika | Sidd | Joshua | Krrish |
-| 10 | Adam | Sheriff | Silas | Joshua | Tim |
+| 1 | Molly | Anthony | Leon | Arjun | nobody |
+| 2 | Luke | Anika | Silas | Joshua | Erika |
+| 3 | Molly | nobody | Silas | Tiffany | nobody |
+| 4 | Molly | Anika | Ananya | Tiffany | Krrish |
+| 5 | Adam | Anthony | Ananya | Joshua | Angelos |
+| 6 | Molly | Anika | Sidd | nobody | Tim |
+| 7 | Rhea | Judge | J. | nobody | Erika |
+| 8 | Adam | Anika | Leon | Joshua | Erika |
+| 9 | Adam | Judge | Ananya | Tiffany | Krrish |
+| 10 | Adam | Anika | nobody | Tiffany | Krrish |
 
 ## Anyone stranded?
 
-- met the sources but did not earn it: 45 times across 10 nights
+- met the sources but did not earn it: 52 times across 10 nights
 - the trade partner is absent (standby tray): 13 times across 10 nights
 - every named source is absent: 2 times across 10 nights
 - Most stranded objectives for one guest in a night: 2
-- Fewest facts any guest knew at the end (of 39): 30
+- Fewest facts any guest knew at the end (of 39): 26

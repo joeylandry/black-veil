@@ -122,6 +122,12 @@ export function buildPacket(items: GradeItem[], submissions: Submission[], truth
     claims.push({ guest: item.guest, character: characterById.get(item.guest)?.name ?? item.guest, claim: submission?.answer ?? "" });
   }
 
+  // the wallet bonus: the guests who won it are checked against their actual bills
+  for (const item of items) {
+    if (item.kind !== "bonus" || item.itemId !== "cash" || item.verdict !== "accept") continue;
+    claims.push({ guest: item.guest, character: `${characterById.get(item.guest)?.name ?? item.guest} (wallet bonus)`, claim: latest.get(`${item.guest}|objective|cash`)?.answer ?? "" });
+  }
+
   const killer = truth.killer ? characterById.get(truth.killer) : undefined;
   return {
     version: 1,

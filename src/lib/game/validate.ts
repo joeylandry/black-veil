@@ -272,7 +272,7 @@ export function runValidation(root = process.cwd()): Report {
         if (check.kind === "money") {
           const start = character.startingCash;
           if (check.min <= start) problems.push(`${objective.id}: target $${check.min} is not above the starting $${start}`);
-          if (check.min - start > 130) problems.push(`${objective.id}: target is $${check.min - start} above start; too steep`);
+          if (check.min - start > 1300) problems.push(`${objective.id}: target is $${check.min - start} above start; too steep`);
         }
         if (check.kind === "approval") {
           if (!check.word.trim() || /\s/.test(check.word.trim())) problems.push(`${objective.id}: the approval word must be a single word`);

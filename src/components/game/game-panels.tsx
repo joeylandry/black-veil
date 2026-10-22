@@ -4,7 +4,7 @@ import { FormEvent, useState } from "react";
 import type { Card, DirectoryEntry, Errand, FinalQuestion, Line, Results, SavedAnswer } from "./game-types";
 import { SubmitBox } from "./submit-box";
 
-const shareLabel: Record<Line["share"], string> = { free: "Say it freely", trade: "Trade it", secret: "Keep it close" };
+const shareLabel: Record<Line["share"], string> = { free: "Say it freely", trade: "Trade it", paid: "Costs $100 at the bar", secret: "Keep it close" };
 
 export function Lines({ lines }: { lines: Line[] }) {
   if (!lines.length) return null;
@@ -154,7 +154,7 @@ export function PrivateTab({ card, secretsReleased, open, saved, onSaved }: { ca
       </section>
       <section className="game-panel">
         <p className="eyebrow">In your pockets</p>
-        <p>You start the night with ${p.startingCash} in House bills.{p.carries.length > 0 && <> You also carry: {p.carries.join(", ")}.</>}</p>
+        <p>You start the night with ${p.startingCash.toLocaleString("en-US")} in House bills ({p.startingCash / 100} bills of $100). A clue tagged &ldquo;Costs $100 at the bar&rdquo; is told only after you drop a bill in the House Tin; a secret of yours can be sold to a guest for $200.{p.carries.length > 0 && <> You also carry: {p.carries.join(", ")}.</>}</p>
         {p.habit && <p className="game-tell"><strong>A habit of yours.</strong> {p.habit}</p>}
       </section>
       <section className="game-panel">
@@ -228,6 +228,12 @@ export function AnswersTab({
       <section className="game-panel">
         <p className="eyebrow">The Survivors</p>
         <SurvivorPicker directory={directory} me={me} survivor={survivor} initial={saved.get("survivors|picks")} open={open} onSaved={onSaved} />
+      </section>
+
+      <section className="game-panel">
+        <p className="eyebrow">Your bills</p>
+        <p>When the night ends, count the House bills in your pocket and type the total in dollars. The quarter of the room that ends the night best off against where they started (the most gained, or the least spent) earns one point. If you have a money errand, you are counted from its target, because that errand already pays you for earning. Spend wisely: clues at the bar and secrets you buy cost money, a secret you sell earns it. Bartend Joe may ask to see your bills.</p>
+        <SubmitBox kind="objective" itemId="cash" label="Dollars in your pocket at the end" initial={saved.get("objective|cash")} disabled={!open} onSaved={onSaved} />
       </section>
     </>
   );
@@ -311,6 +317,7 @@ export function ResultsTab({ results }: { results: Results | null }) {
               <tr><th>Survivors named</th><td>{you.tiers.survivors} / 4</td></tr>
               <tr><th>The three mysteries</th><td>{you.tiers.mysteries} / 10</td></tr>
               <tr><th>Group race</th><td>{you.tiers.race} / 1</td></tr>
+              <tr><th>Wallet bonus</th><td>{you.tiers.cash} / 1</td></tr>
             </tbody>
           </table>
           <details>

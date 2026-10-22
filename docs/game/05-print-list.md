@@ -331,31 +331,31 @@ Filing code: 3N8VD
 
 ## Currency
 
-Black Veil bills: $5, $10, $20. Cash in the room at the start:
-- Anika Mahns of Mahns Manor: $400
-- J. Bruce Wayne: $400
-- Mihir Nagarkatti of Nag Oil: $400
-- Krrish Vermouth: $120
-- Angelos Bowles: $120
-- Sheriff Theodor Farrago: $100
-- Judge Eric Leeway: $150
-- Anthony Hung, Esq.: $120
-- Dr. Emmerich Sunner: $100
-- Molly Daniel of the Manchester Union: $90
-- Leon Gee of WFEA: $100
-- Ananya Codru and Charlie Wakem: $100
-- Luke Shelldon: $100
-- Silas Palmer of the Palm Court: $120
-- Sidd Airwind: $140
-- Joshua Kamin-Sky: $80
-- Arjun Bat: $80
-- Adam Holdsfire: $100
-- Tiffany Liu of the Lamps: $100
-- Diwakar Sandbagg: $100
-- Tim McGinley, Baron of Bathtub Gin: $150
-- Rebecca Chow, Butler of the Black Veil: $120
-- Rhea Mallya of Mallya's Emporium: $150
-- Erika Lamm: $60
+House bills: $100 each. Cash in the room at the start: $32,000 (320 bills, so the rest of your 400 stay with Bartend Joe for change and winnings).
+- Anika Mahns of Mahns Manor: 30 bills ($3000)
+- J. Bruce Wayne: 30 bills ($3000)
+- Mihir Nagarkatti of Nag Oil: 30 bills ($3000)
+- Krrish Vermouth: 12 bills ($1200)
+- Angelos Bowles: 12 bills ($1200)
+- Sheriff Theodor Farrago: 10 bills ($1000)
+- Judge Eric Leeway: 15 bills ($1500)
+- Anthony Hung, Esq.: 12 bills ($1200)
+- Dr. Emmerich Sunner: 10 bills ($1000)
+- Molly Daniel of the Manchester Union: 9 bills ($900)
+- Leon Gee of WFEA: 10 bills ($1000)
+- Ananya Codru and Charlie Wakem: 10 bills ($1000)
+- Luke Shelldon: 10 bills ($1000)
+- Silas Palmer of the Palm Court: 12 bills ($1200)
+- Sidd Airwind: 14 bills ($1400)
+- Joshua Kamin-Sky: 8 bills ($800)
+- Arjun Bat: 8 bills ($800)
+- Adam Holdsfire: 10 bills ($1000)
+- Tiffany Liu of the Lamps: 10 bills ($1000)
+- Diwakar Sandbagg: 10 bills ($1000)
+- Tim McGinley, Baron of Bathtub Gin: 15 bills ($1500)
+- Rebecca Chow, Butler of the Black Veil: 12 bills ($1200)
+- Rhea Mallya of Mallya's Emporium: 15 bills ($1500)
+- Erika Lamm: 6 bills ($600)
 
 ## Standby slips (the Dead Letter box, opened at 9:15)
 
@@ -406,27 +406,27 @@ One slip per clue errand. Hand it to a guest whose named sources did not come.
 
 ## Each guest's envelope
 
-- Anika Mahns of Mahns Manor: $400, Mahns crested spoon, Mahns Manor voucher, Trade slip
-- J. Bruce Wayne: $400, Tool token
-- Mihir Nagarkatti of Nag Oil: $400, Tool token, marker No. 18
-- Krrish Vermouth: $120, Silent Partner's brass key, crate receipt, Reply slip
-- Angelos Bowles: $120, House chip, Reply slip
-- Sheriff Theodor Farrago: $100, Nuisance Citation, Reply slip
-- Judge Eric Leeway: $150, notice of dismissal, Reply slip
-- Anthony Hung, Esq.: $120, Tool token
-- Dr. Emmerich Sunner: $100, Trade slip
-- Molly Daniel of the Manchester Union: $90, Trade slip, marker No. 22
-- Leon Gee of WFEA: $100, Witness slip
-- Ananya Codru and Charlie Wakem: $100, blank telegram form, Tool token
-- Luke Shelldon: $100, marker No. 19
-- Silas Palmer of the Palm Court: $120, request card, Trade slip
-- Sidd Airwind: $140, Witness slip
-- Joshua Kamin-Sky: $80, soothsayer's charm, Witness slip
-- Arjun Bat: $80, signed baseball, Witness slip
-- Adam Holdsfire: $100, marker No. 21
-- Tiffany Liu of the Lamps: $100, glass earring, Pardon slip, go-between's receipt, Trade slip
-- Diwakar Sandbagg: $100, carnival giraffe, Witness slip
-- Tim McGinley, Baron of Bathtub Gin: $150, jar of bathtub gin, Tool token
-- Rebecca Chow, Butler of the Black Veil: $120
-- Rhea Mallya of Mallya's Emporium: $150, marker No. 20
-- Erika Lamm: $60, set of false papers, Reply slip
+- Anika Mahns of Mahns Manor: 30 bills ($3000), Mahns crested spoon, Mahns Manor voucher, Trade slip
+- J. Bruce Wayne: 30 bills ($3000), Tool token
+- Mihir Nagarkatti of Nag Oil: 30 bills ($3000), Tool token, marker No. 18
+- Krrish Vermouth: 12 bills ($1200), Silent Partner's brass key, crate receipt, Reply slip
+- Angelos Bowles: 12 bills ($1200), House chip, Reply slip
+- Sheriff Theodor Farrago: 10 bills ($1000), Nuisance Citation, Reply slip
+- Judge Eric Leeway: 15 bills ($1500), notice of dismissal, Reply slip
+- Anthony Hung, Esq.: 12 bills ($1200), Tool token
+- Dr. Emmerich Sunner: 10 bills ($1000), Trade slip
+- Molly Daniel of the Manchester Union: 9 bills ($900), Trade slip, marker No. 22
+- Leon Gee of WFEA: 10 bills ($1000), Witness slip
+- Ananya Codru and Charlie Wakem: 10 bills ($1000), blank telegram form, Tool token
+- Luke Shelldon: 10 bills ($1000), marker No. 19
+- Silas Palmer of the Palm Court: 12 bills ($1200), request card, Trade slip
+- Sidd Airwind: 14 bills ($1400), Witness slip
+- Joshua Kamin-Sky: 8 bills ($800), soothsayer's charm, Witness slip
+- Arjun Bat: 8 bills ($800), signed baseball, Witness slip
+- Adam Holdsfire: 10 bills ($1000), marker No. 21
+- Tiffany Liu of the Lamps: 10 bills ($1000), glass earring, Pardon slip, go-between's receipt, Trade slip
+- Diwakar Sandbagg: 10 bills ($1000), carnival giraffe, Witness slip
+- Tim McGinley, Baron of Bathtub Gin: 15 bills ($1500), jar of bathtub gin, Tool token
+- Rebecca Chow, Butler of the Black Veil: 12 bills ($1200)
+- Rhea Mallya of Mallya's Emporium: 15 bills ($1500), marker No. 20
+- Erika Lamm: 6 bills ($600), set of false papers, Reply slip

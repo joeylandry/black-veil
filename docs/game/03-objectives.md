@@ -4,8 +4,8 @@
 
 ## Anika Mahns of Mahns Manor
 
-anika-money. **Money to make** (money, 1) A fortune is kept by spending it wisely. Make the room pay you back. Leave with at least $460. Count your bills at the end and submit the total. Bartend Joe may ask to see them.
-   - answer: at least $460
+anika-money. **Money to make** (money, 1) A fortune is kept by spending it wisely. Make the room pay you back. Leave with at least $3,600. Count your bills at the end and submit the total. Bartend Joe may ask to see them.
+   - answer: at least $3600
 anika-find. **A thing to find** (find, 1) Find the sugar dish. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. A glass dish with a lid sits where the sweets go. The tag is under the lid.
    - answer: code A8NKR
 anika-swap. **A fair trade** (swap, 1) Strike a bargain with Krrish Vermouth: your Mahns crested spoon for their Silent Partner's brass key. It must be a deal, never a grab. When you hold it, read the code on its tag.
@@ -17,8 +17,8 @@ anika-secret. **What Ananya Codru and Charlie Wakem is hiding** (learn, 1) Every
 
 ## J. Bruce Wayne
 
-joel-money. **Money to make** (money, 1) Let the room pay for your charm: win a hand, sell a story, collect a favour in cash. Leave with at least $460. Count your bills at the end and submit the total. Bartend Joe may ask to see them.
-   - answer: at least $460
+joel-money. **Money to make** (money, 1) Let the room pay for your charm: win a hand, sell a story, collect a favour in cash. Leave with at least $3,600. Count your bills at the end and submit the total. Bartend Joe may ask to see them.
+   - answer: at least $3600
 joel-find. **A thing to find** (find, 1) Find the red bird. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. A small red bird perches somewhere it should not, away from its lamp.
    - answer: code AJTN9
 joel-secret. **What Krrish Vermouth is hiding** (learn, 1) Everyone has something they would rather not say. Learn Krrish Vermouth's small secret, not by being told it is a secret, but by earning it.
@@ -51,13 +51,13 @@ krrish-deal. **The Friday crate** (role, 1) Send Judge Eric Leeway a crate of wi
    - answer: code VMX7X; from Judge Eric Leeway
 krrish-secret. **What Diwakar Sandbagg is hiding** (learn, 1) Everyone has something they would rather not say. Learn Diwakar Sandbagg's small secret, not by being told it is a secret, but by earning it.
    - answer: [stay down]; from Diwakar Sandbagg, Ananya Codru and Charlie Wakem
-krrish-keep. **Your own secret** (keep, 1) Your small secret is worth two halves. Let J. Bruce Wayne earn it from you (half a point), and make sure Sheriff Theodor Farrago never does (half a point). You will not be asked anything: it is scored from what they each learn.
+krrish-keep. **Your own secret** (keep, 1) Your small secret is worth two halves. Let J. Bruce Wayne earn it from you (half a point), and make sure Sheriff Theodor Farrago never does (half a point). You will not be asked anything: it is scored from what they each learn. You may also sell it to anyone for $200 in House bills, but a sale to Sheriff Theodor Farrago costs you that half.
    - answer: J. Bruce Wayne learns it (joel-secret) and Sheriff Theodor Farrago does not (theodor-secret); from J. Bruce Wayne
 
 ## Angelos Bowles
 
-angelos-money. **Money to make** (money, 1) Win a few hands, a few bets, a few boules. Leave with at least $180. Count your bills at the end and submit the total. Bartend Joe may ask to see them.
-   - answer: at least $180
+angelos-money. **Money to make** (money, 1) Win a few hands, a few bets, a few boules. Leave with at least $1,800. Count your bills at the end and submit the total. Bartend Joe may ask to see them.
+   - answer: at least $1800
 angelos-find. **A thing to find** (find, 1) Find the Veil candle. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. A brass candlestick burns beside her portrait, and a ring of salt keeps it company.
    - answer: code N8CM8
 angelos-swap. **A fair trade** (swap, 1) Strike a bargain with Diwakar Sandbagg: your House chip for their carnival giraffe. It must be a deal, never a grab. When you hold it, read the code on its tag.
@@ -75,7 +75,7 @@ theodor-deal. **The Leon matter** (role, 1) You hold a Nuisance Citation against
    - answer: code U7WNK; from Leon Gee of WFEA, Tiffany Liu of the Lamps
 theodor-secret. **What Krrish Vermouth is hiding** (learn, 1) Everyone has something they would rather not say. Learn Krrish Vermouth's small secret, not by being told it is a secret, but by earning it. Someone is guarding this one, so expect a harder time: a real try still earns half a point.
    - answer: [grey hudson | grey]; from Krrish Vermouth, Dr. Emmerich Sunner
-theodor-keep. **Your own secret** (keep, 1) Your small secret is worth two halves. Let Anthony Hung, Esq. earn it from you (half a point), and make sure Rebecca Chow, Butler of the Black Veil never does (half a point). You will not be asked anything: it is scored from what they each learn.
+theodor-keep. **Your own secret** (keep, 1) Your small secret is worth two halves. Let Anthony Hung, Esq. earn it from you (half a point), and make sure Rebecca Chow, Butler of the Black Veil never does (half a point). You will not be asked anything: it is scored from what they each learn. You may also sell it to anyone for $200 in House bills, but a sale to Rebecca Chow, Butler of the Black Veil costs you that half.
    - answer: Anthony Hung, Esq. learns it (anthony-secret) and Rebecca Chow, Butler of the Black Veil does not (rebecca-secret); from Anthony Hung, Esq.
 theodor-arrest. **Make the arrest** (approval, 1) When the body is found, take charge, question the room, and make an arrest by a quarter past ten. Then tap Claim this point and go to Bartend Joe at the bar for your approval word.
    - answer: the host confirms it in person and gives the approval word "pomegranate"
@@ -88,15 +88,15 @@ eric-deal. **The Friday crate** (role, 1) Accept Krrish Vermouth's Friday crate 
    - answer: code ATCTU; from Krrish Vermouth
 eric-secret. **What Dr. Emmerich Sunner is hiding** (learn, 1) Everyone has something they would rather not say. Learn Dr. Emmerich Sunner's small secret, not by being told it is a secret, but by earning it.
    - answer: [beet | beets]; from Dr. Emmerich Sunner, Tim McGinley, Baron of Bathtub Gin
-eric-keep. **Your own secret** (keep, 1) Your small secret is worth two halves. Let Silas Palmer of the Palm Court earn it from you (half a point), and make sure Sidd Airwind never does (half a point). You will not be asked anything: it is scored from what they each learn.
+eric-keep. **Your own secret** (keep, 1) Your small secret is worth two halves. Let Silas Palmer of the Palm Court earn it from you (half a point), and make sure Sidd Airwind never does (half a point). You will not be asked anything: it is scored from what they each learn. You may also sell it to anyone for $200 in House bills, but a sale to Sidd Airwind costs you that half.
    - answer: Silas Palmer of the Palm Court learns it (silas-secret) and Sidd Airwind does not (sidd-secret); from Silas Palmer of the Palm Court
 eric-charter. **Sign the charter** (role, 1) At the wrap-up Bartend Joe hands you the charter. Sign it, and type the code printed on it.
    - answer: code 4JNW7
 
 ## Anthony Hung, Esq.
 
-anthony-money. **Money to make** (money, 1) Charge by the word. Sell advice, draw a paper, collect a retainer. Leave with at least $180. Count your bills at the end and submit the total. Bartend Joe may ask to see them.
-   - answer: at least $180
+anthony-money. **Money to make** (money, 1) Charge by the word. Sell advice, draw a paper, collect a retainer. Leave with at least $1,800. Count your bills at the end and submit the total. Bartend Joe may ask to see them.
+   - answer: at least $1800
 anthony-find. **A thing to find** (find, 1) Find the Bill of Rights. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. The little book beside it, with the rights every defendant has.
    - answer: code U8GVW
 anthony-secret. **What Sheriff Theodor Farrago is hiding** (learn, 1) Everyone has something they would rather not say. Learn Sheriff Theodor Farrago's small secret, not by being told it is a secret, but by earning it.
@@ -112,7 +112,7 @@ emre-find. **A thing to find** (find, 1) Find the decoy duck. It is hidden in a 
    - answer: code DF46N
 emre-secret. **What Luke Shelldon is hiding** (learn, 1) Everyone has something they would rather not say. Learn Luke Shelldon's small secret, not by being told it is a secret, but by earning it.
    - answer: [post-office box | post office box | postoffice box]; from Luke Shelldon, Diwakar Sandbagg
-emre-keep. **Your own secret** (keep, 1) Your small secret is worth two halves. Let Judge Eric Leeway earn it from you (half a point), and make sure Leon Gee of WFEA never does (half a point). You will not be asked anything: it is scored from what they each learn.
+emre-keep. **Your own secret** (keep, 1) Your small secret is worth two halves. Let Judge Eric Leeway earn it from you (half a point), and make sure Leon Gee of WFEA never does (half a point). You will not be asked anything: it is scored from what they each learn. You may also sell it to anyone for $200 in House bills, but a sale to Leon Gee of WFEA costs you that half.
    - answer: Judge Eric Leeway learns it (eric-secret) and Leon Gee of WFEA does not (leon-secret); from Judge Eric Leeway
 emre-exam. **The examination** (role, 1) Examine the body. State what killed him, and what it was carried in.
    - answer: [strychnine | nux vomica] AND [rye | whiskey | nightcap | glass | drink]; from Sheriff Theodor Farrago
@@ -136,12 +136,12 @@ molly-offer. **Make your offer to the House** (chain, 1) The House keeps one bot
 
 leon-find. **A thing to find** (find, 1) Find the launch's fog horn. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. Something that once sounded a warning across the water now sits on the bookshelf.
    - answer: code V23EE
-leon-deal. **Out of the cell** (role, 1) Sheriff Farrago holds a citation against you, for being insufferable on the air. Pay a go-between at least $50 in House bills to broker a pardon. Tiffany Liu is the best choice. She hands you a go-between's receipt: read its code.
+leon-deal. **Out of the cell** (role, 1) Sheriff Farrago holds a citation against you, for being insufferable on the air. Pay a go-between at least $100 in House bills to broker a pardon. Tiffany Liu is the best choice. She hands you a go-between's receipt: read its code.
    - answer: code RU647; from Tiffany Liu of the Lamps, Sheriff Theodor Farrago
 leon-secret. **What Dr. Emmerich Sunner is hiding** (learn, 1) Everyone has something they would rather not say. Learn Dr. Emmerich Sunner's small secret, not by being told it is a secret, but by earning it. Someone is guarding this one, so expect a harder time: a real try still earns half a point.
    - answer: [beet | beets]; from Dr. Emmerich Sunner, Tim McGinley, Baron of Bathtub Gin
-leon-money. **Money to make** (money, 1) Sell a plug, a dedication, a station break. Leave with at least $160. Count your bills at the end and submit the total. Bartend Joe may ask to see them.
-   - answer: at least $160
+leon-money. **Money to make** (money, 1) Sell a plug, a dedication, a station break. Leave with at least $1,600. Count your bills at the end and submit the total. Bartend Joe may ask to see them.
+   - answer: at least $1600
 leon-bulletin. **Read the bulletin** (approval, 1) At the wrap-up, collect the bulletin from Bartend Joe at the bar and read it aloud to the room, microphone or no. Then tap Claim this point and go back to Joe for your approval word.
    - answer: the host confirms it in person and gives the approval word "thistle"
 
@@ -153,7 +153,7 @@ ananya-swap. **A fair trade** (swap, 1) Strike a bargain with Erika Lamm: your b
    - answer: code ERYTJ; from Erika Lamm
 ananya-secret. **What Rebecca Chow, Butler of the Black Veil is hiding** (learn, 1) Everyone has something they would rather not say. Learn Rebecca Chow, Butler of the Black Veil's small secret, not by being told it is a secret, but by earning it. Someone is guarding this one, so expect a harder time: a real try still earns half a point.
    - answer: [cold tea]; from Rebecca Chow, Butler of the Black Veil, Tim McGinley, Baron of Bathtub Gin
-ananya-keep. **Your own secret** (keep, 1) Your small secret is worth two halves. Let Angelos Bowles earn it from you (half a point), and make sure Anika Mahns of Mahns Manor never does (half a point). You will not be asked anything: it is scored from what they each learn.
+ananya-keep. **Your own secret** (keep, 1) Your small secret is worth two halves. Let Angelos Bowles earn it from you (half a point), and make sure Anika Mahns of Mahns Manor never does (half a point). You will not be asked anything: it is scored from what they each learn. You may also sell it to anyone for $200 in House bills, but a sale to Anika Mahns of Mahns Manor costs you that half.
    - answer: Angelos Bowles learns it (angelos-secret) and Anika Mahns of Mahns Manor does not (anika-secret); from Angelos Bowles
 ananya-story. **Cassie's hand** (story, 1) Cassie signed her notes in a particular way. Learn how, from someone who kept her correspondence.
    - answer: [plain]; from Leon Gee of WFEA, Rebecca Chow, Butler of the Black Veil
@@ -173,8 +173,8 @@ luke-offer. **Make your offer to the House** (chain, 1) The House keeps one bott
 
 ## Silas Palmer of the Palm Court
 
-silas-money. **Money to make** (money, 1) Sing for your supper, and pass the hat. Leave with at least $180. Count your bills at the end and submit the total. Bartend Joe may ask to see them.
-   - answer: at least $180
+silas-money. **Money to make** (money, 1) Sing for your supper, and pass the hat. Leave with at least $1,800. Count your bills at the end and submit the total. Bartend Joe may ask to see them.
+   - answer: at least $1800
 silas-find. **A thing to find** (find, 1) Find the opera bill. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. A fat knight with his cup hangs in the hall. The tag is at the corner of the frame.
    - answer: code EFCKF
 silas-deal. **A sneaky request** (role, 1) Anika Mahns wants to know who in this room knew her father. Take her $30 voucher, play her father's signature tune around half past eight, and call it a request from the room. Hand her the request card and keep the voucher: read its code. Nobody is to know.
@@ -186,8 +186,8 @@ silas-spotlight. **The spotlight** (approval, 1) Around half past eight, take th
 
 ## Sidd Airwind
 
-sidd-money. **Money to make** (money, 1) Sell rides in your plane to anyone with a dollar. Leave with at least $200. Count your bills at the end and submit the total. Bartend Joe may ask to see them.
-   - answer: at least $200
+sidd-money. **Money to make** (money, 1) Sell rides in your plane to anyone with a dollar. Leave with at least $2,000. Count your bills at the end and submit the total. Bartend Joe may ask to see them.
+   - answer: at least $2000
 sidd-find. **A thing to find** (find, 1) Find the route globe. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. The whole world turns on a stand by the window, with the hours marked round its rim.
    - answer: code E3HTT
 sidd-secret. **What Judge Eric Leeway is hiding** (learn, 1) Everyone has something they would rather not say. Learn Judge Eric Leeway's small secret, not by being told it is a secret, but by earning it. Someone is guarding this one, so expect a harder time: a real try still earns half a point.
@@ -212,8 +212,8 @@ josh-fortunes. **The fortunes** (approval, 1) Read the fortunes of four differen
 
 ## Arjun Bat
 
-arjun-money. **Money to make** (money, 1) Win a wager on a swing, a pitch or a bet. Leave with at least $140. Count your bills at the end and submit the total. Bartend Joe may ask to see them.
-   - answer: at least $140
+arjun-money. **Money to make** (money, 1) Win a wager on a swing, a pitch or a bet. Leave with at least $1,400. Count your bills at the end and submit the total. Bartend Joe may ask to see them.
+   - answer: at least $1400
 arjun-find. **A thing to find** (find, 1) Find the Kraken Cove candle stand. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. Eight arms hold up a single candle, in the cabinet with the good glass.
    - answer: code PWKGP
 arjun-swap. **A fair trade** (swap, 1) Strike a bargain with Tim McGinley, Baron of Bathtub Gin: your signed baseball for their jar of bathtub gin. It must be a deal, never a grab. When you hold it, read the code on its tag.
@@ -242,37 +242,37 @@ tiffany-find. **A thing to find** (find, 1) Find the glowing bottle. It is hidde
    - answer: code RD99K
 tiffany-swap. **A fair trade** (swap, 1) Strike a bargain with Joshua Kamin-Sky: your glass earring for their soothsayer's charm. It must be a deal, never a grab. When you hold it, read the code on its tag.
    - answer: code DTF7R; from Joshua Kamin-Sky
-tiffany-deal. **A pardon, brokered** (role, 1) Take at least $50 in House bills from Leon Gee and carry a Pardon slip to Sheriff Farrago. If he takes it, he tears up his citation and hands it to you: read the code on the torn citation. Give Leon a go-between's receipt.
+tiffany-deal. **A pardon, brokered** (role, 1) Take at least $100 in House bills from Leon Gee and carry a Pardon slip to Sheriff Farrago. If he takes it, he tears up his citation and hands it to you: read the code on the torn citation. Give Leon a go-between's receipt.
    - answer: code MKPAE; from Sheriff Theodor Farrago, Leon Gee of WFEA
 tiffany-secret. **What Rebecca Chow, Butler of the Black Veil is hiding** (learn, 1) Everyone has something they would rather not say. Learn Rebecca Chow, Butler of the Black Veil's small secret, not by being told it is a secret, but by earning it.
    - answer: [cold tea]; from Rebecca Chow, Butler of the Black Veil, Tim McGinley, Baron of Bathtub Gin
-tiffany-keep. **Your own secret** (keep, 1) Your small secret is worth two halves. Let Arjun Bat earn it from you (half a point), and make sure Joshua Kamin-Sky never does (half a point). You will not be asked anything: it is scored from what they each learn.
+tiffany-keep. **Your own secret** (keep, 1) Your small secret is worth two halves. Let Arjun Bat earn it from you (half a point), and make sure Joshua Kamin-Sky never does (half a point). You will not be asked anything: it is scored from what they each learn. You may also sell it to anyone for $200 in House bills, but a sale to Joshua Kamin-Sky costs you that half.
    - answer: Arjun Bat learns it (arjun-secret) and Joshua Kamin-Sky does not (josh-secret); from Arjun Bat
 
 ## Diwakar Sandbagg
 
-diwakar-money. **Money to make** (money, 1) Win a purse: a bet, an arm-wrestle, a wager. Leave with at least $160. Count your bills at the end and submit the total. Bartend Joe may ask to see them.
-   - answer: at least $160
+diwakar-money. **Money to make** (money, 1) Win a purse: a bet, an arm-wrestle, a wager. Leave with at least $1,600. Count your bills at the end and submit the total. Bartend Joe may ask to see them.
+   - answer: at least $1600
 diwakar-find. **A thing to find** (find, 1) Find the champion's weight. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. A prize weight that nobody is lifting. Look where a heavy thing sits quietly.
    - answer: code GXG4U
 diwakar-swap. **A fair trade** (swap, 1) Strike a bargain with Angelos Bowles: your carnival giraffe for their House chip. It must be a deal, never a grab. When you hold it, read the code on its tag.
    - answer: code YYRM4; from Angelos Bowles
 diwakar-secret. **What Tim McGinley, Baron of Bathtub Gin is hiding** (learn, 1) Everyone has something they would rather not say. Learn Tim McGinley, Baron of Bathtub Gin's small secret, not by being told it is a secret, but by earning it. Someone is guarding this one, so expect a harder time: a real try still earns half a point.
    - answer: [cuff]; from Tim McGinley, Baron of Bathtub Gin, Krrish Vermouth
-diwakar-keep. **Your own secret** (keep, 1) Your small secret is worth two halves. Let Krrish Vermouth earn it from you (half a point), and make sure Tim McGinley, Baron of Bathtub Gin never does (half a point). You will not be asked anything: it is scored from what they each learn.
+diwakar-keep. **Your own secret** (keep, 1) Your small secret is worth two halves. Let Krrish Vermouth earn it from you (half a point), and make sure Tim McGinley, Baron of Bathtub Gin never does (half a point). You will not be asked anything: it is scored from what they each learn. You may also sell it to anyone for $200 in House bills, but a sale to Tim McGinley, Baron of Bathtub Gin costs you that half.
    - answer: Krrish Vermouth learns it (krrish-secret) and Tim McGinley, Baron of Bathtub Gin does not (tim-secret); from Krrish Vermouth
 
 ## Tim McGinley, Baron of Bathtub Gin
 
-tim-money. **Money to make** (money, 1) A baron's business is the margin. Sell, trade and bargain. Leave with at least $210. Count your bills at the end and submit the total. Bartend Joe may ask to see them.
-   - answer: at least $210
+tim-money. **Money to make** (money, 1) A baron's business is the margin. Sell, trade and bargain. Leave with at least $2,100. Count your bills at the end and submit the total. Bartend Joe may ask to see them.
+   - answer: at least $2100
 tim-find. **A thing to find** (find, 1) Find the launch's fog horn. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. Something that once sounded a warning across the water now sits on the bookshelf.
    - answer: code V23EE
 tim-swap. **A fair trade** (swap, 1) Strike a bargain with Arjun Bat: your jar of bathtub gin for their signed baseball. It must be a deal, never a grab. When you hold it, read the code on its tag.
    - answer: code YY72H; from Arjun Bat
 tim-secret. **What Diwakar Sandbagg is hiding** (learn, 1) Everyone has something they would rather not say. Learn Diwakar Sandbagg's small secret, not by being told it is a secret, but by earning it. Someone is guarding this one, so expect a harder time: a real try still earns half a point.
    - answer: [stay down]; from Diwakar Sandbagg, Ananya Codru and Charlie Wakem
-tim-keep. **Your own secret** (keep, 1) Your small secret is worth two halves. Let Erika Lamm earn it from you (half a point), and make sure Diwakar Sandbagg never does (half a point). You will not be asked anything: it is scored from what they each learn.
+tim-keep. **Your own secret** (keep, 1) Your small secret is worth two halves. Let Erika Lamm earn it from you (half a point), and make sure Diwakar Sandbagg never does (half a point). You will not be asked anything: it is scored from what they each learn. You may also sell it to anyone for $200 in House bills, but a sale to Diwakar Sandbagg costs you that half.
    - answer: Erika Lamm learns it (erika-secret) and Diwakar Sandbagg does not (diwakar-secret); from Erika Lamm
 
 ## Rebecca Chow, Butler of the Black Veil
@@ -281,7 +281,7 @@ rebecca-find. **A thing to find** (find, 1) Find the vault cloche. It is hidden 
    - answer: code J84CN
 rebecca-secret. **What Sheriff Theodor Farrago is hiding** (learn, 1) Everyone has something they would rather not say. Learn Sheriff Theodor Farrago's small secret, not by being told it is a secret, but by earning it. Someone is guarding this one, so expect a harder time: a real try still earns half a point.
    - answer: [shoebox | shoe box]; from Sheriff Theodor Farrago, Molly Daniel of the Manchester Union
-rebecca-keep. **Your own secret** (keep, 1) Your small secret is worth two halves. Let Tiffany Liu of the Lamps earn it from you (half a point), and make sure Ananya Codru and Charlie Wakem never does (half a point). You will not be asked anything: it is scored from what they each learn.
+rebecca-keep. **Your own secret** (keep, 1) Your small secret is worth two halves. Let Tiffany Liu of the Lamps earn it from you (half a point), and make sure Ananya Codru and Charlie Wakem never does (half a point). You will not be asked anything: it is scored from what they each learn. You may also sell it to anyone for $200 in House bills, but a sale to Ananya Codru and Charlie Wakem costs you that half.
    - answer: Tiffany Liu of the Lamps learns it (tiffany-secret) and Ananya Codru and Charlie Wakem does not (ananya-secret); from Tiffany Liu of the Lamps
 rebecca-sale. **The House's one sale** (role, 1) Sell the House's single bottle to the owner of a numbered marker, once, before the nightcap is served at nine o'clock. Record the sale on your House panel.
    - answer: butler-sale
@@ -303,8 +303,8 @@ rhea-offer. **Make your offer to the House** (chain, 1) The House keeps one bott
 
 ## Erika Lamm
 
-erika-money. **Money to make** (money, 1) Earn a little without being noticed. Leave with at least $120. Count your bills at the end and submit the total. Bartend Joe may ask to see them.
-   - answer: at least $120
+erika-money. **Money to make** (money, 1) Earn a little without being noticed. Leave with at least $1,200. Count your bills at the end and submit the total. Bartend Joe may ask to see them.
+   - answer: at least $1200
 erika-find. **A thing to find** (find, 1) Find the masquerade mask. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. A carved face from the night of the masquerade watches the room from the shelves.
    - answer: code XAN9D
 erika-swap. **A fair trade** (swap, 1) Strike a bargain with Ananya Codru and Charlie Wakem: your set of false papers for their blank telegram form. It must be a deal, never a grab. When you hold it, read the code on its tag.

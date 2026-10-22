@@ -13,9 +13,10 @@ export const rulesCard: string[] = [
   "Later in the evening a body will be found. There is no town hall and no host to rule on anything. Question whom you like. Nobody is forced to answer.",
   "Nothing is ever taken from anyone. Props change hands by a deal, and nobody brings anything: whatever you carry is handed to you at the door. Hidden game pieces are only in shared rooms, never in bedrooms, bathrooms, closets or drawers.",
   "Some objectives happen in the room, not on your phone: you do them for real, tap Claim, then go to Bartend Joe at the bar, who gives you an approval word to type once he is satisfied it happened.",
+  "You start with House bills ($100 each). Some clues cost a bill: a line tagged \"Costs $100 at the bar\" is told only after you drop a $100 bill in the House Tin. Your own small secret can be sold to another guest, for $200. At the end, count your bills: the quarter of the room that ends the night best off against where they started (the most gained, or the least spent) earns an extra point.",
   "Walk, do not run, and keep your drink in your hand.",
   "Type your answers into your phone whenever you like, and as often as you like. Only your last answer to each question counts. The site will not tell you whether you were right; nobody will, until the end.",
-  "Points come from your five objectives (5), the survivors you name (up to 4), and above all the three mysteries: the Old, the New and the Connection (10). Each group also races for one extra point. Finish every objective and never work out the story and you cannot win.",
+  "Points come from your five objectives (5), the survivors you name (up to 4), and above all the three mysteries: the Old, the New and the Connection (10). Each group races for one extra point, and the best-off quarter of the room earns one more. Finish every objective and never work out the story and you cannot win.",
 ];
 
 export const cassieLetter: string[] = [

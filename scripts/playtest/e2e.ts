@@ -245,7 +245,7 @@ async function main() {
       await openTab(anika, "Private");
       await snapPhone(anika, "anika-private", "Anika's private tab, top of the page.", 1);
       await snapObjectives(anika, "anika", "Anika (rich heir)");
-      await snapEl(anika.locator(".game-panel", { hasText: "In your pockets" }).first(), "anika-pockets", "Anika's pockets: $400 and the props she carries.");
+      await snapEl(anika.locator(".game-panel", { hasText: "In your pockets" }).first(), "anika-pockets", "Anika's pockets: $3,000 (30 bills of $100) and the props she carries.");
       await snapEl(anika.locator(".game-panel", { hasText: "What you know, and what you are hiding" }).first(), "anika-knows", "What Anika knows and is hiding; each line says whether it is hers to trade.");
       await openTab(anika, "Answers");
       await snapPhone(anika, "anika-answers", "Anika's answers tab: the three mysteries and four survivor guesses.");
@@ -364,6 +364,7 @@ async function main() {
       const page = await openGame(mid);
       await openTab(page, "Answers");
       await snapPhone(page, `${mid}-answers-filled`, `10:00 p.m. ${characterById.get(mid)!.name.split(" ")[0]}'s final answers, saved. Only the last answer to each question counts.`);
+      await snapEl(page.locator(".game-panel", { hasText: "Your bills" }).first(), `${mid}-your-bills`, "10:00 p.m. The new box at the bottom of the Answers tab: count your bills and type the total. The quarter of the room that ends best off earns a point.");
       await page.close();
       const survivorPage = await openGame(night.killer);
       await openTab(survivorPage, "Answers");

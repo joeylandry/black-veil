@@ -397,3 +397,45 @@ describe("the bible agrees with itself", () => {
     }
   });
 });
+
+describe("the wallet bonus", () => {
+  const cashOf = (items: GradeItem[], guest: string) => items.find((entry) => entry.guest === guest && entry.kind === "bonus" && entry.itemId === "cash")!;
+  const start = (guest: string) => {
+    const character = characterById.get(guest)!;
+    const errand = character.objectives.find((objective) => objective.check.kind === "money")?.check as { min: number } | undefined;
+    return errand?.min ?? character.startingCash;
+  };
+
+  it("pays the quarter of the room that is best off against where they started", () => {
+    const present = ["anika", "tim", "josh", "erika", "emre", "leon", "silas", "sidd"];
+    const submissions = present.map((guest, index) => sub(guest, "objective", "cash", String(start(guest) + (index < 3 ? 100 * (3 - index) : -100))));
+    const items = autoGrade({ submissions, events: [], truth: truth({ present, killer: "tim" }) });
+    assert.deepEqual(present.filter((guest) => cashOf(items, guest).points === 1), ["anika", "tim"], "eight guests, two slots, by gain");
+    assert.match(cashOf(items, "emre").rationale, /down \$100/);
+  });
+
+  it("gives nothing for no report or for more cash than the room holds", () => {
+    const present = ["anika", "tim"];
+    const items = autoGrade({ submissions: [sub("anika", "objective", "cash", "999999")], events: [], truth: truth({ present, killer: "tim" }) });
+    assert.equal(cashOf(items, "anika").points, 0);
+    assert.equal(cashOf(items, "anika").needsReview, true);
+    assert.equal(cashOf(items, "tim").points, 0);
+  });
+
+  it("settles a tie in gain by the seeded hash, the same way every time", () => {
+    const present = ["anika", "tim", "josh", "erika"];
+    const submissions = [sub("josh", "objective", "cash", String(start("josh") + 200)), sub("erika", "objective", "cash", String(start("erika") + 200)), sub("anika", "objective", "cash", String(start("anika") - 500)), sub("tim", "objective", "cash", String(start("tim") - 500))];
+    const first = autoGrade({ submissions, events: [], truth: truth({ present, killer: "tim" }) });
+    const again = autoGrade({ submissions: [...submissions].reverse(), events: [], truth: truth({ present, killer: "tim" }) });
+    assert.equal(present.filter((guest) => cashOf(first, guest).points === 1).length, 1, "four guests, one slot");
+    assert.deepEqual(present.map((guest) => cashOf(first, guest).points), present.map((guest) => cashOf(again, guest).points));
+  });
+
+  it("pays a spender who still ends best off, even with no gain", () => {
+    const present = ["tim", "erika"];
+    const submissions = [sub("tim", "objective", "cash", String(start("tim") - 100)), sub("erika", "objective", "cash", String(start("erika") - 300))];
+    const items = autoGrade({ submissions, events: [], truth: truth({ present, killer: "tim" }) });
+    assert.equal(cashOf(items, "tim").points, 1);
+    assert.equal(cashOf(items, "erika").points, 0);
+  });
+});

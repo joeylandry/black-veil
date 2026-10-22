@@ -2,7 +2,7 @@
  * What the game API sends to the browser. Defined here rather than imported from the game
  * bible, because the bible is server-only: it holds the answers.
  */
-export type Line = { text: string; share: "free" | "trade" | "secret" };
+export type Line = { text: string; share: "free" | "trade" | "paid" | "secret" };
 
 export type Errand = {
   id: string;
@@ -71,7 +71,7 @@ export type SavedAnswer = { kind: string; itemId: string; answer: string; proof:
 export type ResultItem = { guest: string; kind: string; itemId: string; verdict: string; points: number; max: number; rationale: string; source: string };
 export type Results = {
   publishedAt: string;
-  you: { guest: string; name: string; total: number; rank: number; circleRank: number; tiers: { objectives: number; survivors: number; mysteries: number; race: number }; items: ResultItem[] } | null;
+  you: { guest: string; name: string; total: number; rank: number; circleRank: number; tiers: { objectives: number; survivors: number; mysteries: number; race: number; cash: number }; items: ResultItem[] } | null;
   board: { guest: string; name: string; circle: string; survivor: boolean; total: number; rank: number; circleRank: number; isYou: boolean }[];
   winner: string | null;
   killer: string | null;

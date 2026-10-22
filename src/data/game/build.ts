@@ -167,7 +167,7 @@ export function keep(id: string, seeker: GuestId, seekerObjective: string, rival
     id,
     kind: "keep",
     title: "Your own secret",
-    text: `Your small secret is worth two halves. Let {name:${seeker}} earn it from you (half a point), and make sure {name:${rival}} never does (half a point). You will not be asked anything: it is scored from what they each learn.`,
+    text: `Your small secret is worth two halves. Let {name:${seeker}} earn it from you (half a point), and make sure {name:${rival}} never does (half a point). You will not be asked anything: it is scored from what they each learn. You may also sell it to anyone for $200 in House bills, but a sale to {name:${rival}} costs you that half.`,
     ask: "In a sentence, how did you manage it? (optional)",
     points: POINTS,
     with: [seeker],

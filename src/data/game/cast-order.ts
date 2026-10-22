@@ -23,7 +23,7 @@ export const order: Character[] = [
       { text: "You keep a shoebox with seventeen “accidents” in it and have told no one.", share: "secret" },
     ],
     smallSecret: { text: "You keep a shoebox with seventeen “accidents” in it and have told no one.", key: ["shoebox", "shoe box"], confidant: "molly" },
-    startingCash: 100,
+    startingCash: 1000,
     carries: ["citation", "reply-theodor"],
     role: "sheriff",
     roleCard: [
@@ -61,7 +61,7 @@ export const order: Character[] = [
       { text: "You let three “orders in C.C.'s hand” stand, though the clerk swore the i's had rings.", share: "secret" },
     ],
     smallSecret: { text: "You let three “orders in C.C.'s hand” stand, though the clerk swore the i's had rings.", key: ["clerk"], confidant: "anthony" },
-    startingCash: 150,
+    startingCash: 1500,
     carries: ["dismissal", "reply-eric"],
     objectives: [
       find("eric-find", "chess-box"),
@@ -91,10 +91,10 @@ export const order: Character[] = [
       { text: "You drew name-change papers for a dozen strangers, paid in gold by “a friend,” and kept the carbon.", share: "secret" },
     ],
     smallSecret: { text: "You drew name-change papers for a dozen strangers, paid in gold by “a friend,” and kept the carbon.", key: ["carbon"], confidant: "rhea" },
-    startingCash: 120,
+    startingCash: 1200,
     carries: ["tool-anthony"],
     objectives: [
-      money("anthony-money", 180, "Charge by the word. Sell advice, draw a paper, collect a retainer. Leave with at least $180."),
+      money("anthony-money", 1800, "Charge by the word. Sell advice, draw a paper, collect a retainer. Leave with at least $1,800."),
       find("anthony-find", "bill-of-rights"),
       secretOf("anthony-secret", "theodor", "molly", ["shoebox", "shoe box"]),
       story("anthony-story", "The hand that was not hers", "You saw three orders in a court. Learn what Cassie's real hand looks like from someone who knows it.", "What is different about her hand", "leon", ["rebecca"], [["plain"]]),
@@ -121,7 +121,7 @@ export const order: Character[] = [
       { text: "You ate beet sandwiches for a week to prove the “blood” was beets and sugar.", share: "secret" },
     ],
     smallSecret: { text: "You ate beet sandwiches for a week to prove the “blood” was beets and sugar.", key: ["beet", "beets"], confidant: "tim" },
-    startingCash: 100,
+    startingCash: 1000,
     carries: ["trade-emre"],
     role: "doctor",
     roleCard: [
@@ -158,7 +158,7 @@ export const order: Character[] = [
       { text: "You kept the unprinted line the city desk cut: no coroner, no ambulance.", share: "secret" },
     ],
     smallSecret: { text: "You kept the unprinted line the city desk cut: no coroner, no ambulance.", key: ["unprinted"], confidant: "josh" },
-    startingCash: 90,
+    startingCash: 900,
     carries: ["trade-molly"],
     survivor: {
       veilName: "Winifred “Winnie” Pike",

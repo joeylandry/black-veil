@@ -6,26 +6,26 @@
 
 | Night | Absent | Chats each | Killer | Winner (score) | Top 3 | Lowest | Mystery full marks (new-1 right) | Objectives done |
 |---|---|---|---|---|---|---|---|---|
-| 1 | 0 | 10 | Luke | Anthony (20.00, detective) | 20.0 / 19.0 / 19.0 | 15.5 | 21 of 24 | 77% |
-| 2 | 1 | 11 | Rhea | Sidd (20.00, errandRunner) | 20.0 / 19.0 / 19.0 | 14.7 | 21 of 23 | 70% |
-| 3 | 2 | 12 | Luke | Erika (20.00, balanced) | 20.0 / 19.0 / 19.0 | 16.0 | 20 of 22 | 77% |
-| 4 | 0 | 13 | Molly | Judge (20.00, detective) | 20.0 / 20.0 / 19.5 | 16.5 | 22 of 24 | 85% |
-| 5 | 1 | 14 | Adam | J. (20.00, errandRunner) | 20.0 / 19.0 / 19.0 | 15.0 | 21 of 23 | 76% |
-| 6 | 2 | 15 | Mihir | Joshua (20.00, casual) | 20.0 / 19.5 / 19.0 | 15.0 | 20 of 22 | 74% |
-| 7 | 0 | 16 | Mihir | Leon (20.00, balanced) | 20.0 / 20.0 / 20.0 | 15.5 | 22 of 24 | 82% |
-| 8 | 1 | 10 | Mihir | J. (19.00, balanced) | 19.0 / 19.0 / 19.0 | 16.0 | 21 of 23 | 71% |
-| 9 | 2 | 11 | Rhea | Krrish (20.00, errandRunner) | 20.0 / 20.0 / 19.5 | 15.0 | 20 of 22 | 71% |
-| 10 | 0 | 12 | Rhea | Leon (19.00, errandRunner) | 19.0 / 19.0 / 19.0 | 16.0 | 22 of 24 | 78% |
-| 11 | 1 | 13 | Mihir | Diwakar (19.50, errandRunner) | 19.5 / 19.0 / 19.0 | 16.0 | 21 of 23 | 70% |
-| 12 | 2 | 14 | Molly | Rebecca (19.50, balanced) | 19.5 / 19.0 / 19.0 | 15.0 | 19 of 22 | 79% |
-| 13 | 0 | 15 | Mihir | Angelos (20.00, balanced) | 20.0 / 20.0 / 20.0 | 15.0 | 22 of 24 | 78% |
-| 14 | 1 | 16 | Molly | Erika (20.00, errandRunner) | 20.0 / 19.0 / 19.0 | 16.0 | 21 of 23 | 74% |
-| 15 | 2 | 10 | Adam | Angelos (20.00, detective) | 20.0 / 19.0 / 19.0 | 13.0 | 19 of 22 | 75% |
-| 16 | 0 | 11 | Adam | Rebecca (20.00, balanced) | 20.0 / 19.0 / 19.0 | 16.0 | 22 of 24 | 78% |
-| 17 | 1 | 12 | Molly | Angelos (20.00, detective) | 20.0 / 19.5 / 19.0 | 15.5 | 21 of 23 | 72% |
-| 18 | 2 | 13 | Rhea | Krrish (20.00, errandRunner) | 20.0 / 20.0 / 19.5 | 15.8 | 20 of 22 | 77% |
-| 19 | 0 | 14 | Adam | Judge (20.00, balanced) | 20.0 / 19.0 / 19.0 | 15.0 | 22 of 24 | 73% |
-| 20 | 1 | 15 | Luke | Judge (19.50, balanced) | 19.5 / 19.0 / 19.0 | 16.0 | 21 of 23 | 82% |
+| 1 | 0 | 10 | Luke | Sheriff (19.50, errandRunner) | 19.5 / 19.3 / 19.0 | 15.5 | 21 of 24 | 77% |
+| 2 | 1 | 11 | Rhea | Silas (20.00, errandRunner) | 20.0 / 20.0 / 19.7 | 16.3 | 20 of 23 | 76% |
+| 3 | 2 | 12 | Luke | Anthony (21.00, errandRunner) | 21.0 / 19.7 / 19.5 | 14.5 | 20 of 22 | 75% |
+| 4 | 0 | 13 | Molly | Rebecca (20.50, errandRunner) | 20.5 / 20.0 / 19.5 | 16.5 | 22 of 24 | 81% |
+| 5 | 1 | 14 | Adam | Erika (21.00, errandRunner) | 21.0 / 20.0 / 19.5 | 16.0 | 21 of 23 | 79% |
+| 6 | 2 | 15 | Mihir | Silas (20.00, errandRunner) | 20.0 / 19.7 / 19.5 | 15.0 | 20 of 22 | 72% |
+| 7 | 0 | 16 | Mihir | Arjun (21.00, errandRunner) | 21.0 / 20.0 / 20.0 | 16.0 | 22 of 24 | 83% |
+| 8 | 1 | 10 | Mihir | Sheriff (19.70, errandRunner) | 19.7 / 19.0 / 19.0 | 13.6 | 20 of 23 | 70% |
+| 9 | 2 | 11 | Rhea | Ananya (20.20, errandRunner) | 20.2 / 20.0 / 20.0 | 14.7 | 20 of 22 | 75% |
+| 10 | 0 | 12 | Rhea | Leon (20.00, errandRunner) | 20.0 / 20.0 / 20.0 | 15.0 | 21 of 24 | 74% |
+| 11 | 1 | 13 | Mihir | Rebecca (20.50, detective) | 20.5 / 20.5 / 20.0 | 14.2 | 20 of 23 | 73% |
+| 12 | 2 | 14 | Molly | Angelos (21.00, errandRunner) | 21.0 / 20.0 / 20.0 | 15.8 | 19 of 22 | 79% |
+| 13 | 0 | 15 | Mihir | Sidd (21.00, errandRunner) | 21.0 / 20.0 / 20.0 | 15.5 | 22 of 24 | 78% |
+| 14 | 1 | 16 | Molly | Ananya (21.00, detective) | 21.0 / 21.0 / 19.0 | 15.8 | 21 of 23 | 77% |
+| 15 | 2 | 10 | Adam | Ananya (20.00, balanced) | 20.0 / 20.0 / 20.0 | 14.7 | 17 of 22 | 82% |
+| 16 | 0 | 11 | Adam | Anika (20.00, balanced) | 20.0 / 20.0 / 20.0 | 15.5 | 21 of 24 | 83% |
+| 17 | 1 | 12 | Molly | Anika (20.00, errandRunner) | 20.0 / 20.0 / 19.3 | 16.0 | 21 of 23 | 73% |
+| 18 | 2 | 13 | Rhea | J. (20.00, errandRunner) | 20.0 / 20.0 / 20.0 | 15.8 | 20 of 22 | 78% |
+| 19 | 0 | 14 | Adam | Silas (20.00, errandRunner) | 20.0 / 20.0 / 19.5 | 16.0 | 22 of 24 | 75% |
+| 20 | 1 | 15 | Luke | Arjun (20.00, errandRunner) | 20.0 / 20.0 / 19.5 | 15.5 | 21 of 23 | 69% |
 
 ## Could they work out each mystery question?
 
@@ -35,67 +35,67 @@ Share of the guests asked who earned **full marks**, averaged over the nights (a
 |---|---|---|
 | old-1: What really happened at the Black Veil on All Hallows' Eve, 1924? | 100% | 100% |
 | old-2: Why did the Veil's members all leave with Cassie that night? | 100% | 100% |
-| old-3: Who killed the members afterward, and how did it look like someone els… | 78% | 100% |
-| new-1: Who poisoned the Keeper? | 99% | 99% |
-| new-2: How was he poisoned, and where did the poison come from? | 100% | 100% |
-| new-3: Why did the killer do it? What had the Keeper done to them? | 94% | 99% |
-| con-1: Who was the dead man to the Veil, and what had he done? | 79% | 100% |
+| old-3: Who killed the members afterward, and how did it look like someone els… | 77% | 100% |
+| new-1: Who poisoned the Keeper? | 98% | 98% |
+| new-2: How was he poisoned, and where did the poison come from? | 99% | 100% |
+| new-3: Why did the killer do it? What had the Keeper done to them? | 93% | 97% |
+| con-1: Who was the dead man to the Veil, and what had he done? | 77% | 100% |
 | con-2: How do the five survivors connect to him? | 79% | 100% |
-| con-3: Who sent the invitations, and why? | 99% | 100% |
+| con-3: Who sent the invitations, and why? | 97% | 100% |
 | alt-1: What did the Keeper come to the Black Veil to do tonight, and how did … | 100% | 100% |
-| alt-2: Where are the Keeper's books, and what does it take to open them? | 100% | 100% |
+| alt-2: Where are the Keeper's books, and what does it take to open them? | 98% | 98% |
 
 ## Score by kind of player
 
-| Player | Mystery points (of 10) | Objectives (of 5) | Survivors named (of 4) | Total (of 20) |
+| Player | Mystery points (of 10) | Objectives (of 5) | Survivors named (of 4) | Total (of 21) |
 |---|---|---|---|---|
-| detective | 9.8 | 3.8 | 3.9 | 17.8 |
-| balanced | 9.8 | 4.3 | 3.9 | 18.2 |
-| errandRunner | 9.8 | 4.6 | 4.0 | 18.6 |
-| casual | 9.8 | 3.3 | 3.9 | 17.1 |
-| *survivors* | 9.2 | 4.6 | 3.7 | 17.7 |
-| *everyone else* | 10.0 | 3.8 | 4.0 | 17.9 |
+| detective | 9.8 | 4.0 | 3.9 | 18.1 |
+| balanced | 9.8 | 4.2 | 3.9 | 18.3 |
+| errandRunner | 9.7 | 4.6 | 4.0 | 19.0 |
+| casual | 9.6 | 3.3 | 3.9 | 17.1 |
+| *survivors* | 9.1 | 4.7 | 3.7 | 18.0 |
+| *everyone else* | 9.9 | 3.8 | 4.0 | 18.1 |
 
 ## Objectives that were completed, by kind
 
 | Kind | Completed |
 |---|---|
-| approval | 74% (116 of 156) |
+| approval | 76% (119 of 156) |
 | butler-sale | 100% (20 of 20) |
-| code | 75% (611 of 810) |
-| keep | 38% (67 of 177) |
-| money | 56% (118 of 209) |
-| pattern | 87% (727 of 838) |
+| code | 76% (612 of 810) |
+| keep | 33% (59 of 177) |
+| money | 58% (121 of 209) |
+| pattern | 87% (733 of 838) |
 | vial-attempt | 100% (95 of 95) |
 
 ## Group races: who won
 
 | Night | survivors | order | stage | working | river |
 |---|---|---|---|---|---|
-| 1 | Luke | Anthony | Silas | nobody | nobody |
-| 2 | Rhea | Anthony | Sidd | Tiffany | Angelos |
-| 3 | Luke | Judge | Sidd | Joshua | Erika |
-| 4 | Molly | Judge | Sidd | Tiffany | Krrish |
-| 5 | Adam | Sheriff | J. | Diwakar | Erika |
-| 6 | Mihir | Sheriff | Ananya | Joshua | Tim |
-| 7 | Mihir | Anika | Leon | Arjun | Erika |
-| 8 | Mihir | Sheriff | nobody | nobody | nobody |
-| 9 | Rhea | Sheriff | Ananya | Arjun | Krrish |
-| 10 | Rhea | Judge | nobody | Tiffany | nobody |
-| 11 | Mihir | nobody | Sidd | Diwakar | Erika |
-| 12 | Molly | Anika | Ananya | Tiffany | Rebecca |
-| 13 | Mihir | Anthony | Silas | Diwakar | Angelos |
-| 14 | Molly | Anthony | Silas | Arjun | Erika |
-| 15 | Adam | Dr. | nobody | Joshua | Angelos |
-| 16 | Adam | Anthony | J. | nobody | Rebecca |
-| 17 | Molly | Dr. | J. | Tiffany | Angelos |
-| 18 | Rhea | nobody | Silas | Diwakar | Krrish |
-| 19 | Adam | Judge | Ananya | nobody | Krrish |
-| 20 | Luke | Judge | Sidd | Arjun | Angelos |
+| 1 | Luke | Anthony | nobody | Arjun | nobody |
+| 2 | Rhea | Judge | J. | Diwakar | Angelos |
+| 3 | Luke | Anthony | Leon | Joshua | Krrish |
+| 4 | Molly | Dr. | Silas | Tiffany | Rebecca |
+| 5 | Adam | Sheriff | Silas | Tiffany | Erika |
+| 6 | Mihir | Anika | Silas | Tiffany | Tim |
+| 7 | Mihir | Sheriff | Silas | Arjun | Rebecca |
+| 8 | Mihir | nobody | nobody | nobody | Rebecca |
+| 9 | Rhea | Dr. | Ananya | nobody | Tim |
+| 10 | Rhea | Anthony | Ananya | Arjun | Krrish |
+| 11 | Mihir | Dr. | Ananya | nobody | Rebecca |
+| 12 | Molly | Judge | Ananya | Tiffany | Angelos |
+| 13 | Mihir | Anthony | Sidd | Tiffany | Angelos |
+| 14 | Molly | Anthony | Ananya | Joshua | Rebecca |
+| 15 | Adam | Judge | Silas | Joshua | Rebecca |
+| 16 | Adam | Anika | J. | Joshua | Tim |
+| 17 | Molly | Anika | J. | Joshua | Tim |
+| 18 | Rhea | Anthony | J. | Tiffany | Krrish |
+| 19 | Adam | Anika | Leon | Joshua | Krrish |
+| 20 | Luke | Anthony | Ananya | Diwakar | Erika |
 
 ## Anyone stranded?
 
-- met the sources but did not earn it: 100 times across 20 nights
+- met the sources but did not earn it: 106 times across 20 nights
 - the trade partner is absent (standby tray): 9 times across 20 nights
 - Most stranded objectives for one guest in a night: 2
 - Fewest facts any guest knew at the end (of 39): 31
@@ -104,33 +104,33 @@ Share of the guests asked who earned **full marks**, averaged over the nights (a
 
 | Guest | Role | Group | Outright wins | Top (incl. ties) | Mean score | Mean rank |
 |---|---|---|---|---|---|---|
-| Angelos Bowles | Card sharp | river | 2 | 4 | 18.0 | 11.9 |
-| Judge Eric Leeway | Judge | order | 2 | 3 | 18.1 | 10.1 |
-| Erika Lamm | Fugitive | river | 2 | 3 | 17.7 | 13.3 |
-| Leon Gee of WFEA | Radio announcer | stage | 0 | 3 | 18.1 | 10.9 |
-| Silas Palmer of the Palm Court | Jazz scat singer | stage | 0 | 3 | 17.9 | 12.2 |
-| Rebecca Chow, Butler of the Black Veil | Butler | river | 2 | 2 | 17.9 | 12.3 |
-| Krrish Vermouth | Wine importer | river | 0 | 2 | 18.3 | 7.9 |
-| Tiffany Liu of the Lamps | Stained-glass artist | working | 0 | 2 | 18.0 | 11.5 |
-| Anthony Hung, Esq. | Defense attorney | order | 1 | 2 | 18.7 | 7.6 |
-| J. Bruce Wayne | Wealthy playboy | stage | 1 | 2 | 18.6 | 7.7 |
-| Arjun Bat | Slugger | working | 0 | 2 | 17.5 | 13.9 |
-| Diwakar Sandbagg | Prizefighter | working | 1 | 1 | 17.4 | 14.2 |
-| Joshua Kamin-Sky | Soothsayer | working | 1 | 1 | 18.0 | 11.7 |
-| Anika Mahns of Mahns Manor | Heir | order | 0 | 1 | 17.7 | 12.9 |
-| Sidd Airwind | Barnstormer | stage | 1 | 1 | 18.4 | 8.9 |
-| Ananya Codru and Charlie Wakem | Night telegraph office | stage | 0 | 0 | 18.2 | 10.6 |
-| Sheriff Theodor Farrago | Sheriff | order | 0 | 0 | 17.9 | 12.4 |
-| Molly Daniel of the Manchester Union | Newsie | survivors | 0 | 0 | 17.6 | 14.1 |
-| Dr. Emmerich Sunner | Doctor | order | 0 | 0 | 17.6 | 13.5 |
-| Rhea Mallya of Mallya's Emporium | Department store owner | survivors | 0 | 0 | 18.0 | 13.1 |
-| Adam Holdsfire | Gunsmith | survivors | 0 | 0 | 17.7 | 14.4 |
-| Luke Shelldon | Carnival barker | survivors | 0 | 0 | 17.7 | 14.1 |
-| Tim McGinley, Baron of Bathtub Gin | Gin baron | river | 0 | 0 | 17.4 | 15.4 |
-| Mihir Nagarkatti of Nag Oil | Oil master | survivors | 0 | 0 | 17.7 | 13.4 |
+| Rebecca Chow, Butler of the Black Veil | Butler | river | 1 | 4 | 18.8 | 8.2 |
+| Ananya Codru and Charlie Wakem | Night telegraph office | stage | 1 | 4 | 18.6 | 9.8 |
+| Anthony Hung, Esq. | Defense attorney | order | 1 | 4 | 18.5 | 10.8 |
+| Silas Palmer of the Palm Court | Jazz scat singer | stage | 2 | 3 | 18.2 | 11.1 |
+| Sheriff Theodor Farrago | Sheriff | order | 2 | 2 | 18.2 | 12.2 |
+| Arjun Bat | Slugger | working | 1 | 2 | 18.6 | 9.3 |
+| Anika Mahns of Mahns Manor | Heir | order | 1 | 2 | 18.1 | 11.7 |
+| J. Bruce Wayne | Wealthy playboy | stage | 0 | 2 | 18.4 | 9.8 |
+| Judge Eric Leeway | Judge | order | 0 | 1 | 18.1 | 11.8 |
+| Angelos Bowles | Card sharp | river | 1 | 1 | 18.1 | 11.9 |
+| Erika Lamm | Fugitive | river | 1 | 1 | 17.5 | 15.6 |
+| Diwakar Sandbagg | Prizefighter | working | 0 | 1 | 17.3 | 15.7 |
+| Tiffany Liu of the Lamps | Stained-glass artist | working | 0 | 1 | 18.2 | 11.0 |
+| Leon Gee of WFEA | Radio announcer | stage | 0 | 1 | 18.2 | 11.7 |
+| Sidd Airwind | Barnstormer | stage | 1 | 1 | 18.2 | 12.0 |
+| Dr. Emmerich Sunner | Doctor | order | 0 | 0 | 18.2 | 12.4 |
+| Molly Daniel of the Manchester Union | Newsie | survivors | 0 | 0 | 18.0 | 12.8 |
+| Adam Holdsfire | Gunsmith | survivors | 0 | 0 | 18.4 | 10.8 |
+| Joshua Kamin-Sky | Soothsayer | working | 0 | 0 | 18.3 | 10.9 |
+| Rhea Mallya of Mallya's Emporium | Department store owner | survivors | 0 | 0 | 18.2 | 12.6 |
+| Krrish Vermouth | Wine importer | river | 0 | 0 | 18.0 | 12.4 |
+| Luke Shelldon | Carnival barker | survivors | 0 | 0 | 17.7 | 14.7 |
+| Tim McGinley, Baron of Bathtub Gin | Gin baron | river | 0 | 0 | 17.1 | 16.1 |
+| Mihir Nagarkatti of Nag Oil | Oil master | survivors | 0 | 0 | 18.0 | 13.3 |
 
-Nights with a tie for first: 7 of 20.
+Nights with a tie for first: 8 of 20.
 
-Winner's group: order 4, stage 5, river 9, working 2
+Winner's group: order 5, stage 9, river 4, working 2
 
-Winner's play style: detective 4, errandRunner 7, balanced 8, casual 1
+Winner's play style: errandRunner 16, detective 2, balanced 2

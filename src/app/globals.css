@@ -984,6 +984,7 @@ img { max-width: 100%; height: auto; }
 .game-chip { display: inline-block; margin-right: .5rem; padding: .05rem .5rem; font-family: var(--font-sans), Arial, sans-serif; font-size: .58rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--charcoal); background: var(--steel); vertical-align: .1em; }
 .game-chip-secret { color: var(--paper-light); background: var(--oxblood); }
 .game-chip-trade { background: var(--brass); }
+.game-chip-paid { color: var(--paper-light); background: #5b4a1e; }
 .game-chip-free { background: #7d8a73; }
 .game-errands { list-style: none; padding: 0 !important; display: grid; gap: 1rem; }
 .game-errand { margin: 0 !important; padding: 1rem; background: #1c1a16; border: 1px solid #3a3426; }

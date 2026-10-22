@@ -70,6 +70,8 @@ export type Tiers = {
   mysteries: number;
   /** The extra point for winning the group's race. */
   race: number;
+  /** The wallet bonus: ending among the quarter of the room that gained the most money. */
+  cash: number;
 };
 
 export type Standing = {

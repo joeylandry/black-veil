@@ -9,11 +9,11 @@ Every fact below is held by at least three guests (or two plus a printed page).
 ### staged (old)
 The 1924 massacre was a stage show: stage blood, trick bottles, blank cartridges. Nobody died that night.
 
-- **Luke Shelldon** [trade]: In October 1924 you built stage blood, trick bottles and a rack of breakaway furniture for a “private masquerade,” billed to a post-office box. Nobody told you the show would be called a massacre.
+- **Luke Shelldon** [paid]: In October 1924 you built stage blood, trick bottles and a rack of breakaway furniture for a “private masquerade,” billed to a post-office box. Nobody told you the show would be called a massacre.
 - **Adam Holdsfire** [trade]: That October you sold six boxes of blank cartridges to a lady's agent, cash, no name. Blanks. Never a ball.
 - **Dr. Emmerich Sunner** [free]: That night you were called to a fainting guest, not a wound: the “blood” on the glove smelled of beet and sugar. No coroner was ever summoned and you signed no certificate.
 - **Molly Daniel of the Manchester Union** [free]: The Farrago ran “massacre” on 1 November 1924 and, in your hearing, the city desk admitted that not one coroner, ambulance or undertaker had been called.
-- **Diwakar Sandbagg** [free]: On Halloween night 1924 you took a paid fall in a river-town ring and were told to stay down until the music stopped. By morning the whole river knew the Veil's “massacre” was stage blood, and that no coroner had been called.
+- **Diwakar Sandbagg** [paid]: On Halloween night 1924 you took a paid fall in a river-town ring and were told to stay down until the music stopped. By morning the whole river knew the Veil's “massacre” was stage blood, and that no coroner had been called.
 - **Leon Gee of WFEA** [free]: Your 1 November 1924 bulletin said “massacre.” Off the record, the Sheriff's office told you that no coroner, ambulance or undertaker had been called, and not a body had been found.
 - printed: clipping
 
@@ -38,18 +38,18 @@ Kit Kessler ambushed Cassie at the river launch, ousted her, took the books, and
 ### hitman (old)
 Kit hired hitmen, who settled seventeen members of the Veil over eleven months.
 
-- **Krrish Vermouth** [trade]: In November 1924 you delivered a crate of wine, billed to K. Kessler, to a grey Hudson waiting at the river steps. The driver never gave a name. The car turned up wrecked in the Merrimack that March.
+- **Krrish Vermouth** [paid]: In November 1924 you delivered a crate of wine, billed to K. Kessler, to a grey Hudson waiting at the river steps. The driver never gave a name. The car turned up wrecked in the Merrimack that March.
 - **Adam Holdsfire** [trade]: A stranger bought a short-barrel revolver from you, billed to “K. Kessler, c/o Fitch & Fitch, Boston.” You remember because nobody ever questioned the invoice.
 - **Sheriff Theodor Farrago** [free]: Between December 1924 and September 1925 seventeen people with no records and no families died in “accidents” in your county: a fire, a fall, a drowning, an aeroplane. You never found a link.
-- **Dr. Emmerich Sunner** [trade]: You reviewed several of those “accidents” and noticed the same thing in each: a small number sewn inside the coat lining, running from 1 to 17 and never beyond.
+- **Dr. Emmerich Sunner** [paid]: You reviewed several of those “accidents” and noticed the same thing in each: a small number sewn inside the coat lining, running from 1 to 17 and never beyond.
 - printed: receipts
 
 ### forged (old)
 The kill orders and receipts blamed on Cassie were forged. Her real hand dots its i's plainly; the forger dots every i with a ring.
 
-- **Rebecca Chow, Butler of the Black Veil** [trade]: You keep the note Cassie left on your pillow in Room 3: “Thank you for the shoulder. — C.” She dots every i with a plain dot, never a ring.
-- **Anthony Hung, Esq.** [trade]: In 1925 the court showed you three “orders in Cassie's hand.” You noticed the i's were dotted with tiny rings and the signature was too neat to be hers.
-- **Ananya Codru and Charlie Wakem** [trade]: The telegram said to carry Cassie's orders was filed at Boston North Station in a clerk's block capitals, paid by a Boston account, on a day Cassie was last seen in Manchester.
+- **Rebecca Chow, Butler of the Black Veil** [paid]: You keep the note Cassie left on your pillow in Room 3: “Thank you for the shoulder. — C.” She dots every i with a plain dot, never a ring.
+- **Anthony Hung, Esq.** [paid]: In 1925 the court showed you three “orders in Cassie's hand.” You noticed the i's were dotted with tiny rings and the signature was too neat to be hers.
+- **Ananya Codru and Charlie Wakem** [paid]: The telegram said to carry Cassie's orders was filed at Boston North Station in a clerk's block capitals, paid by a Boston account, on a day Cassie was last seen in Manchester.
 - **Leon Gee of WFEA** [free]: Cassie signed with a plain “C.” and never a ring. She called anyone who dotted an i with a ring a show-off.
 - printed: forged, card
 
@@ -66,16 +66,16 @@ Cassie is alive and in hiding.
 A vault in the Merrimack Room holds the Veil's real books. It opens to three keys and a dial only Cassie can set.
 
 - **Anika Mahns of Mahns Manor** [secret]: You inherited your father's brass key on a ribbon. He called it “the Silent Partner's tooth” and would never say what it opens.
-- **Adam Holdsfire** [trade]: In 1921 you sold the Veil a vault lock with three keyways and a dial. The combination was set in your shop by one person, a lady, alone.
-- **Joshua Kamin-Sky** [trade]: The flue of the Merrimack Room runs behind a brick wall that is too thick on the inside. A safe lives there.
-- **Arjun Bat** [free]: As a boy you hauled bricks for a wall in the Merrimack Room in 1921, double-thick behind the window. Nobody told you why.
+- **Adam Holdsfire** [paid]: In 1921 you sold the Veil a vault lock with three keyways and a dial. The combination was set in your shop by one person, a lady, alone.
+- **Joshua Kamin-Sky** [paid]: The flue of the Merrimack Room runs behind a brick wall that is too thick on the inside. A safe lives there.
+- **Arjun Bat** [paid]: As a boy you hauled bricks for a wall in the Merrimack Room in 1921, double-thick behind the window. Nobody told you why.
 - printed: vault, books
 
 ### dead-kit (new)
 The man in the Merrimack Room is Kit Kessler, the Veil's Keeper and bookkeeper, who was thought dead in 1924.
 
 - **Rebecca Chow, Butler of the Black Veil** [trade]: You knew him the moment he came to the river door on the 22nd: Kit Kessler, the Keeper. He asked for the Merrimack Room, and a rye at nine o'clock.
-- **Anika Mahns of Mahns Manor** [trade]: “K.K.” endorsed every Mahns draft for three years: an old man with a white beard and a watch he never reset.
+- **Anika Mahns of Mahns Manor** [paid]: “K.K.” endorsed every Mahns draft for three years: an old man with a white beard and a watch he never reset.
 - **Anthony Hung, Esq.** [trade]: Fitch & Fitch of Boston, who sent you “K. Kessler's” instructions, had one client of that name: the old keeper of a supper club.
 - **Tiffany Liu of the Lamps** [free]: You cut the brass plate on the Veil's register: “KEEPER · K.K.” You know whose initials those are: Kit Kessler's.
 - printed: watch, drafts, ticket
@@ -84,7 +84,7 @@ The man in the Merrimack Room is Kit Kessler, the Veil's Keeper and bookkeeper, 
 Kit takes a rye nightcap, one finger, with honey, at nine o'clock every night.
 
 - **Rebecca Chow, Butler of the Black Veil** [trade]: His order for tonight: rye, one finger, a spoon of honey, nine o'clock sharp, in the Merrimack Room. You were to bring it.
-- **Mihir Nagarkatti of Nag Oil** [free]: You once lost a bet with him. His terms: “I will be drinking my rye at nine o'clock, with honey in it, wherever I am.”
+- **Mihir Nagarkatti of Nag Oil** [paid]: You once lost a bet with him. His terms: “I will be drinking my rye at nine o'clock, with honey in it, wherever I am.”
 - **Molly Daniel of the Manchester Union** [free]: The Farrago's 1924 society column called it “the Keeper's nine-o'clock rye with honey.”
 - **Anika Mahns of Mahns Manor** [free]: Your father used to mock him: “Nine o'clock, honey in the rye, as if the clock needed him.”
 - **Silas Palmer of the Palm Court** [free]: Before every set in 1924 the Keeper sent the band a note: nothing louder than a whisper at nine o'clock, when he took his rye with honey.
@@ -95,8 +95,8 @@ He died of strychnine, taken as tincture of nux vomica, in his rye whiskey.
 
 - **Dr. Emmerich Sunner** [trade]: As the county physician you are the only one who may examine the body. The signs you will find point to strychnine in sweetened rye.
 - **Adam Holdsfire** [trade]: Your poison register shows the House bought four ounces of nux vomica tincture in September, “for river rats,” signed R. Chow.
-- **Sheriff Theodor Farrago** [trade]: You hold the Coroner's Folder, sealed until the body is found. Inside is the physician's printed report.
-- **Rhea Mallya of Mallya's Emporium** [trade]: Your emporium's druggist sold the House the last bottle of nux vomica in September. The signature on the poison book: R. Chow.
+- **Sheriff Theodor Farrago** [paid]: You hold the Coroner's Folder, sealed until the body is found. Inside is the physician's printed report.
+- **Rhea Mallya of Mallya's Emporium** [paid]: Your emporium's druggist sold the House the last bottle of nux vomica in September. The signature on the poison book: R. Chow.
 - **Tim McGinley, Baron of Bathtub Gin** [trade]: At the druggist's in September you saw R. Chow of the House sign the poison book for four ounces of nux vomica tincture, “for river rats.”
 - printed: report, vial
 
@@ -112,9 +112,9 @@ The poison was the House's own stock. The Butler sold the single vial to one sur
 ### marker-map (new)
 A marker's number is the member's number on the List; the five markers 18 to 22 belong to the five who escaped.
 
-- **Rebecca Chow, Butler of the Black Veil** [trade]: Every marker carries the number of its owner on the Keeper's List. Markers 18 to 22 never came back to the House.
-- **Leon Gee of WFEA** [trade]: Cassie's own roll names the five who may still live: Ballard, Crane, Lyle, Marek and Pike. Markers 18 to 22 are theirs.
-- **Joshua Kamin-Sky** [trade]: The burned sign-out slips from the flue all carried marker numbers. The unburned five, 18 to 22, were never signed back.
+- **Rebecca Chow, Butler of the Black Veil** [paid]: Every marker carries the number of its owner on the Keeper's List. Markers 18 to 22 never came back to the House.
+- **Leon Gee of WFEA** [paid]: Cassie's own roll names the five who may still live: Ballard, Crane, Lyle, Marek and Pike. Markers 18 to 22 are theirs.
+- **Joshua Kamin-Sky** [paid]: The burned sign-out slips from the flue all carried marker numbers. The unburned five, 18 to 22, were never signed back.
 - printed: list, roll
 
 ### list-prepared (connection)
@@ -122,7 +122,7 @@ Kit prepared the List of twenty-two members to be placed and settled.
 
 - **Ananya Codru and Charlie Wakem** [trade]: In 1925 an old man dictated twenty-two names for you to wire to a Boston lawyer. You wired them and kept the carbon; you understood only when you saw the same hand at the top of the Roll of Placements.
 - **Molly Daniel of the Manchester Union** [trade]: A Boston courier left a ledger page with you in 1925 headed “Roll of Placements”: twenty-two names, seventeen crossed out in a clerk's hand. You kept it and told no one.
-- **J. Bruce Wayne** [trade]: In 1925 an old man wrote a list of twenty-two names on the counter of your hat shop and crossed them off one by one as the months went by.
+- **J. Bruce Wayne** [paid]: In 1925 an old man wrote a list of twenty-two names on the counter of your hat shop and crossed them off one by one as the months went by.
 - **Judge Eric Leeway** [trade]: In 1925 a list of twenty-two names, in Kit Kessler's hand, crossed out one by one, came across your bench in a case that was never tried.
 - printed: list, roll
 
@@ -131,29 +131,29 @@ Five of the twenty-two survived: the five marked unsettled on the List.
 
 - **Sheriff Theodor Farrago** [trade]: You counted seventeen “accidents.” A clerk's note you found says “twenty-two to be placed.” Five are unaccounted for.
 - **Dr. Emmerich Sunner** [trade]: The numbers sewn into the coat linings ran 1 to 17. Never 18 to 22.
-- **Molly Daniel of the Manchester Union** [trade]: Selling the Farrago outside the cemetery gate in 1925, you counted the new graves of the Veil's people: seventeen. A clerk's note you found said “twenty-two to be placed.”
+- **Molly Daniel of the Manchester Union** [paid]: Selling the Farrago outside the cemetery gate in 1925, you counted the new graves of the Veil's people: seventeen. A clerk's note you found said “twenty-two to be placed.”
 - **Leon Gee of WFEA** [trade]: Cassie's roll lists twenty-two names and puts a star beside five. “Bring them,” she wrote.
 - printed: roll, list
 
 ### kit-invites (connection)
 Kit, writing as the House, sent the nineteen regular guests their invitations. Each owes him something.
 
-- **Angelos Bowles** [trade]: Your black envelope held a card on stiff House stock, ruled and sealed, signed only “The House.” It was a Boston printer's work. Nothing about it was Cassie's.
-- **Tim McGinley, Baron of Bathtub Gin** [trade]: Your invitation was on House stock, signed only “The House,” and posted from Boston. The House has not written to you since 1924, and you owe it a favour you have been dreading.
-- **Sidd Airwind** [trade]: Your black envelope was on House stock, signed only “The House.” The man who used to write the House's notes had a stiff hand, and so did this one.
+- **Angelos Bowles** [paid]: Your black envelope held a card on stiff House stock, ruled and sealed, signed only “The House.” It was a Boston printer's work. Nothing about it was Cassie's.
+- **Tim McGinley, Baron of Bathtub Gin** [paid]: Your invitation was on House stock, signed only “The House,” and posted from Boston. The House has not written to you since 1924, and you owe it a favour you have been dreading.
+- **Sidd Airwind** [paid]: Your black envelope was on House stock, signed only “The House.” The man who used to write the House's notes had a stiff hand, and so did this one.
 - printed: invite, veil-roll
 
 ### succession (connection)
 At half past nine Kit meant to crown himself head of the Black Veil before the nineteen guests as witnesses, each of whom had to sign for him.
 
 - **Sheriff Theodor Farrago** [trade]: Your invitation carried a private line from the House: be ready at half past nine to swear a man in. It did not say who.
-- **Judge Eric Leeway** [trade]: Your invitation carried a private line from the House: be ready at half past nine to sign a charter. It did not say whose.
+- **Judge Eric Leeway** [paid]: Your invitation carried a private line from the House: be ready at half past nine to sign a charter. It did not say whose.
 - **Dr. Emmerich Sunner** [trade]: Your invitation carried a private line from the House: be ready at half past nine to certify a death. It did not say whose.
 - **Leon Gee of WFEA** [trade]: Your invitation carried a private line from the House: be ready at half past nine to read a bulletin aloud, and the House would supply the text.
 - **Ananya Codru and Charlie Wakem** [trade]: Your invitation carried a private line from the House: be ready at half past nine to wire a piece of news to every paper in New England.
 - **Rebecca Chow, Butler of the Black Veil** [trade]: Your invitation carried a private line from the House: be ready at half past nine to hand the House's keys to its new master.
-- **Tiffany Liu of the Lamps** [trade]: Your invitation carried a private line from the House: be ready at half past nine to engrave a seal. It did not say for whom.
-- **Silas Palmer of the Palm Court** [trade]: Your invitation carried a private line from the House: be ready at half past nine to play the Veil's old fanfare. Nobody has played it since 1924.
+- **Tiffany Liu of the Lamps** [paid]: Your invitation carried a private line from the House: be ready at half past nine to engrave a seal. It did not say for whom.
+- **Silas Palmer of the Palm Court** [paid]: Your invitation carried a private line from the House: be ready at half past nine to play the Veil's old fanfare. Nobody has played it since 1924.
 - printed: veil-roll, invite
 
 ### invites-cassie (connection)
@@ -327,7 +327,7 @@ Kit had the Veil's runners killed one at a time, the last thrown into the river 
 
 - **Tim McGinley, Baron of Bathtub Gin** [trade]: That winter the Veil's runners died one at a time. The last was thrown into the river off the Granite Street steps, and the boatman who did it bragged that it was paid for out of the other runner's own share.
 - **Sheriff Theodor Farrago** [trade]: Three of your 1925 “accidents” were runners who carried messages for the Veil; the last drowned in the river and the coroner said accident. The girl who ran with them was never found.
-- **Erika Lamm** [trade]: You hid on the river road that winter and watched the Veil's runners go one by one; the last was thrown off the steps, and the girl who ran with him ran.
+- **Erika Lamm** [paid]: You hid on the river road that winter and watched the Veil's runners go one by one; the last was thrown off the steps, and the girl who ran with him ran.
 - printed: receipts
 
 ## Printed pages

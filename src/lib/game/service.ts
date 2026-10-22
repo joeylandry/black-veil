@@ -386,7 +386,9 @@ export async function submit(db: GameDb, guestId: string, input: SubmitInput, no
     case "objective": {
       // the group race is not one of the five errands; the survivors' race is the vial and takes no answer
       const isRace = itemId === "race" && character.circle !== "survivors";
-      if (!isRace && (!character.objectives.some((objective) => objective.id === itemId) || !objectiveById.has(itemId))) return { ok: false, code: "invalid", message: "That is not one of your errands." };
+      // everyone reports their bills at the end for the wallet bonus
+      const isCash = itemId === "cash";
+      if (!isRace && !isCash && (!character.objectives.some((objective) => objective.id === itemId) || !objectiveById.has(itemId))) return { ok: false, code: "invalid", message: "That is not one of your errands." };
       break;
     }
     case "exhibit":

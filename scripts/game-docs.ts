@@ -102,7 +102,7 @@ const cname = (id: string) => characters.find((character) => character.id === id
   }
   lines.push("## Tags (small black stickers or folded paper, one per object)", "", ...props.map((prop) => `- ${prop.code}: ${prop.name}`), "");
   lines.push("## Markers (five cards, black, gold No.)", "", ...markers.map((marker) => `- MARKER No. ${marker.no} — code ${marker.code} — “Honoured by the House”`), "");
-  lines.push("## Currency", "", "Black Veil bills: $5, $10, $20. Cash in the room at the start:", ...characters.map((character) => `- ${character.name}: $${character.startingCash}`), "");
+  lines.push("## Currency", "", `House bills: $100 each. Cash in the room at the start: $${characters.reduce((sum, character) => sum + character.startingCash, 0).toLocaleString("en-US")} (${characters.reduce((sum, character) => sum + character.startingCash, 0) / 100} bills, so the rest of your 400 stay with Bartend Joe for change and winnings).`, ...characters.map((character) => `- ${character.name}: ${character.startingCash / 100} bills ($${character.startingCash})`), "");
   lines.push("## Standby slips (the Dead Letter box, opened at 9:15)", "", "One slip per clue errand. Hand it to a guest whose named sources did not come.", "");
   for (const character of characters) {
     for (const objective of character.objectives) {
@@ -112,7 +112,7 @@ const cname = (id: string) => characters.find((character) => character.id === id
       lines.push(`- **${objective.id}** (${character.name}): ${answer ?? "see " + objective.id + " in 03-objectives.md"}`);
     }
   }
-  lines.push("", "## Each guest's envelope", "", ...characters.map((character) => `- ${character.name}: ${[`$${character.startingCash}`, ...character.carries.map((id) => props.find((p) => p.id === id)!.name), character.survivor ? `marker No. ${character.survivor.markerNo}` : ""].filter(Boolean).join(", ")}`));
+  lines.push("", "## Each guest's envelope", "", ...characters.map((character) => `- ${character.name}: ${[`${character.startingCash / 100} bills ($${character.startingCash})`, ...character.carries.map((id) => props.find((p) => p.id === id)!.name), character.survivor ? `marker No. ${character.survivor.markerNo}` : ""].filter(Boolean).join(", ")}`));
   out("05-print-list.md", lines.join("\n"));
 }
 

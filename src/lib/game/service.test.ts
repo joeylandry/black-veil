@@ -343,6 +343,8 @@ describe("submissions", () => {
     assert.equal((await submit(ctx.db, anika, { kind: "objective", itemId: "molly-who", answer: "x" }, NIGHT)).ok, false, "someone else's objective");
     assert.equal((await submit(ctx.db, anika, { kind: "objective", itemId: "race", answer: "AAAAA BBBBB CCCCC" }, NIGHT)).ok, true, "a group race entry");
     assert.equal((await submit(ctx.db, await idOf(ctx.db, "molly"), { kind: "objective", itemId: "race", answer: "x" }, NIGHT)).ok, false, "the survivors' race is the vial, not a box");
+    assert.equal((await submit(ctx.db, anika, { kind: "objective", itemId: "cash", answer: "3200" }, NIGHT)).ok, true, "everyone reports their bills");
+    assert.equal((await submit(ctx.db, await idOf(ctx.db, "molly"), { kind: "objective", itemId: "cash", answer: "900" }, NIGHT)).ok, true, "survivors report their bills too");
     assert.equal((await submit(ctx.db, anika, { kind: "objective", itemId: "nope", answer: "x" }, NIGHT)).ok, false);
     assert.equal((await submit(ctx.db, anika, { kind: "mystery", itemId: "old-1", answer: "staged" }, NIGHT)).ok, true);
     assert.equal((await submit(ctx.db, anika, { kind: "mystery", itemId: "old-1", answer: "  " }, NIGHT)).ok, false);

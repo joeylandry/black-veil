@@ -65,6 +65,8 @@ type RunResult = {
   killerNamedBy: number;
   profiles: Record<string, string>;
   loneliest: { guest: string; facts: number };
+  cash: Record<string, number>;
+  soldSecrets: number;
 };
 
 
@@ -96,6 +98,13 @@ export function runNight(conditions: Conditions): RunResult {
     state.set(guest.id, { id: guest.id, profile, known, lines, trail: [] });
   }
 
+  // the wallet: bills change hands when a clue is bought, a secret sold, or a money errand won
+  const cash = new Map<string, number>(present.map((guest) => [guest.id, guest.startingCash]));
+  const pay = (from: string, to: string, amount: number) => {
+    cash.set(from, (cash.get(from) ?? 0) - amount);
+    cash.set(to, (cash.get(to) ?? 0) + amount);
+  };
+
   // what a guest may tell, by share rule
   const holders = (guestId: string) => facts.flatMap((fact) => fact.holders.filter((holder) => holder.guest === guestId).map((holder) => ({ fact, share: holder.share })));
   const exhibitsHeld = (guestId: string) => exhibits.filter((exhibit) => exhibit.heldBy === guestId);
@@ -105,12 +114,18 @@ export function runNight(conditions: Conditions): RunResult {
     const a = state.get(aId)!;
     const b = state.get(bId)!;
     const learn = (from: string, to: GuestState, targeted: number, allowTrade: boolean) => {
-      const pool = holders(from).filter(({ fact, share }) => !to.known.has(fact.id) && (share === "free" || (share === "trade" && allowTrade) || (share === "secret" && random() < secretChance)));
+      // a guest buys a clue with a chance that grows with how hard they are digging, and only if they can afford it
+      const buys = random() < 0.3 + 0.6 * to.profile.targeted && (cash.get(to.id) ?? 0) >= 100;
+      const pool = holders(from).filter(({ fact, share }) => !to.known.has(fact.id) && (share === "free" || (share === "trade" && allowTrade) || (share === "paid" && buys) || (share === "secret" && random() < secretChance)));
       const held = exhibitsHeld(from).filter((exhibit) => exhibit.supports.some((id) => !to.known.has(id)));
       const wanted = pool.filter(({ fact }) => Object.values(ELEMENT_NEED_FLAT).some((ids) => ids.includes(fact.id)));
       const pick = random() < targeted && wanted.length ? wanted : pool;
       // up to two lines per conversation
-      for (const { fact } of shuffle(pick, random).slice(0, 2)) to.known.add(fact.id);
+      for (const { fact, share } of shuffle(pick, random).slice(0, 2)) {
+        to.known.add(fact.id);
+        // a clue costs a bill dropped in the House Tin; the holder is not paid
+        if (share === "paid" && (cash.get(to.id) ?? 0) >= 100) cash.set(to.id, (cash.get(to.id) ?? 0) - 100);
+      }
       if (held.length && (allowTrade || random() < 0.5)) for (const id of held[0].supports) to.known.add(id);
     };
     // trades are mutual: both must be willing and both have something to give
@@ -123,6 +138,7 @@ export function runNight(conditions: Conditions): RunResult {
   // 2. objectives first: each guest meets the people their objectives name (the standby tray covers absences)
   const stranded: RunResult["stranded"] = [];
   const done = new Map<string, boolean>(); // objective id -> completed
+  let soldSecrets = 0;
   const kindTotals: Record<string, { done: number; possible: number }> = {};
   const note = (kind: string, ok: boolean) => {
     kindTotals[kind] ??= { done: 0, possible: 0 };
@@ -164,6 +180,12 @@ export function runNight(conditions: Conditions): RunResult {
         }
         case "money":
           ok = random() < me.profile.effort * 0.8;
+          if (ok) {
+            // the winnings come out of other guests' pockets
+            const win = check.min - guest.startingCash;
+            const losers = shuffle(present.filter((c) => c.id !== guest.id), random).slice(0, 4);
+            for (const loser of losers) pay(loser.id, guest.id, win / losers.length);
+          }
           break;
         case "approval":
           ok = random() < me.profile.effort;
@@ -198,6 +220,23 @@ export function runNight(conditions: Conditions): RunResult {
     for (const exhibit of exhibits) {
       if (exhibit.where === "held") continue;
       if (random() < me.profile.read) for (const id of exhibit.supports) me.known.add(id);
+    }
+  }
+
+  // a keeper sometimes sells the secret to the rival for $200, and loses the half point for keeping it
+  for (const guest of present) {
+    for (const objective of guest.objectives) {
+      if (objective.check.kind !== "keep") continue;
+      const check = objective.check;
+      if (!presentIds.has(check.rival) || learnedFrom.get(check.rivalObjective) === true) continue;
+      const rivalCash = cash.get(check.rival) ?? 0;
+      // the rival pays more readily the more they are digging; the keeper sells for the money about one time in five
+      if (rivalCash >= 200 && random() < 0.2 * (0.5 + state.get(check.rival)!.profile.targeted)) {
+        pay(check.rival, guest.id, 200);
+        learnedFrom.set(check.rivalObjective, true);
+        done.set(check.rivalObjective, true);
+        soldSecrets += 1;
+      }
     }
   }
 
@@ -264,6 +303,8 @@ export function runNight(conditions: Conditions): RunResult {
       }
       submissions.push({ guest: guest.id, kind: "objective", itemId: objective.id, answer: correctAnswer(guest, objective), proof: "", at: (clock += 100) });
     }
+    // the wallet bonus: everyone counts their bills
+    submissions.push({ guest: guest.id, kind: "objective", itemId: "cash", answer: String(Math.round(cash.get(guest.id) ?? 0)), proof: "", at: (clock += 100) });
     // the mysteries
     for (const question of questions) {
       if (!insiderAsked(guest, question)) continue;
@@ -345,6 +386,8 @@ export function runNight(conditions: Conditions): RunResult {
     killerNamedBy: items.filter((entry) => entry.kind === "mystery" && entry.itemId === "new-1" && entry.points > 0).length,
     profiles: Object.fromEntries([...state.values()].map((entry) => [entry.id, entry.profile.name])),
     loneliest: lonely,
+    cash: Object.fromEntries(cash),
+    soldSecrets,
   };
 }
 
@@ -395,7 +438,7 @@ function report(results: RunResult[]): string {
     lines.push(`| ${question.id}: ${question.prompt.slice(0, 70)}${question.prompt.length > 70 ? "…" : ""} | ${pct(rows.reduce((s, r) => s + r.full, 0) / asked)} | ${pct(rows.reduce((s, r) => s + r.any, 0) / asked)} |`);
   }
 
-  lines.push("", "## Score by kind of player", "", "| Player | Mystery points (of 10) | Objectives (of 5) | Survivors named (of 4) | Total (of 20) |", "|---|---|---|---|---|");
+  lines.push("", "## Score by kind of player", "", "| Player | Mystery points (of 10) | Objectives (of 5) | Survivors named (of 4) | Total (of 21) |", "|---|---|---|---|---|");
   for (const profile of PROFILES) {
     const rows = results.flatMap((run) => run.standings.standings.filter((row) => run.profiles[row.guest] === profile.name));
     lines.push(`| ${profile.name} | ${f(mean(rows.map((r) => r.tiers.mysteries)), 1)} | ${f(mean(rows.map((r) => r.tiers.objectives)), 1)} | ${f(mean(rows.map((r) => r.tiers.survivors)), 1)} | ${f(mean(rows.map((r) => r.total)), 1)} |`);
@@ -476,7 +519,7 @@ if (process.argv[2] === "full") {
 } else if (process.argv[2] === "fairness") {
   const rows = fairness(Number(process.argv[3] ?? 300));
   const avg = mean(rows.map((row) => row.total));
-  console.log("guest, mean objectives (of 5), mean total (of 20)");
+  console.log("guest, mean objectives (of 5), mean total (of 21)");
   for (const row of rows) console.log(`${row.guest.padEnd(9)} ${f(row.objectives)} ${f(row.total)}${row.total < avg - 0.6 ? "   <-- low" : row.total > avg + 0.6 ? "   <-- high" : ""}`);
   console.log(`average total ${f(avg)}; spread ${f(rows.at(-1)!.total - rows[0].total)}`);
 } else if (process.argv[1]?.endsWith("info-sim.ts")) {

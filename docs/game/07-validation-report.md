@@ -44,8 +44,8 @@ PASS  Money: the room holds enough cash for every money objective to be won with
   worst facts with no live holder and no printed page: 0
   trials where a survivor kept fewer than two identity routes: 0
   client files scanned for secrets: 66
-  cash in the room: $3500
-  total money the objectives ask players to win: $660
+  cash in the room: $32000
+  total money the objectives ask players to win: $6600
 
 ALL 23 CHECKS PASSED
 ```

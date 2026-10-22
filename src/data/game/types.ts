@@ -36,7 +36,8 @@ export type Race = {
 };
 
 /** How freely a card line may be repeated. Private cards mark each line, so guests know what is theirs to trade. */
-export type Share = "free" | "trade" | "secret";
+/** "paid": the holder sells it for one House bill ($100). */
+export type Share = "free" | "trade" | "paid" | "secret";
 
 export type Line = { text: string; share: Share };
 

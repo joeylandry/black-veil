@@ -7,7 +7,7 @@
 | When | What |
 |---|---|
 | Today | Print everything in `docs/print/game/` (see its README), including `host-sheet.pdf`, your one page with every approval word. Keep it behind the bar. Cut and sort. Tag every hidden and carried object (`tag-key.pdf` says which code goes on what). Empty the essential-oil bottles and fill them with water, then stick on the vial labels. |
-| Today | Fill each guest's black envelope: the envelope sheet, any carried item or slips (see `05-print-list.md`), the fake cash for their starting amount, and for the 19 non-survivors the House invitation. For the five survivors instead: Cassie's unsigned invitation, the marker, and the Flap. **Check the survivors' envelopes twice.** |
+| Today | Fill each guest's black envelope: the envelope sheet, any carried item or slips (see `05-print-list.md`), their starting bills (the $100 bills; the count is on `05-print-list.md`). Keep the rest of your 400 in the House Tin at the bar: it is where clue money is dropped, and your change, and for the 19 non-survivors the House invitation. For the five survivors instead: Cassie's unsigned invitation, the marker, and the Flap. **Check the survivors' envelopes twice.** |
 | Tomorrow afternoon | Hang the wall around Cassie's portrait (`docs/print/wall-of-cassie.pdf`) and hide the real receipt behind it. Hide the 18 hidden objects' tags in shared rooms only (never bedrooms, bathrooms, closets or drawers). |
 | Tomorrow afternoon | Lay out the **Keeper's table** (the black table): the binder (the List, the hitmen's receipts, the 1923 books, the vault memorandum, the forged orders, the rent counterfoils, the 1 Nov 1924 Farrago clipping), the nightcap chart, the **Roll of the Veil**, a glass on a coaster with code **8YUR2** taped underneath, dice and cards. Put the **scene card** (AYTHC) in your pocket. |
 | Tomorrow afternoon | At the bar: the **House Tin** (small round tin) and the House Book, the menu, and the one real vial (a small bottle of water, real label) with three decoys beside it. Give Rebecca the House Book and the tin. |
@@ -39,7 +39,7 @@
 2. `npm run game:grade -- packet`, then ask Claude Code to judge it and write `verdicts.json`.
 3. `npm run game:grade -- verdicts verdicts.json`
 4. `npm run game:grade -- standings`. **If it says TIED FOR FIRST, ask those guests the secret tie-breaker aloud** (it prints the question and the answer: the second rail stub in the jacket lining).
-5. Spot-check the cash of the top three (the packet lists the money claims).
+5. Spot-check the cash of the guests the packet lists under money claims (the top money-makers and the wallet-bonus winners). Ask to see their bills.
 6. `npm run game:grade -- publish`, and read out the winner.
 
 ## During the night: approval words
@@ -47,6 +47,16 @@
 Some objectives happen in the room: Silas's spotlight, Rebecca's scream, the Sheriff's arrest, Leon's bulletin, Josh's prophecy and fortunes, Angelos's card game, Erika's theft. The guest does it for real, taps **Claim this point** on their phone, and finds Bartend Joe (you) at the bar. Once you have seen it happen, give them the **approval word** (listed on /admin under "Approval words", and in `03-objectives.md`). Never say a word before you have seen the thing.
 
 At the 10:00 wrap-up: hand Eric the **charter** (the last slip on `slips.pdf`; he signs it and types its code) and give Leon a **bulletin** to read aloud, such as: *"This evening the Keeper of the Black Veil was found dead at his table. The House has lifted its veil, the dead are not dead, and Manchester will hear the rest in the morning."* Josh's sealed envelope is opened after the scream: give him his word only if his minute was close.
+
+## Money
+
+Everyone starts with $100 bills (6 to 15 for most, 30 for the three rich guests). Money does three things:
+
+1. Some clues on the cards are tagged **Costs $100 at the bar**. The guest drops a bill in the House Tin at the bar (you are there anyway), then the holder tells them. You do not have to do anything: it is an honour system, and the bills are checked at the end.
+2. The nine small secrets can be sold to another guest for $200. A sale to the keeper's rival costs the keeper half a point.
+3. At the end everyone types the bills they hold. The quarter of the room that ends **best off against where they started** (the most gained, or the least spent) earns one point. A guest with a money errand is counted from that errand's target.
+
+You do nothing during the night; at grading, ask to see the bills of the guests the packet lists.
 
 ## When something goes wrong
 

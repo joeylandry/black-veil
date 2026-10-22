@@ -84,7 +84,7 @@ async function main() {
     }
     case "standings": {
       const { standings } = await standingsNow(database());
-      const rows = standings.standings.map((row) => ({ rank: row.rank, name: row.name, circle: row.circle, total: row.total, objectives: row.tiers.objectives, survivors: row.tiers.survivors, mysteries: row.tiers.mysteries, race: row.tiers.race }));
+      const rows = standings.standings.map((row) => ({ rank: row.rank, name: row.name, circle: row.circle, total: row.total, objectives: row.tiers.objectives, survivors: row.tiers.survivors, mysteries: row.tiers.mysteries, race: row.tiers.race, cash: row.tiers.cash }));
       console.table(rows);
       print({ winner: standings.winner, killer: standings.killer, pendingReview: standings.pendingReview, awards: standings.awards });
       const level = standings.standings.filter((row) => row.total > 0 && row.total === standings.standings[0].total);

@@ -42,7 +42,7 @@ function doc(title: string, comment: string, pages: string[]): string {
 
 const banner = (sub = "") => `<div class="banner">THE BLACK VEIL${sub ? `<small>${esc(sub)}</small>` : ""}</div>`;
 const typeLine = () => `Type your answers on your phone${SITE ? ` at <b>${esc(SITE)}</b>` : ""} whenever you like. Only your last answer counts.`;
-const tagText = { free: "Yours to share", trade: "Trade it, don't give it away", secret: "Never say it aloud" } as const;
+const tagText = { free: "Yours to share", trade: "Trade it, don't give it away", paid: "Costs a bill: pay at the bar", secret: "Never say it aloud" } as const;
 const lines = (xs: { text: string; share: keyof typeof tagText }[]) => xs.map((l) => `<div class="line"><span class="tag ${l.share}">${tagText[l.share]}</span>${esc(l.text)}</div>`).join("");
 const errandHtml = (o: CardView["private"]["objectives"][number], n: number) => {
   return `<div class="errand"><div class="t"><span class="lab">Objective ${n}</span>${esc(o.title)}</div><div>${esc(o.text)}</div><div class="a"><span>Type: <em>${esc(o.ask)}</em></span><b>${o.points} ${o.points === 1 ? "POINT" : "POINTS"}</b></div></div>`;
@@ -75,7 +75,7 @@ function cardPages(): string[] {
       <h2>Private</h2>${lines(p.secrets)}
       <h2>What you know</h2><div class="${p.knows.length > 6 ? "cols2" : ""}">${lines(p.knows)}</div>
       ${p.habit ? `<p style="margin-top:.4em"><span class="lab">Your habit</span> &nbsp;${esc(p.habit)}</p>` : ""}
-      <div class="cash"><span class="t">You start with</span><span class="amt">$${p.startingCash}</span><span class="t">in House notes</span></div>
+      <div class="cash"><span class="t">You start with</span><span class="amt">$${p.startingCash.toLocaleString("en-US")}</span><span class="t">in House bills (${p.startingCash / 100} × $100)</span></div>
       <h2>Your objectives</h2>${errands.map(({ o, n }) => errandHtml(o, n)).join("")}
       <div class="box">Objectives 3 to 5 are in your black envelope</div>
       <div class="flapbox">If you are one of the five, your private page already knows. Everyone else's has the same sealed flap with nothing behind it.</div>

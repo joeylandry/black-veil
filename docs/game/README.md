@@ -22,7 +22,7 @@ In 1924 Cassie Castello planned the Exit: a staged "massacre" (stage blood, blan
 
 Cassie has been in hiding ever since, believed dead. **She knows the five lived.** In 1926 Kit sent nineteen black envelopes, signed only "The House", to the town's respectable people; he holds a secret on every one of them. Cassie sent **five unsigned invitations** of her own, to the five he failed to kill. At half past nine Kit meant to **crown himself the new head of the Black Veil**, every guest signing for him and Cassie declared dead, so the vault and the books would pass to him. The survivors know only that they survived and must end him; why is their own errand. The House's Butler has one vial and sells it once, to the first numbered marker. That survivor is the killer.
 
-## Scoring: 20 points at most
+## Scoring: 21 points at most
 
 | Tier | Max | How |
 |---|---|---|
@@ -30,6 +30,7 @@ Cassie has been in hiding ever since, believed dead. **She knows the five lived.
 | The three mysteries | 10 | **double the objectives**: nine questions, 1 point each, except "who poisoned him" (2). Rubric graded; survivors get 70% on what they lived |
 | Survivors named | 4 | every guest, survivors included, names up to **four**: +1 for each right, -0.5 for each wrong, never below zero. Being named costs a survivor nothing |
 | Group race | 1 | the first member of each of the five groups to finish its race |
+| Wallet bonus | 1 | the quarter of the room that ends best off against their own starting bills (the most gained or the least spent; a money errand counts from its target; ties by the seeded hash) |
 
 **The mysteries** (10 points, double all the objectives together):
 
@@ -61,6 +62,7 @@ The slips are printed paper (`slips.pdf`); twelve guests carry one each and hand
 
 - **It starts itself.** At 8:00 p.m. every guest's public card, private card, objectives and group race open on their phone and the answer boxes appear. The nightcap and House close at 9:00 and the book closes at 10:30, all by clock. The staff page (`/admin`) has one **Start game** button that only opens it early (and `game:grade -- stop` seals it for a rehearsal). You do not need /admin until grading.
 - **Bartend Joe.** Anything that needs the host (a spotlight, a scream, an arrest) is claimed on the guest's phone, then they find Bartend Joe, who gives a one-word approval word after seeing it. Words are on `host-sheet.pdf` and in /admin.
+- **Money.** 400 $100 bills are used: each guest starts with their own count (rich three: 30). Some clues cost a bill dropped in the House Tin, a kept secret can be sold to a guest for $200, and at the end the quarter of the room that ends best off against where they started earns a point.
 - **Group races.** Five groups; each has 5 slips and the first guest to type any 3 different codes wins that group's +1 (the survivors' race is the vial).
 - **Every objective has its own way to answer**, shown on the guest's phone: a code from a tag or slip, a word or name, a dollar total, a typed answer.
 - **Host-approved objectives.** For things that happen in the room (Silas's 8:30 spotlight, Rebecca's scream, the Sheriff's arrest, Leon's bulletin, Josh's prophecy and fortunes, Angelos's card game, Erika's theft) the guest does it for real, taps **Claim this point**, and a box asks for **the approval word**. The host gives that word only after seeing it happen. The words are listed on the staff page (under "Approval words") and in `03-objectives.md`; they are never sent to a guest's phone.

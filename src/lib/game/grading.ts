@@ -10,6 +10,7 @@
 import { alternateOf, characterById, characters, findGuests, objectiveById, questions, races, survivorIds } from "@/data/game";
 import { propById } from "@/data/game/props";
 import type { Objective, Question, RubricElement } from "@/data/game";
+import { tieHash } from "./scoring";
 import { matchesAny, matchesPattern, normalize, normalizeCode, parseClock, parseMoney, round2 } from "./text";
 import type { GameEvent, GradeItem, Submission, Truth, Verdict } from "./types";
 
@@ -20,6 +21,9 @@ export const POINTS = {
   maxPicks: 4,
   /** The first member of each group to finish its race earns one point. */
   race: 1,
+  cash: 1,
+  /** The share of the room, from the top, that earns the wallet bonus. */
+  cashShare: 0.25,
   longAnswer: 500,
   /** Share of a point a survivor (or the Butler) earns on an answer they already knew from the inside. */
   insiderCredit: 0.7,
@@ -257,6 +261,40 @@ function gradeRaces(input: GradingInput, presentIds: Set<string>): GradeItem[] {
   return items;
 }
 
+/**
+ * The wallet bonus. Every guest reports the bills they hold at the end; the quarter of the room that
+ * ends up best off against where they started (the most gained, or the least spent) earns a point.
+ * A guest with a money errand is counted from that errand's target, since the errand already paid
+ * them for earning. Ties are settled by the seeded hash. A figure larger than all the cash in the
+ * room is not believed.
+ */
+function gradeCash(input: GradingInput, latest: Map<string, Submission>, presentIds: Set<string>): GradeItem[] {
+  const present = characters.filter((character) => presentIds.has(character.id));
+  const ceiling = present.reduce((sum, character) => sum + character.startingCash, 0);
+  const rows = present.map((character) => {
+    const submission = latest.get(key(character.id, "objective", "cash"));
+    const amount = submission ? parseMoney(submission.answer) : null;
+    const believable = amount !== null && amount <= ceiling;
+    // a guest with a money errand has already been paid for earning: their gain is counted from that errand's target
+    const target = character.objectives.find((objective) => objective.check.kind === "money")?.check as { min: number } | undefined;
+    const baseline = target?.min ?? character.startingCash;
+    return { character, amount, believable, baseline, gain: believable ? amount - baseline : -Infinity, at: submission?.at ?? Infinity };
+  });
+  const slots = Math.max(1, Math.ceil(present.length * POINTS.cashShare));
+  const ranked = [...rows].sort((a, b) => b.gain - a.gain || (tieHash(input.truth.seed, a.character.id) < tieHash(input.truth.seed, b.character.id) ? -1 : 1));
+  const winners = new Set(ranked.filter((row) => row.believable).slice(0, slots).map((row) => row.character.id));
+  return rows.map((row) => {
+    const guest = row.character.id;
+    if (row.amount === null) return none(guest, "bonus", "cash", POINTS.cash, "No bills were reported.");
+    if (!row.believable) return item(guest, "bonus", "cash", "reject", 0, POINTS.cash, `$${row.amount} is more than all the cash in the room.`, true);
+    const gain = row.gain;
+    const from = row.baseline;
+    return winners.has(guest)
+      ? item(guest, "bonus", "cash", "accept", POINTS.cash, POINTS.cash, `Reported $${row.amount}, up $${gain} on $${from}: among the ${slots} biggest gains. Staff may ask to see the bills.`)
+      : item(guest, "bonus", "cash", "reject", 0, POINTS.cash, `Reported $${row.amount}, ${gain >= 0 ? `up $${gain}` : `down $${-gain}`} on $${from}: not among the ${slots} biggest gains.`);
+  });
+}
+
 /** Grades every present guest. Pure: the same input always gives the same items, in the same order. */
 export function autoGrade(input: GradingInput): GradeItem[] {
   const latest = latestSubmissions(input.submissions);
@@ -290,7 +328,9 @@ export function autoGrade(input: GradingInput): GradeItem[] {
     }
   }
 
-  items.push(...gradeRaces(input, new Set(present.map((character) => character.id))));
+  const presentIds = new Set(present.map((character) => character.id));
+  items.push(...gradeRaces(input, presentIds));
+  items.push(...gradeCash(input, latest, presentIds));
   return items;
 }
 

@@ -45,7 +45,8 @@ function tierOf(items: GradeItem[]): Tiers {
     objectives: sum((entry) => entry.kind === "objective"),
     survivors: sum((entry) => entry.kind === "survivors"),
     mysteries: sum((entry) => entry.kind === "mystery"),
-    race: sum((entry) => entry.kind === "bonus"),
+    race: sum((entry) => entry.kind === "bonus" && entry.itemId === "race"),
+    cash: sum((entry) => entry.kind === "bonus" && entry.itemId === "cash"),
   };
 }
 
@@ -63,7 +64,7 @@ export function computeStandings(items: GradeItem[], submissions: Submission[], 
     .map((character) => {
       const mine = items.filter((entry) => entry.guest === character.id);
       const tiers = tierOf(mine);
-      const total = round2(tiers.objectives + tiers.survivors + tiers.mysteries + tiers.race);
+      const total = round2(tiers.objectives + tiers.survivors + tiers.mysteries + tiers.race + tiers.cash);
       return {
         guest: character.id,
         name: character.name,
