@@ -17,7 +17,7 @@ The story already has the pieces: three "orders in C.C.'s hand" (Nov 1924, Mar 1
 
 | | **Fake receipts** (on the wall, in plain sight) | **Real receipts** (under the portrait) |
 |---|---|---|
-| What they say | "Received of Miss C. Castello, twenty dollars, in advance, for the removal of one name from the Veil's roll, as directed. To be settled for good." Three of them (8 Nov 1924, 5 Dec 1924, 19 Jan 1925), signed only "for the bearer", so the hitman's name is not handed out for free | "Paid in full by C.C., in gold, to get five persons safely out of Manchester alive: a new name, papers and a fare for each. The holders of markers 18, 19, 20, 21 and 22. Names withheld." One receipt, dated 2 November 1924 |
+| What they say | "Received of Miss C. Castello, twenty dollars, in advance, for the killing of one name on the Veil's roll, as directed. To be done quietly." Three of them (8 Nov 1924, 5 Dec 1924, 19 Jan 1925), signed only "for the bearer", so the hitman's name is not handed out for free | "Paid in full by C.C., in gold, to get five persons safely out of Manchester alive: a new name, papers and a fare for each. The holders of markers 18, 19, 20, 21 and 22. Names withheld." One receipt, dated 2 November 1924 |
 | What they prove (to the town) | Cassie paid for the killings | Cassie paid to hide the five who got away, so she is the opposite of a killer, and she was alive and acting after the "massacre" |
 | How to tell them apart | Drawn on the Merchants' Trust, Boston, which is the Keeper's bank (his rent counterfoils use it). Every i is dotted with a ring. A smudged embossing mark under each "C." The signature is too neat | Plain dots on every i, exactly like the Christmas card (Rebecca holds it) and Cassie's roll (Leon holds it). No bank. Paid in gold. A plain "C." |
 | Who can crack it | Anthony (saw the ringed i's in court), Rebecca (the card), Leon ("she hated rings"), Ananya (the telegram), Rhea | Whoever finds them. Reading the markers' numbers ties them to the five on the List |
@@ -43,24 +43,26 @@ Printable pages are in `docs/print/`: `wall-of-cassie.pdf` (six pages, the first
 
 ## 4. The old man's plan (proposed: needs your yes before I change any code)
 
-What you said: the old man has everyone's secrets, he sent the invitations to the 19 regular guests, he wants to do something bad, and he does not know the five are there. Cassie sends the five their own unsigned invitations.
+Settled: the old man sends the invitations to the 19 regular guests. Cassie sends the five survivors their own, unsigned. The five know they have to kill him and have to work out why. He does not know the five are there.
 
-That conflicts with the code today, which says **Cassie** sent every black envelope and the Keeper's jacket note says "They are not mine". If you want the old man as the sender, this is what changes: his note becomes "I sent them. Every one of them owes me, and I know why." and the question "Who sent the invitations?" splits into two (the House sent the 19, Cassie sent the five).
+You called my first plan cheesy (reading secrets aloud). Here is a better one, built from your own outline ("whoever finishes the old man takes Cassie's seat and the club"):
 
-Proposed plan, using only what is already in the story:
-1. **Why he invited them.** Over two years he collected a secret from each of the 19 people who ever touched the Veil: suppliers, officials, performers. He invited them all to one room so he could call in every favor at once, under the cover of a party.
-2. **What he wants.** He is holding the Veil's books but cannot open them: the vault takes his ring, the Silent Partner's brass key, Cassie's diamond pin and a dial only she can set. He needs Cassie. He suspects someone in the room can reach her (Leon's "I am well" signals, Rebecca's boarding house, Ananya's Montreal telegrams).
-3. **What happens at nine.** After his nightcap, he planned to read the guests' secrets aloud, one at a time, until somebody told him where she is. Whoever gave her up would keep their secret.
-4. **What he does not know.** That five of the people he tried to kill in 1924 are in the room, under new names, invited by Cassie. That is why he does not see the murder coming.
+**The Succession.** At nine o'clock, before 19 witnesses, Kit Kessler means to crown himself the new head of the Black Veil. The black satin cloth is the Veil itself.
+1. **Why he needs a room full of people.** To take the Veil he needs the town's respectable people to see it and sign for it: the Sheriff swears him in, the Judge signs the charter, the Doctor certifies that Cassie is dead, the Lawyer files it, the Newsie and the radio announcer print and broadcast it, the Butler hands over the House and its keys.
+2. **Why they will do it.** He has a secret on every one of them. That is how he chose the 19, and it is the leash. Nobody has to be killed: they only have to sign the Roll of the Veil.
+3. **What he still lacks.** Cassie's pin and the dial. Once she is legally dead and the Roll is signed, he thinks the vault, the books and the money pass to him.
+4. **What he does not know.** Five of the people he tried to kill in 1924 are in the room under new names, invited by Cassie, and they were told to be the one who ends it. Whoever kills him tonight is crowned in his place: "I present the new head of the Black Veil."
 
-If you would rather the "something bad" be different (for example, he means to frame one guest for Cassie's murder), tell me and I will rewrite step 2 and 3.
+New printed prop: the **Roll of the Veil**, a parchment with 19 signature lines, lying on the black table next to the cloth. It becomes a clue: guests who read it see what he was about to do.
+
+If you want a different plan, two other options: (a) he means to frame one guest for Cassie's murder and sell the Veil to the Mill; (b) he means to burn the books and everyone in them tonight. I think the Succession fits your ending best.
 ## 5. Scoring: the two replacement questions, and the groups
 
 **What "Question A" and "Question B" mean.** The Butler knows who bought the vial and the killer knows who poured it, so two of the normal questions are free for them: "Who poisoned the Keeper?" (16 points) and "How was he poisoned and where did the poison come from?" (12 points). Instead of giving them free points, both of them answer these two other questions, worth the same:
 
 **Question A (16 points, in place of "Who poisoned him?"):** *What did the Keeper come to the Black Veil to get tonight, and how did he mean to get it?*
-Answer: Cassie's diamond pin and the dial, to open the vault and take the books (6). He had to find Cassie (4). He meant to use the guests' secrets as leverage, reading them out until someone gave her up (6). It does **not** include the five: he does not know they are there.
-Sources: his jacket note, the vault memorandum, the 1923 books page, the nightcap chart, Anika's brass key, Josh's flue, Adam's lock.
+Answer: He meant to crown himself the new head of the Black Veil at nine, before the 19 guests as witnesses (6). Their secrets were his leverage, and each had to sign the Roll (5). Cassie had to be declared dead so the vault and the books would pass to him (5). It does **not** include the five: he does not know they are there.
+Sources: his jacket note, the Roll of the Veil, the vault memorandum, the nightcap chart, the secrets the guests hold, Anika's brass key.
 
 **Question B (12 points, in place of "How was he poisoned?"):** *Where are the Keeper's books, and what does it take to open them?*
 Answer: In the vault behind the Merrimack Room's second window (4). Three keys: the Keeper's ring, the Silent Partner's brass key, Cassie's diamond pin (5). Then a dial that only Cassie can set (3).
@@ -71,19 +73,18 @@ Answer: In the vault behind the Merrimack Room's second window (4). Three keys: 
 **Who is graded against whom.**
 - The five survivors are ranked together as one group of five. The killer is one point above the best of the other four.
 - Each of the other guests is ranked inside their persona group (four people each, because each group's fifth member is a survivor).
-- Each persona group's top scorer is its winner, and the killer is the survivors' winner. Everyone has the same 60 points of objectives; the three mysteries (100 points) decide who is on top.
-- One question for you: is there also one overall winner, or only these group winners?
-## 6. Pairs: one affair, the rest partnerships and friendships
+- **One overall winner, on points.** Everyone has the same 60 points of objectives; the three main mysteries (100 points) and then the tie-breaker questions decide who ends on top. Group results are bragging rights only.
+## 6. Pairs: one affair, and the sneaky deals
 
-| Pair | Type | What the card says |
+| Pair | Type | What the cards say |
 |---|---|---|
-| Ananya and Luke | **Secret affair** (hide). Seekers can name them | Charlie shares Ananya's card, so he will read this. If you want him in on it, fine. If not, I would give the affair to Luke and someone else |
-| Anika and Silas | Secret partnership | She quietly pays for his band; he keeps her name off the bills |
-| Theodor and Erika | Secret friendship | He lets her slip by; she tells him which way the wind is blowing |
-| Eric and Molly | Secret partnership | He tips her a verdict a day early; she prints it as news |
+| Ananya and Luke | **Secret affair** (hide). Seekers: Angelos, Krrish, Rhea | Charlie shares Ananya's card, so he will read this |
+| Leon, Theodor and a go-between | **The pardon (the bribe and payoff mechanic we already designed)** | From the earlier design (`docs/mystery/00-PROPOSAL.md` section 6b). Leon mocks the Sheriff on the radio, and Theodor suspects an unlicensed second transmitter (the same one that sends Cassie's "I am well" items). Theodor holds a one-use Nuisance Citation for Leon. Leon can pay a go-between at least $50 in fake bills (Tiffany first, or Eric or Rebecca) who hands the Sheriff a pardon slip. Theodor chooses: serve the citation (small reward) or take the bribe (bigger reward). Leon and the go-between both score when the pardon goes through. It never touches the murder scoring |
+| Anika and Silas | **Sneaky deal** | Anika wants to know who in the room knew her father, the Silent Partner. She pays Silas $30 to play her father's old signature tune at 8:30 and say it was a request from the room. Whoever stops, hums or leaves, they both note. Neither may admit the deal |
+| Erika and Rebecca | **Planned alibi** | From the earlier design: Erika swears she was with Rebecca at 9:15, so the Butler who finds the body is not suspected. Rebecca already sells alibis at $20 |
+| Eric and Molly | **Sneaky deal** | He tips her a verdict a day early; she prints it as news |
 
-Seekers (the ones who must find the affair): Angelos, Krrish, Rhea. Each pair's hide objective is mirrored for both people, so nobody gets extra points.
-
+The point values for the pardon in the old design were on a different scale (Sheriff +1 cite or +2 bribe, Leon +4, go-between +4). On the 12-points-per-errand scale I would make the bribe worth more to the Sheriff than the citation but less than a full errand, and give Leon and the go-between a full errand each. Placeholder until you set the numbers.
 ## 7. Objects, with what they became
 
 | Object | In the story | Used by |
@@ -118,14 +119,14 @@ The carried items, by swap pair (Jack cannot come, so Anika's partner becomes Kr
 
 | Pair | One carries | The other carries |
 |---|---|---|
-| Anika and Krrish | Metal spoon (the Mahns crested spoon) | Lit-up wine bottle |
-| Rhea and Tim | A handkerchief or cloth napkin **(still needed)** | The little jar (the gin jar) |
+| Anika and Krrish | Metal spoon (the Mahns crested spoon) | A key (the one you can dig up; it stands in for Jack's Hudson showroom key) |
+| Rhea and Tim | A handkerchief or cloth napkin | The little jar (the gin jar) |
 | Angelos and Luke | Casino chip | Giraffe whittling |
 | Erika and Ananya | Printed false papers in a black envelope | Printed telegram form |
-| Josh and Tiffany | Kosher salt | A glass bead or marble **(still needed)** |
-| Arjun and Adam | A baseball **(still needed)** | The little brown box (empty cartridge box) |
+| Josh and Tiffany | Something you will find for Josh | An earring (Tiffany) |
+| Arjun and Adam | A baseball | The little brown box (empty cartridge box) |
 
-So I need three small things only: a handkerchief or napkin, a glass bead or marble, and a baseball (or a ball). The key you can dig up and Emily's glove are spare, and the House Tin is the small round tin.
+The kosher salt and the lit-up wine bottle stay where they are, as hidden finds (Josh's salt, and the bottle is a find for someone else). So the only open item is the something-for-Josh you said you would find.
 
 Costume and role props are separate: Theodor's black cowboy hat, badge and handcuffs; the doctor's bag; the Butler's tin and vial.
 
