@@ -82,7 +82,7 @@ Five groups. Each holds one survivor; a survivor is ranked with the other four f
 - **Leon and Theodor, the pardon (our old bribe-and-payoff mechanic):** Leon mocks the Sheriff on the radio, and Theodor suspects an unlicensed second transmitter (the same one that sends Cassie's "I am well" items). Theodor holds a one-use citation for Leon. Leon can pay a go-between at least $50 in fake bills (Tiffany first, or Eric or Rebecca), who hands Theodor a pardon slip. Theodor chooses: serve the citation (small reward) or take the bribe (bigger reward). Leon and the go-between score when it goes through. It never touches the murder scoring.
 - **Anika and Silas, the sneaky deal:** Anika wants to know who in the room knew her father, the Silent Partner. She pays Silas $30 to play her father's signature tune at 8:30 and say it was a request. Silas gets a five-minute spotlight. They both note who stops, hums or leaves, and neither may admit the deal.
 - **Erika and Rebecca, the planned alibi:** Erika swears she was with Rebecca at 9:15, so the Butler who finds the body is not suspected. Rebecca already sells alibis at $20.
-- **Eric and Molly, the leak:** he tips her a verdict a day early, and she prints it as news. *(If Molly is a survivor this becomes Eric and Tim: Tim sends the Judge a crate every Friday and the Judge quietly dismisses Tim's cases.)*
+- **Eric and Molly, the leak:** he tips her a verdict a day early, and she prints it as news. *(With Molly a survivor this becomes Eric and Krrish: Krrish sends the Judge a crate of wine every Friday and the Judge quietly dismisses his cases. Neither may admit it.)*
 
 **Josh's role, the Soothsayer.** Two jobs, neither of which gives anything away alone. (1) *The prophecy:* before 8:30 he writes down the exact minute he thinks the scream will come, and you seal it in an envelope and open it at 9:15. (2) *The fortunes:* you give him a deck of twelve fortune cards. Each is a cryptic true hint, a partial clue about a different fact, and he has to read the fortunes of four guests. Each guest keeps the card, and it counts as a printed page.
 
@@ -90,17 +90,21 @@ Five groups. Each holds one survivor; a survivor is ranked with the other four f
 
 **The card summary (every card, top of page):**
 
-> **The Black Veil, All Hallows' Eve 1924.** A supper club above the Merrimack held its masquerade. At 10:10 the orchestra came in by the river door. At 11:02 a party of four went up to the private landing. At 11:47 the music stopped. The papers called it a massacre, but no bodies were found, no names were given and no coroner was ever called. The proprietress, Cassie Castello, was gone by morning.
+> **THE BLACK VEIL** *A private supper club above the Merrimack. Members only. Secrets extra.*
 >
-> **What followed.** A bulletin named Cassie a person of interest. No warrant followed. Over the next year seventeen people with no records and no families died in "accidents." Nobody connected them.
+> **All Hallows' Eve, 1924.** The masquerade was the talk of Manchester, right up until the music stopped. The orchestra slipped in by the river door. Four masked guests slipped up to the private landing. By midnight the papers were screaming *massacre*, and nobody could find a body, a name, or a coroner willing to sign for one. The proprietress, Miss Cassie Castello, had vanished with the last dance.
 >
-> **Tonight, 23 October 1926.** A black envelope came to each of you. Around a quarter past nine, a body will be found. After that there is no host, no town hall and no one to rule on anything: ask whom you like.
+> **The year after.** A police bulletin called Cassie "a person of interest," and then lost interest. Seventeen people with no records and no relatives met unfortunate accidents. Nobody added it up. (You may.)
 >
-> **The five.** Exactly five of the people the papers called lost in 1924 are in this room tonight, living under other names. They are guests like you. Nobody will tell you who. At the end you may name up to five guests as survivors: every right name earns points and every wrong name costs you.
+> **Tonight.** The black envelopes came to your door, signed by nobody you would dare name. You came anyway. Curious. A little reckless. Wear it well. Before the night is through, someone will be found dead, and the rest of you will have opinions.
 >
-> **At the end you will be asked** what really happened in 1924, who killed the old man tonight and how, and who he was to the Veil.
+> **Five ghosts in the room.** Five souls the papers swore were lost are here tonight in borrowed names and borrowed faces, sipping your drinks and watching your hands. They are guests like you. Before the lights come up you may point at up to five of your fellow guests and say *ghost*. Be right and it pays. Be wrong and it stings.
 >
-> **If you are one of the five,** your private page says so. Everyone else's has the same sealed section with nothing in it, so nobody can tell by looking at a card.
+> **Last call.** You will be asked three things: what really happened in 1924, who did it tonight and how, and who the dead man was to the Veil.
+>
+> **A word to the ghosts.** If you are one of the five, your private page already knows. Everyone else's has the same sealed flap with nothing behind it. Nobody can tell by looking. Keep a straight face.
+
+Nothing in it gives the time of the body, the old man, the vault or the plan.
 
 **The envelopes.** Everyone gets the same black envelope. The 19 find the House's invitation inside. The five find Cassie's unsigned invitation (it ends "The veil lifts") and their numbered marker. The outsides are identical, so the envelope proves nothing.
 
@@ -127,7 +131,7 @@ Three mysteries are worth 100 points; everyone's errands are worth 60. Whoever f
 - **Question A (16, instead of New 1):** *What did the Keeper come to the Black Veil to do tonight, and how did he mean to do it?* Answer: crown himself the new head of the Black Veil at half past nine, before the 19 as witnesses (6); their secrets were his leash and each had to sign (5); Cassie had to be declared dead so the vault and books would pass to him (5). It does not include the five, since he does not know they are there.
 - **Question B (12, instead of New 2):** *Where are the Keeper's books, and what does it take to open them?* Answer: in the vault behind the Merrimack Room's second window (4); three keys, the Keeper's ring, the Silent Partner's brass key and Cassie's diamond pin (5); then a dial only Cassie sets (3).
 
-**The tie-breaker.** You remembered right: the earlier design had a tie-breaker question, and the scoring code does not have it yet. It is worth zero points: every guest's final form asks *"At what minute did the Keeper take the poison?"* The true answer is the minute the killer typed the nightcap code (the site logs it), and the coroner's report points at "about nine o'clock." If two guests tie on total points, the closer guess wins. The full order is then: total points; mystery points; the tie-breaker question; the "who" question (Question A for the killer and the Butler); survivors correctly named; errands; printed pages found; who finished first. A last hash makes sure there is exactly one winner. I would add the question to the code when I load the rest.
+**The tie-breaker: a secret clue, earned only if needed.** Nothing about it is on any card or in the rules. Hidden in the lining of the dead man's jacket is a second rail stub that no errand points at: *Manchester to Boston, 23 October, 11:12 PM, one way.* (He meant to be gone right after crowning himself.) Only if two or more guests tie on total points does the final form show those guests one extra question, and only to them: *"At what time did the Keeper's train out of Manchester leave?"* Only someone who searched the jacket lining knows: 11:12. It is worth zero points and just breaks the tie. If nobody gets it, or several do, the next rule applies. The full order: total points; mystery points; the secret tie-breaker; the "who" question (Question A for the killer and the Butler); survivors correctly named; errands; printed pages found; who finished first. A last hash makes sure there is exactly one winner. I add the question and the stub to the code when I load the rest.
 
 **Other points (current values, placeholders):** each printed page filed is worth 2 (cap 12); each survivor named right is +4 and wrong is −2 (capped at +20 and −10); a survivor who stays hidden earns up to 20; the killer's bonus is currently a flat +6 in the code; it becomes +1 above the next-best survivor, as you decided (the killer is one point above their group).
 
@@ -181,7 +185,7 @@ The Evening Farrago front page (Terror at the Black Veil, "Massacre," Say Guests
 
 **Role props:** Theodor's black cowboy hat, badge and handcuffs; the Doctor's bag; the Butler's House Tin (the small round tin), House Book and one real vial. The oil bottles hold water only: empty the essential oils and fill them with water. Labelled decoys: camphor, hartshorn, wintergreen.
 
-**The jacket:** the dead man's jacket holds the pocket watch stopped at 11:47, the rail stub and his note.
+**The jacket:** the dead man's jacket holds the pocket watch stopped at 11:47, the rail stub and his note, and, sewn or taped inside the lining where only a searcher will find it, the secret tie-breaker stub (Manchester to Boston, 11:12 PM).
 
 Not used: martini glasses, trumpet photo, merlot, shears, plates, orange slices, holy water, the decanters, the Nikon (Molly gets a paper press card). Take the cannabis items and anything modern off the tables before guests arrive.
 
@@ -223,10 +227,14 @@ Each is gossip a second guest can earn, and each is one small piece of one clue,
 **What needs to adjust with your five:**
 1. **Groups.** Mihir and Rhea are both in The Gilded, and The River Trade has no survivor. Fix: move Rhea to the River Trade (she already stocks Tim's gin as a "tonic" in her back room). Then it is one each: Gilded Mihir, Order Anthony, Stage Molly (The Wire & the Stage: Molly, Leon, Ananya, Luke, Silas, the performers and the people who carry news), Working Adam, River Rhea. Group sizes become Gilded 4, Order 4, Stage 5, Working 5, River 6, which does not matter for the overall winner.
 2. **Identities.** The five real identities were written for other trades (the Teller, the Notary, the Maestro, the Doorman, the Wren). Mihir is the Teller and Anthony is the Notary, and both fit. Adam fits the Doorman (a gunsmith who knows who holds which door). Rhea and Molly need new trades on the List. My suggestion: Rhea is the Milliner, the Veil's costume mistress (masks, gowns), and Molly is the Runner, who carried the Veil's mail and late editions. What the Keeper took from each of them has to be written for those two, and their tells.
-3. **Molly's deal.** She was in the leak deal with Eric. Eric gets a new one: Tim sends the Judge a crate every Friday and the Judge quietly dismisses Tim's cases (a bribe, neither may admit it).
+3. **Molly's deal.** She was in the leak deal with Eric. Eric gets a new one with Krrish: Krrish sends the Judge a crate of wine every Friday and the Judge quietly dismisses his cases (a bribe, neither may admit it). I chose Krrish rather than Tim so nothing depends on Tim coming.
 4. **Anthony.** He currently holds the clue "I noticed the rings in court." As the Notary who forged the orders he cannot be the witness, so that line moves to Eric.
 5. **Clues to rebuild.** The identity clues (the tell, the crack, the cover, the motive) for all five, because they were written for the old five. The checker has to be re-run.
 6. **Unchanged:** Rhea and Tim's swap and Adam and Arjun's swap stay as they are, since survivors keep their swap.
+
+**What changes for the guests, and what does not.** Nothing already published changes. Every character's public name, role and background on the site stays exactly as it is. The survivor layer (a real 1924 name and trade, the tell, the grievance, the marker) is private and only added to the five cards. The group a character is in is internal and is not shown on the site.
+
+**If someone cannot come.** Characters only appear on the guest list while their guest is registered and coming, so a guest who drops out leaves no hole on the site. For the game itself, a guest who cannot come is marked "did not come" in the staff page, and the hand-offs are covered. **Tim in particular:** nothing is built on him. His only link is Rhea's swap, and in that case you stand in for him at the bar: you hold the little jar and Rhea trades with you. I moved Eric's deal to Krrish for exactly this. His clue lines are each held by at least three other guests, and his secret is known by Krrish and Rebecca, so it can still be learned. The same stand-in rule covers any other absence.
 
 ## 12. Misleading trails (red herrings)
 
