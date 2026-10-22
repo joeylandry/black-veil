@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { GameApp } from "@/components/game/game-app";
 import { brief1924 } from "@/data/brief";
 
 export const metadata: Metadata = {
@@ -10,6 +11,7 @@ export const metadata: Metadata = {
 export default function GamePage() {
   return (
     <div className="page-wrap game-page">
+      <GameApp />
       <section className="game-brief" aria-labelledby="game-brief-title">
         <p className="eyebrow">The Black Veil</p>
         <h2 id="game-brief-title">A private supper club above the Merrimack.</h2>

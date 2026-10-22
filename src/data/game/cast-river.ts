@@ -24,7 +24,7 @@ export const river: Character[] = [
     ],
     smallSecret: { text: "Two passengers went down the river steps that night; one came back alone with blood on his cuff.", key: ["cuff"], confidant: "krrish" },
     startingCash: 150,
-    carries: ["gin-jar", "witness-tim"],
+    carries: ["gin-jar", "tool-tim"],
     objectives: [
       money("tim-money", 210, "A baron's business is the margin. Sell, trade and bargain. Leave with at least $210."),
       find("tim-find", "conch"),
@@ -70,7 +70,7 @@ export const river: Character[] = [
       secretOf("rebecca-secret", "theodor", "molly", ["shoebox", "shoe box"]),
       keep("rebecca-keep", "tiffany", "tiffany-secret", "ananya", "ananya-secret"),
       role("rebecca-sale", "The House's one sale", "Sell the House's single bottle to the owner of a numbered marker, once, before the nightcap is served at nine o'clock. Record the sale on your House panel.", "In a sentence, who did you sell to?", { kind: "butler-sale" }),
-      approval("rebecca-scream", "The scream", "At a quarter past nine, go to the Merrimack Room, find the Keeper and scream. Then claim this point. The host will confirm it and give you an approval word.", "banshee"),
+      approval("rebecca-scream", "The scream", "At a quarter past nine, go to the Merrimack Room, find the Keeper and scream. Then tap Claim this point and go to Bartend Joe at the bar for your approval word.", "lavender"),
     ],
   },
   {
@@ -144,7 +144,7 @@ export const river: Character[] = [
       find("erika-find", "mask"),
       swap("erika-swap", "ananya", "false-papers", "telegram-form"),
       secretOf("erika-secret", "tim", "krrish", ["cuff"]),
-      approval("erika-steal", "Steal something", "Take something small from a guest without being caught: a slip, a glove, a prop. Hand it back before the night ends. Then claim this point. The host will confirm it with whoever you robbed and give you an approval word.", "sleight"),
+      approval("erika-steal", "Steal something", "Take something small from a guest without being caught: a slip, a glove, a prop. Hand it back before the night ends. Then tap Claim this point and go to Bartend Joe at the bar. He will check with whoever you robbed and give you the approval word.", "marzipan"),
     ],
   },
 ];

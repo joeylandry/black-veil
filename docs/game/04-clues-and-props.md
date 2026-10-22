@@ -394,18 +394,26 @@ Kit had the Veil's runners killed one at a time, the last thrown into the river 
 | U7WNK | Pardon slip | a printed slip | carried | Tiffany Liu of the Lamps |
 | RU647 | go-between's receipt | a printed receipt | carried | Tiffany Liu of the Lamps |
 | MKPAE | Nuisance Citation | a printed citation | carried | Sheriff Theodor Farrago |
-| KK8HX | Witness slip | a printed slip | carried | J. Bruce Wayne |
-| PJYPA | Witness slip | a printed slip | carried | Arjun Bat |
-| TDR9H | Witness slip | a printed slip | carried | Tim McGinley, Baron of Bathtub Gin |
-| MPMYK | Reply slip | a printed slip | carried | Judge Eric Leeway |
-| YPCYR | Reply slip | a printed slip | carried | Diwakar Sandbagg |
-| AFU2R | Reply slip | a printed slip | carried | Erika Lamm |
-| FM7CM | Tool token | a printed token | carried | Anthony Hung, Esq. |
-| JYTK8 | Tool token | a printed token | carried | Sidd Airwind |
-| P6NCY | Tool token | a printed token | carried | Krrish Vermouth |
-| A6KK8 | Trade slip | a printed slip | carried | Dr. Emmerich Sunner |
-| 4F7W3 | Trade slip | a printed slip | carried | Silas Palmer of the Palm Court |
-| 6W26Y | Trade slip | a printed slip | carried | Tiffany Liu of the Lamps |
+| 6GPMF | Witness slip | a printed slip | carried | Arjun Bat |
+| 62G9X | Witness slip | a printed slip | carried | Diwakar Sandbagg |
+| M73EX | Witness slip | a printed slip | carried | Joshua Kamin-Sky |
+| D4JFG | Witness slip | a printed slip | carried | Leon Gee of WFEA |
+| KW9K2 | Witness slip | a printed slip | carried | Sidd Airwind |
+| EN2W3 | Reply slip | a printed slip | carried | Angelos Bowles |
+| D6DDT | Reply slip | a printed slip | carried | Judge Eric Leeway |
+| PXT7K | Reply slip | a printed slip | carried | Erika Lamm |
+| UHN7C | Reply slip | a printed slip | carried | Krrish Vermouth |
+| RW4H6 | Reply slip | a printed slip | carried | Sheriff Theodor Farrago |
+| PGYF8 | Tool token | a printed token | carried | Ananya Codru and Charlie Wakem |
+| WKXWT | Tool token | a printed token | carried | Anthony Hung, Esq. |
+| NPKM4 | Tool token | a printed token | carried | J. Bruce Wayne |
+| DC92C | Tool token | a printed token | carried | Mihir Nagarkatti of Nag Oil |
+| 32CDE | Tool token | a printed token | carried | Tim McGinley, Baron of Bathtub Gin |
+| 24R94 | Trade slip | a printed slip | carried | Anika Mahns of Mahns Manor |
+| 94K7V | Trade slip | a printed slip | carried | Dr. Emmerich Sunner |
+| DAFF2 | Trade slip | a printed slip | carried | Molly Daniel of the Manchester Union |
+| 6K64E | Trade slip | a printed slip | carried | Silas Palmer of the Palm Court |
+| 2P946 | Trade slip | a printed slip | carried | Tiffany Liu of the Lamps |
 | 8YUR2 | nightcap glass coaster | a coaster | table |  |
 | 4JNW7 | charter | a printed charter card, signed at the wrap-up | table |  |
 | AYTHC | scene card | a printed card on the black table | table |  |

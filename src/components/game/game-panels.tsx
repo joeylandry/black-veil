@@ -27,11 +27,11 @@ function ClaimBox({ errand, saved, open, onSaved }: { errand: Errand; saved?: Sa
     return (
       <div className="game-submit">
         <button type="button" disabled={!open} onClick={() => setClaiming(true)}>Claim this point</button>
-        <small>Do it for real first. The host will check it and give you an approval word.</small>
+        <small>Do it for real first. Then go to Bartend Joe at the bar for the approval word.</small>
       </div>
     );
   }
-  return <SubmitBox kind="objective" itemId={errand.id} label="The approval word the host gave you" initial={saved} disabled={!open} onSaved={onSaved} />;
+  return <SubmitBox kind="objective" itemId={errand.id} label="The approval word Bartend Joe gave you" initial={saved} disabled={!open} onSaved={onSaved} />;
 }
 
 function ErrandCard({ errand, index, saved, open, onSaved }: { errand: Errand; index: number; saved?: SavedAnswer; open: boolean; onSaved: (entry: SavedAnswer) => void }) {
@@ -67,7 +67,7 @@ function ErrandCard({ errand, index, saved, open, onSaved }: { errand: Errand; i
 }
 
 const errandLabel = (kind: string) =>
-  ({ find: "a thing to find", learn: "a secret to learn", swap: "a trade to make", money: "money to make", hide: "a secret to keep", seek: "gossip to find", story: "a clue to chase", chain: "the House", motive: "your own story", role: "your office", keep: "a secret to spend", approval: "the host will confirm" })[kind] ?? kind;
+  ({ find: "a thing to find", learn: "a secret to learn", swap: "a trade to make", money: "money to make", story: "a clue to chase", chain: "the House", motive: "your own story", role: "your office", keep: "a secret to spend", approval: "Bartend Joe will confirm" })[kind] ?? kind;
 
 /** A small box that sends one code to a House endpoint and shows the reply, whatever it is. */
 function CodeBox({ endpoint, label, button, placeholder }: { endpoint: string; label: string; button: string; placeholder: string }) {
@@ -147,9 +147,8 @@ export function PrivateTab({ card, secretsReleased, open, saved, onSaved }: { ca
         </ol>
       </section>
       <section className="game-panel">
-        <p className="eyebrow">Your group, {p.race.group} · a race for 1 extra point</p>
-        <h4>{p.race.title}</h4>
-        <p>{p.race.text}</p>
+        <p className="eyebrow">Act fast or lose this point</p>
+        <p><strong>The first to complete this task gets the point.</strong> {p.race.text}</p>
         {!p.race.house && <SubmitBox kind="objective" itemId="race" label={p.race.ask} initial={saved.get("objective|race")} disabled={!open} onSaved={onSaved} />}
         {p.race.slips.length > 0 && <ul>{p.race.slips.map((slip) => <li key={slip}>{slip}</li>)}</ul>}
       </section>

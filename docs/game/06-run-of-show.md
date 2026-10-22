@@ -1,12 +1,12 @@
 # Run of show
 
-*Your jobs, in order. The game runs itself; you are Bartend Joe, never a suspect, never scoring. The staff page (/admin) has one button, **Start game**, and everything else runs itself. Nobody brings anything: you hand out every carried item at the door.*
+*Your jobs, in order. The game runs itself; you are Bartend Joe, never a suspect, never scoring. The game opens by itself at 8:00 p.m. and closes by itself at 10:30. You never need /admin until grading. The staff page has one button, **Start game**, which only opens it early. Nobody brings anything: you hand out every carried item at the door.*
 
 ## Before the doors (today and tomorrow afternoon)
 
 | When | What |
 |---|---|
-| Today | Print everything in `docs/print/game/` (see its README). Cut and sort. Tag every hidden and carried object (`tag-key.pdf` says which code goes on what). Empty the essential-oil bottles and fill them with water, then stick on the vial labels. |
+| Today | Print everything in `docs/print/game/` (see its README), including `host-sheet.pdf`, your one page with every approval word. Keep it behind the bar. Cut and sort. Tag every hidden and carried object (`tag-key.pdf` says which code goes on what). Empty the essential-oil bottles and fill them with water, then stick on the vial labels. |
 | Today | Fill each guest's black envelope: the envelope sheet, any carried item or slips (see `05-print-list.md`), the fake cash for their starting amount, and for the 19 non-survivors the House invitation. For the five survivors instead: Cassie's unsigned invitation, the marker, and the Flap. **Check the survivors' envelopes twice.** |
 | Tomorrow afternoon | Hang the wall around Cassie's portrait (`docs/print/wall-of-cassie.pdf`) and hide the real receipt behind it. Hide the 18 hidden objects' tags in shared rooms only (never bedrooms, bathrooms, closets or drawers). |
 | Tomorrow afternoon | Lay out the **Keeper's table** (the black table): the binder (the List, the hitmen's receipts, the 1923 books, the vault memorandum, the forged orders, the rent counterfoils, the 1 Nov 1924 Farrago clipping), the nightcap chart, the **Roll of the Veil**, a glass on a coaster with code **8YUR2** taped underneath, dice and cards. Put the **scene card** (AYTHC) in your pocket. |
@@ -18,7 +18,7 @@
 
 | Time | What | You |
 |---|---|---|
-| 8:00 | Doors. The brief card and the rules card are at the door. Hand each guest their black envelope. Then press **Start game** on /admin: every guest's public card, private card and objectives open at once, on their phone. Cocktails. Objectives begin. | press the button, tend bar |
+| 8:00 | Doors. The brief card and the rules card are at the door. Hand each guest their black envelope. At 8:00 every guest's public card, private card, objectives and group race open by themselves on their phone (the **Start game** button on /admin only opens it early). Cocktails. Objectives begin. | tend bar |
 | Before 8:30 | **Josh** tells you the minute he thinks the scream will come. Write it on a card, seal it in an envelope and keep it. | seal it |
 | **8:30** | **Silas's five-minute spotlight** (and Anika's request, which he plays for her). | enjoy it |
 | About 8:35 to 9:00 | The Butler sells the vial once, to the first marker. If the Butler is absent, use *Sell as the Butler* in /admin. | watch the House panel |
@@ -44,7 +44,7 @@
 
 ## During the night: approval words
 
-Some objectives happen in the room: Silas's spotlight, Rebecca's scream, the Sheriff's arrest, Leon's bulletin, Josh's prophecy and fortunes, Angelos's card game, Erika's theft. The guest does it for real, taps **Claim this point** on their phone, and finds you. Once you have seen it happen, give them the **approval word** (listed on /admin under "Approval words", and in `03-objectives.md`). Never say a word before you have seen the thing.
+Some objectives happen in the room: Silas's spotlight, Rebecca's scream, the Sheriff's arrest, Leon's bulletin, Josh's prophecy and fortunes, Angelos's card game, Erika's theft. The guest does it for real, taps **Claim this point** on their phone, and finds Bartend Joe (you) at the bar. Once you have seen it happen, give them the **approval word** (listed on /admin under "Approval words", and in `03-objectives.md`). Never say a word before you have seen the thing.
 
 At the 10:00 wrap-up: hand Eric the **charter** (the last slip on `slips.pdf`; he signs it and types its code) and give Leon a **bulletin** to read aloud, such as: *"This evening the Keeper of the Black Veil was found dead at his table. The House has lifted its veil, the dead are not dead, and Manchester will hear the rest in the morning."* Josh's sealed envelope is opened after the scream: give him his word only if his minute was close.
 
@@ -62,6 +62,7 @@ The staff page has one button, so these use the command line (`npm run game:grad
 | A guest forgot to RSVP or has no character | They appear in the cast list on /admin with "No character matched". Hand-cast them from the database, or have them watch the first hour. |
 | A phone does not work | They can write answers on paper and read them to you; type them in for them by signing in as them from /admin (**Sign in as**), or tell them to sign in with /resume. |
 | Phones lose signal | Answers sync when it returns; only the newest per item counts. |
+| Race slips | Each of the five groups has 5 slips; the first guest to type any 3 different codes wins that group's point. Nothing for you to do. | 
 | It runs long | The book closes by itself at 10:30. Hold the grading until you are ready. |
 | Someone worries an answer is wrong | Nobody is told until the end. That is the game. |
 | You pressed Start too early | `npm run game:grade -- stop` seals everything again. |

@@ -55,8 +55,6 @@ const cname = (id: string) => characters.find((character) => character.id === id
         : check.kind === "clock" ? `${check.from} to ${check.to}`
         : check.kind === "approval" ? `the host confirms it in person and gives the approval word "${check.word}"`
         : check.kind === "keep" ? `${cname(check.seeker)} learns it (${check.seekerObjective}) and ${cname(check.rival)} does not (${check.rivalObjective})`
-        : check.kind === "seek" ? `a true pair: ${check.pairs.map(([a, b]) => `${cname(a)} + ${cname(b)}`).join(" or ")}`
-        : check.kind === "hide" ? `nobody names the pair with ${cname(check.partner)}`
         : check.kind;
       lines.push(`${objective.id}. **${rendered.title}** (${objective.kind}, ${objective.points}) ${rendered.text}`, `   - answer: ${answer}${objective.with.length ? `; from ${[...objective.with, ...(objective.alsoFrom ?? [])].map(cname).join(", ")}` : ""}`);
     }

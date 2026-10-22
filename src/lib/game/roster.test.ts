@@ -22,6 +22,8 @@ const registered = [
   "Mihir", "Molly Daniel", "Rebecca Chou", "Rhea Mallya", "Sidd Arvind", "Silas Palmer", "Theodor Farag", "Tiffany Liu",
 ];
 
+const EARLY = new Date("2026-10-20T12:00:00-04:00");
+
 describe("the roster", () => {
   it("has a character for every registered name, each one different", () => {
     const slugs = registered.map((name) => rosterForName(name)?.slug);
@@ -67,7 +69,7 @@ describe("who is coming", () => {
     const db = await freshDb();
     const cast = await seed(db);
     const eric = cast.find((row) => row.fullName === "Eric Li")!;
-    const before = await rosterViewFor(db, eric.guestId);
+    const before = await rosterViewFor(db, eric.guestId, EARLY);
     assert.equal(before.released, false);
     assert.equal(before.you, null);
     assert.ok(before.rows.every((row) => row.role === null && row.background === null));
@@ -86,7 +88,7 @@ describe("who is coming", () => {
     assert.deepEqual(after.rows.map((row) => row.name), [...after.rows.map((row) => row.name)].sort((a, b) => a.localeCompare(b)));
 
     await setReleased(db, false);
-    assert.equal((await readRosterFlags(db)).released, false);
+    assert.equal((await readRosterFlags(db, EARLY)).released, false);
   });
 
   it("lists each character once, and the host as Bartend Joe", async () => {

@@ -12,7 +12,7 @@ Companion files, generated from the data by `npm run game:docs` so they cannot d
 | `04-clues-and-props.md` | The clue web (who holds what), every printed page, props and markers |
 | `05-print-list.md` | Every page to print, every tag, the markers, the cash and each guest's envelope |
 | `06-run-of-show.md` | The night minute by minute, and what to do when something goes wrong (hand-written) |
-| `07-validation-report.md` | The cross-check results (24 checks) |
+| `07-validation-report.md` | The cross-check results (23 checks) |
 
 The printable files are in `docs/print/game/` (see its README).
 
@@ -59,7 +59,9 @@ The slips are printed paper (`slips.pdf`); twelve guests carry one each and hand
 
 ## How a guest plays
 
-- **One button starts everything.** The staff page (`/admin`) has a single **Start game** button. It deals every character and releases every guest's public card, private card and objectives at once, and opens the answer boxes. Nothing opens on a clock, and the book still closes by itself at 10:30.
+- **It starts itself.** At 8:00 p.m. every guest's public card, private card, objectives and group race open on their phone and the answer boxes appear. The nightcap and House close at 9:00 and the book closes at 10:30, all by clock. The staff page (`/admin`) has one **Start game** button that only opens it early (and `game:grade -- stop` seals it for a rehearsal). You do not need /admin until grading.
+- **Bartend Joe.** Anything that needs the host (a spotlight, a scream, an arrest) is claimed on the guest's phone, then they find Bartend Joe, who gives a one-word approval word after seeing it. Words are on `host-sheet.pdf` and in /admin.
+- **Group races.** Five groups; each has 5 slips and the first guest to type any 3 different codes wins that group's +1 (the survivors' race is the vial).
 - **Every objective has its own way to answer**, shown on the guest's phone: a code from a tag or slip, a word or name, a dollar total, a typed answer.
 - **Host-approved objectives.** For things that happen in the room (Silas's 8:30 spotlight, Rebecca's scream, the Sheriff's arrest, Leon's bulletin, Josh's prophecy and fortunes, Angelos's card game, Erika's theft) the guest does it for real, taps **Claim this point**, and a box asks for **the approval word**. The host gives that word only after seeing it happen. The words are listed on the staff page (under "Approval words") and in `03-objectives.md`; they are never sent to a guest's phone.
 - **Secrets.** Each guest has one small secret known to them and one confidant. Another guest is sent to learn it (two sources, so one absence cannot strand them). Nine guests also have a **keep** objective: let the seeker they chose learn it, and make sure a rival seeker never does. It is scored from what the two of them learn; nothing is typed.
@@ -91,7 +93,7 @@ Decisions by Claude or staff are never overwritten when you re-run the automatic
 ## Checks
 
 ```bash
-npm run game:check        # 24 design checks: roster, objectives, clues held by three or more, races, approvals, kept secrets, absences, leaks, no secret in the shipped JavaScript
+npm run game:check        # 23 design checks: roster, objectives, clues held by three or more, races, approvals, kept secrets, absences, leaks, no secret in the shipped JavaScript
 npm run game:test         # the game's tests
 npm run game:docs         # regenerate the generated documents here
 npm run game:print        # regenerate the print pack

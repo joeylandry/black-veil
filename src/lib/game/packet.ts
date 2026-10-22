@@ -58,14 +58,11 @@ function describeCheck(check: Check): string {
       return `The answer must be a dollar amount of at least $${check.min}.`;
     case "clock":
       return `The answer must be a clock time between ${check.from} and ${check.to}.`;
-    case "seek":
-      return `The answer must name exactly the two guests of one true secret pair: ${check.pairs.map(([a, b]) => `${characterById.get(a)?.name} and ${characterById.get(b)?.name}`).join(", or ")}.`;
     case "manual":
       return check.rubric;
     case "approval":
       return "Decided by the host's approval word, not by the guest's own words.";
     case "keep":
-    case "hide":
     case "vial-attempt":
     case "butler-sale":
       return "Decided from the House's log, not from the guest's words.";

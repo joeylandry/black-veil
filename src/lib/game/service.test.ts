@@ -14,6 +14,7 @@ import {
   assignVial,
   butlerSell,
   castByName,
+  castMissing,
   editCharacter,
   readFlags,
   cardFor,
@@ -132,24 +133,30 @@ async function seedGuestsOnce(db: GameDb) {
 }
 
 describe("release flags", () => {
-  it("keeps everything sealed until the host starts the game, whatever the clock says", () => {
+  it("keeps everything sealed until eight o'clock on the night, then opens it all by itself", () => {
     assert.equal(deriveState({}, BEFORE).identitiesReleased, false);
-    assert.equal(deriveState({}, NIGHT).secretsReleased, false, "nothing opens on a clock");
-    assert.equal(deriveState({}, NIGHT).submissionsOpen, false);
-    const released = deriveState({ identitiesReleased: true }, NIGHT);
-    assert.equal(released.identitiesReleased, true);
-    assert.equal(released.secretsReleased, false, "the private tab waits for the start");
-    const started = deriveState({ identitiesReleased: true, secretsReleased: true }, NIGHT);
-    assert.equal(started.secretsReleased, true);
-    assert.equal(started.submissionsOpen, true);
+    assert.equal(deriveState({}, BEFORE).secretsReleased, false);
+    assert.equal(deriveState({}, BEFORE).submissionsOpen, false);
+    const early = deriveState({}, new Date("2026-10-23T19:59:00-04:00"));
+    assert.equal(early.secretsReleased, false);
+    const doors = deriveState({}, new Date("2026-10-23T20:00:00-04:00"));
+    assert.equal(doors.identitiesReleased, true);
+    assert.equal(doors.secretsReleased, true);
+    assert.equal(doors.submissionsOpen, true, "nobody has to log in to start the night");
+    assert.equal(deriveState({ identitiesReleased: true }, BEFORE).secretsReleased, false, "releasing the cast early does not open the private tab");
   });
-  it("lets the game master hold or close the book", () => {
-    assert.equal(deriveState({ identitiesReleased: true, secretsReleased: false }, NIGHT).secretsReleased, false);
-    assert.equal(deriveState({ identitiesReleased: true, secretsReleased: true }, BEFORE).secretsReleased, true, "started means started");
+  it("lets the host start early, hold, or close the book", () => {
+    assert.equal(deriveState({ identitiesReleased: true, secretsReleased: true }, BEFORE).secretsReleased, true, "started early means started");
+    assert.equal(deriveState({ identitiesReleased: true, secretsReleased: false }, NIGHT).secretsReleased, false, "staff can hold it");
     assert.equal(deriveState({ identitiesReleased: true, secretsReleased: true, submissionsClosed: true }, NIGHT).submissionsOpen, false);
-    assert.equal(deriveState({ identitiesReleased: true, secretsReleased: true }, LATE).submissionsOpen, false, "the book closes on its own");
+    assert.equal(deriveState({ identitiesReleased: true, secretsReleased: true }, LATE).submissionsOpen, false, "the book closes on its own at 10:30");
     assert.equal(deriveState({ identitiesReleased: true, secretsReleased: true, submissionsClosed: false }, LATE).submissionsOpen, true, "staff can reopen it");
     assert.equal(deriveState({ identitiesReleased: true, secretsReleased: true, resultsPublished: true }, NIGHT).submissionsOpen, false);
+  });
+  it("closes the House by itself at nine o'clock", () => {
+    assert.equal(deriveState({}, new Date("2026-10-23T20:59:00-04:00")).nightcapServed, false);
+    assert.equal(deriveState({}, new Date("2026-10-23T21:00:00-04:00")).nightcapServed, true);
+    assert.equal(deriveState({ nightcapServed: true }, NIGHT).nightcapServed, true);
   });
 });
 
@@ -162,14 +169,14 @@ describe("the start button", () => {
   after(async () => ctx.client.close());
 
   it("starts as sealed, and one press releases every card, deals every character and opens the answer boxes", async () => {
-    assert.equal((await getState(ctx.db, NIGHT)).secretsReleased, false);
-    assert.equal((await cardFor(ctx.db, await guestIdFor(ctx.db, "anika@example.test"), NIGHT)).status, "sealed");
-    await startGame(ctx.db, NIGHT);
-    const state = await getState(ctx.db, NIGHT);
+    assert.equal((await getState(ctx.db, BEFORE)).secretsReleased, false);
+    assert.equal((await cardFor(ctx.db, await guestIdFor(ctx.db, "anika@example.test"), BEFORE)).status, "sealed");
+    await startGame(ctx.db, BEFORE);
+    const state = await getState(ctx.db, BEFORE);
     assert.equal(state.identitiesReleased, true);
     assert.equal(state.secretsReleased, true);
     assert.equal(state.submissionsOpen, true);
-    const response = await cardFor(ctx.db, await idOf(ctx.db, "anika"), NIGHT);
+    const response = await cardFor(ctx.db, await idOf(ctx.db, "anika"), BEFORE);
     assert.equal(response.status, "ok");
     if (response.status === "ok") {
       assert.equal(response.card.private.objectives.length, 5);
@@ -179,15 +186,39 @@ describe("the start button", () => {
     assert.equal((await readFlags(ctx.db)).rosterReleased, true, "the public cast list opens with it");
   });
 
+  it("is not needed: the same cards open by themselves at eight o'clock", async () => {
+    const { db, client } = await freshDb();
+    // guests have only registered: nobody has seeded the cast or dealt a single character
+    for (const character of characters) await db.insert(guests).values({ email: `${character.id}@example.test`, fullName: character.realNames[0] });
+    const [anikaRow] = await db.select({ id: guests.id }).from(guests).where(eq(guests.email, "anika@example.test"));
+    assert.equal((await cardFor(db, anikaRow.id, BEFORE)).status, "sealed");
+    const response = await cardFor(db, anikaRow.id, NIGHT);
+    assert.equal(response.status, "ok");
+    if (response.status === "ok") assert.equal(response.card.private.objectives.length, 5);
+    await client.close();
+  });
+
+  it("survives all twenty-four phones opening at the same second, with nothing seeded", async () => {
+    const { db, client } = await freshDb();
+    for (const character of characters) await db.insert(guests).values({ email: `${character.id}@example.test`, fullName: character.realNames[0] });
+    const rows = await db.select({ id: guests.id }).from(guests);
+    const replies = await Promise.all(rows.map((row) => cardFor(db, row.id, NIGHT)));
+    assert.ok(replies.every((reply) => reply.status === "ok"), "every guest got their card");
+    await Promise.all([seedCast(db), seedCast(db), castMissing(db)]);
+    const table = await db.select().from((await import("@/lib/db/schema")).characters);
+    assert.equal(table.length, characters.length, "one row per character, never a duplicate");
+    await client.close();
+  });
+
   it("is safe to press twice, and can be taken back for a rehearsal", async () => {
-    await startGame(ctx.db, NIGHT);
-    assert.equal((await getState(ctx.db, NIGHT)).secretsReleased, true);
+    await startGame(ctx.db, BEFORE);
+    assert.equal((await getState(ctx.db, BEFORE)).secretsReleased, true);
     await stopGame(ctx.db);
-    const state = await getState(ctx.db, NIGHT);
+    const state = await getState(ctx.db, BEFORE);
     assert.equal(state.identitiesReleased, false);
     assert.equal(state.secretsReleased, false);
     assert.equal(state.submissionsOpen, false);
-    await startGame(ctx.db, NIGHT);
+    await startGame(ctx.db, BEFORE);
   });
 });
 
@@ -296,11 +327,12 @@ describe("submissions", () => {
   });
   after(async () => ctx.client.close());
 
-  it("refuses answers before the game starts and after the book closes", async () => {
+  it("refuses answers before eight o'clock and after the book closes", async () => {
     const anika = await idOf(ctx.db, "anika");
-    const early = await submit(ctx.db, anika, { kind: "objective", itemId: "anika-secret", answer: "Sophia" }, NIGHT);
-    assert.equal(early.ok, false, "even on the night, nothing opens until the host presses start");
-    await startGame(ctx.db, NIGHT);
+    const early = await submit(ctx.db, anika, { kind: "objective", itemId: "anika-secret", answer: "Sophia" }, BEFORE);
+    assert.equal(early.ok, false, "nothing opens before eight o'clock on the night");
+    const doors = await submit(ctx.db, anika, { kind: "objective", itemId: "anika-secret", answer: "Sophia" }, NIGHT);
+    assert.equal(doors.ok, true, "and it opens by itself at eight, with nobody logged in");
     const late = await submit(ctx.db, anika, { kind: "objective", itemId: "anika-secret", answer: "Sophia" }, LATE);
     assert.equal(late.ok, false);
   });
@@ -463,7 +495,7 @@ describe("grading the night, end to end", () => {
     for (const character of characters) {
       const guestId = await idOf(ctx.db, character.id);
       for (const objective of character.objectives) {
-        if (["hide", "vial-attempt", "butler-sale", "seek"].includes(objective.check.kind)) continue;
+        if (["vial-attempt", "butler-sale"].includes(objective.check.kind)) continue;
         await submit(ctx.db, guestId, { kind: "objective", itemId: objective.id, answer: correctAnswer(character, objective) }, NIGHT);
       }
     }
@@ -572,6 +604,21 @@ describe("grading the night, end to end", () => {
   });
 });
 
+describe("guests who stayed home", () => {
+  it("are not graded: a guest who never answered anything and never touched the House did not come, and nobody has to mark it", async () => {
+    const { db, client } = await freshDb();
+    await seedGuests(db);
+    await startGame(db, NIGHT);
+    await submit(db, await idOf(db, "anika"), { kind: "objective", itemId: "anika-find", answer: "A8NKR" }, NIGHT);
+    await butlerSell(db, await idOf(db, "rebecca"), markers.find((marker) => marker.no === 21)!.code, NIGHT);
+    await runGrading(db);
+    const { standings } = await standingsNow(db);
+    const graded = standings.standings.map((row) => row.guest).sort();
+    assert.deepEqual(graded, ["adam", "anika", "rebecca"], "anika answered, adam bought the vial, and Rebecca sold it");
+    await client.close();
+  });
+});
+
 describe("refuses to publish without a killer", () => {
   it("asks staff to decide first", async () => {
     const { db, client } = await freshDb();
@@ -621,7 +668,7 @@ describe("the guest ledger", () => {
 
   it("stays at zero while the night is graded, and shows final scores only once published", async () => {
     await butlerSell(ctx.db, null, markers.find((marker) => marker.no === 21)!.code, NIGHT);
-    await submit(ctx.db, await idOf(ctx.db, "anika"), { kind: "objective", itemId: "anika-secret", answer: "Sophia" }, NIGHT);
+    await submit(ctx.db, await idOf(ctx.db, "anika"), { kind: "objective", itemId: "anika-find", answer: "A8NKR" }, NIGHT);
     await runGrading(ctx.db);
     assert.ok((await ledgerFor(ctx.db, await idOf(ctx.db, "anika"), NIGHT)).rows.every((row) => row.points === 0), "grading alone changes nothing a guest can see");
     await publishResults(ctx.db, { force: true });
@@ -629,6 +676,6 @@ describe("the guest ledger", () => {
     assert.equal(ledger.published, true);
     assert.equal(ledger.rows[0].rank, 1);
     assert.ok(ledger.rows.some((row) => row.points > 0));
-    assert.ok(ledger.rows.every((row, index) => index === 0 || (ledger.rows[index - 1].rank ?? 0) <= (row.rank ?? 0)));
+    assert.ok(ledger.rows.every((row, index) => index === 0 || (ledger.rows[index - 1].rank ?? 999) <= (row.rank ?? 999)), "ranked guests first, in order; guests who stayed home follow");
   });
 });

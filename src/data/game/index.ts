@@ -250,7 +250,7 @@ export function renderObjective(objective: Objective): RenderedObjective {
     points: objective.points,
     prop: prop && objective.kind === "find" ? { name: prop.name } : undefined,
     withNames: objective.with.map((guest) => characterById.get(guest)?.name ?? guest),
-    house: ["hide", "keep", "vial-attempt", "butler-sale"].includes(objective.check.kind),
+    house: ["keep", "vial-attempt", "butler-sale"].includes(objective.check.kind),
     approval: objective.check.kind === "approval",
     automatic: objective.check.kind === "keep",
   };

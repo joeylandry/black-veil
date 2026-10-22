@@ -7,8 +7,8 @@
 
 | Character | Real guest | Role | Starts with | Small secret (what others can learn) |
 |---|---|---|---|---|
-| **Mihir Nagarkatti of Nag Oil**<br>Oil master | Mihir Nagarkatti | **SURVIVOR** Bertrand “Barty” Crane, The Teller, marker 18 | $400 | Your “gusher” was a burst water main, and you lost a bet to the Keeper over it. (confidant: Anthony Hung, Esq.) |
-| **Molly Daniel of the Manchester Union**<br>Newsie | Molly Daniel | **SURVIVOR** Winifred “Winnie” Pike, The Runner, marker 22 | $90 | You kept the unprinted line the city desk cut: no coroner, no ambulance. (confidant: Joshua Kamin-Sky) |
+| **Mihir Nagarkatti of Nag Oil**<br>Oil master | Mihir Nagarkatti | **SURVIVOR** Bertrand “Barty” Crane, The Teller, marker 18 | $400; tool-mihir | Your “gusher” was a burst water main, and you lost a bet to the Keeper over it. (confidant: Anthony Hung, Esq.) |
+| **Molly Daniel of the Manchester Union**<br>Newsie | Molly Daniel | **SURVIVOR** Winifred “Winnie” Pike, The Runner, marker 22 | $90; trade-molly | You kept the unprinted line the city desk cut: no coroner, no ambulance. (confidant: Joshua Kamin-Sky) |
 | **Luke Shelldon**<br>Carnival barker | Luke Sheldon | **SURVIVOR** Edmund Lyle, The Notary, marker 19 | $100 | You built stage blood for a “private masquerade” billed to a post-office box. (confidant: Diwakar Sandbagg) |
 | **Adam Holdsfire**<br>Gunsmith | Adam Ouldsfiya | **SURVIVOR** Dominic Marek, The Doorman, marker 21 | $100 | You sold six boxes of blanks to a lady's agent for cash and never asked why. (confidant: Judge Eric Leeway) |
 | **Rhea Mallya of Mallya's Emporium**<br>Department store owner | Rhea Mallya | **SURVIVOR** Sylvia Ballard, The Milliner, marker 20 | $150 | You sold the House its last bottle of nux vomica and rang it up as “river rats” without asking how many. (confidant: Adam Holdsfire) |
@@ -18,8 +18,8 @@
 
 | Character | Real guest | Role | Starts with | Small secret (what others can learn) |
 |---|---|---|---|---|
-| **Anika Mahns of Mahns Manor**<br>Heir | Anika Mahns |  | $400; mahns-spoon, fee-voucher | You wear your father's brass key on a ribbon under your collar and have never once tried it in a lock. (confidant: Sidd Airwind) |
-| **Sheriff Theodor Farrago**<br>Sheriff | Theodor Farag | sheriff | $100; citation | You keep a shoebox with seventeen “accidents” in it and have told no one. (confidant: Molly Daniel of the Manchester Union) |
+| **Anika Mahns of Mahns Manor**<br>Heir | Anika Mahns |  | $400; mahns-spoon, fee-voucher, trade-anika | You wear your father's brass key on a ribbon under your collar and have never once tried it in a lock. (confidant: Sidd Airwind) |
+| **Sheriff Theodor Farrago**<br>Sheriff | Theodor Farag | sheriff | $100; citation, reply-theodor | You keep a shoebox with seventeen “accidents” in it and have told no one. (confidant: Molly Daniel of the Manchester Union) |
 | **Judge Eric Leeway**<br>Judge | Eric Li |  | $150; dismissal, reply-eric | You let three “orders in C.C.'s hand” stand, though the clerk swore the i's had rings. (confidant: Anthony Hung, Esq.) |
 | **Anthony Hung, Esq.**<br>Defense attorney | Anthony Huang |  | $120; tool-anthony | You drew name-change papers for a dozen strangers, paid in gold by “a friend,” and kept the carbon. (confidant: Rhea Mallya of Mallya's Emporium) |
 | **Dr. Emmerich Sunner**<br>Doctor | Emre Sunar | doctor | $100; trade-emre | You ate beet sandwiches for a week to prove the “blood” was beets and sugar. (confidant: Tim McGinley, Baron of Bathtub Gin) |
@@ -29,30 +29,30 @@
 
 | Character | Real guest | Role | Starts with | Small secret (what others can learn) |
 |---|---|---|---|---|
-| **J. Bruce Wayne**<br>Wealthy playboy | Joel Indipiginja |  | $400; witness-joel | Your “office” is the back room of a hat shop, and the Keeper once used its telephone to call Boston. (confidant: Tiffany Liu of the Lamps) |
-| **Leon Gee of WFEA**<br>Radio announcer | Leon Ge |  | $100 | You once read the Sheriff's private mail aloud on the air by mistake, and he has never forgiven it. (confidant: Silas Palmer of the Palm Court) |
-| **Ananya Codru and Charlie Wakem**<br>Night telegraph office | Ananya Koduru |  | $100; telegram-form | You once filed a Montreal telegram, paid in advance, with no sender. (confidant: Rebecca Chow, Butler of the Black Veil) |
+| **J. Bruce Wayne**<br>Wealthy playboy | Joel Indipiginja |  | $400; tool-joel | Your “office” is the back room of a hat shop, and the Keeper once used its telephone to call Boston. (confidant: Tiffany Liu of the Lamps) |
+| **Leon Gee of WFEA**<br>Radio announcer | Leon Ge |  | $100; witness-leon | You once read the Sheriff's private mail aloud on the air by mistake, and he has never forgiven it. (confidant: Silas Palmer of the Palm Court) |
+| **Ananya Codru and Charlie Wakem**<br>Night telegraph office | Ananya Koduru |  | $100; telegram-form, tool-ananya | You once filed a Montreal telegram, paid in advance, with no sender. (confidant: Rebecca Chow, Butler of the Black Veil) |
 | **Silas Palmer of the Palm Court**<br>Jazz scat singer | Silas Palmer |  | $120; request-card, trade-silas | You have sung the same scat phrase at every club since 1921, and it was Cassie's own call. (confidant: Arjun Bat) |
-| **Sidd Airwind**<br>Barnstormer | Siddarth Arvind |  | $140; tool-sidd | You trained a mechanic who was later paid to be careless once. (confidant: Mihir Nagarkatti of Nag Oil) |
+| **Sidd Airwind**<br>Barnstormer | Siddarth Arvind |  | $140; witness-sidd | You trained a mechanic who was later paid to be careless once. (confidant: Mihir Nagarkatti of Nag Oil) |
 
 ## The Working Folk
 *Hands, trades and the muscle of Manchester.*
 
 | Character | Real guest | Role | Starts with | Small secret (what others can learn) |
 |---|---|---|---|---|
-| **Joshua Kamin-Sky**<br>Soothsayer | Josh Kaminsky |  | $80; sooth-charm | You read tea leaves off half-burned pages you swept from an empty flue. (confidant: Krrish Vermouth) |
+| **Joshua Kamin-Sky**<br>Soothsayer | Josh Kaminsky |  | $80; sooth-charm, witness-josh | You read tea leaves off half-burned pages you swept from an empty flue. (confidant: Krrish Vermouth) |
 | **Arjun Bat**<br>Slugger | Arjun Bhat |  | $80; baseball, witness-arjun | You hauled bricks in 1921 for a wall in the Merrimack Room that is too thick. (confidant: Sheriff Theodor Farrago) |
 | **Tiffany Liu of the Lamps**<br>Stained-glass artist | Tiffany Liu |  | $100; earring, pardon-slip, pardon-receipt, trade-tiffany | You cut the brass plate “KEEPER · K.K.” and your chisel slipped on the second K. (confidant: Mihir Nagarkatti of Nag Oil) |
-| **Diwakar Sandbagg**<br>Prizefighter | Diwakar Sandhu |  | $100; giraffe, reply-diwakar | You were paid to take a fall on Halloween 1924 and told to stay down until the music stopped. (confidant: Ananya Codru and Charlie Wakem) |
+| **Diwakar Sandbagg**<br>Prizefighter | Diwakar Sandhu |  | $100; giraffe, witness-diwakar | You were paid to take a fall on Halloween 1924 and told to stay down until the music stopped. (confidant: Ananya Codru and Charlie Wakem) |
 
 ## The River Trade
 *Everyone who profits from what the river carries.*
 
 | Character | Real guest | Role | Starts with | Small secret (what others can learn) |
 |---|---|---|---|---|
-| **Krrish Vermouth**<br>Wine importer | Krrish Verma |  | $120; vault-key, crate-receipt, tool-krrish | You delivered a crate of wine in November 1924 on a draft signed K. Kessler to a grey Hudson that later turned up in the river. (confidant: Dr. Emmerich Sunner) |
-| **Angelos Bowles**<br>Card sharp | Angelos Boules |  | $120; casino-chip | You know the Keeper touches his watch when he bluffs, and it has not run since 1924. (confidant: Luke Shelldon) |
-| **Tim McGinley, Baron of Bathtub Gin**<br>Gin baron | Tim McGinley |  | $150; gin-jar, witness-tim | Two passengers went down the river steps that night; one came back alone with blood on his cuff. (confidant: Krrish Vermouth) |
+| **Krrish Vermouth**<br>Wine importer | Krrish Verma |  | $120; vault-key, crate-receipt, reply-krrish | You delivered a crate of wine in November 1924 on a draft signed K. Kessler to a grey Hudson that later turned up in the river. (confidant: Dr. Emmerich Sunner) |
+| **Angelos Bowles**<br>Card sharp | Angelos Boules |  | $120; casino-chip, reply-angelos | You know the Keeper touches his watch when he bluffs, and it has not run since 1924. (confidant: Luke Shelldon) |
+| **Tim McGinley, Baron of Bathtub Gin**<br>Gin baron | Tim McGinley |  | $150; gin-jar, tool-tim | Two passengers went down the river steps that night; one came back alone with blood on his cuff. (confidant: Krrish Vermouth) |
 | **Rebecca Chow, Butler of the Black Veil**<br>Butler | Rebecca Chou | butler | $120 | The House whiskey is cold tea, and you took $200 to forget Room 3. (confidant: Tim McGinley, Baron of Bathtub Gin) |
 | **Erika Lamm**<br>Fugitive | Erika Lam |  | $60; false-papers, reply-erika | You bought a name at the river steps for $20 and were told at least twenty others did too. (confidant: Rebecca Chow, Butler of the Black Veil) |
 

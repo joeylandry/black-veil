@@ -9,10 +9,10 @@ export { brief1924 } from "../brief";
 
 export const rulesCard: string[] = [
   "Your card has three tabs. Public is what everyone knows. Background is your history and what to wear. Private is yours alone: your secrets, your five objectives, and anything you must not say aloud.",
-  "The host starts the game by pressing one button, and every card opens at once. From then on the room is a cocktail party. Mingle, trade, bargain. Each objective is worth one point.",
+  "At eight o'clock every card opens at once. From then on the room is a cocktail party. Mingle, trade, bargain. Each objective is worth one point.",
   "Later in the evening a body will be found. There is no town hall and no host to rule on anything. Question whom you like. Nobody is forced to answer.",
   "Nothing is ever taken from anyone. Props change hands by a deal, and nobody brings anything: whatever you carry is handed to you at the door. Hidden game pieces are only in shared rooms, never in bedrooms, bathrooms, closets or drawers.",
-  "Some objectives happen in the room, not on your phone: you do them for real, tap Claim, and the host gives you an approval word to type once it is confirmed.",
+  "Some objectives happen in the room, not on your phone: you do them for real, tap Claim, then go to Bartend Joe at the bar, who gives you an approval word to type once he is satisfied it happened.",
   "Walk, do not run, and keep your drink in your hand.",
   "Type your answers into your phone whenever you like, and as often as you like. Only your last answer to each question counts. The site will not tell you whether you were right; nobody will, until the end.",
   "Points come from your five objectives (5), the survivors you name (up to 4), and above all the three mysteries: the Old, the New and the Connection (10). Each group also races for one extra point. Finish every objective and never work out the story and you cannot win.",

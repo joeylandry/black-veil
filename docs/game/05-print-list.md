@@ -297,18 +297,26 @@ Filing code: 3N8VD
 - U7WNK: Pardon slip
 - RU647: go-between's receipt
 - MKPAE: Nuisance Citation
-- KK8HX: Witness slip
-- PJYPA: Witness slip
-- TDR9H: Witness slip
-- MPMYK: Reply slip
-- YPCYR: Reply slip
-- AFU2R: Reply slip
-- FM7CM: Tool token
-- JYTK8: Tool token
-- P6NCY: Tool token
-- A6KK8: Trade slip
-- 4F7W3: Trade slip
-- 6W26Y: Trade slip
+- 6GPMF: Witness slip
+- 62G9X: Witness slip
+- M73EX: Witness slip
+- D4JFG: Witness slip
+- KW9K2: Witness slip
+- EN2W3: Reply slip
+- D6DDT: Reply slip
+- PXT7K: Reply slip
+- UHN7C: Reply slip
+- RW4H6: Reply slip
+- PGYF8: Tool token
+- WKXWT: Tool token
+- NPKM4: Tool token
+- DC92C: Tool token
+- 32CDE: Tool token
+- 24R94: Trade slip
+- 94K7V: Trade slip
+- DAFF2: Trade slip
+- 6K64E: Trade slip
+- 2P946: Trade slip
 - 8YUR2: nightcap glass coaster
 - 4JNW7: charter
 - AYTHC: scene card
@@ -355,6 +363,7 @@ One slip per clue errand. Hand it to a guest whose named sources did not come.
 
 - **anika-secret** (Anika Mahns of Mahns Manor): You once filed a Montreal telegram, paid in advance, with no sender.
 - **joel-secret** (J. Bruce Wayne): You delivered a crate of wine in November 1924 on a draft signed K. Kessler to a grey Hudson that later turned up in the river.
+- **joel-story2** (J. Bruce Wayne): The flue of the Merrimack Room runs behind a brick wall that is too thick on the inside. A safe lives there.
 - **joel-story** (J. Bruce Wayne): You delivered a crate of wine in November 1924 on a draft signed K. Kessler to a grey Hudson that later turned up in the river.
 - **mihir-who** (Mihir Nagarkatti of Nag Oil): You let three “orders in C.C.'s hand” stand, though the clerk swore the i's had rings.
 - **mihir-why** (Mihir Nagarkatti of Nag Oil): The draft that bought the hitman's grey Hudson was drawn on an account stubbed “Crane, advance.” The money was somebody's own share.
@@ -372,11 +381,13 @@ One slip per clue errand. Hand it to a guest whose named sources did not come.
 - **molly-hour** (Molly Daniel of the Manchester Union): On 1 November 1924 you took $200 from “Mr. K.” to forget the lady in Room 3. You took it.
 - **leon-secret** (Leon Gee of WFEA): You ate beet sandwiches for a week to prove the “blood” was beets and sugar.
 - **ananya-secret** (Ananya Codru and Charlie Wakem): The House whiskey is cold tea, and you took $200 to forget Room 3.
+- **ananya-story** (Ananya Codru and Charlie Wakem): Cassie signed with a plain “C.” and never a ring. She called anyone who dotted an i with a ring a show-off.
 - **luke-who** (Luke Shelldon): In 1925 the court showed you three “orders in Cassie's hand.” You noticed the i's were dotted with tiny rings and the signature was too neat to be hers.
 - **luke-why** (Luke Shelldon): The three forged orders carry the smudge of a notary's embossing seal, as if a notary had been made to sign them against his will.
 - **luke-hour** (Luke Shelldon): On 1 November 1924 you took $200 from “Mr. K.” to forget the lady in Room 3. You took it.
 - **silas-secret** (Silas Palmer of the Palm Court): You let three “orders in C.C.'s hand” stand, though the clerk swore the i's had rings.
 - **sidd-secret** (Sidd Airwind): You let three “orders in C.C.'s hand” stand, though the clerk swore the i's had rings.
+- **sidd-story2** (Sidd Airwind): In 1921 you sold the Veil a vault lock with three keyways and a dial. The combination was set in your shop by one person, a lady, alone.
 - **sidd-story** (Sidd Airwind): You keep a shoebox with seventeen “accidents” in it and have told no one.
 - **josh-secret** (Joshua Kamin-Sky): You cut the brass plate “KEEPER · K.K.” and your chisel slipped on the second K.
 - **arjun-secret** (Arjun Bat): You cut the brass plate “KEEPER · K.K.” and your chisel slipped on the second K.
@@ -395,27 +406,27 @@ One slip per clue errand. Hand it to a guest whose named sources did not come.
 
 ## Each guest's envelope
 
-- Anika Mahns of Mahns Manor: $400, Mahns crested spoon, Mahns Manor voucher
-- J. Bruce Wayne: $400, Witness slip
-- Mihir Nagarkatti of Nag Oil: $400, marker No. 18
-- Krrish Vermouth: $120, Silent Partner's brass key, crate receipt, Tool token
-- Angelos Bowles: $120, House chip
-- Sheriff Theodor Farrago: $100, Nuisance Citation
+- Anika Mahns of Mahns Manor: $400, Mahns crested spoon, Mahns Manor voucher, Trade slip
+- J. Bruce Wayne: $400, Tool token
+- Mihir Nagarkatti of Nag Oil: $400, Tool token, marker No. 18
+- Krrish Vermouth: $120, Silent Partner's brass key, crate receipt, Reply slip
+- Angelos Bowles: $120, House chip, Reply slip
+- Sheriff Theodor Farrago: $100, Nuisance Citation, Reply slip
 - Judge Eric Leeway: $150, notice of dismissal, Reply slip
 - Anthony Hung, Esq.: $120, Tool token
 - Dr. Emmerich Sunner: $100, Trade slip
-- Molly Daniel of the Manchester Union: $90, marker No. 22
-- Leon Gee of WFEA: $100
-- Ananya Codru and Charlie Wakem: $100, blank telegram form
+- Molly Daniel of the Manchester Union: $90, Trade slip, marker No. 22
+- Leon Gee of WFEA: $100, Witness slip
+- Ananya Codru and Charlie Wakem: $100, blank telegram form, Tool token
 - Luke Shelldon: $100, marker No. 19
 - Silas Palmer of the Palm Court: $120, request card, Trade slip
-- Sidd Airwind: $140, Tool token
-- Joshua Kamin-Sky: $80, soothsayer's charm
+- Sidd Airwind: $140, Witness slip
+- Joshua Kamin-Sky: $80, soothsayer's charm, Witness slip
 - Arjun Bat: $80, signed baseball, Witness slip
 - Adam Holdsfire: $100, marker No. 21
 - Tiffany Liu of the Lamps: $100, glass earring, Pardon slip, go-between's receipt, Trade slip
-- Diwakar Sandbagg: $100, carnival giraffe, Reply slip
-- Tim McGinley, Baron of Bathtub Gin: $150, jar of bathtub gin, Witness slip
+- Diwakar Sandbagg: $100, carnival giraffe, Witness slip
+- Tim McGinley, Baron of Bathtub Gin: $150, jar of bathtub gin, Tool token
 - Rebecca Chow, Butler of the Black Veil: $120
 - Rhea Mallya of Mallya's Emporium: $150, marker No. 20
 - Erika Lamm: $60, set of false papers, Reply slip

@@ -81,37 +81,11 @@ export function money(id: string, min: number, text: string): Objective {
     id,
     kind: "money",
     title: "Money to make",
-    text: `${text} Count your bills at the end and submit the total. The host may ask to see it.`,
+    text: `${text} Count your bills at the end and submit the total. Bartend Joe may ask to see them.`,
     ask: "Dollars in your pocket at the end",
     points: POINTS,
     with: [],
     check: { kind: "money", min },
-  };
-}
-
-export function hide(id: string, partner: GuestId): Objective {
-  return {
-    id,
-    kind: "hide",
-    title: "A secret affair",
-    text: "You and {name:partner} are secretly sweet on each other. Nobody must learn it. If anyone names the two of you as a pair in their final answers, you lose points. Enjoy it, quietly.".replace("partner", partner),
-    ask: "In a sentence, how did you keep it secret?",
-    points: POINTS,
-    with: [partner],
-    check: { kind: "hide", partner },
-  };
-}
-
-export function seek(id: string, pairs: [GuestId, GuestId][]): Objective {
-  return {
-    id,
-    kind: "seek",
-    title: "Gossip",
-    text: "Two guests are secretly sweet on each other. Find out who. Name the pair, and you have your story.",
-    ask: "The two guests, by name",
-    points: POINTS,
-    with: [],
-    check: { kind: "seek", pairs },
   };
 }
 
@@ -184,7 +158,7 @@ export function motiveChain(id: string, holders: GuestId[], keys: Pattern): Obje
 
 /** Something the host confirms in person. The guest claims it on their phone and types the host's approval word. */
 export function approval(id: string, title: string, text: string, word: string, withGuests: GuestId[] = []): Objective {
-  return { id, kind: "approval", title, text, ask: "The approval word from the host", points: POINTS, with: withGuests, check: { kind: "approval", word } };
+  return { id, kind: "approval", title, text, ask: "The approval word from Bartend Joe", points: POINTS, with: withGuests, check: { kind: "approval", word } };
 }
 
 /** Your own small secret: tell the seeker you chose, keep it from the rival. Scored from their answers (see the `keep` check). */
@@ -193,7 +167,7 @@ export function keep(id: string, seeker: GuestId, seekerObjective: string, rival
     id,
     kind: "keep",
     title: "Your own secret",
-    text: `Your small secret is yours to spend. Let {name:${seeker}} earn it from you, and make sure {name:${rival}} never does. You will not be asked anything: it is scored from what they each learn.`,
+    text: `Your small secret is worth two halves. Let {name:${seeker}} earn it from you (half a point), and make sure {name:${rival}} never does (half a point). You will not be asked anything: it is scored from what they each learn.`,
     ask: "In a sentence, how did you manage it? (optional)",
     points: POINTS,
     with: [seeker],

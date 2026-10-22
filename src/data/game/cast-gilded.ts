@@ -1,5 +1,5 @@
 /** The Gilded: money, old and new, and the people who spend it loudly. */
-import { approval, deal, find, hide, keep, money, motiveChain, nightcapChain, offerChain, secretOf, story, swap, who } from "./build";
+import { approval, deal, find, keep, money, motiveChain, nightcapChain, offerChain, secretOf, story, swap, who } from "./build";
 import type { Character } from "./types";
 
 export const gilded: Character[] = [
@@ -24,7 +24,7 @@ export const gilded: Character[] = [
     ],
     smallSecret: { text: "You wear your father's brass key on a ribbon under your collar and have never once tried it in a lock.", key: ["ribbon"], confidant: "sidd" },
     startingCash: 400,
-    carries: ["mahns-spoon", "fee-voucher"],
+    carries: ["mahns-spoon", "fee-voucher", "trade-anika"],
     objectives: [
       money("anika-money", 460, "A fortune is kept by spending it wisely. Make the room pay you back. Leave with at least $460."),
       find("anika-find", "sugar-dish"),
@@ -54,12 +54,12 @@ export const gilded: Character[] = [
     ],
     smallSecret: { text: "Your “office” is the back room of a hat shop, and the Keeper once used its telephone to call Boston.", key: ["hat shop", "hatshop"], confidant: "tiffany" },
     startingCash: 400,
-    carries: ["witness-joel"],
+    carries: ["tool-joel"],
     objectives: [
       money("joel-money", 460, "Let the room pay for your charm: win a hand, sell a story, collect a favour in cash. Leave with at least $460."),
       find("joel-find", "red-bird"),
       secretOf("joel-secret", "krrish", "emre", ["grey hudson", "grey"]),
-      hide("joel-hide", "ananya"),
+      story("joel-story2", "A wall too thick", "Somebody knows why a wall in the Merrimack Room is thicker than it should be. Learn the word they use for it.", "How the wall is described", "josh", ["arjun"], [["thick"]]),
       story("joel-story", "Whose name was on the draft?", "A Hudson was bought with a draft from a Boston account. Learn the name that signed it.", "The name on the draft", "krrish", ["adam"], [["kessler"]]),
     ],
   },
@@ -84,7 +84,7 @@ export const gilded: Character[] = [
     ],
     smallSecret: { text: "Your “gusher” was a burst water main, and you lost a bet to the Keeper over it.", key: ["water main", "watermain"], confidant: "anthony" },
     startingCash: 400,
-    carries: [],
+    carries: ["tool-mihir"],
     survivor: {
       veilName: "Bertrand “Barty” Crane",
       veilTitle: "The Teller",
@@ -127,7 +127,7 @@ export const gilded: Character[] = [
     ],
     smallSecret: { text: "You delivered a crate of wine in November 1924 on a draft signed K. Kessler to a grey Hudson that later turned up in the river.", key: ["grey hudson", "grey"], confidant: "emre" },
     startingCash: 120,
-    carries: ["vault-key", "crate-receipt", "tool-krrish"],
+    carries: ["vault-key", "crate-receipt", "reply-krrish"],
     objectives: [
       find("krrish-find", "lit-bottle"),
       swap("krrish-swap", "anika", "vault-key", "mahns-spoon"),
@@ -157,14 +157,14 @@ export const gilded: Character[] = [
     ],
     smallSecret: { text: "You know the Keeper touches his watch when he bluffs, and it has not run since 1924.", key: ["bluffs"], confidant: "luke" },
     startingCash: 120,
-    carries: ["casino-chip"],
+    carries: ["casino-chip", "reply-angelos"],
     habit: "You roll a casino chip across your knuckles and count the pot with your thumb across your fingertips, a card sharp's habit. Do it whenever chips or money are on the table.",
     objectives: [
       money("angelos-money", 180, "Win a few hands, a few bets, a few boules. Leave with at least $180."),
       find("angelos-find", "veil-candle"),
       swap("angelos-swap", "diwakar", "casino-chip", "giraffe"),
       secretOf("angelos-secret", "ananya", "rebecca", ["no sender"]),
-      approval("angelos-cards", "Deal them in", "Run a card game for at least three guests, and deal every hand yourself. When it is done, claim this point. The host will confirm it and give you an approval word.", "faro"),
+      approval("angelos-cards", "Deal them in", "Run a card game for at least three guests, and deal every hand yourself. When it is done, tap Claim this point and go to Bartend Joe at the bar. He will check with a player or two and give you the approval word.", "juniper"),
     ],
   },
 ];

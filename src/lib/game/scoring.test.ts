@@ -15,14 +15,14 @@ const killer = survivorIds[0];
 const bystander = survivorIds[1];
 const butler = characters.find((character) => character.role === "butler")!.id;
 const truth: Truth = { killer, present: everyone, seed: "black-veil-1926" };
-// "perfect objectives" can only cover what scores itself: hide, keep, vial and sale are not typed in
-const typedIn = (o: { check: { kind: string } }) => !["hide", "keep", "vial-attempt", "butler-sale", "manual"].includes(o.check.kind);
+// "perfect objectives" can only cover what scores itself: keep, vial and sale are not typed in
+const typedIn = (o: { check: { kind: string } }) => !["keep", "vial-attempt", "butler-sale", "manual"].includes(o.check.kind);
 let clock = 0;
 const sub = (guest: string, kind: Submission["kind"], itemId: string, answer: string): Submission => ({ guest, kind, itemId, answer, proof: "", at: (clock += 10) });
 
 function errandsOnly(guest: string): Submission[] {
   const character = characterById.get(guest)!;
-  return character.objectives.filter((o) => o.check.kind !== "hide" && o.check.kind !== "vial-attempt" && o.check.kind !== "butler-sale").map((o) => sub(guest, "objective", o.id, correctAnswer(character, o)));
+  return character.objectives.filter((o) => o.check.kind !== "vial-attempt" && o.check.kind !== "butler-sale").map((o) => sub(guest, "objective", o.id, correctAnswer(character, o)));
 }
 /** sim.ts has no canned answer for the replacement questions, so build one from the rubric: the first phrase of every element. */
 function fullAnswer(question: Question): string {

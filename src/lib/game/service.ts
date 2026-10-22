@@ -5,7 +5,7 @@
  *
  * SERVER-ONLY: imports the game bible.
  */
-import { and, asc, eq, gte, inArray, sql } from "drizzle-orm";
+import { and, asc, eq, gte, inArray, isNull, sql } from "drizzle-orm";
 import type { PgDatabase, PgQueryResultHKT } from "drizzle-orm/pg-core";
 import { eventConfig } from "@/config/event";
 import {
@@ -129,16 +129,19 @@ function tri(value: unknown): boolean | undefined {
 }
 
 export function deriveState(flags: Record<string, unknown>, now = new Date()): GameState {
-  // The game starts when the host presses one button (see startGame); nothing opens on a clock.
-  const identitiesReleased = eventConfig.charactersReleased || tri(flags.identitiesReleased) === true;
-  const secretsReleased = identitiesReleased && tri(flags.secretsReleased) === true;
+  // The game opens by itself at the start time; the Start game button (see startGame) only opens it early.
+  const started = now.getTime() >= new Date(eventConfig.secretsReleaseAt).getTime();
+  const identitiesReleased = eventConfig.charactersReleased || tri(flags.identitiesReleased) === true || started;
+  const forcedSecrets = tri(flags.secretsReleased);
+  const secretsReleased = identitiesReleased && (forcedSecrets ?? started);
   const forcedClosed = tri(flags.submissionsClosed);
   const closed = forcedClosed ?? now.getTime() >= new Date(eventConfig.submissionsCloseAt).getTime();
   return {
     identitiesReleased,
     secretsReleased,
     submissionsOpen: secretsReleased && !closed && flags.resultsPublished !== true,
-    nightcapServed: flags.nightcapServed === true,
+    // the House closes by itself at nine o'clock (or when staff say so)
+    nightcapServed: flags.nightcapServed === true || now.getTime() >= new Date(eventConfig.nightcapServedAt).getTime(),
     resultsPublished: flags.resultsPublished === true,
     absent: Array.isArray(flags.absentCharacters) ? (flags.absentCharacters as string[]) : [],
     seed: typeof flags.seed === "string" && flags.seed ? flags.seed : "black-veil-1926",
@@ -153,7 +156,7 @@ export function deriveState(flags: Record<string, unknown>, now = new Date()): G
 export async function startGame(db: GameDb, now = new Date()): Promise<void> {
   // make sure every character exists and every registered guest is dealt theirs by name before the doors open
   await seedCast(db);
-  await castByName(db);
+  await castMissing(db);
   await writeFlag(db, "identitiesReleased", true);
   await writeFlag(db, "secretsReleased", true);
   await writeFlag(db, "submissionsClosed", null);
@@ -205,7 +208,6 @@ export async function seedCast(db: GameDb): Promise<{ created: number; updated: 
   let created = 0;
   let updated = 0;
   for (const character of characters) {
-    const existing = await db.select({ id: characterRows.id }).from(characterRows).where(eq(characterRows.gameKey, character.id)).limit(1);
     const values = {
       characterName: character.name,
       occupation: character.occupation,
@@ -219,15 +221,50 @@ export async function seedCast(db: GameDb): Promise<{ created: number; updated: 
       active: true,
       gameKey: character.id,
     };
-    if (existing.length) {
-      await db.update(characterRows).set(values).where(eq(characterRows.id, existing[0].id));
-      updated += 1;
-    } else {
-      await db.insert(characterRows).values(values);
-      created += 1;
-    }
+    // one statement, so twenty-four phones opening at eight o'clock cannot trip over each other
+    const [row] = await db
+      .insert(characterRows)
+      .values(values)
+      .onConflictDoUpdate({ target: characterRows.gameKey, set: values })
+      .returning({ inserted: sql<boolean>`(xmax = 0)` });
+    if (row?.inserted) created += 1;
+    else updated += 1;
   }
   return { created, updated };
+}
+
+/**
+ * Makes sure every character exists and every guest who has no character yet is dealt the one built for their
+ * name. It only fills gaps: a guest the host cast by hand is never moved. It runs by itself whenever the game
+ * is open, so nobody has to press anything for the cards to appear.
+ */
+let castQueue: Promise<unknown> = Promise.resolve();
+export function castMissing(db: GameDb): Promise<number> {
+  // run one at a time within this server, so a rush of first page loads does the work once
+  const next = castQueue.then(() => castMissingNow(db));
+  castQueue = next.catch(() => undefined);
+  return next;
+}
+
+async function castMissingNow(db: GameDb): Promise<number> {
+  const [uncast] = await db.select({ n: sql<number>`count(*)` }).from(guests).where(isNull(guests.characterId));
+  const [seeded] = await db.select({ n: sql<number>`count(*)` }).from(characterRows).where(sql`${characterRows.gameKey} is not null`);
+  if (Number(uncast.n) === 0 && Number(seeded.n) >= characters.length) return 0;
+  if (Number(seeded.n) < characters.length) await seedCast(db);
+  const rows = await db.select({ id: characterRows.id, gameKey: characterRows.gameKey }).from(characterRows);
+  const rowBySlug = new Map(rows.filter((row) => row.gameKey).map((row) => [row.gameKey!, row.id]));
+  const held = new Set((await db.select({ characterId: guests.characterId }).from(guests)).map((row) => row.characterId).filter(Boolean));
+  const waiting = await db.select({ id: guests.id, fullName: guests.fullName }).from(guests).where(isNull(guests.characterId));
+  let dealt = 0;
+  for (const guest of waiting) {
+    const character = characterForName(guest.fullName);
+    const rowId = character ? rowBySlug.get(character.id) : undefined;
+    if (!rowId || held.has(rowId)) continue;
+    await db.update(guests).set({ characterId: rowId }).where(eq(guests.id, guest.id));
+    held.add(rowId);
+    dealt += 1;
+  }
+  return dealt;
 }
 
 /** Deals each registered guest the character built for their name. Guests whose name matches nobody are reported, not guessed at. */
@@ -295,6 +332,7 @@ export type CardResponse =
 export async function cardFor(db: GameDb, guestId: string, now = new Date()): Promise<CardResponse> {
   const state = await getState(db, now);
   if (!state.identitiesReleased) return { status: "sealed", message: "Characters coming very soon." };
+  await castMissing(db);
   const roster = await loadRoster(db);
   const slug = maps(roster).slugOf.get(guestId);
   if (!slug) return { status: "uncast", message: "Management has not yet chosen who you will be." };
@@ -332,6 +370,7 @@ export async function submit(db: GameDb, guestId: string, input: SubmitInput, no
   const state = await getState(db, now);
   if (!state.secretsReleased) return { ok: false, code: "closed", message: "The night has not begun." };
   if (!state.submissionsOpen) return { ok: false, code: "closed", message: "The book is closed. No more answers are being taken." };
+  await castMissing(db);
   const roster = await loadRoster(db);
   const slug = maps(roster).slugOf.get(guestId);
   if (!slug) return { ok: false, code: "uncast", message: "You have no character yet." };
@@ -400,6 +439,7 @@ export async function butlerSell(db: GameDb, actorGuestId: string | null, rawCod
   const marker = markers.find((candidate) => normalizeCode(candidate.code) === code);
   if (!marker) return { status: "unknown", message: "That is not a House marker." };
   const owner = survivors.find((character) => character.survivor!.markerNo === marker.no);
+  if (state.identitiesReleased) await castMissing(db);
   const roster = await loadRoster(db);
   const buyerGuestId = owner ? maps(roster).guestOf.get(owner.id) : undefined;
   if (!buyerGuestId) return { status: "unknown", message: "That is not a House marker." };
@@ -457,6 +497,7 @@ export type Night = {
 };
 
 export async function loadNight(db: GameDb): Promise<Night> {
+  await castMissing(db);
   const roster = await loadRoster(db);
   const { slugOf, guestOf } = maps(roster);
   const flags = await readFlags(db);
@@ -483,7 +524,13 @@ export async function loadNight(db: GameDb): Promise<Night> {
 
   const sale = events.find((event) => event.kind === "vial-sold");
   const killer = state.killerOverride ?? (sale ? sale.guest : null);
-  const present = [...slugOf.values()].filter((slug) => !state.absent.includes(slug));
+  // Nobody has to mark who stayed home: a guest who never typed a single answer and never touched the House did not come.
+  const active = new Set<string>(submissions.map((submission) => submission.guest));
+  for (const event of events) {
+    active.add(event.guest);
+    if (event.kind === "vial-sold" && event.by) active.add(event.by);
+  }
+  const present = [...slugOf.values()].filter((slug) => !state.absent.includes(slug) && active.has(slug));
   return { roster, submissions, events, truth: { killer, present, seed: state.seed }, guestOf, slugOf };
 }
 

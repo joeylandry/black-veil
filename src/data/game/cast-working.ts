@@ -25,13 +25,13 @@ export const working: Character[] = [
     ],
     smallSecret: { text: "You read tea leaves off half-burned pages you swept from an empty flue.", key: ["tea leaves"], confidant: "krrish" },
     startingCash: 80,
-    carries: ["sooth-charm"],
+    carries: ["sooth-charm", "witness-josh"],
     objectives: [
       find("josh-find", "star-salt"),
       swap("josh-swap", "tiffany", "sooth-charm", "earring"),
       secretOf("josh-secret", "tiffany", "mihir", ["chisel"]),
-      approval("josh-prophecy", "The prophecy", "Before half past eight, tell the host the exact minute you think the scream will come. The host seals it in an envelope. After the scream, if you called it, claim this point. The host will confirm it and give you an approval word.", "oracle"),
-      approval("josh-fortunes", "The fortunes", "Read the fortunes of four different guests, using the fortune cards the host gives you. Each guest keeps the card they are read. When you have done it, claim this point. The host will give you an approval word.", "tealeaf"),
+      approval("josh-prophecy", "The prophecy", "Before half past eight, tell Bartend Joe at the bar the exact minute you think the scream will come. He seals it in an envelope. After the scream, if you called it, tap Claim this point and go back to Joe for your approval word.", "saffron"),
+      approval("josh-fortunes", "The fortunes", "Read the fortunes of four different guests, using the fortune cards you collect from Bartend Joe at the bar. Each guest keeps the card they are read. When you have done it, tap Claim this point and go back to Joe for your approval word.", "cobblestone"),
     ],
   },
   {
@@ -159,7 +159,7 @@ export const working: Character[] = [
     ],
     smallSecret: { text: "You were paid to take a fall on Halloween 1924 and told to stay down until the music stopped.", key: ["stay down"], confidant: "ananya" },
     startingCash: 100,
-    carries: ["giraffe", "reply-diwakar"],
+    carries: ["giraffe", "witness-diwakar"],
     objectives: [
       money("diwakar-money", 160, "Win a purse: a bet, an arm-wrestle, a wager. Leave with at least $160."),
       find("diwakar-find", "dumbbell"),

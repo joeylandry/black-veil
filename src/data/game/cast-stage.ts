@@ -1,5 +1,5 @@
 /** The Wire & the Stage: performers, flyers, and the people who carry news. */
-import { approval, deal, find, hide, keep, money, motiveChain, nightcapChain, offerChain, secretOf, seek, story, swap, who } from "./build";
+import { approval, deal, find, keep, money, motiveChain, nightcapChain, offerChain, secretOf, story, swap, who } from "./build";
 import type { Character } from "./types";
 
 export const stage: Character[] = [
@@ -24,13 +24,13 @@ export const stage: Character[] = [
     ],
     smallSecret: { text: "You once read the Sheriff's private mail aloud on the air by mistake, and he has never forgiven it.", key: ["private mail", "mail"], confidant: "silas" },
     startingCash: 100,
-    carries: [],
+    carries: ["witness-leon"],
     objectives: [
       find("leon-find", "conch"),
       deal("leon-deal", ["tiffany", "theodor"], "Out of the cell", "Sheriff Farrago holds a citation against you, for being insufferable on the air. Pay a go-between at least $50 in House bills to broker a pardon. Tiffany Liu is the best choice. She hands you a go-between's receipt: read its code.", "The code on the receipt", ["pardon-receipt"]),
       secretOf("leon-secret", "emre", "tim", ["beet", "beets"]),
-      seek("leon-gossip", [["ananya", "joel"]]),
-      approval("leon-bulletin", "Read the bulletin", "At the wrap-up the host hands you the bulletin. Read it aloud to the room, microphone or no. Then claim this point. The host will confirm it and give you an approval word.", "gazette"),
+      money("leon-money", 160, "Sell a plug, a dedication, a station break. Leave with at least $160."),
+      approval("leon-bulletin", "Read the bulletin", "At the wrap-up, collect the bulletin from Bartend Joe at the bar and read it aloud to the room, microphone or no. Then tap Claim this point and go back to Joe for your approval word.", "thistle"),
     ],
   },
   {
@@ -54,13 +54,13 @@ export const stage: Character[] = [
     ],
     smallSecret: { text: "You once filed a Montreal telegram, paid in advance, with no sender.", key: ["no sender"], confidant: "rebecca" },
     startingCash: 100,
-    carries: ["telegram-form"],
+    carries: ["telegram-form", "tool-ananya"],
     objectives: [
       find("ananya-find", "cloche"),
       swap("ananya-swap", "erika", "telegram-form", "false-papers"),
       secretOf("ananya-secret", "rebecca", "tim", ["cold tea"]),
       keep("ananya-keep", "angelos", "angelos-secret", "anika", "anika-secret"),
-      hide("ananya-hide", "joel"),
+      story("ananya-story", "Cassie's hand", "Cassie signed her notes in a particular way. Learn how, from someone who kept her correspondence.", "How she signed", "leon", ["rebecca"], [["plain"]]),
     ],
   },
   {
@@ -134,7 +134,7 @@ export const stage: Character[] = [
       find("silas-find", "opera-bill"),
       deal("silas-deal", ["anika"], "A sneaky request", "Anika Mahns wants to know who in this room knew her father. Take her $30 voucher, play her father's signature tune around half past eight, and call it a request from the room. Hand her the request card and keep the voucher: read its code. Nobody is to know.", "The code on the voucher", ["fee-voucher"]),
       secretOf("silas-secret", "eric", "anthony", ["clerk"]),
-      approval("silas-spotlight", "The spotlight", "Around half past eight, take the floor for five minutes, with the band or without it. When you have finished, claim this point. The host will confirm it and give you an approval word.", "encore"),
+      approval("silas-spotlight", "The spotlight", "Around half past eight, take the floor for five minutes, with the band or without it. When you have finished, tap Claim this point and go to Bartend Joe at the bar for your approval word.", "walnut"),
     ],
   },
   {
@@ -158,13 +158,13 @@ export const stage: Character[] = [
     ],
     smallSecret: { text: "You trained a mechanic who was later paid to be careless once.", key: ["mechanic"], confidant: "mihir" },
     startingCash: 140,
-    carries: ["tool-sidd"],
+    carries: ["witness-sidd"],
     habit: "You glance at your wristwatch every time a door opens, a flier's habit. Do it whenever someone comes or goes.",
     objectives: [
       money("sidd-money", 200, "Sell rides in your plane to anyone with a dollar. Leave with at least $200."),
       find("sidd-find", "globe"),
       secretOf("sidd-secret", "eric", "anthony", ["clerk"]),
-      seek("sidd-gossip", [["ananya", "joel"]]),
+      story("sidd-story2", "The thing behind the wall", "A wall in the Merrimack Room hides something. Learn what, from those who built or swept it.", "What it hides", "adam", ["josh"], [["vault", "safe"]]),
       story("sidd-story", "How many were there?", "Seventeen strangers died in accidents in one county. Learn the count from someone who counted.", "The number", "theodor", ["emre"], [["seventeen", "17"]]),
     ],
   },

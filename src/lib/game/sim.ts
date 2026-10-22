@@ -33,13 +33,8 @@ export function correctAnswer(character: Character, objective: Objective): strin
       return `$${check.min + 5}`;
     case "clock":
       return check.from;
-    case "seek": {
-      const [a, b] = check.pairs[0];
-      return `${characterById.get(a)!.realNames[0]} and ${characterById.get(b)!.realNames[0]}`;
-    }
     case "approval":
       return check.word;
-    case "hide":
     case "keep":
     case "vial-attempt":
     case "butler-sale":
@@ -123,7 +118,7 @@ export function simulateNight(options: { seed: number; killer?: string; profiles
     // the group race: some guests collect their group's slips
     const race = races.find((candidate) => candidate.circle === character.circle && candidate.tokens.length);
     if (race && random() < p.race) {
-      submissions.push({ guest: character.id, kind: "objective", itemId: "race", answer: race.tokens.map((token) => propById.get(token)!.code).join(" "), proof: "", at: (clock += 1000) });
+      submissions.push({ guest: character.id, kind: "objective", itemId: "race", answer: race.tokens.slice(0, race.need).map((token) => propById.get(token)!.code).join(" "), proof: "", at: (clock += 1000) });
     }
     // mysteries
     const insider = character.role === "butler" || character.id === killer;

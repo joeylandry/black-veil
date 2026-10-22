@@ -27,6 +27,7 @@ const killerId = "adam";
 const bystander = survivorIds.find((id) => id !== killerId)!;
 const objectiveItem = (items: GradeItem[], objectiveId: string) => find(items, objectiveId.split("-")[0], "objective", objectiveId);
 const slipCodes = (circle: string) => races.find((race) => race.circle === circle)!.tokens.map((token) => propById.get(token)!.code);
+const NEED = 3;
 
 function perfectErrands(skip: (id: string) => boolean = () => false): Submission[] {
   const out: Submission[] = [];
@@ -40,25 +41,23 @@ function perfectErrands(skip: (id: string) => boolean = () => false): Submission
 }
 
 describe("objectives", () => {
-  it("gives every guest 5 when every objective is done, the secrets stay secret and nobody leaks a kept secret", () => {
-    // the gossip seekers' answers are withheld (a correct one would cost the hiders); a kept secret is lost when the rival also learns it
-    const seekIds = new Set(withKind("seek").map(({ objective }) => objective.id));
+  it("gives every guest 5 when every objective is done, except the half of a kept secret the rival spoils", () => {
+    // everyone answered every search, so every rival learned what the keeper wanted kept: those keepers keep half
     const offers: GameEvent[] = survivorIds.map((id, index) => ({ kind: "vial-attempt", guest: id, at: index, sold: id === killerId }));
-    const items = autoGrade({ submissions: perfectErrands((id) => seekIds.has(id)), events: [...ev(), ...offers], truth: truth() });
+    const items = autoGrade({ submissions: perfectErrands(), events: [...ev(), ...offers], truth: truth() });
     for (const character of characters) {
       const total = items.filter((entry) => entry.guest === character.id && entry.kind === "objective").reduce((sum, entry) => sum + entry.points, 0);
-      // everyone answered every search, so every rival learned what the keeper wanted kept: those points are the ones lost
-      const unearned = character.objectives.filter((objective) => objective.check.kind === "seek" || objective.check.kind === "keep").length;
+      const unearned = character.objectives.filter((objective) => objective.check.kind === "keep").length * 0.5;
       assert.equal(total, 5 - unearned, `${character.id} earned ${total}`);
     }
   });
 
-  it("gives nothing for an objective nobody answered, except those the room decides", () => {
+  it("gives nothing for an objective nobody answered, except the half of a kept secret that nobody learned", () => {
     const items = autoGrade({ submissions: [], events: [], truth: truth() });
     for (const character of characters) {
       for (const objective of character.objectives) {
         const entry = objectiveItem(items, objective.id);
-        if (objective.check.kind === "hide") assert.equal(entry.points, 1, "a secret nobody hunted stays secret");
+        if (objective.check.kind === "keep") assert.equal(entry.points, 0.5, "nobody learned it, so at least it stayed hidden");
         else assert.equal(entry.points, 0, `${objective.id} earned ${entry.points} for nothing`);
       }
     }
@@ -138,46 +137,16 @@ describe("objectives", () => {
     assert.equal(objectiveItem(items, saleId).points, 1);
   });
 
-  it("scores the secret affair: seekers find it, hiders lose their point when found", () => {
-    const truthy = truth();
-    const seekers = withKind("seek").map(({ character, objective }) => ({ id: character.id, objective: objective.id }));
-    const hiders = withKind("hide").map(({ character, objective }) => ({ id: character.id, objective: objective.id }));
-    assert.deepEqual(hiders.map((hider) => hider.id).sort(), ["ananya", "joel"], "there is exactly one affair");
-    assert.ok(seekers.length >= 2);
-    const [first, second] = seekers;
-    const pair = "Ananya Codru and Joel Indipiginja";
-
-    const hidden = autoGrade({ submissions: [], events: [], truth: truthy });
-    for (const hider of hiders) assert.equal(objectiveItem(hidden, hider.objective).points, 1);
-    assert.equal(objectiveItem(hidden, first.objective).points, 0);
-
-    const found = autoGrade({ submissions: [sub(first.id, "objective", first.objective, pair)], events: [], truth: truthy });
-    assert.equal(objectiveItem(found, first.objective).points, 1);
-    for (const hider of hiders) assert.equal(objectiveItem(found, hider.objective).points, 0, "one seeker is enough to lose it");
-
-    const twice = autoGrade({ submissions: [sub(first.id, "objective", first.objective, pair), sub(second.id, "objective", second.objective, "joel, ananya")], events: [], truth: truthy });
-    for (const hider of hiders) assert.equal(objectiveItem(twice, hider.objective).points, 0);
-
-    const wrong = autoGrade({ submissions: [sub(first.id, "objective", first.objective, "Ananya and Rhea")], events: [], truth: truthy });
-    assert.equal(objectiveItem(wrong, first.objective).points, 0);
-    for (const hider of hiders) assert.equal(objectiveItem(wrong, hider.objective).points, 1);
-
-    const spray = autoGrade({ submissions: [sub(first.id, "objective", first.objective, "Ananya, Joel, Rhea, Tiffany")], events: [], truth: truthy });
-    assert.equal(objectiveItem(spray, first.objective).points, 0, "naming everyone is not a find");
-    assert.equal(objectiveItem(spray, first.objective).needsReview, true);
-    for (const hider of hiders) assert.equal(objectiveItem(spray, hider.objective).points, 1, "and it cannot cost the hiders anything");
-  });
-
-  it("scores a kept secret: the chosen seeker learned it and the rival did not", () => {
+  it("scores a kept secret in two halves: the chosen seeker learned it, and the rival did not", () => {
     const keeper = "krrish";
     const check = objectiveById.get("krrish-keep")!.check as { seeker: string; seekerObjective: string; rival: string; rivalObjective: string };
     const answer = (objectiveId: string) => correctAnswer(characterById.get(objectiveId.split("-")[0])!, objectiveById.get(objectiveId)!);
     const keep = (submissions: Submission[], present = everyone) => objectiveItem(autoGrade({ submissions, events: [], truth: truth({ present }) }), "krrish-keep");
     const told = sub(check.seeker, "objective", check.seekerObjective, answer(check.seekerObjective));
     const leaked = sub(check.rival, "objective", check.rivalObjective, answer(check.rivalObjective));
-    assert.equal(keep([]).points, 0, "nobody learned it");
+    assert.equal(keep([]).points, 0.5, "nobody learned it: the hiding half only");
     assert.equal(keep([told]).points, 1, "told to the right person and to nobody else");
-    assert.equal(keep([told, leaked]).points, 0, "the rival learned it too");
+    assert.equal(keep([told, leaked]).points, 0.5, "the rival learned it too: the telling half only");
     assert.equal(keep([leaked]).points, 0, "only the rival learned it");
     assert.equal(keep([], everyone.filter((id) => id !== check.seeker)).points, 1, "the seeker did not come, so it cannot be held against you");
     assert.ok(keeper);
@@ -187,12 +156,12 @@ describe("objectives", () => {
 describe("the group races", () => {
   const raceItems = (items: GradeItem[]) => items.filter((entry) => entry.kind === "bonus" && entry.itemId === "race");
 
-  it("gives the extra point to the earliest member who submits every slip of the group's race", () => {
-    const codes = slipCodes("order").join(" ");
+  it("gives the extra point to the earliest member who submits three different slips of the group's race", () => {
+    const codes = slipCodes("order").slice(0, NEED).join(" ");
     const items = autoGrade({
       submissions: [
-        sub("eric", "objective", "race", slipCodes("order").slice(0, 2).join(" "), 50), // incomplete
-        sub("emre", "objective", "race", codes, 300),
+        sub("eric", "objective", "race", [slipCodes("order")[0], slipCodes("order")[0], slipCodes("order")[1]].join(" "), 50), // two different slips, one repeated
+        sub("emre", "objective", "race", slipCodes("order").slice(2, 5).join(" "), 300), // any three of the five will do
         sub("anika", "objective", "race", codes.toLowerCase().split(" ").join(", "), 100), // earliest complete
       ],
       events: [],
@@ -204,7 +173,7 @@ describe("the group races", () => {
   });
 
   it("counts a complete early attempt even if the guest later overwrites it, and ignores outsiders", () => {
-    const codes = slipCodes("river").join(" ");
+    const codes = slipCodes("river").slice(0, NEED).join(" ");
     const items = autoGrade({
       submissions: [
         sub("erika", "objective", "race", codes, 100),
@@ -225,7 +194,7 @@ describe("the group races", () => {
   });
 
   it("does not pay a racer who did not come", () => {
-    const codes = slipCodes("stage").join(" ");
+    const codes = slipCodes("stage").slice(0, NEED).join(" ");
     const items = autoGrade({ submissions: [sub("leon", "objective", "race", codes, 5), sub("silas", "objective", "race", codes, 50)], events: [], truth: truth({ killer: null, present: everyone.filter((id) => id !== "leon") }) });
     assert.deepEqual(raceItems(items).filter((entry) => characterById.get(entry.guest)!.circle === "stage").map((entry) => entry.guest), ["silas"]);
   });

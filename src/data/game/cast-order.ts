@@ -24,7 +24,7 @@ export const order: Character[] = [
     ],
     smallSecret: { text: "You keep a shoebox with seventeen “accidents” in it and have told no one.", key: ["shoebox", "shoe box"], confidant: "molly" },
     startingCash: 100,
-    carries: ["citation"],
+    carries: ["citation", "reply-theodor"],
     role: "sheriff",
     roleCard: [
       "You are the Sheriff. The law of the night is yours: when the body is found, take charge, tell people to stand back, and keep the scene as you found it. Nothing leaves the room.",
@@ -38,7 +38,7 @@ export const order: Character[] = [
       deal("theodor-deal", ["leon", "tiffany"], "The Leon matter", "You hold a Nuisance Citation against Leon Gee for being insufferable. Take a bribe from a go-between and tear the citation up: the go-between hands you a Pardon slip. Type the code on the slip.", "The code on the Pardon slip", ["pardon-slip"]),
       secretOf("theodor-secret", "krrish", "emre", ["grey hudson", "grey"]),
       keep("theodor-keep", "anthony", "anthony-secret", "rebecca", "rebecca-secret"),
-      approval("theodor-arrest", "Make the arrest", "When the body is found, take charge, question the room, and make an arrest by a quarter past ten. Do it for real, then claim this point. The host will confirm it and give you an approval word.", "handcuff"),
+      approval("theodor-arrest", "Make the arrest", "When the body is found, take charge, question the room, and make an arrest by a quarter past ten. Then tap Claim this point and go to Bartend Joe at the bar for your approval word.", "pomegranate"),
     ],
   },
   {
@@ -68,7 +68,7 @@ export const order: Character[] = [
       deal("eric-deal", ["krrish"], "The Friday crate", "Accept Krrish Vermouth's Friday crate of wine and quietly dismiss his cases. Keep his crate receipt and hand him a notice of dismissal: read the code on the receipt. Nobody is to know.", "The code on the crate receipt", ["crate-receipt"]),
       secretOf("eric-secret", "emre", "tim", ["beet", "beets"]),
       keep("eric-keep", "silas", "silas-secret", "sidd", "sidd-secret"),
-      role("eric-charter", "Sign the charter", "At the wrap-up the host hands you the charter. Sign it, and type the code printed on it.", "The code on the charter", { kind: "code", codes: ["4JNW7"] }),
+      role("eric-charter", "Sign the charter", "At the wrap-up Bartend Joe hands you the charter. Sign it, and type the code printed on it.", "The code on the charter", { kind: "code", codes: ["4JNW7"] }),
     ],
   },
   {
@@ -159,7 +159,7 @@ export const order: Character[] = [
     ],
     smallSecret: { text: "You kept the unprinted line the city desk cut: no coroner, no ambulance.", key: ["unprinted"], confidant: "josh" },
     startingCash: 90,
-    carries: [],
+    carries: ["trade-molly"],
     survivor: {
       veilName: "Winifred “Winnie” Pike",
       veilTitle: "The Runner",

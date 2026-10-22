@@ -6,6 +6,7 @@
  * The two switches live in the game_flags table: `rosterReleased` and `rosterOverrides`.
  */
 import { asc, desc, eq, inArray, sql } from "drizzle-orm";
+import { eventConfig } from "@/config/event";
 import { gameFlags, guests, rsvps } from "@/lib/db/schema";
 import { roster, rosterBySlug, rosterForName, type RosterEntry } from "@/data/roster";
 import type { GameDb } from "@/lib/game/service";
@@ -22,13 +23,14 @@ async function ensureFlagsTable(db: GameDb) {
   );
 }
 
-export async function readRosterFlags(db: GameDb): Promise<RosterFlags> {
+export async function readRosterFlags(db: GameDb, now = new Date()): Promise<RosterFlags> {
   try {
     const rows = await db.select().from(gameFlags).where(inArray(gameFlags.key, [RELEASED, OVERRIDES]));
     const byKey = new Map(rows.map((row) => [row.key, row.value]));
     const overrides = byKey.get(OVERRIDES);
     return {
-      released: byKey.get(RELEASED) === true,
+      // the cast opens by itself at the start time, like the game itself
+      released: byKey.get(RELEASED) === true || now.getTime() >= new Date(eventConfig.secretsReleaseAt).getTime(),
       overrides: overrides && typeof overrides === "object" && !Array.isArray(overrides) ? (overrides as Record<string, string>) : {},
     };
   } catch {
@@ -113,8 +115,8 @@ export type RosterView = {
 const publicCard = (entry: RosterEntry): PublicCard => ({ name: entry.name, role: entry.role, background: entry.background });
 
 /** The guest ledger a signed-in guest sees. Before release it lists real names only; after, character names only. */
-export async function rosterViewFor(db: GameDb, guestId: string): Promise<RosterView> {
-  const flags = await readRosterFlags(db);
+export async function rosterViewFor(db: GameDb, guestId: string, now = new Date()): Promise<RosterView> {
+  const flags = await readRosterFlags(db, now);
   const cast = await castList(db, flags);
   const coming = cast.filter((row) => row.attending !== "no");
   let rows: RosterView["rows"];

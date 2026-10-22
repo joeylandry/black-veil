@@ -94,7 +94,7 @@ function envelopePages(): string[] {
     return `<div class="page"><div class="sheet">${banner(k.name)}<div class="fit" style="--base:12pt">
       <div class="name" style="font-size:2.1em">Your black envelope</div><div class="occ">Objectives 3 to 5</div><div class="rule"></div>
       ${errands.map(({ o, n }) => errandHtml(o, n)).join("")}
-      <h2>Your group's race: ${esc(p.race.title)} · 1 extra point</h2><p>${esc(p.race.text)}</p>${p.race.slips.map((slip) => `<p><b>${esc(slip)}</b></p>`).join("")}
+      <h2>Act fast or lose this point</h2><p><b>The first to complete this task gets the point.</b> ${esc(p.race.text)}</p>${p.race.slips.map((slip) => `<p><b>${esc(slip)}</b></p>`).join("")}
       ${p.role ? `<h2>${esc(p.role.title)}</h2><ol class="rules">${p.role.rules.map((r) => `<li>${esc(r)}</li>`).join("")}</ol>` : ""}
       ${p.carries.length ? `<div class="box" style="margin-top:.7em">You will be handed at the door: ${p.carries.map(esc).join(", ")}</div>` : ""}
       <div class="flapbox">What is in this envelope is for you alone. Keep a straight face, and enjoy the night.</div>

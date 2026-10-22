@@ -15,44 +15,49 @@ export const circles: Circle[] = [
 
 /**
  * One race per group, worth +1 to the first member to finish. The survivors race for the vial (the
- * House's log decides it). The others each need three slips, one from each of three guests outside
- * the group, and the earliest submission of all three codes wins. Slips are printed paper and
- * the standby tray holds a spare of each.
+ * House's log decides it). The others each need any three of five slips, carried by five different
+ * guests outside the group, and the earliest submission with three valid codes wins. Slips are
+ * printed paper and the standby tray holds a spare of each.
  */
 export const races: Race[] = [
   {
     circle: "survivors",
     title: "The vial",
-    text: "Be the first survivor to buy the House's vial from the Butler. The House's own log decides it.",
+    text: "Buy the House's vial from the Butler before anyone else does. The House's own log decides it.",
     ask: "",
     tokens: [],
+    need: 0,
   },
   {
     circle: "order",
     title: "Three witnesses",
-    text: "Be the first in your group to collect three witness slips, one from each of three guests who will swear to you. Anyone you ask may hand you theirs. Type all three codes.",
-    ask: "The three codes, separated by spaces",
-    tokens: ["witness-joel", "witness-arjun", "witness-tim"],
+    text: "Collect three witness slips from three different guests. Five guests are carrying them: ask around, and whoever has one will hand it to you. Type the three codes.",
+    ask: "Three codes, separated by spaces",
+    tokens: ["witness-arjun", "witness-diwakar", "witness-josh", "witness-leon", "witness-sidd"],
+    need: 3,
   },
   {
     circle: "stage",
     title: "The reply",
-    text: "Be the first in your group to bring back three reply slips, one from each of three guests who will answer you. Anyone you ask may hand you theirs. Type all three codes.",
-    ask: "The three codes, separated by spaces",
-    tokens: ["reply-eric", "reply-diwakar", "reply-erika"],
+    text: "Bring back three reply slips from three different guests. Five guests are carrying them: ask around, and whoever has one will hand it to you. Type the three codes.",
+    ask: "Three codes, separated by spaces",
+    tokens: ["reply-angelos", "reply-eric", "reply-erika", "reply-krrish", "reply-theodor"],
+    need: 3,
   },
   {
     circle: "working",
     title: "Three tools",
-    text: "Be the first in your group to gather three tool tokens, one from each of three guests who can spare them. Anyone you ask may hand you theirs. Type all three codes.",
-    ask: "The three codes, separated by spaces",
-    tokens: ["tool-anthony", "tool-sidd", "tool-krrish"],
+    text: "Gather three tool tokens from three different guests. Five guests are carrying them: ask around, and whoever has one will hand it to you. Type the three codes.",
+    ask: "Three codes, separated by spaces",
+    tokens: ["tool-ananya", "tool-anthony", "tool-joel", "tool-mihir", "tool-tim"],
+    need: 3,
   },
   {
     circle: "river",
     title: "Three trades",
-    text: "Be the first in your group to complete three trades, one with each of three guests who will deal. Each trade gives you a trade slip. Type all three codes.",
-    ask: "The three codes, separated by spaces",
-    tokens: ["trade-emre", "trade-silas", "trade-tiffany"],
+    text: "Collect three trade slips from three different guests. Five guests are carrying them: ask around, and whoever has one will deal with you. Type the three codes.",
+    ask: "Three codes, separated by spaces",
+    tokens: ["trade-anika", "trade-emre", "trade-molly", "trade-silas", "trade-tiffany"],
+    need: 3,
   },
 ];

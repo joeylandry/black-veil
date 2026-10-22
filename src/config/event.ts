@@ -29,10 +29,13 @@ export const eventConfig = {
    */
   ctfOpen: false,
   /**
-   * The private tab, the errands and the answer boxes open on the night. They open on their own
-   * at this moment (the game master can also open or hold them from /admin without a redeploy).
+   * The public card, the private tab, the objectives and the answer boxes all open on their own at
+   * this moment, so nobody has to log in to start the night (the Start game button on /admin
+   * only opens them early).
    */
-  secretsReleaseAt: "2026-10-23T19:55:00-04:00",
+  secretsReleaseAt: "2026-10-23T20:00:00-04:00",
+  /** The House closes and the nightcap is served at this moment; the Butler can sell no more. */
+  nightcapServedAt: "2026-10-23T21:00:00-04:00",
   /** Answers stop being accepted at this moment, unless staff reopen them from /admin. */
   submissionsCloseAt: "2026-10-23T22:30:00-04:00",
   /**

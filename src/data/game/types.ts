@@ -29,8 +29,10 @@ export type Race = {
   title: string;
   text: string;
   ask: string;
-  /** Slips the racer must collect (all of them). Empty for the survivors, whose race is the vial. */
+  /** The slips in play, each carried by a different guest outside the group. Empty for the survivors, whose race is the vial. */
   tokens: PropId[];
+  /** How many different slips the racer must hold to finish. */
+  need: number;
 };
 
 /** How freely a card line may be repeated. Private cards mark each line, so guests know what is theirs to trade. */
@@ -88,8 +90,6 @@ export type ObjectiveKind =
   | "learn"
   | "swap"
   | "money"
-  | "hide"
-  | "seek"
   | "story"
   | "chain"
   | "motive"
@@ -106,10 +106,6 @@ export type Check =
   | { kind: "guest"; guest: GuestId }
   /** The answer is a dollar amount of at least `min`. */
   | { kind: "money"; min: number }
-  /** Hide a secret affair: scored by the absence of correct "seek" answers naming you. */
-  | { kind: "hide"; partner: GuestId }
-  /** Seek secret affairs: name two guests who are secretly together. `pairs` are the truths. */
-  | { kind: "seek"; pairs: [GuestId, GuestId][] }
   /** Made an offer to the Butler (recorded by the Butler's phone, not by the guest). */
   | { kind: "vial-attempt" }
   /** The Butler (or Joe, standing in) made the night's sale. Recorded by the Butler's phone. */

@@ -10,9 +10,8 @@ PASS  The List: 17 settled and 5 unsettled rows match the survivors' names, titl
 PASS  Objectives: five per guest, one point each, 5 for everyone, all references valid
 PASS  Objectives: every learn / story answer is on a real card in every listed source, with two sources minimum
 PASS  Swaps: every swap is mirrored, every carried prop is carried by its owner, and none is left unused
-PASS  Secret affairs: every hider is mirrored and every seeker's truth matches the pairs
 PASS  Survivors: each has find, learn, two chain steps and a motive; the Butler's sale is an objective
-PASS  Races: each group has one race; the four trades each need three slips from three different outsiders, one slip per holder
+PASS  Races: each group has one race; the four trades each need any three of five slips, held by five different outsiders, one slip per holder
 PASS  Approvals: every host-confirmed objective has its own one-word approval, and no word appears on any card
 PASS  Kept secrets: each holder's seeker and rival both search for exactly that secret
 PASS  Codes: unique, typo-safe alphabet, and every exhibit prints its own filing code
@@ -30,13 +29,11 @@ PASS  Money: the room holds enough cash for every money objective to be won with
 
   circle sizes: 5/5/5/4/5
   objectives: 120
-  pattern objectives: 41
+  pattern objectives: 44
   swap pairs: 5
-  secret pairs: 1
-  seekers: 2
-  race slips: 12
+  race slips: 20
   host-approved objectives: 8
-  printed codes: 75
+  printed codes: 83
   facts: 39
   fact lines: 140
   mystery points: 3+4+3=10
@@ -48,7 +45,7 @@ PASS  Money: the room holds enough cash for every money objective to be won with
   trials where a survivor kept fewer than two identity routes: 0
   client files scanned for secrets: 66
   cash in the room: $3500
-  total money the objectives ask players to win: $600
+  total money the objectives ask players to win: $660
 
-ALL 24 CHECKS PASSED
+ALL 23 CHECKS PASSED
 ```

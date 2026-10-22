@@ -9,7 +9,7 @@
  */
 import { alternateOf, characterById, characters, findGuests, objectiveById, questions, races, survivorIds } from "@/data/game";
 import { propById } from "@/data/game/props";
-import type { Check, Objective, Question, RubricElement } from "@/data/game";
+import type { Objective, Question, RubricElement } from "@/data/game";
 import { matchesAny, matchesPattern, normalize, normalizeCode, parseClock, parseMoney, round2 } from "./text";
 import type { GameEvent, GradeItem, Submission, Truth, Verdict } from "./types";
 
@@ -20,7 +20,6 @@ export const POINTS = {
   maxPicks: 4,
   /** The first member of each group to finish its race earns one point. */
   race: 1,
-  hideLoss: 1,
   longAnswer: 500,
   /** Share of a point a survivor (or the Butler) earns on an answer they already knew from the inside. */
   insiderCredit: 0.7,
@@ -54,29 +53,7 @@ type Context = {
   latest: Map<string, Submission>;
   events: GameEvent[];
   truth: Truth;
-  /** pair key → distinct seekers whose accepted answer named it */
-  seekHits: Map<string, Set<string>>;
 };
-
-const pairKey = (a: string, b: string) => [a, b].sort().join("|");
-
-function seekOutcome(check: Extract<Check, { kind: "seek" }>, answer: string): { verdict: Verdict; pair: string | null; review: boolean; why: string } {
-  const named = findGuests(answer);
-  const truePairs = new Set(check.pairs.map(([a, b]) => pairKey(a, b)));
-  if (named.length === 2) {
-    const pair = pairKey(named[0], named[1]);
-    return truePairs.has(pair) ? { verdict: "accept", pair, review: false, why: "Named a true secret pair." } : { verdict: "reject", pair: null, review: false, why: "Named two guests who are not a secret pair." };
-  }
-  if (named.length > 2) {
-    for (let i = 0; i < named.length; i += 1) {
-      for (let j = i + 1; j < named.length; j += 1) {
-        if (truePairs.has(pairKey(named[i], named[j]))) return { verdict: "reject", pair: null, review: true, why: `Named ${named.length} guests including a true pair; probably guessing broadly.` };
-      }
-    }
-    return { verdict: "reject", pair: null, review: false, why: "Named many guests and no true pair." };
-  }
-  return { verdict: "reject", pair: null, review: false, why: named.length === 1 ? "Named only one guest." : "No guests could be recognised in the answer." };
-}
 
 function gradeObjective(guest: string, objective: Objective, context: Context): GradeItem {
   const submission = context.latest.get(key(guest, "objective", objective.id));
@@ -97,25 +74,18 @@ function gradeObjective(guest: string, objective: Objective, context: Context): 
       const sale = context.events.find((event) => event.kind === "vial-sold");
       return sale ? item(guest, "objective", id, "accept", max, max, "The House made its one sale.") : item(guest, "objective", id, "reject", 0, max, "The House made no sale.");
     }
-    case "hide": {
-      const pair = pairKey(guest, check.partner);
-      const hits = context.seekHits.get(pair)?.size ?? 0;
-      const points = Math.max(0, round2(max - POINTS.hideLoss * hits));
-      const verdict: Verdict = hits === 0 ? "accept" : points > 0 ? "partial" : "reject";
-      return item(guest, "objective", id, verdict, points, max, hits === 0 ? "Nobody named the pair." : `${hits} seeker${hits === 1 ? "" : "s"} named the pair.`);
-    }
     case "keep": {
       // scored from the two seekers' own answers: the one you chose learned it, the rival did not
       const present = new Set(context.truth.present);
       const seekerObjective = objectiveById.get(check.seekerObjective);
       const rivalObjective = objectiveById.get(check.rivalObjective);
       if (!seekerObjective || !rivalObjective) return item(guest, "objective", id, "reject", 0, max, "The seekers' objectives could not be found.", true);
-      if (!present.has(check.seeker)) return item(guest, "objective", id, "accept", max, max, "Your chosen seeker did not come, so this one is yours.");
-      const told = gradeObjective(check.seeker, seekerObjective, context).verdict === "accept";
+      // two halves: the seeker you chose learned it (half a point), and the rival you were to keep it from did not (half a point)
+      const told = !present.has(check.seeker) || gradeObjective(check.seeker, seekerObjective, context).verdict === "accept";
       const leaked = present.has(check.rival) && gradeObjective(check.rival, rivalObjective, context).verdict === "accept";
-      if (!told) return item(guest, "objective", id, "reject", 0, max, "The seeker you were to tell never learned it.");
-      if (leaked) return item(guest, "objective", id, "reject", 0, max, "The seeker learned it, but so did the rival you were to keep it from.");
-      return item(guest, "objective", id, "accept", max, max, "The seeker learned it and the rival did not.");
+      const points = round2((told ? max / 2 : 0) + (leaked ? 0 : max / 2));
+      const why = `${told ? (present.has(check.seeker) ? "The seeker you chose learned it (half a point)." : "Your chosen seeker did not come, so that half is yours.") : "The seeker you were to tell never learned it."} ${leaked ? "The rival learned it too." : "The rival never did (half a point)."}`;
+      return item(guest, "objective", id, points >= max ? "accept" : points > 0 ? "partial" : "reject", points, max, why);
     }
     default:
       break;
@@ -167,10 +137,6 @@ function gradeObjective(guest: string, objective: Objective, context: Context): 
       return normalize(answer) === normalize(check.word)
         ? item(guest, "objective", id, "accept", max, max, "The host confirmed it and gave the approval word.")
         : item(guest, "objective", id, "reject", 0, max, "That is not the host's approval word.");
-    case "seek": {
-      const outcome = seekOutcome(check, answer);
-      return item(guest, "objective", id, outcome.verdict, outcome.verdict === "accept" ? max : 0, max, outcome.why, outcome.review);
-    }
     case "manual":
       return item(guest, "objective", id, "reject", 0, max, check.rubric, true);
     default:
@@ -261,7 +227,7 @@ function codesIn(answer: string): Set<string> {
 
 /**
  * The race for the extra point: the first member of each group to finish it. The survivors race for
- * the vial, which the House's log decides; the others must submit every code of their group's race,
+ * the vial, which the House's log decides; the others must submit three different valid codes from their group's race,
  * and the earliest such submission (by any member, looking at every attempt, not just the newest) wins.
  */
 function gradeRaces(input: GradingInput, presentIds: Set<string>): GradeItem[] {
@@ -279,7 +245,7 @@ function gradeRaces(input: GradingInput, presentIds: Set<string>): GradeItem[] {
       const owner = characterById.get(submission.guest);
       if (!owner || owner.circle !== race.circle || !presentIds.has(owner.id)) continue;
       const have = codesIn(submission.answer);
-      if (![...wanted].every((code) => have.has(code))) continue;
+      if ([...wanted].filter((code) => have.has(code)).length < race.need) continue;
       if (!best || submission.at < best.at) best = submission;
     }
     if (best) items.push(item(best.guest, "bonus", "race", "accept", POINTS.race, POINTS.race, `First in the group to finish "${race.title}".`));
@@ -291,22 +257,7 @@ function gradeRaces(input: GradingInput, presentIds: Set<string>): GradeItem[] {
 export function autoGrade(input: GradingInput): GradeItem[] {
   const latest = latestSubmissions(input.submissions);
   const present = characters.filter((character) => input.truth.present.includes(character.id));
-  const context: Context = { latest, events: input.events, truth: input.truth, seekHits: new Map() };
-
-  // the seekers first: their accepted answers decide whether the hiders were found
-  for (const character of present) {
-    for (const objective of character.objectives) {
-      if (objective.check.kind !== "seek") continue;
-      const submission = latest.get(key(character.id, "objective", objective.id));
-      if (!submission?.answer.trim()) continue;
-      const outcome = seekOutcome(objective.check, submission.answer);
-      if (outcome.verdict === "accept" && outcome.pair) {
-        const seekers = context.seekHits.get(outcome.pair) ?? new Set<string>();
-        seekers.add(character.id);
-        context.seekHits.set(outcome.pair, seekers);
-      }
-    }
-  }
+  const context: Context = { latest, events: input.events, truth: input.truth };
 
   const items: GradeItem[] = [];
   for (const character of present) {

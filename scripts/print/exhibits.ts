@@ -12,7 +12,7 @@
 import { execFileSync } from "node:child_process";
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
-import { characterById, exhibits, markers, props } from "@/data/game";
+import { characterById, characters, exhibits, markers, props } from "@/data/game";
 import { tieBreaker } from "@/data/game/story";
 
 // =====================================================================================================
@@ -465,8 +465,47 @@ function buildTagKey() {
   return pages;
 }
 
+// ---------------------------------------------------------------- Bartend Joe's sheet
+function buildHostSheet() {
+  const approvals = characters.flatMap((c) => c.objectives.filter((o) => o.check.kind === "approval").map((o) => ({ who: c.name, title: o.title, word: (o.check as { word: string }).word })));
+  const checks: Record<string, string> = {
+    "angelos-cards": "Ask a player or two: did he deal them in?",
+    "theodor-arrest": "Did he make an arrest after the scream, before 10:15?",
+    "rebecca-scream": "Did you hear her scream at about 9:15?",
+    "erika-steal": "Ask who she robbed: did she get it, unseen?",
+    "leon-bulletin": "Hand him the bulletin; did he read it aloud?",
+    "silas-spotlight": "Did he take the floor about 8:30 for five minutes?",
+    "josh-prophecy": "After the scream, open his envelope: was he within a few minutes?",
+    "josh-fortunes": "Did he read four different guests a fortune card?",
+  };
+  const rows = characters.flatMap((c) => c.objectives.filter((o) => o.check.kind === "approval").map((o) => `<tr><td>${esc(c.name)}</td><td>${esc(o.title)}</td><td>${esc(checks[o.id] ?? "Did it happen?")}</td><td class="w">${esc((o.check as { word: string }).word)}</td></tr>`)).join("");
+  void approvals;
+  const html = `<div style="padding:.45in .55in"><h1>BARTEND JOE: your one page</h1>
+    <p>You do not need /admin until the end. The game opens on every phone by itself at <b>8:00 p.m.</b> The House closes by itself at <b>9:00</b>, and the book closes by itself at <b>10:30</b>.</p>
+    <h2>Your whole job</h2>
+    <ol>
+      <li><b>At the door:</b> hand each guest their black envelope and anything they carry.</li>
+      <li><b>When a guest comes to the bar to claim a point,</b> check it really happened (the table below), then tell them the approval word. Say a word to nobody else.</li>
+      <li><b>Fortune cards:</b> Josh collects his twelve fortune cards from you.</li>
+      <li><b>Josh's minute:</b> before 8:30 he tells you the minute he expects the scream. Seal it in an envelope.</li>
+      <li><b>About 9:05:</b> stage the scene (jacket, glass, empty vial, the buyer's marker from the tin, scene pages).</li>
+      <li><b>10:00 wrap-up:</b> hand Eric the <b>charter</b> (he signs it, the code is on it). Give Leon the <b>bulletin</b> to read aloud:<br><i>&ldquo;This evening the Keeper of the Black Veil was found dead at his table. The House has lifted its veil, the dead are not dead, and Manchester will hear the rest in the morning.&rdquo;</i> Then read Cassie's letter.</li>
+      <li><b>10:30:</b> everything closes. Then grade (see the run of show).</li>
+    </ol>
+    <h2>The approval words</h2>
+    <table><thead><tr><th>Guest</th><th>Claim</th><th>Check first</th><th>Word</th></tr></thead><tbody>${rows}</tbody></table>
+    <p class="note">The group races need nothing from you: the first member of each group to type all three slip codes wins the point on their own phone, and the survivors race for the vial through the Butler.</p></div>`;
+  const css = `body{font-family:"Liberation Sans",Arial,sans-serif;font-size:10.5pt;color:#000}h1{font-size:17pt;margin:0 0 .08in}h2{font-size:12.5pt;margin:.18in 0 .06in}p,li{margin:.04in 0}ol{padding-left:.25in}table{border-collapse:collapse;width:100%;margin-top:.06in}th,td{border:.6px solid #777;padding:4px 6px;text-align:left;vertical-align:top;font-size:10pt}th{background:#e8e8e8}.w{font:bold 13pt "FreeMono",monospace}.note{font-size:9.5pt;color:#333;margin-top:.14in}@page{size:Letter;margin:.4in}`;
+  const htmlPath = path.join(OUT, "host-sheet.html");
+  writeFileSync(htmlPath, doc("Bartend Joe's host sheet", html, css, true));
+  execFileSync(CHROME, ["--headless", "--no-sandbox", "--disable-gpu", "--no-pdf-header-footer", `--print-to-pdf=${path.join(OUT, "host-sheet.pdf")}`, `file://${htmlPath}`], { stdio: "ignore" });
+  const n = Number(execFileSync("pdfinfo", [path.join(OUT, "host-sheet.pdf")], { encoding: "utf8" }).match(/Pages:\s+(\d+)/)?.[1]);
+  console.log(`  host-sheet.pdf  ${n} page(s)`);
+  return n;
+}
+
 // ---------------------------------------------------------------- slips
-const slipIds = ["fee-voucher", "request-card", "crate-receipt", "dismissal", "pardon-slip", "pardon-receipt", "citation", "false-papers", "telegram-form", "witness-joel", "witness-arjun", "witness-tim", "reply-eric", "reply-diwakar", "reply-erika", "tool-anthony", "tool-sidd", "tool-krrish", "trade-emre", "trade-silas", "trade-tiffany", "charter"] as const;
+const slipIds = ["fee-voucher", "request-card", "crate-receipt", "dismissal", "pardon-slip", "pardon-receipt", "citation", "false-papers", "telegram-form", "witness-arjun", "witness-diwakar", "witness-josh", "witness-leon", "witness-sidd", "reply-angelos", "reply-eric", "reply-erika", "reply-krrish", "reply-theodor", "tool-ananya", "tool-anthony", "tool-joel", "tool-mihir", "tool-tim", "trade-anika", "trade-emre", "trade-molly", "trade-silas", "trade-tiffany", "charter"] as const;
 function slipHtml(id: (typeof slipIds)[number], copy: number): string {
   const p = props.find((q) => q.id === id) ?? fail(`prop ${id} missing`);
   const cl = `<div class="codeline">Code:<span class="code" data-pid="${p.id}" data-code="${p.code}" data-copy="${copy}">${p.code}</span></div>`;
@@ -489,19 +528,27 @@ function slipHtml(id: (typeof slipIds)[number], copy: number): string {
       return wrap("cit", `<h1 style="font-size:17pt">Nuisance Citation</h1><h2>Office of the Sheriff</h2><div class="rule"></div><p>Cited: <b>${esc(leon)}</b>,</p><p style="font-weight:bold">for being insufferable on the air.</p><div class="stamp">One use only</div><div class="grow"></div><div class="sigline">The Sheriff</div>`);
     case "false-papers":
       return wrap("travel", `<div class="fold"></div><h1 style="font-size:17pt">Travel Paper</h1><h2>folded &middot; not to be opened at the door</h2><div class="rule"></div><p>The bearer is permitted to travel and to lodge under the name entered within.</p><div class="stamp" style="color:#2a2a4a;border-color:#2a2a4a">Examined</div><div class="grow"></div><div class="sigline">Issuing office</div>`);
-    case "witness-joel":
     case "witness-arjun":
-    case "witness-tim":
+    case "witness-diwakar":
+    case "witness-josh":
+    case "witness-leon":
+    case "witness-sidd":
       return wrap("court", `<h1 style="font-size:15pt">Witness Slip</h1><h2>I will swear to it</h2><div class="rule"></div><p style="text-align:center">The bearer has asked me to swear to what I saw tonight, and I have said I will.</p><div class="grow"></div><div class="sigline">Witness</div>`);
+    case "reply-angelos":
     case "reply-eric":
-    case "reply-diwakar":
     case "reply-erika":
+    case "reply-krrish":
+    case "reply-theodor":
       return wrap("wiref", `<h1>REPLY</h1><div class="fld">Received your message.</div><div class="fld">Answer: yes.</div><div class="fld">&nbsp;</div><div class="grow"></div><div class="sigline">Replied</div>`);
+    case "tool-ananya":
     case "tool-anthony":
-    case "tool-sidd":
-    case "tool-krrish":
+    case "tool-joel":
+    case "tool-mihir":
+    case "tool-tim":
       return wrap("card", `<h1 style="font-size:15pt">Tool Token</h1><h2>good for one loan</h2><div class="rule"></div><p style="text-align:center">One tool, lent to the bearer for the night: a hammer, a chisel, a file.</p><div class="grow"></div><div class="sigline">Lent by</div>`);
+    case "trade-anika":
     case "trade-emre":
+    case "trade-molly":
     case "trade-silas":
     case "trade-tiffany":
       return wrap("rcpt", `<h1 style="font-size:15pt">Trade Slip</h1><div class="rule"></div><p>One deal done, fair and square, between the bearer and the signer.</p><p>No grabbing. No regrets.</p><div class="grow"></div><div class="sigline">Dealt with</div>`);
@@ -633,7 +680,8 @@ All PDFs are US Letter. Print at 100% / "Actual size" (not "Fit to page"), with 
 | \`exhibits-index.pdf\` | ${pages["exhibits-index"]} | 1 | Plain | HOST ONLY. Every exhibit: page, id, code, where it goes, who holds it, and the tie-breaker question and answer. |
 | \`tags.pdf\` | ${pages.tags} | 1 | Matte white or cream card stock (65 lb) | ${tagCount} tags (3 x 4 per sheet): two of every hidden prop (one spare), one of each carried and table prop. Black fill uses a lot of ink; a laser printer is best. Cut along the dashed grid, tape each tag to or beside its object. No object name is on a tag. |
 | \`tag-key.pdf\` | ${pages["tag-key"]} | 1 | Plain | HOST ONLY. Code, prop, the object in your house, placement, carrier or hiding hint. The five survivor markers (numbers 18 to 22) are not tags and are not in this file. |
-| \`slips.pdf\` | ${pages.slips} | 1 set + a STANDBY set (last ${pages.slips / 2} pages) | Cream paper or light card | The 12 printed deal slips and carried items, each with its own code, exactly once. Pages ${pages.slips / 2 + 1} to ${pages.slips} are STANDBY COPIES for the stand-in tray, marked in the top margin (trim it off). |
+| \`slips.pdf\` | ${pages.slips} | 1 set + a STANDBY set (last ${pages.slips / 2} pages) | Cream paper or light card | The 30 printed slips, each with its own code, exactly once: the deal slips and carried items, the twenty group-race slips (witness, reply, tool, trade: five of each) and the charter Eric signs. Pages ${pages.slips / 2 + 1} to ${pages.slips} are STANDBY COPIES for the stand-in tray, marked in the top margin (trim it off). |
+| \`host-sheet.pdf\` | ${pages["host-sheet"]} | 1 | Plain | HOST ONLY. Bartend Joe's one page: what to hand out and when, and every approval word with what to check before you give it. |
 | \`vial-labels.pdf\` | ${pages["vial-labels"]} | 1 | Cream paper; use a glue stick or double-sided tape | Row 1: the real HOUSE STOCK label (2 copies). Rows 2 to 4: decoys (Camphor Spirits, Spirits of Hartshorn, Oil of Wintergreen), 2 each. Bottles hold WATER ONLY, never oils. |
 | \`fortune-cards.pdf\` | ${pages["fortune-cards"]} | 1 | Card stock (65 to 80 lb), cream or white | 12 cards, 4 per sheet. Joshua Kamin-Sky reads four guests; each guest keeps the card. Cut on the dashed lines. |
 | \`menu.pdf\` | ${pages.menu} | 1 to 2 | Cream paper | Full-page bar menu (frame it by the bar). |
@@ -663,6 +711,7 @@ pages["exhibits-index"] = buildIndex();
 const t = buildTags();
 pages.tags = t.pages;
 pages["tag-key"] = buildTagKey();
+pages["host-sheet"] = buildHostSheet();
 pages.slips = buildSlips();
 pages["vial-labels"] = buildVials();
 pages["fortune-cards"] = buildFortunes();
