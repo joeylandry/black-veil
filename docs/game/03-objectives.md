@@ -12,7 +12,7 @@ anika-swap. **A fair trade** (swap, 1) Strike a bargain with Krrish Vermouth: yo
    - answer: code AFPEP; from Krrish Vermouth
 anika-deal. **A sneaky request** (role, 1) Your father had a signature tune, and you want to know who in this room knew him. Hand Silas Palmer your Mahns Manor voucher ($30) and ask him to play the tune around half past eight and call it a request from the room. Watch who stops, hums or leaves. He hands you a request card: read its code.
    - answer: code RKRGA; from Silas Palmer of the Palm Court
-anika-secret. **What Ananya Codru and Charlie Wakem is hiding** (learn, 1) Everyone has something they would rather not say. Learn Ananya Codru and Charlie Wakem's small secret, not by being told it is a secret, but by earning it.
+anika-secret. **What Ananya Codru and Charlie Wakem is hiding** (learn, 1) Everyone has something they would rather not say. Learn Ananya Codru and Charlie Wakem's small secret, not by being told it is a secret, but by earning it. Someone is guarding this one, so expect a harder time: a real try still earns half a point.
    - answer: [no sender]; from Ananya Codru and Charlie Wakem, Rebecca Chow, Butler of the Black Veil
 
 ## J. Bruce Wayne
@@ -73,7 +73,7 @@ theodor-find. **A thing to find** (find, 1) Find the Eighteenth Amendment. It is
    - answer: code 2Y34A
 theodor-deal. **The Leon matter** (role, 1) You hold a Nuisance Citation against Leon Gee for being insufferable. Take a bribe from a go-between and tear the citation up: the go-between hands you a Pardon slip. Type the code on the slip.
    - answer: code U7WNK; from Leon Gee of WFEA, Tiffany Liu of the Lamps
-theodor-secret. **What Krrish Vermouth is hiding** (learn, 1) Everyone has something they would rather not say. Learn Krrish Vermouth's small secret, not by being told it is a secret, but by earning it.
+theodor-secret. **What Krrish Vermouth is hiding** (learn, 1) Everyone has something they would rather not say. Learn Krrish Vermouth's small secret, not by being told it is a secret, but by earning it. Someone is guarding this one, so expect a harder time: a real try still earns half a point.
    - answer: [grey hudson | grey]; from Krrish Vermouth, Dr. Emmerich Sunner
 theodor-keep. **Your own secret** (keep, 1) Your small secret is worth two halves. Let Anthony Hung, Esq. earn it from you (half a point), and make sure Rebecca Chow, Butler of the Black Veil never does (half a point). You will not be asked anything: it is scored from what they each learn.
    - answer: Anthony Hung, Esq. learns it (anthony-secret) and Rebecca Chow, Butler of the Black Veil does not (rebecca-secret); from Anthony Hung, Esq.
@@ -138,7 +138,7 @@ leon-find. **A thing to find** (find, 1) Find the launch's fog horn. It is hidde
    - answer: code V23EE
 leon-deal. **Out of the cell** (role, 1) Sheriff Farrago holds a citation against you, for being insufferable on the air. Pay a go-between at least $50 in House bills to broker a pardon. Tiffany Liu is the best choice. She hands you a go-between's receipt: read its code.
    - answer: code RU647; from Tiffany Liu of the Lamps, Sheriff Theodor Farrago
-leon-secret. **What Dr. Emmerich Sunner is hiding** (learn, 1) Everyone has something they would rather not say. Learn Dr. Emmerich Sunner's small secret, not by being told it is a secret, but by earning it.
+leon-secret. **What Dr. Emmerich Sunner is hiding** (learn, 1) Everyone has something they would rather not say. Learn Dr. Emmerich Sunner's small secret, not by being told it is a secret, but by earning it. Someone is guarding this one, so expect a harder time: a real try still earns half a point.
    - answer: [beet | beets]; from Dr. Emmerich Sunner, Tim McGinley, Baron of Bathtub Gin
 leon-money. **Money to make** (money, 1) Sell a plug, a dedication, a station break. Leave with at least $160. Count your bills at the end and submit the total. Bartend Joe may ask to see them.
    - answer: at least $160
@@ -151,7 +151,7 @@ ananya-find. **A thing to find** (find, 1) Find the vault cloche. It is hidden i
    - answer: code J84CN
 ananya-swap. **A fair trade** (swap, 1) Strike a bargain with Erika Lamm: your blank telegram form for their set of false papers. It must be a deal, never a grab. When you hold it, read the code on its tag.
    - answer: code ERYTJ; from Erika Lamm
-ananya-secret. **What Rebecca Chow, Butler of the Black Veil is hiding** (learn, 1) Everyone has something they would rather not say. Learn Rebecca Chow, Butler of the Black Veil's small secret, not by being told it is a secret, but by earning it.
+ananya-secret. **What Rebecca Chow, Butler of the Black Veil is hiding** (learn, 1) Everyone has something they would rather not say. Learn Rebecca Chow, Butler of the Black Veil's small secret, not by being told it is a secret, but by earning it. Someone is guarding this one, so expect a harder time: a real try still earns half a point.
    - answer: [cold tea]; from Rebecca Chow, Butler of the Black Veil, Tim McGinley, Baron of Bathtub Gin
 ananya-keep. **Your own secret** (keep, 1) Your small secret is worth two halves. Let Angelos Bowles earn it from you (half a point), and make sure Anika Mahns of Mahns Manor never does (half a point). You will not be asked anything: it is scored from what they each learn.
    - answer: Angelos Bowles learns it (angelos-secret) and Anika Mahns of Mahns Manor does not (anika-secret); from Angelos Bowles
@@ -190,7 +190,7 @@ sidd-money. **Money to make** (money, 1) Sell rides in your plane to anyone with
    - answer: at least $200
 sidd-find. **A thing to find** (find, 1) Find the route globe. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. The whole world turns on a stand by the window, with the hours marked round its rim.
    - answer: code E3HTT
-sidd-secret. **What Judge Eric Leeway is hiding** (learn, 1) Everyone has something they would rather not say. Learn Judge Eric Leeway's small secret, not by being told it is a secret, but by earning it.
+sidd-secret. **What Judge Eric Leeway is hiding** (learn, 1) Everyone has something they would rather not say. Learn Judge Eric Leeway's small secret, not by being told it is a secret, but by earning it. Someone is guarding this one, so expect a harder time: a real try still earns half a point.
    - answer: [clerk]; from Judge Eric Leeway, Anthony Hung, Esq.
 sidd-story2. **The thing behind the wall** (story, 1) A wall in the Merrimack Room hides something. Learn what, from those who built or swept it.
    - answer: [vault | safe]; from Adam Holdsfire, Joshua Kamin-Sky
@@ -203,7 +203,7 @@ josh-find. **A thing to find** (find, 1) Find the star-marked salt. It is hidden
    - answer: code X8WCT
 josh-swap. **A fair trade** (swap, 1) Strike a bargain with Tiffany Liu of the Lamps: your soothsayer's charm for their glass earring. It must be a deal, never a grab. When you hold it, read the code on its tag.
    - answer: code 66M4W; from Tiffany Liu of the Lamps
-josh-secret. **What Tiffany Liu of the Lamps is hiding** (learn, 1) Everyone has something they would rather not say. Learn Tiffany Liu of the Lamps's small secret, not by being told it is a secret, but by earning it.
+josh-secret. **What Tiffany Liu of the Lamps is hiding** (learn, 1) Everyone has something they would rather not say. Learn Tiffany Liu of the Lamps's small secret, not by being told it is a secret, but by earning it. Someone is guarding this one, so expect a harder time: a real try still earns half a point.
    - answer: [chisel]; from Tiffany Liu of the Lamps, Mihir Nagarkatti of Nag Oil
 josh-prophecy. **The prophecy** (approval, 1) Before half past eight, tell Bartend Joe at the bar the exact minute you think the scream will come. He seals it in an envelope. After the scream, if you called it, tap Claim this point and go back to Joe for your approval word.
    - answer: the host confirms it in person and gives the approval word "saffron"
@@ -257,7 +257,7 @@ diwakar-find. **A thing to find** (find, 1) Find the champion's weight. It is hi
    - answer: code GXG4U
 diwakar-swap. **A fair trade** (swap, 1) Strike a bargain with Angelos Bowles: your carnival giraffe for their House chip. It must be a deal, never a grab. When you hold it, read the code on its tag.
    - answer: code YYRM4; from Angelos Bowles
-diwakar-secret. **What Tim McGinley, Baron of Bathtub Gin is hiding** (learn, 1) Everyone has something they would rather not say. Learn Tim McGinley, Baron of Bathtub Gin's small secret, not by being told it is a secret, but by earning it.
+diwakar-secret. **What Tim McGinley, Baron of Bathtub Gin is hiding** (learn, 1) Everyone has something they would rather not say. Learn Tim McGinley, Baron of Bathtub Gin's small secret, not by being told it is a secret, but by earning it. Someone is guarding this one, so expect a harder time: a real try still earns half a point.
    - answer: [cuff]; from Tim McGinley, Baron of Bathtub Gin, Krrish Vermouth
 diwakar-keep. **Your own secret** (keep, 1) Your small secret is worth two halves. Let Krrish Vermouth earn it from you (half a point), and make sure Tim McGinley, Baron of Bathtub Gin never does (half a point). You will not be asked anything: it is scored from what they each learn.
    - answer: Krrish Vermouth learns it (krrish-secret) and Tim McGinley, Baron of Bathtub Gin does not (tim-secret); from Krrish Vermouth
@@ -270,7 +270,7 @@ tim-find. **A thing to find** (find, 1) Find the launch's fog horn. It is hidden
    - answer: code V23EE
 tim-swap. **A fair trade** (swap, 1) Strike a bargain with Arjun Bat: your jar of bathtub gin for their signed baseball. It must be a deal, never a grab. When you hold it, read the code on its tag.
    - answer: code YY72H; from Arjun Bat
-tim-secret. **What Diwakar Sandbagg is hiding** (learn, 1) Everyone has something they would rather not say. Learn Diwakar Sandbagg's small secret, not by being told it is a secret, but by earning it.
+tim-secret. **What Diwakar Sandbagg is hiding** (learn, 1) Everyone has something they would rather not say. Learn Diwakar Sandbagg's small secret, not by being told it is a secret, but by earning it. Someone is guarding this one, so expect a harder time: a real try still earns half a point.
    - answer: [stay down]; from Diwakar Sandbagg, Ananya Codru and Charlie Wakem
 tim-keep. **Your own secret** (keep, 1) Your small secret is worth two halves. Let Erika Lamm earn it from you (half a point), and make sure Diwakar Sandbagg never does (half a point). You will not be asked anything: it is scored from what they each learn.
    - answer: Erika Lamm learns it (erika-secret) and Diwakar Sandbagg does not (diwakar-secret); from Erika Lamm
@@ -279,7 +279,7 @@ tim-keep. **Your own secret** (keep, 1) Your small secret is worth two halves. L
 
 rebecca-find. **A thing to find** (find, 1) Find the vault cloche. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. A glass dome over a marble stand hides what the House keeps under glass.
    - answer: code J84CN
-rebecca-secret. **What Sheriff Theodor Farrago is hiding** (learn, 1) Everyone has something they would rather not say. Learn Sheriff Theodor Farrago's small secret, not by being told it is a secret, but by earning it.
+rebecca-secret. **What Sheriff Theodor Farrago is hiding** (learn, 1) Everyone has something they would rather not say. Learn Sheriff Theodor Farrago's small secret, not by being told it is a secret, but by earning it. Someone is guarding this one, so expect a harder time: a real try still earns half a point.
    - answer: [shoebox | shoe box]; from Sheriff Theodor Farrago, Molly Daniel of the Manchester Union
 rebecca-keep. **Your own secret** (keep, 1) Your small secret is worth two halves. Let Tiffany Liu of the Lamps earn it from you (half a point), and make sure Ananya Codru and Charlie Wakem never does (half a point). You will not be asked anything: it is scored from what they each learn.
    - answer: Tiffany Liu of the Lamps learns it (tiffany-secret) and Ananya Codru and Charlie Wakem does not (ananya-secret); from Tiffany Liu of the Lamps

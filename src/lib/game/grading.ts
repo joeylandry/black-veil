@@ -45,6 +45,9 @@ function item(guest: string, kind: GradeItem["kind"], itemId: string, verdict: V
   return { guest, kind, itemId, verdict, points, max, rationale, needsReview, source: "auto" };
 }
 
+/** Secrets that another guest was told to keep from you: if they guard it well you still earn half for trying. */
+const guardedObjectives = new Set(characters.flatMap((c) => c.objectives.flatMap((o) => (o.check.kind === "keep" ? [o.check.rivalObjective] : []))));
+
 const none = (guest: string, kind: GradeItem["kind"], itemId: string, max: number, why = "No answer was submitted.") => item(guest, kind, itemId, "reject", 0, max, why);
 
 // ---------------------------------------------------------------- objectives
@@ -106,6 +109,7 @@ function gradeObjective(guest: string, objective: Objective, context: Context): 
         return item(guest, "objective", id, "accept", max, max, "The answer matches.");
       }
       if (proof && matchesPattern(proof, check.all)) return item(guest, "objective", id, "reject", 0, max, "The answer box is wrong, but the proof note contains the answer.", true);
+      if (guardedObjectives.has(id)) return item(guest, "objective", id, "partial", max / 2, max, "Someone was guarding this secret and guarded it well. Half a point for trying.");
       const partial = check.all.some((group) => matchesAny(answer, group));
       return item(guest, "objective", id, "reject", 0, max, partial ? "Only part of the answer is there." : "The answer does not match.", partial && check.all.length > 1);
     }

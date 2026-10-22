@@ -82,7 +82,7 @@ describe("objectives", () => {
     const right = autoGrade({ submissions: [sub("anika", "objective", "anika-secret", `It is the ${key}`)], events: [], truth: truth() });
     assert.equal(objectiveItem(right, "anika-secret").points, 1);
     const wrong = autoGrade({ submissions: [sub("anika", "objective", "anika-secret", "Mabel")], events: [], truth: truth() });
-    assert.equal(objectiveItem(wrong, "anika-secret").points, 0);
+    assert.equal(objectiveItem(wrong, "anika-secret").points, 0.5, "anika's secret is guarded by a keeper: half a point for a real try");
     const typo = autoGrade({ submissions: [sub("rebecca", "objective", "rebecca-secret", "the shoebax")], events: [], truth: truth() });
     assert.equal(objectiveItem(typo, "rebecca-secret").points, 1, "one slipped letter in 'shoebox'");
   });
@@ -210,7 +210,7 @@ describe("resubmission", () => {
       assert.equal(objectiveItem(items, "anika-secret").points, 1);
     }
     const wrongLast = autoGrade({ submissions: [sub("anika", "objective", "anika-secret", key, 100), sub("anika", "objective", "anika-secret", "Mabel", 200)], events: [], truth: truth() });
-    assert.equal(objectiveItem(wrongLast, "anika-secret").points, 0);
+    assert.equal(objectiveItem(wrongLast, "anika-secret").points, 0.5);
   });
   it("keeps one entry per guest, kind and item", () => {
     const latest = latestSubmissions([sub("a", "objective", "x", "1", 1), sub("a", "objective", "x", "2", 2), sub("a", "mystery", "x", "3", 3), sub("b", "objective", "x", "4", 4)]);

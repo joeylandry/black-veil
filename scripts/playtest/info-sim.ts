@@ -251,7 +251,11 @@ export function runNight(conditions: Conditions): RunResult {
     const me = state.get(guest.id)!;
     // objectives answered
     for (const objective of guest.objectives) {
-      if (!done.get(objective.id)) continue;
+      if (!done.get(objective.id)) {
+        // a guarded secret that stayed guarded: the rival still types a guess
+        if (rivalOf.has(objective.id) && random() < 0.9) submissions.push({ guest: guest.id, kind: "objective", itemId: objective.id, answer: "no idea", proof: "", at: (clock += 100) });
+        continue;
+      }
       if (["keep", "vial-attempt", "butler-sale"].includes(objective.check.kind)) {
         if (objective.check.kind === "keep") {
           // scored from the seekers' answers, which are submitted when they learned it
@@ -426,7 +430,50 @@ function report(results: RunResult[]): string {
   return lines.join("\n");
 }
 
-if (process.argv[2] === "fairness") {
+/** Twenty nights with nearly everyone there (0 to 2 absent, the Butler always present). */
+export function fullHouse(runs = 20) {
+  const results: RunResult[] = [];
+  for (let index = 0; index < runs; index += 1) {
+    results.push(runNight({ seed: 7700 + index * 23, absent: index % 3, talks: 10 + (index % 7), secretShare: 0.3, earn: 0.85 }));
+  }
+  return results;
+}
+
+function fullReport(results: RunResult[]): string {
+  const lines = [report(results), "", "## Who wins (full house)", ""];
+  const wins = new Map<string, { wins: number; ties: number; total: number; nights: number; ranks: number }>();
+  for (const run of results) {
+    const rows = run.standings.standings;
+    const top = rows[0].total;
+    rows.forEach((row, index) => {
+      const e = wins.get(row.guest) ?? { wins: 0, ties: 0, total: 0, nights: 0, ranks: 0 };
+      e.nights += 1; e.total += row.total; e.ranks += index + 1;
+      if (row.total >= top - 0.001) { e.ties += 1; if (rows.filter((r) => r.total >= top - 0.001).length === 1) e.wins += 1; }
+      wins.set(row.guest, e);
+    });
+  }
+  lines.push("| Guest | Role | Group | Outright wins | Top (incl. ties) | Mean score | Mean rank |", "|---|---|---|---|---|---|---|");
+  [...wins.entries()].sort((a, b) => b[1].ties - a[1].ties || b[1].total - a[1].total).forEach(([id, e]) => {
+    const c = characterById.get(id)!;
+    lines.push(`| ${c.name} | ${c.occupation} | ${c.circle} | ${e.wins} | ${e.ties} | ${f(e.total / e.nights, 1)} | ${f(e.ranks / e.nights, 1)} |`);
+  });
+  const tied = results.filter((run) => run.standings.standings.filter((r) => r.total >= run.standings.standings[0].total - 0.001).length > 1).length;
+  lines.push("", `Nights with a tie for first: ${tied} of ${results.length}.`);
+  const byCircle = new Map<string, number>();
+  for (const run of results) byCircle.set(characterById.get(run.standings.standings[0].guest)!.circle, (byCircle.get(characterById.get(run.standings.standings[0].guest)!.circle) ?? 0) + 1);
+  lines.push("", "Winner's group: " + [...byCircle.entries()].map(([k, v]) => `${k} ${v}`).join(", "));
+  const byProfile = new Map<string, number>();
+  for (const run of results) { const p = run.profiles[run.standings.standings[0].guest]; byProfile.set(p, (byProfile.get(p) ?? 0) + 1); }
+  lines.push("", "Winner's play style: " + [...byProfile.entries()].map(([k, v]) => `${k} ${v}`).join(", "));
+  return lines.join("\n");
+}
+
+if (process.argv[2] === "full") {
+  const results = fullHouse(Number(process.argv[3] ?? 20));
+  const text = fullReport(results);
+  console.log(text);
+  if (process.argv[4]) writeFileSync(process.argv[4], `${text}\n`);
+} else if (process.argv[2] === "fairness") {
   const rows = fairness(Number(process.argv[3] ?? 300));
   const avg = mean(rows.map((row) => row.total));
   console.log("guest, mean objectives (of 5), mean total (of 20)");

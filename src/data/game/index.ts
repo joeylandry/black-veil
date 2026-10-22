@@ -239,13 +239,15 @@ function raceFor(character: Character) {
   return { group: circleById.get(character.circle)!.name, title: race.title, text: race.text, ask: race.ask, house: race.circle === "survivors", points: 1, slips };
 }
 
+const guardedObjectiveIds = new Set(characters.flatMap((c) => c.objectives.flatMap((o) => (o.check.kind === "keep" ? [o.check.rivalObjective] : []))));
+
 export function renderObjective(objective: Objective): RenderedObjective {
   const prop = objective.prop ? propById.get(objective.prop) : undefined;
   return {
     id: objective.id,
     kind: objective.kind,
     title: renderText(objective.title, objective),
-    text: renderText(objective.text, objective),
+    text: renderText(objective.text, objective) + (guardedObjectiveIds.has(objective.id) ? " Someone is guarding this one, so expect a harder time: a real try still earns half a point." : ""),
     ask: objective.ask,
     points: objective.points,
     prop: prop && objective.kind === "find" ? { name: prop.name } : undefined,
