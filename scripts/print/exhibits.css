@@ -369,16 +369,18 @@ body { font-family: var(--serif); color: var(--ink); font-size: 11pt; -webkit-pr
 .menu .bites { display: grid; grid-template-columns: 1fr 1fr; column-gap: .4in; }
 .menu .bites .ds { margin-bottom: .05in; }
 .menu .foot { position: absolute; left: .7in; right: .7in; bottom: .35in; text-align: center; font: italic 11pt var(--serif); color: #4a3826; border-top: 1px solid #8a6a22; padding-top: .08in; }
-.mcard { position: absolute; inset: auto; width: 8.5in; height: 5.5in; background: #f3e8cc; overflow: hidden; }
+.mcard { position: absolute; inset: auto; width: 8.1in; height: 5.2in; border: 1px solid #8a6a22; background: #f3e8cc; overflow: hidden; }
 .mcard .band { padding: .16in .3in .12in; }
 .mcard .band h1 { font-size: 26pt; }
 .mcard .band .by { font-size: 12pt; }
 .mcard .band .med { margin-top: .06in; font-size: 8pt; }
 .mcard .body { padding: .02in .5in 0; display: grid; grid-template-columns: 1fr 1fr; column-gap: .45in; }
-.mcard h2 { font-size: 11.5pt; margin: .06in 0 .07in; }
+.mcard h2 { font-size: 11pt; margin: .04in 0 .06in; }
 .mcard .it { margin-bottom: .05in; }
 .mcard .it .nm { font-size: 12pt; }
 .mcard .it .pr { font-size: 10pt; }
 .mcard .ds { font-size: 10pt; margin: -.03in 0 .07in; }
+.mcard .bitesrow { position: absolute; left: .5in; right: .5in; bottom: .42in; text-align: center; font: italic 10.5pt var(--serif); color: #4a3826; border-top: 1px solid #8a6a22; padding-top: .05in; }
+.mcard .bitesrow b { color: #6e1e1e; letter-spacing: .15em; text-transform: uppercase; font-style: normal; font-size: 9.5pt; }
 .mcard .foot { bottom: .1in; font-size: 9.5pt; }
 .cutpage { position: absolute; left: 0; right: 0; top: 5.5in; height: 0; border-top: 1.2px dashed #8d8d8d; }

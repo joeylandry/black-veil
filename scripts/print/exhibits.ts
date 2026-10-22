@@ -562,21 +562,22 @@ function buildFortunes() {
 function menuBody(card: boolean) {
   const it = (m: { name: string; desc: string }, price = true) => `<div class="it"><span class="nm">${esc(m.name)}</span><span class="dots"></span>${price ? `<span class="pr">${esc(menuPriceNote)}</span>` : ""}</div><div class="ds">${esc(m.desc)}</div>`;
   const band = `<div class="band"><h1>${esc(menuTitle)}</h1><div class="by">${esc(menuBy)}</div><div class="med">${esc(menuNotice)}</div></div>`;
-  const drinks = `<div><h2>Tonics &amp; Medicines</h2>${menuDrinks.map(it).join("")}</div>`;
-  const bites = `<div><h2>${esc(menuBitesTitle)} &middot; ${esc(menuPriceNote)}</h2><div class="bites">${menuBites.map((b) => `<div>${it(b, false)}</div>`).join("")}</div></div>`;
+  const drinks = `<div><h2>Tonics &amp; Medicines</h2>${menuDrinks.map((m) => it(m)).join("")}</div>`;
+  const bites = `<div><h2>${esc(menuBitesTitle)}</h2><div class="bites">${menuBites.map((b) => `<div>${it(b, false)}</div>`).join("")}</div></div>`;
   const foot = `<div class="foot">All prices: ${esc(menuPriceNote)}. The House reserves the right to ask no questions.</div>`;
   if (card) {
     const half = Math.ceil(menuDrinks.length / 2);
-    const left = `<div><h2>Tonics &amp; Medicines</h2>${menuDrinks.slice(0, half).map(it).join("")}</div>`;
-    const right = `<div><h2>&nbsp;</h2>${menuDrinks.slice(half).map(it).join("")}<h2>${esc(menuBitesTitle)}</h2>${menuBites.map((b) => `<div class="it"><span class="nm">${esc(b.name)}</span></div>`).join("")}</div>`;
-    return `${band}<div class="body">${left}${right}</div>${foot}`;
+    const left = `<div><h2>Tonics &amp; Medicines</h2>${menuDrinks.slice(0, half).map((m) => it(m)).join("")}</div>`;
+    const right = `<div><h2>&nbsp;</h2>${menuDrinks.slice(half).map((m) => it(m)).join("")}</div>`;
+    const bar = `<div class="bitesrow"><b>${esc(menuBitesTitle)}:</b> ${menuBites.map((b) => esc(b.name)).join(" &middot; ")}</div>`;
+    return `${band}<div class="body">${left}${right}</div>${bar}${foot}`;
   }
   return `${band}<div class="body">${drinks}${bites}</div>${foot}`;
 }
 function buildMenu() {
   const full = `<div class="page"><div class="menu">${menuBody(false)}</div></div>`;
   const a = build("menu", doc("Black Veil menu", full));
-  const cards = `<div class="page"><div class="menu mcard chk" style="left:0;top:0">${menuBody(true)}</div><div class="cutpage"></div><div class="menu mcard chk" style="left:0;top:5.5in">${menuBody(true)}</div></div>`;
+  const cards = `<div class="page"><div class="menu mcard chk" style="left:.2in;top:.15in">${menuBody(true)}</div><div class="cutpage"></div><div class="menu mcard chk" style="left:.2in;top:5.65in">${menuBody(true)}</div></div>`;
   const b = build("menu-table-card", doc("Black Veil table card", cards));
   return a + b;
 }
