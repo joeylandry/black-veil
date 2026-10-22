@@ -168,7 +168,7 @@ function invitationCard(name: string, top: string, id: string): string {
   const word = privateWord(id);
   return `<div class="inv" style="top:${top}"><div class="req">THE HOUSE REQUESTS</div>
     <div class="to">${esc(name)}</div>
-    <div class="body">the pleasure of your company at the Black Veil, Friday the twenty-third of October, nineteen twenty-six. Doors at eight o'clock. Dress for the masquerade. Discretion is expected.</div>
+    <div class="body">the pleasure of your company at the Black Veil, on the twenty-third of October, nineteen twenty-six. Doors at eight o'clock. Dress for the masquerade. Discretion is expected.</div>
     ${word ? `<div class="word"><b>A private word:</b>${esc(word)}</div>` : ""}
     <div class="sig">The House</div></div>`;
 }
