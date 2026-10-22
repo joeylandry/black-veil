@@ -24,7 +24,7 @@ export const brief1924: { heading: string; bullets: string[] }[] = [
   },
   {
     heading: "Last call",
-    bullets: ["You will be asked three things: what really happened in 1924, who did it tonight and how, and who the dead man was to the Veil."],
+    bullets: ["You will be asked three things: what really happened in 1924, who did it tonight and how, and who the dead man is."],
   },
   {
     heading: "A word to the survivors",

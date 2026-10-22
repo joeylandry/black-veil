@@ -113,7 +113,7 @@ Cash in the room: **$2,740.**
 >
 > **Five survivors in the room.** Five souls the papers swore were lost in 1924 are here tonight in borrowed names and borrowed faces, sipping your drinks and watching your hands. They are guests like you. Before the lights come up you may point at up to five of your fellow guests and say *survivor*. Be right and it pays. Be wrong and it stings.
 >
-> **Last call.** You will be asked three things: what really happened in 1924, who did it tonight and how, and who the dead man was to the Veil.
+> **Last call.** You will be asked three things: what really happened in 1924, who did it tonight and how, and who the dead man is.
 >
 > **A word to the survivors.** If you are one of the five, your private page already knows. Everyone else's has the same sealed flap with nothing behind it. Nobody can tell by looking. Keep a straight face. Everyone's objectives are released at the start of the game, and the survivors find out who they are at the same moment.
 
