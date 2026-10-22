@@ -560,15 +560,15 @@ function buildFortunes() {
 
 // ---------------------------------------------------------------- menu
 function menuBody(card: boolean) {
-  const it = (m: { name: string; desc: string }) => `<div class="it"><span class="nm">${esc(m.name)}</span><span class="dots"></span><span class="pr">${esc(menuPriceNote)}</span></div><div class="ds">${esc(m.desc)}</div>`;
+  const it = (m: { name: string; desc: string }, price = true) => `<div class="it"><span class="nm">${esc(m.name)}</span><span class="dots"></span>${price ? `<span class="pr">${esc(menuPriceNote)}</span>` : ""}</div><div class="ds">${esc(m.desc)}</div>`;
   const band = `<div class="band"><h1>${esc(menuTitle)}</h1><div class="by">${esc(menuBy)}</div><div class="med">${esc(menuNotice)}</div></div>`;
   const drinks = `<div><h2>Tonics &amp; Medicines</h2>${menuDrinks.map(it).join("")}</div>`;
-  const bites = `<div><h2>${esc(menuBitesTitle)}</h2><div class="bites">${menuBites.map((b) => `<div>${it(b)}</div>`).join("")}</div></div>`;
+  const bites = `<div><h2>${esc(menuBitesTitle)} &middot; ${esc(menuPriceNote)}</h2><div class="bites">${menuBites.map((b) => `<div>${it(b, false)}</div>`).join("")}</div></div>`;
   const foot = `<div class="foot">All prices: ${esc(menuPriceNote)}. The House reserves the right to ask no questions.</div>`;
   if (card) {
     const half = Math.ceil(menuDrinks.length / 2);
     const left = `<div><h2>Tonics &amp; Medicines</h2>${menuDrinks.slice(0, half).map(it).join("")}</div>`;
-    const right = `<div><h2>&nbsp;</h2>${menuDrinks.slice(half).map(it).join("")}<h2>${esc(menuBitesTitle)}</h2>${menuBites.map((b) => `<div class="it"><span class="nm">${esc(b.name)}</span><span class="dots"></span><span class="pr">${esc(menuPriceNote)}</span></div>`).join("")}</div>`;
+    const right = `<div><h2>&nbsp;</h2>${menuDrinks.slice(half).map(it).join("")}<h2>${esc(menuBitesTitle)}</h2>${menuBites.map((b) => `<div class="it"><span class="nm">${esc(b.name)}</span></div>`).join("")}</div>`;
     return `${band}<div class="body">${left}${right}</div>${foot}`;
   }
   return `${band}<div class="body">${drinks}${bites}</div>${foot}`;
