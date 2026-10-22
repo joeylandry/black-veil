@@ -6,7 +6,7 @@ For your read before you pick the five survivors. Nothing here changes the live 
 
 **You approved:** the Succession plan; the pairs and the affair; the secrets; the overall winner by points; the receipts; the wall pieces; the background summary on every card; the real objects.
 
-**Still open (yours):** the five survivors, the point values (placeholders below), and what is on the drinks menu.
+**You picked the survivors:** Mihir, Rhea, Adam, Anthony and Molly. Section 11 lists what has to adjust. **Still open (yours):** OK on those adjustments, the point values (placeholders below), and what is on the drinks menu.
 
 **Is Cassie's pin and the dial real?** No, they are story only. They appear on paper (the vault memorandum, the old man's jacket note, one of the questions) and nobody opens anything at the party. If you want a prop, a lapel pin taped to the portrait frame is enough.
 
@@ -65,7 +65,7 @@ Five groups. Each holds one survivor; a survivor is ranked with the other four f
 | **Ananya Codru and Charlie Wakem** | Night telegraph office | The Wire & the Stage | Affair with Luke (hide). Swap with Erika | printed telegram form |
 | **Luke Shelldon** | Carnival barker | The Wire & the Stage | Affair with Ananya (hide). Swap with Angelos | giraffe whittling |
 | **Silas Palmer of the Palm Court** | Jazz scat singer | The Wire & the Stage | Sneaky deal with Anika. Five-minute spotlight at 8:30 | — |
-| **Joshua Kamin-Sky** | Soothsayer | The Working Folk | Swap with Tiffany. Finds the star-marked kosher salt (it stays in place) | something you will find |
+| **Joshua Kamin-Sky** | Soothsayer | The Working Folk | The Soothsayer's two jobs (below). Swap with Tiffany. Finds the star-marked kosher salt (it stays in place) | something you will find |
 | **Arjun Bat** | Slugger | The Working Folk | Swap with Adam | baseball |
 | **Adam Holdsfire** | Gunsmith | The Working Folk | Swap with Arjun | the little brown box |
 | **Tiffany Liu of the Lamps** | Stained-glass artist | The Working Folk | Go-between for the pardon (first choice). Swap with Josh | an earring |
@@ -82,7 +82,9 @@ Five groups. Each holds one survivor; a survivor is ranked with the other four f
 - **Leon and Theodor, the pardon (our old bribe-and-payoff mechanic):** Leon mocks the Sheriff on the radio, and Theodor suspects an unlicensed second transmitter (the same one that sends Cassie's "I am well" items). Theodor holds a one-use citation for Leon. Leon can pay a go-between at least $50 in fake bills (Tiffany first, or Eric or Rebecca), who hands Theodor a pardon slip. Theodor chooses: serve the citation (small reward) or take the bribe (bigger reward). Leon and the go-between score when it goes through. It never touches the murder scoring.
 - **Anika and Silas, the sneaky deal:** Anika wants to know who in the room knew her father, the Silent Partner. She pays Silas $30 to play her father's signature tune at 8:30 and say it was a request. Silas gets a five-minute spotlight. They both note who stops, hums or leaves, and neither may admit the deal.
 - **Erika and Rebecca, the planned alibi:** Erika swears she was with Rebecca at 9:15, so the Butler who finds the body is not suspected. Rebecca already sells alibis at $20.
-- **Eric and Molly, the leak:** he tips her a verdict a day early, and she prints it as news.
+- **Eric and Molly, the leak:** he tips her a verdict a day early, and she prints it as news. *(If Molly is a survivor this becomes Eric and Tim: Tim sends the Judge a crate every Friday and the Judge quietly dismisses Tim's cases.)*
+
+**Josh's role, the Soothsayer.** Two jobs, neither of which gives anything away alone. (1) *The prophecy:* before 8:30 he writes down the exact minute he thinks the scream will come, and you seal it in an envelope and open it at 9:15. (2) *The fortunes:* you give him a deck of twelve fortune cards. Each is a cryptic true hint, a partial clue about a different fact, and he has to read the fortunes of four guests. Each guest keeps the card, and it counts as a printed page.
 
 ## 4. What every guest is told
 
@@ -102,7 +104,7 @@ Five groups. Each holds one survivor; a survivor is ranked with the other four f
 
 **The envelopes.** Everyone gets the same black envelope. The 19 find the House's invitation inside. The five find Cassie's unsigned invitation (it ends "The veil lifts") and their numbered marker. The outsides are identical, so the envelope proves nothing.
 
-**The House's asks.** The House's invitation also gives seven of the 19 a private line telling them what to bring at half past nine: the Sheriff his badge and a Bible, the Judge his pen and seal, the Doctor a blank certificate, the Lawyer a blank charter, the Newsie and the radio announcer a blank headline and bulletin, the Butler the keys. None of them is told why. Put together, that is the Succession.
+**The House's asks.** The House's invitation also gives seven of the 19 a private line telling them what they will be asked to do at half past nine: the Sheriff to swear him in, the Judge to sign the charter, the Doctor to certify a death, the Lawyer to file the charter, the Newsie and the radio announcer to print and broadcast it, the Butler to hand over the House. None of them is told why. Nobody brings anything: you lay out a Bible, the court seal, a blank certificate, a blank charter, a blank headline and a blank bulletin on the black table before the doors open. Put together, the lines are the Succession.
 
 ## 5. The mysteries, with the answers
 
@@ -125,9 +127,9 @@ Three mysteries are worth 100 points; everyone's errands are worth 60. Whoever f
 - **Question A (16, instead of New 1):** *What did the Keeper come to the Black Veil to do tonight, and how did he mean to do it?* Answer: crown himself the new head of the Black Veil at half past nine, before the 19 as witnesses (6); their secrets were his leash and each had to sign (5); Cassie had to be declared dead so the vault and books would pass to him (5). It does not include the five, since he does not know they are there.
 - **Question B (12, instead of New 2):** *Where are the Keeper's books, and what does it take to open them?* Answer: in the vault behind the Merrimack Room's second window (4); three keys, the Keeper's ring, the Silent Partner's brass key and Cassie's diamond pin (5); then a dial only Cassie sets (3).
 
-**The tie-breaker order** (already in the scoring code): total points, then mystery points, then the points from the "who" question (Question A for the killer and the Butler), then survivors correctly named, then errands, then printed pages found, then who finished first. A final hash makes sure there is exactly one winner.
+**The tie-breaker.** You remembered right: the earlier design had a tie-breaker question, and the scoring code does not have it yet. It is worth zero points: every guest's final form asks *"At what minute did the Keeper take the poison?"* The true answer is the minute the killer typed the nightcap code (the site logs it), and the coroner's report points at "about nine o'clock." If two guests tie on total points, the closer guess wins. The full order is then: total points; mystery points; the tie-breaker question; the "who" question (Question A for the killer and the Butler); survivors correctly named; errands; printed pages found; who finished first. A last hash makes sure there is exactly one winner. I would add the question to the code when I load the rest.
 
-**Other points (current values, placeholders):** each printed page filed is worth 2 (cap 12); each survivor named right is +4 and wrong is −2 (capped at +20 and −10); a survivor who stays hidden earns up to 20; the killer's bonus is currently a flat +6, which should become "one point above the next-best survivor," as you decided.
+**Other points (current values, placeholders):** each printed page filed is worth 2 (cap 12); each survivor named right is +4 and wrong is −2 (capped at +20 and −10); a survivor who stays hidden earns up to 20; the killer's bonus is currently a flat +6 in the code; it becomes +1 above the next-best survivor, as you decided (the killer is one point above their group).
 
 ## 6. Can everyone solve it? The clue map
 
@@ -214,19 +216,32 @@ Each is gossip a second guest can earn, and each is one small piece of one clue,
 | Sidd | Trained a mechanic who was later paid to be careless once | The aeroplane crash was no accident |
 | Krrish | Delivered a crate of wine in November 1924 on a draft signed K. Kessler to a grey Hudson that later turned up in the river | The hitman's car |
 
-## 11. The five survivors: how they work, and your pick
+## 11. The five survivors: your pick is Mihir, Rhea, Adam, Anthony and Molly
 
-**How it works.** Five of the 24 are the survivors, one in each group. Each gets Cassie's unsigned invitation and a numbered marker (18 to 22) and knows only that they survived and must end the old man. Their own reason for wanting him dead is an errand they have to work out. They keep their find and swap, and replace the rest with the same chain: learn the hour and who holds the vial, make an offer to the Butler, and work out why. Everyone's total stays 60. Whoever the Butler sells to first is the killer. Everyone may name up to five survivors at the end.
+**How it works.** Each survivor gets Cassie's unsigned invitation and a numbered marker (18 to 22) and knows only that they survived and must end the old man. Their own reason for wanting him dead is an errand they work out. They keep their find and swap and replace the other errands with the same chain: learn the hour and who holds the vial, make an offer to the Butler, and work out why. Everyone's total stays 60. Whoever the Butler sells to first is the killer, and the killer is one point above the other survivors. Everyone may name up to five guests at the end.
 
-**The constraints.** A survivor cannot also be in a pair, because their partner's mirrored errand would break, and cannot be the Butler, Sheriff or Doctor. That rules out Anika, Silas, Erika, Rebecca, Eric, Molly, Ananya, Luke, Leon, Theodor, Tiffany, Angelos and Emmerich as survivors, unless you want me to move a deal.
+**What needs to adjust with your five:**
+1. **Groups.** Mihir and Rhea are both in The Gilded, and The River Trade has no survivor. Fix: move Rhea to the River Trade (she already stocks Tim's gin as a "tonic" in her back room). Then it is one each: Gilded Mihir, Order Anthony, Stage Molly (The Wire & the Stage: Molly, Leon, Ananya, Luke, Silas, the performers and the people who carry news), Working Adam, River Rhea. Group sizes become Gilded 4, Order 4, Stage 5, Working 5, River 6, which does not matter for the overall winner.
+2. **Identities.** The five real identities were written for other trades (the Teller, the Notary, the Maestro, the Doorman, the Wren). Mihir is the Teller and Anthony is the Notary, and both fit. Adam fits the Doorman (a gunsmith who knows who holds which door). Rhea and Molly need new trades on the List. My suggestion: Rhea is the Milliner, the Veil's costume mistress (masks, gowns), and Molly is the Runner, who carried the Veil's mail and late editions. What the Keeper took from each of them has to be written for those two, and their tells.
+3. **Molly's deal.** She was in the leak deal with Eric. Eric gets a new one: Tim sends the Judge a crate every Friday and the Judge quietly dismisses Tim's cases (a bribe, neither may admit it).
+4. **Anthony.** He currently holds the clue "I noticed the rings in court." As the Notary who forged the orders he cannot be the witness, so that line moves to Eric.
+5. **Clues to rebuild.** The identity clues (the tell, the crack, the cover, the motive) for all five, because they were written for the old five. The checker has to be re-run.
+6. **Unchanged:** Rhea and Tim's swap and Adam and Arjun's swap stay as they are, since survivors keep their swap.
 
-**Who is free:** Joel, Mihir, Rhea, Krrish (Gilded), Anthony (Order), Josh, Arjun, Adam, Diwakar (Working), Tim, Sidd (River). The Stage group (Molly, Leon, Ananya, Luke, Silas) has nobody free, because every one of them is in a deal. To give Stage a survivor I would move one deal.
+## 12. Misleading trails (red herrings)
 
-**The five identities.** The five survivors were the Teller (counts with his thumb), the Notary (rings every i), the Maestro (beats time with two fingers, cannot bear a silent room), the Doorman (will not sit with his back to a door) and the Wren (tests the wind with a wet finger). The natural fits with your roster are: **Mihir** the Teller (money), **Anthony** the Notary (the lawyer), **Silas** the Maestro, **Diwakar** the Doorman, **Sidd** the Wren (the barnstormer). The catch is Silas, who has the 8:30 spotlight and the Anika deal; if he is the Maestro, Anika needs a new partner for her deal. Alternatives: Joel or Krrish for the Teller, Tim for the Doorman.
+Yes, and they are on purpose. Each has a clue that clears it, held by at least two other guests, so the game stays solvable.
 
-Your pick, and I rebuild the five survivors' cards, their identity clues and the checker to match.
+| Points the finger at | The misleading thing | What clears it |
+|---|---|---|
+| **Cassie, overall** | The three forged orders "in her hand," the three fake receipts on the wall, the Farrago's "massacre," the police bulletin, the closure notices | The ringed i's versus her plain hand (the Christmas card, her roll), the Keeper's bank on the receipts, the real receipt under the portrait |
+| **The Butler** | She sold the vial (the House Book), found the body, took $200 to forget Room 3, and her alibi for 9:15 was bought from Erika | The vial was sold against a marker numbered 18 to 22 and the Butler holds no marker. The alibi deal is just her business |
+| **The Doctor** | Strychnine is a medicine, his bag holds a bottle of "tonic," and he was alone with the body | The coroner's report says the vial was the House's stock, not a druggist's pack. His bottle is still full and sealed |
+| **The Sheriff** | He may take Leon's bribe, holds the Coroner's Folder, was first on the scene, keeps a shoebox of "accidents," and carries handcuffs | He holds no marker and has no motive. The folder matches the scene |
+| **Anika** | She has the Silent Partner's key and the money, and her 8:30 deal with Silas looks like she is planning something | The deal is about who knew her father |
+| **Habit decoys** | The code has six innocent guests who share a survivor's habit (the tell). They have to be rewritten for the new five | Each decoy has a "vouch" line held by three others |
 
-## 12. The night
+## 13. The night
 
 | Time | What |
 |---|---|
@@ -244,10 +259,10 @@ Your pick, and I rebuild the five survivors' cards, their identity clues and the
 
 (The old man is staged dead from before the 9:15 scream; the Succession is what he planned for half past nine.)
 
-## 13. What you will print today, and what is left
+## 14. What you will print today, and what is left
 
 **Ready:** the wall pages, the real receipt.
 
-**After you pick the survivors, I generate:** 24 character cards (public, background, private), the five survivors' envelopes (marker and Cassie's unsigned invitation), the 19 House invitations with the seven private asks, every printed exhibit with its filing code, the Roll of the Veil, the 18 hidden-find tags and 12 carried-item tags, the brief card and rules card for the door, the Butler's House Book, the nightcap chart, and a drink menu if you tell me what you are pouring.
+**Now that you have picked the survivors, I generate (after you confirm section 11):** 24 character cards (public, background, private), the five survivors' envelopes (marker and Cassie's unsigned invitation), the 19 House invitations with the seven private asks, every printed exhibit with its filing code, the Roll of the Veil, the 18 hidden-find tags and 12 carried-item tags, the brief card and rules card for the door, the Butler's House Book, the nightcap chart, and a drink menu if you tell me what you are pouring.
 
 **What I have to change in the game code first** (when you say go): Krrish in and Jack out; the Succession plan and the House's asks; Questions A and B; the split invitation question; the unsigned invitation; the affair, pardon, deals and alibi; the real objects; the secrets above; the killer bonus; the five survivors; then re-run the checker and the tests.
