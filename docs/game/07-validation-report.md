@@ -42,7 +42,7 @@ PASS  Money: the room holds enough cash for every money objective to be won with
   worst stranded objectives per guest (3 or 5 absent, 8000 trials): 2
   worst facts with no live holder and no printed page: 0
   trials where a survivor kept fewer than two identity routes: 0
-  client files scanned for secrets: 66
+  client files scanned for secrets: 24
   cash in the room: $2740
   total money the objectives ask players to win: $570
 

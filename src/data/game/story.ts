@@ -5,34 +5,7 @@
 import { characterById, survivors } from "./index";
 
 /** What is publicly known about 1924, and the rules of the night, as the card on every guest's page and at the door. */
-export const brief1924: { heading: string; bullets: string[] }[] = [
-  {
-    heading: "All Hallows' Eve, 1924",
-    bullets: [
-      "The masquerade was the talk of Manchester, right up until the music stopped. The orchestra slipped in by the river door. Four masked guests slipped up to the private landing. By midnight the papers were screaming massacre, and nobody could find a body, a name, or a coroner willing to sign for one. The proprietress, Miss Cassie Castello, had vanished with the last dance.",
-    ],
-  },
-  {
-    heading: "Tonight",
-    bullets: [
-      "The black envelopes came to your door, signed by nobody you would dare name. You came anyway. Curious. A little reckless. Wear it well. Before the night is through, someone will be found dead, and the rest of you will have opinions.",
-    ],
-  },
-  {
-    heading: "Five survivors in the room",
-    bullets: [
-      "Five souls the papers swore were lost are here tonight in borrowed names and borrowed faces, sipping your drinks and watching your hands. They are guests like you. Before the lights come up you may point at up to five of your fellow guests and say survivor. Be right and it pays. Be wrong and it stings.",
-    ],
-  },
-  {
-    heading: "Last call",
-    bullets: ["You will be asked three things: what really happened in 1924, who did it tonight and how, and who the dead man was to the Veil."],
-  },
-  {
-    heading: "A word to the survivors",
-    bullets: ["If you are one of the five, your private page already knows. Everyone else's has the same sealed flap with nothing behind it. Nobody can tell by looking. Keep a straight face."],
-  },
-];
+export { brief1924 } from "../brief";
 
 export const rulesCard: string[] = [
   "Your card has three tabs. Public is what everyone knows. Background is your history and what to wear. Private is yours alone: your secrets, your five errands, and anything you must not say aloud.",

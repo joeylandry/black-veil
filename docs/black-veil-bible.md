@@ -111,11 +111,11 @@ Cash in the room: **$2,740.**
 >
 > **Tonight.** The black envelopes came to your door, signed by nobody you would dare name. You came anyway. Curious. A little reckless. Wear it well. Before the night is through, someone will be found dead, and the rest of you will have opinions.
 >
-> **Five survivors in the room.** Five souls the papers swore were lost are here tonight in borrowed names and borrowed faces, sipping your drinks and watching your hands. They are guests like you. Before the lights come up you may point at up to five of your fellow guests and say *survivor*. Be right and it pays. Be wrong and it stings.
+> **Five survivors in the room.** Five souls the papers swore were lost in 1924 are here tonight in borrowed names and borrowed faces, sipping your drinks and watching your hands. They are guests like you. Before the lights come up you may point at up to five of your fellow guests and say *survivor*. Be right and it pays. Be wrong and it stings.
 >
 > **Last call.** You will be asked three things: what really happened in 1924, who did it tonight and how, and who the dead man was to the Veil.
 >
-> **A word to the survivors.** If you are one of the five, your private page already knows. Everyone else's has the same sealed flap with nothing behind it. Nobody can tell by looking. Keep a straight face.
+> **A word to the survivors.** If you are one of the five, your private page already knows. Everyone else's has the same sealed flap with nothing behind it. Nobody can tell by looking. Keep a straight face. Survivors are revealed only to the survivors themselves, along with their objectives. Everyone else's objectives release at the start of the game.
 
 It does not give the time of the body, the old man, the vault or the plan.
 
