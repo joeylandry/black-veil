@@ -28,6 +28,6 @@ export const brief1924: { heading: string; bullets: string[] }[] = [
   },
   {
     heading: "A word to the survivors",
-    bullets: ["If you are one of the five, your private page already knows. Everyone else's has the same sealed flap with nothing behind it. Nobody can tell by looking. Keep a straight face. Survivors are revealed only to the survivors themselves, along with their objectives. Everyone else’s objectives release at the start of the game."],
+    bullets: ["If you are one of the five, your private page already knows. Everyone else's has the same sealed flap with nothing behind it. Nobody can tell by looking. Keep a straight face. Everyone’s objectives are released at the start of the game, and the survivors find out who they are at the same moment."],
   },
 ];

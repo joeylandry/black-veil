@@ -115,7 +115,7 @@ Cash in the room: **$2,740.**
 >
 > **Last call.** You will be asked three things: what really happened in 1924, who did it tonight and how, and who the dead man was to the Veil.
 >
-> **A word to the survivors.** If you are one of the five, your private page already knows. Everyone else's has the same sealed flap with nothing behind it. Nobody can tell by looking. Keep a straight face. Survivors are revealed only to the survivors themselves, along with their objectives. Everyone else's objectives release at the start of the game.
+> **A word to the survivors.** If you are one of the five, your private page already knows. Everyone else's has the same sealed flap with nothing behind it. Nobody can tell by looking. Keep a straight face. Everyone's objectives are released at the start of the game, and the survivors find out who they are at the same moment.
 
 It does not give the time of the body, the old man, the vault or the plan.
 
