@@ -62,7 +62,7 @@ function cardPages(): string[] {
   for (const c of sorted) {
     const k = buildCard(c.id)!;
     const p = k.private;
-    pages.push(`<div class="page"><div class="sheet">${banner("Manchester, N.H. · All Hallows' Eve, 1926")}<div class="fit" style="--base:11.5pt">
+    pages.push(`<div class="page"><div class="sheet">${banner("Manchester, N.H. · All Hallows' Eve, 1926")}<div class="fit" data-max="1.1" style="--base:11.5pt">
       <div class="name">${esc(k.name)}</div><div class="occ">${esc(k.occupation)}</div><div class="rule"></div>
       <h2>What the town knows</h2>${summaryHtml()}
       <h2>Your public face</h2><p>${esc(k.publicBio)}</p>
