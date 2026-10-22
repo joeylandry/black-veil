@@ -23,7 +23,7 @@ For your read-through. Everything here matches what is now loaded in the game co
 
 At 11:02 four go up to the private landing (Cassie, Kit, the Silent Partner, and the Notary, E.L.) and the Exit is witnessed. At 11:30 the "massacre" happens and the guests flee to the papers. At 11:47 the music stops, Kit signs out, and he leaves with Cassie by the river door. At the launch he **ambushes her**, takes the books, and she escapes wounded to Rebecca's boarding house (Room 3). Kit pays Rebecca $200 to forget her.
 
-Kit tells the scattered members that Cassie is finished. On 4 November he prepares **the List** of twenty-two, and on the 8th he hires a hitman, Quill, paying him out of the Teller's own share. Between December 1924 and September 1925 seventeen of them die in "accidents." Three orders "in Cassie's hand" are shown to a court, and receipts in her name come from Kit's bank: all forged by the Notary under threat, in a hand that rings its i's. **Five could not be found.** On 30 September 1925 Quill reports all twenty-two settled but cannot show five. In October 1925 the five find Quill first and kill him, and go under new names. Cassie, hiding in Montreal, paid for their escape. Her Christmas card comes that December.
+Kit tells the scattered members that Cassie is finished. On 4 November he prepares **the List** of twenty-two, and on the 8th he hires a hitman, Quill, paying him out of the Teller's own share. Between December 1924 and September 1925 seventeen of them die in "accidents." Three orders "in Cassie's hand" are shown to a court, and receipts in her name come from Kit's bank: all forged by the Notary under threat, in a hand that rings its i's. **Five survived the hitman.** On 30 September 1925 Quill reports all twenty-two settled, but he cannot show five bodies, because five got away. In October 1925 the five find Quill first and kill him, and go under new names. Cassie, hiding in Montreal, paid for their escape. Her Christmas card comes that December.
 
 **1926.** On 22 October Kit returns to Manchester and asks the Butler for the Merrimack Room and a rye at nine o'clock. **He has sent invitations signed "The House" to the 19 regular guests**, because he holds a secret on every one of them. Cassie, from Montreal, has sent each of **the five survivors** a separate, unsigned invitation ending "The veil lifts" with a numbered marker. They know they survived and that they must end him. Why is theirs to learn.
 
@@ -109,15 +109,13 @@ Cash in the room: **$2,740.**
 >
 > **All Hallows' Eve, 1924.** The masquerade was the talk of Manchester, right up until the music stopped. The orchestra slipped in by the river door. Four masked guests slipped up to the private landing. By midnight the papers were screaming *massacre*, and nobody could find a body, a name, or a coroner willing to sign for one. The proprietress, Miss Cassie Castello, had vanished with the last dance.
 >
-> **The year after.** A police bulletin called Cassie "a person of interest," and then lost interest. Seventeen people with no records and no relatives met unfortunate accidents. Nobody added it up. (You may.)
->
 > **Tonight.** The black envelopes came to your door, signed by nobody you would dare name. You came anyway. Curious. A little reckless. Wear it well. Before the night is through, someone will be found dead, and the rest of you will have opinions.
 >
-> **Five ghosts in the room.** Five souls the papers swore were lost are here tonight in borrowed names and borrowed faces, sipping your drinks and watching your hands. They are guests like you. Before the lights come up you may point at up to five of your fellow guests and say *ghost*. Be right and it pays. Be wrong and it stings.
+> **Five survivors in the room.** Five souls the papers swore were lost are here tonight in borrowed names and borrowed faces, sipping your drinks and watching your hands. They are guests like you. Before the lights come up you may point at up to five of your fellow guests and say *survivor*. Be right and it pays. Be wrong and it stings.
 >
 > **Last call.** You will be asked three things: what really happened in 1924, who did it tonight and how, and who the dead man was to the Veil.
 >
-> **A word to the ghosts.** If you are one of the five, your private page already knows. Everyone else's has the same sealed flap with nothing behind it. Nobody can tell by looking. Keep a straight face.
+> **A word to the survivors.** If you are one of the five, your private page already knows. Everyone else's has the same sealed flap with nothing behind it. Nobody can tell by looking. Keep a straight face.
 
 It does not give the time of the body, the old man, the vault or the plan.
 

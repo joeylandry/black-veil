@@ -13,21 +13,15 @@ export const brief1924: { heading: string; bullets: string[] }[] = [
     ],
   },
   {
-    heading: "The year after",
-    bullets: [
-      "A police bulletin called Cassie “a person of interest,” and then lost interest. Seventeen people with no records and no relatives met unfortunate accidents. Nobody added it up. (You may.)",
-    ],
-  },
-  {
     heading: "Tonight",
     bullets: [
       "The black envelopes came to your door, signed by nobody you would dare name. You came anyway. Curious. A little reckless. Wear it well. Before the night is through, someone will be found dead, and the rest of you will have opinions.",
     ],
   },
   {
-    heading: "Five ghosts in the room",
+    heading: "Five survivors in the room",
     bullets: [
-      "Five souls the papers swore were lost are here tonight in borrowed names and borrowed faces, sipping your drinks and watching your hands. They are guests like you. Before the lights come up you may point at up to five of your fellow guests and say ghost. Be right and it pays. Be wrong and it stings.",
+      "Five souls the papers swore were lost are here tonight in borrowed names and borrowed faces, sipping your drinks and watching your hands. They are guests like you. Before the lights come up you may point at up to five of your fellow guests and say survivor. Be right and it pays. Be wrong and it stings.",
     ],
   },
   {
@@ -35,7 +29,7 @@ export const brief1924: { heading: string; bullets: string[] }[] = [
     bullets: ["You will be asked three things: what really happened in 1924, who did it tonight and how, and who the dead man was to the Veil."],
   },
   {
-    heading: "A word to the ghosts",
+    heading: "A word to the survivors",
     bullets: ["If you are one of the five, your private page already knows. Everyone else's has the same sealed flap with nothing behind it. Nobody can tell by looking. Keep a straight face."],
   },
 ];
@@ -79,7 +73,7 @@ export function finalEdition(killerSlug: string): FinalEdition {
     paragraphs: [
       "1924. Cassie Castello planned an exit. On All Hallows' Eve her people were to slip out of the Black Veil under masks while the town believed there had been a massacre: stage blood from Luke Shelldon's carnival, blank cartridges from Adam Holdsfire's shop, a story the papers could not check. Nobody died that night. The members were promised new names and a share of the vault.",
       "The Keeper, Kit Kessler, her bookkeeper, was one of the four who witnessed the plan on the private landing at 11:02. At 11:47, as the music stopped, he left with Cassie by the river door. At the launch he ambushed her, took the books, and told the scattered members that Cassie was finished. She escaped with a bandaged shoulder and a hiding place at Rebecca Chow's boarding house.",
-      "Kit prepared the List: twenty-two names, each with a place to lie quiet. He hired a man named Quill to settle them. Seventeen died in “accidents” between December 1924 and September 1925. Every order and every receipt that appeared to come from Cassie was forged by the Veil's Notary under threat, in a hand that rings its i's. Five could not be found: Crane, Lyle, Ballard, Marek and Pike.",
+      "Kit prepared the List: twenty-two names, each with a place to lie quiet. He hired a man named Quill to settle them. Seventeen died in “accidents” between December 1924 and September 1925. Every order and every receipt that appeared to come from Cassie was forged by the Veil's Notary under threat, in a hand that rings its i's. Five survived the hitman: Crane, Lyle, Ballard, Marek and Pike.",
       "1926. Cassie, in Montreal, sent the wire that asked who prepared the list, and five unsigned black envelopes of her own, so that the five he failed to kill would be in one room with him. Kit sent nineteen black envelopes, signed only “The House,” to the town's respectable people, each of whom owed him a secret kept. At half past nine he meant to crown himself the new head of the Black Veil with every one of them signing for him, and to have Cassie declared dead so the vault and the books would pass to him. He did not know the five were in the room.",
       `Tonight the one who got to the Butler first was ${killer?.name ?? killerSlug}, who paid the House a numbered marker for its single vial of nux vomica, and put it in the Keeper's nine-o'clock rye.${info ? ` Why: ${info.grievance}` : ""}`,
     ],

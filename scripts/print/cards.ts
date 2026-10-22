@@ -50,7 +50,7 @@ const errandHtml = (o: CardView["private"]["objectives"][number]) => {
 };
 const summaryHtml = () =>
   `<div class="summary">${brief1924
-    .filter((b) => b.heading !== "A word to the ghosts")
+    .filter((b) => b.heading !== "A word to the survivors")
     .map((b) => `<h4>${esc(b.heading)}</h4>${b.bullets.map((t) => `<p>${esc(t)}</p>`).join("")}`)
     .join("")}</div>`;
 
