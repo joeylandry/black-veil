@@ -136,7 +136,7 @@ function kitPages(): string[] {
     const v = s.survivor!;
     const tag = `<div class="strip"><span>SURVIVOR KIT · ${esc(s.name)} · Marker No. ${v.markerNo}</span><span>HOST ONLY until cut</span></div>`;
     const rules = survivorRules(v.markerNo);
-    pages.push(`<div class="page">${tag}<div class="sheet tight flap" style="top:.32in"><div class="banner slim">THE BLACK VEIL</div><div class="fit" data-min="0.86" style="--base:11.5pt">
+    pages.push(`<div class="page">${tag}<div class="sheet tight flap" style="top:.32in"><div class="banner slim">THE BLACK VEIL</div><div class="fit" data-max="1.1" data-min="0.86" style="--base:11.5pt">
       <div class="flaphead"><div class="big">You are one who got away</div><div class="vn">${esc(v.veilName)}</div><div class="vt">${esc(v.veilTitle)}</div><span class="markerline">MARKER No. ${v.markerNo}</span></div>
       <div class="rule" style="margin:.4em 1.2in .5em"></div>
       <h2>Who you were</h2><p>${esc(v.realStory)}</p>
