@@ -1,0 +1,270 @@
+<!doctype html>
+<!-- HOST ONLY. Spoilers. Single-sided; cut along dotted lines. -->
+<html lang="en"><head><meta charset="utf-8"><title>Survivor kit (HOST ONLY)</title><meta name="viewport" content="width=device-width">
+<style>/* Black Veil print cards. Letter pages, one .page per sheet, printed with backgrounds. */
+@page { size: 8.5in 11in; margin: 0; }
+:root {
+  --ink: #2a1d12; --ink2: #4a3826; --cream: #f4ead2; --cream2: #ebdcb8; --edge: #b89a5a;
+  --wine: #6e1e1e; --gold: #8a6a22; --goldl: #d8b85a; --black: #141010; --green: #2f4a35;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: #fff; }
+body { font-family: "Liberation Serif", "Times New Roman", serif; color: var(--ink); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.page { width: 8.5in; height: 11in; position: relative; overflow: hidden; background: #fff; break-after: page; page-break-after: always; }
+.page:last-child { break-after: auto; page-break-after: auto; }
+.sans { font-family: "Liberation Sans", Arial, sans-serif; }
+.mono { font-family: "FreeMono", "Liberation Mono", monospace; }
+
+/* the aged-paper sheet inside the page, inset so any printer's margin leaves it whole */
+.sheet {
+  position: absolute; left: .3in; right: .3in; top: .3in; bottom: .3in;
+  background:
+    radial-gradient(ellipse at 15% 10%, rgba(255,255,255,.55), transparent 55%),
+    radial-gradient(ellipse at 90% 95%, rgba(150,110,50,.18), transparent 60%),
+    var(--cream);
+  border: 1.5px solid var(--ink2); outline: 1px solid var(--edge); outline-offset: -7px;
+  padding: .32in .45in .3in; display: flex; flex-direction: column; overflow: hidden;
+}
+.banner { background: var(--black); color: var(--goldl); text-align: center; letter-spacing: .42em; font-weight: bold; font-size: 15pt; padding: .09in 0 .09in .42em; margin: 0 -.2in; border-top: 2px solid var(--goldl); border-bottom: 2px solid var(--goldl); flex: none; }
+.banner small { display: block; font-size: 8.5pt; letter-spacing: .32em; font-weight: normal; margin-top: 2px; color: #e8d9a8; }
+.fit { flex: 1; min-height: 0; overflow: hidden; display: flex; flex-direction: column; font-size: calc(var(--base, 11.5pt) * var(--s, 1)); line-height: 1.28; padding-top: .14in; }
+.fit > * { flex: none; }
+.name { font-size: 2.35em; font-weight: bold; line-height: 1.05; text-align: center; margin: .1em 0 .05em; color: var(--black); }
+.occ { text-align: center; font-style: italic; font-size: 1.2em; color: var(--wine); margin-bottom: .35em; }
+.rule { height: 0; border-top: 1px solid var(--gold); margin: .55em 1.2in .7em; position: relative; }
+.rule::after { content: ""; position: absolute; left: 50%; top: -5px; width: 8px; height: 8px; background: var(--cream); border: 1px solid var(--gold); transform: translateX(-50%) rotate(45deg); }
+h2 { font-size: 1.12em; letter-spacing: .14em; text-transform: uppercase; color: var(--wine); margin: .75em 0 .25em; border-bottom: 1px solid var(--edge); padding-bottom: .1em; font-family: "Liberation Sans", Arial, sans-serif; font-weight: bold; }
+h2:first-child { margin-top: 0; }
+p { margin: 0 0 .4em; }
+.summary { font-size: .88em; line-height: 1.24; background: rgba(110,30,30,.06); border-left: 3px solid var(--wine); padding: .4em .7em .25em; margin-bottom: .4em; }
+.summary h4 { margin: .45em 0 .05em; font: bold .88em "Liberation Sans", Arial, sans-serif; letter-spacing: .1em; text-transform: uppercase; color: var(--wine); }
+.summary h4:first-child { margin-top: 0; }
+.summary p { margin: 0 0 .15em; }
+.lab { font: bold .8em "Liberation Sans", Arial, sans-serif; letter-spacing: .08em; text-transform: uppercase; color: var(--gold); }
+ul { margin: 0 0 .4em; padding-left: 1.15em; } li { margin-bottom: .22em; }
+.line { margin: 0 0 .38em; padding-left: .6em; border-left: 2px solid var(--edge); }
+.tag { display: inline-block; font: bold .68em "Liberation Sans", Arial, sans-serif; letter-spacing: .06em; text-transform: uppercase; padding: .08em .5em; margin-right: .5em; border: 1px solid; border-radius: 2px; vertical-align: .08em; white-space: nowrap; }
+.tag.free { color: var(--green); border-color: var(--green); background: rgba(47,74,53,.08); }
+.tag.trade { color: var(--gold); border-color: var(--gold); background: rgba(138,106,34,.1); }
+.tag.secret { color: var(--wine); border-color: var(--wine); background: rgba(110,30,30,.1); }
+.cash { display: flex; align-items: center; justify-content: space-between; border: 2px double var(--green); background: rgba(47,74,53,.08); color: var(--green); padding: .2em .8em; margin: .55em 0 .1em; }
+.cash .amt { font-size: 1.9em; font-weight: bold; letter-spacing: .04em; }
+.cash .t { font-style: italic; font-size: 1.05em; }
+.errand { border: 1px solid var(--edge); background: rgba(255,255,255,.35); padding: .3em .7em .35em; margin-bottom: .4em; }
+.errand .t { font-weight: bold; font-size: 1.04em; }
+.errand .t .lab { margin-right: .5em; }
+.errand .a { font-size: .92em; margin-top: .1em; display: flex; justify-content: space-between; gap: .6em; }
+.errand .a em { color: var(--wine); }
+.errand .a b { white-space: nowrap; font-family: "Liberation Sans", Arial, sans-serif; font-size: .85em; }
+.box { border: 2px solid var(--ink2); text-align: center; font-weight: bold; padding: .3em .6em; margin: .15em 0 .4em; letter-spacing: .02em; }
+.flapbox { border: 1.5px dashed var(--wine); padding: .35em .8em; text-align: center; font-style: italic; margin-top: auto; background: rgba(110,30,30,.05); }
+.type { text-align: center; font-size: .95em; margin: .45em 0 0; }
+.pull { margin-top: auto; }
+.cols2 { column-count: 2; column-gap: .3in; }
+.cols2 .line { break-inside: avoid; }
+.fine { font-size: .8em; color: var(--ink2); }
+.pn { font: .7em "Liberation Sans", Arial, sans-serif; color: var(--ink2); text-align: center; letter-spacing: .1em; flex: none; padding-top: .05in; }
+
+/* survivor kit */
+.strip { position: absolute; left: .3in; right: .3in; top: .1in; font: 8pt "Liberation Sans", Arial, sans-serif; color: #555; display: flex; justify-content: space-between; }
+.hostmark { color: #fff; background: var(--wine); font: bold 13pt "Liberation Sans", Arial, sans-serif; letter-spacing: .12em; text-align: center; padding: .08in; margin: 0 0 .15in; }
+table { border-collapse: collapse; width: 100%; font-size: .92em; }
+th, td { border: 1px solid var(--edge); padding: .25em .5em; text-align: left; vertical-align: top; }
+th { background: rgba(110,30,30,.1); font: bold .85em "Liberation Sans", Arial, sans-serif; letter-spacing: .06em; text-transform: uppercase; }
+.cutarea { position: absolute; border: 1.5px dashed #555; }
+.cutarea::before { content: "\2702"; position: absolute; left: -.2in; top: -.14in; font-size: 11pt; color: #555; background: #fff; padding: 0 2px; }
+.flaphead { text-align: center; }
+.flaphead .big { font-size: 1.9em; font-weight: bold; color: var(--black); }
+.flaphead .vn { font-size: 2.1em; font-weight: bold; margin-top: .15em; color: var(--wine); }
+.flaphead .vt { font-size: 1.3em; font-style: italic; }
+.markerline { display: inline-block; border: 2px solid var(--black); background: var(--black); color: var(--goldl); padding: .1em .8em; margin-top: .4em; font: bold 1.05em "Liberation Sans", Arial, sans-serif; letter-spacing: .2em; }
+ol.rules { padding-left: 1.4em; margin: 0; } ol.rules li { margin-bottom: .32em; }
+.marker { background: var(--black); color: var(--goldl); text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center; border: 1px solid var(--goldl); outline: 1px solid var(--goldl); outline-offset: -6px; }
+.marker .k { font: bold 10pt "Liberation Sans", Arial, sans-serif; letter-spacing: .3em; }
+.marker .no { font: bold 15pt "Liberation Sans", Arial, sans-serif; letter-spacing: .22em; margin-top: 4px; }
+.marker .code { font: bold 38pt "FreeMono", monospace; letter-spacing: .12em; margin: 4px 0 2px; color: #f0d27a; }
+.marker .l { font-style: italic; font-size: 10.5pt; color: #e8d9a8; }
+.label { background: #fff; border: 1px solid #999; display: flex; align-items: center; justify-content: center; text-align: center; padding: 0 .2in; font: italic 17pt "Liberation Serif", serif; }
+.hand { background: var(--cream); background-image: radial-gradient(ellipse at 20% 10%, rgba(255,255,255,.6), transparent 60%), radial-gradient(ellipse at 90% 100%, rgba(150,110,50,.2), transparent 60%); font-family: "Liberation Serif", serif; font-style: italic; color: #1c2a4a; padding: .35in .5in; display: flex; flex-direction: column; justify-content: center; }
+.hand p { margin: 0 0 .55em; font-size: 14pt; line-height: 1.42; }
+.hand .to { font-size: 17pt; }
+.hand .end { margin-top: .3em; font-size: 17pt; text-align: right; }
+
+/* house invitations */
+.inv { position: absolute; left: .45in; right: .45in; height: 4.7in; background: #f7efd9; border: 3px double var(--ink2); outline: 1px solid var(--edge); outline-offset: -9px; text-align: center; padding: .28in .6in; display: flex; flex-direction: column; justify-content: center; }
+.inv .req { font: bold 24pt "Liberation Serif", serif; letter-spacing: .3em; color: #efe3c4; text-shadow: -1px -1px 0 #fff, 1px 1px 0 #b8a67c, 2px 2px 1px rgba(80,60,20,.35); padding-left: .3em; }
+.inv .to { font-size: 25pt; font-weight: bold; color: var(--black); margin: .08in 0 .06in; line-height: 1.1; }
+.inv .body { font-size: 13.5pt; line-height: 1.38; }
+.inv .word { margin-top: .13in; font-style: italic; font-size: 12.5pt; color: var(--wine); border-top: 1px solid var(--edge); padding-top: .09in; }
+.inv .word b { font-style: normal; font-family: "Liberation Sans", Arial, sans-serif; font-size: .75em; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); margin-right: .4em; }
+.inv .sig { margin-top: .13in; font-style: italic; font-size: 18pt; }
+.cutline { position: absolute; left: 0; right: 0; border-top: 1.5px dashed #777; }
+
+/* door cards */
+.poster .banner { font-size: 22pt; }
+.poster .fit { padding-top: .2in; }
+.poster h3 { font: bold 1.05em "Liberation Sans", Arial, sans-serif; letter-spacing: .14em; text-transform: uppercase; color: var(--wine); margin: .8em 0 .2em; }
+.poster h3:first-child { margin-top: 0; }
+.poster p { margin: 0 0 .3em; }
+.poster ol { padding-left: 1.5em; margin: 0; } .poster ol li { margin-bottom: .55em; padding-left: .2em; }
+.half { position: absolute; left: .3in; right: .3in; height: 5.0in; }
+.half .sheet { position: absolute; inset: 0; padding: .18in .35in .15in; }
+.half .banner { font-size: 12pt; padding: .05in 0 .05in .42em; }
+.half .fit { padding-top: .1in; }
+.half ol { column-count: 1; }
+.half.two ol { columns: 2; column-gap: .3in; }
+.half.two ol li { break-inside: avoid; }
+
+.banner.slim { font-size: 10.5pt; padding: .045in 0 .045in .42em; letter-spacing: .38em; }
+.sheet.tight { padding: .2in .38in .18in; }
+.flap h2 { margin: .55em 0 .18em; }
+.flap p { margin: 0 0 .25em; }
+.flap ol.rules li { margin-bottom: .2em; }
+.flap .fit { line-height: 1.22; padding-top: .1in; }
+.flaphead { display: flex; flex-direction: column; align-items: center; }
+.flaphead .big { font-size: 1.5em; }
+.flaphead .vn { font-size: 1.9em; margin-top: .05em; line-height: 1.1; }
+.flaphead .vt { font-size: 1.2em; }
+.half .sheet { padding: .12in .3in .1in; }
+.half .banner { font-size: 10.5pt; margin: 0 -.1in; padding: .03in 0 .03in .42em; }
+.half .fit { padding-top: .06in; line-height: 1.22; }
+.half.two ol li { break-inside: auto; margin-bottom: .35em; }
+.half h3 { margin: .5em 0 .1em; }
+.half .rule { display: none; }
+</style></head><body>
+<div class="page"><div class="sheet"><div class="banner">THE BLACK VEIL<small>Host copy</small></div><div class="fit" style="--base:12pt">
+    <div class="hostmark">HOST COPY: do not hand out</div>
+    <div class="name" style="font-size:2em">The five who got away</div><div class="rule"></div>
+    <table><tr><th>Marker</th><th>Code</th><th>Guest card (cover name)</th><th>Real identity</th><th>The tell</th></tr>
+    <tr><td><b>No. 18</b></td><td class="mono"><b>JCPP2</b></td><td><b>Mihir Nagarkatti of Nag Oil</b></td><td>Bertrand “Barty” Crane, The Teller</td><td>You count invisible bills with your thumb across your fingertips whenever money, a price or the odds come up.</td></tr><tr><td><b>No. 19</b></td><td class="mono"><b>PKCA9</b></td><td><b>Luke Shelldon</b></td><td>Edmund Lyle, The Notary</td><td>You dot every i with a tiny ring and tap your pen twice after you sign anything.</td></tr><tr><td><b>No. 20</b></td><td class="mono"><b>22RDE</b></td><td><b>Rhea Mallya of Mallya's Emporium</b></td><td>Sylvia Ballard, The Milliner</td><td>You straighten any hat brim you pass, your own or a stranger's, without thinking.</td></tr><tr><td><b>No. 21</b></td><td class="mono"><b>H3T4V</b></td><td><b>Adam Holdsfire</b></td><td>Dominic Marek, The Doorman</td><td>You never sit with your back to a door, and you count the exits in every room you enter.</td></tr><tr><td><b>No. 22</b></td><td class="mono"><b>XRTG9</b></td><td><b>Molly Daniel of the Manchester Union</b></td><td>Winifred “Winnie” Pike, The Runner</td><td>You glance at the nearest clock every time a door opens, and again when it closes.</td></tr>
+    </table>
+    <h2 style="margin-top:1.1em">How to use the pages that follow</h2>
+    <ul>
+    <li>Each survivor has three pages: <b>The Flap</b> (their secret page), then a cut sheet with <b>Cassie's unsigned invitation</b>, the <b>marker</b> and an <b>address label</b>.</li>
+    <li>Cut along the dotted lines. The strip across the top of every page names the guest and marker number, so the pieces can be sorted into five piles.</li>
+    <li>The marker is honoured once, at the bar, by its owner. Its code is in the table above; the Butler types it.</li>
+    <li>Print this page on its own and keep it. Do not leave it on the printer.</li>
+    </ul>
+  </div></div></div>
+<div class="page"><div class="strip"><span>SURVIVOR KIT · Mihir Nagarkatti of Nag Oil · Marker No. 18</span><span>HOST ONLY until cut</span></div><div class="sheet tight flap" style="top:.32in"><div class="banner slim">THE BLACK VEIL</div><div class="fit" data-min="0.86" style="--base:11.5pt">
+      <div class="flaphead"><div class="big">You are one who got away</div><div class="vn">Bertrand “Barty” Crane</div><div class="vt">The Teller</div><span class="markerline">MARKER No. 18</span></div>
+      <div class="rule" style="margin:.4em 1.2in .5em"></div>
+      <h2>Who you were</h2><p>You are Bertrand “Barty” Crane, the Black Veil's Teller. You counted the vault's exit advance by hand on 31 October 1924. “Nag Oil” is a name and a gusher you bought with a share of Cassie's gold, and you learned to talk like an oilman because swagger is only arithmetic with an audience.</p>
+      <h2>How you got away</h2><p>Someone came for you at Hosmer's rooms on Spring Street. You left a body-sized fire in the room and a memorial notice, “Bertrand Crane,” in the Farrago that autumn, and that ended the search.</p>
+      <h2>Your tell</h2><p>You count invisible bills with your thumb across your fingertips whenever money, a price or the odds come up. <b>Do it at least three times before the nightcap.</b></p>
+      <h2>What leaks through</h2><p>You can count a stack of bills by feel and know any sum to the cent.</p>
+      <h2>The rules for you</h2><ol class="rules"><li>You are one who got away. You know the old man hunted you and the people you trusted, and you know who he is. Others probably escaped too, but you do not know how many or who. Everyone else has been told only that survivors are in the room. Your cover is your public card. Keep it.</li><li>Your invitation came unsigned, and it knew the new name you have used ever since. Only one person could have known it. Working out who is one of your errands.</li><li>You carry marker No. 18. It is yours alone: never trade it, never give it away. It is how you pay the House.</li><li>You have told yourself so many stories since 1925 that you are no longer certain of your real reason for coming. You only know that you must be the one. Somebody in this room saw what he did to you; finding out is one of your errands.</li><li>The House keeps one bottle of tincture and sells it once a night, to whoever shows the Butler a marker first. Make your offer before the nightcap is served at nine o'clock. Only one of you can be the one.</li><li>If the Butler sells to you, the Keeper's nightcap waits in a glass on his table in the Merrimack Room. Pour the vial in unseen, then type the short code printed under the glass's coaster into the nightcap box on this page. Only the buyer's code counts, and the page will say only “Noted.”</li><li>Do your tell, a small habit you no longer notice, at least three times before the nightcap. Do not overdo it.</li><li>Whoever finishes him takes Cassie's seat and the Veil. You are competing with others you cannot name, and every one of you has the right to try.</li></ol>
+    </div></div></div>
+<div class="page"><div class="strip"><span>SURVIVOR KIT · Mihir Nagarkatti of Nag Oil · Marker No. 18</span><span>HOST ONLY until cut</span></div>
+      <div class="cutarea hand" style="left:.5in;top:.55in;width:7.5in;height:6.55in"><div class="fit" data-max="1.2" style="--base:14pt;padding:0;flex:1;justify-content:center"><p class="to">Mihir Nagarkatti of Nag Oil,</p>
+<p>That is the name you have worn since 1925, and I am one of very few who know what it covers.</p>
+<p>The old man will be in the room tonight. You know the one I mean. I will not write his name where a letter can be lost.</p>
+<p>Every one of you was meant to be dead, and you are not. Do not waste the evening being surprised.</p>
+<p>Why it must be you is yours to remember. You have told yourself a great many stories since. Sit quietly with the true one.</p>
+<p>You will not be told who else was sent for. The House keeps one bottle, and it is sold once. Be quick, and be quiet.</p>
+<p>Doors at eight. Wear a mask; you will need no other.</p>
+<p class="end">The veil lifts</p></div></div>
+      <div class="cutarea marker" style="left:.5in;top:7.6in;width:4.1in;height:2.5in"><div class="k">THE BLACK VEIL</div><div class="no">MARKER No. 18</div><div class="code">JCPP2</div><div class="l">Honoured once, at the bar, by its owner.</div></div>
+      <div class="cutarea label" style="left:5.0in;top:7.6in;width:3.0in;height:1.1in">Mihir Nagarkatti of Nag Oil</div>
+      <div style="position:absolute;left:5.0in;top:8.8in;width:3in;font:8pt 'Liberation Sans',Arial,sans-serif;color:#666">Address label for the unsigned envelope. Cut along the dotted lines.</div>
+    </div>
+<div class="page"><div class="strip"><span>SURVIVOR KIT · Luke Shelldon · Marker No. 19</span><span>HOST ONLY until cut</span></div><div class="sheet tight flap" style="top:.32in"><div class="banner slim">THE BLACK VEIL</div><div class="fit" data-min="0.86" style="--base:11.5pt">
+      <div class="flaphead"><div class="big">You are one who got away</div><div class="vn">Edmund Lyle</div><div class="vt">The Notary</div><span class="markerline">MARKER No. 19</span></div>
+      <div class="rule" style="margin:.4em 1.2in .5em"></div>
+      <h2>Who you were</h2><p>You are Edmund Lyle, the Black Veil's Notary. At 23:02 on 31 October 1924 you witnessed the Exit Compact on the private landing, one of four. You have not liked your own signature since.</p>
+      <h2>How you got away</h2><p>A barker's job was open and nobody checks a barker's papers. You became Luke Shelldon, a man with a megaphone instead of a seal, and you paint every handbill yourself, which is as close to signing things as you dare.</p>
+      <h2>Your tell</h2><p>You dot every i with a tiny ring and tap your pen twice after you sign anything. <b>Do it at least three times before the nightcap.</b></p>
+      <h2>What leaks through</h2><p>You spot a false signature at ten paces and could write any hand in the room.</p>
+      <h2>The rules for you</h2><ol class="rules"><li>You are one who got away. You know the old man hunted you and the people you trusted, and you know who he is. Others probably escaped too, but you do not know how many or who. Everyone else has been told only that survivors are in the room. Your cover is your public card. Keep it.</li><li>Your invitation came unsigned, and it knew the new name you have used ever since. Only one person could have known it. Working out who is one of your errands.</li><li>You carry marker No. 19. It is yours alone: never trade it, never give it away. It is how you pay the House.</li><li>You have told yourself so many stories since 1925 that you are no longer certain of your real reason for coming. You only know that you must be the one. Somebody in this room saw what he did to you; finding out is one of your errands.</li><li>The House keeps one bottle of tincture and sells it once a night, to whoever shows the Butler a marker first. Make your offer before the nightcap is served at nine o'clock. Only one of you can be the one.</li><li>If the Butler sells to you, the Keeper's nightcap waits in a glass on his table in the Merrimack Room. Pour the vial in unseen, then type the short code printed under the glass's coaster into the nightcap box on this page. Only the buyer's code counts, and the page will say only “Noted.”</li><li>Do your tell, a small habit you no longer notice, at least three times before the nightcap. Do not overdo it.</li><li>Whoever finishes him takes Cassie's seat and the Veil. You are competing with others you cannot name, and every one of you has the right to try.</li></ol>
+    </div></div></div>
+<div class="page"><div class="strip"><span>SURVIVOR KIT · Luke Shelldon · Marker No. 19</span><span>HOST ONLY until cut</span></div>
+      <div class="cutarea hand" style="left:.5in;top:.55in;width:7.5in;height:6.55in"><div class="fit" data-max="1.2" style="--base:14pt;padding:0;flex:1;justify-content:center"><p class="to">Luke Shelldon,</p>
+<p>That is the name you have worn since 1925, and I am one of very few who know what it covers.</p>
+<p>The old man will be in the room tonight. You know the one I mean. I will not write his name where a letter can be lost.</p>
+<p>Every one of you was meant to be dead, and you are not. Do not waste the evening being surprised.</p>
+<p>Why it must be you is yours to remember. You have told yourself a great many stories since. Sit quietly with the true one.</p>
+<p>You will not be told who else was sent for. The House keeps one bottle, and it is sold once. Be quick, and be quiet.</p>
+<p>Doors at eight. Wear a mask; you will need no other.</p>
+<p class="end">The veil lifts</p></div></div>
+      <div class="cutarea marker" style="left:.5in;top:7.6in;width:4.1in;height:2.5in"><div class="k">THE BLACK VEIL</div><div class="no">MARKER No. 19</div><div class="code">PKCA9</div><div class="l">Honoured once, at the bar, by its owner.</div></div>
+      <div class="cutarea label" style="left:5.0in;top:7.6in;width:3.0in;height:1.1in">Luke Shelldon</div>
+      <div style="position:absolute;left:5.0in;top:8.8in;width:3in;font:8pt 'Liberation Sans',Arial,sans-serif;color:#666">Address label for the unsigned envelope. Cut along the dotted lines.</div>
+    </div>
+<div class="page"><div class="strip"><span>SURVIVOR KIT · Rhea Mallya of Mallya's Emporium · Marker No. 20</span><span>HOST ONLY until cut</span></div><div class="sheet tight flap" style="top:.32in"><div class="banner slim">THE BLACK VEIL</div><div class="fit" data-min="0.86" style="--base:11.5pt">
+      <div class="flaphead"><div class="big">You are one who got away</div><div class="vn">Sylvia Ballard</div><div class="vt">The Milliner</div><span class="markerline">MARKER No. 20</span></div>
+      <div class="rule" style="margin:.4em 1.2in .5em"></div>
+      <h2>Who you were</h2><p>You are Sylvia Ballard, the Black Veil's Milliner and costume mistress: the masks, the gowns and the hats for the masquerade. On 31 October 1924 you dressed the Veil's people for the Exit. A department store is the one place where nobody asks who made the clothes.</p>
+      <h2>How you got away</h2><p>You were fitting a gown on Canal Street when Quill's man came for your girls. You left by the coal cellar with a hatbox and a bolt of silk. A memorial notice, “Sylvia Ballard,” ran in the Farrago the following autumn; you placed it yourself and had it pulled before it printed twice.</p>
+      <h2>Your tell</h2><p>You straighten any hat brim you pass, your own or a stranger's, without thinking. <b>Do it at least three times before the nightcap.</b></p>
+      <h2>What leaks through</h2><p>You can name a stitch, a dye lot and a maker at a glance, and you cannot stop pricing what people are wearing.</p>
+      <h2>The rules for you</h2><ol class="rules"><li>You are one who got away. You know the old man hunted you and the people you trusted, and you know who he is. Others probably escaped too, but you do not know how many or who. Everyone else has been told only that survivors are in the room. Your cover is your public card. Keep it.</li><li>Your invitation came unsigned, and it knew the new name you have used ever since. Only one person could have known it. Working out who is one of your errands.</li><li>You carry marker No. 20. It is yours alone: never trade it, never give it away. It is how you pay the House.</li><li>You have told yourself so many stories since 1925 that you are no longer certain of your real reason for coming. You only know that you must be the one. Somebody in this room saw what he did to you; finding out is one of your errands.</li><li>The House keeps one bottle of tincture and sells it once a night, to whoever shows the Butler a marker first. Make your offer before the nightcap is served at nine o'clock. Only one of you can be the one.</li><li>If the Butler sells to you, the Keeper's nightcap waits in a glass on his table in the Merrimack Room. Pour the vial in unseen, then type the short code printed under the glass's coaster into the nightcap box on this page. Only the buyer's code counts, and the page will say only “Noted.”</li><li>Do your tell, a small habit you no longer notice, at least three times before the nightcap. Do not overdo it.</li><li>Whoever finishes him takes Cassie's seat and the Veil. You are competing with others you cannot name, and every one of you has the right to try.</li></ol>
+    </div></div></div>
+<div class="page"><div class="strip"><span>SURVIVOR KIT · Rhea Mallya of Mallya's Emporium · Marker No. 20</span><span>HOST ONLY until cut</span></div>
+      <div class="cutarea hand" style="left:.5in;top:.55in;width:7.5in;height:6.55in"><div class="fit" data-max="1.2" style="--base:14pt;padding:0;flex:1;justify-content:center"><p class="to">Rhea Mallya of Mallya's Emporium,</p>
+<p>That is the name you have worn since 1925, and I am one of very few who know what it covers.</p>
+<p>The old man will be in the room tonight. You know the one I mean. I will not write his name where a letter can be lost.</p>
+<p>Every one of you was meant to be dead, and you are not. Do not waste the evening being surprised.</p>
+<p>Why it must be you is yours to remember. You have told yourself a great many stories since. Sit quietly with the true one.</p>
+<p>You will not be told who else was sent for. The House keeps one bottle, and it is sold once. Be quick, and be quiet.</p>
+<p>Doors at eight. Wear a mask; you will need no other.</p>
+<p class="end">The veil lifts</p></div></div>
+      <div class="cutarea marker" style="left:.5in;top:7.6in;width:4.1in;height:2.5in"><div class="k">THE BLACK VEIL</div><div class="no">MARKER No. 20</div><div class="code">22RDE</div><div class="l">Honoured once, at the bar, by its owner.</div></div>
+      <div class="cutarea label" style="left:5.0in;top:7.6in;width:3.0in;height:1.1in">Rhea Mallya of Mallya's Emporium</div>
+      <div style="position:absolute;left:5.0in;top:8.8in;width:3in;font:8pt 'Liberation Sans',Arial,sans-serif;color:#666">Address label for the unsigned envelope. Cut along the dotted lines.</div>
+    </div>
+<div class="page"><div class="strip"><span>SURVIVOR KIT · Adam Holdsfire · Marker No. 21</span><span>HOST ONLY until cut</span></div><div class="sheet tight flap" style="top:.32in"><div class="banner slim">THE BLACK VEIL</div><div class="fit" data-min="0.86" style="--base:11.5pt">
+      <div class="flaphead"><div class="big">You are one who got away</div><div class="vn">Dominic Marek</div><div class="vt">The Doorman</div><span class="markerline">MARKER No. 21</span></div>
+      <div class="rule" style="margin:.4em 1.2in .5em"></div>
+      <h2>Who you were</h2><p>You are Dominic Marek, the Black Veil's Doorman, who held the river door. On the night of the Exit you let two people out at 23:47 and barred the door behind them. You have never sat with your back to a door since.</p>
+      <h2>How you got away</h2><p>You ran. A gunsmith's shop needed a man who knew doors and locks, and you learned guns because every doorman should know what a bad guest carries.</p>
+      <h2>Your tell</h2><p>You never sit with your back to a door, and you count the exits in every room you enter. <b>Do it at least three times before the nightcap.</b></p>
+      <h2>What leaks through</h2><p>You remember every face and name after a single introduction, and you can tell a lie by the feet.</p>
+      <h2>The rules for you</h2><ol class="rules"><li>You are one who got away. You know the old man hunted you and the people you trusted, and you know who he is. Others probably escaped too, but you do not know how many or who. Everyone else has been told only that survivors are in the room. Your cover is your public card. Keep it.</li><li>Your invitation came unsigned, and it knew the new name you have used ever since. Only one person could have known it. Working out who is one of your errands.</li><li>You carry marker No. 21. It is yours alone: never trade it, never give it away. It is how you pay the House.</li><li>You have told yourself so many stories since 1925 that you are no longer certain of your real reason for coming. You only know that you must be the one. Somebody in this room saw what he did to you; finding out is one of your errands.</li><li>The House keeps one bottle of tincture and sells it once a night, to whoever shows the Butler a marker first. Make your offer before the nightcap is served at nine o'clock. Only one of you can be the one.</li><li>If the Butler sells to you, the Keeper's nightcap waits in a glass on his table in the Merrimack Room. Pour the vial in unseen, then type the short code printed under the glass's coaster into the nightcap box on this page. Only the buyer's code counts, and the page will say only “Noted.”</li><li>Do your tell, a small habit you no longer notice, at least three times before the nightcap. Do not overdo it.</li><li>Whoever finishes him takes Cassie's seat and the Veil. You are competing with others you cannot name, and every one of you has the right to try.</li></ol>
+    </div></div></div>
+<div class="page"><div class="strip"><span>SURVIVOR KIT · Adam Holdsfire · Marker No. 21</span><span>HOST ONLY until cut</span></div>
+      <div class="cutarea hand" style="left:.5in;top:.55in;width:7.5in;height:6.55in"><div class="fit" data-max="1.2" style="--base:14pt;padding:0;flex:1;justify-content:center"><p class="to">Adam Holdsfire,</p>
+<p>That is the name you have worn since 1925, and I am one of very few who know what it covers.</p>
+<p>The old man will be in the room tonight. You know the one I mean. I will not write his name where a letter can be lost.</p>
+<p>Every one of you was meant to be dead, and you are not. Do not waste the evening being surprised.</p>
+<p>Why it must be you is yours to remember. You have told yourself a great many stories since. Sit quietly with the true one.</p>
+<p>You will not be told who else was sent for. The House keeps one bottle, and it is sold once. Be quick, and be quiet.</p>
+<p>Doors at eight. Wear a mask; you will need no other.</p>
+<p class="end">The veil lifts</p></div></div>
+      <div class="cutarea marker" style="left:.5in;top:7.6in;width:4.1in;height:2.5in"><div class="k">THE BLACK VEIL</div><div class="no">MARKER No. 21</div><div class="code">H3T4V</div><div class="l">Honoured once, at the bar, by its owner.</div></div>
+      <div class="cutarea label" style="left:5.0in;top:7.6in;width:3.0in;height:1.1in">Adam Holdsfire</div>
+      <div style="position:absolute;left:5.0in;top:8.8in;width:3in;font:8pt 'Liberation Sans',Arial,sans-serif;color:#666">Address label for the unsigned envelope. Cut along the dotted lines.</div>
+    </div>
+<div class="page"><div class="strip"><span>SURVIVOR KIT · Molly Daniel of the Manchester Union · Marker No. 22</span><span>HOST ONLY until cut</span></div><div class="sheet tight flap" style="top:.32in"><div class="banner slim">THE BLACK VEIL</div><div class="fit" data-min="0.86" style="--base:11.5pt">
+      <div class="flaphead"><div class="big">You are one who got away</div><div class="vn">Winifred “Winnie” Pike</div><div class="vt">The Runner</div><span class="markerline">MARKER No. 22</span></div>
+      <div class="rule" style="margin:.4em 1.2in .5em"></div>
+      <h2>Who you were</h2><p>You are Winifred “Winnie” Pike, the Black Veil's Runner: the Canadian mail, the late editions, the messages that could not be telephoned. You carried the invitations to the Exit on 31 October 1924.</p>
+      <h2>How you got away</h2><p>You were on a back road with a message when Quill's boatman came. You ran, hid under a newsie's bundle, and cried the late edition on a corner until the corner was your own.</p>
+      <h2>Your tell</h2><p>You glance at the nearest clock every time a door opens, and again when it closes. <b>Do it at least three times before the nightcap.</b></p>
+      <h2>What leaks through</h2><p>You know every street, back stair and short cut in Manchester, and you can read a newspaper upside down.</p>
+      <h2>The rules for you</h2><ol class="rules"><li>You are one who got away. You know the old man hunted you and the people you trusted, and you know who he is. Others probably escaped too, but you do not know how many or who. Everyone else has been told only that survivors are in the room. Your cover is your public card. Keep it.</li><li>Your invitation came unsigned, and it knew the new name you have used ever since. Only one person could have known it. Working out who is one of your errands.</li><li>You carry marker No. 22. It is yours alone: never trade it, never give it away. It is how you pay the House.</li><li>You have told yourself so many stories since 1925 that you are no longer certain of your real reason for coming. You only know that you must be the one. Somebody in this room saw what he did to you; finding out is one of your errands.</li><li>The House keeps one bottle of tincture and sells it once a night, to whoever shows the Butler a marker first. Make your offer before the nightcap is served at nine o'clock. Only one of you can be the one.</li><li>If the Butler sells to you, the Keeper's nightcap waits in a glass on his table in the Merrimack Room. Pour the vial in unseen, then type the short code printed under the glass's coaster into the nightcap box on this page. Only the buyer's code counts, and the page will say only “Noted.”</li><li>Do your tell, a small habit you no longer notice, at least three times before the nightcap. Do not overdo it.</li><li>Whoever finishes him takes Cassie's seat and the Veil. You are competing with others you cannot name, and every one of you has the right to try.</li></ol>
+    </div></div></div>
+<div class="page"><div class="strip"><span>SURVIVOR KIT · Molly Daniel of the Manchester Union · Marker No. 22</span><span>HOST ONLY until cut</span></div>
+      <div class="cutarea hand" style="left:.5in;top:.55in;width:7.5in;height:6.55in"><div class="fit" data-max="1.2" style="--base:14pt;padding:0;flex:1;justify-content:center"><p class="to">Molly Daniel of the Manchester Union,</p>
+<p>That is the name you have worn since 1925, and I am one of very few who know what it covers.</p>
+<p>The old man will be in the room tonight. You know the one I mean. I will not write his name where a letter can be lost.</p>
+<p>Every one of you was meant to be dead, and you are not. Do not waste the evening being surprised.</p>
+<p>Why it must be you is yours to remember. You have told yourself a great many stories since. Sit quietly with the true one.</p>
+<p>You will not be told who else was sent for. The House keeps one bottle, and it is sold once. Be quick, and be quiet.</p>
+<p>Doors at eight. Wear a mask; you will need no other.</p>
+<p class="end">The veil lifts</p></div></div>
+      <div class="cutarea marker" style="left:.5in;top:7.6in;width:4.1in;height:2.5in"><div class="k">THE BLACK VEIL</div><div class="no">MARKER No. 22</div><div class="code">XRTG9</div><div class="l">Honoured once, at the bar, by its owner.</div></div>
+      <div class="cutarea label" style="left:5.0in;top:7.6in;width:3.0in;height:1.1in">Molly Daniel of the Manchester Union</div>
+      <div style="position:absolute;left:5.0in;top:8.8in;width:3in;font:8pt 'Liberation Sans',Arial,sans-serif;color:#666">Address label for the unsigned envelope. Cut along the dotted lines.</div>
+    </div>
+
+<script>
+function fitAll(){document.querySelectorAll('.fit').forEach(function(el){
+  var s=parseFloat(el.dataset.max||'1'),min=parseFloat(el.dataset.min||'0.78');
+  el.style.setProperty('--s',s);
+  while((el.scrollHeight>el.clientHeight+1||el.scrollWidth>el.clientWidth+1)&&s>min){s-=0.01;el.style.setProperty('--s',s.toFixed(2));}
+  el.dataset.scale=s.toFixed(2);
+  if(el.scrollHeight>el.clientHeight+1||el.scrollWidth>el.clientWidth+1)el.dataset.overflow='1';
+});}
+fitAll();window.addEventListener('load',fitAll);
+</script>
+</body></html>

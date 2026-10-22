@@ -1,0 +1,150 @@
+<!doctype html>
+<!-- Pages 1-2 posters; pages 3-4 half-page copies for tables (cut along the dotted line). -->
+<html lang="en"><head><meta charset="utf-8"><title>Door cards</title><meta name="viewport" content="width=device-width">
+<style>/* Black Veil print cards. Letter pages, one .page per sheet, printed with backgrounds. */
+@page { size: 8.5in 11in; margin: 0; }
+:root {
+  --ink: #2a1d12; --ink2: #4a3826; --cream: #f4ead2; --cream2: #ebdcb8; --edge: #b89a5a;
+  --wine: #6e1e1e; --gold: #8a6a22; --goldl: #d8b85a; --black: #141010; --green: #2f4a35;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: #fff; }
+body { font-family: "Liberation Serif", "Times New Roman", serif; color: var(--ink); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.page { width: 8.5in; height: 11in; position: relative; overflow: hidden; background: #fff; break-after: page; page-break-after: always; }
+.page:last-child { break-after: auto; page-break-after: auto; }
+.sans { font-family: "Liberation Sans", Arial, sans-serif; }
+.mono { font-family: "FreeMono", "Liberation Mono", monospace; }
+
+/* the aged-paper sheet inside the page, inset so any printer's margin leaves it whole */
+.sheet {
+  position: absolute; left: .3in; right: .3in; top: .3in; bottom: .3in;
+  background:
+    radial-gradient(ellipse at 15% 10%, rgba(255,255,255,.55), transparent 55%),
+    radial-gradient(ellipse at 90% 95%, rgba(150,110,50,.18), transparent 60%),
+    var(--cream);
+  border: 1.5px solid var(--ink2); outline: 1px solid var(--edge); outline-offset: -7px;
+  padding: .32in .45in .3in; display: flex; flex-direction: column; overflow: hidden;
+}
+.banner { background: var(--black); color: var(--goldl); text-align: center; letter-spacing: .42em; font-weight: bold; font-size: 15pt; padding: .09in 0 .09in .42em; margin: 0 -.2in; border-top: 2px solid var(--goldl); border-bottom: 2px solid var(--goldl); flex: none; }
+.banner small { display: block; font-size: 8.5pt; letter-spacing: .32em; font-weight: normal; margin-top: 2px; color: #e8d9a8; }
+.fit { flex: 1; min-height: 0; overflow: hidden; display: flex; flex-direction: column; font-size: calc(var(--base, 11.5pt) * var(--s, 1)); line-height: 1.28; padding-top: .14in; }
+.fit > * { flex: none; }
+.name { font-size: 2.35em; font-weight: bold; line-height: 1.05; text-align: center; margin: .1em 0 .05em; color: var(--black); }
+.occ { text-align: center; font-style: italic; font-size: 1.2em; color: var(--wine); margin-bottom: .35em; }
+.rule { height: 0; border-top: 1px solid var(--gold); margin: .55em 1.2in .7em; position: relative; }
+.rule::after { content: ""; position: absolute; left: 50%; top: -5px; width: 8px; height: 8px; background: var(--cream); border: 1px solid var(--gold); transform: translateX(-50%) rotate(45deg); }
+h2 { font-size: 1.12em; letter-spacing: .14em; text-transform: uppercase; color: var(--wine); margin: .75em 0 .25em; border-bottom: 1px solid var(--edge); padding-bottom: .1em; font-family: "Liberation Sans", Arial, sans-serif; font-weight: bold; }
+h2:first-child { margin-top: 0; }
+p { margin: 0 0 .4em; }
+.summary { font-size: .88em; line-height: 1.24; background: rgba(110,30,30,.06); border-left: 3px solid var(--wine); padding: .4em .7em .25em; margin-bottom: .4em; }
+.summary h4 { margin: .45em 0 .05em; font: bold .88em "Liberation Sans", Arial, sans-serif; letter-spacing: .1em; text-transform: uppercase; color: var(--wine); }
+.summary h4:first-child { margin-top: 0; }
+.summary p { margin: 0 0 .15em; }
+.lab { font: bold .8em "Liberation Sans", Arial, sans-serif; letter-spacing: .08em; text-transform: uppercase; color: var(--gold); }
+ul { margin: 0 0 .4em; padding-left: 1.15em; } li { margin-bottom: .22em; }
+.line { margin: 0 0 .38em; padding-left: .6em; border-left: 2px solid var(--edge); }
+.tag { display: inline-block; font: bold .68em "Liberation Sans", Arial, sans-serif; letter-spacing: .06em; text-transform: uppercase; padding: .08em .5em; margin-right: .5em; border: 1px solid; border-radius: 2px; vertical-align: .08em; white-space: nowrap; }
+.tag.free { color: var(--green); border-color: var(--green); background: rgba(47,74,53,.08); }
+.tag.trade { color: var(--gold); border-color: var(--gold); background: rgba(138,106,34,.1); }
+.tag.secret { color: var(--wine); border-color: var(--wine); background: rgba(110,30,30,.1); }
+.cash { display: flex; align-items: center; justify-content: space-between; border: 2px double var(--green); background: rgba(47,74,53,.08); color: var(--green); padding: .2em .8em; margin: .55em 0 .1em; }
+.cash .amt { font-size: 1.9em; font-weight: bold; letter-spacing: .04em; }
+.cash .t { font-style: italic; font-size: 1.05em; }
+.errand { border: 1px solid var(--edge); background: rgba(255,255,255,.35); padding: .3em .7em .35em; margin-bottom: .4em; }
+.errand .t { font-weight: bold; font-size: 1.04em; }
+.errand .t .lab { margin-right: .5em; }
+.errand .a { font-size: .92em; margin-top: .1em; display: flex; justify-content: space-between; gap: .6em; }
+.errand .a em { color: var(--wine); }
+.errand .a b { white-space: nowrap; font-family: "Liberation Sans", Arial, sans-serif; font-size: .85em; }
+.box { border: 2px solid var(--ink2); text-align: center; font-weight: bold; padding: .3em .6em; margin: .15em 0 .4em; letter-spacing: .02em; }
+.flapbox { border: 1.5px dashed var(--wine); padding: .35em .8em; text-align: center; font-style: italic; margin-top: auto; background: rgba(110,30,30,.05); }
+.type { text-align: center; font-size: .95em; margin: .45em 0 0; }
+.pull { margin-top: auto; }
+.cols2 { column-count: 2; column-gap: .3in; }
+.cols2 .line { break-inside: avoid; }
+.fine { font-size: .8em; color: var(--ink2); }
+.pn { font: .7em "Liberation Sans", Arial, sans-serif; color: var(--ink2); text-align: center; letter-spacing: .1em; flex: none; padding-top: .05in; }
+
+/* survivor kit */
+.strip { position: absolute; left: .3in; right: .3in; top: .1in; font: 8pt "Liberation Sans", Arial, sans-serif; color: #555; display: flex; justify-content: space-between; }
+.hostmark { color: #fff; background: var(--wine); font: bold 13pt "Liberation Sans", Arial, sans-serif; letter-spacing: .12em; text-align: center; padding: .08in; margin: 0 0 .15in; }
+table { border-collapse: collapse; width: 100%; font-size: .92em; }
+th, td { border: 1px solid var(--edge); padding: .25em .5em; text-align: left; vertical-align: top; }
+th { background: rgba(110,30,30,.1); font: bold .85em "Liberation Sans", Arial, sans-serif; letter-spacing: .06em; text-transform: uppercase; }
+.cutarea { position: absolute; border: 1.5px dashed #555; }
+.cutarea::before { content: "\2702"; position: absolute; left: -.2in; top: -.14in; font-size: 11pt; color: #555; background: #fff; padding: 0 2px; }
+.flaphead { text-align: center; }
+.flaphead .big { font-size: 1.9em; font-weight: bold; color: var(--black); }
+.flaphead .vn { font-size: 2.1em; font-weight: bold; margin-top: .15em; color: var(--wine); }
+.flaphead .vt { font-size: 1.3em; font-style: italic; }
+.markerline { display: inline-block; border: 2px solid var(--black); background: var(--black); color: var(--goldl); padding: .1em .8em; margin-top: .4em; font: bold 1.05em "Liberation Sans", Arial, sans-serif; letter-spacing: .2em; }
+ol.rules { padding-left: 1.4em; margin: 0; } ol.rules li { margin-bottom: .32em; }
+.marker { background: var(--black); color: var(--goldl); text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center; border: 1px solid var(--goldl); outline: 1px solid var(--goldl); outline-offset: -6px; }
+.marker .k { font: bold 10pt "Liberation Sans", Arial, sans-serif; letter-spacing: .3em; }
+.marker .no { font: bold 15pt "Liberation Sans", Arial, sans-serif; letter-spacing: .22em; margin-top: 4px; }
+.marker .code { font: bold 38pt "FreeMono", monospace; letter-spacing: .12em; margin: 4px 0 2px; color: #f0d27a; }
+.marker .l { font-style: italic; font-size: 10.5pt; color: #e8d9a8; }
+.label { background: #fff; border: 1px solid #999; display: flex; align-items: center; justify-content: center; text-align: center; padding: 0 .2in; font: italic 17pt "Liberation Serif", serif; }
+.hand { background: var(--cream); background-image: radial-gradient(ellipse at 20% 10%, rgba(255,255,255,.6), transparent 60%), radial-gradient(ellipse at 90% 100%, rgba(150,110,50,.2), transparent 60%); font-family: "Liberation Serif", serif; font-style: italic; color: #1c2a4a; padding: .35in .5in; display: flex; flex-direction: column; justify-content: center; }
+.hand p { margin: 0 0 .55em; font-size: 14pt; line-height: 1.42; }
+.hand .to { font-size: 17pt; }
+.hand .end { margin-top: .3em; font-size: 17pt; text-align: right; }
+
+/* house invitations */
+.inv { position: absolute; left: .45in; right: .45in; height: 4.7in; background: #f7efd9; border: 3px double var(--ink2); outline: 1px solid var(--edge); outline-offset: -9px; text-align: center; padding: .28in .6in; display: flex; flex-direction: column; justify-content: center; }
+.inv .req { font: bold 24pt "Liberation Serif", serif; letter-spacing: .3em; color: #efe3c4; text-shadow: -1px -1px 0 #fff, 1px 1px 0 #b8a67c, 2px 2px 1px rgba(80,60,20,.35); padding-left: .3em; }
+.inv .to { font-size: 25pt; font-weight: bold; color: var(--black); margin: .08in 0 .06in; line-height: 1.1; }
+.inv .body { font-size: 13.5pt; line-height: 1.38; }
+.inv .word { margin-top: .13in; font-style: italic; font-size: 12.5pt; color: var(--wine); border-top: 1px solid var(--edge); padding-top: .09in; }
+.inv .word b { font-style: normal; font-family: "Liberation Sans", Arial, sans-serif; font-size: .75em; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); margin-right: .4em; }
+.inv .sig { margin-top: .13in; font-style: italic; font-size: 18pt; }
+.cutline { position: absolute; left: 0; right: 0; border-top: 1.5px dashed #777; }
+
+/* door cards */
+.poster .banner { font-size: 22pt; }
+.poster .fit { padding-top: .2in; }
+.poster h3 { font: bold 1.05em "Liberation Sans", Arial, sans-serif; letter-spacing: .14em; text-transform: uppercase; color: var(--wine); margin: .8em 0 .2em; }
+.poster h3:first-child { margin-top: 0; }
+.poster p { margin: 0 0 .3em; }
+.poster ol { padding-left: 1.5em; margin: 0; } .poster ol li { margin-bottom: .55em; padding-left: .2em; }
+.half { position: absolute; left: .3in; right: .3in; height: 5.0in; }
+.half .sheet { position: absolute; inset: 0; padding: .18in .35in .15in; }
+.half .banner { font-size: 12pt; padding: .05in 0 .05in .42em; }
+.half .fit { padding-top: .1in; }
+.half ol { column-count: 1; }
+.half.two ol { columns: 2; column-gap: .3in; }
+.half.two ol li { break-inside: avoid; }
+
+.banner.slim { font-size: 10.5pt; padding: .045in 0 .045in .42em; letter-spacing: .38em; }
+.sheet.tight { padding: .2in .38in .18in; }
+.flap h2 { margin: .55em 0 .18em; }
+.flap p { margin: 0 0 .25em; }
+.flap ol.rules li { margin-bottom: .2em; }
+.flap .fit { line-height: 1.22; padding-top: .1in; }
+.flaphead { display: flex; flex-direction: column; align-items: center; }
+.flaphead .big { font-size: 1.5em; }
+.flaphead .vn { font-size: 1.9em; margin-top: .05em; line-height: 1.1; }
+.flaphead .vt { font-size: 1.2em; }
+.half .sheet { padding: .12in .3in .1in; }
+.half .banner { font-size: 10.5pt; margin: 0 -.1in; padding: .03in 0 .03in .42em; }
+.half .fit { padding-top: .06in; line-height: 1.22; }
+.half.two ol li { break-inside: auto; margin-bottom: .35em; }
+.half h3 { margin: .5em 0 .1em; }
+.half .rule { display: none; }
+</style></head><body>
+<div class="page poster"><div class="sheet"><div class="banner">THE BLACK VEIL</div><div class="fit" data-max="1.55" data-min="0.9" style="--base:11.5pt"><div class="name" style="font-size:2.3em">What the town knows</div><div class="rule"></div><h3>All Hallows' Eve, 1924</h3><p>The masquerade was the talk of Manchester, right up until the music stopped. The orchestra slipped in by the river door. Four masked guests slipped up to the private landing. By midnight the papers were screaming massacre, and nobody could find a body, a name, or a coroner willing to sign for one. The proprietress, Miss Cassie Castello, had vanished with the last dance.</p><h3>The year after</h3><p>A police bulletin called Cassie “a person of interest,” and then lost interest. Seventeen people with no records and no relatives met unfortunate accidents. Nobody added it up. (You may.)</p><h3>Tonight</h3><p>The black envelopes came to your door, signed by nobody you would dare name. You came anyway. Curious. A little reckless. Wear it well. Before the night is through, someone will be found dead, and the rest of you will have opinions.</p><h3>Five ghosts in the room</h3><p>Five souls the papers swore were lost are here tonight in borrowed names and borrowed faces, sipping your drinks and watching your hands. They are guests like you. Before the lights come up you may point at up to five of your fellow guests and say ghost. Be right and it pays. Be wrong and it stings.</p><h3>Last call</h3><p>You will be asked three things: what really happened in 1924, who did it tonight and how, and who the dead man was to the Veil.</p><h3>A word to the ghosts</h3><p>If you are one of the five, your private page already knows. Everyone else's has the same sealed flap with nothing behind it. Nobody can tell by looking. Keep a straight face.</p></div></div></div>
+<div class="page poster"><div class="sheet"><div class="banner">THE BLACK VEIL</div><div class="fit" data-max="1.55" data-min="0.9" style="--base:11.5pt"><div class="name" style="font-size:2.3em">The rules of the night</div><div class="rule"></div><ol><li>Your card has three tabs. Public is what everyone knows. Background is your history and what to wear. Private is yours alone: your secrets, your five errands, and anything you must not say aloud.</li><li>From 8:00 the room is a cocktail party. Mingle, trade, bargain. Errands earn you points; so do the pages and clues you find.</li><li>Later in the evening a body will be found. There is no town hall and no host to rule on anything. Question whom you like. Nobody is forced to answer.</li><li>Nothing is ever taken from anyone. Props change hands by a deal, and nobody brings anything: whatever you carry is handed to you at the door. Hidden game pieces are only in shared rooms, never in bedrooms, bathrooms, closets or drawers.</li><li>Walk, do not run, and keep your drink in your hand.</li><li>Type your answers into your phone whenever you like, and as often as you like. Only your last answer to each question counts. The site will not tell you whether you were right; nobody will, until the end.</li><li>The book closes at the end of the night. Points come from your errands, the pages you file, the survivors you name, and above all the three mysteries: the Old, the New and the Connection. Finish every errand and never work out the story and you cannot win.</li></ol></div></div></div>
+<div class="page poster"><div class="half " style="top:.2in"><div class="sheet"><div class="banner">THE BLACK VEIL</div><div class="fit" data-max="1.3" data-min="0.88" style="--base:11.5pt"><div class="name" style="font-size:1.5em;margin-bottom:.1em">What the town knows</div><h3>All Hallows' Eve, 1924</h3><p>The masquerade was the talk of Manchester, right up until the music stopped. The orchestra slipped in by the river door. Four masked guests slipped up to the private landing. By midnight the papers were screaming massacre, and nobody could find a body, a name, or a coroner willing to sign for one. The proprietress, Miss Cassie Castello, had vanished with the last dance.</p><h3>The year after</h3><p>A police bulletin called Cassie “a person of interest,” and then lost interest. Seventeen people with no records and no relatives met unfortunate accidents. Nobody added it up. (You may.)</p><h3>Tonight</h3><p>The black envelopes came to your door, signed by nobody you would dare name. You came anyway. Curious. A little reckless. Wear it well. Before the night is through, someone will be found dead, and the rest of you will have opinions.</p><h3>Five ghosts in the room</h3><p>Five souls the papers swore were lost are here tonight in borrowed names and borrowed faces, sipping your drinks and watching your hands. They are guests like you. Before the lights come up you may point at up to five of your fellow guests and say ghost. Be right and it pays. Be wrong and it stings.</p><h3>Last call</h3><p>You will be asked three things: what really happened in 1924, who did it tonight and how, and who the dead man was to the Veil.</p><h3>A word to the ghosts</h3><p>If you are one of the five, your private page already knows. Everyone else's has the same sealed flap with nothing behind it. Nobody can tell by looking. Keep a straight face.</p></div></div></div><div class="cutline" style="top:5.5in"></div><div class="half " style="top:5.8in"><div class="sheet"><div class="banner">THE BLACK VEIL</div><div class="fit" data-max="1.3" data-min="0.88" style="--base:11.5pt"><div class="name" style="font-size:1.5em;margin-bottom:.1em">What the town knows</div><h3>All Hallows' Eve, 1924</h3><p>The masquerade was the talk of Manchester, right up until the music stopped. The orchestra slipped in by the river door. Four masked guests slipped up to the private landing. By midnight the papers were screaming massacre, and nobody could find a body, a name, or a coroner willing to sign for one. The proprietress, Miss Cassie Castello, had vanished with the last dance.</p><h3>The year after</h3><p>A police bulletin called Cassie “a person of interest,” and then lost interest. Seventeen people with no records and no relatives met unfortunate accidents. Nobody added it up. (You may.)</p><h3>Tonight</h3><p>The black envelopes came to your door, signed by nobody you would dare name. You came anyway. Curious. A little reckless. Wear it well. Before the night is through, someone will be found dead, and the rest of you will have opinions.</p><h3>Five ghosts in the room</h3><p>Five souls the papers swore were lost are here tonight in borrowed names and borrowed faces, sipping your drinks and watching your hands. They are guests like you. Before the lights come up you may point at up to five of your fellow guests and say ghost. Be right and it pays. Be wrong and it stings.</p><h3>Last call</h3><p>You will be asked three things: what really happened in 1924, who did it tonight and how, and who the dead man was to the Veil.</p><h3>A word to the ghosts</h3><p>If you are one of the five, your private page already knows. Everyone else's has the same sealed flap with nothing behind it. Nobody can tell by looking. Keep a straight face.</p></div></div></div></div>
+<div class="page poster"><div class="half two" style="top:.2in"><div class="sheet"><div class="banner">THE BLACK VEIL</div><div class="fit" data-max="1.3" data-min="0.88" style="--base:11.5pt"><div class="name" style="font-size:1.5em;margin-bottom:.1em">The rules of the night</div><ol><li>Your card has three tabs. Public is what everyone knows. Background is your history and what to wear. Private is yours alone: your secrets, your five errands, and anything you must not say aloud.</li><li>From 8:00 the room is a cocktail party. Mingle, trade, bargain. Errands earn you points; so do the pages and clues you find.</li><li>Later in the evening a body will be found. There is no town hall and no host to rule on anything. Question whom you like. Nobody is forced to answer.</li><li>Nothing is ever taken from anyone. Props change hands by a deal, and nobody brings anything: whatever you carry is handed to you at the door. Hidden game pieces are only in shared rooms, never in bedrooms, bathrooms, closets or drawers.</li><li>Walk, do not run, and keep your drink in your hand.</li><li>Type your answers into your phone whenever you like, and as often as you like. Only your last answer to each question counts. The site will not tell you whether you were right; nobody will, until the end.</li><li>The book closes at the end of the night. Points come from your errands, the pages you file, the survivors you name, and above all the three mysteries: the Old, the New and the Connection. Finish every errand and never work out the story and you cannot win.</li></ol></div></div></div><div class="cutline" style="top:5.5in"></div><div class="half two" style="top:5.8in"><div class="sheet"><div class="banner">THE BLACK VEIL</div><div class="fit" data-max="1.3" data-min="0.88" style="--base:11.5pt"><div class="name" style="font-size:1.5em;margin-bottom:.1em">The rules of the night</div><ol><li>Your card has three tabs. Public is what everyone knows. Background is your history and what to wear. Private is yours alone: your secrets, your five errands, and anything you must not say aloud.</li><li>From 8:00 the room is a cocktail party. Mingle, trade, bargain. Errands earn you points; so do the pages and clues you find.</li><li>Later in the evening a body will be found. There is no town hall and no host to rule on anything. Question whom you like. Nobody is forced to answer.</li><li>Nothing is ever taken from anyone. Props change hands by a deal, and nobody brings anything: whatever you carry is handed to you at the door. Hidden game pieces are only in shared rooms, never in bedrooms, bathrooms, closets or drawers.</li><li>Walk, do not run, and keep your drink in your hand.</li><li>Type your answers into your phone whenever you like, and as often as you like. Only your last answer to each question counts. The site will not tell you whether you were right; nobody will, until the end.</li><li>The book closes at the end of the night. Points come from your errands, the pages you file, the survivors you name, and above all the three mysteries: the Old, the New and the Connection. Finish every errand and never work out the story and you cannot win.</li></ol></div></div></div></div>
+
+<script>
+function fitAll(){document.querySelectorAll('.fit').forEach(function(el){
+  var s=parseFloat(el.dataset.max||'1'),min=parseFloat(el.dataset.min||'0.78');
+  el.style.setProperty('--s',s);
+  while((el.scrollHeight>el.clientHeight+1||el.scrollWidth>el.clientWidth+1)&&s>min){s-=0.01;el.style.setProperty('--s',s.toFixed(2));}
+  el.dataset.scale=s.toFixed(2);
+  if(el.scrollHeight>el.clientHeight+1||el.scrollWidth>el.clientWidth+1)el.dataset.overflow='1';
+});}
+fitAll();window.addEventListener('load',fitAll);
+</script>
+</body></html>

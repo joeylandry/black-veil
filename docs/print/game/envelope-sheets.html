@@ -1,0 +1,338 @@
+<!doctype html>
+<!-- One page per character, single-sided, alphabetical like the cards. -->
+<html lang="en"><head><meta charset="utf-8"><title>Envelope sheets</title><meta name="viewport" content="width=device-width">
+<style>/* Black Veil print cards. Letter pages, one .page per sheet, printed with backgrounds. */
+@page { size: 8.5in 11in; margin: 0; }
+:root {
+  --ink: #2a1d12; --ink2: #4a3826; --cream: #f4ead2; --cream2: #ebdcb8; --edge: #b89a5a;
+  --wine: #6e1e1e; --gold: #8a6a22; --goldl: #d8b85a; --black: #141010; --green: #2f4a35;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: #fff; }
+body { font-family: "Liberation Serif", "Times New Roman", serif; color: var(--ink); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.page { width: 8.5in; height: 11in; position: relative; overflow: hidden; background: #fff; break-after: page; page-break-after: always; }
+.page:last-child { break-after: auto; page-break-after: auto; }
+.sans { font-family: "Liberation Sans", Arial, sans-serif; }
+.mono { font-family: "FreeMono", "Liberation Mono", monospace; }
+
+/* the aged-paper sheet inside the page, inset so any printer's margin leaves it whole */
+.sheet {
+  position: absolute; left: .3in; right: .3in; top: .3in; bottom: .3in;
+  background:
+    radial-gradient(ellipse at 15% 10%, rgba(255,255,255,.55), transparent 55%),
+    radial-gradient(ellipse at 90% 95%, rgba(150,110,50,.18), transparent 60%),
+    var(--cream);
+  border: 1.5px solid var(--ink2); outline: 1px solid var(--edge); outline-offset: -7px;
+  padding: .32in .45in .3in; display: flex; flex-direction: column; overflow: hidden;
+}
+.banner { background: var(--black); color: var(--goldl); text-align: center; letter-spacing: .42em; font-weight: bold; font-size: 15pt; padding: .09in 0 .09in .42em; margin: 0 -.2in; border-top: 2px solid var(--goldl); border-bottom: 2px solid var(--goldl); flex: none; }
+.banner small { display: block; font-size: 8.5pt; letter-spacing: .32em; font-weight: normal; margin-top: 2px; color: #e8d9a8; }
+.fit { flex: 1; min-height: 0; overflow: hidden; display: flex; flex-direction: column; font-size: calc(var(--base, 11.5pt) * var(--s, 1)); line-height: 1.28; padding-top: .14in; }
+.fit > * { flex: none; }
+.name { font-size: 2.35em; font-weight: bold; line-height: 1.05; text-align: center; margin: .1em 0 .05em; color: var(--black); }
+.occ { text-align: center; font-style: italic; font-size: 1.2em; color: var(--wine); margin-bottom: .35em; }
+.rule { height: 0; border-top: 1px solid var(--gold); margin: .55em 1.2in .7em; position: relative; }
+.rule::after { content: ""; position: absolute; left: 50%; top: -5px; width: 8px; height: 8px; background: var(--cream); border: 1px solid var(--gold); transform: translateX(-50%) rotate(45deg); }
+h2 { font-size: 1.12em; letter-spacing: .14em; text-transform: uppercase; color: var(--wine); margin: .75em 0 .25em; border-bottom: 1px solid var(--edge); padding-bottom: .1em; font-family: "Liberation Sans", Arial, sans-serif; font-weight: bold; }
+h2:first-child { margin-top: 0; }
+p { margin: 0 0 .4em; }
+.summary { font-size: .88em; line-height: 1.24; background: rgba(110,30,30,.06); border-left: 3px solid var(--wine); padding: .4em .7em .25em; margin-bottom: .4em; }
+.summary h4 { margin: .45em 0 .05em; font: bold .88em "Liberation Sans", Arial, sans-serif; letter-spacing: .1em; text-transform: uppercase; color: var(--wine); }
+.summary h4:first-child { margin-top: 0; }
+.summary p { margin: 0 0 .15em; }
+.lab { font: bold .8em "Liberation Sans", Arial, sans-serif; letter-spacing: .08em; text-transform: uppercase; color: var(--gold); }
+ul { margin: 0 0 .4em; padding-left: 1.15em; } li { margin-bottom: .22em; }
+.line { margin: 0 0 .38em; padding-left: .6em; border-left: 2px solid var(--edge); }
+.tag { display: inline-block; font: bold .68em "Liberation Sans", Arial, sans-serif; letter-spacing: .06em; text-transform: uppercase; padding: .08em .5em; margin-right: .5em; border: 1px solid; border-radius: 2px; vertical-align: .08em; white-space: nowrap; }
+.tag.free { color: var(--green); border-color: var(--green); background: rgba(47,74,53,.08); }
+.tag.trade { color: var(--gold); border-color: var(--gold); background: rgba(138,106,34,.1); }
+.tag.secret { color: var(--wine); border-color: var(--wine); background: rgba(110,30,30,.1); }
+.cash { display: flex; align-items: center; justify-content: space-between; border: 2px double var(--green); background: rgba(47,74,53,.08); color: var(--green); padding: .2em .8em; margin: .55em 0 .1em; }
+.cash .amt { font-size: 1.9em; font-weight: bold; letter-spacing: .04em; }
+.cash .t { font-style: italic; font-size: 1.05em; }
+.errand { border: 1px solid var(--edge); background: rgba(255,255,255,.35); padding: .3em .7em .35em; margin-bottom: .4em; }
+.errand .t { font-weight: bold; font-size: 1.04em; }
+.errand .t .lab { margin-right: .5em; }
+.errand .a { font-size: .92em; margin-top: .1em; display: flex; justify-content: space-between; gap: .6em; }
+.errand .a em { color: var(--wine); }
+.errand .a b { white-space: nowrap; font-family: "Liberation Sans", Arial, sans-serif; font-size: .85em; }
+.box { border: 2px solid var(--ink2); text-align: center; font-weight: bold; padding: .3em .6em; margin: .15em 0 .4em; letter-spacing: .02em; }
+.flapbox { border: 1.5px dashed var(--wine); padding: .35em .8em; text-align: center; font-style: italic; margin-top: auto; background: rgba(110,30,30,.05); }
+.type { text-align: center; font-size: .95em; margin: .45em 0 0; }
+.pull { margin-top: auto; }
+.cols2 { column-count: 2; column-gap: .3in; }
+.cols2 .line { break-inside: avoid; }
+.fine { font-size: .8em; color: var(--ink2); }
+.pn { font: .7em "Liberation Sans", Arial, sans-serif; color: var(--ink2); text-align: center; letter-spacing: .1em; flex: none; padding-top: .05in; }
+
+/* survivor kit */
+.strip { position: absolute; left: .3in; right: .3in; top: .1in; font: 8pt "Liberation Sans", Arial, sans-serif; color: #555; display: flex; justify-content: space-between; }
+.hostmark { color: #fff; background: var(--wine); font: bold 13pt "Liberation Sans", Arial, sans-serif; letter-spacing: .12em; text-align: center; padding: .08in; margin: 0 0 .15in; }
+table { border-collapse: collapse; width: 100%; font-size: .92em; }
+th, td { border: 1px solid var(--edge); padding: .25em .5em; text-align: left; vertical-align: top; }
+th { background: rgba(110,30,30,.1); font: bold .85em "Liberation Sans", Arial, sans-serif; letter-spacing: .06em; text-transform: uppercase; }
+.cutarea { position: absolute; border: 1.5px dashed #555; }
+.cutarea::before { content: "\2702"; position: absolute; left: -.2in; top: -.14in; font-size: 11pt; color: #555; background: #fff; padding: 0 2px; }
+.flaphead { text-align: center; }
+.flaphead .big { font-size: 1.9em; font-weight: bold; color: var(--black); }
+.flaphead .vn { font-size: 2.1em; font-weight: bold; margin-top: .15em; color: var(--wine); }
+.flaphead .vt { font-size: 1.3em; font-style: italic; }
+.markerline { display: inline-block; border: 2px solid var(--black); background: var(--black); color: var(--goldl); padding: .1em .8em; margin-top: .4em; font: bold 1.05em "Liberation Sans", Arial, sans-serif; letter-spacing: .2em; }
+ol.rules { padding-left: 1.4em; margin: 0; } ol.rules li { margin-bottom: .32em; }
+.marker { background: var(--black); color: var(--goldl); text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center; border: 1px solid var(--goldl); outline: 1px solid var(--goldl); outline-offset: -6px; }
+.marker .k { font: bold 10pt "Liberation Sans", Arial, sans-serif; letter-spacing: .3em; }
+.marker .no { font: bold 15pt "Liberation Sans", Arial, sans-serif; letter-spacing: .22em; margin-top: 4px; }
+.marker .code { font: bold 38pt "FreeMono", monospace; letter-spacing: .12em; margin: 4px 0 2px; color: #f0d27a; }
+.marker .l { font-style: italic; font-size: 10.5pt; color: #e8d9a8; }
+.label { background: #fff; border: 1px solid #999; display: flex; align-items: center; justify-content: center; text-align: center; padding: 0 .2in; font: italic 17pt "Liberation Serif", serif; }
+.hand { background: var(--cream); background-image: radial-gradient(ellipse at 20% 10%, rgba(255,255,255,.6), transparent 60%), radial-gradient(ellipse at 90% 100%, rgba(150,110,50,.2), transparent 60%); font-family: "Liberation Serif", serif; font-style: italic; color: #1c2a4a; padding: .35in .5in; display: flex; flex-direction: column; justify-content: center; }
+.hand p { margin: 0 0 .55em; font-size: 14pt; line-height: 1.42; }
+.hand .to { font-size: 17pt; }
+.hand .end { margin-top: .3em; font-size: 17pt; text-align: right; }
+
+/* house invitations */
+.inv { position: absolute; left: .45in; right: .45in; height: 4.7in; background: #f7efd9; border: 3px double var(--ink2); outline: 1px solid var(--edge); outline-offset: -9px; text-align: center; padding: .28in .6in; display: flex; flex-direction: column; justify-content: center; }
+.inv .req { font: bold 24pt "Liberation Serif", serif; letter-spacing: .3em; color: #efe3c4; text-shadow: -1px -1px 0 #fff, 1px 1px 0 #b8a67c, 2px 2px 1px rgba(80,60,20,.35); padding-left: .3em; }
+.inv .to { font-size: 25pt; font-weight: bold; color: var(--black); margin: .08in 0 .06in; line-height: 1.1; }
+.inv .body { font-size: 13.5pt; line-height: 1.38; }
+.inv .word { margin-top: .13in; font-style: italic; font-size: 12.5pt; color: var(--wine); border-top: 1px solid var(--edge); padding-top: .09in; }
+.inv .word b { font-style: normal; font-family: "Liberation Sans", Arial, sans-serif; font-size: .75em; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); margin-right: .4em; }
+.inv .sig { margin-top: .13in; font-style: italic; font-size: 18pt; }
+.cutline { position: absolute; left: 0; right: 0; border-top: 1.5px dashed #777; }
+
+/* door cards */
+.poster .banner { font-size: 22pt; }
+.poster .fit { padding-top: .2in; }
+.poster h3 { font: bold 1.05em "Liberation Sans", Arial, sans-serif; letter-spacing: .14em; text-transform: uppercase; color: var(--wine); margin: .8em 0 .2em; }
+.poster h3:first-child { margin-top: 0; }
+.poster p { margin: 0 0 .3em; }
+.poster ol { padding-left: 1.5em; margin: 0; } .poster ol li { margin-bottom: .55em; padding-left: .2em; }
+.half { position: absolute; left: .3in; right: .3in; height: 5.0in; }
+.half .sheet { position: absolute; inset: 0; padding: .18in .35in .15in; }
+.half .banner { font-size: 12pt; padding: .05in 0 .05in .42em; }
+.half .fit { padding-top: .1in; }
+.half ol { column-count: 1; }
+.half.two ol { columns: 2; column-gap: .3in; }
+.half.two ol li { break-inside: avoid; }
+
+.banner.slim { font-size: 10.5pt; padding: .045in 0 .045in .42em; letter-spacing: .38em; }
+.sheet.tight { padding: .2in .38in .18in; }
+.flap h2 { margin: .55em 0 .18em; }
+.flap p { margin: 0 0 .25em; }
+.flap ol.rules li { margin-bottom: .2em; }
+.flap .fit { line-height: 1.22; padding-top: .1in; }
+.flaphead { display: flex; flex-direction: column; align-items: center; }
+.flaphead .big { font-size: 1.5em; }
+.flaphead .vn { font-size: 1.9em; margin-top: .05em; line-height: 1.1; }
+.flaphead .vt { font-size: 1.2em; }
+.half .sheet { padding: .12in .3in .1in; }
+.half .banner { font-size: 10.5pt; margin: 0 -.1in; padding: .03in 0 .03in .42em; }
+.half .fit { padding-top: .06in; line-height: 1.22; }
+.half.two ol li { break-inside: auto; margin-bottom: .35em; }
+.half h3 { margin: .5em 0 .1em; }
+.half .rule { display: none; }
+</style></head><body>
+<div class="page"><div class="sheet"><div class="banner">THE BLACK VEIL<small>Adam Holdsfire</small></div><div class="fit" style="--base:12pt">
+      <div class="name" style="font-size:2.1em">Your black envelope</div><div class="occ">Errands 3 to 5</div><div class="rule"></div>
+      <div class="errand"><div class="t"><span class="lab">Errand 3</span>The old man's hour</div><div>The Keeper takes a nightcap at a fixed hour, in a fixed room. Until then the glass on his table is only a glass. Learn the hour, so you know how long you have.</div><div class="a"><span>Type: <em>The hour of his nightcap</em></span><b>12 POINTS</b></div></div><div class="errand"><div class="t"><span class="lab">Errand 4</span>Make your offer to the House</div><div>The House keeps one bottle for those who can pay in a marker. Before the nightcap is served at nine o'clock, take your marker to the Butler at the bar and make your offer. The House counts every offer, whether the answer is yes or no.</div><div class="a"><span>Type: <em>In a sentence, what did the Butler say?</em></span><b>12 POINTS</b></div></div><div class="errand"><div class="t"><span class="lab">Errand 5</span>Why you?</div><div>You came to be the one, and you are not sure you remember why. Find out what the Keeper took from you. Someone here saw part of it.</div><div class="a"><span>Type: <em>What did he do?</em></span><b>12 POINTS</b></div></div>
+      
+      
+      <div class="flapbox">What is in this envelope is for you alone. Keep a straight face, and enjoy the night.</div>
+      <div class="type">Type your answers on your phone whenever you like. Only your last answer counts.</div>
+    </div></div></div>
+<div class="page"><div class="sheet"><div class="banner">THE BLACK VEIL<small>Ananya Codru and Charlie Wakem</small></div><div class="fit" style="--base:12pt">
+      <div class="name" style="font-size:2.1em">Your black envelope</div><div class="occ">Errands 3 to 5</div><div class="rule"></div>
+      <div class="errand"><div class="t"><span class="lab">Errand 3</span>A fair trade</div><div>Strike a bargain with Erika Lamm: your blank telegram form for their set of false papers. It must be a deal, never a grab. When you hold it, read the code on its tag.</div><div class="a"><span>Type: <em>The code on the tag you received</em></span><b>12 POINTS</b></div></div><div class="errand"><div class="t"><span class="lab">Errand 4</span>A secret affair</div><div>You and J. Bruce Wayne are secretly sweet on each other. Nobody must learn it. If anyone names the two of you as a pair in their final answers, you lose points. Enjoy it, quietly.</div><div class="a"><span>Type: <em>In a sentence, how did you keep it secret?</em></span><b>12 POINTS</b></div></div><div class="errand"><div class="t"><span class="lab">Errand 5</span>Cassie's hand</div><div>Cassie signed her notes in a particular way. Learn how, from someone who kept her correspondence.</div><div class="a"><span>Type: <em>How she signed</em></span><b>12 POINTS</b></div></div>
+      
+      <div class="box" style="margin-top:.7em">You will be handed at the door: blank telegram form</div>
+      <div class="flapbox">What is in this envelope is for you alone. Keep a straight face, and enjoy the night.</div>
+      <div class="type">Type your answers on your phone whenever you like. Only your last answer counts.</div>
+    </div></div></div>
+<div class="page"><div class="sheet"><div class="banner">THE BLACK VEIL<small>Angelos Bowles</small></div><div class="fit" style="--base:12pt">
+      <div class="name" style="font-size:2.1em">Your black envelope</div><div class="occ">Errands 3 to 5</div><div class="rule"></div>
+      <div class="errand"><div class="t"><span class="lab">Errand 3</span>A fair trade</div><div>Strike a bargain with Diwakar Sandbagg: your House chip for their carnival giraffe. It must be a deal, never a grab. When you hold it, read the code on its tag.</div><div class="a"><span>Type: <em>The code on the tag you received</em></span><b>12 POINTS</b></div></div><div class="errand"><div class="t"><span class="lab">Errand 4</span>Gossip</div><div>Two guests are secretly sweet on each other. Find out who. Name the pair, and you have your story.</div><div class="a"><span>Type: <em>The two guests, by name</em></span><b>12 POINTS</b></div></div><div class="errand"><div class="t"><span class="lab">Errand 5</span>Money to make</div><div>Win a few hands, a few bets, a few boules. Leave with at least $200. Count your bills at the end and submit the total. The host may ask to see it.</div><div class="a"><span>Type: <em>Dollars in your pocket at the end</em></span><b>12 POINTS</b></div></div>
+      
+      <div class="box" style="margin-top:.7em">You will be handed at the door: House chip</div>
+      <div class="flapbox">What is in this envelope is for you alone. Keep a straight face, and enjoy the night.</div>
+      <div class="type">Type your answers on your phone whenever you like. Only your last answer counts.</div>
+    </div></div></div>
+<div class="page"><div class="sheet"><div class="banner">THE BLACK VEIL<small>Anika Mahns of Mahns Manor</small></div><div class="fit" style="--base:12pt">
+      <div class="name" style="font-size:2.1em">Your black envelope</div><div class="occ">Errands 3 to 5</div><div class="rule"></div>
+      <div class="errand"><div class="t"><span class="lab">Errand 3</span>A fair trade</div><div>Strike a bargain with Krrish Vermouth: your Mahns crested spoon for their Silent Partner's brass key. It must be a deal, never a grab. When you hold it, read the code on its tag.</div><div class="a"><span>Type: <em>The code on the tag you received</em></span><b>12 POINTS</b></div></div><div class="errand"><div class="t"><span class="lab">Errand 4</span>The Silent Partner's tooth</div><div>Your father's brass key must open something. Learn what, from someone who sold or built it.</div><div class="a"><span>Type: <em>What it opens</em></span><b>12 POINTS</b></div></div><div class="errand"><div class="t"><span class="lab">Errand 5</span>A sneaky request</div><div>Your father had a signature tune, and you want to know who in this room knew him. Hand Silas Palmer your Mahns Manor voucher ($30) and ask him to play the tune around half past eight and call it a request from the room. Watch who stops, hums or leaves. He hands you a request card: read its code.</div><div class="a"><span>Type: <em>The code on the request card</em></span><b>12 POINTS</b></div></div>
+      
+      <div class="box" style="margin-top:.7em">You will be handed at the door: Mahns crested spoon, Mahns Manor voucher</div>
+      <div class="flapbox">What is in this envelope is for you alone. Keep a straight face, and enjoy the night.</div>
+      <div class="type">Type your answers on your phone whenever you like. Only your last answer counts.</div>
+    </div></div></div>
+<div class="page"><div class="sheet"><div class="banner">THE BLACK VEIL<small>Anthony Hung, Esq.</small></div><div class="fit" style="--base:12pt">
+      <div class="name" style="font-size:2.1em">Your black envelope</div><div class="occ">Errands 3 to 5</div><div class="rule"></div>
+      <div class="errand"><div class="t"><span class="lab">Errand 3</span>Money to make</div><div>Charge by the word. Sell advice, draw a paper, collect a retainer. Leave with at least $210. Count your bills at the end and submit the total. The host may ask to see it.</div><div class="a"><span>Type: <em>Dollars in your pocket at the end</em></span><b>12 POINTS</b></div></div><div class="errand"><div class="t"><span class="lab">Errand 4</span>The hand that was not hers</div><div>You saw three orders in a court. Learn what Cassie's real hand looks like from someone who knows it.</div><div class="a"><span>Type: <em>What is different about her hand</em></span><b>12 POINTS</b></div></div><div class="errand"><div class="t"><span class="lab">Errand 5</span>How many were there?</div><div>Seventeen strangers died in accidents in one county. Learn the count from someone who counted.</div><div class="a"><span>Type: <em>The number</em></span><b>12 POINTS</b></div></div>
+      
+      
+      <div class="flapbox">What is in this envelope is for you alone. Keep a straight face, and enjoy the night.</div>
+      <div class="type">Type your answers on your phone whenever you like. Only your last answer counts.</div>
+    </div></div></div>
+<div class="page"><div class="sheet"><div class="banner">THE BLACK VEIL<small>Arjun Bat</small></div><div class="fit" style="--base:12pt">
+      <div class="name" style="font-size:2.1em">Your black envelope</div><div class="occ">Errands 3 to 5</div><div class="rule"></div>
+      <div class="errand"><div class="t"><span class="lab">Errand 3</span>A fair trade</div><div>Strike a bargain with Tim McGinley, Baron of Bathtub Gin: your signed baseball for their jar of bathtub gin. It must be a deal, never a grab. When you hold it, read the code on its tag.</div><div class="a"><span>Type: <em>The code on the tag you received</em></span><b>12 POINTS</b></div></div><div class="errand"><div class="t"><span class="lab">Errand 4</span>How many were there?</div><div>Seventeen strangers died in accidents in one county. Learn the count from someone who counted.</div><div class="a"><span>Type: <em>The number</em></span><b>12 POINTS</b></div></div><div class="errand"><div class="t"><span class="lab">Errand 5</span>A word for the umpire</div><div>You want a Yiddish word to shout at an umpire. Josh knows one. Get it, and say it.</div><div class="a"><span>Type: <em>The word</em></span><b>12 POINTS</b></div></div>
+      
+      <div class="box" style="margin-top:.7em">You will be handed at the door: signed baseball</div>
+      <div class="flapbox">What is in this envelope is for you alone. Keep a straight face, and enjoy the night.</div>
+      <div class="type">Type your answers on your phone whenever you like. Only your last answer counts.</div>
+    </div></div></div>
+<div class="page"><div class="sheet"><div class="banner">THE BLACK VEIL<small>Diwakar Sandbagg</small></div><div class="fit" style="--base:12pt">
+      <div class="name" style="font-size:2.1em">Your black envelope</div><div class="occ">Errands 3 to 5</div><div class="rule"></div>
+      <div class="errand"><div class="t"><span class="lab">Errand 3</span>A fair trade</div><div>Strike a bargain with Angelos Bowles: your carnival giraffe for their House chip. It must be a deal, never a grab. When you hold it, read the code on its tag.</div><div class="a"><span>Type: <em>The code on the tag you received</em></span><b>12 POINTS</b></div></div><div class="errand"><div class="t"><span class="lab">Errand 4</span>Money to make</div><div>Win a purse: a bet, an arm-wrestle, a wager. Leave with at least $190. Count your bills at the end and submit the total. The host may ask to see it.</div><div class="a"><span>Type: <em>Dollars in your pocket at the end</em></span><b>12 POINTS</b></div></div><div class="errand"><div class="t"><span class="lab">Errand 5</span>What the House takes</div><div>The House sells something that is on no menu. Learn what it accepts in place of cash.</div><div class="a"><span>Type: <em>What it accepts</em></span><b>12 POINTS</b></div></div>
+      
+      <div class="box" style="margin-top:.7em">You will be handed at the door: carnival giraffe</div>
+      <div class="flapbox">What is in this envelope is for you alone. Keep a straight face, and enjoy the night.</div>
+      <div class="type">Type your answers on your phone whenever you like. Only your last answer counts.</div>
+    </div></div></div>
+<div class="page"><div class="sheet"><div class="banner">THE BLACK VEIL<small>Dr. Emmerich Sunner</small></div><div class="fit" style="--base:12pt">
+      <div class="name" style="font-size:2.1em">Your black envelope</div><div class="occ">Errands 3 to 5</div><div class="rule"></div>
+      <div class="errand"><div class="t"><span class="lab">Errand 3</span>The examination</div><div>Examine the body. State what killed him, and what it was carried in.</div><div class="a"><span>Type: <em>Cause of death</em></span><b>12 POINTS</b></div></div><div class="errand"><div class="t"><span class="lab">Errand 4</span>The time</div><div>State when the poison was taken, as closely as you can.</div><div class="a"><span>Type: <em>Time the poison was taken</em></span><b>12 POINTS</b></div></div><div class="errand"><div class="t"><span class="lab">Errand 5</span>Where did it come from?</div><div>The report says a house stock, not a druggist's pack. Learn whose house.</div><div class="a"><span>Type: <em>Whose stock it was</em></span><b>12 POINTS</b></div></div>
+      <h2>The Physician</h2><ol class="rules"><li>You are the only one who may examine the body. When the Sheriff opens the scene, take your time and do it properly.</li><li>What you will find: the arched back and fixed grin of strychnine; a bitter residue in the honeyed rye; a tincture bottle's label (the House's); and a time of death that fits a dose at about nine o'clock.</li><li>You report to the Sheriff, but your findings are yours. Share them freely or trade them.</li></ol>
+      
+      <div class="flapbox">What is in this envelope is for you alone. Keep a straight face, and enjoy the night.</div>
+      <div class="type">Type your answers on your phone whenever you like. Only your last answer counts.</div>
+    </div></div></div>
+<div class="page"><div class="sheet"><div class="banner">THE BLACK VEIL<small>Erika Lamm</small></div><div class="fit" style="--base:12pt">
+      <div class="name" style="font-size:2.1em">Your black envelope</div><div class="occ">Errands 3 to 5</div><div class="rule"></div>
+      <div class="errand"><div class="t"><span class="lab">Errand 3</span>A fair trade</div><div>Strike a bargain with Ananya Codru and Charlie Wakem: your set of false papers for their blank telegram form. It must be a deal, never a grab. When you hold it, read the code on its tag.</div><div class="a"><span>Type: <em>The code on the tag you received</em></span><b>12 POINTS</b></div></div><div class="errand"><div class="t"><span class="lab">Errand 4</span>A bought alibi</div><div>Swear to Rebecca Chow that you were with her when the body was found, so the Butler is not suspected. She pays $20 and hands you a House receipt: read its code. Do not be seen taking the money.</div><div class="a"><span>Type: <em>The code on the House receipt</em></span><b>12 POINTS</b></div></div><div class="errand"><div class="t"><span class="lab">Errand 5</span>The Montreal postmark</div><div>A wire about the List was filed from a certain city. Learn which, from someone who has seen the slip.</div><div class="a"><span>Type: <em>The city</em></span><b>12 POINTS</b></div></div>
+      
+      <div class="box" style="margin-top:.7em">You will be handed at the door: set of false papers, sworn alibi note</div>
+      <div class="flapbox">What is in this envelope is for you alone. Keep a straight face, and enjoy the night.</div>
+      <div class="type">Type your answers on your phone whenever you like. Only your last answer counts.</div>
+    </div></div></div>
+<div class="page"><div class="sheet"><div class="banner">THE BLACK VEIL<small>J. Bruce Wayne</small></div><div class="fit" style="--base:12pt">
+      <div class="name" style="font-size:2.1em">Your black envelope</div><div class="occ">Errands 3 to 5</div><div class="rule"></div>
+      <div class="errand"><div class="t"><span class="lab">Errand 3</span>Money to make</div><div>Let the room pay for your charm: win a hand, sell a story, collect a favour in cash. Leave with at least $280. Count your bills at the end and submit the total. The host may ask to see it.</div><div class="a"><span>Type: <em>Dollars in your pocket at the end</em></span><b>12 POINTS</b></div></div><div class="errand"><div class="t"><span class="lab">Errand 4</span>Whose name was on the draft?</div><div>A Hudson was bought with a draft from a Boston account. Learn the name that signed it.</div><div class="a"><span>Type: <em>The name on the draft</em></span><b>12 POINTS</b></div></div><div class="errand"><div class="t"><span class="lab">Errand 5</span>A secret affair</div><div>You and Ananya Codru and Charlie Wakem are secretly sweet on each other. Nobody must learn it. If anyone names the two of you as a pair in their final answers, you lose points. Enjoy it, quietly.</div><div class="a"><span>Type: <em>In a sentence, how did you keep it secret?</em></span><b>12 POINTS</b></div></div>
+      
+      
+      <div class="flapbox">What is in this envelope is for you alone. Keep a straight face, and enjoy the night.</div>
+      <div class="type">Type your answers on your phone whenever you like. Only your last answer counts.</div>
+    </div></div></div>
+<div class="page"><div class="sheet"><div class="banner">THE BLACK VEIL<small>Joshua Kamin-Sky</small></div><div class="fit" style="--base:12pt">
+      <div class="name" style="font-size:2.1em">Your black envelope</div><div class="occ">Errands 3 to 5</div><div class="rule"></div>
+      <div class="errand"><div class="t"><span class="lab">Errand 3</span>A fair trade</div><div>Strike a bargain with Tiffany Liu of the Lamps: your soothsayer's charm for their glass earring. It must be a deal, never a grab. When you hold it, read the code on its tag.</div><div class="a"><span>Type: <em>The code on the tag you received</em></span><b>12 POINTS</b></div></div><div class="errand"><div class="t"><span class="lab">Errand 4</span>The prophecy</div><div>Before half past eight, tell the host the exact minute you think the scream will come. The host seals it in an envelope and opens it later. The cards say it falls between nine and half past: narrow it.</div><div class="a"><span>Type: <em>The minute you predicted (e.g. 9:17)</em></span><b>12 POINTS</b></div></div><div class="errand"><div class="t"><span class="lab">Errand 5</span>The fortunes</div><div>Read the fortunes of four different guests, using the fortune cards the host gives you. Each guest keeps the card they are read. Type the four names.</div><div class="a"><span>Type: <em>The four guests</em></span><b>12 POINTS</b></div></div>
+      
+      <div class="box" style="margin-top:.7em">You will be handed at the door: soothsayer's charm</div>
+      <div class="flapbox">What is in this envelope is for you alone. Keep a straight face, and enjoy the night.</div>
+      <div class="type">Type your answers on your phone whenever you like. Only your last answer counts.</div>
+    </div></div></div>
+<div class="page"><div class="sheet"><div class="banner">THE BLACK VEIL<small>Judge Eric Leeway</small></div><div class="fit" style="--base:12pt">
+      <div class="name" style="font-size:2.1em">Your black envelope</div><div class="occ">Errands 3 to 5</div><div class="rule"></div>
+      <div class="errand"><div class="t"><span class="lab">Errand 3</span>The Friday crate</div><div>Accept Krrish Vermouth's Friday crate of wine and quietly dismiss his cases. Keep his crate receipt and hand him a notice of dismissal: read the code on the receipt. Nobody is to know.</div><div class="a"><span>Type: <em>The code on the crate receipt</em></span><b>12 POINTS</b></div></div><div class="errand"><div class="t"><span class="lab">Errand 4</span>Who is K. Kessler?</div><div>A Boston firm took instructions from one “K. Kessler.” Learn from someone who knew him what he was.</div><div class="a"><span>Type: <em>His name and trade</em></span><b>12 POINTS</b></div></div><div class="errand"><div class="t"><span class="lab">Errand 5</span>Money to make</div><div>A judge's fines are a judge's pocket money. Settle a few quiet matters for cash. Leave with at least $220. Count your bills at the end and submit the total. The host may ask to see it.</div><div class="a"><span>Type: <em>Dollars in your pocket at the end</em></span><b>12 POINTS</b></div></div>
+      
+      <div class="box" style="margin-top:.7em">You will be handed at the door: notice of dismissal</div>
+      <div class="flapbox">What is in this envelope is for you alone. Keep a straight face, and enjoy the night.</div>
+      <div class="type">Type your answers on your phone whenever you like. Only your last answer counts.</div>
+    </div></div></div>
+<div class="page"><div class="sheet"><div class="banner">THE BLACK VEIL<small>Krrish Vermouth</small></div><div class="fit" style="--base:12pt">
+      <div class="name" style="font-size:2.1em">Your black envelope</div><div class="occ">Errands 3 to 5</div><div class="rule"></div>
+      <div class="errand"><div class="t"><span class="lab">Errand 3</span>A fair trade</div><div>Strike a bargain with Anika Mahns of Mahns Manor: your Silent Partner's brass key for their Mahns crested spoon. It must be a deal, never a grab. When you hold it, read the code on its tag.</div><div class="a"><span>Type: <em>The code on the tag you received</em></span><b>12 POINTS</b></div></div><div class="errand"><div class="t"><span class="lab">Errand 4</span>The Friday crate</div><div>Send Judge Eric Leeway a crate of wine, and the Judge quietly dismisses your cases. Hand him your crate receipt. He hands you a notice of dismissal: read its code. Nobody is to know.</div><div class="a"><span>Type: <em>The code on the notice</em></span><b>12 POINTS</b></div></div><div class="errand"><div class="t"><span class="lab">Errand 5</span>Gossip</div><div>Two guests are secretly sweet on each other. Find out who. Name the pair, and you have your story.</div><div class="a"><span>Type: <em>The two guests, by name</em></span><b>12 POINTS</b></div></div>
+      
+      <div class="box" style="margin-top:.7em">You will be handed at the door: Silent Partner's brass key, crate receipt</div>
+      <div class="flapbox">What is in this envelope is for you alone. Keep a straight face, and enjoy the night.</div>
+      <div class="type">Type your answers on your phone whenever you like. Only your last answer counts.</div>
+    </div></div></div>
+<div class="page"><div class="sheet"><div class="banner">THE BLACK VEIL<small>Leon Gee of WFEA</small></div><div class="fit" style="--base:12pt">
+      <div class="name" style="font-size:2.1em">Your black envelope</div><div class="occ">Errands 3 to 5</div><div class="rule"></div>
+      <div class="errand"><div class="t"><span class="lab">Errand 3</span>Out of the cell</div><div>Sheriff Farrago holds a citation against you, for being insufferable on the air. Pay a go-between at least $50 in House bills to broker a pardon. Tiffany Liu is the best choice. She hands you a go-between's receipt: read its code.</div><div class="a"><span>Type: <em>The code on the receipt</em></span><b>12 POINTS</b></div></div><div class="errand"><div class="t"><span class="lab">Errand 4</span>Who is K. Kessler?</div><div>A Boston firm took instructions from one “K. Kessler.” Learn from someone who knew him what he was.</div><div class="a"><span>Type: <em>His name and trade</em></span><b>12 POINTS</b></div></div><div class="errand"><div class="t"><span class="lab">Errand 5</span>The Montreal postmark</div><div>A wire about the List was filed from a certain city. Learn which, from someone who has seen the slip.</div><div class="a"><span>Type: <em>The city</em></span><b>12 POINTS</b></div></div>
+      
+      <div class="box" style="margin-top:.7em">You will be handed at the door: served stub</div>
+      <div class="flapbox">What is in this envelope is for you alone. Keep a straight face, and enjoy the night.</div>
+      <div class="type">Type your answers on your phone whenever you like. Only your last answer counts.</div>
+    </div></div></div>
+<div class="page"><div class="sheet"><div class="banner">THE BLACK VEIL<small>Luke Shelldon</small></div><div class="fit" style="--base:12pt">
+      <div class="name" style="font-size:2.1em">Your black envelope</div><div class="occ">Errands 3 to 5</div><div class="rule"></div>
+      <div class="errand"><div class="t"><span class="lab">Errand 3</span>The old man's hour</div><div>The Keeper takes a nightcap at a fixed hour, in a fixed room. Until then the glass on his table is only a glass. Learn the hour, so you know how long you have.</div><div class="a"><span>Type: <em>The hour of his nightcap</em></span><b>12 POINTS</b></div></div><div class="errand"><div class="t"><span class="lab">Errand 4</span>Make your offer to the House</div><div>The House keeps one bottle for those who can pay in a marker. Before the nightcap is served at nine o'clock, take your marker to the Butler at the bar and make your offer. The House counts every offer, whether the answer is yes or no.</div><div class="a"><span>Type: <em>In a sentence, what did the Butler say?</em></span><b>12 POINTS</b></div></div><div class="errand"><div class="t"><span class="lab">Errand 5</span>Why you?</div><div>You came to be the one, and you are not sure you remember why. Find out what the Keeper took from you. Someone here saw part of it.</div><div class="a"><span>Type: <em>What did he do?</em></span><b>12 POINTS</b></div></div>
+      
+      
+      <div class="flapbox">What is in this envelope is for you alone. Keep a straight face, and enjoy the night.</div>
+      <div class="type">Type your answers on your phone whenever you like. Only your last answer counts.</div>
+    </div></div></div>
+<div class="page"><div class="sheet"><div class="banner">THE BLACK VEIL<small>Mihir Nagarkatti of Nag Oil</small></div><div class="fit" style="--base:12pt">
+      <div class="name" style="font-size:2.1em">Your black envelope</div><div class="occ">Errands 3 to 5</div><div class="rule"></div>
+      <div class="errand"><div class="t"><span class="lab">Errand 3</span>The old man's hour</div><div>The Keeper takes a nightcap at a fixed hour, in a fixed room. Until then the glass on his table is only a glass. Learn the hour, so you know how long you have.</div><div class="a"><span>Type: <em>The hour of his nightcap</em></span><b>12 POINTS</b></div></div><div class="errand"><div class="t"><span class="lab">Errand 4</span>Make your offer to the House</div><div>The House keeps one bottle for those who can pay in a marker. Before the nightcap is served at nine o'clock, take your marker to the Butler at the bar and make your offer. The House counts every offer, whether the answer is yes or no.</div><div class="a"><span>Type: <em>In a sentence, what did the Butler say?</em></span><b>12 POINTS</b></div></div><div class="errand"><div class="t"><span class="lab">Errand 5</span>Why you?</div><div>You came to be the one, and you are not sure you remember why. Find out what the Keeper took from you. Someone here saw part of it.</div><div class="a"><span>Type: <em>What did he do?</em></span><b>12 POINTS</b></div></div>
+      
+      
+      <div class="flapbox">What is in this envelope is for you alone. Keep a straight face, and enjoy the night.</div>
+      <div class="type">Type your answers on your phone whenever you like. Only your last answer counts.</div>
+    </div></div></div>
+<div class="page"><div class="sheet"><div class="banner">THE BLACK VEIL<small>Molly Daniel of the Manchester Union</small></div><div class="fit" style="--base:12pt">
+      <div class="name" style="font-size:2.1em">Your black envelope</div><div class="occ">Errands 3 to 5</div><div class="rule"></div>
+      <div class="errand"><div class="t"><span class="lab">Errand 3</span>The old man's hour</div><div>The Keeper takes a nightcap at a fixed hour, in a fixed room. Until then the glass on his table is only a glass. Learn the hour, so you know how long you have.</div><div class="a"><span>Type: <em>The hour of his nightcap</em></span><b>12 POINTS</b></div></div><div class="errand"><div class="t"><span class="lab">Errand 4</span>Make your offer to the House</div><div>The House keeps one bottle for those who can pay in a marker. Before the nightcap is served at nine o'clock, take your marker to the Butler at the bar and make your offer. The House counts every offer, whether the answer is yes or no.</div><div class="a"><span>Type: <em>In a sentence, what did the Butler say?</em></span><b>12 POINTS</b></div></div><div class="errand"><div class="t"><span class="lab">Errand 5</span>Why you?</div><div>You came to be the one, and you are not sure you remember why. Find out what the Keeper took from you. Someone here saw part of it.</div><div class="a"><span>Type: <em>What did he do?</em></span><b>12 POINTS</b></div></div>
+      
+      
+      <div class="flapbox">What is in this envelope is for you alone. Keep a straight face, and enjoy the night.</div>
+      <div class="type">Type your answers on your phone whenever you like. Only your last answer counts.</div>
+    </div></div></div>
+<div class="page"><div class="sheet"><div class="banner">THE BLACK VEIL<small>Rebecca Chow, Butler of the Black Veil</small></div><div class="fit" style="--base:12pt">
+      <div class="name" style="font-size:2.1em">Your black envelope</div><div class="occ">Errands 3 to 5</div><div class="rule"></div>
+      <div class="errand"><div class="t"><span class="lab">Errand 3</span>A bought alibi</div><div>Buy an alibi for $20 from Erika Lamm: she swears she was with you when the body was found. Hand her a House receipt and keep her sworn note: read the code on the note.</div><div class="a"><span>Type: <em>The code on the sworn note</em></span><b>12 POINTS</b></div></div><div class="errand"><div class="t"><span class="lab">Errand 4</span>The House's one sale</div><div>Sell the House's single bottle to the owner of a numbered marker, once, before the nightcap is served at nine o'clock. Record the sale on your House panel.</div><div class="a"><span>Type: <em>In a sentence, who did you sell to?</em></span><b>12 POINTS</b></div></div><div class="errand"><div class="t"><span class="lab">Errand 5</span>The scream</div><div>At a quarter past nine, go to the Merrimack Room, find the Keeper and scream. Submit the time you screamed.</div><div class="a"><span>Type: <em>The time you screamed (e.g. 9:16)</em></span><b>12 POINTS</b></div></div>
+      <h2>The Butler</h2><ol class="rules"><li>You are the Butler. At the bar you hold the House Tin, the House Book and a single bottle of the House's own tincture for “river rats.”</li><li>The bottle sells once a night, and only against a numbered marker handed to you by its owner. When a guest offers a marker, open the House panel on your phone, type the five-character code printed on it, and the phone tells you whether to sell. If it says sold, hand over the vial. If it says sold out, hand the marker back. The House counts every offer.</li><li>Whatever you do, never reveal who bought the tincture until after the body is found. After that, you may sell the answer or keep it: $75 is a fair price.</li><li>At a quarter past nine you take the Keeper his rye. You will find him. Scream.</li><li>Nobody takes the marker from you, and you take nothing from anyone: it is all deals, always.</li></ol>
+      <div class="box" style="margin-top:.7em">You will be handed at the door: House receipt</div>
+      <div class="flapbox">What is in this envelope is for you alone. Keep a straight face, and enjoy the night.</div>
+      <div class="type">Type your answers on your phone whenever you like. Only your last answer counts.</div>
+    </div></div></div>
+<div class="page"><div class="sheet"><div class="banner">THE BLACK VEIL<small>Rhea Mallya of Mallya's Emporium</small></div><div class="fit" style="--base:12pt">
+      <div class="name" style="font-size:2.1em">Your black envelope</div><div class="occ">Errands 3 to 5</div><div class="rule"></div>
+      <div class="errand"><div class="t"><span class="lab">Errand 3</span>The old man's hour</div><div>The Keeper takes a nightcap at a fixed hour, in a fixed room. Until then the glass on his table is only a glass. Learn the hour, so you know how long you have.</div><div class="a"><span>Type: <em>The hour of his nightcap</em></span><b>12 POINTS</b></div></div><div class="errand"><div class="t"><span class="lab">Errand 4</span>Make your offer to the House</div><div>The House keeps one bottle for those who can pay in a marker. Before the nightcap is served at nine o'clock, take your marker to the Butler at the bar and make your offer. The House counts every offer, whether the answer is yes or no.</div><div class="a"><span>Type: <em>In a sentence, what did the Butler say?</em></span><b>12 POINTS</b></div></div><div class="errand"><div class="t"><span class="lab">Errand 5</span>Why you?</div><div>You came to be the one, and you are not sure you remember why. Find out what the Keeper took from you. Someone here saw part of it.</div><div class="a"><span>Type: <em>What did he do?</em></span><b>12 POINTS</b></div></div>
+      
+      
+      <div class="flapbox">What is in this envelope is for you alone. Keep a straight face, and enjoy the night.</div>
+      <div class="type">Type your answers on your phone whenever you like. Only your last answer counts.</div>
+    </div></div></div>
+<div class="page"><div class="sheet"><div class="banner">THE BLACK VEIL<small>Sheriff Theodor Farrago</small></div><div class="fit" style="--base:12pt">
+      <div class="name" style="font-size:2.1em">Your black envelope</div><div class="occ">Errands 3 to 5</div><div class="rule"></div>
+      <div class="errand"><div class="t"><span class="lab">Errand 3</span>First Responder</div><div>When you hear the scream, reach the body fast, walk, do not run, and read the scene code on the card by the table.</div><div class="a"><span>Type: <em>The scene code</em></span><b>12 POINTS</b></div></div><div class="errand"><div class="t"><span class="lab">Errand 4</span>The Coroner's Folder</div><div>Open the Coroner's Folder at the scene. File the report: type the filing code printed at the foot of the page.</div><div class="a"><span>Type: <em>The filing code</em></span><b>12 POINTS</b></div></div><div class="errand"><div class="t"><span class="lab">Errand 5</span>The Leon matter</div><div>You hold a Nuisance Citation against Leon Gee. Either serve it on him (he hands you a served stub), or take a Pardon slip from a go-between and tear the citation up. Type the code of whichever you are handed.</div><div class="a"><span>Type: <em>The code on the slip or stub</em></span><b>12 POINTS</b></div></div>
+      <h2>The Sheriff</h2><ol class="rules"><li>You are the Sheriff. The law of the night is yours: when the body is found, take charge, tell people to stand back, and keep the scene as you found it. Nothing leaves the room.</li><li>You hold the Coroner's Folder, sealed until the scream. Open it at the scene. It holds the physician's printed report and a scene code.</li><li>You hold a Nuisance Citation against Leon Gee, for being insufferable on the radio. You may serve it on him, or you may take a bribe from a go-between and tear it up. Either way, the choice is yours.</li><li>You may question anyone. Nobody has to answer, and the host will not rule on what they say. What you learn is yours to trade.</li></ol>
+      <div class="box" style="margin-top:.7em">You will be handed at the door: Nuisance Citation</div>
+      <div class="flapbox">What is in this envelope is for you alone. Keep a straight face, and enjoy the night.</div>
+      <div class="type">Type your answers on your phone whenever you like. Only your last answer counts.</div>
+    </div></div></div>
+<div class="page"><div class="sheet"><div class="banner">THE BLACK VEIL<small>Sidd Airwind</small></div><div class="fit" style="--base:12pt">
+      <div class="name" style="font-size:2.1em">Your black envelope</div><div class="occ">Errands 3 to 5</div><div class="rule"></div>
+      <div class="errand"><div class="t"><span class="lab">Errand 3</span>Money to make</div><div>Sell rides in your plane to anyone with a dollar. Leave with at least $220. Count your bills at the end and submit the total. The host may ask to see it.</div><div class="a"><span>Type: <em>Dollars in your pocket at the end</em></span><b>12 POINTS</b></div></div><div class="errand"><div class="t"><span class="lab">Errand 4</span>Gossip</div><div>Two guests are secretly sweet on each other. Find out who. Name the pair, and you have your story.</div><div class="a"><span>Type: <em>The two guests, by name</em></span><b>12 POINTS</b></div></div><div class="errand"><div class="t"><span class="lab">Errand 5</span>How many were there?</div><div>Seventeen strangers died in accidents in one county. Learn the count from someone who counted.</div><div class="a"><span>Type: <em>The number</em></span><b>12 POINTS</b></div></div>
+      
+      
+      <div class="flapbox">What is in this envelope is for you alone. Keep a straight face, and enjoy the night.</div>
+      <div class="type">Type your answers on your phone whenever you like. Only your last answer counts.</div>
+    </div></div></div>
+<div class="page"><div class="sheet"><div class="banner">THE BLACK VEIL<small>Silas Palmer of the Palm Court</small></div><div class="fit" style="--base:12pt">
+      <div class="name" style="font-size:2.1em">Your black envelope</div><div class="occ">Errands 3 to 5</div><div class="rule"></div>
+      <div class="errand"><div class="t"><span class="lab">Errand 3</span>A sneaky request</div><div>Anika Mahns wants to know who in this room knew her father. Take her $30 voucher, play her father's signature tune around half past eight, and call it a request from the room. Hand her the request card and keep the voucher: read its code. Nobody is to know.</div><div class="a"><span>Type: <em>The code on the voucher</em></span><b>12 POINTS</b></div></div><div class="errand"><div class="t"><span class="lab">Errand 4</span>The spotlight</div><div>Around half past eight, take the floor for five minutes, with the band or without it. Type the time you finished.</div><div class="a"><span>Type: <em>The time you finished (e.g. 8:36)</em></span><b>12 POINTS</b></div></div><div class="errand"><div class="t"><span class="lab">Errand 5</span>Whose signal?</div><div>Leon airs a signal with a scat phrase you know. Learn whose signal it is, from someone who set it up.</div><div class="a"><span>Type: <em>Whose signal</em></span><b>12 POINTS</b></div></div>
+      
+      <div class="box" style="margin-top:.7em">You will be handed at the door: request card</div>
+      <div class="flapbox">What is in this envelope is for you alone. Keep a straight face, and enjoy the night.</div>
+      <div class="type">Type your answers on your phone whenever you like. Only your last answer counts.</div>
+    </div></div></div>
+<div class="page"><div class="sheet"><div class="banner">THE BLACK VEIL<small>Tiffany Liu of the Lamps</small></div><div class="fit" style="--base:12pt">
+      <div class="name" style="font-size:2.1em">Your black envelope</div><div class="occ">Errands 3 to 5</div><div class="rule"></div>
+      <div class="errand"><div class="t"><span class="lab">Errand 3</span>A fair trade</div><div>Strike a bargain with Joshua Kamin-Sky: your glass earring for their soothsayer's charm. It must be a deal, never a grab. When you hold it, read the code on its tag.</div><div class="a"><span>Type: <em>The code on the tag you received</em></span><b>12 POINTS</b></div></div><div class="errand"><div class="t"><span class="lab">Errand 4</span>A pardon, brokered</div><div>Take at least $50 in House bills from Leon Gee and carry a Pardon slip to Sheriff Farrago. If he takes it, he tears up his citation and hands it to you: read the code on the torn citation. Give Leon a go-between's receipt.</div><div class="a"><span>Type: <em>The code on the torn citation</em></span><b>12 POINTS</b></div></div><div class="errand"><div class="t"><span class="lab">Errand 5</span>The thing behind the wall</div><div>A wall in the Merrimack Room hides something. Learn what, from those who built or swept it.</div><div class="a"><span>Type: <em>What it hides</em></span><b>12 POINTS</b></div></div>
+      
+      <div class="box" style="margin-top:.7em">You will be handed at the door: glass earring, Pardon slip, go-between's receipt</div>
+      <div class="flapbox">What is in this envelope is for you alone. Keep a straight face, and enjoy the night.</div>
+      <div class="type">Type your answers on your phone whenever you like. Only your last answer counts.</div>
+    </div></div></div>
+<div class="page"><div class="sheet"><div class="banner">THE BLACK VEIL<small>Tim McGinley, Baron of Bathtub Gin</small></div><div class="fit" style="--base:12pt">
+      <div class="name" style="font-size:2.1em">Your black envelope</div><div class="occ">Errands 3 to 5</div><div class="rule"></div>
+      <div class="errand"><div class="t"><span class="lab">Errand 3</span>A fair trade</div><div>Strike a bargain with Arjun Bat: your jar of bathtub gin for their signed baseball. It must be a deal, never a grab. When you hold it, read the code on its tag.</div><div class="a"><span>Type: <em>The code on the tag you received</em></span><b>12 POINTS</b></div></div><div class="errand"><div class="t"><span class="lab">Errand 4</span>Money to make</div><div>A baron's business is the margin. Sell, trade and bargain. Leave with at least $230. Count your bills at the end and submit the total. The host may ask to see it.</div><div class="a"><span>Type: <em>Dollars in your pocket at the end</em></span><b>12 POINTS</b></div></div><div class="errand"><div class="t"><span class="lab">Errand 5</span>A wall too thick</div><div>Somebody knows why a wall in the Merrimack Room is thicker than it should be. Learn the word they use for it.</div><div class="a"><span>Type: <em>How the wall is described</em></span><b>12 POINTS</b></div></div>
+      
+      <div class="box" style="margin-top:.7em">You will be handed at the door: jar of bathtub gin</div>
+      <div class="flapbox">What is in this envelope is for you alone. Keep a straight face, and enjoy the night.</div>
+      <div class="type">Type your answers on your phone whenever you like. Only your last answer counts.</div>
+    </div></div></div>
+
+<script>
+function fitAll(){document.querySelectorAll('.fit').forEach(function(el){
+  var s=parseFloat(el.dataset.max||'1'),min=parseFloat(el.dataset.min||'0.78');
+  el.style.setProperty('--s',s);
+  while((el.scrollHeight>el.clientHeight+1||el.scrollWidth>el.clientWidth+1)&&s>min){s-=0.01;el.style.setProperty('--s',s.toFixed(2));}
+  el.dataset.scale=s.toFixed(2);
+  if(el.scrollHeight>el.clientHeight+1||el.scrollWidth>el.clientWidth+1)el.dataset.overflow='1';
+});}
+fitAll();window.addEventListener('load',fitAll);
+</script>
+</body></html>
