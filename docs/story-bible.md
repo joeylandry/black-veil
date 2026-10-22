@@ -163,18 +163,23 @@ Each secret is gossip a second guest can earn, and each is one small piece of on
 
 Because none of these is a whole answer, nobody's secret, errands and clues add up to the final solution on their own. That was checked in the code (see section 10), but the checker has to be re-run once these are loaded.
 
-## 9. The game background summary on every card
+## 9. The game background summary on every card (v2, more explicit)
 
-**Yes, write it now, and it is not too revealing, as long as it is only the public record.** It is the brief that is already meant to be printed at the door and shown on the site (`brief1924` in `story.ts`). It does not mention the Exit, Kit's name, the vault, the receipts, Cassie being alive, or who the survivors are. Draft for the top of every card:
+Still only the public record plus the rules of the night: it does not give away what happened in 1924, who the old man is, who killed him, or who the five are. It does now say there are exactly five, that they are guessed at the end, and what a survivor's card does.
 
-> **The Black Veil, All Hallows' Eve 1924.** A supper club above the Merrimack held its masquerade. At 10:10 the orchestra came in by the river door. At 11:02 a party of four went up to the private landing. At 11:47 the music stopped. The papers called it a massacre. No bodies were found, no names were given, and no coroner was ever called. The proprietress, Cassie Castello, was gone by morning.
+> **The Black Veil, All Hallows' Eve 1924.** A supper club above the Merrimack held its masquerade. At 10:10 the orchestra came in by the river door. At 11:02 a party of four went up to the private landing. At 11:47 the music stopped. The papers called it a massacre, but no bodies were found, no names were given and no coroner was ever called. The proprietress, Cassie Castello, was gone by morning.
 >
-> **What followed.** A bulletin named Cassie a person of interest. No warrant followed. Across the county, seventeen people with no records died in accidents over the next year. Nobody connected them.
+> **What followed.** A bulletin named Cassie a person of interest. No warrant followed. Over the next year seventeen people with no records and no families died in "accidents." Nobody connected them.
 >
-> **Tonight, 23 October 1926.** Black envelopes arrived on doorsteps in a type no New England printer sells. Some of the Veil's people, believed lost that night, may be among tonight's guests under other names. Before the night is out, someone will be found dead.
+> **Tonight, 23 October 1926.** A black envelope came to each of you. Around a quarter past nine, a body will be found. After that there is no host, no town hall and no one to rule on anything: ask whom you like.
+>
+> **The five.** Exactly five of the people the papers called lost in 1924 are in this room tonight, living under other names. They are guests like you. Nobody will tell you who. At the end you may name up to five guests as survivors: every right name earns points and every wrong name costs you.
+>
+> **At the end you will be asked** what really happened in 1924, who killed the old man tonight and how, and who he was to the Veil.
+>
+> **If you are one of the five,** your private page says so. Everyone else's has the same sealed section with nothing in it, so nobody can tell by looking at a card.
 
-Survivors get one extra private line: *You are one who got away.*
-
+How to keep the five hidden on paper: every guest gets a black envelope. The survivors' envelopes hold their numbered marker and Cassie's unsigned invitation. Everyone else's holds the House's invitation. The cards themselves are identical in shape.
 ## 10. Can the mysteries be solved? Is there enough information?
 
 The code's own checker (`npm run game:check`) passes all 21 checks on the current cast: every fact is held by at least three people (or two plus a printed page), survivors never vouch for themselves, every question stands on at least three independent sources, nobody holds fewer than three or more than nine clue lines, with three or five guests missing no clue is lost for good, and no answer or marker code appears in anything a browser can download. So yes, the mysteries are solvable by talking to people, and no one holds enough alone.
