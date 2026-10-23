@@ -136,7 +136,7 @@ async function seedGuestsOnce(db: GameDb) {
 }
 
 describe("release flags", () => {
-  it("keeps everything sealed until eight o'clock on the night, then opens it all by itself", () => {
+  it("keeps everything sealed until half past seven on the night, then opens it all by itself", () => {
     assert.equal(deriveState({}, BEFORE).identitiesReleased, false);
     assert.equal(deriveState({}, BEFORE).secretsReleased, false);
     assert.equal(deriveState({}, BEFORE).submissionsOpen, false);
@@ -144,9 +144,9 @@ describe("release flags", () => {
     const shown = deriveState({ rosterReleased: true }, BEFORE);
     assert.equal(shown.identitiesReleased, true);
     assert.equal(shown.secretsReleased, false);
-    const early = deriveState({}, new Date("2026-10-23T19:59:00-04:00"));
+    const early = deriveState({}, new Date("2026-10-23T19:29:00-04:00"));
     assert.equal(early.secretsReleased, false);
-    const doors = deriveState({}, new Date("2026-10-23T20:00:00-04:00"));
+    const doors = deriveState({}, new Date("2026-10-23T19:30:00-04:00"));
     assert.equal(doors.identitiesReleased, true);
     assert.equal(doors.secretsReleased, true);
     assert.equal(doors.submissionsOpen, true, "nobody has to log in to start the night");
@@ -193,7 +193,7 @@ describe("the start button", () => {
     assert.equal((await readFlags(ctx.db)).rosterReleased, true, "the public cast list opens with it");
   });
 
-  it("is not needed: the same cards open by themselves at eight o'clock", async () => {
+  it("is not needed: the same cards open by themselves at half past seven", async () => {
     const { db, client } = await freshDb();
     // guests have only registered: nobody has seeded the cast or dealt a single character
     for (const character of characters) await db.insert(guests).values({ email: `${character.id}@example.test`, fullName: character.realNames[0] });
@@ -341,12 +341,12 @@ describe("submissions", () => {
   });
   after(async () => ctx.client.close());
 
-  it("refuses answers before eight o'clock and after the book closes", async () => {
+  it("refuses answers before half past seven and after the book closes", async () => {
     const anika = await idOf(ctx.db, "anika");
     const early = await submit(ctx.db, anika, { kind: "objective", itemId: "anika-secret", answer: "Sophia" }, BEFORE);
-    assert.equal(early.ok, false, "nothing opens before eight o'clock on the night");
+    assert.equal(early.ok, false, "nothing opens before half past seven on the night");
     const doors = await submit(ctx.db, anika, { kind: "objective", itemId: "anika-secret", answer: "Sophia" }, NIGHT);
-    assert.equal(doors.ok, true, "and it opens by itself at eight, with nobody logged in");
+    assert.equal(doors.ok, true, "and it opens by itself at half past seven, with nobody logged in");
     const late = await submit(ctx.db, anika, { kind: "objective", itemId: "anika-secret", answer: "Sophia" }, LATE);
     assert.equal(late.ok, false);
   });

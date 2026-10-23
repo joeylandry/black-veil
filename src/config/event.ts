@@ -33,7 +33,7 @@ export const eventConfig = {
    * this moment, so nobody has to log in to start the night (the Start game button on /admin
    * only opens them early).
    */
-  secretsReleaseAt: "2026-10-23T20:00:00-04:00",
+  secretsReleaseAt: "2026-10-23T19:30:00-04:00",
   /** The House closes and the nightcap is served at this moment; the Butler can sell no more. */
   vialOpensAt: "2026-10-23T20:45:00-04:00",
   nightcapServedAt: "2026-10-23T21:00:00-04:00",

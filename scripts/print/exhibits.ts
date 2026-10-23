@@ -474,7 +474,7 @@ function buildHostSheet() {
   const rows = characters.flatMap((c) => c.objectives.filter((o) => o.check.kind === "approval").map((o) => `<tr><td>${esc(c.name)}</td><td>${esc(o.title)}</td><td>${esc(checks[o.id] ?? "Did it happen?")}</td><td class="w">${esc((o.check as { word: string }).word)}</td></tr>`)).join("");
   void approvals;
   const html = `<div style="padding:.45in .55in"><h1>BARTEND JOE: your one page</h1>
-    <p>You do not need /admin until the end. The game opens on every phone by itself at <b>8:00 p.m.</b> The House closes by itself at <b>9:00</b>, and the book closes by itself at <b>10:30</b>.</p>
+    <p>You do not need /admin until the end. The game opens on every phone by itself at <b>7:30 p.m.</b> The House closes by itself at <b>9:00</b>, and the book closes by itself at <b>10:30</b>.</p>
     <h2>Your whole job</h2>
     <ol>
       <li><b>At the door:</b> hand each guest their black envelope and anything they carry.</li>

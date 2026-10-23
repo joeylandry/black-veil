@@ -137,7 +137,7 @@ Tape the tag on or beside the object. Do not move the object. Use shared rooms o
 | 7 | Put the second rail stub in the jacket lining. Put the door posters at the door. | 5 min |
 | 8 | Phone check: open `/game` on a phone and `/admin` on your laptop. Run the database migration once (`drizzle-kit migrate`). | 5 min |
 
-Total about two hours. The game opens by itself at 8:00; the Start game button on /admin only opens it early.
+Total about two hours. The game opens by itself at 7:30; the Start game button on /admin only opens it early.
 
 ## 5. Still to settle
 

@@ -61,7 +61,7 @@ The slips are printed paper (`slips.pdf`); twelve guests carry one each and hand
 
 ## How a guest plays
 
-- **It starts itself.** At 8:00 p.m. every guest's public card, private card, objectives and group race open on their phone and the answer boxes appear. The nightcap and House close at 9:00 and the book closes at 10:30, all by clock. The staff page (`/admin`) has one **Start game** button that only opens it early (and `game:grade -- stop` seals it for a rehearsal). You do not need /admin until grading.
+- **It starts itself.** At 7:30 p.m. every guest's private card, objectives and group race open on their phone and the answer boxes appear. The nightcap and House close at 9:00 and the book closes at 10:30, all by clock. The staff page (`/admin`) has one **Start game** button that only opens it early (and `game:grade -- stop` seals it for a rehearsal). You do not need /admin until grading.
 - **Bartend Joe.** Anything that needs the host (a spotlight, a scream, an arrest) is claimed on the guest's phone, then they find Bartend Joe, who gives a one-word approval word after seeing it. Words are on `host-sheet.pdf` and in /admin.
 - **Money.** 400 $100 bills are used: each guest starts with their own count (rich three: 30). Some clues cost a bill dropped in the House Tin, a kept secret can be sold to a guest for $200, and at the end the quarter of the room that ends best off against where they started earns a point.
 - **Group races.** Five groups; each has 5 slips and the first guest to type any 3 different codes wins that group's +1, and the box then closes for the rest of the group (the survivors' race is the vial).

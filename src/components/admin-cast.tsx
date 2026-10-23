@@ -107,7 +107,7 @@ export function AdminCast({ secret }: { secret: string }) {
         </div>
         <div className={data.started ? "staff-release staff-release-on" : "staff-release"}>
           <strong>{data.started ? "The game has started" : "The game has not started"}</strong>
-          <small>{data.started ? "Every guest can see their public card, private card and objectives." : "It opens by itself at 8:00 p.m. on the night. Press the button only to open it early."}</small>
+          <small>{data.started ? "Every guest can see their public card, private card and objectives." : "It opens by itself at 7:30 p.m. on the night. Press the button only to open it early."}</small>
           <button type="button" className="admin-primary" disabled={busy || data.started} onClick={startGame}>
             {data.started ? "Game started" : "Start game"}
           </button>
