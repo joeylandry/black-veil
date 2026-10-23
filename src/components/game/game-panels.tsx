@@ -197,6 +197,14 @@ export function ObjectivesTab({ card, secretsReleased, open, saved, onSaved }: {
   const doneCount = p.objectives.filter((errand) => saved.has(`objective|${errand.id}`)).length;
   return (
     <>
+      <section className="game-panel game-race">
+        <p className="eyebrow">Act fast or lose this point</p>
+        <h3>{p.race.title}</h3>
+        <p><strong>The first to complete this task gets the point.</strong> {p.race.text}</p>
+        {!p.race.house && p.race.closed && <p className="game-note"><strong>{p.race.wonByYou ? "You finished first. This point is yours." : "Closed. Someone else already won this point."}</strong></p>}
+        {!p.race.house && (!p.race.closed || p.race.wonByYou) && <SubmitBox kind="objective" itemId="race" label={p.race.ask} initial={saved.get("objective|race")} disabled={!open} onSaved={onSaved} />}
+        {p.race.slips.length > 0 && <ul>{p.race.slips.map((slip) => <li key={slip}>{slip}</li>)}</ul>}
+      </section>
       <section className="game-panel game-glance">
         <p className="eyebrow">Your night at a glance</p>
         <p className="game-glance-count"><strong>{doneCount}</strong> of {p.objectives.length} objectives answered</p>
@@ -208,7 +216,7 @@ export function ObjectivesTab({ card, secretsReleased, open, saved, onSaved }: {
           ))}
         </ol>
         <p className="game-glance-more">
-          {racePending ? "Plus the race point at the bottom of this tab. " : ""}Then open <strong>Answers</strong> for the three mysteries, the survivors and your bills.
+          {racePending ? "The race point is at the top of this tab. " : ""}Then open <strong>Answers</strong> for the three mysteries, the survivors and your bills.
         </p>
       </section>
       <section className="game-panel">
@@ -218,14 +226,6 @@ export function ObjectivesTab({ card, secretsReleased, open, saved, onSaved }: {
             <ErrandCard key={errand.id} errand={errand} index={index} saved={saved.get(`objective|${errand.id}`)} open={open} onSaved={onSaved} />
           ))}
         </ol>
-      </section>
-      <section className="game-panel game-race">
-        <p className="eyebrow">Act fast or lose this point</p>
-        <h3>{p.race.title}</h3>
-        <p><strong>The first to complete this task gets the point.</strong> {p.race.text}</p>
-        {!p.race.house && p.race.closed && <p className="game-note"><strong>{p.race.wonByYou ? "You finished first. This point is yours." : "Closed. Someone else already won this point."}</strong></p>}
-        {!p.race.house && (!p.race.closed || p.race.wonByYou) && <SubmitBox kind="objective" itemId="race" label={p.race.ask} initial={saved.get("objective|race")} disabled={!open} onSaved={onSaved} />}
-        {p.race.slips.length > 0 && <ul>{p.race.slips.map((slip) => <li key={slip}>{slip}</li>)}</ul>}
       </section>
     </>
   );
