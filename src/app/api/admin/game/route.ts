@@ -60,7 +60,7 @@ export async function POST(request: NextRequest) {
         await startGame(db);
         return reply({ ok: true });
       case "stop-game":
-        await stopGame(db);
+        await stopGame(db, { keepNames: body.keepNames === true });
         return reply({ ok: true });
       case "seed-cast": {
         const seeded = await seedCast(db);

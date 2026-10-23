@@ -1142,6 +1142,7 @@ img { max-width: 100%; height: auto; }
 .staff-release { display: flex; flex-direction: column; gap: .4rem; min-width: min(100%, 260px); padding: .9rem 1rem; background: rgba(101, 30, 39, .08); border: 1px solid var(--oxblood); }
 .staff-release-on { background: rgba(60, 100, 60, .12); border-color: #4a6b4a; }
 .staff-release small { color: var(--ink-soft); }
+.staff-release .admin-secondary { padding: .6rem 1rem; font-weight: 700; color: var(--oxblood-dark); background: transparent; border: 1px solid var(--oxblood); cursor: pointer; }
 .staff-cast-list { margin: 1rem 0 0; padding: 0; list-style: none; }
 .staff-cast-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr) auto; align-items: center; gap: .8rem; padding: .7rem 0; border-bottom: 1px solid var(--rule); }
 .staff-cast-row small { display: block; font-size: .74rem; color: var(--ink-soft); overflow-wrap: anywhere; }

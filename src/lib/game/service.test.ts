@@ -226,6 +226,13 @@ describe("the start button", () => {
     assert.equal(state.secretsReleased, false);
     assert.equal(state.submissionsOpen, false);
     await startGame(ctx.db, BEFORE);
+    // stopping with keepNames closes private cards but leaves the cast dealt
+    await stopGame(ctx.db, { keepNames: true });
+    const kept = await getState(ctx.db, BEFORE);
+    assert.equal(kept.identitiesReleased, true);
+    assert.equal(kept.secretsReleased, false);
+    await stopGame(ctx.db);
+    await startGame(ctx.db, BEFORE);
   });
 });
 

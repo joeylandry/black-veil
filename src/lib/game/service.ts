@@ -164,12 +164,12 @@ export async function startGame(db: GameDb, now = new Date()): Promise<void> {
   await setReleased(db, true);
 }
 
-/** Takes the game back to sealed (for a rehearsal). */
-export async function stopGame(db: GameDb): Promise<void> {
+/** Takes the game back to sealed (for a rehearsal). With keepNames, guests still see their character and background; only private cards, objectives and answers close again. */
+export async function stopGame(db: GameDb, options: { keepNames?: boolean } = {}): Promise<void> {
   await writeFlag(db, "identitiesReleased", null);
   await writeFlag(db, "secretsReleased", null);
   await writeFlag(db, "gameStartedAt", null);
-  await setReleased(db, false);
+  if (!options.keepNames) await setReleased(db, false);
 }
 
 export async function getState(db: GameDb, now = new Date()): Promise<GameState> {

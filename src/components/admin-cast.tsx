@@ -51,6 +51,19 @@ export function AdminCast({ secret }: { secret: string }) {
       .catch(() => setApprovals([]));
   }, [secret]);
 
+  async function stopGame() {
+    if (!window.confirm("Stop the game? Private cards, objectives and answers close again. Guests keep their character, public card and background.")) return;
+    setBusy(true);
+    setNotice(null);
+    const response = await fetch("/api/admin/game", { method: "POST", headers, body: JSON.stringify({ action: "stop-game", keepNames: true }) }).catch(() => null);
+    if (!response?.ok) {
+      const result = await response?.json().catch(() => null);
+      setNotice(result?.error ?? "The game could not be stopped. Try again.");
+    }
+    await load();
+    setBusy(false);
+  }
+
   async function startGame() {
     if (!window.confirm("Start the game? Every guest will see their public card, private card and objectives right now.")) return;
     setBusy(true);
@@ -98,6 +111,11 @@ export function AdminCast({ secret }: { secret: string }) {
           <button type="button" className="admin-primary" disabled={busy || data.started} onClick={startGame}>
             {data.started ? "Game started" : "Start game"}
           </button>
+          {data.started && (
+            <button type="button" className="admin-secondary" disabled={busy} onClick={stopGame}>
+              Stop game (guests keep their character)
+            </button>
+          )}
         </div>
       </div>
       {notice && <p className="admin-notice" role="status">{notice}</p>}
