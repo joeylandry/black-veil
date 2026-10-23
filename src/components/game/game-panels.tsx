@@ -121,35 +121,36 @@ function CodeBox({ endpoint, label, button, placeholder, guests }: { endpoint: s
   );
 }
 
-export function PrivateTab({ card, secretsReleased, open, saved, onSaved, directory }: { directory?: DirectoryEntry[] | null; card: Card; secretsReleased: boolean; open: boolean; saved: Map<string, SavedAnswer>; onSaved: (entry: SavedAnswer) => void }) {
+export function PrivateTab({ card, secretsReleased, directory }: { directory?: DirectoryEntry[] | null; card: Card; secretsReleased: boolean }) {
   if (!secretsReleased) {
     return (
       <section className="game-panel game-locked">
         <p className="eyebrow">Sealed until the night</p>
         <h3>Your private card opens when the host starts the game.</h3>
-        <p>Your secrets, your five objectives and everything you must not say aloud arrive the moment the host starts the game. Until then, read your Public and Background tabs.</p>
+        <p>Your bills, what you carry, your secrets and everything you must not say aloud arrive the moment the host starts the game. Until then, read your Public and Background tabs.</p>
       </section>
     );
   }
   const p = card.private;
   const isButler = p.role?.title === "The Butler";
-  const racePending = !p.race.house && !p.race.closed && !saved.has("objective|race");
-  const doneCount = p.objectives.filter((errand) => saved.has(`objective|${errand.id}`)).length;
   return (
     <>
-      <section className="game-panel game-glance">
-        <p className="eyebrow">Your night at a glance</p>
-        <p className="game-glance-count"><strong>{doneCount}</strong> of {p.objectives.length} objectives answered</p>
-        <ol className="game-glance-list">
-          {p.objectives.map((errand, index) => (
-            <li key={errand.id} className={saved.has(`objective|${errand.id}`) ? "done" : undefined}>
-              <a href={`#errand-${errand.id}`}><span>{saved.has(`objective|${errand.id}`) ? "\u2713" : index + 1}</span>{errand.title}</a>
-            </li>
-          ))}
-        </ol>
-        <p className="game-glance-more">
-          {racePending ? "Plus the race point below. " : ""}Then open <strong>Answers</strong> for the three mysteries, the survivors and your bills.
-        </p>
+      <section className="game-panel">
+        <p className="eyebrow">In your pockets</p>
+        <p className="game-cash"><strong>${p.startingCash.toLocaleString("en-US")}</strong> <span>{p.startingCash / 100} House bills of $100</span></p>
+        <p>A clue marked &ldquo;Costs $100&rdquo; is told only after you drop a bill in the House Tin. One of your secrets may be sold to a guest for $200.</p>
+        {p.carries.length > 0 && (
+          <>
+            <h4>You carry</h4>
+            <ul className="game-carry">{p.carries.map((item) => <li key={item}>{item}</li>)}</ul>
+            <p className="game-note">Keep {p.carries.length > 1 ? "these" : "this"} on you (in a pocket or your hand) all night so others can trade with you.</p>
+          </>
+        )}
+        {p.habit && <p className="game-tell"><strong>A habit of yours.</strong> {p.habit}</p>}
+      </section>
+      <section className="game-panel">
+        <p className="eyebrow">What you know, and what you are hiding</p>
+        <Lines lines={[...p.secrets, ...p.knows]} />
       </section>
       {p.survivor && (
         <section className="game-panel game-survivor">
@@ -177,6 +178,39 @@ export function PrivateTab({ card, secretsReleased, open, saved, onSaved, direct
           {isButler && <CodeBox endpoint="/api/game/butler" label="The House panel: the words the guest said to you" button="Offer" placeholder="The words" guests={directory ?? []} />}
         </section>
       )}
+    </>
+  );
+}
+
+export function ObjectivesTab({ card, secretsReleased, open, saved, onSaved }: { card: Card; secretsReleased: boolean; open: boolean; saved: Map<string, SavedAnswer>; onSaved: (entry: SavedAnswer) => void }) {
+  if (!secretsReleased) {
+    return (
+      <section className="game-panel game-locked">
+        <p className="eyebrow">Sealed until the night</p>
+        <h3>Your objectives open when the host starts the game.</h3>
+        <p>Your five objectives and the race point arrive the moment the host starts the game.</p>
+      </section>
+    );
+  }
+  const p = card.private;
+  const racePending = !p.race.house && !p.race.closed && !saved.has("objective|race");
+  const doneCount = p.objectives.filter((errand) => saved.has(`objective|${errand.id}`)).length;
+  return (
+    <>
+      <section className="game-panel game-glance">
+        <p className="eyebrow">Your night at a glance</p>
+        <p className="game-glance-count"><strong>{doneCount}</strong> of {p.objectives.length} objectives answered</p>
+        <ol className="game-glance-list">
+          {p.objectives.map((errand, index) => (
+            <li key={errand.id} className={saved.has(`objective|${errand.id}`) ? "done" : undefined}>
+              <a href={`#errand-${errand.id}`}><span>{saved.has(`objective|${errand.id}`) ? "\u2713" : index + 1}</span>{errand.title}</a>
+            </li>
+          ))}
+        </ol>
+        <p className="game-glance-more">
+          {racePending ? "Plus the race point at the bottom of this tab. " : ""}Then open <strong>Answers</strong> for the three mysteries, the survivors and your bills.
+        </p>
+      </section>
       <section className="game-panel">
         <p className="eyebrow">Your five objectives · {p.totalPoints} points</p>
         <ol className="game-errands">
@@ -192,23 +226,6 @@ export function PrivateTab({ card, secretsReleased, open, saved, onSaved, direct
         {!p.race.house && p.race.closed && <p className="game-note"><strong>{p.race.wonByYou ? "You finished first. This point is yours." : "Closed. Someone else already won this point."}</strong></p>}
         {!p.race.house && (!p.race.closed || p.race.wonByYou) && <SubmitBox kind="objective" itemId="race" label={p.race.ask} initial={saved.get("objective|race")} disabled={!open} onSaved={onSaved} />}
         {p.race.slips.length > 0 && <ul>{p.race.slips.map((slip) => <li key={slip}>{slip}</li>)}</ul>}
-      </section>
-      <section className="game-panel">
-        <p className="eyebrow">In your pockets</p>
-        <p className="game-cash"><strong>${p.startingCash.toLocaleString("en-US")}</strong> <span>{p.startingCash / 100} House bills of $100</span></p>
-        <p>A clue marked &ldquo;Costs $100&rdquo; is told only after you drop a bill in the House Tin. One of your secrets may be sold to a guest for $200.</p>
-        {p.carries.length > 0 && (
-          <>
-            <h4>You carry</h4>
-            <ul className="game-carry">{p.carries.map((item) => <li key={item}>{item}</li>)}</ul>
-            <p className="game-note">Keep {p.carries.length > 1 ? "these" : "this"} on you (in a pocket or your hand) all night so others can trade with you.</p>
-          </>
-        )}
-        {p.habit && <p className="game-tell"><strong>A habit of yours.</strong> {p.habit}</p>}
-      </section>
-      <section className="game-panel">
-        <p className="eyebrow">What you know, and what you are hiding</p>
-        <Lines lines={[...p.secrets, ...p.knows]} />
       </section>
     </>
   );

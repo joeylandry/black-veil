@@ -4,9 +4,9 @@ import Link from "next/link";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { BlackVeilInsignia } from "../black-veil-insignia";
 import type { CardResponse, Results, SavedAnswer } from "./game-types";
-import { AnswersTab, PrivateTab, ResultsTab } from "./game-panels";
+import { AnswersTab, ObjectivesTab, PrivateTab, ResultsTab } from "./game-panels";
 
-type Tab = "public" | "background" | "private" | "answers" | "results";
+type Tab = "public" | "background" | "private" | "objectives" | "answers" | "results";
 type Load = { phase: "loading" } | { phase: "signed-out" } | { phase: "ready"; data: CardResponse };
 
 /**
@@ -70,6 +70,7 @@ export function GameApp({ town = [] }: { town?: { heading: string; bullets: stri
       { id: "public", label: "Public" },
       { id: "background", label: "Background" },
       { id: "private", label: "Private" },
+      { id: "objectives", label: "Objectives" },
       { id: "answers", label: "Answers" },
     ];
     if (published) list.push({ id: "results", label: "Results" });
@@ -162,10 +163,11 @@ export function GameApp({ town = [] }: { town?: { heading: string; bullets: stri
             <p>{card.background.history}</p>
             <h4>The people you know</h4>
             <ul>{card.background.people.map((line) => <li key={line}>{line}</li>)}</ul>
-            <p className="game-note">Your Private tab, with your secrets and objectives, unlocks when the host starts the game.</p>
+            <p className="game-note">Your Private and Objectives tabs unlock when the host starts the game.</p>
           </section>
         )}
-        {tab === "private" && <PrivateTab directory={data.directory?.filter((entry) => entry.id !== card.id)} card={card} secretsReleased={secretsReleased} open={open} saved={saved} onSaved={onSaved} />}
+        {tab === "private" && <PrivateTab directory={data.directory?.filter((entry) => entry.id !== card.id)} card={card} secretsReleased={secretsReleased} />}
+        {tab === "objectives" && <ObjectivesTab card={card} secretsReleased={secretsReleased} open={open} saved={saved} onSaved={onSaved} />}
         {tab === "answers" && (
           <AnswersTab
             secretsReleased={secretsReleased}
