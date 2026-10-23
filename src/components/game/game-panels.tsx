@@ -149,7 +149,7 @@ export function PrivateTab({ card, secretsReleased, open, saved, onSaved }: { ca
       <section className="game-panel">
         <p className="eyebrow">Act fast or lose this point</p>
         <p><strong>The first to complete this task gets the point.</strong> {p.race.text}</p>
-        {!p.race.house && p.race.closed && <p className="game-note"><strong>{p.race.wonByYou ? "You finished first. This point is yours." : "Closed. Someone in your group already won this point."}</strong></p>}
+        {!p.race.house && p.race.closed && <p className="game-note"><strong>{p.race.wonByYou ? "You finished first. This point is yours." : "Closed. Someone else already won this point."}</strong></p>}
         {!p.race.house && (!p.race.closed || p.race.wonByYou) && <SubmitBox kind="objective" itemId="race" label={p.race.ask} initial={saved.get("objective|race")} disabled={!open} onSaved={onSaved} />}
         {p.race.slips.length > 0 && <ul>{p.race.slips.map((slip) => <li key={slip}>{slip}</li>)}</ul>}
       </section>
@@ -305,7 +305,7 @@ export function ResultsTab({ results }: { results: Results | null }) {
         {results.killer && <p>The Keeper was poisoned by <strong>{results.killer}</strong>.</p>}
         {you && (
           <p className="game-yourscore">
-            You scored <strong>{you.total}</strong> and finished {ordinal(you.rank)} overall, {ordinal(you.circleRank)} in your group.
+            You scored <strong>{you.total}</strong> and finished {ordinal(you.rank)} overall.
           </p>
         )}
       </section>

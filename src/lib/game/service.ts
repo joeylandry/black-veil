@@ -14,7 +14,6 @@ import {
   characterForName,
   characters,
   alternateOf,
-  circleById,
   listDirectory,
   markers,
   objectiveById,
@@ -212,7 +211,8 @@ export async function seedCast(db: GameDb): Promise<{ created: number; updated: 
       characterName: character.name,
       occupation: character.occupation,
       publicBiography: character.publicBio,
-      factions: [circleById.get(character.circle)!.name],
+      // groups are for races and grading only: never written where a guest could read them
+      factions: [] as string[],
       privateBiography: "",
       secrets: [] as string[],
       objectives: [] as string[],
@@ -355,6 +355,9 @@ export async function cardFor(db: GameDb, guestId: string, now = new Date()): Pr
     const winner = await raceWinner(db, full.circle.id, roster);
     card.private.race = { ...card.private.race, closed: Boolean(winner), wonByYou: winner === slug };
   }
+  // the groups are for the races and for grading: the page never names them
+  card.circle = { id: "", name: "", blurb: "" };
+  card.private.race = { ...card.private.race, group: "" };
   return {
     status: "ok",
     card,
@@ -383,6 +386,14 @@ async function raceWinner(db: GameDb, circle: string, roster: RosterRow[]): Prom
   return null;
 }
 
+/** A standing row as a guest may see it: the groups are for grading only. */
+function withoutGroup<T extends { circle: string; circleRank: number }>(row: T): Omit<T, "circle" | "circleRank"> {
+  const copy: Partial<T> = { ...row };
+  delete copy.circle;
+  delete copy.circleRank;
+  return copy as Omit<T, "circle" | "circleRank">;
+}
+
 export type SubmitResult = { ok: true; at: string } | { ok: false; code: "closed" | "uncast" | "invalid" | "slow-down"; message: string };
 
 /** The only thing a guest ever learns from submitting is that it was received. */
@@ -409,7 +420,7 @@ export async function submit(db: GameDb, guestId: string, input: SubmitInput, no
       // the point is taken once somebody in the group has finished: the box closes for everyone else
       if (isRace) {
         const winner = await raceWinner(db, character.circle, roster);
-        if (winner && winner !== slug) return { ok: false, code: "closed", message: "Someone in your group has already won this point." };
+        if (winner && winner !== slug) return { ok: false, code: "closed", message: "Someone else has already won this point." };
       }
       // everyone reports their bills at the end for the wallet bonus
       const isCash = itemId === "cash";
@@ -685,12 +696,11 @@ export async function resultsFor(db: GameDb, guestId: string) {
   const mine = slug ? published.standings.standings.find((row) => row.guest === slug) ?? null : null;
   return {
     publishedAt: published.publishedAt,
-    you: mine,
-    board: published.standings.standings.map((row) => ({ guest: row.guest, name: row.name, circle: row.circle, survivor: row.survivor, total: row.total, rank: row.rank, circleRank: row.circleRank, isYou: row.guest === slug })),
+    you: mine ? withoutGroup(mine) : null,
+    board: published.standings.standings.map((row) => ({ guest: row.guest, name: row.name, survivor: row.survivor, total: row.total, rank: row.rank, isYou: row.guest === slug })),
     winner: name(published.standings.winner),
     killer: name(published.standings.killer),
-    circleChampions: Object.fromEntries(Object.entries(published.standings.circleChampions).map(([circle, id]) => [circle, name(id)])),
-    awards: published.standings.awards.map((award) => ({ ...award, guest: name(award.guest) })),
+    awards: published.standings.awards.filter((award) => !award.id.startsWith("circle-")).map((award) => ({ ...award, guest: name(award.guest) })),
     solution: published.solution,
   };
 }

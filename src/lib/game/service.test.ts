@@ -4,7 +4,7 @@ import { PGlite } from "@electric-sql/pglite";
 import { drizzle } from "drizzle-orm/pglite";
 import { eq } from "drizzle-orm";
 import { migrate } from "drizzle-orm/pglite/migrator";
-import { characters, markers, survivorIds, questions, characterById, alternateOf, races } from "@/data/game";
+import { characters, circles, markers, survivorIds, questions, characterById, alternateOf, races } from "@/data/game";
 import { propById } from "@/data/game/props";
 import { guests, gameSubmissions, rsvps } from "@/lib/db/schema";
 import { correctAnswer, correctMystery } from "./sim";
@@ -338,6 +338,13 @@ describe("submissions", () => {
     assert.equal(late.ok, false);
   });
 
+  it("never names a guest's group on the page", async () => {
+    for (const slug of ["anika", "mihir", "arjun"]) {
+      const response = JSON.stringify(await cardFor(ctx.db, await idOf(ctx.db, slug), NIGHT));
+      for (const circle of circles) assert.ok(!response.includes(circle.name), `${slug}'s card names "${circle.name}"`);
+    }
+  });
+
   it("closes a group's race once somebody has won it, and only that group's", async () => {
     const circle = characterById.get("arjun")!.circle;
     const race = races.find((entry) => entry.circle === circle)!;
@@ -598,6 +605,9 @@ describe("grading the night, end to end", () => {
     assert.equal(results!.winner, characterById.get("anika")!.name);
     assert.equal(results!.killer, characterById.get(KILLER)!.name);
     assert.equal(results!.you?.guest, "anika");
+    const shown = JSON.stringify(results);
+    for (const circle of circles) assert.ok(!shown.includes(circle.name), `the results name "${circle.name}"`);
+    assert.ok(!("circleChampions" in results!) && !("circleRank" in results!.you!), "no group standings reach the guest");
     assert.ok(results!.you!.items.length > 10);
     assert.equal(results!.board.length, characters.length);
     assert.equal(results!.board.filter((row) => row.isYou).length, 1);

@@ -71,11 +71,10 @@ export type SavedAnswer = { kind: string; itemId: string; answer: string; proof:
 export type ResultItem = { guest: string; kind: string; itemId: string; verdict: string; points: number; max: number; rationale: string; source: string };
 export type Results = {
   publishedAt: string;
-  you: { guest: string; name: string; total: number; rank: number; circleRank: number; tiers: { objectives: number; survivors: number; mysteries: number; race: number; cash: number }; items: ResultItem[] } | null;
-  board: { guest: string; name: string; circle: string; survivor: boolean; total: number; rank: number; circleRank: number; isYou: boolean }[];
+  you: { guest: string; name: string; total: number; rank: number; tiers: { objectives: number; survivors: number; mysteries: number; race: number; cash: number }; items: ResultItem[] } | null;
+  board: { guest: string; name: string; survivor: boolean; total: number; rank: number; isYou: boolean }[];
   winner: string | null;
   killer: string | null;
-  circleChampions: Record<string, string | null>;
   awards: { id: string; title: string; guest: string | null; detail: string }[];
   solution: {
     headline: string;
