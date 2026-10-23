@@ -88,8 +88,6 @@
 - Molly Daniel: rents your cellar for a still of her own, and pays you in gossip.
 - J. Bruce Wayne: the playboy who holds your mortgage and has never once mentioned it.
 
-**Wear.** A black velvet ribbon at the throat, gloves, and the airs of a woman who does not need to count.
-
 ### J. Bruce Wayne
 *Wealthy playboy* · The Wire & the Stage
 
@@ -100,8 +98,6 @@
 - Anika Mahns: your mortgage, and your reason to be seen at her parties.
 - Mihir Nagarkatti: the oilman whose money is louder than yours, and older.
 - Krrish Vermouth: delivers your vermouth and has never once been paid on time.
-
-**Wear.** Dinner jacket, a cigar you never light, and a black mask that does not quite cover your eyes.
 
 ### Mihir Nagarkatti of Nag Oil
 *Oil master* · The Survivors
@@ -114,8 +110,6 @@
 - Diwakar Sandbagg: the prizefighter whose purses you stake, and are curious about.
 - Eric Leeway: the judge who rules on your drilling leases, and on little else you do.
 
-**Wear.** An oilman's cream suit with a derrick-shaped tie pin, a pocket full of bills in a tidy roll, and a black half-mask.
-
 ### Krrish Vermouth
 *Wine importer* · The River Trade
 
@@ -126,8 +120,6 @@
 - Eric Leeway: a regular at your cellar door on Fridays, for reasons neither of you states.
 - J. Bruce Wayne: buys your vermouth and pays in compliments.
 - Anika Mahns: the Manor's cellar is the best customer you cannot say you have.
-
-**Wear.** A wine merchant's grey frock coat, a corkscrew on a chain, and a half-mask the colour of burgundy.
 
 ### Angelos Bowles
 *Card sharp* · The River Trade
@@ -140,8 +132,6 @@
 - Diwakar Sandbagg: the prizefighter whose hands you cannot stop watching.
 - Silas Palmer: plays the room where you work the back table.
 
-**Wear.** A bowler hat, a waistcoat full of loose coin, and a casino chip you roll across your knuckles.
-
 ### Sheriff Theodor Farrago
 *Sheriff* · Order & Letters
 
@@ -152,8 +142,6 @@
 - Leon Gee: you would happily arrest him for being insufferable on the radio, and he knows what that is worth.
 - Emmerich Sunner: the county physician reports to you and examines every body you find.
 - Tiffany Liu: the windows of your office are hers, and so, you suspect, is some of the gossip about you.
-
-**Wear.** A black cowboy hat, a tin star, handcuffs on your belt, and a stern face for the photographs.
 
 ### Judge Eric Leeway
 *Judge* · Order & Letters
@@ -166,8 +154,6 @@
 - Theodor Farrago: the Sheriff, who watches your bench more closely than he admits.
 - Krrish Vermouth: sends the bench a crate of wine every Friday, and you never ask why.
 
-**Wear.** Judge's black robes, a powdered wig if you can find one, and a small half-mask.
-
 ### Anthony Hung, Esq.
 *Defense attorney* · Order & Letters
 
@@ -178,8 +164,6 @@
 - Rhea Mallya: the Emporium's counsel is you; you read her leases and are not telling anyone what is in them.
 - Eric Leeway: the judge who dismisses your cases and has never read your briefs.
 - Tim McGinley: a client you have defended three times and billed once.
-
-**Wear.** A lawyer's three-piece suit, a flourish of a signature on every page, and a mask with an air of reasonable doubt.
 
 ### Dr. Emmerich Sunner
 *Doctor* · Order & Letters
@@ -192,8 +176,6 @@
 - Rhea Mallya: the Emporium's druggist fills your prescriptions.
 - Silas Palmer: the bandleader whose throat you treat.
 
-**Wear.** A doctor's bag, a stethoscope, a white coat over a dinner jacket, and a small black mask.
-
 ### Molly Daniel of the Manchester Union
 *Newsie* · The Survivors
 
@@ -204,8 +186,6 @@
 - Anika Mahns: your landlady in the cellar, and your best customer.
 - Leon Gee: your headlines run on his radio the next morning, without credit.
 - Eric Leeway: pays you to keep his name off the court column.
-
-**Wear.** A newsboy cap, a satchel of papers, and a bundle of the Extra to sell at the right moment.
 
 ### Leon Gee of WFEA
 *Radio announcer* · The Wire & the Stage
@@ -218,8 +198,6 @@
 - Ananya Codru: your friend at the telegraph office; she keeps your secrets and you keep hers.
 - Silas Palmer: the bandleader whose scat you recognise from somewhere you cannot place.
 
-**Wear.** A microphone prop if you have one, a headset, a snappy suit, and a white carnation.
-
 ### Ananya Codru and Charlie Wakem
 *Night telegraph office* · The Wire & the Stage
 
@@ -230,8 +208,6 @@
 - Leon Gee: your friend at WFEA, who sends messages that look innocent and are not.
 - J. Bruce Wayne: wires his tailor in London, and tips like a man who wants to be remembered.
 - Erika Lamm: wanted; has bought a telegram form from you and does not say why.
-
-**Wear.** A clerk's visor and sleeve garters, a telegraph pencil behind the ear, and a single green glove.
 
 ### Luke Shelldon
 *Carnival barker* · The Survivors
@@ -244,8 +220,6 @@
 - Silas Palmer: leads the band that plays your carnival, and cannot play a Charleston.
 - Ananya Codru: sends your wires to the carnival's other towns and keeps your accounts straight.
 
-**Wear.** A barker's straw boater, a striped coat, a cane, and a mask with a painted grin.
-
 ### Silas Palmer of the Palm Court
 *Jazz scat singer* · The Wire & the Stage
 
@@ -256,8 +230,6 @@
 - Leon Gee: broadcasts your records on WFEA, and says the scat reminds him of someone.
 - Anika Mahns: a patron of the band, and not one who explains herself.
 - Luke Shelldon: books your orchestra for the carnival.
-
-**Wear.** White tie and tails, a long cigarette holder, a hat you tip to everyone, and a mask in black lace.
 
 ### Sidd Airwind
 *Barnstormer* · The Wire & the Stage
@@ -270,8 +242,6 @@
 - Tiffany Liu: sold you a lamp for your hangar, and a story for it.
 - Leon Gee: reads your weather on the air, wrongly.
 
-**Wear.** A flying jacket and leather helmet, goggles pushed up on your forehead, a wristwatch you glance at constantly, and a white silk scarf.
-
 ### Joshua Kamin-Sky
 *Soothsayer* · The Working Folk
 
@@ -282,8 +252,6 @@
 - Tiffany Liu: your partner in windows and roofs; you read the glass, she makes it.
 - Arjun Bat: a fellow mill family; you have known him since you were both small.
 - Adam Holdsfire: you read the soot in his shop's chimney and he reads your debts.
-
-**Wear.** A shawl of rich colours, a turban, a crystal you do not believe in, and a six-pointed star pinned to your lapel. It is a Friday night, so you feel the Sabbath keenly.
 
 ### Arjun Bat
 *Slugger* · The Working Folk
@@ -296,8 +264,6 @@
 - Mihir Nagarkatti: the oilman whose offer you took, or did not.
 - Adam Holdsfire: sold you your first glove and has opinions about your swing.
 
-**Wear.** A Textiles team jersey, a cap, and a bat you insist is for sentimental reasons.
-
 ### Adam Holdsfire
 *Gunsmith* · The Survivors
 
@@ -308,8 +274,6 @@
 - Theodor Farrago: the Sheriff whose revolver you built and who has never loaded it.
 - Joshua Kamin-Sky: reads the soot in your chimney; taught you a Yiddish word you are proud of.
 - Arjun Bat: bought his bat from your hardware counter.
-
-**Wear.** A gunsmith's leather apron over a good shirt, a monocle, and a half-mask with a brass finish.
 
 ### Tiffany Liu of the Lamps
 *Stained-glass artist* · The Working Folk
@@ -322,8 +286,6 @@
 - Joshua Kamin-Sky: reads the glass you make.
 - Theodor Farrago: the Sheriff's office windows are yours.
 
-**Wear.** A glassworker's apron, a loupe on a ribbon, and a mask of stained-glass shards.
-
 ### Diwakar Sandbagg
 *Prizefighter* · The Working Folk
 
@@ -334,8 +296,6 @@
 - Mihir Nagarkatti: the oilman who stakes your fights, and does not ask why.
 - Angelos Bowles: studies you at every table.
 - Arjun Bat: a fellow sportsman who trades stories and bruises.
-
-**Wear.** A boxer's robe over a dinner jacket, taped knuckles, and a mask that is not meant to hide a broken nose.
 
 ### Tim McGinley, Baron of Bathtub Gin
 *Gin baron* · The River Trade
@@ -348,8 +308,6 @@
 - Rhea Mallya: stocks your gin in the Emporium's back room under the label of a tonic.
 - Anthony Hung: your lawyer; you do not pay him on time.
 
-**Wear.** A gangster's pinstripe, a flask-shaped bulge, and a black half-mask with a gin-green ribbon.
-
 ### Rebecca Chow, Butler of the Black Veil
 *Butler* · The River Trade
 
@@ -360,8 +318,6 @@
 - Tim McGinley: supplies the House, and has seen what is under your bar.
 - Leon Gee: you have a message of his you have never delivered.
 - Erika Lamm: a boarder you hid at the House once, and would again, for the right fee.
-
-**Wear.** A Butler's black coat with silver buttons, white gloves, a ring of keys, and an expression of discretion for hire.
 
 ### Rhea Mallya of Mallya's Emporium
 *Department store owner* · The Survivors
@@ -374,8 +330,6 @@
 - Anika Mahns: an unpaid account the size of a small house.
 - Silas Palmer: dresses his band at your counter.
 
-**Wear.** The newest silk you stock, a mask in a matching shade, and an air of closing a sale.
-
 ### Erika Lamm
 *Fugitive* · The River Trade
 
@@ -386,5 +340,3 @@
 - Rebecca Chow: has hidden you, for money, and will again.
 - Ananya Codru: sold you a blank telegram form without asking why.
 - Theodor Farrago: the Sheriff who wants you, and has never recognised you in a hat.
-
-**Wear.** A travelling coat with the collar up, a hat pulled low, and a false moustache you may or may not wear.

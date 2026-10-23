@@ -68,7 +68,6 @@ function cardPages(): string[] {
       <h2>Your public face</h2><p>${esc(k.publicBio)}</p>
       <h2>Background</h2><p>${esc(k.background.history)}</p>
       <ul>${k.background.people.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>
-      <p><span class="lab">Costume ideas (optional)</span> &nbsp;${esc(k.background.wardrobe)}</p>
     </div></div></div>`);
     const errands = numbered(p.objectives).filter(({ n }) => n <= 2);
     pages.push(`<div class="page"><div class="sheet">${banner(`${k.name} · Private`)}<div class="fit" style="--base:11.5pt">
@@ -113,7 +112,7 @@ function invitationText(name: string): string {
 <p>Every one of you was meant to be dead, and you are not. Do not waste the evening being surprised.</p>
 <p>Why it must be you is yours to remember. You have told yourself a great many stories since. Sit quietly with the true one.</p>
 <p>You will not be told who else was sent for. The House keeps one bottle, and it is sold once. Be quick, and be quiet.</p>
-<p>Doors at eight. A mask, if you have one; you will need no other.</p>
+<p>Doors at eight.</p>
 <p class="end">The veil lifts</p>`;
 }
 

@@ -104,7 +104,7 @@ export function PrivateTab({ card, secretsReleased, open, saved, onSaved }: { ca
       <section className="game-panel game-locked">
         <p className="eyebrow">Sealed until the night</p>
         <h3>Your private card opens when the host starts the game.</h3>
-        <p>Your secrets, your five objectives and everything you must not say aloud arrive the moment the host starts the game. Until then, read your Public and Background tabs and pick a costume if you like (it is optional).</p>
+        <p>Your secrets, your five objectives and everything you must not say aloud arrive the moment the host starts the game. Until then, read your Public and Background tabs.</p>
       </section>
     );
   }
