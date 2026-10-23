@@ -31,7 +31,7 @@
 |---|---|---|---|---|
 | **J. Bruce Wayne**<br>Wealthy playboy | Joel Indipiginja |  | $3000; tool-joel | Your “office” is the back room of a hat shop, and the Keeper once used its telephone to call Boston. (confidant: Tiffany Liu of the Lamps) |
 | **Leon Gee of WFEA**<br>Radio announcer | Leon Ge |  | $1000; witness-leon | You once read the Sheriff's private mail aloud on the air by mistake, and he has never forgiven it. (confidant: Silas Palmer of the Palm Court) |
-| **Ananya Codru and Charlie Wakem**<br>Night telegraph office | Ananya Koduru |  | $1000; telegram-form, tool-ananya | You once filed a Montreal telegram, paid in advance, with no sender. (confidant: Rebecca Chow, Butler of the Black Veil) |
+| **Ananya Codru and Charlie Wakem**<br>Night telegraph office | Ananya Koduru |  | $1000; telegram-form, tool-ananya | You once filed a telegram, paid in advance, with no sender. (confidant: Rebecca Chow, Butler of the Black Veil) |
 | **Silas Palmer of the Palm Court**<br>Jazz scat singer | Silas Palmer |  | $1200; request-card, trade-silas | You have sung the same scat phrase at every club since 1921, and it was Cassie's own call. (confidant: Arjun Bat) |
 | **Sidd Airwind**<br>Barnstormer | Siddarth Arvind |  | $1400; witness-sidd | You trained a mechanic who was later paid to be careless once. (confidant: Mihir Nagarkatti of Nag Oil) |
 

@@ -361,7 +361,7 @@ House bills: $100 each. Cash in the room at the start: $32,000 (320 bills, so th
 
 One slip per clue errand. Hand it to a guest whose named sources did not come.
 
-- **anika-secret** (Anika Mahns of Mahns Manor): You once filed a Montreal telegram, paid in advance, with no sender.
+- **anika-secret** (Anika Mahns of Mahns Manor): You once filed a telegram, paid in advance, with no sender.
 - **joel-secret** (J. Bruce Wayne): You delivered a crate of wine in November 1924 on a draft signed K. Kessler to a grey Hudson that later turned up in the river.
 - **joel-story2** (J. Bruce Wayne): The flue of the Merrimack Room runs behind a brick wall that is too thick on the inside. A safe lives there.
 - **joel-story** (J. Bruce Wayne): You delivered a crate of wine in November 1924 on a draft signed K. Kessler to a grey Hudson that later turned up in the river.
@@ -369,7 +369,7 @@ One slip per clue errand. Hand it to a guest whose named sources did not come.
 - **mihir-why** (Mihir Nagarkatti of Nag Oil): The draft that bought the hitman's grey Hudson was drawn on an account stubbed “Crane, advance.” The money was somebody's own share.
 - **mihir-hour** (Mihir Nagarkatti of Nag Oil): On 1 November 1924 you took $200 from “Mr. K.” to forget the lady in Room 3. You took it.
 - **krrish-secret** (Krrish Vermouth): You were paid to take a fall on Halloween 1924 and told to stay down until the music stopped.
-- **angelos-secret** (Angelos Bowles): You once filed a Montreal telegram, paid in advance, with no sender.
+- **angelos-secret** (Angelos Bowles): You once filed a telegram, paid in advance, with no sender.
 - **theodor-secret** (Sheriff Theodor Farrago): You delivered a crate of wine in November 1924 on a draft signed K. Kessler to a grey Hudson that later turned up in the river.
 - **eric-secret** (Judge Eric Leeway): You ate beet sandwiches for a week to prove the “blood” was beets and sugar.
 - **anthony-secret** (Anthony Hung, Esq.): You keep a shoebox with seventeen “accidents” in it and have told no one.

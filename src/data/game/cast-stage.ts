@@ -50,9 +50,9 @@ export const stage: Character[] = [
       wardrobe: "A clerk's visor and sleeve garters, a telegraph pencil behind the ear, and a single green glove.",
     },
     secrets: [
-      { text: "You once filed a Montreal telegram, paid in advance, with no sender.", share: "secret" },
+      { text: "You once filed a telegram, paid in advance, with no sender.", share: "secret" },
     ],
-    smallSecret: { text: "You once filed a Montreal telegram, paid in advance, with no sender.", key: ["no sender"], confidant: "rebecca" },
+    smallSecret: { text: "You once filed a telegram, paid in advance, with no sender.", key: ["no sender"], confidant: "rebecca" },
     startingCash: 1000,
     carries: ["telegram-form", "tool-ananya"],
     objectives: [
