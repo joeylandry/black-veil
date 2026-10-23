@@ -130,7 +130,8 @@ function tri(value: unknown): boolean | undefined {
 export function deriveState(flags: Record<string, unknown>, now = new Date()): GameState {
   // The game opens by itself at the start time; the Start game button (see startGame) only opens it early.
   const started = now.getTime() >= new Date(eventConfig.secretsReleaseAt).getTime();
-  const identitiesReleased = eventConfig.charactersReleased || tri(flags.identitiesReleased) === true || started;
+  // "Show names" on the cast page (rosterReleased) deals the characters here too; private cards still wait for the start
+  const identitiesReleased = eventConfig.charactersReleased || tri(flags.identitiesReleased) === true || flags.rosterReleased === true || started;
   const forcedSecrets = tri(flags.secretsReleased);
   const secretsReleased = identitiesReleased && (forcedSecrets ?? started);
   const forcedClosed = tri(flags.submissionsClosed);

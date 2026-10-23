@@ -23,7 +23,7 @@
 | **8:30** | **Silas's five-minute spotlight** (and Anika's request, which he plays for her). | enjoy it |
 | About 8:45 to 9:00 | The Butler sells the vial once, to the first survivor who says the words from the cactus slip (the panel refuses before 8:45). If the Butler is absent, use *Sell as the Butler* in /admin. | watch the House panel |
 | **~9:00** | The House closes: the nightcap is served. Note the buyer in /admin (House panel). | 10 seconds |
-| **~9:05** | Stage the scene in the chair section: the dummy in the jacket, the glass tipped, the empty vial, **the torn scrap with the House's words placed under it**, then lay out the scene pages (watch, vial, rail stub, jacket note). Tape. Your scene card goes on the black table. | ~3 minutes |
+| **~9:05** | Stage the scene in the chair section: the dummy in the jacket, the glass tipped, the empty vial, then lay out the scene pages (watch, vial, rail stub, jacket note). Tape. Your scene card goes on the black table. | ~3 minutes |
 | **~9:15** | The Butler finds him and screams. The Sheriff takes charge; the Doctor examines. Open Josh's envelope afterward. | nothing |
 | 9:15 to ~10:15 | Investigation. No town hall, no deliberation. The Sheriff names an arrest by 10:15. | tend bar |
 | 9:15 | A guest whose source is absent can ask you at the bar: hand over a spare slip if you printed a second set. | spare slips (optional) |

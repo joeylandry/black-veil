@@ -481,7 +481,7 @@ function buildHostSheet() {
       <li><b>When a guest comes to the bar to claim a point,</b> check it really happened (the table below), then tell them the approval word. Say a word to nobody else.</li>
       <li><b>Fortune cards:</b> Josh collects his four fortune cards from you.</li>
       <li><b>Josh's minute:</b> before 8:30 he tells you the minute he expects the scream. Seal it in an envelope.</li>
-      <li><b>About 9:05:</b> stage the scene (jacket, glass, empty vial, the torn scrap with the House's words, scene pages).</li>
+      <li><b>About 9:05:</b> stage the scene (jacket, glass, empty vial, scene pages).</li>
       <li><b>10:00 wrap-up:</b> hand Eric the <b>charter</b> (he signs it, the code is on it). Give Leon the <b>bulletin</b> to read aloud:<br><i>&ldquo;This evening the Keeper of the Black Veil was found dead at his table. The House has lifted its veil, the dead are not dead, and Manchester will hear the rest in the morning.&rdquo;</i> Then read Cassie's letter.</li>
       <li><b>10:30:</b> everything closes. Then grade (see the run of show).</li>
     </ol>

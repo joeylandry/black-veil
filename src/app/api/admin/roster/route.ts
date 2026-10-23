@@ -2,6 +2,7 @@ import { NextRequest } from "next/server";
 import { roster } from "@/data/roster";
 import { adminDatabaseError, adminGuard } from "@/lib/auth/admin";
 import { gameDb, json } from "@/lib/game/http";
+import { getState } from "@/lib/game/service";
 import { castList, readRosterFlags, setOverride, setReleased } from "@/lib/roster-service";
 
 /** Staff-only: who is coming, which character each guest holds, and the one switch that shows guests their names. */
@@ -15,6 +16,8 @@ export async function GET(request: NextRequest) {
     const held = new Set(cast.filter((row) => row.attending !== "no" && row.entry).map((row) => row.entry!.slug));
     return json({
       released: flags.released,
+      // the game itself: true only once private cards and objectives are open (by the clock or the Start button)
+      started: (await getState(db)).secretsReleased,
       guests: cast.map((row) => ({
         id: row.guestId,
         fullName: row.fullName,
