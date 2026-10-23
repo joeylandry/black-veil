@@ -1337,16 +1337,16 @@ For every guest: who will come to them, and why. This is what makes the room mov
 - You read his palm once: a gambler's lines and a gambler's habit. He has counted that way his whole life.
 - You have the photographs: Silas tips his hat at every greeting, in every photograph, since the band began.
 
-*TRADE IT (3)*
+*TRADE IT (4)*
 
 - In the flue of an empty room above the river you read the soot off half-burned pages: “C. is out. K. holds the books. Place them as I wrote.” You still have a torn register page.
+- The burned sign-out slips from the flue all carried marker numbers. The unburned five, 18 to 22, were never signed back.
 - In 1925 an old man hired you to read the soot in the Merrimack Room flue and asked, more than once, how thick the wall was behind the window.
 - You read a half-burned notary's seal out of the flue, ringed with the letters E.L., together with scraps of forged orders signed in Cassie's name.
 
-*COSTS $100 AT THE BAR (2)*
+*COSTS $100 AT THE BAR (1)*
 
 - The flue of the Merrimack Room runs behind a brick wall that is too thick on the inside. A safe lives there.
-- The burned sign-out slips from the flue all carried marker numbers. The unburned five, 18 to 22, were never signed back.
 
 *KEEP CLOSE (1)*
 
@@ -1745,16 +1745,16 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 **CLUES THIS GUEST HOLDS**
 
-*TRADE IT (4)*
+*TRADE IT (5)*
 
 - You sell alibis at $100 each, and silence at more.
+- You keep the note Cassie left on your pillow in Room 3: “Thank you for the shoulder. — C.” She dots every i with a plain dot, never a ring.
 - You knew him the moment he came to the river door on the 22nd: Kit Kessler, the Keeper. He asked for the Merrimack Room, and a rye at nine o'clock.
 - His order for tonight: rye, one finger, a spoon of honey, nine o'clock sharp, in the Merrimack Room. You were to bring it.
 - Your invitation carried a private line from the House: be ready at half past nine to hand the House's keys to its new master.
 
-*COSTS $100 AT THE BAR (2)*
+*COSTS $100 AT THE BAR (1)*
 
-- You keep the note Cassie left on your pillow in Room 3: “Thank you for the shoulder. — C.” She dots every i with a plain dot, never a ring.
 - Every marker carries the number of its owner on the Keeper's List. Markers 18 to 22 never came back to the House.
 
 *KEEP CLOSE (5)*

@@ -47,7 +47,7 @@ Kit hired hitmen, who settled seventeen members of the Veil over eleven months.
 ### forged (old)
 The kill orders and receipts blamed on Cassie were forged. Her real hand dots its i's plainly; the forger dots every i with a ring.
 
-- **Rebecca Chow, Butler of the Black Veil** [paid]: You keep the note Cassie left on your pillow in Room 3: “Thank you for the shoulder. — C.” She dots every i with a plain dot, never a ring.
+- **Rebecca Chow, Butler of the Black Veil** [trade]: You keep the note Cassie left on your pillow in Room 3: “Thank you for the shoulder. — C.” She dots every i with a plain dot, never a ring.
 - **Anthony Hung, Esq.** [paid]: In 1925 the court showed you three “orders in Cassie's hand.” You noticed the i's were dotted with tiny rings and the signature was too neat to be hers.
 - **Ananya Codru and Charlie Wakem** [paid]: The telegram said to carry Cassie's orders was filed at Boston North Station in a clerk's block capitals, paid by a Boston account, on a day Cassie was last seen in Manchester.
 - **Leon Gee of WFEA** [free]: Cassie signed with a plain “C.” and never a ring. She called anyone who dotted an i with a ring a show-off.
@@ -114,7 +114,7 @@ A marker's number is the member's number on the List; the five markers 18 to 22 
 
 - **Rebecca Chow, Butler of the Black Veil** [paid]: Every marker carries the number of its owner on the Keeper's List. Markers 18 to 22 never came back to the House.
 - **Leon Gee of WFEA** [paid]: Cassie's own roll names the five who may still live: Ballard, Crane, Lyle, Marek and Pike. Markers 18 to 22 are theirs.
-- **Joshua Kamin-Sky** [paid]: The burned sign-out slips from the flue all carried marker numbers. The unburned five, 18 to 22, were never signed back.
+- **Joshua Kamin-Sky** [trade]: The burned sign-out slips from the flue all carried marker numbers. The unburned five, 18 to 22, were never signed back.
 - printed: list, roll
 
 ### list-prepared (connection)

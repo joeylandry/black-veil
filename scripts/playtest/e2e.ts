@@ -239,6 +239,27 @@ async function main() {
       await snap(staff.page, "admin-approval-words", "The approval words Bartend Joe gives out (read-only).", false);
       await staff.context.close();
 
+      // every one of the 24 phones: the pages render, the five errands and the nine questions are there, nothing throws
+      for (const c of characters) {
+        const page = await openGame(c.id);
+        const pageErrors: string[] = [];
+        page.on("pageerror", (error: Error) => pageErrors.push(error.message));
+        await openTab(page, "Public");
+        check((await page.locator("body").innerText()).toLowerCase().includes(c.name.split(",")[0].split(" of ")[0].toLowerCase()), `${c.id}: the public tab does not show the character`);
+        await openTab(page, "Background");
+        await openTab(page, "Private");
+        check((await page.locator("li.game-errand").count()) === 5, `${c.id}: the private tab shows ${await page.locator("li.game-errand").count()} errands, not 5`);
+        check((await page.locator(".game-panel", { hasText: "In your pockets" }).count()) > 0, `${c.id}: no pockets panel`);
+        check((await page.locator(".game-panel", { hasText: "Act fast or lose this point" }).count()) > 0, `${c.id}: no race panel`);
+        const body = await page.locator("body").innerText();
+        check(!/Costume ideas|What to wear/i.test(body), `${c.id}: a costume section is showing`);
+        await openTab(page, "Answers");
+        check((await page.locator(".game-question").count()) === 9, `${c.id}: ${await page.locator(".game-question").count()} questions, not 9`);
+        check((await page.locator(".game-panel", { hasText: "Your bills" }).count()) > 0, `${c.id}: no bills box`);
+        check(pageErrors.length === 0, `${c.id}: the page threw ${pageErrors.join("; ")}`);
+        await page.close();
+      }
+
       // a non-survivor, a survivor, the Butler and the Sheriff, tab by tab
       const anika = await openGame("anika");
       await snapPhone(anika, "anika-public", "8:00 p.m. Anika's phone: the public tab opened by itself.");
