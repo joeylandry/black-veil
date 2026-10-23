@@ -309,7 +309,7 @@ Race slips are printed on `slips.pdf` (the `witness`, `reply`, `tool` and `trade
 
 ## 7. The questions
 
-Everyone answers nine: old-1 to old-3, new-1 to new-3 and con-1 to con-3. **The killer answers alt-1 and alt-2 instead of new-1 and new-2**, so they cannot just answer the question they are the answer to.
+Everyone answers nine: old-1 to old-3, new-1 to new-3 and con-1 to con-3. **The Butler and the killer answer alt-1 and alt-2 instead of new-1 and new-2**: the Butler knows who bought the vial and the killer knows who poured it, so the who and how questions would be free for them.
 
 | | Question | Points |
 |---|---|---|
