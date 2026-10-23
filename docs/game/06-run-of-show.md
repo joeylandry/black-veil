@@ -1,6 +1,6 @@
 # Run of show
 
-*Your jobs, in order. The game runs itself; you are Bartend Joe, never a suspect, never scoring. The game opens by itself at 8:00 p.m. and closes by itself at 10:30. You never need /admin until grading. The staff page has one button, **Start game**, which only opens it early. Nobody brings anything: you hand out every carried item at the door.*
+*Your jobs, in order. The game runs itself; you are Bartend Joe, never a suspect, never scoring. Until 7:30 guests see only their character, public card and background; the game opens by itself at 7:30 p.m. and closes by itself at 10:30. You never need /admin until grading. The staff page has one button, **Start game**, which only opens it early. Nobody brings anything: you hand out every carried item at the door.*
 
 ## Before the doors (today and tomorrow afternoon)
 
@@ -18,7 +18,7 @@
 
 | Time | What | You |
 |---|---|---|
-| 8:00 | Doors. The brief card and the rules card are at the door. Hand each guest their black envelope. At 8:00 every guest's public card, private card, objectives and group race open by themselves on their phone (the **Start game** button on /admin only opens it early). Cocktails. Objectives begin. | tend bar |
+| 7:30 | Doors. The brief card and the rules card are at the door. Hand each guest their black envelope. At 7:30 every guest's private card, objectives and group race open by themselves (guests have 30 minutes to read before the cocktail party starts at 8:00) on their phone (the **Start game** button on /admin only opens it early). Cocktails. Objectives begin. | tend bar |
 | Before 8:30 | **Josh** tells you the minute he thinks the scream will come. Write it on a card, seal it in an envelope and keep it. | seal it |
 | **8:30** | **Silas's five-minute spotlight** (and Anika's request, which he plays for her). | enjoy it |
 | About 8:45 to 9:00 | The Butler sells the vial once, to the first survivor who says the words from the cactus slip (the panel refuses before 8:45). If the Butler is absent, use *Sell as the Butler* in /admin. | watch the House panel |

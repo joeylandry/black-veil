@@ -10,14 +10,14 @@
 - **Wallet bonus**: the quarter of the room that ends best off against where they started (most gained, or least spent) gets +1. A money errand counts from its target. The Butler is not in it (she runs the House's money).
 - **Maximum 21**: objectives 5 + survivors 4 + mysteries 10 + race 1 + wallet 1.
 - **Money**: everyone starts with $100 bills. Some clues cost a bill in the House Tin at the bar. A kept secret can be sold for $200 (a sale to the keeper's rival costs the keeper half a point).
-- **The game runs itself**: it opens at 8:00, the House closes at 9:00, the book closes at 10:30. You use /admin only at the end.
+- **The game runs itself**: it opens at 7:30, the House closes at 9:00, the book closes at 10:30. You use /admin only at the end.
 
 ## 2. The night, minute by minute
 
 | Time | What happens | You |
 |---|---|---|
-| Before 8:00 | Envelopes handed out at the door | Hand each guest their black envelope |
-| **8:00** | Every card, objective and group race opens by itself | Tend bar. (The **Start game** button on /admin only opens early.) |
+| Before 7:30 | Envelopes handed out at the door | Hand each guest their black envelope |
+| **7:30** | Every card, objective and group race opens by itself | Tend bar. (The **Start game** button on /admin only opens early.) |
 | Before 8:30 | Josh tells you the minute he thinks the scream will come | Write it on a card, seal it |
 | **8:30** | Silas's five-minute spotlight (and Anika's request) | Enjoy it, give Silas his word after |
 | 8:45 to 9:00 | The Butler sells the vial once, to the first survivor who says the words from the cactus slip | Watch the House panel |

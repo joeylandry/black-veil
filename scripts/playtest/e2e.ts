@@ -4,7 +4,7 @@
  * Postgres), with a test clock that walks through the evening: nothing is opened by hand.
  *
  *   - 24 guests are created and given their character by name, as on the night
- *   - at 8:00 p.m. every card opens by itself (no admin login)
+ *   - at 7:30 p.m. every card opens by itself (no admin login)
  *   - guests do their objectives, claim host-approved ones with Bartend Joe's word, race their groups,
  *     the Butler sells the vial, the House closes at 9:00, the book closes at 10:30
  *   - the host grades (the only time /admin is used), applies "Claude's" verdicts, and publishes
@@ -195,7 +195,7 @@ async function main() {
     }
 
     // ------------------------------------------------ 19:50: sealed
-    await setClock("19:50:00");
+    await setClock("19:20:00");
     const sealed = await call(idOf("anika"), "GET", "/api/game/card");
     check(sealed.json?.status === "sealed", `before eight the card should be sealed, got ${sealed.json?.status}`);
     check(!JSON.stringify(sealed.json).match(/Mahns|objective|secret/i), "the sealed card leaked something");
@@ -203,17 +203,17 @@ async function main() {
     check(sealedSubmit.status !== 200, "an answer was accepted before the game opened");
     if (full) {
       const page = await openGame("anika");
-      await snap(page, "anika-sealed-1950", "7:50 p.m. Anika opens the game page: nothing yet, and no need to refresh.");
+      await snap(page, "anika-sealed-1950", "7:20 p.m. Anika opens the game page: nothing yet, and no need to refresh.");
       const staff = await staffPage();
       await staff.page.goto(`${BASE}/admin`, { waitUntil: "networkidle" });
       await staff.page.waitForSelector(".staff-cast", { timeout: 15000 });
-      await snap(staff.page, "admin-before-doors", "7:50 p.m. The staff page before the doors: the host does not have to press anything.");
+      await snap(staff.page, "admin-before-doors", "7:20 p.m. The staff page before the doors: the host does not have to press anything.");
       await staff.context.close();
       await page.close();
     }
 
     // ------------------------------------------------ 20:00: everything opens by itself
-    await setClock("20:00:10");
+    await setClock("19:30:10");
     const opened = await Promise.all(characters.map((c) => call(idOf(c.id), "GET", "/api/game/card")));
     opened.forEach((response, index) => {
       const c = characters[index];
@@ -234,7 +234,7 @@ async function main() {
       const staff = await staffPage();
       await staff.page.goto(`${BASE}/admin`, { waitUntil: "networkidle" });
       await staff.page.waitForSelector(".staff-cast", { timeout: 15000 });
-      await snap(staff.page, "admin-at-eight", "8:00 p.m. The game opened by itself. The staff page shows it, and lists the approval words for Bartend Joe.");
+      await snap(staff.page, "admin-at-eight", "7:30 p.m. The game opened by itself. The staff page shows it, and lists the approval words for Bartend Joe.");
       await staff.page.locator("summary", { hasText: "Approval words" }).click().catch(() => undefined);
       await snap(staff.page, "admin-approval-words", "The approval words Bartend Joe gives out (read-only).", false);
       await staff.context.close();
@@ -263,7 +263,7 @@ async function main() {
 
       // a non-survivor, a survivor, the Butler and the Sheriff, tab by tab
       const anika = await openGame("anika");
-      await snapPhone(anika, "anika-public", "8:00 p.m. Anika's phone: the public tab opened by itself.");
+      await snapPhone(anika, "anika-public", "7:30 p.m. Anika's phone: the public tab opened by itself.");
       await openTab(anika, "Background");
       await snapPhone(anika, "anika-background", "Anika's background: history, who she knows, what to wear.");
       await openTab(anika, "Private");

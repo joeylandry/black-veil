@@ -108,7 +108,7 @@ export type PublicCard = { name: string; role: string; background: string };
  */
 export type RosterView = {
   released: boolean;
-  /** True once private cards and objectives are open (8:00 p.m. or the Start button). */
+  /** True once private cards and objectives are open (7:30 p.m. or the Start button). */
   started: boolean;
   you: PublicCard | null;
   rows: { name: string; role: string | null; background: string | null; isYou: boolean }[];

@@ -45,9 +45,9 @@ Everything repeated in this document wears the same label.
 
 | When | What happens | What you do |
 |---|---|---|
-| Before 8:00 | Guests arrive and get a black envelope: card, carried items, slips, starting bills (survivors' cards also hold their secret page). Phones show nothing yet. | Hand out envelopes. |
-| **8:00** | **The game opens by itself.** Phones show five tabs: *Public*, *Background*, *Private* (secrets, clues, five objectives, race), *Answers* (nine questions, survivors picker, bills box) and *Results* (locked). | Tend bar. |
-| 8:00 to 8:30 | Mingle. Guests work objectives: find tagged objects, swap items, earn secrets, collect race slips, earn money. They learn the mystery by trading clue lines. | Give approval words as you see tasks done. |
+| Before 7:30 | Guests arrive and get a black envelope: card, carried items, slips, starting bills (survivors' cards also hold their secret page). Phones show nothing yet. | Hand out envelopes. |
+| **7:30** | **The game opens by itself.** Phones show five tabs: *Public*, *Background*, *Private* (secrets, clues, five objectives, race), *Answers* (nine questions, survivors picker, bills box) and *Results* (locked). | Tend bar. |
+| 7:30 to 8:30 | Read, then mingle (the room becomes a cocktail party at 8:00). Guests work objectives: find tagged objects, swap items, earn secrets, collect race slips, earn money. They learn the mystery by trading clue lines. | Give approval words as you see tasks done. |
 | Before 8:30 | Josh tells you the minute he thinks the scream will come. | Write it down, seal it. |
 | **8:30** | Silas's five-minute spotlight (plus Anika's request). | Give Silas his word after. |
 | 8:45 to 9:00 | The Butler sells the House's one vial to the first survivor who says the House's words (found on the slip under the kitchen cactus). That buyer is the killer and wins the survivors' race. | Watch. |
@@ -354,7 +354,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 **PATH**
 
-1. 8:00: read the Public, Background and Private tabs. Note which clues you may trade, sell or keep close.
+1. 7:30: read the Public, Background and Private tabs. Note which clues you may trade, sell or keep close.
 2. **[MONEY]** earn money: finish with at least $3,600.
 3. **[FIND]** find blue dolphin: read the tag and type its code.
 4. **[SWAP]** swap with Krrish and type the code on what you receive.
@@ -416,7 +416,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 **PATH**
 
-1. 8:00: read the Public, Background and Private tabs. Note which clues you may trade, sell or keep close.
+1. 7:30: read the Public, Background and Private tabs. Note which clues you may trade, sell or keep close.
 2. **[MONEY]** earn money: finish with at least $3,600.
 3. **[FIND]** find red bird: read the tag and type its code.
 4. **[LEARN A SECRET]** What Krrish Vermouth is hiding: ask Krrish or Emre.
@@ -479,7 +479,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 **PATH**
 
-1. 8:00: read the Public, Background and Private tabs. Note which clues you may trade, sell or keep close.
+1. 7:30: read the Public, Background and Private tabs. Note which clues you may trade, sell or keep close.
 2. **[FIND]** find Silent Partner's elephant: read the tag and type its code.
 3. **[LEARN A STORY]** Who were you?: ask Eric or Anthony or Emre.
 4. **[LEARN A STORY]** Why you?: ask Krrish or Anthony or Tim.
@@ -550,7 +550,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 **PATH**
 
-1. 8:00: read the Public, Background and Private tabs. Note which clues you may trade, sell or keep close.
+1. 7:30: read the Public, Background and Private tabs. Note which clues you may trade, sell or keep close.
 2. **[FIND]** find glowing bottle: read the tag and type its code.
 3. **[SWAP]** swap with Anika and type the code on what you receive.
 4. **[DEAL]** The Friday crate: ask Eric.
@@ -611,7 +611,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 **PATH**
 
-1. 8:00: read the Public, Background and Private tabs. Note which clues you may trade, sell or keep close.
+1. 7:30: read the Public, Background and Private tabs. Note which clues you may trade, sell or keep close.
 2. **[MONEY]** earn money: finish with at least $1,800.
 3. **[FIND]** find pirate sign: read the tag and type its code.
 4. **[SWAP]** swap with Diwakar and type the code on what you receive.
@@ -685,7 +685,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 **PATH**
 
-1. 8:00: read the Public, Background and Private tabs. Note which clues you may trade, sell or keep close.
+1. 7:30: read the Public, Background and Private tabs. Note which clues you may trade, sell or keep close.
 2. **[FIND]** find Eighteenth Amendment: read the tag and type its code.
 3. **[DEAL]** The Leon matter: ask Leon or Tiffany.
 4. **[LEARN A SECRET]** What Krrish Vermouth is hiding: ask Krrish or Emre.
@@ -753,7 +753,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 **PATH**
 
-1. 8:00: read the Public, Background and Private tabs. Note which clues you may trade, sell or keep close.
+1. 7:30: read the Public, Background and Private tabs. Note which clues you may trade, sell or keep close.
 2. **[FIND]** find Judge's board: read the tag and type its code.
 3. **[DEAL]** The Friday crate: ask Krrish.
 4. **[LEARN A SECRET]** What Dr. Emmerich Sunner is hiding: ask Emre or Tim.
@@ -821,7 +821,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 **PATH**
 
-1. 8:00: read the Public, Background and Private tabs. Note which clues you may trade, sell or keep close.
+1. 7:30: read the Public, Background and Private tabs. Note which clues you may trade, sell or keep close.
 2. **[MONEY]** earn money: finish with at least $1,800.
 3. **[FIND]** find Bill of Rights: read the tag and type its code.
 4. **[LEARN A SECRET]** What Sheriff Theodor Farrago is hiding: ask Theodor or Molly.
@@ -896,7 +896,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 **PATH**
 
-1. 8:00: read the Public, Background and Private tabs. Note which clues you may trade, sell or keep close.
+1. 7:30: read the Public, Background and Private tabs. Note which clues you may trade, sell or keep close.
 2. **[FIND]** find decoy duck: read the tag and type its code.
 3. **[LEARN A SECRET]** What Luke Shelldon is hiding: ask Luke or Diwakar.
 4. **[KEEP A SECRET]** keep your small secret (nothing to type; you may sell it for $200).
@@ -963,7 +963,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 **PATH**
 
-1. 8:00: read the Public, Background and Private tabs. Note which clues you may trade, sell or keep close.
+1. 7:30: read the Public, Background and Private tabs. Note which clues you may trade, sell or keep close.
 2. **[FIND]** find masquerade mask: read the tag and type its code.
 3. **[LEARN A STORY]** Who were you?: ask Diwakar or Tim or Sidd.
 4. **[LEARN A STORY]** Why you?: ask Tim or Theodor or Erika.
@@ -1029,7 +1029,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 **PATH**
 
-1. 8:00: read the Public, Background and Private tabs. Note which clues you may trade, sell or keep close.
+1. 7:30: read the Public, Background and Private tabs. Note which clues you may trade, sell or keep close.
 2. **[FIND]** find launch's fog horn: read the tag and type its code.
 3. **[DEAL]** Out of the cell: ask Tiffany or Theodor.
 4. **[LEARN A SECRET]** What Dr. Emmerich Sunner is hiding: ask Emre or Tim.
@@ -1100,7 +1100,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 **PATH**
 
-1. 8:00: read the Public, Background and Private tabs. Note which clues you may trade, sell or keep close.
+1. 7:30: read the Public, Background and Private tabs. Note which clues you may trade, sell or keep close.
 2. **[FIND]** find salt lamp: read the tag and type its code.
 3. **[SWAP]** swap with Erika and type the code on what you receive.
 4. **[LEARN A SECRET]** What Rebecca Chow, Butler of the Black Veil is hiding: ask Rebecca or Tim.
@@ -1158,7 +1158,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 **PATH**
 
-1. 8:00: read the Public, Background and Private tabs. Note which clues you may trade, sell or keep close.
+1. 7:30: read the Public, Background and Private tabs. Note which clues you may trade, sell or keep close.
 2. **[FIND]** find river lantern: read the tag and type its code.
 3. **[LEARN A STORY]** Who were you?: ask Anthony or Erika or Silas.
 4. **[LEARN A STORY]** Why you?: ask Anthony or Ananya or Josh.
@@ -1229,7 +1229,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 **PATH**
 
-1. 8:00: read the Public, Background and Private tabs. Note which clues you may trade, sell or keep close.
+1. 7:30: read the Public, Background and Private tabs. Note which clues you may trade, sell or keep close.
 2. **[MONEY]** earn money: finish with at least $1,800.
 3. **[FIND]** find opera bill: read the tag and type its code.
 4. **[DEAL]** A sneaky request: ask Anika.
@@ -1301,7 +1301,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 **PATH**
 
-1. 8:00: read the Public, Background and Private tabs. Note which clues you may trade, sell or keep close.
+1. 7:30: read the Public, Background and Private tabs. Note which clues you may trade, sell or keep close.
 2. **[MONEY]** earn money: finish with at least $2,000.
 3. **[FIND]** find route globe: read the tag and type its code.
 4. **[LEARN A SECRET]** What Judge Eric Leeway is hiding: ask Eric or Anthony.
@@ -1372,7 +1372,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 **PATH**
 
-1. 8:00: read the Public, Background and Private tabs. Note which clues you may trade, sell or keep close.
+1. 7:30: read the Public, Background and Private tabs. Note which clues you may trade, sell or keep close.
 2. **[FIND]** find David's salt: read the tag and type its code.
 3. **[SWAP]** swap with Tiffany and type the code on what you receive.
 4. **[LEARN A SECRET]** What Tiffany Liu of the Lamps is hiding: ask Tiffany or Mihir.
@@ -1439,7 +1439,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 **PATH**
 
-1. 8:00: read the Public, Background and Private tabs. Note which clues you may trade, sell or keep close.
+1. 7:30: read the Public, Background and Private tabs. Note which clues you may trade, sell or keep close.
 2. **[MONEY]** earn money: finish with at least $1,400.
 3. **[FIND]** find Kraken: read the tag and type its code.
 4. **[SWAP]** swap with Tim and type the code on what you receive.
@@ -1508,7 +1508,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 **PATH**
 
-1. 8:00: read the Public, Background and Private tabs. Note which clues you may trade, sell or keep close.
+1. 7:30: read the Public, Background and Private tabs. Note which clues you may trade, sell or keep close.
 2. **[FIND]** find pirate sign: read the tag and type its code.
 3. **[LEARN A STORY]** Who were you?: ask Theodor or Arjun or Joel.
 4. **[LEARN A STORY]** Why you?: ask Theodor or Sidd or Angelos.
@@ -1575,7 +1575,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 **PATH**
 
-1. 8:00: read the Public, Background and Private tabs. Note which clues you may trade, sell or keep close.
+1. 7:30: read the Public, Background and Private tabs. Note which clues you may trade, sell or keep close.
 2. **[FIND]** find glowing bottle: read the tag and type its code.
 3. **[SWAP]** swap with Josh and type the code on what you receive.
 4. **[DEAL]** A pardon, brokered: ask Theodor or Leon.
@@ -1640,7 +1640,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 **PATH**
 
-1. 8:00: read the Public, Background and Private tabs. Note which clues you may trade, sell or keep close.
+1. 7:30: read the Public, Background and Private tabs. Note which clues you may trade, sell or keep close.
 2. **[MONEY]** earn money: finish with at least $1,600.
 3. **[FIND]** find champion's weight: read the tag and type its code.
 4. **[SWAP]** swap with Angelos and type the code on what you receive.
@@ -1713,7 +1713,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 **PATH**
 
-1. 8:00: read the Public, Background and Private tabs. Note which clues you may trade, sell or keep close.
+1. 7:30: read the Public, Background and Private tabs. Note which clues you may trade, sell or keep close.
 2. **[MONEY]** earn money: finish with at least $2,100.
 3. **[FIND]** find launch's fog horn: read the tag and type its code.
 4. **[SWAP]** swap with Arjun and type the code on what you receive.
@@ -1786,7 +1786,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 **PATH**
 
-1. 8:00: read the Public, Background and Private tabs. Note which clues you may trade, sell or keep close.
+1. 7:30: read the Public, Background and Private tabs. Note which clues you may trade, sell or keep close.
 2. **[FIND]** find salt lamp: read the tag and type its code.
 3. **[LEARN A SECRET]** What Sheriff Theodor Farrago is hiding: ask Theodor or Molly.
 4. **[KEEP A SECRET]** keep your small secret (nothing to type; you may sell it for $200).
@@ -1844,7 +1844,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 **PATH**
 
-1. 8:00: read the Public, Background and Private tabs. Note which clues you may trade, sell or keep close.
+1. 7:30: read the Public, Background and Private tabs. Note which clues you may trade, sell or keep close.
 2. **[FIND]** find decoy duck: read the tag and type its code.
 3. **[LEARN A STORY]** Who were you?: ask Tiffany or Silas or Emre.
 4. **[LEARN A STORY]** Why you?: ask Anika or Emre or Silas.
@@ -1907,7 +1907,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 **PATH**
 
-1. 8:00: read the Public, Background and Private tabs. Note which clues you may trade, sell or keep close.
+1. 7:30: read the Public, Background and Private tabs. Note which clues you may trade, sell or keep close.
 2. **[MONEY]** earn money: finish with at least $1,200.
 3. **[FIND]** find masquerade mask: read the tag and type its code.
 4. **[SWAP]** swap with Ananya and type the code on what you receive.
