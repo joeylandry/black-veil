@@ -44,207 +44,221 @@ A guest does the real task, taps **Claim this point**, and finds you. Once you h
 
 ## 4. Every guest, in their group
 
+Each objective is tagged with its type. What the types mean:
+
+| Label | What the guest does |
+|---|---|
+| **MONEY** | Finish the night with at least a stated amount in $100 bills. |
+| **FIND** | Find a named object in a shared room and type the code on its tag. |
+| **SWAP** | Trade a carried item with one named guest and type the code on the item received. |
+| **LEARN A SECRET** | Earn another guest's small secret. Two named people can leak it. |
+| **KEEP A SECRET** | Your own small secret: tell the guest you chose, hide it from the rival. Nothing to type. |
+| **LEARN A STORY** | Get one piece of a story from named guests and type the key word or name. |
+| **DEAL** | Do a small deal with a named guest; a printed slip proves it and you type its code. |
+| **HOST TASK** | Do something for real in the room, tap Claim this point, then ask Bartend Joe for the word. |
+| **VIAL** | A survivor offers a marker to the Butler, or the Butler sells the House's single vial. |
+
 ### The Survivors
 
 **Mihir Nagarkatti of Nag Oil** (Mihir Nagarkatti), SURVIVOR: really Bertrand “Barty” Crane, The Teller, marker 18. Starts with 30 bills ($3,000); carries Tool token.
 
-1. Find the Silent Partner's elephant (the golden elephant on the book)
-2. Learn: Who were you?
-3. Learn: Why you?
-4. Learn: The old man's hour
-5. Offer a marker to the Butler (the vial)
+1. **[FIND]** Find the Silent Partner's elephant (the golden elephant on the book)
+2. **[LEARN A STORY]** Learn: Who were you?
+3. **[LEARN A STORY]** Learn: Why you?
+4. **[LEARN A STORY]** Learn: The old man's hour
+5. **[VIAL]** Offer a marker to the Butler (the vial)
 
 **Molly Daniel of the Manchester Union** (Molly Daniel), SURVIVOR: really Winifred “Winnie” Pike, The Runner, marker 22. Starts with 9 bills ($900); carries Trade slip.
 
-1. Find the masquerade mask (the carved mask sculpture)
-2. Learn: Who were you?
-3. Learn: Why you?
-4. Learn: The old man's hour
-5. Offer a marker to the Butler (the vial)
+1. **[FIND]** Find the masquerade mask (the carved mask sculpture)
+2. **[LEARN A STORY]** Learn: Who were you?
+3. **[LEARN A STORY]** Learn: Why you?
+4. **[LEARN A STORY]** Learn: The old man's hour
+5. **[VIAL]** Offer a marker to the Butler (the vial)
 
 **Luke Shelldon** (Luke Sheldon), SURVIVOR: really Edmund Lyle, The Notary, marker 19. Starts with 10 bills ($1,000).
 
-1. Find the river lantern (the white lantern on the front balcony)
-2. Learn: Who were you?
-3. Learn: Why you?
-4. Learn: The old man's hour
-5. Offer a marker to the Butler (the vial)
+1. **[FIND]** Find the river lantern (the white lantern on the front balcony)
+2. **[LEARN A STORY]** Learn: Who were you?
+3. **[LEARN A STORY]** Learn: Why you?
+4. **[LEARN A STORY]** Learn: The old man's hour
+5. **[VIAL]** Offer a marker to the Butler (the vial)
 
 **Adam Holdsfire** (Adam Ouldsfiya), SURVIVOR: really Dominic Marek, The Doorman, marker 21. Starts with 10 bills ($1,000).
 
-1. Find the Veil candle (the brass candlestick with salt in its dish)
-2. Learn: Who were you?
-3. Learn: Why you?
-4. Learn: The old man's hour
-5. Offer a marker to the Butler (the vial)
+1. **[FIND]** Find the Veil candle (the brass candlestick with salt in its dish)
+2. **[LEARN A STORY]** Learn: Who were you?
+3. **[LEARN A STORY]** Learn: Why you?
+4. **[LEARN A STORY]** Learn: The old man's hour
+5. **[VIAL]** Offer a marker to the Butler (the vial)
 
 **Rhea Mallya of Mallya's Emporium** (Rhea Mallya), SURVIVOR: really Sylvia Ballard, The Milliner, marker 20. Starts with 15 bills ($1,500).
 
-1. Find the decoy duck (the carved wooden duck with a lid)
-2. Learn: Who were you?
-3. Learn: Why you?
-4. Learn: The old man's hour
-5. Offer a marker to the Butler (the vial)
+1. **[FIND]** Find the decoy duck (the carved wooden duck with a lid)
+2. **[LEARN A STORY]** Learn: Who were you?
+3. **[LEARN A STORY]** Learn: Why you?
+4. **[LEARN A STORY]** Learn: The old man's hour
+5. **[VIAL]** Offer a marker to the Butler (the vial)
 
 ### Order & Letters
 
 **Anika Mahns of Mahns Manor** (Anika Mahns), Heir. Starts with 30 bills ($3,000); carries Mahns crested spoon, Mahns Manor voucher, Trade slip.
 
-1. Money: finish with at least $3,600
-2. Find the sugar dish (the lidded glass candy jar)
-3. Swap with Krrish Vermouth, receive the Silent Partner's brass key
-4. Deal: A sneaky request
-5. Learn Ananya Codru and Charlie Wakem's small secret
+1. **[MONEY]** Money: finish with at least $3,600
+2. **[FIND]** Find the sugar dish (the lidded glass candy jar)
+3. **[SWAP]** Swap with Krrish Vermouth, receive the Silent Partner's brass key
+4. **[DEAL]** Deal: A sneaky request
+5. **[LEARN A SECRET]** Learn Ananya Codru and Charlie Wakem's small secret
 
 **Sheriff Theodor Farrago** (Theodor Farag), sheriff. Starts with 10 bills ($1,000); carries Nuisance Citation, Reply slip.
 
-1. Find the Eighteenth Amendment (the pocket Constitution)
-2. Deal: The Leon matter
-3. Learn Krrish Vermouth's small secret
-4. Keep a secret: tell Anthony Hung, Esq., hide it from Rebecca Chow, Butler of the Black Veil (sellable, $200)
-5. Host task: Make the arrest (word: **pomegranate**)
+1. **[FIND]** Find the Eighteenth Amendment (the pocket Constitution)
+2. **[DEAL]** Deal: The Leon matter
+3. **[LEARN A SECRET]** Learn Krrish Vermouth's small secret
+4. **[KEEP A SECRET]** Keep a secret: tell Anthony Hung, Esq., hide it from Rebecca Chow, Butler of the Black Veil (sellable, $200)
+5. **[HOST TASK]** Host task: Make the arrest (word: **pomegranate**)
 
 **Judge Eric Leeway** (Eric Li), Judge. Starts with 15 bills ($1,500); carries notice of dismissal, Reply slip.
 
-1. Find the Judge's board (the folding chess box)
-2. Deal: The Friday crate
-3. Learn Dr. Emmerich Sunner's small secret
-4. Keep a secret: tell Silas Palmer of the Palm Court, hide it from Sidd Airwind (sellable, $200)
-5. Deal: Sign the charter
+1. **[FIND]** Find the Judge's board (the folding chess box)
+2. **[DEAL]** Deal: The Friday crate
+3. **[LEARN A SECRET]** Learn Dr. Emmerich Sunner's small secret
+4. **[KEEP A SECRET]** Keep a secret: tell Silas Palmer of the Palm Court, hide it from Sidd Airwind (sellable, $200)
+5. **[DEAL]** Deal: Sign the charter
 
 **Anthony Hung, Esq.** (Anthony Huang), Defense attorney. Starts with 12 bills ($1,200); carries Tool token.
 
-1. Money: finish with at least $1,800
-2. Find the Bill of Rights (the pocket Bill of Rights)
-3. Learn Sheriff Theodor Farrago's small secret
-4. Learn: The hand that was not hers
-5. Learn: How many were there?
+1. **[MONEY]** Money: finish with at least $1,800
+2. **[FIND]** Find the Bill of Rights (the pocket Bill of Rights)
+3. **[LEARN A SECRET]** Learn Sheriff Theodor Farrago's small secret
+4. **[LEARN A STORY]** Learn: The hand that was not hers
+5. **[LEARN A STORY]** Learn: How many were there?
 
 **Dr. Emmerich Sunner** (Emre Sunar), doctor. Starts with 10 bills ($1,000); carries Trade slip.
 
-1. Find the decoy duck (the carved wooden duck with a lid)
-2. Learn Luke Shelldon's small secret
-3. Keep a secret: tell Judge Eric Leeway, hide it from Leon Gee of WFEA (sellable, $200)
-4. Learn: The examination
-5. Learn: The time
+1. **[FIND]** Find the decoy duck (the carved wooden duck with a lid)
+2. **[LEARN A SECRET]** Learn Luke Shelldon's small secret
+3. **[KEEP A SECRET]** Keep a secret: tell Judge Eric Leeway, hide it from Leon Gee of WFEA (sellable, $200)
+4. **[LEARN A STORY]** Learn: The examination
+5. **[LEARN A STORY]** Learn: The time
 
 ### The Wire & the Stage
 
 **J. Bruce Wayne** (Joel Indipiginja), Wealthy playboy. Starts with 30 bills ($3,000); carries Tool token.
 
-1. Money: finish with at least $3,600
-2. Find the red bird (the red bird above a lamp on the main table)
-3. Learn Krrish Vermouth's small secret
-4. Learn: A wall too thick
-5. Learn: Whose name was on the draft?
+1. **[MONEY]** Money: finish with at least $3,600
+2. **[FIND]** Find the red bird (the red bird above a lamp on the main table)
+3. **[LEARN A SECRET]** Learn Krrish Vermouth's small secret
+4. **[LEARN A STORY]** Learn: A wall too thick
+5. **[LEARN A STORY]** Learn: Whose name was on the draft?
 
 **Leon Gee of WFEA** (Leon Ge), Radio announcer. Starts with 10 bills ($1,000); carries Witness slip.
 
-1. Find the launch's fog horn (the conch shell)
-2. Deal: Out of the cell
-3. Learn Dr. Emmerich Sunner's small secret
-4. Money: finish with at least $1,600
-5. Host task: Read the bulletin (word: **thistle**)
+1. **[FIND]** Find the launch's fog horn (the conch shell)
+2. **[DEAL]** Deal: Out of the cell
+3. **[LEARN A SECRET]** Learn Dr. Emmerich Sunner's small secret
+4. **[MONEY]** Money: finish with at least $1,600
+5. **[HOST TASK]** Host task: Read the bulletin (word: **thistle**)
 
 **Ananya Codru and Charlie Wakem** (Ananya Koduru), Night telegraph office. Starts with 10 bills ($1,000); carries blank telegram form, Tool token.
 
-1. Find the vault lamp (the glowing salt lamp)
-2. Swap with Erika Lamm, receive the set of false papers
-3. Learn Rebecca Chow, Butler of the Black Veil's small secret
-4. Keep a secret: tell Angelos Bowles, hide it from Anika Mahns of Mahns Manor (sellable, $200)
-5. Learn: Cassie's hand
+1. **[FIND]** Find the vault lamp (the glowing salt lamp)
+2. **[SWAP]** Swap with Erika Lamm, receive the set of false papers
+3. **[LEARN A SECRET]** Learn Rebecca Chow, Butler of the Black Veil's small secret
+4. **[KEEP A SECRET]** Keep a secret: tell Angelos Bowles, hide it from Anika Mahns of Mahns Manor (sellable, $200)
+5. **[LEARN A STORY]** Learn: Cassie's hand
 
 **Silas Palmer of the Palm Court** (Silas Palmer), Jazz scat singer. Starts with 12 bills ($1,200); carries request card, Trade slip.
 
-1. Money: finish with at least $1,800
-2. Find the opera bill (the Falstaff poster in the hall)
-3. Deal: A sneaky request
-4. Learn Judge Eric Leeway's small secret
-5. Host task: The spotlight (word: **walnut**)
+1. **[MONEY]** Money: finish with at least $1,800
+2. **[FIND]** Find the opera bill (the Falstaff poster in the hall)
+3. **[DEAL]** Deal: A sneaky request
+4. **[LEARN A SECRET]** Learn Judge Eric Leeway's small secret
+5. **[HOST TASK]** Host task: The spotlight (word: **walnut**)
 
 **Sidd Airwind** (Siddarth Arvind), Barnstormer. Starts with 14 bills ($1,400); carries Witness slip.
 
-1. Money: finish with at least $2,000
-2. Find the route globe (the lit globe on its stand)
-3. Learn Judge Eric Leeway's small secret
-4. Learn: The thing behind the wall
-5. Learn: How many were there?
+1. **[MONEY]** Money: finish with at least $2,000
+2. **[FIND]** Find the route globe (the lit globe on its stand)
+3. **[LEARN A SECRET]** Learn Judge Eric Leeway's small secret
+4. **[LEARN A STORY]** Learn: The thing behind the wall
+5. **[LEARN A STORY]** Learn: How many were there?
 
 ### The Working Folk
 
 **Joshua Kamin-Sky** (Josh Kaminsky), Soothsayer. Starts with 8 bills ($800); carries soothsayer's charm, Witness slip.
 
-1. Find the star-marked salt (the blue kosher salt box with the star)
-2. Swap with Tiffany Liu of the Lamps, receive the earring
-3. Learn Tiffany Liu of the Lamps's small secret
-4. Host task: The prophecy (word: **saffron**)
-5. Host task: The fortunes (word: **cobblestone**)
+1. **[FIND]** Find the star-marked salt (the blue kosher salt box with the star)
+2. **[SWAP]** Swap with Tiffany Liu of the Lamps, receive the earring
+3. **[LEARN A SECRET]** Learn Tiffany Liu of the Lamps's small secret
+4. **[HOST TASK]** Host task: The prophecy (word: **saffron**)
+5. **[HOST TASK]** Host task: The fortunes (word: **cobblestone**)
 
 **Arjun Bat** (Arjun Bhat), Slugger. Starts with 8 bills ($800); carries lucky ball, Witness slip.
 
-1. Money: finish with at least $1,400
-2. Find the Kraken Cove candle stand (the octopus candle holder)
-3. Swap with Tim McGinley, Baron of Bathtub Gin, receive the jar of bathtub gin
-4. Learn Tiffany Liu of the Lamps's small secret
-5. Learn: A word for the umpire
+1. **[MONEY]** Money: finish with at least $1,400
+2. **[FIND]** Find the Kraken Cove candle stand (the octopus candle holder)
+3. **[SWAP]** Swap with Tim McGinley, Baron of Bathtub Gin, receive the jar of bathtub gin
+4. **[LEARN A SECRET]** Learn Tiffany Liu of the Lamps's small secret
+5. **[LEARN A STORY]** Learn: A word for the umpire
 
 **Tiffany Liu of the Lamps** (Tiffany Liu), Stained-glass artist. Starts with 10 bills ($1,000); carries earring, Pardon slip, go-between's receipt, Trade slip.
 
-1. Find the glowing bottle (the lit-up wine bottle)
-2. Swap with Joshua Kamin-Sky, receive the soothsayer's charm
-3. Deal: A pardon, brokered
-4. Learn Rebecca Chow, Butler of the Black Veil's small secret
-5. Keep a secret: tell Arjun Bat, hide it from Joshua Kamin-Sky (sellable, $200)
+1. **[FIND]** Find the glowing bottle (the lit-up wine bottle)
+2. **[SWAP]** Swap with Joshua Kamin-Sky, receive the soothsayer's charm
+3. **[DEAL]** Deal: A pardon, brokered
+4. **[LEARN A SECRET]** Learn Rebecca Chow, Butler of the Black Veil's small secret
+5. **[KEEP A SECRET]** Keep a secret: tell Arjun Bat, hide it from Joshua Kamin-Sky (sellable, $200)
 
 **Diwakar Sandbagg** (Diwakar Sandhu), Prizefighter. Starts with 10 bills ($1,000); carries carnival giraffe, Witness slip.
 
-1. Money: finish with at least $1,600
-2. Find the champion's weight (the golden dumbbell)
-3. Swap with Angelos Bowles, receive the House chip
-4. Learn Tim McGinley, Baron of Bathtub Gin's small secret
-5. Keep a secret: tell Krrish Vermouth, hide it from Tim McGinley, Baron of Bathtub Gin (sellable, $200)
+1. **[MONEY]** Money: finish with at least $1,600
+2. **[FIND]** Find the champion's weight (the golden dumbbell)
+3. **[SWAP]** Swap with Angelos Bowles, receive the House chip
+4. **[LEARN A SECRET]** Learn Tim McGinley, Baron of Bathtub Gin's small secret
+5. **[KEEP A SECRET]** Keep a secret: tell Krrish Vermouth, hide it from Tim McGinley, Baron of Bathtub Gin (sellable, $200)
 
 ### The River Trade
 
 **Krrish Vermouth** (Krrish Verma), Wine importer. Starts with 12 bills ($1,200); carries Silent Partner's brass key, crate receipt, Reply slip.
 
-1. Find the glowing bottle (the lit-up wine bottle)
-2. Swap with Anika Mahns of Mahns Manor, receive the Mahns crested spoon
-3. Deal: The Friday crate
-4. Learn Diwakar Sandbagg's small secret
-5. Keep a secret: tell J. Bruce Wayne, hide it from Sheriff Theodor Farrago (sellable, $200)
+1. **[FIND]** Find the glowing bottle (the lit-up wine bottle)
+2. **[SWAP]** Swap with Anika Mahns of Mahns Manor, receive the Mahns crested spoon
+3. **[DEAL]** Deal: The Friday crate
+4. **[LEARN A SECRET]** Learn Diwakar Sandbagg's small secret
+5. **[KEEP A SECRET]** Keep a secret: tell J. Bruce Wayne, hide it from Sheriff Theodor Farrago (sellable, $200)
 
 **Angelos Bowles** (Angelos Boules), Card sharp. Starts with 12 bills ($1,200); carries House chip, Reply slip.
 
-1. Money: finish with at least $1,800
-2. Find the Veil candle (the brass candlestick with salt in its dish)
-3. Swap with Diwakar Sandbagg, receive the carnival giraffe
-4. Learn Ananya Codru and Charlie Wakem's small secret
-5. Host task: Deal them in (word: **juniper**)
+1. **[MONEY]** Money: finish with at least $1,800
+2. **[FIND]** Find the Veil candle (the brass candlestick with salt in its dish)
+3. **[SWAP]** Swap with Diwakar Sandbagg, receive the carnival giraffe
+4. **[LEARN A SECRET]** Learn Ananya Codru and Charlie Wakem's small secret
+5. **[HOST TASK]** Host task: Deal them in (word: **juniper**)
 
 **Tim McGinley, Baron of Bathtub Gin** (Tim McGinley), Gin baron. Starts with 15 bills ($1,500); carries jar of bathtub gin, Tool token.
 
-1. Money: finish with at least $2,100
-2. Find the launch's fog horn (the conch shell)
-3. Swap with Arjun Bat, receive the lucky ball
-4. Learn Diwakar Sandbagg's small secret
-5. Keep a secret: tell Erika Lamm, hide it from Diwakar Sandbagg (sellable, $200)
+1. **[MONEY]** Money: finish with at least $2,100
+2. **[FIND]** Find the launch's fog horn (the conch shell)
+3. **[SWAP]** Swap with Arjun Bat, receive the lucky ball
+4. **[LEARN A SECRET]** Learn Diwakar Sandbagg's small secret
+5. **[KEEP A SECRET]** Keep a secret: tell Erika Lamm, hide it from Diwakar Sandbagg (sellable, $200)
 
 **Rebecca Chow, Butler of the Black Veil** (Rebecca Chou), butler. Starts with 12 bills ($1,200).
 
-1. Find the vault lamp (the glowing salt lamp)
-2. Learn Sheriff Theodor Farrago's small secret
-3. Keep a secret: tell Tiffany Liu of the Lamps, hide it from Ananya Codru and Charlie Wakem (sellable, $200)
-4. Sell the vial (the Butler)
-5. Host task: The scream (word: **lavender**)
+1. **[FIND]** Find the vault lamp (the glowing salt lamp)
+2. **[LEARN A SECRET]** Learn Sheriff Theodor Farrago's small secret
+3. **[KEEP A SECRET]** Keep a secret: tell Tiffany Liu of the Lamps, hide it from Ananya Codru and Charlie Wakem (sellable, $200)
+4. **[VIAL]** Sell the vial (the Butler)
+5. **[HOST TASK]** Host task: The scream (word: **lavender**)
 
 **Erika Lamm** (Erika Lam), Fugitive. Starts with 6 bills ($600); carries set of false papers, Reply slip.
 
-1. Money: finish with at least $1,200
-2. Find the masquerade mask (the carved mask sculpture)
-3. Swap with Ananya Codru and Charlie Wakem, receive the blank telegram form
-4. Learn Tim McGinley, Baron of Bathtub Gin's small secret
-5. Host task: Steal something (word: **marzipan**)
+1. **[MONEY]** Money: finish with at least $1,200
+2. **[FIND]** Find the masquerade mask (the carved mask sculpture)
+3. **[SWAP]** Swap with Ananya Codru and Charlie Wakem, receive the blank telegram form
+4. **[LEARN A SECRET]** Learn Tim McGinley, Baron of Bathtub Gin's small secret
+5. **[HOST TASK]** Host task: Steal something (word: **marzipan**)
 
 ## 5. The group races
 
