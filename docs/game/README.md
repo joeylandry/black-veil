@@ -6,6 +6,7 @@ Companion files, generated from the data by `npm run game:docs` so they cannot d
 
 | File | What it is |
 |---|---|
+| `00-game-master-guide.md` | **Start here.** Everything the game master needs, in one place |
 | `01-timeline-and-questions.md` | The timeline and the final questions |
 | `02-cast.md` | All 24 guests: group, role, survivors, tells, decoys, public bios, backgrounds |
 | `03-objectives.md` | Every objective with its answer and who can supply it, the five group races, and the approval words |
