@@ -27,15 +27,15 @@ A guest finds the object, reads the small tag taped on or beside it, and types t
 
 | Done | Real object and place | Game name | Tag | Who must find it |
 |---|---|---|---|---|
-| [ ] | the brass candlestick with salt in its dish | Veil candle | N8CM8 | Angelos, Adam |
+| [ ] | the "Swab the deck or walk the plank" sign | pirate sign | N8CM8 | Angelos, Adam |
 | [ ] | the white lantern on the front balcony | river lantern | K6NRA | Luke |
 | [ ] | the golden elephant on the book | Silent Partner's elephant | D9X6N | Mihir |
 | [ ] | the conch shell | launch's fog horn | V23EE | Leon, Tim |
 | [ ] | the carved mask sculpture | masquerade mask | XAN9D | Molly, Erika |
-| [ ] | the lidded glass candy jar | sugar dish | A8NKR | Anika |
+| [ ] | the blue dolphin thing above the kitchen sink | blue dolphin | A8NKR | Anika |
 | [ ] | the red bird above a lamp on the main table | red bird | AJTN9 | Joel |
-| [ ] | the glowing salt lamp | vault lamp | J84CN | Ananya, Rebecca |
-| [ ] | the octopus candle holder | Kraken Cove candle stand | PWKGP | Arjun |
+| [ ] | the glowing salt lamp | salt lamp | J84CN | Ananya, Rebecca |
+| [ ] | the octopus candle holder | Kraken | PWKGP | Arjun |
 | [ ] | the carved wooden duck with a lid | decoy duck | DF46N | Emre, Rhea |
 | [ ] | the lit globe on its stand | route globe | E3HTT | Sidd |
 | [ ] | the Falstaff poster in the hall | opera bill | EFCKF | Silas |
@@ -43,13 +43,13 @@ A guest finds the object, reads the small tag taped on or beside it, and types t
 | [ ] | the pocket Constitution | Eighteenth Amendment | 2Y34A | Theodor |
 | [ ] | the pocket Bill of Rights | Bill of Rights | U8GVW | Anthony |
 | [ ] | the golden dumbbell | champion's weight | GXG4U | Diwakar |
-| [ ] | the blue kosher salt box with the star | star-marked salt | X8WCT | Josh |
+| [ ] | the blue kosher salt box with the star | David's salt | X8WCT | Josh |
 | [ ] | the lit-up wine bottle | glowing bottle | RD99K | Krrish, Tiffany |
 
 ## C. Also needed
 
 - [ ] The House Tin (a small round tin) and the House Book, at the bar
-- [ ] The one real vial (small bottle of water, real label) and three decoys
+- [ ] The one real vial (small bottle of water, real label). Decoy bottles are optional: the game never checks them
 - [ ] The dummy in a jacket, with a pocket watch stopped at 11:47; the second rail stub sewn into the lining
 - [ ] The black table for the Keeper's binder, with a glass on a coaster (code taped underneath)
 - [ ] 400 $100 bills; each guest's starting count is on their envelope sheet

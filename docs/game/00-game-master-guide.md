@@ -86,7 +86,7 @@ Each objective is tagged with its type. What the types mean:
 
 **Adam Holdsfire** (Adam Ouldsfiya), SURVIVOR: really Dominic Marek, The Doorman, marker 21. Starts with 10 bills ($1,000).
 
-1. **[FIND]** Find the Veil candle (the brass candlestick with salt in its dish)
+1. **[FIND]** Find the pirate sign (the "Swab the deck or walk the plank" sign)
 2. **[LEARN A STORY]** Learn: Who were you?
 3. **[LEARN A STORY]** Learn: Why you?
 4. **[LEARN A STORY]** Learn: The old man's hour
@@ -105,7 +105,7 @@ Each objective is tagged with its type. What the types mean:
 **Anika Mahns of Mahns Manor** (Anika Mahns), Heir. Starts with 30 bills ($3,000); carries Mahns crested spoon, Mahns Manor voucher, Trade slip.
 
 1. **[MONEY]** Money: finish with at least $3,600
-2. **[FIND]** Find the sugar dish (the lidded glass candy jar)
+2. **[FIND]** Find the blue dolphin (the blue dolphin thing above the kitchen sink)
 3. **[SWAP]** Swap with Krrish Vermouth, receive the Silent Partner's brass key
 4. **[DEAL]** Deal: A sneaky request
 5. **[LEARN A SECRET]** Learn Ananya Codru and Charlie Wakem's small secret
@@ -162,7 +162,7 @@ Each objective is tagged with its type. What the types mean:
 
 **Ananya Codru and Charlie Wakem** (Ananya Koduru), Night telegraph office. Starts with 10 bills ($1,000); carries blank telegram form, Tool token.
 
-1. **[FIND]** Find the vault lamp (the glowing salt lamp)
+1. **[FIND]** Find the salt lamp (the glowing salt lamp)
 2. **[SWAP]** Swap with Erika Lamm, receive the set of false papers
 3. **[LEARN A SECRET]** Learn Rebecca Chow, Butler of the Black Veil's small secret
 4. **[KEEP A SECRET]** Keep a secret: tell Angelos Bowles, hide it from Anika Mahns of Mahns Manor (sellable, $200)
@@ -188,7 +188,7 @@ Each objective is tagged with its type. What the types mean:
 
 **Joshua Kamin-Sky** (Josh Kaminsky), Soothsayer. Starts with 8 bills ($800); carries soothsayer's charm, Witness slip.
 
-1. **[FIND]** Find the star-marked salt (the blue kosher salt box with the star)
+1. **[FIND]** Find the David's salt (the blue kosher salt box with the star)
 2. **[SWAP]** Swap with Tiffany Liu of the Lamps, receive the earring
 3. **[LEARN A SECRET]** Learn Tiffany Liu of the Lamps's small secret
 4. **[HOST TASK]** Host task: The prophecy (word: **saffron**)
@@ -197,7 +197,7 @@ Each objective is tagged with its type. What the types mean:
 **Arjun Bat** (Arjun Bhat), Slugger. Starts with 8 bills ($800); carries lucky ball, Witness slip.
 
 1. **[MONEY]** Money: finish with at least $1,400
-2. **[FIND]** Find the Kraken Cove candle stand (the octopus candle holder)
+2. **[FIND]** Find the Kraken (the octopus candle holder)
 3. **[SWAP]** Swap with Tim McGinley, Baron of Bathtub Gin, receive the jar of bathtub gin
 4. **[LEARN A SECRET]** Learn Tiffany Liu of the Lamps's small secret
 5. **[LEARN A STORY]** Learn: A word for the umpire
@@ -231,7 +231,7 @@ Each objective is tagged with its type. What the types mean:
 **Angelos Bowles** (Angelos Boules), Card sharp. Starts with 12 bills ($1,200); carries House chip, Reply slip.
 
 1. **[MONEY]** Money: finish with at least $1,800
-2. **[FIND]** Find the Veil candle (the brass candlestick with salt in its dish)
+2. **[FIND]** Find the pirate sign (the "Swab the deck or walk the plank" sign)
 3. **[SWAP]** Swap with Diwakar Sandbagg, receive the carnival giraffe
 4. **[LEARN A SECRET]** Learn Ananya Codru and Charlie Wakem's small secret
 5. **[HOST TASK]** Host task: Deal them in (word: **juniper**)
@@ -246,7 +246,7 @@ Each objective is tagged with its type. What the types mean:
 
 **Rebecca Chow, Butler of the Black Veil** (Rebecca Chou), butler. Starts with 12 bills ($1,200).
 
-1. **[FIND]** Find the vault lamp (the glowing salt lamp)
+1. **[FIND]** Find the salt lamp (the glowing salt lamp)
 2. **[LEARN A SECRET]** Learn Sheriff Theodor Farrago's small secret
 3. **[KEEP A SECRET]** Keep a secret: tell Tiffany Liu of the Lamps, hide it from Ananya Codru and Charlie Wakem (sellable, $200)
 4. **[VIAL]** Sell the vial (the Butler)
@@ -276,15 +276,15 @@ Each objective is tagged with its type. What the types mean:
 
 | Tag code | Game name | Real object | Who must find it |
 |---|---|---|---|
-| N8CM8 | Veil candle | the brass candlestick with salt in its dish | Angelos, Adam |
+| N8CM8 | pirate sign | the "Swab the deck or walk the plank" sign | Angelos, Adam |
 | K6NRA | river lantern | the white lantern on the front balcony | Luke |
 | D9X6N | Silent Partner's elephant | the golden elephant on the book | Mihir |
 | V23EE | launch's fog horn | the conch shell | Leon, Tim |
 | XAN9D | masquerade mask | the carved mask sculpture | Molly, Erika |
-| A8NKR | sugar dish | the lidded glass candy jar | Anika |
+| A8NKR | blue dolphin | the blue dolphin thing above the kitchen sink | Anika |
 | AJTN9 | red bird | the red bird above a lamp on the main table | Joel |
-| J84CN | vault lamp | the glowing salt lamp | Ananya, Rebecca |
-| PWKGP | Kraken Cove candle stand | the octopus candle holder | Arjun |
+| J84CN | salt lamp | the glowing salt lamp | Ananya, Rebecca |
+| PWKGP | Kraken | the octopus candle holder | Arjun |
 | DF46N | decoy duck | the carved wooden duck with a lid | Emre, Rhea |
 | E3HTT | route globe | the lit globe on its stand | Sidd |
 | EFCKF | opera bill | the Falstaff poster in the hall | Silas |
@@ -292,7 +292,7 @@ Each objective is tagged with its type. What the types mean:
 | 2Y34A | Eighteenth Amendment | the pocket Constitution | Theodor |
 | U8GVW | Bill of Rights | the pocket Bill of Rights | Anthony |
 | GXG4U | champion's weight | the golden dumbbell | Diwakar |
-| X8WCT | star-marked salt | the blue kosher salt box with the star | Josh |
+| X8WCT | David's salt | the blue kosher salt box with the star | Josh |
 | RD99K | glowing bottle | the lit-up wine bottle | Krrish, Tiffany |
 
 **Passed around** (handed out at the door, change hands by a deal):
@@ -373,7 +373,7 @@ Everyone answers nine: old-1 to old-3, new-1 to new-3 and con-1 to con-3. **The 
 - [ ] Every black envelope has its sheet, carried items, slips and starting bills (survivors: invitation, marker, flap; checked twice)
 - [ ] Every tag code on the right object (section 6) and in shared rooms only
 - [ ] Race slips in the right hands (section 5); standby tray at the bar
-- [ ] The House Tin, the House Book, the vial and its three decoys are at the bar
+- [ ] The House Tin, the House Book and the one vial are at the bar (decoy bottles are optional set dressing)
 - [ ] The Keeper's table is laid out; the scene card is in your pocket; the second rail stub is in the jacket lining
 - [ ] Approval words (section 3) are on the host sheet and nowhere else
 - [ ] Migration run; /game opens on a phone; /admin opens on your laptop

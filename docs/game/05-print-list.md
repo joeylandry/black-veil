@@ -262,15 +262,15 @@ Filing code: 3N8VD
 
 ## Tags (small black stickers or folded paper, one per object)
 
-- N8CM8: Veil candle
+- N8CM8: pirate sign
 - K6NRA: river lantern
 - D9X6N: Silent Partner's elephant
 - V23EE: launch's fog horn
 - XAN9D: masquerade mask
-- A8NKR: sugar dish
+- A8NKR: blue dolphin
 - AJTN9: red bird
-- J84CN: vault lamp
-- PWKGP: Kraken Cove candle stand
+- J84CN: salt lamp
+- PWKGP: Kraken
 - DF46N: decoy duck
 - E3HTT: route globe
 - EFCKF: opera bill
@@ -278,7 +278,7 @@ Filing code: 3N8VD
 - 2Y34A: Eighteenth Amendment
 - U8GVW: Bill of Rights
 - GXG4U: champion's weight
-- X8WCT: star-marked salt
+- X8WCT: David's salt
 - RD99K: glowing bottle
 - EV6M4: Mahns crested spoon
 - AFPEP: Silent Partner's brass key

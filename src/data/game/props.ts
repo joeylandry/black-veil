@@ -27,15 +27,15 @@ const C = (id: string, code: string, name: string, generic: string, carriedBy: s
 
 export const props: Prop[] = [
   // ---- hidden in shared rooms: the tag is taped to or beside the object ----
-  H("veil-candle", "N8CM8", "Veil candle", "the brass candlestick with salt in its dish"),
+  H("veil-candle", "N8CM8", "pirate sign", "the \"Swab the deck or walk the plank\" sign"),
   H("lantern", "K6NRA", "river lantern", "the white lantern on the front balcony"),
   H("elephant", "D9X6N", "Silent Partner's elephant", "the golden elephant on the book"),
   H("conch", "V23EE", "launch's fog horn", "the conch shell"),
   H("mask", "XAN9D", "masquerade mask", "the carved mask sculpture"),
-  H("sugar-dish", "A8NKR", "sugar dish", "the lidded glass candy jar"),
+  H("sugar-dish", "A8NKR", "blue dolphin", "the blue dolphin thing above the kitchen sink"),
   H("red-bird", "AJTN9", "red bird", "the red bird above a lamp on the main table"),
-  H("cloche", "J84CN", "vault lamp", "the glowing salt lamp"),
-  H("octopus", "PWKGP", "Kraken Cove candle stand", "the octopus candle holder"),
+  H("cloche", "J84CN", "salt lamp", "the glowing salt lamp"),
+  H("octopus", "PWKGP", "Kraken", "the octopus candle holder"),
   H("duck", "DF46N", "decoy duck", "the carved wooden duck with a lid"),
   H("globe", "E3HTT", "route globe", "the lit globe on its stand"),
   H("opera-bill", "EFCKF", "opera bill", "the Falstaff poster in the hall"),
@@ -43,7 +43,7 @@ export const props: Prop[] = [
   H("constitution", "2Y34A", "Eighteenth Amendment", "the pocket Constitution"),
   H("bill-of-rights", "U8GVW", "Bill of Rights", "the pocket Bill of Rights"),
   H("dumbbell", "GXG4U", "champion's weight", "the golden dumbbell"),
-  H("star-salt", "X8WCT", "star-marked salt", "the blue kosher salt box with the star"),
+  H("star-salt", "X8WCT", "David's salt", "the blue kosher salt box with the star"),
   H("lit-bottle", "RD99K", "glowing bottle", "the lit-up wine bottle"),
 
   // ---- carried by a guest in a deal: handed over at the door ----

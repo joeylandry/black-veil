@@ -359,15 +359,15 @@ Kit had the Veil's runners killed one at a time, the last thrown into the river 
 
 | Code | Prop | Could be | Where | Hint or carrier |
 |---|---|---|---|---|
-| N8CM8 | Veil candle | the brass candlestick with salt in its dish | hidden | Look for the brass candlestick with salt in its dish. |
+| N8CM8 | pirate sign | the "Swab the deck or walk the plank" sign | hidden | Look for the "Swab the deck or walk the plank" sign. |
 | K6NRA | river lantern | the white lantern on the front balcony | hidden | Look for the white lantern on the front balcony. |
 | D9X6N | Silent Partner's elephant | the golden elephant on the book | hidden | Look for the golden elephant on the book. |
 | V23EE | launch's fog horn | the conch shell | hidden | Look for the conch shell. |
 | XAN9D | masquerade mask | the carved mask sculpture | hidden | Look for the carved mask sculpture. |
-| A8NKR | sugar dish | the lidded glass candy jar | hidden | Look for the lidded glass candy jar. |
+| A8NKR | blue dolphin | the blue dolphin thing above the kitchen sink | hidden | Look for the blue dolphin thing above the kitchen sink. |
 | AJTN9 | red bird | the red bird above a lamp on the main table | hidden | Look for the red bird above a lamp on the main table. |
-| J84CN | vault lamp | the glowing salt lamp | hidden | Look for the glowing salt lamp. |
-| PWKGP | Kraken Cove candle stand | the octopus candle holder | hidden | Look for the octopus candle holder. |
+| J84CN | salt lamp | the glowing salt lamp | hidden | Look for the glowing salt lamp. |
+| PWKGP | Kraken | the octopus candle holder | hidden | Look for the octopus candle holder. |
 | DF46N | decoy duck | the carved wooden duck with a lid | hidden | Look for the carved wooden duck with a lid. |
 | E3HTT | route globe | the lit globe on its stand | hidden | Look for the lit globe on its stand. |
 | EFCKF | opera bill | the Falstaff poster in the hall | hidden | Look for the Falstaff poster in the hall. |
@@ -375,7 +375,7 @@ Kit had the Veil's runners killed one at a time, the last thrown into the river 
 | 2Y34A | Eighteenth Amendment | the pocket Constitution | hidden | Look for the pocket Constitution. |
 | U8GVW | Bill of Rights | the pocket Bill of Rights | hidden | Look for the pocket Bill of Rights. |
 | GXG4U | champion's weight | the golden dumbbell | hidden | Look for the golden dumbbell. |
-| X8WCT | star-marked salt | the blue kosher salt box with the star | hidden | Look for the blue kosher salt box with the star. |
+| X8WCT | David's salt | the blue kosher salt box with the star | hidden | Look for the blue kosher salt box with the star. |
 | RD99K | glowing bottle | the lit-up wine bottle | hidden | Look for the lit-up wine bottle. |
 | EV6M4 | Mahns crested spoon | the metal spoon | carried | Anika Mahns of Mahns Manor |
 | AFPEP | Silent Partner's brass key | the key | carried | Krrish Vermouth |

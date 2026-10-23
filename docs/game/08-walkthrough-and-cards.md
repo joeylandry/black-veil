@@ -105,28 +105,28 @@ Read one type at a time to see what the game asks of people.
 
 | Guest | # | What | Involves | When |
 |---|---|---|---|---|
-| Anika Mahns of Mahns Manor | 2 | sugar dish |  |  |
+| Anika Mahns of Mahns Manor | 2 | blue dolphin |  |  |
 | J. Bruce Wayne | 2 | red bird |  |  |
 | Mihir Nagarkatti of Nag Oil | 1 | Silent Partner's elephant |  |  |
 | Krrish Vermouth | 1 | glowing bottle |  |  |
-| Angelos Bowles | 2 | Veil candle |  |  |
+| Angelos Bowles | 2 | pirate sign |  |  |
 | Sheriff Theodor Farrago | 1 | Eighteenth Amendment |  |  |
 | Judge Eric Leeway | 1 | Judge's board |  |  |
 | Anthony Hung, Esq. | 2 | Bill of Rights |  |  |
 | Dr. Emmerich Sunner | 1 | decoy duck |  |  |
 | Molly Daniel of the Manchester Union | 1 | masquerade mask |  |  |
 | Leon Gee of WFEA | 1 | launch's fog horn |  |  |
-| Ananya Codru and Charlie Wakem | 1 | vault lamp |  |  |
+| Ananya Codru and Charlie Wakem | 1 | salt lamp |  |  |
 | Luke Shelldon | 1 | river lantern |  |  |
 | Silas Palmer of the Palm Court | 2 | opera bill |  |  |
 | Sidd Airwind | 2 | route globe |  |  |
-| Joshua Kamin-Sky | 1 | star-marked salt |  |  |
-| Arjun Bat | 2 | Kraken Cove candle stand |  |  |
-| Adam Holdsfire | 1 | Veil candle |  |  |
+| Joshua Kamin-Sky | 1 | David's salt |  |  |
+| Arjun Bat | 2 | Kraken |  |  |
+| Adam Holdsfire | 1 | pirate sign |  |  |
 | Tiffany Liu of the Lamps | 1 | glowing bottle |  |  |
 | Diwakar Sandbagg | 2 | champion's weight |  |  |
 | Tim McGinley, Baron of Bathtub Gin | 2 | launch's fog horn |  |  |
-| Rebecca Chow, Butler of the Black Veil | 1 | vault lamp |  |  |
+| Rebecca Chow, Butler of the Black Veil | 1 | salt lamp |  |  |
 | Rhea Mallya of Mallya's Emporium | 1 | decoy duck |  |  |
 | Erika Lamm | 2 | masquerade mask |  |  |
 
@@ -342,7 +342,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 1. **[MONEY]** A fortune is kept by spending it wisely. Make the room pay you back. Leave with at least $3,600. Count your bills at the end and submit the total. Bartend Joe may ask to see them.
 
-2. **[FIND]** Find the sugar dish. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the lidded glass candy jar. Read the tag and type its code.
+2. **[FIND]** Find the blue dolphin. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the blue dolphin thing above the kitchen sink. Read the tag and type its code.
 
 3. **[SWAP]** Strike a bargain with Krrish Vermouth: your Mahns crested spoon for their Silent Partner's brass key. It must be a deal, never a grab. When you hold it, read the code on its tag. *INVOLVES:* Krrish.
 
@@ -356,7 +356,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 1. 8:00: read the Public, Background and Private tabs. Note which clues you may trade, sell or keep close.
 2. **[MONEY]** earn money: finish with at least $3,600.
-3. **[FIND]** find sugar dish: read the tag and type its code.
+3. **[FIND]** find blue dolphin: read the tag and type its code.
 4. **[SWAP]** swap with Krrish and type the code on what you receive.
 5. **[DEAL]** A sneaky request: ask Silas.
 6. **[LEARN A SECRET]** What Ananya Codru and Charlie Wakem is hiding: ask Ananya or Rebecca.
@@ -599,7 +599,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 1. **[MONEY]** Win a few hands, a few bets, a few boules. Leave with at least $1,800. Count your bills at the end and submit the total. Bartend Joe may ask to see them.
 
-2. **[FIND]** Find the Veil candle. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the brass candlestick with salt in its dish. Read the tag and type its code.
+2. **[FIND]** Find the pirate sign. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the "Swab the deck or walk the plank" sign. Read the tag and type its code.
 
 3. **[SWAP]** Strike a bargain with Diwakar Sandbagg: your House chip for their carnival giraffe. It must be a deal, never a grab. When you hold it, read the code on its tag. *INVOLVES:* Diwakar.
 
@@ -613,7 +613,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 1. 8:00: read the Public, Background and Private tabs. Note which clues you may trade, sell or keep close.
 2. **[MONEY]** earn money: finish with at least $1,800.
-3. **[FIND]** find Veil candle: read the tag and type its code.
+3. **[FIND]** find pirate sign: read the tag and type its code.
 4. **[SWAP]** swap with Diwakar and type the code on what you receive.
 5. **[LEARN A SECRET]** What Ananya Codru and Charlie Wakem is hiding: ask Ananya or Rebecca.
 6. **[HOST TASK]** do the task, tap Claim, then ask Bartend Joe for your word (any time).
@@ -1086,7 +1086,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 **OBJECTIVES**
 
-1. **[FIND]** Find the vault lamp. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the glowing salt lamp. Read the tag and type its code.
+1. **[FIND]** Find the salt lamp. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the glowing salt lamp. Read the tag and type its code.
 
 2. **[SWAP]** Strike a bargain with Erika Lamm: your blank telegram form for their set of false papers. It must be a deal, never a grab. When you hold it, read the code on its tag. *INVOLVES:* Erika.
 
@@ -1101,7 +1101,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 **PATH**
 
 1. 8:00: read the Public, Background and Private tabs. Note which clues you may trade, sell or keep close.
-2. **[FIND]** find vault lamp: read the tag and type its code.
+2. **[FIND]** find salt lamp: read the tag and type its code.
 3. **[SWAP]** swap with Erika and type the code on what you receive.
 4. **[LEARN A SECRET]** What Rebecca Chow, Butler of the Black Veil is hiding: ask Rebecca or Tim.
 5. **[KEEP A SECRET]** keep your small secret (nothing to type; you may sell it for $200).
@@ -1358,7 +1358,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 **OBJECTIVES**
 
-1. **[FIND]** Find the star-marked salt. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the blue kosher salt box with the star. Read the tag and type its code.
+1. **[FIND]** Find the David's salt. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the blue kosher salt box with the star. Read the tag and type its code.
 
 2. **[SWAP]** Strike a bargain with Tiffany Liu of the Lamps: your soothsayer's charm for their earring. It must be a deal, never a grab. When you hold it, read the code on its tag. *INVOLVES:* Tiffany.
 
@@ -1373,7 +1373,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 **PATH**
 
 1. 8:00: read the Public, Background and Private tabs. Note which clues you may trade, sell or keep close.
-2. **[FIND]** find star-marked salt: read the tag and type its code.
+2. **[FIND]** find David's salt: read the tag and type its code.
 3. **[SWAP]** swap with Tiffany and type the code on what you receive.
 4. **[LEARN A SECRET]** What Tiffany Liu of the Lamps is hiding: ask Tiffany or Mihir.
 5. **[HOST TASK]** do the task, tap Claim, then ask Bartend Joe for your word (before 8:30).
@@ -1427,7 +1427,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 1. **[MONEY]** Win a wager on a swing, a pitch or a bet. Leave with at least $1,400. Count your bills at the end and submit the total. Bartend Joe may ask to see them.
 
-2. **[FIND]** Find the Kraken Cove candle stand. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the octopus candle holder. Read the tag and type its code.
+2. **[FIND]** Find the Kraken. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the octopus candle holder. Read the tag and type its code.
 
 3. **[SWAP]** Strike a bargain with Tim McGinley, Baron of Bathtub Gin: your lucky ball for their jar of bathtub gin. It must be a deal, never a grab. When you hold it, read the code on its tag. *INVOLVES:* Tim.
 
@@ -1441,7 +1441,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 1. 8:00: read the Public, Background and Private tabs. Note which clues you may trade, sell or keep close.
 2. **[MONEY]** earn money: finish with at least $1,400.
-3. **[FIND]** find Kraken Cove candle stand: read the tag and type its code.
+3. **[FIND]** find Kraken: read the tag and type its code.
 4. **[SWAP]** swap with Tim and type the code on what you receive.
 5. **[LEARN A SECRET]** What Tiffany Liu of the Lamps is hiding: ask Tiffany or Mihir.
 6. **[LEARN A STORY]** A word for the umpire: ask Josh or Adam.
@@ -1494,7 +1494,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 **OBJECTIVES**
 
-1. **[FIND]** Find the Veil candle. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the brass candlestick with salt in its dish. Read the tag and type its code.
+1. **[FIND]** Find the pirate sign. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the "Swab the deck or walk the plank" sign. Read the tag and type its code.
 
 2. **[LEARN A STORY]** Find out what your real job was before you took this cover. The guest named below noticed something about you that a cover cannot hide. *INVOLVES:* Theodor, Arjun, Joel.
 
@@ -1509,7 +1509,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 **PATH**
 
 1. 8:00: read the Public, Background and Private tabs. Note which clues you may trade, sell or keep close.
-2. **[FIND]** find Veil candle: read the tag and type its code.
+2. **[FIND]** find pirate sign: read the tag and type its code.
 3. **[LEARN A STORY]** Who were you?: ask Theodor or Arjun or Joel.
 4. **[LEARN A STORY]** Why you?: ask Theodor or Sidd or Angelos.
 5. **[LEARN A STORY]** The old man's hour: ask Rebecca or Anika or Silas.
@@ -1772,7 +1772,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 **OBJECTIVES**
 
-1. **[FIND]** Find the vault lamp. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the glowing salt lamp. Read the tag and type its code.
+1. **[FIND]** Find the salt lamp. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the glowing salt lamp. Read the tag and type its code.
 
 2. **[LEARN A SECRET]** Everyone has something they would rather not say. Learn Sheriff Theodor Farrago's small secret, not by being told it is a secret, but by earning it. Someone is guarding this one, so expect a harder time: a real try still earns half a point. *INVOLVES:* Theodor, Molly.
 
@@ -1787,7 +1787,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 **PATH**
 
 1. 8:00: read the Public, Background and Private tabs. Note which clues you may trade, sell or keep close.
-2. **[FIND]** find vault lamp: read the tag and type its code.
+2. **[FIND]** find salt lamp: read the tag and type its code.
 3. **[LEARN A SECRET]** What Sheriff Theodor Farrago is hiding: ask Theodor or Molly.
 4. **[KEEP A SECRET]** keep your small secret (nothing to type; you may sell it for $200).
 5. **[VIAL]** sell the vial to the first marker.

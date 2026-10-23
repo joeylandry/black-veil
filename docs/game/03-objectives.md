@@ -6,7 +6,7 @@
 
 anika-money. **Money to make** (money, 1) A fortune is kept by spending it wisely. Make the room pay you back. Leave with at least $3,600. Count your bills at the end and submit the total. Bartend Joe may ask to see them.
    - answer: at least $3600
-anika-find. **A thing to find** (find, 1) Find the sugar dish. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the lidded glass candy jar. Read the tag and type its code.
+anika-find. **A thing to find** (find, 1) Find the blue dolphin. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the blue dolphin thing above the kitchen sink. Read the tag and type its code.
    - answer: code A8NKR
 anika-swap. **A fair trade** (swap, 1) Strike a bargain with Krrish Vermouth: your Mahns crested spoon for their Silent Partner's brass key. It must be a deal, never a grab. When you hold it, read the code on its tag.
    - answer: code AFPEP; from Krrish Vermouth
@@ -58,7 +58,7 @@ krrish-keep. **Your own secret** (keep, 1) Your small secret is worth two halves
 
 angelos-money. **Money to make** (money, 1) Win a few hands, a few bets, a few boules. Leave with at least $1,800. Count your bills at the end and submit the total. Bartend Joe may ask to see them.
    - answer: at least $1800
-angelos-find. **A thing to find** (find, 1) Find the Veil candle. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the brass candlestick with salt in its dish. Read the tag and type its code.
+angelos-find. **A thing to find** (find, 1) Find the pirate sign. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the "Swab the deck or walk the plank" sign. Read the tag and type its code.
    - answer: code N8CM8
 angelos-swap. **A fair trade** (swap, 1) Strike a bargain with Diwakar Sandbagg: your House chip for their carnival giraffe. It must be a deal, never a grab. When you hold it, read the code on its tag.
    - answer: code JJGXP; from Diwakar Sandbagg
@@ -147,7 +147,7 @@ leon-bulletin. **Read the bulletin** (approval, 1) At the wrap-up, collect the b
 
 ## Ananya Codru and Charlie Wakem
 
-ananya-find. **A thing to find** (find, 1) Find the vault lamp. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the glowing salt lamp. Read the tag and type its code.
+ananya-find. **A thing to find** (find, 1) Find the salt lamp. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the glowing salt lamp. Read the tag and type its code.
    - answer: code J84CN
 ananya-swap. **A fair trade** (swap, 1) Strike a bargain with Erika Lamm: your blank telegram form for their set of false papers. It must be a deal, never a grab. When you hold it, read the code on its tag.
    - answer: code ERYTJ; from Erika Lamm
@@ -199,7 +199,7 @@ sidd-story. **How many were there?** (story, 1) Seventeen strangers died in acci
 
 ## Joshua Kamin-Sky
 
-josh-find. **A thing to find** (find, 1) Find the star-marked salt. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the blue kosher salt box with the star. Read the tag and type its code.
+josh-find. **A thing to find** (find, 1) Find the David's salt. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the blue kosher salt box with the star. Read the tag and type its code.
    - answer: code X8WCT
 josh-swap. **A fair trade** (swap, 1) Strike a bargain with Tiffany Liu of the Lamps: your soothsayer's charm for their earring. It must be a deal, never a grab. When you hold it, read the code on its tag.
    - answer: code 66M4W; from Tiffany Liu of the Lamps
@@ -214,7 +214,7 @@ josh-fortunes. **The fortunes** (approval, 1) Read the fortunes of four differen
 
 arjun-money. **Money to make** (money, 1) Win a wager on a swing, a pitch or a bet. Leave with at least $1,400. Count your bills at the end and submit the total. Bartend Joe may ask to see them.
    - answer: at least $1400
-arjun-find. **A thing to find** (find, 1) Find the Kraken Cove candle stand. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the octopus candle holder. Read the tag and type its code.
+arjun-find. **A thing to find** (find, 1) Find the Kraken. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the octopus candle holder. Read the tag and type its code.
    - answer: code PWKGP
 arjun-swap. **A fair trade** (swap, 1) Strike a bargain with Tim McGinley, Baron of Bathtub Gin: your lucky ball for their jar of bathtub gin. It must be a deal, never a grab. When you hold it, read the code on its tag.
    - answer: code P4PD3; from Tim McGinley, Baron of Bathtub Gin
@@ -225,7 +225,7 @@ arjun-story. **A word for the umpire** (story, 1) You want a Yiddish word to sho
 
 ## Adam Holdsfire
 
-adam-find. **A thing to find** (find, 1) Find the Veil candle. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the brass candlestick with salt in its dish. Read the tag and type its code.
+adam-find. **A thing to find** (find, 1) Find the pirate sign. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the "Swab the deck or walk the plank" sign. Read the tag and type its code.
    - answer: code N8CM8
 adam-who. **Who were you?** (learn, 1) Find out what your real job was before you took this cover. The guest named below noticed something about you that a cover cannot hide.
    - answer: [bouncer | doorman | door | face | faces]; from Sheriff Theodor Farrago, Arjun Bat, J. Bruce Wayne
@@ -277,7 +277,7 @@ tim-keep. **Your own secret** (keep, 1) Your small secret is worth two halves. L
 
 ## Rebecca Chow, Butler of the Black Veil
 
-rebecca-find. **A thing to find** (find, 1) Find the vault lamp. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the glowing salt lamp. Read the tag and type its code.
+rebecca-find. **A thing to find** (find, 1) Find the salt lamp. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the glowing salt lamp. Read the tag and type its code.
    - answer: code J84CN
 rebecca-secret. **What Sheriff Theodor Farrago is hiding** (learn, 1) Everyone has something they would rather not say. Learn Sheriff Theodor Farrago's small secret, not by being told it is a secret, but by earning it. Someone is guarding this one, so expect a harder time: a real try still earns half a point.
    - answer: [shoebox | shoe box]; from Sheriff Theodor Farrago, Molly Daniel of the Manchester Union
