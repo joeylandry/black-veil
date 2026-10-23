@@ -19,7 +19,7 @@ export const brief1924: { heading: string; bullets: string[] }[] = [
   {
     heading: "Five survivors in the room",
     bullets: [
-      "Five souls the papers swore were lost in 1924 are here tonight in borrowed names and borrowed faces, sipping your drinks and watching your hands. They are guests like you. Before the lights come up you may point at up to five of your fellow guests and say survivor. Be right and it pays. Be wrong and it stings.",
+      "Five souls the papers swore were lost in 1924 are here tonight in borrowed names and borrowed faces, sipping your drinks and watching your hands. They are guests like you. Before the lights come up you may point at up to four of your fellow guests and say survivor. Be right and it pays a point. Be wrong and it costs you half of one.",
     ],
   },
   {

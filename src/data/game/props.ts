@@ -6,13 +6,13 @@
  */
 import type { Prop } from "./types";
 
-const H = (id: string, code: string, name: string, generic: string, hint: string): Prop => ({
+const H = (id: string, code: string, name: string, generic: string): Prop => ({
   id,
   code,
   name,
   generic,
   placement: "hidden",
-  hint,
+  hint: `Look for ${generic}.`,
 });
 
 const C = (id: string, code: string, name: string, generic: string, carriedBy: string): Prop => ({
@@ -27,24 +27,24 @@ const C = (id: string, code: string, name: string, generic: string, carriedBy: s
 
 export const props: Prop[] = [
   // ---- hidden in shared rooms: the tag is taped to or beside the object ----
-  H("veil-candle", "N8CM8", "Veil candle", "the brass candlestick with salt in its dish", "A brass candlestick burns beside her portrait, and a ring of salt keeps it company."),
-  H("lantern", "K6NRA", "river lantern", "the jack-o'-lantern", "A grinning lantern keeps the dining table lit. Look where it glows."),
-  H("elephant", "D9X6N", "Silent Partner's elephant", "the golden elephant on the book", "A gilded elephant, who never forgets, leans on a book by the old globe."),
-  H("conch", "V23EE", "launch's fog horn", "the conch shell", "Something that once sounded a warning across the water now sits on the bookshelf."),
-  H("mask", "XAN9D", "masquerade mask", "the carved mask sculpture", "A carved face from the night of the masquerade watches the room from the shelves."),
-  H("sugar-dish", "A8NKR", "sugar dish", "the lidded glass candy jar", "A glass dish with a lid sits where the sweets go. The tag is under the lid."),
-  H("red-bird", "AJTN9", "red bird", "the cardinal ornament", "A small red bird perches somewhere it should not, away from its lamp."),
-  H("cloche", "J84CN", "vault cloche", "the glass cake dome on its marble stand", "A glass dome over a marble stand hides what the House keeps under glass."),
-  H("octopus", "PWKGP", "Kraken Cove candle stand", "the octopus candle holder", "Eight arms hold up a single candle, in the cabinet with the good glass."),
-  H("duck", "DF46N", "decoy duck", "the carved wooden duck with a lid", "A decoy that is hollow inside sits in the cabinet. Lift its head."),
-  H("globe", "E3HTT", "route globe", "the lit globe on its stand", "The whole world turns on a stand by the window, with the hours marked round its rim."),
-  H("opera-bill", "EFCKF", "opera bill", "the Falstaff poster in the hall", "A fat knight with his cup hangs in the hall. The tag is at the corner of the frame."),
-  H("chess-box", "NCPMX", "Judge's board", "the folding chess box", "A board in a box on the black table, with one white piece missing from its rank."),
-  H("constitution", "2Y34A", "Eighteenth Amendment", "the pocket Constitution", "A little green book of the nation's laws, the one that made the Veil necessary."),
-  H("bill-of-rights", "U8GVW", "Bill of Rights", "the pocket Bill of Rights", "The little book beside it, with the rights every defendant has."),
-  H("dumbbell", "GXG4U", "champion's weight", "the golden dumbbell", "A prize weight that nobody is lifting. Look where a heavy thing sits quietly."),
-  H("star-salt", "X8WCT", "star-marked salt", "the blue kosher salt box with the star", "A blue box with a six-pointed star, in the pantry where the salt is kept."),
-  H("lit-bottle", "RD99K", "glowing bottle", "the lit-up wine bottle", "A bottle of wine that glows in the dark, though nobody lit it."),
+  H("veil-candle", "N8CM8", "pirate sign", "the \"Swab the deck or walk the plank\" sign"),
+  H("lantern", "K6NRA", "river lantern", "the white lantern on the front balcony"),
+  H("elephant", "D9X6N", "Silent Partner's elephant", "the golden elephant on the book"),
+  H("conch", "V23EE", "launch's fog horn", "the conch shell"),
+  H("mask", "XAN9D", "masquerade mask", "the carved mask sculpture"),
+  H("sugar-dish", "A8NKR", "blue dolphin", "the blue dolphin thing above the kitchen sink"),
+  H("red-bird", "AJTN9", "red bird", "the red bird above a lamp on the main table"),
+  H("cloche", "J84CN", "salt lamp", "the glowing salt lamp"),
+  H("octopus", "PWKGP", "Kraken", "the octopus candle holder"),
+  H("duck", "DF46N", "decoy duck", "the carved wooden duck with a lid"),
+  H("globe", "E3HTT", "route globe", "the lit globe on its stand"),
+  H("opera-bill", "EFCKF", "opera bill", "the Falstaff poster in the hall"),
+  H("chess-box", "NCPMX", "Judge's board", "the folding chess box"),
+  H("constitution", "2Y34A", "Eighteenth Amendment", "the pocket Constitution"),
+  H("bill-of-rights", "U8GVW", "Bill of Rights", "the pocket Bill of Rights"),
+  H("dumbbell", "GXG4U", "champion's weight", "the golden dumbbell"),
+  H("star-salt", "X8WCT", "David's salt", "the blue kosher salt box with the star"),
+  H("lit-bottle", "RD99K", "glowing bottle", "the lit-up wine bottle"),
 
   // ---- carried by a guest in a deal: handed over at the door ----
   C("mahns-spoon", "EV6M4", "Mahns crested spoon", "the metal spoon", "anika"),
@@ -54,28 +54,51 @@ export const props: Prop[] = [
   C("false-papers", "ERYTJ", "set of false papers", "a printed folded paper in a black envelope", "erika"),
   C("telegram-form", "YUGWA", "blank telegram form", "a printed telegram slip", "ananya"),
   C("sooth-charm", "DTF7R", "soothsayer's charm", "a small charm, bead or stone", "josh"),
-  C("earring", "66M4W", "glass earring", "an earring", "tiffany"),
+  C("earring", "66M4W", "earring", "the earring", "tiffany"),
   C("gin-jar", "P4PD3", "jar of bathtub gin", "the little jar", "tim"),
-  C("baseball", "YY72H", "signed baseball", "a baseball", "arjun"),
+  C("baseball", "YY72H", "lucky ball", "the ball", "arjun"),
 
   // ---- slips: printed cards that prove a deal ----
   C("fee-voucher", "844M9", "Mahns Manor voucher", "a printed voucher", "anika"),
   C("request-card", "RKRGA", "request card", "a printed card", "silas"),
   C("crate-receipt", "ATCTU", "crate receipt", "a printed receipt", "krrish"),
   C("dismissal", "VMX7X", "notice of dismissal", "a printed notice", "eric"),
-  C("alibi-note", "XPD6N", "sworn alibi note", "a printed note", "erika"),
-  C("fee-receipt", "PJEYU", "House receipt", "a printed receipt", "rebecca"),
   C("pardon-slip", "U7WNK", "Pardon slip", "a printed slip", "tiffany"),
   C("pardon-receipt", "RU647", "go-between's receipt", "a printed receipt", "tiffany"),
   C("citation", "MKPAE", "Nuisance Citation", "a printed citation", "theodor"),
-  C("served-stub", "T78W7", "served stub", "a printed stub", "leon"),
+
+  // ---- group race slips: printed paper, five per race, handed to anyone in the racing group who asks ----
+  C("witness-arjun", "6GPMF", "Witness slip", "a printed slip", "arjun"),
+  C("witness-diwakar", "62G9X", "Witness slip", "a printed slip", "diwakar"),
+  C("witness-josh", "M73EX", "Witness slip", "a printed slip", "josh"),
+  C("witness-leon", "D4JFG", "Witness slip", "a printed slip", "leon"),
+  C("witness-sidd", "KW9K2", "Witness slip", "a printed slip", "sidd"),
+  C("reply-angelos", "EN2W3", "Reply slip", "a printed slip", "angelos"),
+  C("reply-eric", "D6DDT", "Reply slip", "a printed slip", "eric"),
+  C("reply-erika", "PXT7K", "Reply slip", "a printed slip", "erika"),
+  C("reply-krrish", "UHN7C", "Reply slip", "a printed slip", "krrish"),
+  C("reply-theodor", "RW4H6", "Reply slip", "a printed slip", "theodor"),
+  C("tool-ananya", "PGYF8", "Tool token", "a printed token", "ananya"),
+  C("tool-anthony", "WKXWT", "Tool token", "a printed token", "anthony"),
+  C("tool-joel", "NPKM4", "Tool token", "a printed token", "joel"),
+  C("tool-mihir", "DC92C", "Tool token", "a printed token", "mihir"),
+  C("tool-tim", "32CDE", "Tool token", "a printed token", "tim"),
+  C("trade-anika", "24R94", "Trade slip", "a printed slip", "anika"),
+  C("trade-emre", "94K7V", "Trade slip", "a printed slip", "emre"),
+  C("trade-molly", "DAFF2", "Trade slip", "a printed slip", "molly"),
+  C("trade-silas", "6K64E", "Trade slip", "a printed slip", "silas"),
+  C("trade-tiffany", "2P946", "Trade slip", "a printed slip", "tiffany"),
 
   // ---- table and scene ----
   { id: "glass-coaster", code: "8YUR2", name: "nightcap glass coaster", generic: "a coaster", placement: "table", hint: "" },
+  { id: "charter", code: "4JNW7", name: "charter", generic: "a printed charter card, signed at the wrap-up", placement: "table", hint: "" },
   { id: "scene-card", code: "AYTHC", name: "scene card", generic: "a printed card on the black table", placement: "table", hint: "" },
 ];
 
-/** The five survivors' markers. The Butler types the code; the guest keeps the card. */
+/** The words on the single slip hidden under the kitchen cactus. A survivor who finds it keeps it and, after 8:45, says these words to the Butler to buy the vial. */
+export const vialWords = "THE BUTLER KNOWS WHO DID IT";
+
+/** The five survivors' numbers on the List. They are only numbers now: nothing is cut out or carried, and no code is typed. */
 export const markers: { no: number; code: string }[] = [
   { no: 18, code: "JCPP2" },
   { no: 19, code: "PKCA9" },

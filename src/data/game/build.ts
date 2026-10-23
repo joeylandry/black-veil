@@ -10,7 +10,7 @@ import type { AnyOf, Pattern } from "@/lib/game/text";
 import type { GuestId, Objective, PropId } from "./types";
 import { props } from "./props";
 
-export const POINTS = 12;
+export const POINTS = 1;
 
 const codeOf = (propId: PropId) => {
   const prop = props.find((item) => item.id === propId);
@@ -23,7 +23,7 @@ export function find(id: string, prop: PropId): Objective {
     id,
     kind: "find",
     title: "A thing to find",
-    text: "Find the {prop}. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. {hint}",
+    text: "Find the {prop}. It stays where it is, in a shared room, with a small black tag taped on or beside it. {hint} Read the tag and type its code.",
     ask: "The code on the tag",
     points: POINTS,
     with: [],
@@ -81,37 +81,11 @@ export function money(id: string, min: number, text: string): Objective {
     id,
     kind: "money",
     title: "Money to make",
-    text: `${text} Count your bills at the end and submit the total. The host may ask to see it.`,
+    text: `${text} Count your bills at the end and submit the total. Bartend Joe may ask to see them.`,
     ask: "Dollars in your pocket at the end",
     points: POINTS,
     with: [],
     check: { kind: "money", min },
-  };
-}
-
-export function hide(id: string, partner: GuestId): Objective {
-  return {
-    id,
-    kind: "hide",
-    title: "A secret affair",
-    text: "You and {name:partner} are secretly sweet on each other. Nobody must learn it. If anyone names the two of you as a pair in their final answers, you lose points. Enjoy it, quietly.".replace("partner", partner),
-    ask: "In a sentence, how did you keep it secret?",
-    points: POINTS,
-    with: [partner],
-    check: { kind: "hide", partner },
-  };
-}
-
-export function seek(id: string, pairs: [GuestId, GuestId][]): Objective {
-  return {
-    id,
-    kind: "seek",
-    title: "Gossip",
-    text: "Two guests are secretly sweet on each other. Find out who. Name the pair, and you have your story.",
-    ask: "The two guests, by name",
-    points: POINTS,
-    with: [],
-    check: { kind: "seek", pairs },
   };
 }
 
@@ -159,7 +133,7 @@ export function offerChain(id: string): Objective {
     id,
     kind: "chain",
     title: "Make your offer to the House",
-    text: "The House keeps one bottle for those who can pay in a marker. Before the nightcap is served at nine o'clock, take your marker to the Butler at the bar and make your offer. The House counts every offer, whether the answer is yes or no.",
+    text: "The House keeps one bottle for the one who knows its words. The words are on a slip hidden in the kitchen under a cactus. Find it, keep it, and after a quarter to nine and before the nightcap is served at nine o'clock, say the words to the Butler at the bar and make your offer. The House counts every offer, whether the answer is yes or no.",
     ask: "In a sentence, what did the Butler say?",
     points: POINTS,
     with: ["rebecca"],
@@ -173,8 +147,43 @@ export function motiveChain(id: string, holders: GuestId[], keys: Pattern): Obje
     id,
     kind: "motive",
     title: "Why you?",
-    text: "You came to be the one, and you are not sure you remember why. Find out what the Keeper took from you. Someone here saw part of it.",
+    text: "Find out what the Keeper did to you: what he took, or who he used to do it. The guest named below saw part of it. Either answer counts.",
     ask: "What did he do?",
+    points: POINTS,
+    with: [holders[0]],
+    alsoFrom: holders.slice(1),
+    // either half of the answer is enough: what he took, or who he used
+    check: { kind: "pattern", all: [keys.flat()] },
+  };
+}
+
+/** Something the host confirms in person. The guest claims it on their phone and types the host's approval word. */
+export function approval(id: string, title: string, text: string, word: string, withGuests: GuestId[] = []): Objective {
+  return { id, kind: "approval", title, text, ask: "The approval word from Bartend Joe", points: POINTS, with: withGuests, check: { kind: "approval", word } };
+}
+
+/** Your own small secret: tell the seeker you chose, keep it from the rival. Scored from their answers (see the `keep` check). */
+export function keep(id: string, seeker: GuestId, seekerObjective: string, rival: GuestId, rivalObjective: string): Objective {
+  return {
+    id,
+    kind: "keep",
+    title: "Your own secret",
+    text: `Your small secret is worth two halves. Let {name:${seeker}} earn it from you (half a point), and make sure {name:${rival}} never does (half a point). You will not be asked anything: it is scored from what they each learn. You may also sell it to anyone for $200 in House bills, but a sale to {name:${rival}} costs you that half.`,
+    ask: "In a sentence, how did you manage it? (optional)",
+    points: POINTS,
+    with: [seeker],
+    check: { kind: "keep", seeker, seekerObjective, rival, rivalObjective },
+  };
+}
+
+/** Who you really were: learn your own old trade from guests who saw through your cover. */
+export function who(id: string, text: string, holders: GuestId[], keys: Pattern): Objective {
+  return {
+    id,
+    kind: "learn",
+    title: "Who were you?",
+    text,
+    ask: "What was your real trade?",
     points: POINTS,
     with: [holders[0]],
     alsoFrom: holders.slice(1),

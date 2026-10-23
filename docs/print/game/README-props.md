@@ -8,17 +8,18 @@ All PDFs are US Letter. Print at 100% / "Actual size" (not "Fit to page"), with 
 |---|---|---|---|---|
 | `exhibits.pdf` | 16 | 1 | Cream or ivory 24 lb paper (a tea-stained look is welcome) | Every exhibit as its in-world document. Cut pieces apart on the dotted lines, tear or trim round the ragged edges by hand. **Trim the tiny grey line at the bottom of each page off**: it says where the prop goes. The List is printed landscape (page 1); the printer may rotate it. The last page is the HOST ONLY tie-breaker stub: it goes in the LINING of the dead man's jacket, never on a table. |
 | `exhibits-index.pdf` | 1 | 1 | Plain | HOST ONLY. Every exhibit: page, id, code, where it goes, who holds it, and the tie-breaker question and answer. |
-| `tags.pdf` | 5 | 1 | Matte white or cream card stock (65 lb) | 58 tags (3 x 4 per sheet): two of every hidden prop (one spare), one of each carried and table prop. Black fill uses a lot of ink; a laser printer is best. Cut along the dashed grid, tape each tag to or beside its object. No object name is on a tag. |
-| `tag-key.pdf` | 2 | 1 | Plain | HOST ONLY. Code, prop, the object in your house, placement, carrier or hiding hint. The five survivor markers (numbers 18 to 22) are not tags and are not in this file. |
-| `slips.pdf` | 6 | 1 set + a STANDBY set (last 3 pages) | Cream paper or light card | The 12 printed deal slips and carried items, each with its own code, exactly once. Pages 4 to 6 are STANDBY COPIES for the stand-in tray, marked in the top margin (trim it off). |
-| `vial-labels.pdf` | 1 | 1 | Cream paper; use a glue stick or double-sided tape | Row 1: the real HOUSE STOCK label (2 copies). Rows 2 to 4: decoys (Camphor Spirits, Spirits of Hartshorn, Oil of Wintergreen), 2 each. Bottles hold WATER ONLY, never oils. |
-| `fortune-cards.pdf` | 3 | 1 | Card stock (65 to 80 lb), cream or white | 12 cards, 4 per sheet. Joshua Kamin-Sky reads four guests; each guest keeps the card. Cut on the dashed lines. |
-| `menu.pdf` | 1 | 1 to 2 | Cream paper | Full-page bar menu (frame it by the bar). |
-| `menu-table-card.pdf` | 1 | 1 sheet (makes 2 cards) | Card stock | Two half-page table cards: cut across the dashed line at mid-page. |
+| `tags.pdf` | 3 | 1 | Matte white or cream card stock (65 lb) | 28 tags (3 x 4 per sheet): two of every hidden prop (one spare), one of each carried and table prop. Black fill uses a lot of ink; a laser printer is best. Cut along the dashed grid, tape each tag to or beside its object. No object name is on a tag. |
+| `tag-key.pdf` | 2 | 1 | Plain | HOST ONLY. Code, prop, the object in your house, placement, carrier or hiding hint. The vial words slip is not a tag; it is in slips.pdf. |
+| `slips.pdf` | 8 | 1 set + a STANDBY set (last 4 pages) | Cream paper or light card | The 30 printed slips plus the one vial words slip (hide it under the kitchen cactus; it goes in no envelope), each with its own code, exactly once: the deal slips and carried items, the twenty group-race slips (witness, reply, tool, trade: five of each) and the charter Eric signs. Pages 5 to 8 are STANDBY COPIES for the stand-in tray, marked in the top margin (trim it off). |
+| `host-sheet.pdf` | 1 | 1 | Plain | HOST ONLY. Bartend Joe's one page: what to hand out and when, and every approval word with what to check before you give it. |
+| `vial-labels.pdf` | 1 | 1 | Cream paper; use a glue stick or double-sided tape | Row 1: the real HOUSE STOCK label (2 copies). Rows 2 to 4: OPTIONAL decoys, skip them if you have no spare bottles (Camphor Spirits, Spirits of Hartshorn, Oil of Wintergreen), 2 each. Bottles hold WATER ONLY, never oils. |
+| `fortune-cards.pdf` | 1 | 1 | Card stock (65 to 80 lb), cream or white | 12 cards, 4 per sheet. Joshua Kamin-Sky reads four guests; each guest keeps the card. Cut on the dashed lines. |
+| `cocktail-menu.pdf` | 1 | 1 sheet (makes 2 menus) | Cream paper | Cut across the dashed line. |
+| `food-menu.pdf` | 1 | 1 sheet (makes 2 menus) | Cream paper | Cut across the dashed line. |
 
 ## Editing the menu
 
-The drink and bite lists are plain arrays at the top of `scripts/print/exhibits.ts` (`menuDrinks`, `menuBites`, plus `menuTitle`, `menuBy`, `menuNotice`, `menuPriceNote`). Change them, run `npx tsx scripts/print/exhibits.ts`, and reprint `menu.pdf` and `menu-table-card.pdf`. The bites are placeholders: swap in whatever you are serving.
+The drink and bite lists are plain arrays at the top of `scripts/print/exhibits.ts` (`menuDrinks`, `menuBites`, plus `menuTitle`, `menuBy`, `menuNotice`). Change them, run `npx tsx scripts/print/exhibits.ts`, and reprint `menu.pdf` and `menu-table-card.pdf`. The lists match the menu you are serving; edit them there if it changes.
 
 ## Cutting tips
 

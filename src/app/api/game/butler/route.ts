@@ -5,7 +5,7 @@ import { gameDb, json, requireGuest } from "@/lib/game/http";
 
 /**
  * The Butler's House panel. Only the guest cast as the Butler may call it. The reply says
- * "sold", "sold out", "not a House marker" or "closed" and never says whose marker it was.
+ * "sold", "sold out", "too early", "not the words" or "closed" and never says whether the buyer is a survivor.
  */
 export async function POST(request: NextRequest) {
   const auth = await requireGuest();
@@ -16,5 +16,6 @@ export async function POST(request: NextRequest) {
   if (!slug || characterById.get(slug)?.role !== "butler") return json({ error: "The House panel is for the Butler." }, 403);
   const body = await request.json().catch(() => null);
   const code = typeof body?.code === "string" ? body.code : "";
-  return json(await butlerSell(db, auth.guestId, code));
+  const buyer = typeof body?.buyer === "string" ? body.buyer : "";
+  return json(await butlerSell(db, auth.guestId, code, buyer));
 }

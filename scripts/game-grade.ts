@@ -3,6 +3,8 @@
  * the site and uses the same rules as the /admin panel.
  *
  *   npm run game:grade -- status
+ *   npm run game:grade -- start                    the same as the Start game button on /admin
+ *   npm run game:grade -- stop                     seal the game again (a rehearsal)
  *   npm run game:grade -- grade                    run the automatic grader
  *   npm run game:grade -- packet [out.json]        write what needs a second look, for Claude
  *   npm run game:grade -- verdicts verdicts.json   apply Claude's (or staff's) decisions
@@ -26,6 +28,8 @@ import {
   runGrading,
   seedCast,
   standingsNow,
+  startGame,
+  stopGame,
   unpublishResults,
 } from "@/lib/game/service";
 import { tieBreaker } from "@/data/game/story";
@@ -47,6 +51,14 @@ async function main() {
       print({ state: overview.state, killer: overview.killer, cast: `${overview.castCount} of ${overview.cast.length} characters cast`, uncastGuests: overview.uncastGuests.map((guest) => guest.fullName), vial: overview.vial, grades: overview.grades });
       break;
     }
+    case "start":
+      await startGame(database());
+      print("The game has started: every card, objective and answer box is open.");
+      break;
+    case "stop":
+      await stopGame(database());
+      print("The game is sealed again.");
+      break;
     case "seed": {
       const seeded = await seedCast(database());
       print({ ...seeded, ...(await castByName(database())) });
@@ -72,7 +84,7 @@ async function main() {
     }
     case "standings": {
       const { standings } = await standingsNow(database());
-      const rows = standings.standings.map((row) => ({ rank: row.rank, name: row.name, circle: row.circle, total: row.total, errands: row.tiers.objectives, pages: row.tiers.exhibits, survivors: row.tiers.survivors, mysteries: row.tiers.mysteries, poisoner: row.tiers.poisoner }));
+      const rows = standings.standings.map((row) => ({ rank: row.rank, name: row.name, circle: row.circle, total: row.total, objectives: row.tiers.objectives, survivors: row.tiers.survivors, mysteries: row.tiers.mysteries, race: row.tiers.race, cash: row.tiers.cash }));
       console.table(rows);
       print({ winner: standings.winner, killer: standings.killer, pendingReview: standings.pendingReview, awards: standings.awards });
       const level = standings.standings.filter((row) => row.total > 0 && row.total === standings.standings[0].total);
@@ -84,7 +96,7 @@ async function main() {
           ask: tieBreaker.question,
           answer: tieBreaker.answer,
           where: tieBreaker.clue,
-          ifStillLevel: "The standings above are already sorted by the full tie order (mysteries, the who question, survivors, errands, pages, earliest, then a hash), so the top row stands.",
+          ifStillLevel: "The standings above are already sorted by the full tie order (mysteries, the who question, survivors, errands, earliest, then a hash), so the top row stands.",
         });
       }
       break;
@@ -106,7 +118,7 @@ async function main() {
       break;
     }
     default:
-      print("Commands: status, seed, grade, packet [out.json], verdicts <file.json> [--staff], standings, publish [--force], unpublish, assign-vial <slug>");
+      print("Commands: status, start, stop, seed, grade, packet [out.json], verdicts <file.json> [--staff], standings, publish [--force], unpublish, assign-vial <slug>");
       process.exitCode = command ? 1 : 0;
   }
 }

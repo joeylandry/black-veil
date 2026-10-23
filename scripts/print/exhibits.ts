@@ -6,43 +6,34 @@
  *   npx tsx scripts/print/exhibits.ts
  *
  * Writes (docs/print/game/): exhibits.pdf, exhibits-index.pdf, tags.pdf, tag-key.pdf, slips.pdf,
- * vial-labels.pdf, fortune-cards.pdf, menu.pdf, menu-table-card.pdf, README-props.md (+ the .html of each).
+ * vial-labels.pdf, fortune-cards.pdf, cocktail-menu.pdf, food-menu.pdf, README-props.md (+ the .html of each).
  * Needs headless Chromium (CHROME env var overrides the path) and pdftotext/pdfinfo for the checks.
  */
 import { execFileSync } from "node:child_process";
-import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
-import { characterById, exhibits, markers, props } from "@/data/game";
+import { characterById, characters, exhibits, markers, props, vialWords } from "@/data/game";
 import { tieBreaker } from "@/data/game/story";
 
 // =====================================================================================================
 // EDIT HERE: the bar menu. Change the arrays, run `npx tsx scripts/print/exhibits.ts` again, reprint
-// docs/print/game/menu.pdf (full page) and menu-table-card.pdf (two half-page table cards).
+// docs/print/game/cocktail-menu.pdf and food-menu.pdf (two half-sheet copies of each per page).
 // =====================================================================================================
 const menuTitle = "THE BLACK VEIL";
 const menuBy = "by the House";
 const menuNotice = "Every beverage dispensed for medicinal use only";
-const menuPriceNote = "a word in the Butler's ear";
-const menuDrinks: { name: string; desc: string }[] = [
-  { name: "The House Martini", desc: "Gin and vermouth, stirred cold, an olive for the nerves. Recommended for the nervous." },
-  { name: "Bee's Knees", desc: "Gin, lemon and honey. A soothing remedy for the throat." },
-  { name: "Gin Rickey", desc: "Gin, lime and soda over ice. A cooling draught for summer ailments." },
-  { name: "Old Fashioned", desc: "Whiskey, a lump of sugar and bitters. A time-honoured restorative." },
-  { name: "Mary Pickford", desc: "Rum, pineapple and grenadine, a cherry on top. For delicate constitutions." },
-  { name: "French 75", desc: "Gin, lemon and sparkling wine. A tonic with a kick." },
-  { name: "Mint Julep", desc: "Whiskey, mint and sugar over crushed ice. A garden remedy." },
-  { name: "Temperance Tonic", desc: "No spirits whatever: ginger, lemon and soda. For the strictly abstemious." },
-  { name: "Cold Tea", desc: "The House whiskey, served in a teacup. Do not ask what is in the pot." },
-  { name: "Coffee", desc: "Hot, black and strictly medicinal." },
+const menuDrinks: { slug: string; name: string; desc: string }[] = [
+  { slug: "bees-knees", name: "The Bee's Knees", desc: "Gin \u00b7 Fresh Lemon \u00b7 Honey Syrup" },
+  { slug: "whiskey-sour", name: "Whiskey Sour", desc: "Bourbon \u00b7 Citrus \u00b7 Orange" },
+  { slug: "espresso-martini", name: "Espresso Martini", desc: "Orange Vodka \u00b7 Espresso \u00b7 Coffee Liqueur" },
+  { slug: "bloody-scary", name: "The Bloody Scary", desc: "Blood Orange \u00b7 Prosecco \u00b7 Campari \u00b7 Black Vodka" },
 ];
-const menuBitesTitle = "Light Remedies";
-const menuBites: { name: string; desc: string }[] = [
-  { name: "Devilled Eggs", desc: "A dose of paprika." },
-  { name: "Cheese and Crackers", desc: "Sharp, and easily swallowed." },
-  { name: "Olives and Pickles", desc: "Briny and beneficial." },
-  { name: "Little Sandwiches", desc: "Cucumber, ham or egg salad." },
-  { name: "Salted Nuts", desc: "Keep the strength up." },
-  { name: "Petits Fours", desc: "For the sweet-toothed invalid." },
+const menuBites: { slug: string; name: string; desc: string }[] = [
+  { slug: "stuffed-mushrooms", name: "Sausage-Stuffed Mushrooms", desc: "Savory Italian Sausage \u00b7 Mascarpone \u00b7 Parmesan \u00b7 Herbs" },
+  { slug: "salmon-sandwiches", name: "Smoked Salmon Tea Sandwiches", desc: "Smoked Salmon \u00b7 Herbed Butter \u00b7 21 Grain Bread" },
+  { slug: "meatballs", name: "Mini Italian Meatballs", desc: "Tender Italian-Style Meatballs" },
+  { slug: "shrimp-cocktail", name: "Classic Shrimp Cocktail", desc: "Chilled Shrimp \u00b7 Cocktail Sauce" },
+  { slug: "charcuterie", name: "The Black Veil Charcuterie Board", desc: "Artisan Cheeses \u00b7 Cured Meats \u00b7 Crackers \u00b7 Pepper Jam" },
 ];
 
 // =====================================================================================================
@@ -186,7 +177,7 @@ function renderExhibit(ex: Ex): string {
         <div class="tail"><div class="notes">${tail.map((t) => `<p>${esc(t)}</p>`).join("")}</div>${f}</div></div>`;
       return P("list", html, { w: 10.4, h: 7.8, seed, edges: "trbl", amp: 3 });
     }
-    case "quill":
+    case "receipts":
     case "books":
     case "vault":
     case "drafts":
@@ -201,7 +192,6 @@ function renderExhibit(ex: Ex): string {
     case "roll":
     case "boarding":
     case "housebook":
-    case "memorials":
     case "report":
     case "watch":
     case "vial":
@@ -216,7 +206,7 @@ function renderExhibit(ex: Ex): string {
 
 function renderNamed(ex: Ex, L: string[], f: string, P: (cls: string, inner: string, o: Partial<PaperOpts> & { w: number }) => string): string {
   switch (ex.id) {
-    case "quill": {
+    case "receipts": {
       const [head, ...rest] = L;
       const [t, who] = head.split(" · ");
       const html = `<div class="perf"></div><div class="pad"><div class="rh"><h1>${esc(t)}</h1><span>${esc(who ?? "")}</span></div>
@@ -336,18 +326,10 @@ function renderNamed(ex: Ex, L: string[], f: string, P: (cls: string, inner: str
     case "housebook": {
       const [head, rules, markersLine, sale] = L;
       const [t, sub] = head.split(" · ");
-      const sm = sale.match(/^(Tonight's sale: marker no\.) _+\s*(\(.*\))?$/);
+      const sm = sale.match(/^(Tonight's sale: to) _+\s*(\(.*\))?$/);
       const html = `<div class="hb"><h1>${esc(t)}</h1><div class="sub">${esc(sub ?? "")}</div></div><div class="pad"><div class="rule">${esc(rules)}</div><div class="rule">${esc(markersLine)}</div>
         <div class="rule hand">${esc(sm ? sm[1] : sale)} <span class="blank"></span> ${sm && sm[2] ? `<span class="pen">${esc(sm[2])}</span>` : ""}</div>${f}</div>`;
       return P("housebook", html, { w: 7.1, edges: "tb", amp: 2 });
-    }
-    case "memorials": {
-      const [h0, intro, notices, after] = L;
-      const [name, when] = h0.split(" · ");
-      const boxes = notices.trim().split(/\s{3,}/).map((n) => `<div class="box">${esc(stripQuotes(n))}</div>`);
-      const html = `<div class="pad"><div class="mast"><h1>${esc(name)}</h1></div><div class="dateline"><span>${esc(when ?? "")}</span><span>Manchester, N. H.</span></div>
-        <div class="head" style="font-size:19pt">${esc(stripQuotes(ex.title))}</div><p style="font:13pt/1.36 var(--serif);text-align:justify">${esc(intro)}</p>${boxes.join("")}<p style="font:italic 12.5pt/1.34 var(--serif);text-align:center">${esc(after)}</p>${f}</div>`;
-      return P("news small", html, { w: 5.8, rot: 0.5, edges: "trbl", amp: 4 });
     }
     case "report": {
       const [h0, ...rest] = L;
@@ -375,9 +357,9 @@ function renderNamed(ex: Ex, L: string[], f: string, P: (cls: string, inner: str
 
 // ---- the page plan: group order binder, table, held, scene; pieces on one page are cut apart
 const plan: string[][] = [
-  ["list"], ["books"], ["quill", "vault"], ["forged"], ["drafts"],
+  ["list"], ["books"], ["receipts", "vault"], ["forged"], ["drafts"],
   ["veil-roll"], ["clipping"], ["nightcap"],
-  ["register"], ["card", "boarding"], ["housebook", "wire"], ["roll", "memorials"], ["report"],
+  ["register"], ["card", "boarding"], ["housebook", "wire"], ["roll"], ["report"],
   ["watch", "vial", "ticket"], ["invite"],
 ];
 const planned = plan.flat();
@@ -435,9 +417,11 @@ function buildIndex() {
 
 // ---------------------------------------------------------------- tags
 function buildTags() {
-  const cells: { id: string; code: string }[] = [];
-  for (const p of props.filter((q) => q.placement === "hidden")) cells.push({ id: p.id, code: p.code }, { id: p.id, code: p.code });
-  for (const p of props.filter((q) => q.placement !== "hidden")) cells.push({ id: p.id, code: p.code });
+  const cells: { id: string; code: string; label: string }[] = [];
+  const holderFirst = (id: string | undefined) => (id ? publicName(id).split(" ")[0].replace(/,$/, "") : "?");
+  // essentials only: the hidden objects, the physical carried items and the two host props. Printed slips and papers already carry their own code.
+  for (const p of props.filter((q) => q.placement === "hidden")) cells.push({ id: p.id, code: p.code, label: `TAPE ON: ${p.generic}` });
+  for (const p of props.filter((q) => q.placement !== "hidden" && !(slipIds as readonly string[]).includes(q.id))) cells.push({ id: p.id, code: p.code, label: p.placement === "carried" ? `ON ITEM: ${p.name} (${holderFirst(p.carriedBy)})` : `HOST: ${p.name}` });
   const pages: string[] = [];
   const nPages = Math.ceil(cells.length / 12);
   for (let pg = 0; pg < nPages; pg++) {
@@ -445,10 +429,10 @@ function buildTags() {
     const html = Array.from({ length: 12 }, (_, i) => {
       const c = slice[i];
       return c
-        ? `<div class="tcell"><div class="tag chk"><div class="tt">THE BLACK VEIL</div><div class="tr"></div><div class="tc" data-pid="${c.id}" data-code="${c.code}">${c.code}</div><div class="tb"></div></div></div>`
+        ? `<div class="tcell"><div class="tag chk"><div class="tt">THE BLACK VEIL</div><div class="tr"></div><div class="tc" data-pid="${c.id}" data-code="${c.code}">${c.code}</div><div class="tb"></div></div><div class="tdest">${esc(c.label)}</div></div>`
         : `<div class="tcell empty"></div>`;
     }).join("");
-    pages.push(`<div class="page"><div class="sheettop">Tag sheet ${pg + 1} of ${nPages}: cut along the dashed lines</div><div class="tagsheet">${html}</div><div class="sheetnote">THE BLACK VEIL · code tags · matte or plain paper, black ink fill · see tag-key.pdf for which tag goes on which object</div></div>`);
+    pages.push(`<div class="page"><div class="sheettop">Tag sheet ${pg + 1} of ${nPages}: cut along the dashed lines. The small line under each tag says where it goes: trim it off after you have matched it</div><div class="tagsheet">${html}</div><div class="sheetnote">THE BLACK VEIL · code tags · matte or plain paper, black ink fill · see tag-key.pdf for which tag goes on which object</div></div>`);
   }
   return { pages: build("tags", doc("Black Veil tags", pages.join(""))), count: cells.length };
 }
@@ -461,7 +445,7 @@ function buildTagKey() {
     return `<tr><td><span class="code" data-pid="${p.id}" data-code="${p.code}">${p.code}</span></td><td>${esc(p.name)}</td><td>${esc(p.generic)}</td><td>${p.placement}${p.placement === "hidden" ? " (2 tags)" : ""}</td><td>${esc(who)}</td></tr>`;
   };
   const html = `<div style="padding:.45in .5in"><h1>HOST KEY: which tag goes on which object</h1>
-    <p>HOST ONLY. ${props.length} codes. &ldquo;Hidden&rdquo; props: tape the tag to or beside the object; two tags are printed, one is a spare. &ldquo;Carried&rdquo; props: hand the object to the named guest at the door, with its tag taped on or inside the envelope (printed slips and cards already carry their code, a tag is optional). The five survivor markers are not tags.</p>
+    <p>HOST ONLY. ${props.length} codes. &ldquo;Hidden&rdquo; props: tape the tag to or beside the object; two tags are printed, one is a spare. &ldquo;Carried&rdquo; props: hand the object to the named guest at the door, with its tag taped on or inside the envelope (printed slips and cards already carry their code, a tag is optional). The vial words are on their own slip in slips.pdf, not a tag.</p>
     <table><thead><tr><th>Code</th><th>Prop</th><th>The object in your house</th><th>Placement</th><th>Carried by / hiding hint</th></tr></thead><tbody>${sorted.map(row).join("")}</tbody></table></div>`;
   const css = `body{font-family:"Liberation Sans",Arial,sans-serif;font-size:9pt;color:#000}h1{font-size:14pt;margin:0 0 .06in}p{font-size:9pt;margin:.04in 0}table{border-collapse:collapse;width:100%;margin-top:.08in}th,td{border:.6px solid #777;padding:2px 4px;text-align:left;vertical-align:top;font-size:8.5pt}th{background:#e8e8e8}tr{break-inside:avoid}thead{display:table-header-group}.code{font:bold 11pt "FreeMono",monospace}@page{size:Letter;margin:.4in}`;
   // plain page: no .page divs, so build() cannot count; render directly
@@ -474,13 +458,54 @@ function buildTagKey() {
   return pages;
 }
 
+// ---------------------------------------------------------------- Bartend Joe's sheet
+function buildHostSheet() {
+  const approvals = characters.flatMap((c) => c.objectives.filter((o) => o.check.kind === "approval").map((o) => ({ who: c.name, title: o.title, word: (o.check as { word: string }).word })));
+  const checks: Record<string, string> = {
+    "angelos-cards": "Ask a player or two: did he deal them in?",
+    "theodor-arrest": "Did he make an arrest after the scream, before 10:15?",
+    "rebecca-scream": "Did you hear her scream at about 9:15?",
+    "erika-steal": "Ask who she robbed: did she get it, unseen?",
+    "leon-bulletin": "Hand him the bulletin; did he read it aloud?",
+    "silas-spotlight": "Did he take the floor about 8:30 for five minutes?",
+    "josh-prophecy": "After the scream, open his envelope: was he within a few minutes?",
+    "josh-fortunes": "Did he read four different guests a fortune card?",
+  };
+  const rows = characters.flatMap((c) => c.objectives.filter((o) => o.check.kind === "approval").map((o) => `<tr><td>${esc(c.name)}</td><td>${esc(o.title)}</td><td>${esc(checks[o.id] ?? "Did it happen?")}</td><td class="w">${esc((o.check as { word: string }).word)}</td></tr>`)).join("");
+  void approvals;
+  const html = `<div style="padding:.45in .55in"><h1>BARTEND JOE: your one page</h1>
+    <p>You do not need /admin until the end. The game opens on every phone by itself at <b>8:00 p.m.</b> The House closes by itself at <b>9:00</b>, and the book closes by itself at <b>10:30</b>.</p>
+    <h2>Your whole job</h2>
+    <ol>
+      <li><b>At the door:</b> hand each guest their black envelope and anything they carry.</li>
+      <li><b>When a guest comes to the bar to claim a point,</b> check it really happened (the table below), then tell them the approval word. Say a word to nobody else.</li>
+      <li><b>Fortune cards:</b> Josh collects his four fortune cards from you.</li>
+      <li><b>Josh's minute:</b> before 8:30 he tells you the minute he expects the scream. Seal it in an envelope.</li>
+      <li><b>About 9:05:</b> stage the scene (jacket, glass, empty vial, the torn scrap with the House's words, scene pages).</li>
+      <li><b>10:00 wrap-up:</b> hand Eric the <b>charter</b> (he signs it, the code is on it). Give Leon the <b>bulletin</b> to read aloud:<br><i>&ldquo;This evening the Keeper of the Black Veil was found dead at his table. The House has lifted its veil, the dead are not dead, and Manchester will hear the rest in the morning.&rdquo;</i> Then read Cassie's letter.</li>
+      <li><b>10:30:</b> everything closes. Then grade (see the run of show).</li>
+    </ol>
+    <h2>The approval words</h2>
+    <table><thead><tr><th>Guest</th><th>Claim</th><th>Check first</th><th>Word</th></tr></thead><tbody>${rows}</tbody></table>
+    <p class="note">The group races need nothing from you: the first member of each group to type all three slip codes wins the point on their own phone, and the survivors race to the cactus slip, then to the Butler (after 8:45).</p></div>`;
+  const css = `body{font-family:"Liberation Sans",Arial,sans-serif;font-size:10.5pt;color:#000}h1{font-size:17pt;margin:0 0 .08in}h2{font-size:12.5pt;margin:.18in 0 .06in}p,li{margin:.04in 0}ol{padding-left:.25in}table{border-collapse:collapse;width:100%;margin-top:.06in}th,td{border:.6px solid #777;padding:4px 6px;text-align:left;vertical-align:top;font-size:10pt}th{background:#e8e8e8}.w{font:bold 13pt "FreeMono",monospace}.note{font-size:9.5pt;color:#333;margin-top:.14in}@page{size:Letter;margin:.4in}`;
+  const htmlPath = path.join(OUT, "host-sheet.html");
+  writeFileSync(htmlPath, doc("Bartend Joe's host sheet", html, css, true));
+  execFileSync(CHROME, ["--headless", "--no-sandbox", "--disable-gpu", "--no-pdf-header-footer", `--print-to-pdf=${path.join(OUT, "host-sheet.pdf")}`, `file://${htmlPath}`], { stdio: "ignore" });
+  const n = Number(execFileSync("pdfinfo", [path.join(OUT, "host-sheet.pdf")], { encoding: "utf8" }).match(/Pages:\s+(\d+)/)?.[1]);
+  console.log(`  host-sheet.pdf  ${n} page(s)`);
+  return n;
+}
+
 // ---------------------------------------------------------------- slips
-const slipIds = ["fee-voucher", "request-card", "crate-receipt", "dismissal", "alibi-note", "fee-receipt", "pardon-slip", "pardon-receipt", "citation", "served-stub", "false-papers", "telegram-form"] as const;
+const slipIds = ["fee-voucher", "request-card", "crate-receipt", "dismissal", "pardon-slip", "pardon-receipt", "citation", "false-papers", "telegram-form", "witness-arjun", "witness-diwakar", "witness-josh", "witness-leon", "witness-sidd", "reply-angelos", "reply-eric", "reply-erika", "reply-krrish", "reply-theodor", "tool-ananya", "tool-anthony", "tool-joel", "tool-mihir", "tool-tim", "trade-anika", "trade-emre", "trade-molly", "trade-silas", "trade-tiffany", "charter"] as const;
 function slipHtml(id: (typeof slipIds)[number], copy: number): string {
   const p = props.find((q) => q.id === id) ?? fail(`prop ${id} missing`);
   const cl = `<div class="codeline">Code:<span class="code" data-pid="${p.id}" data-code="${p.code}" data-copy="${copy}">${p.code}</span></div>`;
   const leon = publicName("leon");
-  const wrap = (cls: string, inner: string) => `<div class="scell"><div class="sl chk ${cls}">${inner}${cl}</div></div>`;
+  const holderName = p.carriedBy ? publicName(p.carriedBy).split(" ")[0].replace(/,$/, "") : "";
+  const dest = copy === 2 ? "STANDBY TRAY (at the bar)" : id === "charter" ? "HOST: keep it; hand to Eric at 10:00" : holderName ? `GOES TO: ${holderName}'s envelope` : "";
+  const wrap = (cls: string, inner: string) => `<div class="scell"><div class="sdest">${esc(dest)}</div><div class="sl chk ${cls}">${inner}${cl}</div></div>`;
   switch (id) {
     case "fee-voucher":
       return wrap("cheque", `<h1>Mahns Manor</h1><h2>Voucher</h2><div class="rule"></div><p style="text-align:center">Pay to the order of</p><p style="text-align:center;font:bold 17pt var(--serif);letter-spacing:.2em;margin-top:.02in">THE BEARER</p><div class="amt">$30</div><p style="text-align:center">Thirty dollars, good at the House of Mahns.</p><div class="grow"></div><div class="sigline">Mahns Manor</div>`);
@@ -490,34 +515,56 @@ function slipHtml(id: (typeof slipIds)[number], copy: number): string {
       return wrap("rcpt", `<h1>Receipt</h1><div class="rule"></div><p>Received: <b>one crate of wine</b>.</p><p>Billed to: <b>the Bench</b>.</p><p>Delivery: <b>Fridays</b>.</p><div class="grow"></div><p style="text-align:center">&mdash; paid in full, with thanks &mdash;</p>`);
     case "dismissal":
       return wrap("court", `<h1 style="font-size:15pt">Municipal Court</h1><h2>Notice of Dismissal</h2><div class="rule"></div><p style="text-align:center;font:bold 14pt var(--serif);letter-spacing:.08em">CASE DISMISSED</p><p style="text-align:center">Case dismissed on form.</p><p style="text-align:center;font-style:italic">By order of the Bench.</p><div class="grow"></div><div class="sigline">The Bench</div>`);
-    case "alibi-note":
-      return wrap("alibi", `<h1 style="font-size:15pt">Sworn Statement</h1><div class="rule"></div><p>I swear that I was in the company of the bearer when the body was found, and that I can account for every minute of it.</p><p style="font-style:italic">Sworn and subscribed.</p><div class="grow"></div><div class="sigline">Witness</div>`);
-    case "fee-receipt":
-      return wrap("card", `<h1 style="font-size:15pt">The Black Veil</h1><h2>the House &middot; Receipt</h2><div class="rule"></div><p style="text-align:center">Received, with thanks:</p><p style="text-align:center;font:bold 26pt var(--serif);margin:.04in 0">$20</p><p style="text-align:center">Twenty dollars, for services rendered.</p><div class="grow"></div><div class="sigline">The House</div>`);
     case "pardon-slip":
       return wrap("note", `<div class="tape"></div><h1 style="font-size:20pt">Pardon</h1><div class="rule"></div><p>Be it known that the matter named in the bearer's citation is hereby pardoned, and may be torn up.</p><p style="font-style:italic">To be presented to the officer who holds the citation.</p><div class="grow"></div><div class="sigline">By a go-between</div>`);
     case "pardon-receipt":
       return wrap("rcpt", `<h1 style="font-size:15pt">Go-between's Receipt</h1><div class="rule"></div><p>Received of the bearer, in House bills, the fee for brokering a pardon.</p><p>No questions asked. No answers given.</p><div class="grow"></div><div class="sigline">The go-between</div>`);
     case "citation":
       return wrap("cit", `<h1 style="font-size:17pt">Nuisance Citation</h1><h2>Office of the Sheriff</h2><div class="rule"></div><p>Cited: <b>${esc(leon)}</b>,</p><p style="font-weight:bold">for being insufferable on the air.</p><div class="stamp">One use only</div><div class="grow"></div><div class="sigline">The Sheriff</div>`);
-    case "served-stub":
-      return wrap("stubby", `<h1>Served</h1><h2>stub</h2><div class="rule"></div><p>Citation served in person upon <b>${esc(leon)}</b>.</p><p>Received by hand, protest noted, nuisance acknowledged.</p><div class="grow"></div><div class="sigline">Received by</div>`);
     case "false-papers":
       return wrap("travel", `<div class="fold"></div><h1 style="font-size:17pt">Travel Paper</h1><h2>folded &middot; not to be opened at the door</h2><div class="rule"></div><p>The bearer is permitted to travel and to lodge under the name entered within.</p><div class="stamp" style="color:#2a2a4a;border-color:#2a2a4a">Examined</div><div class="grow"></div><div class="sigline">Issuing office</div>`);
+    case "witness-arjun":
+    case "witness-diwakar":
+    case "witness-josh":
+    case "witness-leon":
+    case "witness-sidd":
+      return wrap("court", `<h1 style="font-size:15pt">Witness Slip</h1><h2>I will swear to it</h2><div class="rule"></div><p style="text-align:center">The bearer has asked me to swear to what I saw tonight, and I have said I will.</p><div class="grow"></div><div class="sigline">Witness</div>`);
+    case "reply-angelos":
+    case "reply-eric":
+    case "reply-erika":
+    case "reply-krrish":
+    case "reply-theodor":
+      return wrap("wiref", `<h1>REPLY</h1><div class="fld">Received your message.</div><div class="fld">Answer: yes.</div><div class="fld">&nbsp;</div><div class="grow"></div><div class="sigline">Replied</div>`);
+    case "tool-ananya":
+    case "tool-anthony":
+    case "tool-joel":
+    case "tool-mihir":
+    case "tool-tim":
+      return wrap("card", `<h1 style="font-size:15pt">Tool Token</h1><h2>good for one loan</h2><div class="rule"></div><p style="text-align:center">One tool, lent to the bearer for the night: a hammer, a chisel, a file.</p><div class="grow"></div><div class="sigline">Lent by</div>`);
+    case "trade-anika":
+    case "trade-emre":
+    case "trade-molly":
+    case "trade-silas":
+    case "trade-tiffany":
+      return wrap("rcpt", `<h1 style="font-size:15pt">Trade Slip</h1><div class="rule"></div><p>One deal done, fair and square, between the bearer and the signer.</p><p>No grabbing. No regrets.</p><div class="grow"></div><div class="sigline">Dealt with</div>`);
+    case "charter":
+      return wrap("court", `<h1 style="font-size:16pt">The Charter</h1><h2>of the Black Veil</h2><div class="rule"></div><p style="text-align:center">The undersigned acknowledge that the Veil's old members live, under the names they now bear, and that the House has lifted its veil.</p><div class="grow"></div><div class="sigline">Signed, the Bench</div>`);
     case "telegram-form":
       return wrap("wiref", `<h1>TELEGRAM</h1><div class="fld">To:</div><div class="fld">&nbsp;</div><div class="fld">Message:</div><div class="fld">&nbsp;</div><div class="fld">&nbsp;</div><div class="fld">Sender:</div><div class="grow"></div>`);
   }
 }
+/** The one slip that is not for an envelope: it is hidden in the kitchen, and whoever finds it can buy the vial. */
+const vialSlipHtml = () => `<div class="scell"><div class="sdest">HIDE THIS ONE: under the cactus in the kitchen (not in any envelope)</div><div class="sl chk note"><div class="tape"></div><h1 style="font-size:13pt">The House</h1><div class="rule"></div><p style="text-align:center;font:bold 17pt var(--serif);letter-spacing:.06em;line-height:1.15">${esc(vialWords)}</p><div class="grow"></div><div class="sigline">Say it to the Butler</div></div></div>`;
 function buildSlips() {
   const pages: string[] = [];
   const mk = (copy: number) => {
     for (let i = 0; i < slipIds.length; i += 4) {
       const chunk = slipIds.slice(i, i + 4);
-      pages.push(`<div class="page">${copy === 2 ? `<div class="standby">STANDBY COPIES</div>` : ""}<div class="slipgrid">${chunk.map((id) => slipHtml(id, copy)).join("")}</div><div class="slipnote">${copy === 2 ? "STANDBY COPIES: spare set for the host's stand-in tray, if a guest is absent. " : ""}Cut on the dashed lines. Print on cream or white paper. Slips page ${pages.length + 1}</div></div>`);
+      const extra = i + 4 >= slipIds.length && chunk.length < 4 ? vialSlipHtml() : "";
+      pages.push(`<div class="page">${copy === 2 ? `<div class="standby">STANDBY COPIES</div>` : ""}<div class="slipgrid">${chunk.map((id) => slipHtml(id, copy)).join("")}${extra}</div><div class="slipnote">${copy === 2 ? "STANDBY COPIES: spare set for the host's stand-in tray, if a guest is absent. " : ""}Cut on the dashed lines (the line above each slip says whose envelope it goes in). Print on cream or white paper. Slips page ${pages.length + 1}</div></div>`);
     }
   };
   mk(1);
-  mk(2);
   return build("slips", doc("Black Veil slips", pages.join("")));
 }
 
@@ -554,32 +601,45 @@ function buildFortunes() {
   const card = (f: (typeof fortunes)[number]) =>
     `<div class="fcell"><div class="fcard chk"><div class="ft">THE SOOTHSAYER</div><svg class="ico" viewBox="0 0 90 90" fill="none" stroke="#d8b85a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">${f.icon}</svg><div class="tit">${esc(f.title)}</div><div class="or">\u2726 \u2726 \u2726</div><div class="ln">${esc(f.line)}</div></div></div>`;
   const pages: string[] = [];
-  for (let i = 0; i < fortunes.length; i += 4) pages.push(`<div class="page"><div class="fgrid">${fortunes.slice(i, i + 4).map(card).join("")}</div><div class="sheetnote">Fortune cards ${i / 4 + 1} of ${fortunes.length / 4} · twelve cards, Joshua Kamin-Sky reads four guests · cut on the dashed lines · card stock if you have it</div></div>`);
+  const printed = fortunes.slice(0, 4);
+  for (let i = 0; i < printed.length; i += 4) pages.push(`<div class="page"><div class="fgrid">${printed.slice(i, i + 4).map(card).join("")}</div><div class="sheetnote">Fortune cards ${i / 4 + 1} of ${printed.length / 4} · four cards, Joshua Kamin-Sky reads four guests · cut on the dashed lines · card stock if you have it</div></div>`);
   return build("fortune-cards", doc("Black Veil fortune cards", pages.join("")));
 }
 
 // ---------------------------------------------------------------- menu
-function menuBody(card: boolean) {
-  const it = (m: { name: string; desc: string }, price = true) => `<div class="it"><span class="nm">${esc(m.name)}</span><span class="dots"></span>${price ? `<span class="pr">${esc(menuPriceNote)}</span>` : ""}</div><div class="ds">${esc(m.desc)}</div>`;
-  const band = `<div class="band"><h1>${esc(menuTitle)}</h1><div class="by">${esc(menuBy)}</div><div class="med">${esc(menuNotice)}</div></div>`;
-  const drinks = `<div><h2>Tonics &amp; Medicines</h2>${menuDrinks.map((m) => it(m)).join("")}</div>`;
-  const bites = `<div><h2>${esc(menuBitesTitle)}</h2><div class="bites">${menuBites.map((b) => `<div>${it(b, false)}</div>`).join("")}</div></div>`;
-  const foot = `<div class="foot">All prices: ${esc(menuPriceNote)}. The House reserves the right to ask no questions.</div>`;
-  if (card) {
-    const half = Math.ceil(menuDrinks.length / 2);
-    const left = `<div><h2>Tonics &amp; Medicines</h2>${menuDrinks.slice(0, half).map((m) => it(m)).join("")}</div>`;
-    const right = `<div><h2>&nbsp;</h2>${menuDrinks.slice(half).map((m) => it(m)).join("")}</div>`;
-    const bar = `<div class="bitesrow"><b>${esc(menuBitesTitle)}:</b> ${menuBites.map((b) => esc(b.name)).join(" &middot; ")}</div>`;
-    return `${band}<div class="body">${left}${right}</div>${bar}${foot}`;
+/**
+ * Menu pictures. Drop your own picture (png, jpg or webp) into scripts/print/menu-images/ named after the item
+ * (bees-knees.png, whiskey-sour.png, ... see MENU-IMAGES.md) and it is used instead of the drawn one.
+ */
+const svg = (inner: string) => `<svg viewBox="0 0 100 100" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">${inner}</svg>`;
+const drawn: Record<string, string> = {
+  "bees-knees": svg(`<path d="M22 28 H78 Q76 56 50 62 Q24 56 22 28Z" fill="#f2d675" stroke="#5a4310" stroke-width="2.2"/><path d="M26 34 H74 Q72 52 50 57 Q28 52 26 34Z" fill="#f7e49a"/><line x1="50" y1="62" x2="50" y2="86" stroke="#5a4310" stroke-width="3"/><ellipse cx="50" cy="88" rx="17" ry="3.5" fill="none" stroke="#5a4310" stroke-width="2.6"/><path d="M68 24 Q84 20 82 36 Q74 30 68 24Z" fill="#f5c542" stroke="#8a6a1a" stroke-width="1.6"/><ellipse cx="38" cy="22" rx="7" ry="4" fill="#e8c52a" stroke="#6b5410" stroke-width="1.4"/><path d="M33 22 H43 M35 19.5 V24.5 M41 19.5 V24.5" stroke="#3a2a08" stroke-width="1.6"/>`),
+  "whiskey-sour": svg(`<path d="M26 30 H74 L70 82 Q70 86 66 86 H34 Q30 86 30 82Z" fill="#fdf3dc" fill-opacity=".55" stroke="#4a3826" stroke-width="2.4"/><path d="M29 44 H71 L68 82 Q68 84 66 84 H34 Q32 84 32 82Z" fill="#d68a24"/><rect x="40" y="52" width="9" height="9" rx="1.5" fill="#f4f4f0" fill-opacity=".85"/><rect x="52" y="62" width="9" height="9" rx="1.5" fill="#f4f4f0" fill-opacity=".85"/><circle cx="62" cy="32" r="12" fill="#f28c1e" stroke="#a85a08" stroke-width="2"/><path d="M62 32 L62 20 M62 32 L72 26 M62 32 L72 38 M62 32 L62 44 M62 32 L52 38 M62 32 L52 26" stroke="#fbd28a" stroke-width="1.5"/><circle cx="40" cy="30" r="5" fill="#a3122a"/><path d="M40 25 Q44 16 50 14" fill="none" stroke="#3a5a2a" stroke-width="1.8"/>`),
+  "espresso-martini": svg(`<path d="M14 24 H86 L50 62Z" fill="#3a2214" stroke="#2a1a10" stroke-width="2.4"/><path d="M14 24 H86 L80 30 H20Z" fill="#e9d2a8"/><line x1="50" y1="62" x2="50" y2="86" stroke="#2a1a10" stroke-width="3"/><ellipse cx="50" cy="88" rx="18" ry="3.5" fill="none" stroke="#2a1a10" stroke-width="2.6"/><ellipse cx="40" cy="27" rx="4" ry="2.6" fill="#4a2a14" stroke="#2a1608" stroke-width="1" transform="rotate(-20 40 27)"/><ellipse cx="50" cy="27" rx="4" ry="2.6" fill="#4a2a14" stroke="#2a1608" stroke-width="1"/><ellipse cx="60" cy="27" rx="4" ry="2.6" fill="#4a2a14" stroke="#2a1608" stroke-width="1" transform="rotate(20 60 27)"/>`),
+  "bloody-scary": svg(`<path d="M38 12 H62 L60 52 Q58 64 50 66 Q42 64 40 52Z" fill="#fdf3dc" fill-opacity=".5" stroke="#3a1a1a" stroke-width="2.4"/><path d="M40 28 H60 L59 52 Q57 62 50 64 Q43 62 41 52Z" fill="#b3201a"/><path d="M41 44 H59 L58.5 52 Q57 62 50 64 Q43 62 41.5 52Z" fill="#241012"/><line x1="50" y1="66" x2="50" y2="86" stroke="#3a1a1a" stroke-width="3"/><ellipse cx="50" cy="88" rx="15" ry="3.5" fill="none" stroke="#3a1a1a" stroke-width="2.6"/><circle cx="64" cy="18" r="11" fill="#d1401a" stroke="#8a2408" stroke-width="2"/><path d="M64 18 L64 8 M64 18 L72 13 M64 18 L72 24 M64 18 L64 28 M64 18 L56 24 M64 18 L56 13" stroke="#f3a07a" stroke-width="1.4"/><path d="M30 20 Q34 14 40 16" stroke="#3a1a1a" stroke-width="1.8" fill="none"/>`),
+  "stuffed-mushrooms": svg(`<g><path d="M14 52 Q14 26 38 26 Q62 26 62 52Z" fill="#c79a6a" stroke="#6b4a26" stroke-width="2.2"/><ellipse cx="38" cy="51" rx="21" ry="5" fill="#8a5a2e"/><circle cx="30" cy="48" r="3" fill="#a8421e"/><circle cx="40" cy="47" r="3.4" fill="#d9c37a"/><circle cx="47" cy="49" r="2.6" fill="#a8421e"/><rect x="34" y="52" width="9" height="14" rx="3" fill="#e8d3b0" stroke="#6b4a26" stroke-width="1.6"/></g><g><path d="M46 78 Q46 56 66 56 Q86 56 86 78Z" fill="#c79a6a" stroke="#6b4a26" stroke-width="2.2"/><ellipse cx="66" cy="77" rx="18" ry="4.5" fill="#8a5a2e"/><circle cx="60" cy="74" r="2.8" fill="#a8421e"/><circle cx="69" cy="73" r="3" fill="#d9c37a"/><circle cx="75" cy="75" r="2.4" fill="#4a7a2a"/></g>`),
+  "salmon-sandwiches": svg(`<g><path d="M10 70 L40 18 L70 70Z" fill="#f1e2bf" stroke="#8a6a2a" stroke-width="2.2"/><path d="M16 66 L40 26 L64 66Z" fill="#e87a5a"/><path d="M20 64 L40 31 L60 64Z" fill="#f0a58a"/><circle cx="40" cy="48" r="3" fill="#4a7a2a"/></g><g><path d="M40 90 L70 38 L98 90Z" fill="#f1e2bf" stroke="#8a6a2a" stroke-width="2.2" transform="translate(-6 -6)"/><path d="M46 86 L70 46 L92 86Z" fill="#e87a5a" transform="translate(-6 -6)"/><path d="M50 84 L70 51 L88 84Z" fill="#f0a58a" transform="translate(-6 -6)"/><circle cx="64" cy="68" r="3" fill="#4a7a2a"/></g>`),
+  "meatballs": svg(`<ellipse cx="50" cy="74" rx="40" ry="14" fill="#f4f0e6" stroke="#8a8a8a" stroke-width="2"/><ellipse cx="50" cy="72" rx="32" ry="9" fill="#c7391f"/><circle cx="36" cy="58" r="14" fill="#7a3a1a" stroke="#4a200c" stroke-width="2"/><circle cx="62" cy="58" r="14" fill="#8a4620" stroke="#4a200c" stroke-width="2"/><circle cx="50" cy="42" r="14" fill="#6e3216" stroke="#4a200c" stroke-width="2"/><path d="M44 30 Q52 18 62 24 Q56 34 44 30Z" fill="#3f8a2e" stroke="#25601a" stroke-width="1.4"/>`),
+  "shrimp-cocktail": svg(`<path d="M24 38 H76 L66 66 Q64 72 56 72 H44 Q36 72 34 66Z" fill="#fdf3dc" fill-opacity=".55" stroke="#3a3a3a" stroke-width="2.4"/><path d="M28 48 H72 L65 66 Q63 70 56 70 H44 Q37 70 35 66Z" fill="#c42a1a"/><line x1="50" y1="72" x2="50" y2="86" stroke="#3a3a3a" stroke-width="3"/><ellipse cx="50" cy="88" rx="16" ry="3.5" fill="none" stroke="#3a3a3a" stroke-width="2.6"/><path d="M26 38 Q22 18 40 20 Q50 22 42 34 Q34 30 34 38Z" fill="#f08a6a" stroke="#b5502a" stroke-width="1.8"/><path d="M74 38 Q80 16 60 20 Q50 22 58 34 Q66 30 66 38Z" fill="#f08a6a" stroke="#b5502a" stroke-width="1.8"/><path d="M82 70 L96 56 Q98 76 84 80Z" fill="#f3d94a" stroke="#a88a10" stroke-width="1.8"/>`),
+  "charcuterie": svg(`<ellipse cx="50" cy="56" rx="46" ry="34" fill="#a8743a" stroke="#6b4720" stroke-width="2.4"/><path d="M22 40 L44 30 L44 50Z" fill="#f6d65a" stroke="#a8861a" stroke-width="1.8"/><circle cx="32" cy="42" r="1.6" fill="#d9b030"/><circle cx="38" cy="40" r="1.6" fill="#d9b030"/><circle cx="58" cy="36" r="9" fill="#b02a2a" stroke="#6a1212" stroke-width="1.6"/><circle cx="72" cy="46" r="9" fill="#c23a3a" stroke="#6a1212" stroke-width="1.6"/><circle cx="62" cy="52" r="3" fill="#f1c0c0"/><rect x="26" y="58" width="13" height="13" rx="2" fill="#e9c98a" stroke="#8a6a2a" stroke-width="1.6"/><rect x="42" y="62" width="13" height="13" rx="2" fill="#e9c98a" stroke="#8a6a2a" stroke-width="1.6"/><circle cx="70" cy="66" r="8" fill="#5a1a3a" stroke="#2a0a1a" stroke-width="1.6"/><circle cx="70" cy="66" r="4.5" fill="#8a2a5a"/>`),
+};
+function menuPicture(slug: string): string {
+  const dir = path.join(ROOT, "scripts/print/menu-images");
+  for (const ext of ["png", "jpg", "jpeg", "webp"]) {
+    const file = path.join(dir, `${slug}.${ext}`);
+    if (existsSync(file)) return `<img src="data:image/${ext === "jpg" ? "jpeg" : ext};base64,${readFileSync(file).toString("base64")}" style="width:100%;height:100%;object-fit:cover;border-radius:.08in">`;
   }
-  return `${band}<div class="body">${drinks}${bites}</div>${foot}`;
+  return drawn[slug] ?? "";
 }
-function buildMenu() {
-  const full = `<div class="page"><div class="menu">${menuBody(false)}</div></div>`;
-  const a = build("menu", doc("Black Veil menu", full));
-  const cards = `<div class="page"><div class="menu mcard chk" style="left:.2in;top:.15in">${menuBody(true)}</div><div class="cutpage"></div><div class="menu mcard chk" style="left:.2in;top:5.65in">${menuBody(true)}</div></div>`;
-  const b = build("menu-table-card", doc("Black Veil table card", cards));
-  return a + b;
+/** One half-sheet menu: the title band, a heading, and each item with its picture. */
+function menuHalf(top: string, heading: string, items: { slug: string; name: string; desc: string }[], foot: string) {
+  const rows = items.map((m) => `<div class="mrow"><span class="mico">${menuPicture(m.slug)}</span><div><div class="nm">${esc(m.name)}</div><div class="ds">${esc(m.desc)}</div></div></div>`).join("");
+  return `<div class="menu mhalf chk${items.length > 4 ? " dense" : ""}" style="top:${top}"><div class="band"><h1>${esc(menuTitle)}</h1><div class="by">${esc(menuBy)}</div></div><h2>${esc(heading)}</h2><div class="mbody">${rows}</div><div class="foot">${esc(foot)}</div></div>`;
+}
+function buildMenus() {
+  const make = (file: string, heading: string, items: { slug: string; name: string; desc: string }[], foot: string) =>
+    build(file, doc(`Black Veil ${heading}`, `<div class="page">${menuHalf(".15in", heading, items, foot)}<div class="cutpage"></div>${menuHalf("5.65in", heading, items, foot)}</div>`));
+  return { cocktail: make("cocktail-menu", "Cocktail Menu", menuDrinks, menuNotice), food: make("food-menu", "Food Menu", menuBites, "The House reserves the right to ask no questions") };
 }
 
 // ---------------------------------------------------------------- verification
@@ -600,17 +660,18 @@ function verifyCodes() {
     if (n < min) fail(`${name}: ${id} appears ${n} times, expected at least ${min}`);
   };
   for (const e of exhibits) need("exhibits", e.id, 1);
-  for (const p of props) need("tags", p.id, p.placement === "hidden" ? 2 : 1);
+  for (const p of props.filter((q) => q.placement === "hidden" || !(slipIds as readonly string[]).includes(q.id))) need("tags", p.id, 1);
   for (const p of props) need("tag-key", p.id, 1);
-  for (const id of slipIds) need("slips", id, 2);
+  for (const id of slipIds) need("slips", id, 1);
   // the PDFs themselves: every code must be in the extracted text
   const text = (name: string) => execFileSync("pdftotext", ["-layout", path.join(OUT, `${name}.pdf`), "-"], { encoding: "utf8" }).replace(/\s+/g, "");
   const exT = text("exhibits");
   for (const e of exhibits) if (!exT.includes(e.code)) fail(`exhibits.pdf text lacks ${e.code}`);
   const tagT = text("tags");
-  for (const p of props) if (!tagT.includes(p.code)) fail(`tags.pdf text lacks ${p.code}`);
+  for (const p of props.filter((q) => q.placement === "hidden" || !(slipIds as readonly string[]).includes(q.id))) if (!tagT.includes(p.code)) fail(`tags.pdf text lacks ${p.code}`);
   const slipT = text("slips");
   for (const id of slipIds) if (!slipT.includes(props.find((p) => p.id === id)!.code)) fail(`slips.pdf text lacks ${id}`);
+  if (!slipT.includes(vialWords.replace(/\s+/g, ""))) fail("slips.pdf lacks the vial words slip");
   if (exT.includes("11:12PM") === false) fail("tie-breaker stub missing 11:12 PM");
   // the tie-breaker must have no filing code, and the HTML must not mention it twice
   console.log(`  verified ${checked} printed codes against the data`);
@@ -629,16 +690,17 @@ All PDFs are US Letter. Print at 100% / "Actual size" (not "Fit to page"), with 
 | \`exhibits.pdf\` | ${pages.exhibits} | 1 | Cream or ivory 24 lb paper (a tea-stained look is welcome) | Every exhibit as its in-world document. Cut pieces apart on the dotted lines, tear or trim round the ragged edges by hand. **Trim the tiny grey line at the bottom of each page off**: it says where the prop goes. The List is printed landscape (page 1); the printer may rotate it. The last page is the HOST ONLY tie-breaker stub: it goes in the LINING of the dead man's jacket, never on a table. |
 | \`exhibits-index.pdf\` | ${pages["exhibits-index"]} | 1 | Plain | HOST ONLY. Every exhibit: page, id, code, where it goes, who holds it, and the tie-breaker question and answer. |
 | \`tags.pdf\` | ${pages.tags} | 1 | Matte white or cream card stock (65 lb) | ${tagCount} tags (3 x 4 per sheet): two of every hidden prop (one spare), one of each carried and table prop. Black fill uses a lot of ink; a laser printer is best. Cut along the dashed grid, tape each tag to or beside its object. No object name is on a tag. |
-| \`tag-key.pdf\` | ${pages["tag-key"]} | 1 | Plain | HOST ONLY. Code, prop, the object in your house, placement, carrier or hiding hint. The five survivor markers (numbers 18 to 22) are not tags and are not in this file. |
-| \`slips.pdf\` | ${pages.slips} | 1 set + a STANDBY set (last ${pages.slips / 2} pages) | Cream paper or light card | The 12 printed deal slips and carried items, each with its own code, exactly once. Pages ${pages.slips / 2 + 1} to ${pages.slips} are STANDBY COPIES for the stand-in tray, marked in the top margin (trim it off). |
-| \`vial-labels.pdf\` | ${pages["vial-labels"]} | 1 | Cream paper; use a glue stick or double-sided tape | Row 1: the real HOUSE STOCK label (2 copies). Rows 2 to 4: decoys (Camphor Spirits, Spirits of Hartshorn, Oil of Wintergreen), 2 each. Bottles hold WATER ONLY, never oils. |
+| \`tag-key.pdf\` | ${pages["tag-key"]} | 1 | Plain | HOST ONLY. Code, prop, the object in your house, placement, carrier or hiding hint. The vial words slip is not a tag; it is in slips.pdf. |
+| \`slips.pdf\` | ${pages.slips} | 1 set + a STANDBY set (last ${pages.slips / 2} pages) | Cream paper or light card | The 30 printed slips plus the one vial words slip (hide it under the kitchen cactus; it goes in no envelope), each with its own code, exactly once: the deal slips and carried items, the twenty group-race slips (witness, reply, tool, trade: five of each) and the charter Eric signs. Pages ${pages.slips / 2 + 1} to ${pages.slips} are STANDBY COPIES for the stand-in tray, marked in the top margin (trim it off). |
+| \`host-sheet.pdf\` | ${pages["host-sheet"]} | 1 | Plain | HOST ONLY. Bartend Joe's one page: what to hand out and when, and every approval word with what to check before you give it. |
+| \`vial-labels.pdf\` | ${pages["vial-labels"]} | 1 | Cream paper; use a glue stick or double-sided tape | Row 1: the real HOUSE STOCK label (2 copies). Rows 2 to 4: OPTIONAL decoys, skip them if you have no spare bottles (Camphor Spirits, Spirits of Hartshorn, Oil of Wintergreen), 2 each. Bottles hold WATER ONLY, never oils. |
 | \`fortune-cards.pdf\` | ${pages["fortune-cards"]} | 1 | Card stock (65 to 80 lb), cream or white | 12 cards, 4 per sheet. Joshua Kamin-Sky reads four guests; each guest keeps the card. Cut on the dashed lines. |
-| \`menu.pdf\` | ${pages.menu} | 1 to 2 | Cream paper | Full-page bar menu (frame it by the bar). |
-| \`menu-table-card.pdf\` | ${pages["menu-table-card"]} | 1 sheet (makes 2 cards) | Card stock | Two half-page table cards: cut across the dashed line at mid-page. |
+| \`cocktail-menu.pdf\` | ${pages["cocktail-menu"]} | 1 sheet (makes 2 menus) | Cream paper | Cut across the dashed line. |
+| \`food-menu.pdf\` | ${pages["food-menu"]} | 1 sheet (makes 2 menus) | Cream paper | Cut across the dashed line. |
 
 ## Editing the menu
 
-The drink and bite lists are plain arrays at the top of \`scripts/print/exhibits.ts\` (\`menuDrinks\`, \`menuBites\`, plus \`menuTitle\`, \`menuBy\`, \`menuNotice\`, \`menuPriceNote\`). Change them, run \`npx tsx scripts/print/exhibits.ts\`, and reprint \`menu.pdf\` and \`menu-table-card.pdf\`. The bites are placeholders: swap in whatever you are serving.
+The drink and bite lists are plain arrays at the top of \`scripts/print/exhibits.ts\` (\`menuDrinks\`, \`menuBites\`, plus \`menuTitle\`, \`menuBy\`, \`menuNotice\`). Change them, run \`npx tsx scripts/print/exhibits.ts\`, and reprint \`menu.pdf\` and \`menu-table-card.pdf\`. The lists match the menu you are serving; edit them there if it changes.
 
 ## Cutting tips
 
@@ -660,12 +722,13 @@ pages["exhibits-index"] = buildIndex();
 const t = buildTags();
 pages.tags = t.pages;
 pages["tag-key"] = buildTagKey();
+pages["host-sheet"] = buildHostSheet();
 pages.slips = buildSlips();
 pages["vial-labels"] = buildVials();
 pages["fortune-cards"] = buildFortunes();
-const menuPages = buildMenu();
-pages.menu = 1;
-pages["menu-table-card"] = menuPages - 1;
+const menus = buildMenus();
+pages["cocktail-menu"] = menus.cocktail;
+pages["food-menu"] = menus.food;
 void markers;
 verifyCodes();
 writeReadme(pages, t.count);

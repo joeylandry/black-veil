@@ -984,6 +984,7 @@ img { max-width: 100%; height: auto; }
 .game-chip { display: inline-block; margin-right: .5rem; padding: .05rem .5rem; font-family: var(--font-sans), Arial, sans-serif; font-size: .58rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--charcoal); background: var(--steel); vertical-align: .1em; }
 .game-chip-secret { color: var(--paper-light); background: var(--oxblood); }
 .game-chip-trade { background: var(--brass); }
+.game-chip-paid { color: var(--paper-light); background: #5b4a1e; }
 .game-chip-free { background: #7d8a73; }
 .game-errands { list-style: none; padding: 0 !important; display: grid; gap: 1rem; }
 .game-errand { margin: 0 !important; padding: 1rem; background: #1c1a16; border: 1px solid #3a3426; }
@@ -1023,6 +1024,52 @@ img { max-width: 100%; height: auto; }
 .game-awards li { display: grid; gap: .1rem; margin-bottom: .6rem; }
 .game-awards strong { font-family: var(--font-sans), Arial, sans-serif; font-size: .66rem; letter-spacing: .1em; text-transform: uppercase; color: var(--brass); }
 .game-app details summary { cursor: pointer; margin-top: .8rem; color: var(--brass); }
+
+/* Card restyle: glance list, strip, errand states, clue groups */
+.game-app ~ .game-brief { display: none; }
+.game-strip { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1rem 0 0; }
+.game-strip span { padding: .3rem .7rem; font-family: var(--font-sans), Arial, sans-serif; font-size: .64rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #cbbf9f; border: 1px solid var(--gold-muted); }
+.game-strip b { color: var(--brass); font-size: .9rem; letter-spacing: 0; }
+.game-glance { background: #1c1a16; border-left: 3px solid var(--brass); }
+.game-glance-count { margin-bottom: .6rem !important; }
+.game-glance-count strong { font-family: var(--font-display); font-size: 1.6rem; color: var(--brass); }
+.game-glance-list { list-style: none; padding: 0 !important; display: grid; gap: .35rem; }
+.game-glance-list a { display: flex; gap: .7rem; align-items: center; min-height: 44px; padding: .35rem .6rem; color: var(--paper-light); text-decoration: none; background: #151410; border: 1px solid #3a3426; }
+.game-glance-list span { flex: 0 0 auto; display: grid; place-items: center; width: 1.6rem; height: 1.6rem; font-family: var(--font-display); font-size: .95rem; color: var(--charcoal); background: var(--brass); border-radius: 50%; }
+.game-glance-list li.done a { color: #a8b89b; border-color: #4a6b4a; }
+.game-glance-list li.done span { background: #7d8a73; }
+.game-glance-more { margin: .8rem 0 0 !important; font-size: .85rem; color: #cbbf9f; }
+.game-town h4 { margin-top: 1rem; }
+.game-town p { color: #cbbf9f; }
+.game-pill { display: inline-block; margin-right: .3rem; padding: .02rem .5rem; font-family: var(--font-sans), Arial, sans-serif; font-size: .58rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--brass); border: 1px solid var(--gold-muted); }
+.game-errand { scroll-margin-top: 1rem; border-left: 3px solid var(--brass); }
+.game-errand.done { border-left-color: #7d8a73; background: #181a15; }
+.game-errand.done .game-errand-no { background: #7d8a73; }
+.game-errand > p { color: #e6dcc0; }
+.game-with { padding: .4rem .6rem; background: rgba(154, 123, 66, .12); }
+.game-with span { margin-right: .4rem; font-family: var(--font-sans), Arial, sans-serif; font-size: .6rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+.game-race { background: #1f1613; border-left: 3px solid var(--oxblood); }
+.game-race h3 { font-size: 1.3rem; }
+.game-cash { display: flex; flex-wrap: wrap; align-items: baseline; gap: .6rem; }
+.game-cash strong { font-family: var(--font-display); font-size: 2.2rem; color: var(--brass); }
+.game-cash span { font-size: .85rem; color: #cbbf9f; }
+.game-carry { list-style: none; padding: 0 !important; display: flex; flex-wrap: wrap; gap: .4rem; }
+.game-carry li { margin: 0 !important; padding: .25rem .7rem; border: 1px solid var(--gold-muted); }
+.game-clue-group { margin-bottom: 1rem; padding: .7rem .8rem; background: #1c1a16; border: 1px solid #2c2820; }
+.game-clue-head { margin: 0 0 .5rem !important; }
+.game-clue-head small { display: block; margin-top: .25rem; }
+.game-lines li { padding-left: .2rem; }
+.game-answered strong, .game-points { color: var(--brass); }
+.game-question { padding-bottom: 1.2rem; border-bottom: 1px dashed #2c2820; }
+.game-question:last-child { border-bottom: 0; }
+.game-tabs button { min-height: 46px; }
+.game-tell { margin-top: .6rem; }
+@media (max-width: 560px) {
+  .game-app { margin: 1rem 0; }
+  .game-panel, .game-header { padding-left: 1rem; padding-right: 1rem; }
+  .game-submit button, .game-codebox button { width: 100%; min-height: 46px; }
+  .game-app input[type="text"], .game-app input:not([type]), .game-app textarea, .game-app select { font-size: 16px; min-height: 46px; }
+}
 
 /* Staff office: the game master panel */
 .admin-game-flags { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: .6rem; margin-bottom: 1rem; }

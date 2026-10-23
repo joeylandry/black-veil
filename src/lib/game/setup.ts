@@ -1,6 +1,6 @@
 /**
  * One-click database setup for the game, run from the /admin panel using the site's own
- * database connection. It is the same change as drizzle/0002_game_engine.sql, written so it is
+ * database connection. It is the same change as drizzle/0002_game_engine.sql and 0003_half_points.sql, written so it is
  * safe to run any number of times: every statement checks before it creates.
  *
  * Use it instead of `npm run db:migrate` when you cannot run commands against the database.
@@ -32,8 +32,8 @@ export const setupStatements: string[] = [
     "kind" text NOT NULL,
     "item_id" text NOT NULL,
     "verdict" text NOT NULL,
-    "points" integer NOT NULL,
-    "max" integer NOT NULL,
+    "points" double precision NOT NULL,
+    "max" double precision NOT NULL,
     "rationale" text DEFAULT '' NOT NULL,
     "needs_review" boolean DEFAULT false NOT NULL,
     "source" text DEFAULT 'auto' NOT NULL,
@@ -50,6 +50,9 @@ export const setupStatements: string[] = [
     "created_at" timestamp with time zone DEFAULT now() NOT NULL
   )`,
   `ALTER TABLE "characters" ADD COLUMN IF NOT EXISTS "game_key" text`,
+  // drizzle/0003_half_points.sql: half points exist now (a wrong survivor guess costs half a point)
+  `ALTER TABLE "game_grades" ALTER COLUMN "points" SET DATA TYPE double precision`,
+  `ALTER TABLE "game_grades" ALTER COLUMN "max" SET DATA TYPE double precision`,
   guard("game_events_guest_id_guests_id_fk", "game_events", `FOREIGN KEY ("guest_id") REFERENCES "public"."guests"("id") ON DELETE no action ON UPDATE no action`),
   guard("game_events_by_guest_id_guests_id_fk", "game_events", `FOREIGN KEY ("by_guest_id") REFERENCES "public"."guests"("id") ON DELETE no action ON UPDATE no action`),
   guard("game_grades_guest_id_guests_id_fk", "game_grades", `FOREIGN KEY ("guest_id") REFERENCES "public"."guests"("id") ON DELETE no action ON UPDATE no action`),

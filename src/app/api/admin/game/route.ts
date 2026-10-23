@@ -1,3 +1,4 @@
+import { eventConfig } from "@/config/event";
 import { NextRequest, NextResponse } from "next/server";
 import { characterById } from "@/data/game";
 import { adminDatabaseError, adminGuard } from "@/lib/auth/admin";
@@ -15,6 +16,8 @@ import {
   runGrading,
   seedCast,
   standingsNow,
+  startGame,
+  stopGame,
   unpublishResults,
   writeFlag,
 } from "@/lib/game/service";
@@ -53,6 +56,12 @@ export async function POST(request: NextRequest) {
     switch (action) {
       case "setup-database":
         return reply({ ok: true, ...(await setupGameDatabase(db)) });
+      case "start-game":
+        await startGame(db);
+        return reply({ ok: true });
+      case "stop-game":
+        await stopGame(db);
+        return reply({ ok: true });
       case "seed-cast": {
         const seeded = await seedCast(db);
         const cast = await castByName(db);
@@ -93,7 +102,7 @@ export async function POST(request: NextRequest) {
         return reply({ ok: true });
       }
       case "butler-sell":
-        return reply(await butlerSell(db, null, String(body.code ?? "")));
+        return reply(await butlerSell(db, null, String(body.code ?? ""), String(body.slug ?? ""), new Date(Math.max(Date.now(), new Date(eventConfig.vialOpensAt).getTime()))));
       case "assign-vial": {
         const ok = await assignVial(db, String(body.slug ?? ""));
         return ok ? reply({ ok: true }) : reply({ error: "That guest is not a registered survivor." }, 400);

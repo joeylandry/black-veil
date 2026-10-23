@@ -14,7 +14,7 @@ export type FactId = string;
 export type ExhibitId = string;
 export type PropId = string;
 
-export type CircleId = "gilded" | "order" | "stage" | "working" | "river";
+export type CircleId = "survivors" | "order" | "stage" | "working" | "river";
 
 export type Circle = {
   id: CircleId;
@@ -23,8 +23,21 @@ export type Circle = {
   blurb: string;
 };
 
+/** A group's race for one extra point: the first member to finish it wins. */
+export type Race = {
+  circle: CircleId;
+  title: string;
+  text: string;
+  ask: string;
+  /** The slips in play, each carried by a different guest outside the group. Empty for the survivors, whose race is the vial. */
+  tokens: PropId[];
+  /** How many different slips the racer must hold to finish. */
+  need: number;
+};
+
 /** How freely a card line may be repeated. Private cards mark each line, so guests know what is theirs to trade. */
-export type Share = "free" | "trade" | "secret";
+/** "paid": the holder sells it for one House bill ($100). */
+export type Share = "free" | "trade" | "paid" | "secret";
 
 export type Line = { text: string; share: Share };
 
@@ -78,11 +91,11 @@ export type ObjectiveKind =
   | "learn"
   | "swap"
   | "money"
-  | "hide"
-  | "seek"
   | "story"
   | "chain"
   | "motive"
+  | "keep"
+  | "approval"
   | "role";
 
 export type Check =
@@ -94,16 +107,23 @@ export type Check =
   | { kind: "guest"; guest: GuestId }
   /** The answer is a dollar amount of at least `min`. */
   | { kind: "money"; min: number }
-  /** Hide a secret affair: scored by the absence of correct "seek" answers naming you. */
-  | { kind: "hide"; partner: GuestId }
-  /** Seek secret affairs: name two guests who are secretly together. `pairs` are the truths. */
-  | { kind: "seek"; pairs: [GuestId, GuestId][] }
   /** Made an offer to the Butler (recorded by the Butler's phone, not by the guest). */
   | { kind: "vial-attempt" }
   /** The Butler (or Joe, standing in) made the night's sale. Recorded by the Butler's phone. */
   | { kind: "butler-sale" }
   /** The answer is a clock time on the party night, from `from` to `to` inclusive, as "HH:MM" on a 24-hour clock. */
   | { kind: "clock"; from: string; to: string }
+  /**
+   * Something the game master confirms in person. The guest claims the point on their phone and types
+   * the approval word the host gives them once it has really happened. The word never leaves the server.
+   */
+  | { kind: "approval"; word: string }
+  /**
+   * Keep your own small secret: it counts when the seeker you chose learned it (their answer to
+   * `seekerObjective` is accepted) and the rival did not (their answer to `rivalObjective` is not).
+   * Scored from the other two guests' answers, not from anything you type.
+   */
+  | { kind: "keep"; seeker: GuestId; seekerObjective: string; rival: GuestId; rivalObjective: string }
   /** Nothing automatic can judge it: always sent to Claude or staff. */
   | { kind: "manual"; rubric: string };
 
@@ -145,8 +165,6 @@ export type Survivor = {
   motiveKeys: Pattern;
   /** The fact id that lets other guests learn this motive. */
   motiveFact: FactId;
-  /** The withdrawn memorial notice, if any. */
-  memorial?: string;
 };
 
 export type Character = {

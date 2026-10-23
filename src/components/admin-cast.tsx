@@ -16,12 +16,13 @@ type CastData = {
   }[];
 };
 
-/** Who is coming, who each guest will be, sign in as them, and the one switch that shows guests their characters. */
+/** Who is coming, who each guest will be, sign in as them, and the one button that starts the game. */
 export function AdminCast({ secret }: { secret: string }) {
   const [data, setData] = useState<CastData | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+  const [approvals, setApprovals] = useState<{ guest: string; title: string; word: string }[]>([]);
   const router = useRouter();
   const headers = { "Content-Type": "application/json", Authorization: `Bearer ${secret}` };
 
@@ -41,13 +42,22 @@ export function AdminCast({ secret }: { secret: string }) {
     load();
   }, [load]);
 
-  async function post(body: unknown, failure: string) {
+  useEffect(() => {
+    // the words the host gives out when something has really happened; read-only, staff eyes only
+    fetch("/api/admin/game", { headers: { Authorization: `Bearer ${secret}` }, cache: "no-store" })
+      .then((response) => (response.ok ? response.json() : null))
+      .then((body) => setApprovals(Array.isArray(body?.approvals) ? body.approvals : []))
+      .catch(() => setApprovals([]));
+  }, [secret]);
+
+  async function startGame() {
+    if (!window.confirm("Start the game? Every guest will see their public card, private card and objectives right now.")) return;
     setBusy(true);
     setNotice(null);
-    const response = await fetch("/api/admin/roster", { method: "POST", headers, body: JSON.stringify(body) }).catch(() => null);
+    const response = await fetch("/api/admin/game", { method: "POST", headers, body: JSON.stringify({ action: "start-game" }) }).catch(() => null);
     if (!response?.ok) {
       const result = await response?.json().catch(() => null);
-      setNotice(result?.error ?? failure);
+      setNotice(result?.error ?? "The game could not be started. Try again.");
     }
     await load();
     setBusy(false);
@@ -82,14 +92,25 @@ export function AdminCast({ secret }: { secret: string }) {
           <p className="admin-panel-note">{coming.length} coming, {withCharacter} with a character{regrets.length ? `, ${regrets.length} sent regrets` : ""}.</p>
         </div>
         <div className={data.released ? "staff-release staff-release-on" : "staff-release"}>
-          <strong>{data.released ? "Character names are visible to guests" : "Character names are hidden"}</strong>
-          <small>{data.released ? "Guests see their character and everyone's role." : "Guests see \"coming very soon\"."}</small>
-          <button type="button" className="admin-primary" disabled={busy} onClick={() => post({ released: !data.released }, "That did not save.")}>
-            {data.released ? "Hide character names" : "Release character names"}
+          <strong>{data.released ? "The game has started" : "The game has not started"}</strong>
+          <small>{data.released ? "Every guest can see their public card, private card and objectives." : "It opens by itself at 8:00 p.m. on the night. Press the button only to open it early."}</small>
+          <button type="button" className="admin-primary" disabled={busy || data.released} onClick={startGame}>
+            {data.released ? "Game started" : "Start game"}
           </button>
         </div>
       </div>
       {notice && <p className="admin-notice" role="status">{notice}</p>}
+
+      {approvals.length > 0 && (
+        <details className="staff-approvals">
+          <summary>Approval words ({approvals.length}): give one only after you have seen it happen</summary>
+          <ul>
+            {approvals.map((entry) => (
+              <li key={`${entry.guest}-${entry.title}`}><strong>{entry.guest}</strong>: {entry.title} → <code>{entry.word}</code></li>
+            ))}
+          </ul>
+        </details>
+      )}
 
       <ul className="staff-cast-list">
         {ordered.map((guest) => (

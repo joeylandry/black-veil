@@ -4,13 +4,14 @@
  * seed printed on the Final Edition, so there is always exactly one winner.
  *
  * The ladder is built so that a guest who finishes every errand but never works out the
- * story cannot win: the three mysteries (100) outweigh every objective together (60).
+ * story cannot win: the three mysteries (10) are worth double every objective together (5).
  */
 import { createHash } from "node:crypto";
 import { characterById, circles } from "@/data/game";
+import { round2 } from "./text";
 import type { GradeItem, Standing, Standings, Submission, Tiers, Truth, VerdictOverride } from "./types";
 
-export const TIE_ORDER = ["total", "mysteries", "killerPoints", "survivors", "objectives", "exhibits", "lastSubmissionAt", "hash"] as const;
+export const TIE_ORDER = ["total", "mysteries", "killerPoints", "survivors", "objectives", "lastSubmissionAt", "hash"] as const;
 
 /** Applies Claude's or staff's decisions on top of the automatic grades. Unknown items are reported, never silently dropped. */
 export function applyOverrides(items: GradeItem[], overrides: VerdictOverride[]): { items: GradeItem[]; unmatched: VerdictOverride[]; invalid: string[] } {
@@ -39,13 +40,13 @@ export function applyOverrides(items: GradeItem[], overrides: VerdictOverride[])
 }
 
 function tierOf(items: GradeItem[]): Tiers {
-  const sum = (predicate: (entry: GradeItem) => boolean) => items.filter(predicate).reduce((total, entry) => total + entry.points, 0);
+  const sum = (predicate: (entry: GradeItem) => boolean) => round2(items.filter(predicate).reduce((total, entry) => total + entry.points, 0));
   return {
     objectives: sum((entry) => entry.kind === "objective"),
-    exhibits: sum((entry) => entry.kind === "exhibit"),
     survivors: sum((entry) => entry.kind === "survivors"),
     mysteries: sum((entry) => entry.kind === "mystery"),
-    poisoner: sum((entry) => entry.kind === "bonus"),
+    race: sum((entry) => entry.kind === "bonus" && entry.itemId === "race"),
+    cash: sum((entry) => entry.kind === "bonus" && entry.itemId === "cash"),
   };
 }
 
@@ -63,7 +64,7 @@ export function computeStandings(items: GradeItem[], submissions: Submission[], 
     .map((character) => {
       const mine = items.filter((entry) => entry.guest === character.id);
       const tiers = tierOf(mine);
-      const total = tiers.objectives + tiers.exhibits + tiers.survivors + tiers.mysteries + tiers.poisoner;
+      const total = round2(tiers.objectives + tiers.survivors + tiers.mysteries + tiers.race + tiers.cash);
       return {
         guest: character.id,
         name: character.name,
@@ -86,7 +87,6 @@ export function computeStandings(items: GradeItem[], submissions: Submission[], 
     b.killerPoints - a.killerPoints ||
     b.tiers.survivors - a.tiers.survivors ||
     b.tiers.objectives - a.tiers.objectives ||
-    b.tiers.exhibits - a.tiers.exhibits ||
     a.lastSubmissionAt - b.lastSubmissionAt ||
     (a.hash < b.hash ? -1 : a.hash > b.hash ? 1 : 0);
 
@@ -94,20 +94,15 @@ export function computeStandings(items: GradeItem[], submissions: Submission[], 
   rows.forEach((row, index) => {
     row.rank = index + 1;
   });
-  // each circle is ranked among its own non-survivors; the five survivors are ranked together as one group
+  // each group is ranked among its own members; the five survivors are one group
   const circleChampions: Record<string, string | null> = {};
   for (const circle of circles) {
-    const members = rows.filter((row) => row.circle === circle.id && !row.survivor);
+    const members = rows.filter((row) => row.circle === circle.id);
     members.forEach((row, index) => {
       row.circleRank = index + 1;
     });
     circleChampions[circle.id] = members[0]?.total > 0 ? members[0].guest : null;
   }
-  const survivorGroup = rows.filter((row) => row.survivor);
-  survivorGroup.forEach((row, index) => {
-    row.circleRank = index + 1;
-  });
-  circleChampions["survivors"] = survivorGroup[0]?.total > 0 ? survivorGroup[0].guest : null;
 
   const top = rows[0];
   const winner = top && top.total > 0 ? top.guest : null;
@@ -117,14 +112,10 @@ export function computeStandings(items: GradeItem[], submissions: Submission[], 
     const champion = circleChampions[circle.id];
     awards.push({ id: `circle-${circle.id}`, title: `Champion of ${circle.name}`, guest: champion, detail: champion ? `${rows.find((row) => row.guest === champion)!.total} points.` : "Nobody scored." });
   }
-  const survivorChampion = circleChampions["survivors"];
-  awards.push({ id: "circle-survivors", title: "Champion of the Survivors", guest: survivorChampion, detail: survivorChampion ? `${rows.find((row) => row.guest === survivorChampion)!.total} points.` : "Nobody scored." });
-  const perfect = rows.filter((row) => row.tiers.objectives >= 60);
+  const perfect = rows.filter((row) => row.tiers.objectives >= 5);
   awards.push({ id: "perfect-errands", title: "Perfect Errands", guest: perfect[0]?.guest ?? null, detail: perfect.length ? `${perfect.length} guest${perfect.length === 1 ? "" : "s"} finished every errand.` : "Nobody finished all five." });
-  const covers = rows.filter((row) => row.survivor).sort((a, b) => b.tiers.survivors - a.tiers.survivors || (a.hash < b.hash ? -1 : 1));
-  awards.push({ id: "best-cover", title: "The Best Cover", guest: covers[0]?.guest ?? null, detail: covers[0] ? `${covers[0].tiers.survivors} points for staying hidden.` : "No survivors present." });
-  const eyes = rows.filter((row) => !row.survivor).sort((a, b) => b.tiers.survivors - a.tiers.survivors || (a.hash < b.hash ? -1 : 1));
-  awards.push({ id: "sharpest-eye", title: "The Sharpest Eye", guest: eyes[0]?.guest ?? null, detail: eyes[0] ? `${eyes[0].tiers.survivors} points for naming survivors.` : "Nobody guessed." });
+  const eyes = [...rows].sort((a, b) => b.tiers.survivors - a.tiers.survivors || (a.hash < b.hash ? -1 : 1));
+  awards.push({ id: "sharpest-eye", title: "The Sharpest Eye", guest: eyes[0]?.tiers.survivors ? eyes[0].guest : null, detail: eyes[0]?.tiers.survivors ? `${eyes[0].tiers.survivors} points for naming survivors.` : "Nobody named a survivor." });
   awards.push({ id: "the-poisoner", title: "The Poisoner", guest: truth.killer, detail: truth.killer ? "Bought the House's vial and poisoned the Keeper." : "Nobody bought the vial." });
 
   return {

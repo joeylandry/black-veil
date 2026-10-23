@@ -5,7 +5,7 @@
  *
  * SERVER-ONLY: imports the game bible.
  */
-import { and, asc, eq, gte, inArray, sql } from "drizzle-orm";
+import { and, asc, eq, gte, inArray, isNull, sql } from "drizzle-orm";
 import type { PgDatabase, PgQueryResultHKT } from "drizzle-orm/pg-core";
 import { eventConfig } from "@/config/event";
 import {
@@ -14,9 +14,8 @@ import {
   characterForName,
   characters,
   alternateOf,
-  circleById,
   listDirectory,
-  markers,
+  vialWords,
   objectiveById,
   questionById,
   questions,
@@ -24,10 +23,11 @@ import {
 } from "@/data/game";
 import { glassCode } from "@/data/game/props";
 import { characters as characterRows, gameEvents, gameFlags, gameGrades, gameSubmissions, guests, rsvps } from "@/lib/db/schema";
-import { autoGrade, parsePicks } from "./grading";
+import { autoGrade, parsePicks, raceComplete } from "./grading";
 import { buildPacket, parseVerdicts } from "./packet";
 import type { Packet } from "./packet";
 import { applyOverrides, computeStandings } from "./scoring";
+import { setReleased } from "@/lib/roster-service";
 import { finalEdition } from "@/data/game/story";
 import { normalizeCode } from "./text";
 import type { GameEvent, GradeItem, Standings, Submission, SubmissionKind, Truth } from "./types";
@@ -128,21 +128,47 @@ function tri(value: unknown): boolean | undefined {
 }
 
 export function deriveState(flags: Record<string, unknown>, now = new Date()): GameState {
-  const identitiesReleased = eventConfig.charactersReleased || tri(flags.identitiesReleased) === true;
+  // The game opens by itself at the start time; the Start game button (see startGame) only opens it early.
+  const started = now.getTime() >= new Date(eventConfig.secretsReleaseAt).getTime();
+  const identitiesReleased = eventConfig.charactersReleased || tri(flags.identitiesReleased) === true || started;
   const forcedSecrets = tri(flags.secretsReleased);
-  const secretsReleased = identitiesReleased && (forcedSecrets ?? now.getTime() >= new Date(eventConfig.secretsReleaseAt).getTime());
+  const secretsReleased = identitiesReleased && (forcedSecrets ?? started);
   const forcedClosed = tri(flags.submissionsClosed);
   const closed = forcedClosed ?? now.getTime() >= new Date(eventConfig.submissionsCloseAt).getTime();
   return {
     identitiesReleased,
     secretsReleased,
     submissionsOpen: secretsReleased && !closed && flags.resultsPublished !== true,
-    nightcapServed: flags.nightcapServed === true,
+    // the House closes by itself at nine o'clock (or when staff say so)
+    nightcapServed: flags.nightcapServed === true || now.getTime() >= new Date(eventConfig.nightcapServedAt).getTime(),
     resultsPublished: flags.resultsPublished === true,
     absent: Array.isArray(flags.absentCharacters) ? (flags.absentCharacters as string[]) : [],
     seed: typeof flags.seed === "string" && flags.seed ? flags.seed : "black-veil-1926",
     killerOverride: typeof flags.killerOverride === "string" ? flags.killerOverride : null,
   };
+}
+
+/**
+ * The one button: releases every guest's public card, private card and objectives, and opens the
+ * answer boxes. Safe to press twice. (The book still closes by itself at the closing time.)
+ */
+export async function startGame(db: GameDb, now = new Date()): Promise<void> {
+  // make sure every character exists and every registered guest is dealt theirs by name before the doors open
+  await seedCast(db);
+  await castMissing(db);
+  await writeFlag(db, "identitiesReleased", true);
+  await writeFlag(db, "secretsReleased", true);
+  await writeFlag(db, "submissionsClosed", null);
+  await writeFlag(db, "gameStartedAt", now.toISOString());
+  await setReleased(db, true);
+}
+
+/** Takes the game back to sealed (for a rehearsal). */
+export async function stopGame(db: GameDb): Promise<void> {
+  await writeFlag(db, "identitiesReleased", null);
+  await writeFlag(db, "secretsReleased", null);
+  await writeFlag(db, "gameStartedAt", null);
+  await setReleased(db, false);
 }
 
 export async function getState(db: GameDb, now = new Date()): Promise<GameState> {
@@ -181,12 +207,12 @@ export async function seedCast(db: GameDb): Promise<{ created: number; updated: 
   let created = 0;
   let updated = 0;
   for (const character of characters) {
-    const existing = await db.select({ id: characterRows.id }).from(characterRows).where(eq(characterRows.gameKey, character.id)).limit(1);
     const values = {
       characterName: character.name,
       occupation: character.occupation,
       publicBiography: character.publicBio,
-      factions: [circleById.get(character.circle)!.name],
+      // groups are for races and grading only: never written where a guest could read them
+      factions: [] as string[],
       privateBiography: "",
       secrets: [] as string[],
       objectives: [] as string[],
@@ -195,15 +221,50 @@ export async function seedCast(db: GameDb): Promise<{ created: number; updated: 
       active: true,
       gameKey: character.id,
     };
-    if (existing.length) {
-      await db.update(characterRows).set(values).where(eq(characterRows.id, existing[0].id));
-      updated += 1;
-    } else {
-      await db.insert(characterRows).values(values);
-      created += 1;
-    }
+    // one statement, so twenty-four phones opening at eight o'clock cannot trip over each other
+    const [row] = await db
+      .insert(characterRows)
+      .values(values)
+      .onConflictDoUpdate({ target: characterRows.gameKey, set: values })
+      .returning({ inserted: sql<boolean>`(xmax = 0)` });
+    if (row?.inserted) created += 1;
+    else updated += 1;
   }
   return { created, updated };
+}
+
+/**
+ * Makes sure every character exists and every guest who has no character yet is dealt the one built for their
+ * name. It only fills gaps: a guest the host cast by hand is never moved. It runs by itself whenever the game
+ * is open, so nobody has to press anything for the cards to appear.
+ */
+let castQueue: Promise<unknown> = Promise.resolve();
+export function castMissing(db: GameDb): Promise<number> {
+  // run one at a time within this server, so a rush of first page loads does the work once
+  const next = castQueue.then(() => castMissingNow(db));
+  castQueue = next.catch(() => undefined);
+  return next;
+}
+
+async function castMissingNow(db: GameDb): Promise<number> {
+  const [uncast] = await db.select({ n: sql<number>`count(*)` }).from(guests).where(isNull(guests.characterId));
+  const [seeded] = await db.select({ n: sql<number>`count(*)` }).from(characterRows).where(sql`${characterRows.gameKey} is not null`);
+  if (Number(uncast.n) === 0 && Number(seeded.n) >= characters.length) return 0;
+  if (Number(seeded.n) < characters.length) await seedCast(db);
+  const rows = await db.select({ id: characterRows.id, gameKey: characterRows.gameKey }).from(characterRows);
+  const rowBySlug = new Map(rows.filter((row) => row.gameKey).map((row) => [row.gameKey!, row.id]));
+  const held = new Set((await db.select({ characterId: guests.characterId }).from(guests)).map((row) => row.characterId).filter(Boolean));
+  const waiting = await db.select({ id: guests.id, fullName: guests.fullName }).from(guests).where(isNull(guests.characterId));
+  let dealt = 0;
+  for (const guest of waiting) {
+    const character = characterForName(guest.fullName);
+    const rowId = character ? rowBySlug.get(character.id) : undefined;
+    if (!rowId || held.has(rowId)) continue;
+    await db.update(guests).set({ characterId: rowId }).where(eq(guests.id, guest.id));
+    held.add(rowId);
+    dealt += 1;
+  }
+  return dealt;
 }
 
 /** Deals each registered guest the character built for their name. Guests whose name matches nobody are reported, not guessed at. */
@@ -271,6 +332,7 @@ export type CardResponse =
 export async function cardFor(db: GameDb, guestId: string, now = new Date()): Promise<CardResponse> {
   const state = await getState(db, now);
   if (!state.identitiesReleased) return { status: "sealed", message: "Characters coming very soon." };
+  await castMissing(db);
   const roster = await loadRoster(db);
   const slug = maps(roster).slugOf.get(guestId);
   if (!slug) return { status: "uncast", message: "Management has not yet chosen who you will be." };
@@ -282,7 +344,20 @@ export async function cardFor(db: GameDb, guestId: string, now = new Date()): Pr
   // before the night the private tab is withheld entirely, never merely hidden by the client
   const card = state.secretsReleased
     ? full
-    : { ...full, private: { ...full.private, secrets: [], knows: [], habit: undefined, role: undefined, survivor: undefined, objectives: [], carries: [], totalPoints: 0 } };
+    : {
+        ...full,
+        // the survivors do not learn what they are until the game starts, so the group is withheld too
+        circle: { id: "sealed", name: "", blurb: "" },
+        private: { ...full.private, secrets: [], knows: [], habit: undefined, role: undefined, survivor: undefined, objectives: [], carries: [], totalPoints: 0, race: { group: "", title: "", text: "", ask: "", house: true, points: 1, slips: [], closed: false, wonByYou: false } },
+      };
+  // a group's race point can be won only once: tell the rest of the group it is gone
+  if (state.secretsReleased && full.circle.id !== "survivors") {
+    const winner = await raceWinner(db, full.circle.id, roster);
+    card.private.race = { ...card.private.race, closed: Boolean(winner), wonByYou: winner === slug };
+  }
+  // the groups are for the races and for grading: the page never names them
+  card.circle = { id: "", name: "", blurb: "" };
+  card.private.race = { ...card.private.race, group: "" };
   return {
     status: "ok",
     card,
@@ -296,6 +371,29 @@ export async function cardFor(db: GameDb, guestId: string, now = new Date()): Pr
 // ---------------------------------------------------------------- submissions
 
 export type SubmitInput = { kind: SubmissionKind; itemId: string; answer: string; proof?: string };
+/** The member of a group who has already finished its race (the earliest complete entry), or null while the point is still open. */
+async function raceWinner(db: GameDb, circle: string, roster: RosterRow[]): Promise<string | null> {
+  const { slugOf } = maps(roster);
+  const rows = await db
+    .select({ guestId: gameSubmissions.guestId, answer: gameSubmissions.answer })
+    .from(gameSubmissions)
+    .where(and(eq(gameSubmissions.kind, "objective"), eq(gameSubmissions.itemId, "race")))
+    .orderBy(asc(gameSubmissions.createdAt));
+  for (const row of rows) {
+    const slug = slugOf.get(row.guestId);
+    if (slug && characterById.get(slug)?.circle === circle && raceComplete(row.answer, circle)) return slug;
+  }
+  return null;
+}
+
+/** A standing row as a guest may see it: the groups are for grading only. */
+function withoutGroup<T extends { circle: string; circleRank: number }>(row: T): Omit<T, "circle" | "circleRank"> {
+  const copy: Partial<T> = { ...row };
+  delete copy.circle;
+  delete copy.circleRank;
+  return copy as Omit<T, "circle" | "circleRank">;
+}
+
 export type SubmitResult = { ok: true; at: string } | { ok: false; code: "closed" | "uncast" | "invalid" | "slow-down"; message: string };
 
 /** The only thing a guest ever learns from submitting is that it was received. */
@@ -303,6 +401,7 @@ export async function submit(db: GameDb, guestId: string, input: SubmitInput, no
   const state = await getState(db, now);
   if (!state.secretsReleased) return { ok: false, code: "closed", message: "The night has not begun." };
   if (!state.submissionsOpen) return { ok: false, code: "closed", message: "The book is closed. No more answers are being taken." };
+  await castMissing(db);
   const roster = await loadRoster(db);
   const slug = maps(roster).slugOf.get(guestId);
   if (!slug) return { ok: false, code: "uncast", message: "You have no character yet." };
@@ -315,18 +414,21 @@ export async function submit(db: GameDb, guestId: string, input: SubmitInput, no
   let itemId = (input.itemId ?? "").toString();
   let stored = answer;
   switch (input.kind) {
-    case "objective":
-      if (!character.objectives.some((objective) => objective.id === itemId) || !objectiveById.has(itemId)) return { ok: false, code: "invalid", message: "That is not one of your errands." };
-      break;
-    case "exhibit": {
-      const code = normalizeCode(answer);
-      if (code.length < 4 || code.length > 8) return { ok: false, code: "invalid", message: "An exhibit code is the short code printed at the foot of the page." };
-      itemId = code;
-      stored = code;
-      const filed = await db.select({ itemId: gameSubmissions.itemId }).from(gameSubmissions).where(and(eq(gameSubmissions.guestId, guestId), eq(gameSubmissions.kind, "exhibit")));
-      if (new Set(filed.map((row) => row.itemId)).size >= 40 && !filed.some((row) => row.itemId === code)) return { ok: false, code: "invalid", message: "That is plenty of exhibits." };
+    case "objective": {
+      // the group race is not one of the five errands; the survivors' race is the vial and takes no answer
+      const isRace = itemId === "race" && character.circle !== "survivors";
+      // the point is taken once somebody in the group has finished: the box closes for everyone else
+      if (isRace) {
+        const winner = await raceWinner(db, character.circle, roster);
+        if (winner && winner !== slug) return { ok: false, code: "closed", message: "Someone else has already won this point." };
+      }
+      // everyone reports their bills at the end for the wallet bonus
+      const isCash = itemId === "cash";
+      if (!isRace && !isCash && (!character.objectives.some((objective) => objective.id === itemId) || !objectiveById.has(itemId))) return { ok: false, code: "invalid", message: "That is not one of your errands." };
       break;
     }
+    case "exhibit":
+      return { ok: false, code: "invalid", message: "Pages are no longer filed; just use what they tell you." };
     case "mystery":
       if (!questionById.has(itemId)) return { ok: false, code: "invalid", message: "That is not one of the final questions." };
       if (!answer) return { ok: false, code: "invalid", message: "Write an answer first." };
@@ -359,25 +461,28 @@ export async function mySubmissions(db: GameDb, guestId: string) {
 
 // ---------------------------------------------------------------- the House: the Butler's sale and the dose
 
-export type SaleStatus = "sold" | "sold-out" | "unknown" | "closed";
+export type SaleStatus = "sold" | "sold-out" | "unknown" | "closed" | "early";
 export type SaleResult = { status: SaleStatus; message: string };
 
 /**
- * A guest hands the Butler a marker; the Butler types its code. Whether she says yes depends only
- * on the code and on whether the House still has its bottle: the database's unique index
+ * A guest says the House's words to the Butler, and the Butler types them and picks who said them.
+ * The House answers only after 8:45 p.m., only to the right words, and only for a survivor. Whether
+ * it says yes then depends on whether the House still has its bottle: the database's unique index
  * allows exactly one sale, so two phones tapping at once cannot both succeed. Every offer is
  * logged, so a survivor who arrives too late still scores their errand.
  */
-export async function butlerSell(db: GameDb, actorGuestId: string | null, rawCode: string, now = new Date()): Promise<SaleResult> {
+export async function butlerSell(db: GameDb, actorGuestId: string | null, words: string, buyerSlug: string, now = new Date()): Promise<SaleResult> {
   const state = await getState(db, now);
   if (state.nightcapServed) return { status: "closed", message: "The nightcap has been served. The House is closed for the night." };
-  const code = normalizeCode(rawCode);
-  const marker = markers.find((candidate) => normalizeCode(candidate.code) === code);
-  if (!marker) return { status: "unknown", message: "That is not a House marker." };
-  const owner = survivors.find((character) => character.survivor!.markerNo === marker.no);
+  if (now.getTime() < new Date(eventConfig.vialOpensAt).getTime()) return { status: "early", message: "The House does not see anyone about this before a quarter to nine." };
+  const unknown = { status: "unknown" as const, message: "Those are not the House's words, or that guest has no business with the House." };
+  if (normalizeCode(words) !== normalizeCode(vialWords)) return unknown;
+  const owner = survivors.find((character) => character.id === buyerSlug);
+  if (!owner) return unknown;
+  if (state.identitiesReleased) await castMissing(db);
   const roster = await loadRoster(db);
-  const buyerGuestId = owner ? maps(roster).guestOf.get(owner.id) : undefined;
-  if (!buyerGuestId) return { status: "unknown", message: "That is not a House marker." };
+  const buyerGuestId = maps(roster).guestOf.get(owner.id);
+  if (!buyerGuestId) return unknown;
 
   return db.transaction(async (tx) => {
     const sale = await tx
@@ -388,8 +493,8 @@ export async function butlerSell(db: GameDb, actorGuestId: string | null, rawCod
     const sold = sale.length > 0;
     await tx.insert(gameEvents).values({ kind: "vial-attempt", guestId: buyerGuestId, byGuestId: actorGuestId, sold, createdAt: now });
     return sold
-      ? { status: "sold" as const, message: "Sold. Hand over the vial and keep the marker in the House Tin." }
-      : { status: "sold-out" as const, message: "The House has none left tonight. Hand the marker back." };
+      ? { status: "sold" as const, message: "Sold. Hand over the vial and keep the slip." }
+      : { status: "sold-out" as const, message: "The House has none left tonight. Hand the slip back." };
   });
 }
 
@@ -432,6 +537,7 @@ export type Night = {
 };
 
 export async function loadNight(db: GameDb): Promise<Night> {
+  await castMissing(db);
   const roster = await loadRoster(db);
   const { slugOf, guestOf } = maps(roster);
   const flags = await readFlags(db);
@@ -458,7 +564,13 @@ export async function loadNight(db: GameDb): Promise<Night> {
 
   const sale = events.find((event) => event.kind === "vial-sold");
   const killer = state.killerOverride ?? (sale ? sale.guest : null);
-  const present = [...slugOf.values()].filter((slug) => !state.absent.includes(slug));
+  // Nobody has to mark who stayed home: a guest who never typed a single answer and never touched the House did not come.
+  const active = new Set<string>(submissions.map((submission) => submission.guest));
+  for (const event of events) {
+    active.add(event.guest);
+    if (event.kind === "vial-sold" && event.by) active.add(event.by);
+  }
+  const present = [...slugOf.values()].filter((slug) => !state.absent.includes(slug) && active.has(slug));
   return { roster, submissions, events, truth: { killer, present, seed: state.seed }, guestOf, slugOf };
 }
 
@@ -586,12 +698,11 @@ export async function resultsFor(db: GameDb, guestId: string) {
   const mine = slug ? published.standings.standings.find((row) => row.guest === slug) ?? null : null;
   return {
     publishedAt: published.publishedAt,
-    you: mine,
-    board: published.standings.standings.map((row) => ({ guest: row.guest, name: row.name, circle: row.circle, survivor: row.survivor, total: row.total, rank: row.rank, circleRank: row.circleRank, isYou: row.guest === slug })),
+    you: mine ? withoutGroup(mine) : null,
+    board: published.standings.standings.map((row) => ({ guest: row.guest, name: row.name, survivor: row.survivor, total: row.total, rank: row.rank, isYou: row.guest === slug })),
     winner: name(published.standings.winner),
     killer: name(published.standings.killer),
-    circleChampions: Object.fromEntries(Object.entries(published.standings.circleChampions).map(([circle, id]) => [circle, name(id)])),
-    awards: published.standings.awards.map((award) => ({ ...award, guest: name(award.guest) })),
+    awards: published.standings.awards.filter((award) => !award.id.startsWith("circle-")).map((award) => ({ ...award, guest: name(award.guest) })),
     solution: published.solution,
   };
 }
@@ -680,6 +791,12 @@ export async function adminOverview(db: GameDb) {
       dosed,
     },
     killer: night.truth.killer,
+    /** The words the host gives out once something has really happened. Staff only. */
+    approvals: characters.flatMap((character) =>
+      character.objectives
+        .filter((objective) => objective.check.kind === "approval")
+        .map((objective) => ({ guest: character.name, title: objective.title, word: (objective.check as { word: string }).word })),
+    ),
     castCount: castSlugs.size,
     grades: grades.map((row) => ({ source: row.source, needsReview: row.needsReview, count: Number(row.n) })),
     resultsPublished: state.resultsPublished,

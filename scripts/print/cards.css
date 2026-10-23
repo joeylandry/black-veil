@@ -43,6 +43,7 @@ ul { margin: 0 0 .4em; padding-left: 1.15em; } li { margin-bottom: .22em; }
 .tag { display: inline-block; font: bold .68em "Liberation Sans", Arial, sans-serif; letter-spacing: .06em; text-transform: uppercase; padding: .08em .5em; margin-right: .5em; border: 1px solid; border-radius: 2px; vertical-align: .08em; white-space: nowrap; }
 .tag.free { color: var(--green); border-color: var(--green); background: rgba(47,74,53,.08); }
 .tag.trade { color: var(--gold); border-color: var(--gold); background: rgba(138,106,34,.1); }
+.tag.paid { color: #fff; border-color: #5b4a1e; background: #5b4a1e; }
 .tag.secret { color: var(--wine); border-color: var(--wine); background: rgba(110,30,30,.1); }
 .cash { display: flex; align-items: center; justify-content: space-between; border: 2px double var(--green); background: rgba(47,74,53,.08); color: var(--green); padding: .2em .8em; margin: .55em 0 .1em; }
 .cash .amt { font-size: 1.9em; font-weight: bold; letter-spacing: .04em; }
@@ -128,3 +129,32 @@ ol.rules { padding-left: 1.4em; margin: 0; } ol.rules li { margin-bottom: .32em;
 .half.two ol li { break-inside: auto; margin-bottom: .35em; }
 .half h3 { margin: .5em 0 .1em; }
 .half .rule { display: none; }
+
+/* guest cards: plain, dense, one side of one letter sheet */
+.gcpage { background: #fff; }
+.gcbox { position: absolute; left: .32in; right: .32in; top: .3in; bottom: .3in; border: 1.2px solid #333; padding: .14in .2in; display: flex; flex-direction: column; overflow: hidden; }
+.gcbox .fit { padding-top: 0; line-height: 1.2; font-family: "Liberation Sans", Arial, sans-serif; color: #111; }
+.gchead { display: flex; align-items: baseline; justify-content: space-between; border-bottom: 2px solid #111; padding-bottom: 2px; }
+.gcname { font: bold 1.9em "Liberation Serif", serif; }
+.gcocc { font-style: italic; font-size: 1.1em; }
+.gcstrip { background: #eee; padding: 2px 5px; margin: 3px 0; font-size: .92em; }
+.gcbox h3 { margin: .45em 0 .15em; font-size: .95em; letter-spacing: .06em; border-bottom: .8px solid #777; }
+.gcbox p { margin: .15em 0; }
+.gcobj { margin: 0; padding-left: 0; list-style: none; }
+.gcobj li { margin: .14em 0; }
+.gcask { color: #444; }
+.gcclues { column-count: 2; column-gap: .22in; }
+.gcgroup { break-inside: avoid-column; margin-bottom: .25em; }
+.gclabel { font-weight: bold; font-size: .88em; background: #ddd; padding: 0 3px; margin-bottom: 1px; }
+.gcline { margin: .1em 0 .1em .6em; text-indent: -.6em; }
+.gcline::before { content: "\2022 "; }
+.gcfoot { margin-top: .4em; font-style: italic; font-size: .9em; }
+.markerwho { position: absolute; font: 8pt "Liberation Sans", Arial, sans-serif; color: #444; }
+.cgroup { break-inside: avoid-column; margin-bottom: .3em; }
+.cglabel { margin: 0 0 .15em; }
+.cglabel .tag { font-size: .66em; }
+.errand .ty { font-size: .92em; color: var(--ink2); white-space: nowrap; }
+.errand .ty em { color: var(--wine); }
+.cglabel .tag { display: block; white-space: normal; margin-right: 0; line-height: 1.25; padding: .12em .5em; }
+
+.gcnote { margin: .4em 0 0; font-size: .9em; }

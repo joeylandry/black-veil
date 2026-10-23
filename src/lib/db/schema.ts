@@ -1,5 +1,5 @@
 import { sql } from "drizzle-orm";
-import { boolean, index, integer, jsonb, pgTable, text, timestamp, unique, uniqueIndex, uuid } from "drizzle-orm/pg-core";
+import { boolean, doublePrecision, index, integer, jsonb, pgTable, text, timestamp, unique, uniqueIndex, uuid } from "drizzle-orm/pg-core";
 
 export const rsvps = pgTable("rsvps", {
   id: uuid("id").defaultRandom().primaryKey(),
@@ -157,8 +157,8 @@ export const gameGrades = pgTable(
     kind: text("kind").notNull(),
     itemId: text("item_id").notNull(),
     verdict: text("verdict", { enum: ["accept", "partial", "reject"] }).notNull(),
-    points: integer("points").notNull(),
-    max: integer("max").notNull(),
+    points: doublePrecision("points").notNull(),
+    max: doublePrecision("max").notNull(),
     rationale: text("rationale").notNull().default(""),
     needsReview: boolean("needs_review").notNull().default(false),
     source: text("source", { enum: ["auto", "claude", "staff"] }).notNull().default("auto"),

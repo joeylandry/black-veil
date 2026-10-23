@@ -1,6 +1,5 @@
 /** The Working Folk: hands, trades and the muscle of Manchester. */
-import { deal, find, hide, money, motiveChain, nightcapChain, offerChain, role, secretOf, seek, story, swap } from "./build";
-import { sceneCode } from "./props";
+import { approval, deal, find, keep, money, motiveChain, nightcapChain, offerChain, secretOf, story, swap, who } from "./build";
 import type { Character } from "./types";
 
 export const working: Character[] = [
@@ -25,14 +24,14 @@ export const working: Character[] = [
       { text: "If anyone asks you for a Yiddish word to shout at an umpire, give them “shmendrik.” It means a fool, and it is the funniest word you know.", share: "free" },
     ],
     smallSecret: { text: "You read tea leaves off half-burned pages you swept from an empty flue.", key: ["tea leaves"], confidant: "krrish" },
-    startingCash: 80,
-    carries: ["sooth-charm"],
+    startingCash: 800,
+    carries: ["sooth-charm", "witness-josh"],
     objectives: [
-      find("josh-1", "star-salt"),
-      secretOf("josh-2", "rhea", "adam", ["river rats"]),
-      swap("josh-3", "tiffany", "sooth-charm", "earring"),
-      role("josh-4", "The prophecy", "Before half past eight, tell the host the exact minute you think the scream will come. The host seals it in an envelope and opens it later. The cards say it falls between nine and half past: narrow it.", "The minute you predicted (e.g. 9:17)", { kind: "clock", from: "21:10", to: "21:20" }),
-      role("josh-5", "The fortunes", "Read the fortunes of four different guests, using the fortune cards the host gives you. Each guest keeps the card they are read. Type the four names.", "The four guests", { kind: "manual", rubric: "Four different guests are named, and each was read a fortune by Joshua." }),
+      find("josh-find", "star-salt"),
+      swap("josh-swap", "tiffany", "sooth-charm", "earring"),
+      secretOf("josh-secret", "tiffany", "mihir", ["chisel"]),
+      approval("josh-prophecy", "The prophecy", "Before half past eight, tell Bartend Joe at the bar the exact minute you think the scream will come. He seals it in an envelope. After the scream, if you called it, tap Claim this point and go back to Joe for your approval word.", "saffron"),
+      approval("josh-fortunes", "The fortunes", "Read the fortunes of four different guests, using the fortune cards you collect from Bartend Joe at the bar. Each guest keeps the card they are read. When you have done it, tap Claim this point and go back to Joe for your approval word.", "cobblestone"),
     ],
   },
   {
@@ -55,20 +54,20 @@ export const working: Character[] = [
       { text: "You hauled bricks in 1921 for a wall in the Merrimack Room that is too thick.", share: "secret" },
     ],
     smallSecret: { text: "You hauled bricks in 1921 for a wall in the Merrimack Room that is too thick.", key: ["bricks"], confidant: "theodor" },
-    startingCash: 80,
-    carries: ["baseball"],
+    startingCash: 800,
+    carries: ["baseball", "witness-arjun"],
     objectives: [
-      find("arjun-1", "octopus"),
-      secretOf("arjun-2", "joel", "tiffany", ["hat shop", "hatshop"]),
-      swap("arjun-3", "tim", "baseball", "gin-jar"),
-      story("arjun-4", "How many were there?", "Seventeen strangers died in accidents in one county. Learn the count from someone who counted.", "The number", "theodor", ["emre"], [["seventeen", "17"]]),
-      story("arjun-5", "A word for the umpire", "You want a Yiddish word to shout at an umpire. Josh knows one. Get it, and say it.", "The word", "josh", ["adam"], [["shmendrik"]]),
+      money("arjun-money", 1400, "Win a wager on a swing, a pitch or a bet. Leave with at least $1,400."),
+      find("arjun-find", "octopus"),
+      swap("arjun-swap", "tim", "baseball", "gin-jar"),
+      secretOf("arjun-secret", "tiffany", "mihir", ["chisel"]),
+      story("arjun-story", "A word for the umpire", "You want a Yiddish word to shout at an umpire. Josh knows one. Get it, and say it.", "The word", "josh", ["adam"], [["shmendrik"]]),
     ],
   },
   {
     id: "adam",
     realNames: ["Adam Ouldsfiya", "Adam"],
-    circle: "working",
+    circle: "survivors",
     name: "Adam Holdsfire",
     occupation: "Gunsmith",
     publicBio: "Builds the finest revolvers in the county and has never fired one. A good gun, like a good argument, is best left in the holster.",
@@ -86,7 +85,7 @@ export const working: Character[] = [
       { text: "You picked up one Yiddish word from Josh, “shmendrik,” and use it more than you should.", share: "free" },
     ],
     smallSecret: { text: "You sold six boxes of blanks to a lady's agent for cash and never asked why.", key: ["six boxes"], confidant: "eric" },
-    startingCash: 100,
+    startingCash: 1000,
     carries: [],
     survivor: {
       veilName: "Dominic Marek",
@@ -102,11 +101,11 @@ export const working: Character[] = [
       motiveFact: "motive-21",
     },
     objectives: [
-      find("adam-1", "veil-candle"),
-      secretOf("adam-2", "leon", "silas", ["lonely hearts", "lonely-hearts"]),
-      nightcapChain("adam-3"),
-      offerChain("adam-4"),
-      motiveChain("adam-5", ["theodor", "sidd", "angelos"], [["partner", "bell", "ignatius", "friend", "second door", "second doorman"], ["killed", "shot", "murdered", "murder"]]),
+      find("adam-find", "veil-candle"),
+      who("adam-who", "Find out what your real job was before you took this cover. The guest named below noticed something about you that a cover cannot hide.", ["theodor", "arjun", "joel"], [["bouncer", "doorman", "door", "face", "faces"]]),
+      motiveChain("adam-why", ["theodor", "sidd", "angelos"], [["partner", "bell", "ignatius", "friend", "second door", "second doorman"], ["killed", "shot", "murdered", "murder"]]),
+      nightcapChain("adam-hour"),
+      offerChain("adam-offer"),
     ],
   },
   {
@@ -119,7 +118,7 @@ export const working: Character[] = [
     background: {
       history: "You have your own glass studio and a loupe you never leave behind. Your lamps hang in the Sheriff's office and your windows hang in the churches, and you have cut a brass plate or two for the Veil itself.",
       people: [
-        "Leon Gee: a neighbour in the glass; you suspect his antenna is in your bell tower's shadow.",
+        "Leon Gee: a neighbour in the glass, who reads the Sheriff's mail aloud and your lamps' prices with equal pleasure.",
         "Joshua Kamin-Sky: reads the glass you make.",
         "Theodor Farrago: the Sheriff's office windows are yours.",
       ],
@@ -129,14 +128,14 @@ export const working: Character[] = [
       { text: "You cut the brass plate “KEEPER · K.K.” and your chisel slipped on the second K.", share: "secret" },
     ],
     smallSecret: { text: "You cut the brass plate “KEEPER · K.K.” and your chisel slipped on the second K.", key: ["chisel"], confidant: "mihir" },
-    startingCash: 100,
-    carries: ["earring", "pardon-slip", "pardon-receipt"],
+    startingCash: 1000,
+    carries: ["earring", "pardon-slip", "pardon-receipt", "trade-tiffany"],
     objectives: [
-      find("tiffany-1", "lit-bottle"),
-      secretOf("tiffany-2", "anthony", "rhea", ["carbon"]),
-      swap("tiffany-3", "josh", "earring", "sooth-charm"),
-      deal("tiffany-4", ["theodor", "leon"], "A pardon, brokered", "Take at least $50 in House bills from Leon Gee and carry a Pardon slip to Sheriff Farrago. If he takes it, he tears up his citation and hands it to you: read the code on the torn citation. Give Leon a go-between's receipt.", "The code on the torn citation", ["citation"]),
-      story("tiffany-5", "The thing behind the wall", "A wall in the Merrimack Room hides something. Learn what, from those who built or swept it.", "What it hides", "adam", ["josh"], [["vault", "safe"]]),
+      find("tiffany-find", "lit-bottle"),
+      swap("tiffany-swap", "josh", "earring", "sooth-charm"),
+      deal("tiffany-deal", ["theodor", "leon"], "A pardon, brokered", "Take at least $100 in House bills from Leon Gee and carry a Pardon slip to Sheriff Farrago. If he takes it, he tears up his citation and hands it to you: read the code on the torn citation. Give Leon a go-between's receipt.", "The code on the torn citation", ["citation"]),
+      secretOf("tiffany-secret", "rebecca", "tim", ["cold tea"]),
+      keep("tiffany-keep", "arjun", "arjun-secret", "josh", "josh-secret"),
     ],
   },
   {
@@ -159,14 +158,14 @@ export const working: Character[] = [
       { text: "You were paid to take a fall on Halloween 1924 and told to stay down until the music stopped.", share: "secret" },
     ],
     smallSecret: { text: "You were paid to take a fall on Halloween 1924 and told to stay down until the music stopped.", key: ["stay down"], confidant: "ananya" },
-    startingCash: 100,
-    carries: ["giraffe"],
+    startingCash: 1000,
+    carries: ["giraffe", "witness-diwakar"],
     objectives: [
-      find("diwakar-1", "dumbbell"),
-      secretOf("diwakar-2", "anika", "sidd", ["ribbon"]),
-      swap("diwakar-3", "angelos", "giraffe", "casino-chip"),
-      money("diwakar-4", 190, "Win a purse: a bet, an arm-wrestle, a wager. Leave with at least $190."),
-      story("diwakar-5", "What the House takes", "The House sells something that is on no menu. Learn what it accepts in place of cash.", "What it accepts", "angelos", ["tim"], [["marker", "markers"]]),
+      money("diwakar-money", 1600, "Win a purse: a bet, an arm-wrestle, a wager. Leave with at least $1,600."),
+      find("diwakar-find", "dumbbell"),
+      swap("diwakar-swap", "angelos", "giraffe", "casino-chip"),
+      secretOf("diwakar-secret", "tim", "krrish", ["cuff"]),
+      keep("diwakar-keep", "krrish", "krrish-secret", "tim", "tim-secret"),
     ],
   },
 ];

@@ -2,7 +2,7 @@
  * What the game API sends to the browser. Defined here rather than imported from the game
  * bible, because the bible is server-only: it holds the answers.
  */
-export type Line = { text: string; share: "free" | "trade" | "secret" };
+export type Line = { text: string; share: "free" | "trade" | "paid" | "secret" };
 
 export type Errand = {
   id: string;
@@ -14,7 +14,11 @@ export type Errand = {
   prop?: { name: string };
   withNames: string[];
   house: boolean;
+  approval: boolean;
+  automatic: boolean;
 };
+
+export type RaceCard = { group: string; title: string; text: string; ask: string; house: boolean; points: number; slips: string[]; closed: boolean; wonByYou: boolean };
 
 export type SurvivorCard = {
   veilName: string;
@@ -44,11 +48,12 @@ export type Card = {
     survivor?: SurvivorCard;
     objectives: Errand[];
     totalPoints: number;
+    race: RaceCard;
   };
 };
 
 export type FinalQuestion = { id: string; mystery: string; prompt: string; hint: string; points: number; type: "text" | "guest" };
-export type DirectoryEntry = { id: string; name: string; occupation: string; circle: string };
+export type DirectoryEntry = { id: string; name: string; occupation: string };
 
 export type CardResponse =
   | { status: "sealed" | "uncast"; message: string }
@@ -66,11 +71,10 @@ export type SavedAnswer = { kind: string; itemId: string; answer: string; proof:
 export type ResultItem = { guest: string; kind: string; itemId: string; verdict: string; points: number; max: number; rationale: string; source: string };
 export type Results = {
   publishedAt: string;
-  you: { guest: string; name: string; total: number; rank: number; circleRank: number; tiers: { objectives: number; exhibits: number; survivors: number; mysteries: number; poisoner: number }; items: ResultItem[] } | null;
-  board: { guest: string; name: string; circle: string; survivor: boolean; total: number; rank: number; circleRank: number; isYou: boolean }[];
+  you: { guest: string; name: string; total: number; rank: number; tiers: { objectives: number; survivors: number; mysteries: number; race: number; cash: number }; items: ResultItem[] } | null;
+  board: { guest: string; name: string; survivor: boolean; total: number; rank: number; isYou: boolean }[];
   winner: string | null;
   killer: string | null;
-  circleChampions: Record<string, string | null>;
   awards: { id: string; title: string; guest: string | null; detail: string }[];
   solution: {
     headline: string;

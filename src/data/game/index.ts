@@ -3,7 +3,7 @@
  * code gets the redacted shapes from `buildCard` and `listDirectory`, never the raw data.
  */
 import { normalize } from "@/lib/game/text";
-import { circles } from "./circles";
+import { circles, races } from "./circles";
 import { gilded } from "./cast-gilded";
 import { order } from "./cast-order";
 import { river } from "./cast-river";
@@ -11,11 +11,11 @@ import { stage } from "./cast-stage";
 import { working } from "./cast-working";
 import { exhibits } from "./exhibits";
 import { facts } from "./facts";
-import { markers, propById, props } from "./props";
+import { markers, propById, props, vialWords } from "./props";
 import { alternateOf, MYSTERY_POINTS, questionById, questions } from "./questions";
 import type { Character, Circle, CircleId, Line, Objective, Share } from "./types";
 
-export { alternateOf, circles, exhibits, facts, markers, MYSTERY_POINTS, props, questionById, questions };
+export { alternateOf, circles, exhibits, facts, markers, vialWords, MYSTERY_POINTS, props, questionById, questions, races };
 export * from "./types";
 
 export const characters: Character[] = [...gilded, ...order, ...stage, ...working, ...river];
@@ -25,8 +25,8 @@ export const circleById = new Map<CircleId, Circle>(circles.map((circle) => [cir
 export const survivors = characters.filter((character) => character.survivor);
 export const survivorIds = survivors.map((character) => character.id);
 
-/** Points a guest can earn from errands: five objectives of equal weight, the same for everyone. */
-export const OBJECTIVE_TOTAL = 60;
+/** Points a guest can earn from errands: five objectives of one point each, the same for everyone. */
+export const OBJECTIVE_TOTAL = 5;
 
 // ---------------------------------------------------------------- text helpers
 
@@ -115,13 +115,17 @@ export type RenderedObjective = {
   withNames: string[];
   /** True when the House's own log, not the guest's answer, decides it. */
   house: boolean;
+  /** True when the host confirms it in person and gives an approval word to type. */
+  approval: boolean;
+  /** True when nothing needs typing at all: it is scored from other guests' answers. */
+  automatic: boolean;
 };
 
 export type CardView = {
   id: string;
   name: string;
   occupation: string;
-  circle: { id: CircleId; name: string; blurb: string };
+  circle: { id: string; name: string; blurb: string };
   publicBio: string;
   background: { history: string; people: string[]; wardrobe: string };
   private: {
@@ -143,6 +147,8 @@ export type CardView = {
     };
     objectives: RenderedObjective[];
     totalPoints: number;
+    /** This group's race for one extra point. */
+    race: { group: string; title: string; text: string; ask: string; house: boolean; points: number; slips: string[]; closed: boolean; wonByYou: boolean };
   };
 };
 
@@ -151,9 +157,9 @@ export function survivorRules(markerNo: number): string[] {
   return [
     "You are one who got away. You know the old man hunted you and the people you trusted, and you know who he is. Others probably escaped too, but you do not know how many or who. Everyone else has been told only that survivors are in the room. Your cover is your public card. Keep it.",
     "Your invitation came unsigned, and it knew the new name you have used ever since. Only one person could have known it. Working out who is one of your errands.",
-    `You carry marker No. ${markerNo}. It is yours alone: never trade it, never give it away. It is how you pay the House.`,
+    `You are No. ${markerNo} on the List. You carry nothing and cut nothing out. To buy the vial you must say the House's own words to the Butler, and they are written on a slip someone hid in the kitchen, under a cactus. Find it and keep it to yourself.`,
     "You have told yourself so many stories since 1925 that you are no longer certain of your real reason for coming. You only know that you must be the one. Somebody in this room saw what he did to you; finding out is one of your errands.",
-    "The House keeps one bottle of tincture and sells it once a night, to whoever shows the Butler a marker first. Make your offer before the nightcap is served at nine o'clock. Only one of you can be the one.",
+    "The House keeps one bottle of tincture and sells it once a night. The Butler will not see anyone about it before 8:45 p.m., and will sell only to a survivor who says the House's words. Make your offer before the nightcap is served at nine o'clock. Only one of you can be the one.",
     "If the Butler sells to you, the Keeper's nightcap waits in a glass on his table in the Merrimack Room. Pour the vial in unseen, then type the short code printed under the glass's coaster into the nightcap box on this page. Only the buyer's code counts, and the page will say only “Noted.”",
     "Do your tell, a small habit you no longer notice, at least three times before the nightcap. Do not overdo it.",
     "Whoever finishes him takes Cassie's seat and the Veil. You are competing with others you cannot name, and every one of you has the right to try.",
@@ -218,9 +224,22 @@ export function buildCard(id: string): CardView | null {
         : undefined,
       objectives: character.objectives.map(renderObjective),
       totalPoints: character.objectives.reduce((total, objective) => total + objective.points, 0),
+      race: raceFor(character),
     },
   };
 }
+
+/** The race card for a character's group, and the slips this character is carrying for other groups' races. */
+function raceFor(character: Character) {
+  const race = races.find((candidate) => candidate.circle === character.circle)!;
+  const slips = character.carries
+    .map((propId) => races.find((candidate) => candidate.tokens.includes(propId)))
+    .filter((candidate): candidate is NonNullable<typeof candidate> => Boolean(candidate))
+    .map((candidate) => `${propById.get(character.carries.find((propId) => candidate.tokens.includes(propId))!)?.name ?? "slip"}: hand it to anyone who asks for it by name.`);
+  return { group: circleById.get(character.circle)!.name, title: race.title, text: race.text, ask: race.ask, house: race.circle === "survivors", points: 1, slips, closed: false, wonByYou: false };
+}
+
+const guardedObjectiveIds = new Set(characters.flatMap((c) => c.objectives.flatMap((o) => (o.check.kind === "keep" ? [o.check.rivalObjective] : []))));
 
 export function renderObjective(objective: Objective): RenderedObjective {
   const prop = objective.prop ? propById.get(objective.prop) : undefined;
@@ -228,22 +247,23 @@ export function renderObjective(objective: Objective): RenderedObjective {
     id: objective.id,
     kind: objective.kind,
     title: renderText(objective.title, objective),
-    text: renderText(objective.text, objective),
+    text: renderText(objective.text, objective) + (guardedObjectiveIds.has(objective.id) ? " Someone is guarding this one, so expect a harder time: a real try still earns half a point." : ""),
     ask: objective.ask,
     points: objective.points,
     prop: prop && objective.kind === "find" ? { name: prop.name } : undefined,
     withNames: objective.with.map((guest) => characterById.get(guest)?.name ?? guest),
-    house: ["hide", "vial-attempt", "butler-sale"].includes(objective.check.kind),
+    house: ["keep", "vial-attempt", "butler-sale"].includes(objective.check.kind),
+    approval: objective.check.kind === "approval",
+    automatic: objective.check.kind === "keep",
   };
 }
 
-/** The roster every guest may see: who is in the room. Survivors and killers are never marked. */
+/** The roster every guest may see: who is in the room. Survivors and killers are never marked, and groups are never listed (the survivors are a group of their own). */
 export function listDirectory() {
   return characters.map((character) => ({
     id: character.id,
     name: character.name,
     occupation: character.occupation,
-    circle: character.circle,
   }));
 }
 

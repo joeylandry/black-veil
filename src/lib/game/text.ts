@@ -122,3 +122,6 @@ export function parseClock(input: string): number | null {
   else if (!meridian && hours >= 1 && hours <= 11) hours += 12;
   return hours * 60 + minutes;
 }
+
+/** Points are kept to the hundredth so half and quarter points add up exactly. */
+export const round2 = (value: number) => Math.round(value * 100) / 100;

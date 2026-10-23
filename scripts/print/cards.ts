@@ -10,7 +10,7 @@
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { spawnSync } from "node:child_process";
-import { characters, buildCard, facts, survivors, survivorRules, type CardView } from "@/data/game";
+import { characters, buildCard, survivors, survivorRules, vialWords, type CardView } from "@/data/game";
 import { brief1924, rulesCard } from "@/data/game/story";
 
 const CHROME = process.env.CHROME ?? "/opt/pw-browsers/chromium-1194/chrome-linux/chrome";
@@ -22,7 +22,6 @@ const SITE = (process.env.SITE_URL ?? "").replace(/^https?:\/\//, "").replace(/\
 const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 const byName = (a: { name: string }, b: { name: string }) => a.name.localeCompare(b.name);
 const sorted = [...characters].sort(byName);
-const survivorIds = new Set(survivors.map((s) => s.id));
 
 const FIT = `
 <script>
@@ -41,145 +40,95 @@ function doc(title: string, comment: string, pages: string[]): string {
 }
 
 const banner = (sub = "") => `<div class="banner">THE BLACK VEIL${sub ? `<small>${esc(sub)}</small>` : ""}</div>`;
-const typeLine = () => `Type your answers on your phone${SITE ? ` at <b>${esc(SITE)}</b>` : ""} whenever you like. Only your last answer counts.`;
-const tagText = { free: "Yours to share", trade: "Trade it, don't give it away", secret: "Never say it aloud" } as const;
-const lines = (xs: { text: string; share: keyof typeof tagText }[]) => xs.map((l) => `<div class="line"><span class="tag ${l.share}">${tagText[l.share]}</span>${esc(l.text)}</div>`).join("");
-const errandHtml = (o: CardView["private"]["objectives"][number]) => {
-  const n = o.id.split("-").pop();
-  return `<div class="errand"><div class="t"><span class="lab">Errand ${n}</span>${esc(o.title)}</div><div>${esc(o.text)}</div><div class="a"><span>Type: <em>${esc(o.ask)}</em></span><b>${o.points} POINTS</b></div></div>`;
+
+// ------------------------------------------------------------------ 1. guest cards: everything on one side of one sheet
+const typeOfRendered = (o: CardView["private"]["objectives"][number]): string => {
+  if (o.approval) return "HOST TASK";
+  if (o.automatic) return "KEEP A SECRET";
+  if (o.kind === "money") return "MONEY";
+  if (o.kind === "find") return "FIND";
+  if (o.kind === "swap") return "SWAP";
+  if (o.id.endsWith("-secret")) return "LEARN A SECRET";
+  if (o.house) return "VIAL";
+  if (o.kind === "role") return "DEAL";
+  return "LEARN A STORY";
 };
+const clueGroups = [
+  ["free", "SAY FREELY: anyone may be told", "free"],
+  ["trade", "TRADE IT: tell it only if they tell you a clue in return", "trade"],
+  ["paid", "COSTS $100: tell it only after they drop a $100 bill in the House Tin at the bar", "paid"],
+  ["secret", "KEEP CLOSE: do not tell unless you choose to", "secret"],
+] as const;
 const summaryHtml = () =>
   `<div class="summary">${brief1924
     .filter((b) => b.heading !== "A word to the survivors")
     .map((b) => `<h4>${esc(b.heading)}</h4>${b.bullets.map((t) => `<p>${esc(t)}</p>`).join("")}`)
     .join("")}</div>`;
-
-const num = (o: { id: string }) => Number(o.id.split("-").pop());
-
-// ------------------------------------------------------------------ 1. character cards
-function cardPages(): string[] {
+function guestCardPages(): string[] {
   const pages: string[] = [];
   for (const c of sorted) {
     const k = buildCard(c.id)!;
     const p = k.private;
-    pages.push(`<div class="page"><div class="sheet">${banner("Manchester, N.H. · All Hallows' Eve, 1926")}<div class="fit" data-max="1.1" style="--base:11.5pt">
-      <div class="name">${esc(k.name)}</div><div class="occ">${esc(k.occupation)}</div><div class="rule"></div>
+    const clues = [...p.secrets, ...p.knows];
+    const entrusted = clues.filter((line) => /^About /.test(line.text));
+    const groups: { label: string; chip: string; lines: typeof clues }[] = clueGroups.map(([tag, label, chip]) => ({ label: label as string, chip: chip as string, lines: clues.filter((line) => line.share === tag && !/^About /.test(line.text)) }));
+    groups.push({ label: "ENTRUSTED SECRET: another guest's small secret that you hold for them", chip: "secret", lines: entrusted });
+    const shown = groups.filter((group) => group.lines.length);
+    const errands = p.objectives
+      .map((o, index) => `<div class="errand"><div class="t"><span class="lab">${index + 1}. ${typeOfRendered(o)}</span>${esc(o.title)}</div><div>${esc(o.text)}${o.withNames.length ? ` <i>Seek out: ${esc(o.withNames.join(", "))}.</i>` : ""} <span class="ty">Type: <em>${esc(o.ask)}</em></span></div></div>`)
+      .join("");
+    const v = c.survivor;
+    const raceHtml = `<h2>Act fast or lose this point: ${esc(p.race.title)}</h2><p><b>The first to complete this task gets the point.</b> ${esc(p.race.text)}${p.race.slips.length ? ` <b>You carry for others:</b> ${esc(p.race.slips.join(" "))}` : ""}</p>`;
+    const secretHtml = v
+      ? `<h2>Your secret: you are one who got away (${esc(v.veilName)}, ${esc(v.veilTitle)})</h2>
+      <p><b>Who you were:</b> ${esc(v.realStory)} <b>How you got away:</b> ${esc(v.escape)} <b>Your tell:</b> ${esc(v.tell)} <b>Do it at least three times before the nightcap.</b> <b>What leaks through:</b> ${esc(v.skillLeak)}</p>
+      <p><b>Your rules:</b> ${survivorRules(v.markerNo).map((r, i) => `${i + 1}. ${esc(r)}`).join(" ")}</p>
+      <p class="gcnote"><b>Nothing to cut out.</b> The vial is bought with words, not a card: after 8:45 p.m., say the House&rsquo;s words to the Butler.</p>`
+      : "";
+    // FRONT: who you are, what the whole town knows, your race and (for the five survivors) your secret
+    pages.push(`<div class="page"><div class="sheet">${banner("Manchester, N.H. · All Hallows' Eve, 1926")}<div class="fit" data-max="1.12" data-min="0.7" style="--base:10.8pt">
+      <div class="name">${esc(k.name)}</div><div class="occ">${esc(k.occupation)}</div><div class="rule" style="margin:.25em 1.2in .4em"></div>
+      <div class="cash"><span class="t">You start with</span><span class="amt">$${p.startingCash.toLocaleString("en-US")}</span><span class="t">${p.startingCash / 100} House bills of $100</span></div>
+      ${p.carries.length ? `<div class="box">You carry: ${esc(p.carries.join(", "))}. Keep ${p.carries.length > 1 ? "them" : "it"} on you all night.</div>` : ""}
       <h2>What the town knows</h2>${summaryHtml()}
       <h2>Your public face</h2><p>${esc(k.publicBio)}</p>
-      <h2>Background</h2><p>${esc(k.background.history)}</p>
+      <h2>Your background</h2><p>${esc(k.background.history)}</p>
       <ul>${k.background.people.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>
-      <p><span class="lab">What to wear</span> &nbsp;${esc(k.background.wardrobe)}</p>
+      ${p.habit ? `<p><span class="lab">Your habit</span> &nbsp;${esc(p.habit)}</p>` : ""}
+      ${p.role ? `<h2>${esc(p.role.title)}</h2><p>${esc(p.role.rules.join(" "))}</p>` : ""}
+      ${raceHtml}
+      ${secretHtml}
+      <div class="flapbox">Turn over: your five objectives and everything you know.</div>
     </div></div></div>`);
-    const errands = p.objectives.filter((o) => num(o) <= 2).sort((a, b) => num(a) - num(b));
-    pages.push(`<div class="page"><div class="sheet">${banner(`${k.name} · Private`)}<div class="fit" style="--base:11.5pt">
-      <h2>Private</h2>${lines(p.secrets)}
-      <h2>What you know</h2><div class="${p.knows.length > 6 ? "cols2" : ""}">${lines(p.knows)}</div>
-      ${p.habit ? `<p style="margin-top:.4em"><span class="lab">Your habit</span> &nbsp;${esc(p.habit)}</p>` : ""}
-      <div class="cash"><span class="t">You start with</span><span class="amt">$${p.startingCash}</span><span class="t">in House notes</span></div>
-      <h2>Your errands</h2>${errands.map(errandHtml).join("")}
-      <div class="box">Errands 3 to 5 are in your black envelope</div>
-      <div class="flapbox">If you are one of the five, your private page already knows. Everyone else's has the same sealed flap with nothing behind it.</div>
-      <div class="type">${typeLine()}</div>
+    // BACK: the private page
+    pages.push(`<div class="page"><div class="sheet">${banner(`${k.name} · Private`)}<div class="fit" data-max="1.12" data-min="0.7" style="--base:11pt">
+      <h2>Your five objectives (1 point each)</h2>${errands}
+      <h2>What you know: tell, trade or sell as marked</h2>
+      <div class="cols2">${shown.map((group) => `<div class="cgroup"><div class="cglabel"><span class="tag ${group.chip}">${esc(group.label)}</span></div>${group.lines.map((line) => `<div class="line">${esc(line.text)}</div>`).join("")}</div>`).join("")}</div>
+      <div class="type">Type your answers on your phone${SITE ? ` at <b>${esc(SITE)}</b>` : ""}. Bartend Joe gives the word for a HOST TASK once he has seen it done. At the end, count your bills and type the total.</div>
     </div></div></div>`);
   }
   return pages;
 }
 
-// ------------------------------------------------------------------ 2. envelope sheets
-function envelopePages(): string[] {
-  return sorted.map((c) => {
-    const k = buildCard(c.id)!;
-    const p = k.private;
-    const errands = p.objectives.filter((o) => num(o) >= 3).sort((a, b) => num(a) - num(b));
-    return `<div class="page"><div class="sheet">${banner(k.name)}<div class="fit" style="--base:12pt">
-      <div class="name" style="font-size:2.1em">Your black envelope</div><div class="occ">Errands 3 to 5</div><div class="rule"></div>
-      ${errands.map(errandHtml).join("")}
-      ${p.role ? `<h2>${esc(p.role.title)}</h2><ol class="rules">${p.role.rules.map((r) => `<li>${esc(r)}</li>`).join("")}</ol>` : ""}
-      ${p.carries.length ? `<div class="box" style="margin-top:.7em">You will be handed at the door: ${p.carries.map(esc).join(", ")}</div>` : ""}
-      <div class="flapbox">What is in this envelope is for you alone. Keep a straight face, and enjoy the night.</div>
-      <div class="type">${typeLine()}</div>
-    </div></div></div>`;
-  });
-}
-
 // ------------------------------------------------------------------ 3. survivor kit
 const survivorList = [...survivors].sort((a, b) => a.survivor!.markerNo - b.survivor!.markerNo);
-
-function invitationText(name: string): string {
-  return `<p class="to">${esc(name)},</p>
-<p>That is the name you have worn since 1925, and I am one of very few who know what it covers.</p>
-<p>The old man will be in the room tonight. You know the one I mean. I will not write his name where a letter can be lost.</p>
-<p>Every one of you was meant to be dead, and you are not. Do not waste the evening being surprised.</p>
-<p>Why it must be you is yours to remember. You have told yourself a great many stories since. Sit quietly with the true one.</p>
-<p>You will not be told who else was sent for. The House keeps one bottle, and it is sold once. Be quick, and be quiet.</p>
-<p>Doors at eight. Wear a mask; you will need no other.</p>
-<p class="end">The veil lifts</p>`;
-}
 
 function kitPages(): string[] {
   const pages: string[] = [];
   pages.push(`<div class="page"><div class="sheet">${banner("Host copy")}<div class="fit" style="--base:12pt">
     <div class="hostmark">HOST COPY: do not hand out</div>
     <div class="name" style="font-size:2em">The five who got away</div><div class="rule"></div>
-    <table><tr><th>Marker</th><th>Code</th><th>Guest card (cover name)</th><th>Real identity</th><th>The tell</th></tr>
-    ${survivorList.map((s) => `<tr><td><b>No. ${s.survivor!.markerNo}</b></td><td class="mono"><b>${esc(s.survivor!.markerCode)}</b></td><td><b>${esc(s.name)}</b></td><td>${esc(s.survivor!.veilName)}, ${esc(s.survivor!.veilTitle)}</td><td>${esc(s.survivor!.tell)}</td></tr>`).join("")}
+    <table><tr><th>No. on the List</th><th>Guest card (cover name)</th><th>Real identity</th><th>The tell</th></tr>
+    ${survivorList.map((s) => `<tr><td><b>No. ${s.survivor!.markerNo}</b></td><td><b>${esc(s.name)}</b></td><td>${esc(s.survivor!.veilName)}, ${esc(s.survivor!.veilTitle)}</td><td>${esc(s.survivor!.tell)}</td></tr>`).join("")}
     </table>
-    <h2 style="margin-top:1.1em">How to use the pages that follow</h2>
+    <h2 style="margin-top:1.1em">How it works</h2>
     <ul>
-    <li>Each survivor has three pages: <b>The Flap</b> (their secret page), then a cut sheet with <b>Cassie's unsigned invitation</b>, the <b>marker</b> and an <b>address label</b>.</li>
-    <li>Cut along the dotted lines. The strip across the top of every page names the guest and marker number, so the pieces can be sorted into five piles.</li>
-    <li>The marker is honoured once, at the bar, by its owner. Its code is in the table above; the Butler types it.</li>
+    <li>Each survivor gets <b>one sheet</b>: their guest card, which also holds their secret page. Nothing is cut out of it.</li>
+    <li>The vial is bought with words. Print the one slip that says <b>${esc(vialWords)}</b> (it is on page 1 of the slips) and hide it <b>under the cactus in the kitchen</b>. Whoever finds it keeps it. After 8:45 p.m. they say the words to the Butler, who types them on her House panel and picks the guest. One sale only, to a survivor.</li>
     <li>Print this page on its own and keep it. Do not leave it on the printer.</li>
     </ul>
   </div></div></div>`);
-  for (const s of survivorList) {
-    const v = s.survivor!;
-    const tag = `<div class="strip"><span>SURVIVOR KIT · ${esc(s.name)} · Marker No. ${v.markerNo}</span><span>HOST ONLY until cut</span></div>`;
-    const rules = survivorRules(v.markerNo);
-    pages.push(`<div class="page">${tag}<div class="sheet tight flap" style="top:.32in"><div class="banner slim">THE BLACK VEIL</div><div class="fit" data-max="1.1" data-min="0.86" style="--base:11.5pt">
-      <div class="flaphead"><div class="big">You are one who got away</div><div class="vn">${esc(v.veilName)}</div><div class="vt">${esc(v.veilTitle)}</div><span class="markerline">MARKER No. ${v.markerNo}</span></div>
-      <div class="rule" style="margin:.4em 1.2in .5em"></div>
-      <h2>Who you were</h2><p>${esc(v.realStory)}</p>
-      <h2>How you got away</h2><p>${esc(v.escape)}</p>
-      <h2>Your tell</h2><p>${esc(v.tell)} <b>Do it at least three times before the nightcap.</b></p>
-      <h2>What leaks through</h2><p>${esc(v.skillLeak)}</p>
-      <h2>The rules for you</h2><ol class="rules">${rules.map((r) => `<li>${esc(r)}</li>`).join("")}</ol>
-    </div></div></div>`);
-    pages.push(`<div class="page">${tag}
-      <div class="cutarea hand" style="left:.5in;top:.55in;width:7.5in;height:6.55in"><div class="fit" data-max="1.2" style="--base:14pt;padding:0;flex:1;justify-content:center">${invitationText(s.name)}</div></div>
-      <div class="cutarea marker" style="left:.5in;top:7.6in;width:4.1in;height:2.5in"><div class="k">THE BLACK VEIL</div><div class="no">MARKER No. ${v.markerNo}</div><div class="code">${esc(v.markerCode)}</div><div class="l">Honoured once, at the bar, by its owner.</div></div>
-      <div class="cutarea label" style="left:5.0in;top:7.6in;width:3.0in;height:1.1in">${esc(s.name)}</div>
-      <div style="position:absolute;left:5.0in;top:8.8in;width:3in;font:8pt 'Liberation Sans',Arial,sans-serif;color:#666">Address label for the unsigned envelope. Cut along the dotted lines.</div>
-    </div>`);
-  }
-  return pages;
-}
-
-// ------------------------------------------------------------------ 4. house invitations
-function privateWord(id: string): string | null {
-  const holder = facts.find((f) => f.id === "succession")?.holders.find((h) => h.guest === id);
-  if (!holder) return null;
-  const m = holder.line.match(/House:\s*(.+?\.)(?:\s|$)/);
-  if (!m) throw new Error(`cannot trim succession line for ${id}`);
-  return m[1].charAt(0).toUpperCase() + m[1].slice(1);
-}
-
-function invitationCard(name: string, top: string, id: string): string {
-  const word = privateWord(id);
-  return `<div class="inv" style="top:${top}"><div class="req">THE HOUSE REQUESTS</div>
-    <div class="to">${esc(name)}</div>
-    <div class="body">the pleasure of your company at the Black Veil, on the twenty-third of October, nineteen twenty-six. Doors at eight o'clock. Dress for the masquerade. Discretion is expected.</div>
-    ${word ? `<div class="word"><b>A private word:</b>${esc(word)}</div>` : ""}
-    <div class="sig">The House</div></div>`;
-}
-
-function invitationPages(): string[] {
-  const guests = sorted.filter((c) => !survivorIds.has(c.id));
-  const pages: string[] = [];
-  for (let i = 0; i < guests.length; i += 2) {
-    const pair = guests.slice(i, i + 2);
-    pages.push(`<div class="page">${invitationCard(pair[0].name, ".3in", pair[0].id)}<div class="cutline" style="top:5.5in"></div>${pair[1] ? invitationCard(pair[1].name, "5.9in", pair[1].id) : ""}</div>`);
-  }
   return pages;
 }
 
@@ -196,16 +145,15 @@ function doorPages(): string[] {
     `<div class="half ${cls}" style="top:${top}"><div class="sheet">${banner()}<div class="fit" data-max="1.3" data-min="0.88" style="--base:11.5pt"><div class="name" style="font-size:1.5em;margin-bottom:.1em">${esc(title)}</div>${body}</div></div></div>`;
   const two = (title: string, body: string, cls = "") =>
     `<div class="page poster">${half(title, body, ".2in", cls)}<div class="cutline" style="top:5.5in"></div>${half(title, body, "5.8in", cls)}</div>`;
-  return [poster(briefTitle, briefBody()), poster(rulesTitle, rulesBody()), two(briefTitle, briefBody()), two(rulesTitle, rulesBody(), "two")];
+  void two;
+  return [poster(briefTitle, briefBody()), poster(rulesTitle, rulesBody())];
 }
 
 // ------------------------------------------------------------------ build
 const outputs: { file: string; title: string; comment: string; pages: string[] }[] = [
-  { file: "character-cards", title: "Character cards", comment: "PRINT DOUBLE-SIDED, flip on the long edge: page 1 is the front of card 1, page 2 its back, and so on (24 cards, 48 pages).", pages: cardPages() },
-  { file: "envelope-sheets", title: "Envelope sheets", comment: "One page per character, single-sided, alphabetical like the cards.", pages: envelopePages() },
-  { file: "survivor-kit", title: "Survivor kit (HOST ONLY)", comment: "HOST ONLY. Spoilers. Single-sided; cut along dotted lines.", pages: kitPages() },
-  { file: "house-invitations", title: "House invitations", comment: "Two per page, single-sided, on cream card stock if you have it. Cut along the dotted line.", pages: invitationPages() },
-  { file: "door-cards", title: "Door cards", comment: "Pages 1-2 posters; pages 3-4 half-page copies for tables (cut along the dotted line).", pages: doorPages() },
+  { file: "guest-cards", title: "Guest cards", comment: "PRINT DOUBLE-SIDED, flip on the long edge: page 1 is the front of guest 1, page 2 its back, and so on (24 guests, 48 pages).", pages: guestCardPages() },
+  { file: "survivor-kit", title: "Survivor kit (HOST ONLY)", comment: "HOST ONLY. Spoilers. One page: the markers and who holds them.", pages: kitPages() },
+  { file: "door-cards", title: "Door cards", comment: "Page 1: the brief poster. Page 2: the rules poster. One of each, at the door.", pages: doorPages() },
 ];
 
 mkdirSync(OUT, { recursive: true });
