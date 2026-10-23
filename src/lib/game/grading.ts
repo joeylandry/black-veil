@@ -233,6 +233,15 @@ function codesIn(answer: string): Set<string> {
   return new Set(answer.split(/[^A-Za-z0-9]+/).map(normalizeCode).filter(Boolean));
 }
 
+/** Whether an answer holds enough different valid codes to finish a group's race. */
+export function raceComplete(answer: string, circle: string): boolean {
+  const race = races.find((candidate) => candidate.circle === circle);
+  if (!race || !race.tokens.length) return false;
+  const wanted = new Set(race.tokens.map((token) => normalizeCode(propById.get(token)?.code ?? "")));
+  const have = codesIn(answer);
+  return [...wanted].filter((code) => have.has(code)).length >= race.need;
+}
+
 /**
  * The race for the extra point: the first member of each group to finish it. The survivors race for
  * the vial, which the House's log decides; the others must submit three different valid codes from their group's race,

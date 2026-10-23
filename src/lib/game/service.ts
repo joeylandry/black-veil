@@ -24,7 +24,7 @@ import {
 } from "@/data/game";
 import { glassCode } from "@/data/game/props";
 import { characters as characterRows, gameEvents, gameFlags, gameGrades, gameSubmissions, guests, rsvps } from "@/lib/db/schema";
-import { autoGrade, parsePicks } from "./grading";
+import { autoGrade, parsePicks, raceComplete } from "./grading";
 import { buildPacket, parseVerdicts } from "./packet";
 import type { Packet } from "./packet";
 import { applyOverrides, computeStandings } from "./scoring";
@@ -348,8 +348,13 @@ export async function cardFor(db: GameDb, guestId: string, now = new Date()): Pr
         ...full,
         // the survivors do not learn what they are until the game starts, so the group is withheld too
         circle: { id: "sealed", name: "", blurb: "" },
-        private: { ...full.private, secrets: [], knows: [], habit: undefined, role: undefined, survivor: undefined, objectives: [], carries: [], totalPoints: 0, race: { group: "", title: "", text: "", ask: "", house: true, points: 1, slips: [] } },
+        private: { ...full.private, secrets: [], knows: [], habit: undefined, role: undefined, survivor: undefined, objectives: [], carries: [], totalPoints: 0, race: { group: "", title: "", text: "", ask: "", house: true, points: 1, slips: [], closed: false, wonByYou: false } },
       };
+  // a group's race point can be won only once: tell the rest of the group it is gone
+  if (state.secretsReleased && full.circle.id !== "survivors") {
+    const winner = await raceWinner(db, full.circle.id, roster);
+    card.private.race = { ...card.private.race, closed: Boolean(winner), wonByYou: winner === slug };
+  }
   return {
     status: "ok",
     card,
@@ -363,6 +368,21 @@ export async function cardFor(db: GameDb, guestId: string, now = new Date()): Pr
 // ---------------------------------------------------------------- submissions
 
 export type SubmitInput = { kind: SubmissionKind; itemId: string; answer: string; proof?: string };
+/** The member of a group who has already finished its race (the earliest complete entry), or null while the point is still open. */
+async function raceWinner(db: GameDb, circle: string, roster: RosterRow[]): Promise<string | null> {
+  const { slugOf } = maps(roster);
+  const rows = await db
+    .select({ guestId: gameSubmissions.guestId, answer: gameSubmissions.answer })
+    .from(gameSubmissions)
+    .where(and(eq(gameSubmissions.kind, "objective"), eq(gameSubmissions.itemId, "race")))
+    .orderBy(asc(gameSubmissions.createdAt));
+  for (const row of rows) {
+    const slug = slugOf.get(row.guestId);
+    if (slug && characterById.get(slug)?.circle === circle && raceComplete(row.answer, circle)) return slug;
+  }
+  return null;
+}
+
 export type SubmitResult = { ok: true; at: string } | { ok: false; code: "closed" | "uncast" | "invalid" | "slow-down"; message: string };
 
 /** The only thing a guest ever learns from submitting is that it was received. */
@@ -386,6 +406,11 @@ export async function submit(db: GameDb, guestId: string, input: SubmitInput, no
     case "objective": {
       // the group race is not one of the five errands; the survivors' race is the vial and takes no answer
       const isRace = itemId === "race" && character.circle !== "survivors";
+      // the point is taken once somebody in the group has finished: the box closes for everyone else
+      if (isRace) {
+        const winner = await raceWinner(db, character.circle, roster);
+        if (winner && winner !== slug) return { ok: false, code: "closed", message: "Someone in your group has already won this point." };
+      }
       // everyone reports their bills at the end for the wallet bonus
       const isCash = itemId === "cash";
       if (!isRace && !isCash && (!character.objectives.some((objective) => objective.id === itemId) || !objectiveById.has(itemId))) return { ok: false, code: "invalid", message: "That is not one of your errands." };

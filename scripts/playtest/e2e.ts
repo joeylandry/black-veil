@@ -275,12 +275,20 @@ async function main() {
     }
 
     // ------------------------------------------------ the evening: who does what, in order
+    let raceRefusals = 0;
+    const closedOut: string[] = [];
     const extra: Submission[] = []; // things typed through the real UI, which the plan did not include
     const byGuest = new Map<string, Submission[]>();
     for (const submission of night.submissions) byGuest.set(submission.guest, [...(byGuest.get(submission.guest) ?? []), submission]);
     const post = async (submission: Submission) => {
       const response = await call(idOf(submission.guest), "POST", "/api/game/submit", { kind: submission.kind, itemId: submission.itemId, answer: submission.answer });
-      if (response.status !== 200) check(false, `${submission.guest} ${submission.kind}/${submission.itemId} refused: ${response.status} ${JSON.stringify(response.json)}`);
+      // a race entry after the group's point is won is refused by design; the grader would have ignored it anyway
+      const lockedOut = submission.itemId === "race" && /already won/.test(response.json?.error ?? "");
+      if (lockedOut) {
+        raceRefusals += 1;
+        closedOut.push(submission.guest);
+      }
+      else if (response.status !== 200) check(false, `${submission.guest} ${submission.kind}/${submission.itemId} refused: ${response.status} ${JSON.stringify(response.json)}`);
     };
     const isApproval = (s: Submission) => s.kind === "objective" && characterById.get(s.guest)?.objectives.find((o) => o.id === s.itemId)?.check.kind === "approval";
     const ordered = [...night.submissions].sort((a, b) => a.at - b.at);
@@ -295,6 +303,12 @@ async function main() {
     // a few guests photographed mid-game: claim flow and the race box
     if (full) {
       await setClock("20:35:00");
+      if (closedOut[0]) {
+        const late = await openGame(closedOut[0]);
+        await openTab(late, "Private");
+        await snapEl(late.locator(".game-panel", { hasText: "Act fast or lose this point" }).first(), `${closedOut[0]}-race-closed`, `${characterById.get(closedOut[0])!.name.split(" ")[0]} was a little late: someone in their group already won the race point, so the box is closed.`);
+        await late.close();
+      }
       const silas = await openGame("silas");
       await openTab(silas, "Private");
       await silas.getByRole("button", { name: "Claim this point" }).first().scrollIntoViewIfNeeded();
@@ -466,6 +480,7 @@ async function main() {
     const line = `| ${run} | ${night.absent.length} | ${activeGuests.size} | ${characterById.get(night.killer)!.name.split(" ")[0]} | ${characterById.get(winnerSlug)!.name.split(" ")[0]} (${round2(winner.total)}) | ${expected.standings.at(-1)!.total} | ${mismatches} | ${problems.length ? problems.length + " problems" : "clean"}${butlerAbsent ? " (Butler stayed home; host assigned the vial)" : ""} |`;
     summary.push(line);
     console.log(line);
+    console.log(`  run ${run}: ${raceRefusals} late race entries were refused because their group's point was already won`);
     failures += problems.length;
     for (const context of contexts.values()) await context.close();
     writeFileSync(`${dir}/problems.txt`, problems.join("\n"));

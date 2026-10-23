@@ -287,9 +287,9 @@ Filing code: 3N8VD
 - ERYTJ: set of false papers
 - YUGWA: blank telegram form
 - DTF7R: soothsayer's charm
-- 66M4W: glass earring
+- 66M4W: earring
 - P4PD3: jar of bathtub gin
-- YY72H: signed baseball
+- YY72H: lucky ball
 - 844M9: Mahns Manor voucher
 - RKRGA: request card
 - ATCTU: crate receipt
@@ -422,9 +422,9 @@ One slip per clue errand. Hand it to a guest whose named sources did not come.
 - Silas Palmer of the Palm Court: 12 bills ($1200), request card, Trade slip
 - Sidd Airwind: 14 bills ($1400), Witness slip
 - Joshua Kamin-Sky: 8 bills ($800), soothsayer's charm, Witness slip
-- Arjun Bat: 8 bills ($800), signed baseball, Witness slip
+- Arjun Bat: 8 bills ($800), lucky ball, Witness slip
 - Adam Holdsfire: 10 bills ($1000), marker No. 21
-- Tiffany Liu of the Lamps: 10 bills ($1000), glass earring, Pardon slip, go-between's receipt, Trade slip
+- Tiffany Liu of the Lamps: 10 bills ($1000), earring, Pardon slip, go-between's receipt, Trade slip
 - Diwakar Sandbagg: 10 bills ($1000), carnival giraffe, Witness slip
 - Tim McGinley, Baron of Bathtub Gin: 15 bills ($1500), jar of bathtub gin, Tool token
 - Rebecca Chow, Butler of the Black Veil: 12 bills ($1200)

@@ -18,7 +18,7 @@ export type Errand = {
   automatic: boolean;
 };
 
-export type RaceCard = { group: string; title: string; text: string; ask: string; house: boolean; points: number; slips: string[] };
+export type RaceCard = { group: string; title: string; text: string; ask: string; house: boolean; points: number; slips: string[]; closed: boolean; wonByYou: boolean };
 
 export type SurvivorCard = {
   veilName: string;

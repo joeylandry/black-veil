@@ -148,7 +148,7 @@ export type CardView = {
     objectives: RenderedObjective[];
     totalPoints: number;
     /** This group's race for one extra point. */
-    race: { group: string; title: string; text: string; ask: string; house: boolean; points: number; slips: string[] };
+    race: { group: string; title: string; text: string; ask: string; house: boolean; points: number; slips: string[]; closed: boolean; wonByYou: boolean };
   };
 };
 
@@ -236,7 +236,7 @@ function raceFor(character: Character) {
     .map((propId) => races.find((candidate) => candidate.tokens.includes(propId)))
     .filter((candidate): candidate is NonNullable<typeof candidate> => Boolean(candidate))
     .map((candidate) => `${propById.get(character.carries.find((propId) => candidate.tokens.includes(propId))!)?.name ?? "slip"}: hand it to anyone who asks for it by name.`);
-  return { group: circleById.get(character.circle)!.name, title: race.title, text: race.text, ask: race.ask, house: race.circle === "survivors", points: 1, slips };
+  return { group: circleById.get(character.circle)!.name, title: race.title, text: race.text, ask: race.ask, house: race.circle === "survivors", points: 1, slips, closed: false, wonByYou: false };
 }
 
 const guardedObjectiveIds = new Set(characters.flatMap((c) => c.objectives.flatMap((o) => (o.check.kind === "keep" ? [o.check.rivalObjective] : []))));

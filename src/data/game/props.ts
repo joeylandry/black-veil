@@ -54,9 +54,9 @@ export const props: Prop[] = [
   C("false-papers", "ERYTJ", "set of false papers", "a printed folded paper in a black envelope", "erika"),
   C("telegram-form", "YUGWA", "blank telegram form", "a printed telegram slip", "ananya"),
   C("sooth-charm", "DTF7R", "soothsayer's charm", "a small charm, bead or stone", "josh"),
-  C("earring", "66M4W", "glass earring", "an earring", "tiffany"),
+  C("earring", "66M4W", "earring", "the earring", "tiffany"),
   C("gin-jar", "P4PD3", "jar of bathtub gin", "the little jar", "tim"),
-  C("baseball", "YY72H", "signed baseball", "a baseball", "arjun"),
+  C("baseball", "YY72H", "lucky ball", "the ball", "arjun"),
 
   // ---- slips: printed cards that prove a deal ----
   C("fee-voucher", "844M9", "Mahns Manor voucher", "a printed voucher", "anika"),

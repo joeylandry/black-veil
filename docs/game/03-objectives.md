@@ -201,7 +201,7 @@ sidd-story. **How many were there?** (story, 1) Seventeen strangers died in acci
 
 josh-find. **A thing to find** (find, 1) Find the star-marked salt. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. A blue box with a six-pointed star, in the pantry where the salt is kept.
    - answer: code X8WCT
-josh-swap. **A fair trade** (swap, 1) Strike a bargain with Tiffany Liu of the Lamps: your soothsayer's charm for their glass earring. It must be a deal, never a grab. When you hold it, read the code on its tag.
+josh-swap. **A fair trade** (swap, 1) Strike a bargain with Tiffany Liu of the Lamps: your soothsayer's charm for their earring. It must be a deal, never a grab. When you hold it, read the code on its tag.
    - answer: code 66M4W; from Tiffany Liu of the Lamps
 josh-secret. **What Tiffany Liu of the Lamps is hiding** (learn, 1) Everyone has something they would rather not say. Learn Tiffany Liu of the Lamps's small secret, not by being told it is a secret, but by earning it. Someone is guarding this one, so expect a harder time: a real try still earns half a point.
    - answer: [chisel]; from Tiffany Liu of the Lamps, Mihir Nagarkatti of Nag Oil
@@ -216,7 +216,7 @@ arjun-money. **Money to make** (money, 1) Win a wager on a swing, a pitch or a b
    - answer: at least $1400
 arjun-find. **A thing to find** (find, 1) Find the Kraken Cove candle stand. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. Eight arms hold up a single candle, in the cabinet with the good glass.
    - answer: code PWKGP
-arjun-swap. **A fair trade** (swap, 1) Strike a bargain with Tim McGinley, Baron of Bathtub Gin: your signed baseball for their jar of bathtub gin. It must be a deal, never a grab. When you hold it, read the code on its tag.
+arjun-swap. **A fair trade** (swap, 1) Strike a bargain with Tim McGinley, Baron of Bathtub Gin: your lucky ball for their jar of bathtub gin. It must be a deal, never a grab. When you hold it, read the code on its tag.
    - answer: code P4PD3; from Tim McGinley, Baron of Bathtub Gin
 arjun-secret. **What Tiffany Liu of the Lamps is hiding** (learn, 1) Everyone has something they would rather not say. Learn Tiffany Liu of the Lamps's small secret, not by being told it is a secret, but by earning it.
    - answer: [chisel]; from Tiffany Liu of the Lamps, Mihir Nagarkatti of Nag Oil
@@ -240,7 +240,7 @@ adam-offer. **Make your offer to the House** (chain, 1) The House keeps one bott
 
 tiffany-find. **A thing to find** (find, 1) Find the glowing bottle. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. A bottle of wine that glows in the dark, though nobody lit it.
    - answer: code RD99K
-tiffany-swap. **A fair trade** (swap, 1) Strike a bargain with Joshua Kamin-Sky: your glass earring for their soothsayer's charm. It must be a deal, never a grab. When you hold it, read the code on its tag.
+tiffany-swap. **A fair trade** (swap, 1) Strike a bargain with Joshua Kamin-Sky: your earring for their soothsayer's charm. It must be a deal, never a grab. When you hold it, read the code on its tag.
    - answer: code DTF7R; from Joshua Kamin-Sky
 tiffany-deal. **A pardon, brokered** (role, 1) Take at least $100 in House bills from Leon Gee and carry a Pardon slip to Sheriff Farrago. If he takes it, he tears up his citation and hands it to you: read the code on the torn citation. Give Leon a go-between's receipt.
    - answer: code MKPAE; from Sheriff Theodor Farrago, Leon Gee of WFEA
@@ -268,7 +268,7 @@ tim-money. **Money to make** (money, 1) A baron's business is the margin. Sell, 
    - answer: at least $2100
 tim-find. **A thing to find** (find, 1) Find the launch's fog horn. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. Something that once sounded a warning across the water now sits on the bookshelf.
    - answer: code V23EE
-tim-swap. **A fair trade** (swap, 1) Strike a bargain with Arjun Bat: your jar of bathtub gin for their signed baseball. It must be a deal, never a grab. When you hold it, read the code on its tag.
+tim-swap. **A fair trade** (swap, 1) Strike a bargain with Arjun Bat: your jar of bathtub gin for their lucky ball. It must be a deal, never a grab. When you hold it, read the code on its tag.
    - answer: code YY72H; from Arjun Bat
 tim-secret. **What Diwakar Sandbagg is hiding** (learn, 1) Everyone has something they would rather not say. Learn Diwakar Sandbagg's small secret, not by being told it is a secret, but by earning it. Someone is guarding this one, so expect a harder time: a real try still earns half a point.
    - answer: [stay down]; from Diwakar Sandbagg, Ananya Codru and Charlie Wakem

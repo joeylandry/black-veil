@@ -384,9 +384,9 @@ Kit had the Veil's runners killed one at a time, the last thrown into the river 
 | ERYTJ | set of false papers | a printed folded paper in a black envelope | carried | Erika Lamm |
 | YUGWA | blank telegram form | a printed telegram slip | carried | Ananya Codru and Charlie Wakem |
 | DTF7R | soothsayer's charm | a small charm, bead or stone | carried | Joshua Kamin-Sky |
-| 66M4W | glass earring | an earring | carried | Tiffany Liu of the Lamps |
+| 66M4W | earring | the earring | carried | Tiffany Liu of the Lamps |
 | P4PD3 | jar of bathtub gin | the little jar | carried | Tim McGinley, Baron of Bathtub Gin |
-| YY72H | signed baseball | a baseball | carried | Arjun Bat |
+| YY72H | lucky ball | the ball | carried | Arjun Bat |
 | 844M9 | Mahns Manor voucher | a printed voucher | carried | Anika Mahns of Mahns Manor |
 | RKRGA | request card | a printed card | carried | Silas Palmer of the Palm Court |
 | ATCTU | crate receipt | a printed receipt | carried | Krrish Vermouth |

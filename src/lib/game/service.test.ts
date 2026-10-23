@@ -4,7 +4,8 @@ import { PGlite } from "@electric-sql/pglite";
 import { drizzle } from "drizzle-orm/pglite";
 import { eq } from "drizzle-orm";
 import { migrate } from "drizzle-orm/pglite/migrator";
-import { characters, markers, survivorIds, questions, characterById, alternateOf } from "@/data/game";
+import { characters, markers, survivorIds, questions, characterById, alternateOf, races } from "@/data/game";
+import { propById } from "@/data/game/props";
 import { guests, gameSubmissions, rsvps } from "@/lib/db/schema";
 import { correctAnswer, correctMystery } from "./sim";
 import {
@@ -335,6 +336,33 @@ describe("submissions", () => {
     assert.equal(doors.ok, true, "and it opens by itself at eight, with nobody logged in");
     const late = await submit(ctx.db, anika, { kind: "objective", itemId: "anika-secret", answer: "Sophia" }, LATE);
     assert.equal(late.ok, false);
+  });
+
+  it("closes a group's race once somebody has won it, and only that group's", async () => {
+    const circle = characterById.get("arjun")!.circle;
+    const race = races.find((entry) => entry.circle === circle)!;
+    const codes = race.tokens.map((token) => propById.get(token)!.code);
+    const mates = characters.filter((entry) => entry.circle === circle && entry.id !== "arjun").map((entry) => entry.id);
+    const [first, second] = [await idOf(ctx.db, mates[0]), await idOf(ctx.db, mates[1])];
+    const otherCircle = characters.find((entry) => entry.circle !== circle && entry.circle !== "survivors" && entry.id !== "anika")!;
+    const other = await idOf(ctx.db, otherCircle.id);
+    const otherRace = races.find((entry) => entry.circle === otherCircle.circle)!;
+    const otherCodes = otherRace.tokens.map((token) => propById.get(token)!.code);
+
+    assert.equal((await submit(ctx.db, first, { kind: "objective", itemId: "race", answer: `${codes[0]} ${codes[1]}` }, NIGHT)).ok, true, "two of three codes is only an attempt");
+    assert.equal((await submit(ctx.db, second, { kind: "objective", itemId: "race", answer: `${codes[2]} ${codes[3]} ${codes[4]}` }, NIGHT)).ok, true, "the first complete entry wins and is accepted");
+    const late = await submit(ctx.db, first, { kind: "objective", itemId: "race", answer: `${codes[0]} ${codes[1]} ${codes[2]}` }, NIGHT);
+    assert.equal(late.ok, false, "a complete entry after the win is refused");
+    assert.match((late as { message: string }).message, /already won/);
+    assert.equal((await submit(ctx.db, second, { kind: "objective", itemId: "race", answer: `${codes[0]} ${codes[1]} ${codes[2]}` }, NIGHT)).ok, true, "the winner may still resubmit");
+
+    const card = await cardFor(ctx.db, first, NIGHT);
+    assert.equal(card.status === "ok" && card.card.private.race.closed, true, "the card tells the rest of the group it is closed");
+    assert.equal(card.status === "ok" && card.card.private.race.wonByYou, false);
+    const winnerCard = await cardFor(ctx.db, second, NIGHT);
+    assert.equal(winnerCard.status === "ok" && winnerCard.card.private.race.wonByYou, true);
+
+    assert.equal((await submit(ctx.db, other, { kind: "objective", itemId: "race", answer: `${otherCodes[0]} ${otherCodes[1]} ${otherCodes[2]}` }, NIGHT)).ok, true, "another group's race is still open");
   });
 
   it("accepts only your own objectives, the group race, the real questions, and no more page filing", async () => {

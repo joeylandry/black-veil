@@ -6,7 +6,7 @@
 
 - 24 guests, 5 groups: the five survivors (secret), and four trades (order, stage, working, river). The Butler (Rebecca) is in the river group.
 - Each guest has **5 objectives** (1 point each) and answers **9 mystery questions** (10 points). They also **name up to 4 survivors** (+1 right, -0.5 wrong).
-- Each group has a **race**: the first to type any 3 of its 5 slip codes gets +1. The survivors' race is buying the House's vial.
+- Each group has a **race**: the first to type any 3 of its 5 slip codes gets +1. The survivors' race is buying the House's vial. **Once someone in a group finishes, that group's box closes for everyone else** (the card says so), so the point can be won only once.
 - **Wallet bonus**: the quarter of the room that ends best off against where they started (most gained, or least spent) gets +1. A money errand counts from its target.
 - **Maximum 21**: objectives 5 + survivors 4 + mysteries 10 + race 1 + wallet 1.
 - **Money**: everyone starts with $100 bills. Some clues cost a bill in the House Tin at the bar. A kept secret can be sold for $200 (a sale to the keeper's rival costs the keeper half a point).
@@ -175,12 +175,12 @@ A guest does the real task, taps **Claim this point**, and finds you. Once you h
 **Joshua Kamin-Sky** (Josh Kaminsky), Soothsayer. Starts with 8 bills ($800); carries soothsayer's charm, Witness slip.
 
 1. Find the star-marked salt (the blue kosher salt box with the star)
-2. Swap with Tiffany Liu of the Lamps, receive the glass earring
+2. Swap with Tiffany Liu of the Lamps, receive the earring
 3. Learn Tiffany Liu of the Lamps's small secret
 4. Host task: The prophecy (word: **saffron**)
 5. Host task: The fortunes (word: **cobblestone**)
 
-**Arjun Bat** (Arjun Bhat), Slugger. Starts with 8 bills ($800); carries signed baseball, Witness slip.
+**Arjun Bat** (Arjun Bhat), Slugger. Starts with 8 bills ($800); carries lucky ball, Witness slip.
 
 1. Money: finish with at least $1,400
 2. Find the Kraken Cove candle stand (the octopus candle holder)
@@ -188,7 +188,7 @@ A guest does the real task, taps **Claim this point**, and finds you. Once you h
 4. Learn Tiffany Liu of the Lamps's small secret
 5. Learn: A word for the umpire
 
-**Tiffany Liu of the Lamps** (Tiffany Liu), Stained-glass artist. Starts with 10 bills ($1,000); carries glass earring, Pardon slip, go-between's receipt, Trade slip.
+**Tiffany Liu of the Lamps** (Tiffany Liu), Stained-glass artist. Starts with 10 bills ($1,000); carries earring, Pardon slip, go-between's receipt, Trade slip.
 
 1. Find the glowing bottle (the lit-up wine bottle)
 2. Swap with Joshua Kamin-Sky, receive the soothsayer's charm
@@ -226,7 +226,7 @@ A guest does the real task, taps **Claim this point**, and finds you. Once you h
 
 1. Money: finish with at least $2,100
 2. Find the launch's fog horn (the conch shell)
-3. Swap with Arjun Bat, receive the signed baseball
+3. Swap with Arjun Bat, receive the lucky ball
 4. Learn Diwakar Sandbagg's small secret
 5. Keep a secret: tell Erika Lamm, hide it from Diwakar Sandbagg (sellable, $200)
 
@@ -292,9 +292,9 @@ A guest does the real task, taps **Claim this point**, and finds you. Once you h
 | ERYTJ | set of false papers | a printed folded paper in a black envelope | Erika Lamm |
 | YUGWA | blank telegram form | a printed telegram slip | Ananya Codru and Charlie Wakem |
 | DTF7R | soothsayer's charm | a small charm, bead or stone | Joshua Kamin-Sky |
-| 66M4W | glass earring | an earring | Tiffany Liu of the Lamps |
+| 66M4W | earring | the earring | Tiffany Liu of the Lamps |
 | P4PD3 | jar of bathtub gin | the little jar | Tim McGinley, Baron of Bathtub Gin |
-| YY72H | signed baseball | a baseball | Arjun Bat |
+| YY72H | lucky ball | the ball | Arjun Bat |
 | 844M9 | Mahns Manor voucher | a printed voucher | Anika Mahns of Mahns Manor |
 | RKRGA | request card | a printed card | Silas Palmer of the Palm Court |
 | ATCTU | crate receipt | a printed receipt | Krrish Vermouth |
@@ -305,7 +305,7 @@ A guest does the real task, taps **Claim this point**, and finds you. Once you h
 
 Race slips are printed on `slips.pdf` (the `witness`, `reply`, `tool` and `trade` slips).
 
-**Still to choose:** a real earring (Tiffany), a small jar (Tim) and a baseball (Arjun) for the three swap items that are not yet in your photos.
+**Swap items to have ready:** the earring (Tiffany, you have it), a small jar (Tim, to find) and a ball (Arjun, you have it).
 
 ## 7. The questions
 
