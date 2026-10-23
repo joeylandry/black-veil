@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { eventConfig } from "@/config/event";
 import type { RsvpSubmission } from "@/lib/rsvp-service";
@@ -48,10 +49,17 @@ export function GuestRoster() {
               <h2>{view.you.name}</h2>
               <p className="character-occupation">{view.you.role}</p>
               <p className="character-bio">{view.you.background}</p>
-              <ul className="roster-soon" aria-label="Still to come">
-                <li><strong>Objectives</strong> coming soon</li>
-                <li><strong>Secrets</strong> coming soon</li>
-              </ul>
+              {view.started ? (
+                <p className="roster-soon-open">
+                  <strong>The game has started.</strong> Your objectives and secrets are ready:{" "}
+                  <Link href="/game">open your game page</Link>.
+                </p>
+              ) : (
+                <ul className="roster-soon" aria-label="Still to come">
+                  <li><strong>Objectives</strong> coming soon</li>
+                  <li><strong>Secrets</strong> coming soon</li>
+                </ul>
+              )}
             </div>
           ) : (
             <>

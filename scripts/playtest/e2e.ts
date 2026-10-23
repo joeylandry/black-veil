@@ -247,10 +247,11 @@ async function main() {
         await openTab(page, "Public");
         check((await page.locator("body").innerText()).toLowerCase().includes(c.name.split(",")[0].split(" of ")[0].toLowerCase()), `${c.id}: the public tab does not show the character`);
         await openTab(page, "Background");
-        await openTab(page, "Private");
+        await openTab(page, "Objectives");
         check((await page.locator("li.game-errand").count()) === 5, `${c.id}: the private tab shows ${await page.locator("li.game-errand").count()} errands, not 5`);
-        check((await page.locator(".game-panel", { hasText: "In your pockets" }).count()) > 0, `${c.id}: no pockets panel`);
         check((await page.locator(".game-panel", { hasText: "Act fast or lose this point" }).count()) > 0, `${c.id}: no race panel`);
+        await openTab(page, "Private");
+        check((await page.locator(".game-panel", { hasText: "In your pockets" }).count()) > 0, `${c.id}: no pockets panel`);
         const body = await page.locator("body").innerText();
         check(!/Costume ideas|What to wear/i.test(body), `${c.id}: a costume section is showing`);
         await openTab(page, "Answers");
@@ -267,9 +268,11 @@ async function main() {
       await snapPhone(anika, "anika-background", "Anika's background: history, who she knows, what to wear.");
       await openTab(anika, "Private");
       await snapPhone(anika, "anika-private", "Anika's private tab, top of the page.", 1);
-      await snapObjectives(anika, "anika", "Anika (rich heir)");
       await snapEl(anika.locator(".game-panel", { hasText: "In your pockets" }).first(), "anika-pockets", "Anika's pockets: $3,000 (30 bills of $100) and the props she carries.");
       await snapEl(anika.locator(".game-panel", { hasText: "What you know, and what you are hiding" }).first(), "anika-knows", "What Anika knows and is hiding; each line says whether it is hers to trade.");
+      await openTab(anika, "Objectives");
+      await snapPhone(anika, "anika-objectives-tab", "Anika's Objectives tab: the glance list, then each objective.", 1);
+      await snapObjectives(anika, "anika", "Anika (rich heir)");
       await openTab(anika, "Answers");
       await snapPhone(anika, "anika-answers", "Anika's answers tab: the three mysteries and four survivor guesses.");
       await anika.close();
@@ -277,20 +280,23 @@ async function main() {
       const mihir = await openGame("mihir");
       await openTab(mihir, "Private");
       await snapPhone(mihir, "mihir-private", "A survivor's private tab (Mihir): who he really is, his tell and how the night works for him.", 2);
+      await openTab(mihir, "Objectives");
       await snapObjectives(mihir, "mihir", "Mihir (survivor)");
       await mihir.close();
       const rebecca = await openGame("rebecca");
       await openTab(rebecca, "Private");
       await snapPhone(rebecca, "rebecca-private", "The Butler's private tab: her rules and the House panel.", 2);
+      await openTab(rebecca, "Objectives");
       await snapObjectives(rebecca, "rebecca", "Rebecca (the Butler)");
       await rebecca.close();
       const theodor = await openGame("theodor");
       await openTab(theodor, "Private");
       await snapPhone(theodor, "theodor-private", "The Sheriff's private tab: his office.", 1);
+      await openTab(theodor, "Objectives");
       await snapObjectives(theodor, "theodor", "Theodor (the Sheriff)");
       for (const slug of ["josh", "erika", "tim"]) {
         const page = await openGame(slug);
-        await openTab(page, "Private");
+        await openTab(page, "Objectives");
         await snapObjectives(page, slug, characterById.get(slug)!.name.split(" ")[0]);
         await page.close();
       }
@@ -328,12 +334,12 @@ async function main() {
       await setClock("20:35:00");
       if (closedOut[0]) {
         const late = await openGame(closedOut[0]);
-        await openTab(late, "Private");
+        await openTab(late, "Objectives");
         await snapEl(late.locator(".game-panel", { hasText: "Act fast or lose this point" }).first(), `${closedOut[0]}-race-closed`, `${characterById.get(closedOut[0])!.name.split(" ")[0]} was a little late: someone in their group already won the race point, so the box is closed.`);
         await late.close();
       }
       const silas = await openGame("silas");
-      await openTab(silas, "Private");
+      await openTab(silas, "Objectives");
       await silas.getByRole("button", { name: "Claim this point" }).first().scrollIntoViewIfNeeded();
       await snapEl(silas.locator("li.game-errand", { hasText: "The spotlight" }), "silas-before-claim", "8:35 p.m. Silas finished his spotlight. His spotlight objective offers Claim this point.");
       await silas.getByRole("button", { name: "Claim this point" }).first().click();

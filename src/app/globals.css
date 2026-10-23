@@ -1107,6 +1107,8 @@ img { max-width: 100%; height: auto; }
 .roster-soon { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1.2rem 0 0; padding: 0; list-style: none; }
 .roster-soon li { padding: .45rem .75rem; font-family: var(--font-sans), Arial, sans-serif; font-size: .68rem; letter-spacing: .06em; text-transform: uppercase; color: #cbbf9f; border: 1px dashed var(--gold-muted); }
 .roster-soon strong { color: var(--paper-light); }
+.roster-soon-open { margin: 1.2rem 0 0; padding: .7rem .9rem; border: 1px solid var(--gold-muted); color: #e6dcc0; }
+.roster-soon-open a { color: var(--brass); }
 .roster-section { max-width: 980px; margin: 2.5rem auto 0; padding: clamp(1.1rem, 4vw, 2.6rem); color: var(--ink); background: var(--paper-light); border: 4px double var(--ink); }
 .roster-heading { padding-bottom: 1rem; border-bottom: 3px double var(--ink); }
 .roster-heading h2 { margin: .2rem 0 .4rem; font-family: var(--font-display); font-size: clamp(2.2rem, 8vw, 4rem); line-height: .9; text-transform: uppercase; }

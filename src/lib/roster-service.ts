@@ -108,6 +108,8 @@ export type PublicCard = { name: string; role: string; background: string };
  */
 export type RosterView = {
   released: boolean;
+  /** True once private cards and objectives are open (8:00 p.m. or the Start button). */
+  started: boolean;
   you: PublicCard | null;
   rows: { name: string; role: string | null; background: string | null; isYou: boolean }[];
 };
@@ -143,7 +145,9 @@ export async function rosterViewFor(db: GameDb, guestId: string, now = new Date(
     rows = [...bySlug.values(), ...unmatched].sort((a, b) => a.name.localeCompare(b.name));
   }
   const mine = cast.find((row) => row.guestId === guestId);
-  return { released: flags.released, you: flags.released && mine?.entry ? publicCard(mine.entry) : null, rows };
+  const { getState } = await import("@/lib/game/service");
+  const started = (await getState(db, now)).secretsReleased;
+  return { released: flags.released, started, you: flags.released && mine?.entry ? publicCard(mine.entry) : null, rows };
 }
 
 export { roster };
