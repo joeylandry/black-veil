@@ -19,7 +19,7 @@ All PDFs are US Letter. Print at 100% / "Actual size" (not "Fit to page"), with 
 
 ## Editing the menu
 
-The drink and bite lists are plain arrays at the top of `scripts/print/exhibits.ts` (`menuDrinks`, `menuBites`, plus `menuTitle`, `menuBy`, `menuNotice`, `menuPriceNote`). Change them, run `npx tsx scripts/print/exhibits.ts`, and reprint `menu.pdf` and `menu-table-card.pdf`. The bites are placeholders: swap in whatever you are serving.
+The drink and bite lists are plain arrays at the top of `scripts/print/exhibits.ts` (`menuDrinks`, `menuBites`, plus `menuTitle`, `menuBy`, `menuNotice`). Change them, run `npx tsx scripts/print/exhibits.ts`, and reprint `menu.pdf` and `menu-table-card.pdf`. The lists match the menu you are serving; edit them there if it changes.
 
 ## Cutting tips
 

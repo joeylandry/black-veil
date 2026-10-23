@@ -22,27 +22,19 @@ import { tieBreaker } from "@/data/game/story";
 const menuTitle = "THE BLACK VEIL";
 const menuBy = "by the House";
 const menuNotice = "Every beverage dispensed for medicinal use only";
-const menuPriceNote = "a word in the Butler's ear";
 const menuDrinks: { name: string; desc: string }[] = [
-  { name: "The House Martini", desc: "Gin and vermouth, stirred cold, an olive for the nerves. Recommended for the nervous." },
-  { name: "Bee's Knees", desc: "Gin, lemon and honey. A soothing remedy for the throat." },
-  { name: "Gin Rickey", desc: "Gin, lime and soda over ice. A cooling draught for summer ailments." },
-  { name: "Old Fashioned", desc: "Whiskey, a lump of sugar and bitters. A time-honoured restorative." },
-  { name: "Mary Pickford", desc: "Rum, pineapple and grenadine, a cherry on top. For delicate constitutions." },
-  { name: "French 75", desc: "Gin, lemon and sparkling wine. A tonic with a kick." },
-  { name: "Mint Julep", desc: "Whiskey, mint and sugar over crushed ice. A garden remedy." },
-  { name: "Temperance Tonic", desc: "No spirits whatever: ginger, lemon and soda. For the strictly abstemious." },
-  { name: "Cold Tea", desc: "The House whiskey, served in a teacup. Do not ask what is in the pot." },
-  { name: "Coffee", desc: "Hot, black and strictly medicinal." },
+  { name: "The Bee's Knees", desc: "Gin \u00b7 Fresh Lemon \u00b7 Honey Syrup" },
+  { name: "Whiskey Sour", desc: "Bourbon \u00b7 Citrus \u00b7 Orange" },
+  { name: "Espresso Martini", desc: "Orange Vodka \u00b7 Espresso \u00b7 Coffee Liqueur" },
+  { name: "The Bloody Scary", desc: "Blood Orange \u00b7 Prosecco \u00b7 Campari \u00b7 Black Vodka" },
 ];
-const menuBitesTitle = "Light Remedies";
+const menuBitesTitle = "Food Menu";
 const menuBites: { name: string; desc: string }[] = [
-  { name: "Devilled Eggs", desc: "A dose of paprika." },
-  { name: "Cheese and Crackers", desc: "Sharp, and easily swallowed." },
-  { name: "Olives and Pickles", desc: "Briny and beneficial." },
-  { name: "Little Sandwiches", desc: "Cucumber, ham or egg salad." },
-  { name: "Salted Nuts", desc: "Keep the strength up." },
-  { name: "Petits Fours", desc: "For the sweet-toothed invalid." },
+  { name: "Sausage-Stuffed Mushrooms", desc: "Savory Italian Sausage \u00b7 Mascarpone \u00b7 Parmesan \u00b7 Herbs" },
+  { name: "Smoked Salmon Tea Sandwiches", desc: "Smoked Salmon \u00b7 Herbed Butter \u00b7 21 Grain Bread" },
+  { name: "Mini Italian Meatballs", desc: "Tender Italian-Style Meatballs" },
+  { name: "Classic Shrimp Cocktail", desc: "Chilled Shrimp \u00b7 Cocktail Sauce" },
+  { name: "The Black Veil Charcuterie Board", desc: "Artisan Cheeses \u00b7 Cured Meats \u00b7 Crackers \u00b7 Pepper Jam" },
 ];
 
 // =====================================================================================================
@@ -613,14 +605,14 @@ function buildFortunes() {
 
 // ---------------------------------------------------------------- menu
 function menuBody(card: boolean) {
-  const it = (m: { name: string; desc: string }, price = true) => `<div class="it"><span class="nm">${esc(m.name)}</span><span class="dots"></span>${price ? `<span class="pr">${esc(menuPriceNote)}</span>` : ""}</div><div class="ds">${esc(m.desc)}</div>`;
+  const it = (m: { name: string; desc: string }) => `<div class="it"><span class="nm">${esc(m.name)}</span></div><div class="ds">${esc(m.desc)}</div>`;
   const band = `<div class="band"><h1>${esc(menuTitle)}</h1><div class="by">${esc(menuBy)}</div><div class="med">${esc(menuNotice)}</div></div>`;
-  const drinks = `<div><h2>Tonics &amp; Medicines</h2>${menuDrinks.map((m) => it(m)).join("")}</div>`;
-  const bites = `<div><h2>${esc(menuBitesTitle)}</h2><div class="bites">${menuBites.map((b) => `<div>${it(b, false)}</div>`).join("")}</div></div>`;
-  const foot = `<div class="foot">All prices: ${esc(menuPriceNote)}. The House reserves the right to ask no questions.</div>`;
+  const drinks = `<div><h2>Cocktail Menu</h2>${menuDrinks.map((m) => it(m)).join("")}</div>`;
+  const bites = `<div><h2>${esc(menuBitesTitle)}</h2><div class="bites">${menuBites.map((b) => `<div>${it(b)}</div>`).join("")}</div></div>`;
+  const foot = `<div class="foot">The House reserves the right to ask no questions.</div>`;
   if (card) {
     const half = Math.ceil(menuDrinks.length / 2);
-    const left = `<div><h2>Tonics &amp; Medicines</h2>${menuDrinks.slice(0, half).map((m) => it(m)).join("")}</div>`;
+    const left = `<div><h2>Cocktail Menu</h2>${menuDrinks.slice(0, half).map((m) => it(m)).join("")}</div>`;
     const right = `<div><h2>&nbsp;</h2>${menuDrinks.slice(half).map((m) => it(m)).join("")}</div>`;
     const bar = `<div class="bitesrow"><b>${esc(menuBitesTitle)}:</b> ${menuBites.map((b) => esc(b.name)).join(" &middot; ")}</div>`;
     return `${band}<div class="body">${left}${right}</div>${bar}${foot}`;
@@ -692,7 +684,7 @@ All PDFs are US Letter. Print at 100% / "Actual size" (not "Fit to page"), with 
 
 ## Editing the menu
 
-The drink and bite lists are plain arrays at the top of \`scripts/print/exhibits.ts\` (\`menuDrinks\`, \`menuBites\`, plus \`menuTitle\`, \`menuBy\`, \`menuNotice\`, \`menuPriceNote\`). Change them, run \`npx tsx scripts/print/exhibits.ts\`, and reprint \`menu.pdf\` and \`menu-table-card.pdf\`. The bites are placeholders: swap in whatever you are serving.
+The drink and bite lists are plain arrays at the top of \`scripts/print/exhibits.ts\` (\`menuDrinks\`, \`menuBites\`, plus \`menuTitle\`, \`menuBy\`, \`menuNotice\`). Change them, run \`npx tsx scripts/print/exhibits.ts\`, and reprint \`menu.pdf\` and \`menu-table-card.pdf\`. The lists match the menu you are serving; edit them there if it changes.
 
 ## Cutting tips
 
