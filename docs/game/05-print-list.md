@@ -357,9 +357,9 @@ House bills: $100 each. Cash in the room at the start: $32,000 (320 bills, so th
 - Rhea Mallya of Mallya's Emporium: 15 bills ($1500)
 - Erika Lamm: 6 bills ($600)
 
-## Standby slips (the standby tray at the bar)
+## Spare slips (optional)
 
-One slip per clue errand. Hand it to a guest whose named sources did not come.
+Print `slips.pdf` a second time if you want spares. Hand one to a guest whose named sources did not come.
 
 - **anika-secret** (Anika Mahns of Mahns Manor): You once filed a telegram, paid in advance, with no sender.
 - **joel-secret** (J. Bruce Wayne): You delivered a crate of wine in November 1924 on a draft signed K. Kessler to a grey Hudson that later turned up in the river.

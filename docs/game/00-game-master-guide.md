@@ -23,7 +23,7 @@
 | 8:35 to 9:00 | The Butler sells the vial once to the first marker | Watch the House panel |
 | **9:00** | The House closes by itself; the nightcap is served | Note the buyer; stage the body at ~9:05 |
 | ~9:15 | The Butler finds him and screams; the Sheriff takes charge | Open Josh's envelope afterwards |
-| 9:15 to 10:15 | Investigation; the Sheriff arrests by 10:15 | Standby tray at the bar for guests whose source is absent |
+| 9:15 to 10:15 | Investigation; the Sheriff arrests by 10:15 | Optional spare slips at the bar for guests whose source is absent |
 | 10:00 | Wrap-up: read Cassie's letter. Give Eric the charter; give Leon a bulletin to read aloud | ~3 minutes |
 | **10:30** | The book closes by itself | Start grading |
 
@@ -362,17 +362,17 @@ Everyone answers nine: old-1 to old-3, new-1 to new-3 and con-1 to con-3. **The 
 | The Butler is absent | `npm run game:grade -- assign-vial <slug>` for the first survivor who asks at the bar. The Butler's own errands are stranded. |
 | Nobody buys the vial by 9:00 | `npm run game:grade -- assign-vial <slug>`. |
 | A survivor is absent | Their marker is never offered. |
-| Any other guest is absent | Their partner trades with you using the standby tray at the bar. A guest with no submissions and no House events counts as absent. |
+| Any other guest is absent | Their swap or deal partner cannot finish that one objective (one point). If you printed a second set of slips, hand the partner a spare at the bar. A guest with no submissions and no House events counts as absent. |
 | A phone does not work | They write answers on paper; type them in with **Sign in as** on /admin, or tell them to sign in with /resume. |
 | You pressed Start too early | `npm run game:grade -- stop` seals everything again. |
 | Before the night, once | Run the database migration (`drizzle-kit migrate`): half points will not save without it. |
 
 ## 11. Your checklist
 
-- [ ] Printed everything in `docs/print/game/`, including `host-sheet.pdf` and `tag-key.pdf`
-- [ ] Every black envelope has its sheet, carried items, slips and starting bills (survivors: invitation, marker, flap; checked twice)
+- [ ] Printed `PRINT-EVERYTHING.pdf` (60 pages, single-sided)
+- [ ] Every black envelope has the guest card, starting bills, carried item and slips (survivors' sheets include their secret page and marker; checked twice)
 - [ ] Every tag code on the right object (section 6) and in shared rooms only
-- [ ] Race slips in the right hands (section 5); standby tray at the bar
+- [ ] Race slips in the right hands (section 5)
 - [ ] The House Tin, the House Book and the one vial are at the bar (decoy bottles are optional set dressing)
 - [ ] The Keeper's table is laid out; the scene card is in your pocket; the second rail stub is in the jacket lining
 - [ ] Approval words (section 3) are on the host sheet and nowhere else

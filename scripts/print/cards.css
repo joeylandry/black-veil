@@ -129,3 +129,29 @@ ol.rules { padding-left: 1.4em; margin: 0; } ol.rules li { margin-bottom: .32em;
 .half.two ol li { break-inside: auto; margin-bottom: .35em; }
 .half h3 { margin: .5em 0 .1em; }
 .half .rule { display: none; }
+
+/* guest cards: plain, dense, one side of one letter sheet */
+.gcpage { background: #fff; }
+.gcbox { position: absolute; left: .32in; right: .32in; top: .3in; bottom: .3in; border: 1.2px solid #333; padding: .14in .2in; display: flex; flex-direction: column; overflow: hidden; }
+.gcbox .fit { padding-top: 0; line-height: 1.2; font-family: "Liberation Sans", Arial, sans-serif; color: #111; }
+.gchead { display: flex; align-items: baseline; justify-content: space-between; border-bottom: 2px solid #111; padding-bottom: 2px; }
+.gcname { font: bold 1.9em "Liberation Serif", serif; }
+.gcocc { font-style: italic; font-size: 1.1em; }
+.gcstrip { background: #eee; padding: 2px 5px; margin: 3px 0; font-size: .92em; }
+.gcbox h3 { margin: .45em 0 .15em; font-size: .95em; letter-spacing: .06em; border-bottom: .8px solid #777; }
+.gcbox p { margin: .15em 0; }
+.gcobj { margin: 0; padding-left: 0; list-style: none; }
+.gcobj li { margin: .14em 0; }
+.gcask { color: #444; }
+.gcclues { column-count: 2; column-gap: .22in; }
+.gcgroup { break-inside: avoid-column; margin-bottom: .25em; }
+.gclabel { font-weight: bold; font-size: .88em; background: #ddd; padding: 0 3px; margin-bottom: 1px; }
+.gcline { margin: .1em 0 .1em .6em; text-indent: -.6em; }
+.gcline::before { content: "\2022 "; }
+.gcfoot { margin-top: .4em; font-style: italic; font-size: .9em; }
+.markerwho { position: absolute; font: 8pt "Liberation Sans", Arial, sans-serif; color: #444; }
+.gcmarker { position: relative; margin: .35em auto 0; width: 4.2in; border: 1.5px dashed #444; background: #141010; color: #d8b85a; text-align: center; padding: .08in; }
+.gcmarker .gccut { position: absolute; left: -.05in; top: -.16in; background: #fff; color: #444; font-size: .8em; padding: 0 3px; }
+.gcmarker .mk { font-weight: bold; letter-spacing: .16em; font-size: .95em; }
+.gcmarker .mc { font: bold 2.4em "FreeMono", monospace; letter-spacing: .12em; color: #f0d27a; line-height: 1.1; }
+.gcmarker .ml { font-style: italic; font-size: .85em; color: #e8d9a8; }

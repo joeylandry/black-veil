@@ -6,7 +6,7 @@
  *   npx tsx scripts/print/exhibits.ts
  *
  * Writes (docs/print/game/): exhibits.pdf, exhibits-index.pdf, tags.pdf, tag-key.pdf, slips.pdf,
- * vial-labels.pdf, fortune-cards.pdf, menu.pdf, menu-table-card.pdf, README-props.md (+ the .html of each).
+ * vial-labels.pdf, fortune-cards.pdf, cocktail-menu.pdf, food-menu.pdf, README-props.md (+ the .html of each).
  * Needs headless Chromium (CHROME env var overrides the path) and pdftotext/pdfinfo for the checks.
  */
 import { execFileSync } from "node:child_process";
@@ -17,7 +17,7 @@ import { tieBreaker } from "@/data/game/story";
 
 // =====================================================================================================
 // EDIT HERE: the bar menu. Change the arrays, run `npx tsx scripts/print/exhibits.ts` again, reprint
-// docs/print/game/menu.pdf (full page) and menu-table-card.pdf (two half-page table cards).
+// docs/print/game/cocktail-menu.pdf and food-menu.pdf (two half-sheet copies of each per page).
 // =====================================================================================================
 const menuTitle = "THE BLACK VEIL";
 const menuBy = "by the House";
@@ -28,7 +28,6 @@ const menuDrinks: { name: string; desc: string }[] = [
   { name: "Espresso Martini", desc: "Orange Vodka \u00b7 Espresso \u00b7 Coffee Liqueur" },
   { name: "The Bloody Scary", desc: "Blood Orange \u00b7 Prosecco \u00b7 Campari \u00b7 Black Vodka" },
 ];
-const menuBitesTitle = "Food Menu";
 const menuBites: { name: string; desc: string }[] = [
   { name: "Sausage-Stuffed Mushrooms", desc: "Savory Italian Sausage \u00b7 Mascarpone \u00b7 Parmesan \u00b7 Herbs" },
   { name: "Smoked Salmon Tea Sandwiches", desc: "Smoked Salmon \u00b7 Herbed Butter \u00b7 21 Grain Bread" },
@@ -420,8 +419,9 @@ function buildIndex() {
 function buildTags() {
   const cells: { id: string; code: string; label: string }[] = [];
   const holderFirst = (id: string | undefined) => (id ? publicName(id).split(" ")[0].replace(/,$/, "") : "?");
-  for (const p of props.filter((q) => q.placement === "hidden")) cells.push({ id: p.id, code: p.code, label: `TAPE ON: ${p.generic}` }, { id: p.id, code: p.code, label: `SPARE for: ${p.generic}` });
-  for (const p of props.filter((q) => q.placement !== "hidden")) cells.push({ id: p.id, code: p.code, label: p.placement === "carried" ? `ON ITEM: ${p.name} (${holderFirst(p.carriedBy)})` : `HOST: ${p.name}` });
+  // essentials only: the hidden objects, the physical carried items and the two host props. Printed slips and papers already carry their own code.
+  for (const p of props.filter((q) => q.placement === "hidden")) cells.push({ id: p.id, code: p.code, label: `TAPE ON: ${p.generic}` });
+  for (const p of props.filter((q) => q.placement !== "hidden" && !(slipIds as readonly string[]).includes(q.id))) cells.push({ id: p.id, code: p.code, label: p.placement === "carried" ? `ON ITEM: ${p.name} (${holderFirst(p.carriedBy)})` : `HOST: ${p.name}` });
   const pages: string[] = [];
   const nPages = Math.ceil(cells.length / 12);
   for (let pg = 0; pg < nPages; pg++) {
@@ -479,7 +479,7 @@ function buildHostSheet() {
     <ol>
       <li><b>At the door:</b> hand each guest their black envelope and anything they carry.</li>
       <li><b>When a guest comes to the bar to claim a point,</b> check it really happened (the table below), then tell them the approval word. Say a word to nobody else.</li>
-      <li><b>Fortune cards:</b> Josh collects his twelve fortune cards from you.</li>
+      <li><b>Fortune cards:</b> Josh collects his four fortune cards from you.</li>
       <li><b>Josh's minute:</b> before 8:30 he tells you the minute he expects the scream. Seal it in an envelope.</li>
       <li><b>About 9:05:</b> stage the scene (jacket, glass, empty vial, the buyer's marker from the tin, scene pages).</li>
       <li><b>10:00 wrap-up:</b> hand Eric the <b>charter</b> (he signs it, the code is on it). Give Leon the <b>bulletin</b> to read aloud:<br><i>&ldquo;This evening the Keeper of the Black Veil was found dead at his table. The House has lifted its veil, the dead are not dead, and Manchester will hear the rest in the morning.&rdquo;</i> Then read Cassie's letter.</li>
@@ -562,7 +562,6 @@ function buildSlips() {
     }
   };
   mk(1);
-  mk(2);
   return build("slips", doc("Black Veil slips", pages.join("")));
 }
 
@@ -599,32 +598,23 @@ function buildFortunes() {
   const card = (f: (typeof fortunes)[number]) =>
     `<div class="fcell"><div class="fcard chk"><div class="ft">THE SOOTHSAYER</div><svg class="ico" viewBox="0 0 90 90" fill="none" stroke="#d8b85a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">${f.icon}</svg><div class="tit">${esc(f.title)}</div><div class="or">\u2726 \u2726 \u2726</div><div class="ln">${esc(f.line)}</div></div></div>`;
   const pages: string[] = [];
-  for (let i = 0; i < fortunes.length; i += 4) pages.push(`<div class="page"><div class="fgrid">${fortunes.slice(i, i + 4).map(card).join("")}</div><div class="sheetnote">Fortune cards ${i / 4 + 1} of ${fortunes.length / 4} · twelve cards, Joshua Kamin-Sky reads four guests · cut on the dashed lines · card stock if you have it</div></div>`);
+  const printed = fortunes.slice(0, 4);
+  for (let i = 0; i < printed.length; i += 4) pages.push(`<div class="page"><div class="fgrid">${printed.slice(i, i + 4).map(card).join("")}</div><div class="sheetnote">Fortune cards ${i / 4 + 1} of ${printed.length / 4} · four cards, Joshua Kamin-Sky reads four guests · cut on the dashed lines · card stock if you have it</div></div>`);
   return build("fortune-cards", doc("Black Veil fortune cards", pages.join("")));
 }
 
 // ---------------------------------------------------------------- menu
-function menuBody(card: boolean) {
-  const it = (m: { name: string; desc: string }) => `<div class="it"><span class="nm">${esc(m.name)}</span></div><div class="ds">${esc(m.desc)}</div>`;
-  const band = `<div class="band"><h1>${esc(menuTitle)}</h1><div class="by">${esc(menuBy)}</div><div class="med">${esc(menuNotice)}</div></div>`;
-  const drinks = `<div><h2>Cocktail Menu</h2>${menuDrinks.map((m) => it(m)).join("")}</div>`;
-  const bites = `<div><h2>${esc(menuBitesTitle)}</h2><div class="bites">${menuBites.map((b) => `<div>${it(b)}</div>`).join("")}</div></div>`;
-  const foot = `<div class="foot">The House reserves the right to ask no questions.</div>`;
-  if (card) {
-    const half = Math.ceil(menuDrinks.length / 2);
-    const left = `<div><h2>Cocktail Menu</h2>${menuDrinks.slice(0, half).map((m) => it(m)).join("")}</div>`;
-    const right = `<div><h2>&nbsp;</h2>${menuDrinks.slice(half).map((m) => it(m)).join("")}</div>`;
-    const bar = `<div class="bitesrow"><b>${esc(menuBitesTitle)}:</b> ${menuBites.map((b) => esc(b.name)).join(" &middot; ")}</div>`;
-    return `${band}<div class="body">${left}${right}</div>${bar}${foot}`;
-  }
-  return `${band}<div class="body">${drinks}${bites}</div>${foot}`;
+const drinkIcons = ["\u{1F41D}", "\u{1F943}", "\u2615", "\u{1F377}"];
+const foodIcons = ["\u{1F344}", "\u{1F96A}", "\u{1F9C6}", "\u{1F364}", "\u{1F9C0}"];
+/** One half-sheet menu: the title band, a heading, and each item with a picture (a colour emoji). */
+function menuHalf(top: string, heading: string, items: { name: string; desc: string }[], icons: string[], foot: string) {
+  const rows = items.map((m, i) => `<div class="mrow"><span class="mico">${icons[i] ?? ""}</span><div><div class="nm">${esc(m.name)}</div><div class="ds">${esc(m.desc)}</div></div></div>`).join("");
+  return `<div class="menu mhalf chk" style="top:${top}"><div class="band"><h1>${esc(menuTitle)}</h1><div class="by">${esc(menuBy)}</div></div><h2>${esc(heading)}</h2><div class="mbody">${rows}</div><div class="foot">${esc(foot)}</div></div>`;
 }
-function buildMenu() {
-  const full = `<div class="page"><div class="menu">${menuBody(false)}</div></div>`;
-  const a = build("menu", doc("Black Veil menu", full));
-  const cards = `<div class="page"><div class="menu mcard chk" style="left:.2in;top:.15in">${menuBody(true)}</div><div class="cutpage"></div><div class="menu mcard chk" style="left:.2in;top:5.65in">${menuBody(true)}</div></div>`;
-  const b = build("menu-table-card", doc("Black Veil table card", cards));
-  return a + b;
+function buildMenus() {
+  const make = (file: string, heading: string, items: { name: string; desc: string }[], icons: string[], foot: string) =>
+    build(file, doc(`Black Veil ${heading}`, `<div class="page">${menuHalf(".15in", heading, items, icons, foot)}<div class="cutpage"></div>${menuHalf("5.65in", heading, items, icons, foot)}</div>`));
+  return { cocktail: make("cocktail-menu", "Cocktail Menu", menuDrinks, drinkIcons, menuNotice), food: make("food-menu", "Food Menu", menuBites, foodIcons, "The House reserves the right to ask no questions") };
 }
 
 // ---------------------------------------------------------------- verification
@@ -645,15 +635,15 @@ function verifyCodes() {
     if (n < min) fail(`${name}: ${id} appears ${n} times, expected at least ${min}`);
   };
   for (const e of exhibits) need("exhibits", e.id, 1);
-  for (const p of props) need("tags", p.id, p.placement === "hidden" ? 2 : 1);
+  for (const p of props.filter((q) => q.placement === "hidden" || !(slipIds as readonly string[]).includes(q.id))) need("tags", p.id, 1);
   for (const p of props) need("tag-key", p.id, 1);
-  for (const id of slipIds) need("slips", id, 2);
+  for (const id of slipIds) need("slips", id, 1);
   // the PDFs themselves: every code must be in the extracted text
   const text = (name: string) => execFileSync("pdftotext", ["-layout", path.join(OUT, `${name}.pdf`), "-"], { encoding: "utf8" }).replace(/\s+/g, "");
   const exT = text("exhibits");
   for (const e of exhibits) if (!exT.includes(e.code)) fail(`exhibits.pdf text lacks ${e.code}`);
   const tagT = text("tags");
-  for (const p of props) if (!tagT.includes(p.code)) fail(`tags.pdf text lacks ${p.code}`);
+  for (const p of props.filter((q) => q.placement === "hidden" || !(slipIds as readonly string[]).includes(q.id))) if (!tagT.includes(p.code)) fail(`tags.pdf text lacks ${p.code}`);
   const slipT = text("slips");
   for (const id of slipIds) if (!slipT.includes(props.find((p) => p.id === id)!.code)) fail(`slips.pdf text lacks ${id}`);
   if (exT.includes("11:12PM") === false) fail("tie-breaker stub missing 11:12 PM");
@@ -679,8 +669,8 @@ All PDFs are US Letter. Print at 100% / "Actual size" (not "Fit to page"), with 
 | \`host-sheet.pdf\` | ${pages["host-sheet"]} | 1 | Plain | HOST ONLY. Bartend Joe's one page: what to hand out and when, and every approval word with what to check before you give it. |
 | \`vial-labels.pdf\` | ${pages["vial-labels"]} | 1 | Cream paper; use a glue stick or double-sided tape | Row 1: the real HOUSE STOCK label (2 copies). Rows 2 to 4: OPTIONAL decoys, skip them if you have no spare bottles (Camphor Spirits, Spirits of Hartshorn, Oil of Wintergreen), 2 each. Bottles hold WATER ONLY, never oils. |
 | \`fortune-cards.pdf\` | ${pages["fortune-cards"]} | 1 | Card stock (65 to 80 lb), cream or white | 12 cards, 4 per sheet. Joshua Kamin-Sky reads four guests; each guest keeps the card. Cut on the dashed lines. |
-| \`menu.pdf\` | ${pages.menu} | 1 to 2 | Cream paper | Full-page bar menu (frame it by the bar). |
-| \`menu-table-card.pdf\` | ${pages["menu-table-card"]} | 1 sheet (makes 2 cards) | Card stock | Two half-page table cards: cut across the dashed line at mid-page. |
+| \`cocktail-menu.pdf\` | ${pages["cocktail-menu"]} | 1 sheet (makes 2 menus) | Cream paper | Cut across the dashed line. |
+| \`food-menu.pdf\` | ${pages["food-menu"]} | 1 sheet (makes 2 menus) | Cream paper | Cut across the dashed line. |
 
 ## Editing the menu
 
@@ -710,9 +700,9 @@ pages["host-sheet"] = buildHostSheet();
 pages.slips = buildSlips();
 pages["vial-labels"] = buildVials();
 pages["fortune-cards"] = buildFortunes();
-const menuPages = buildMenu();
-pages.menu = 1;
-pages["menu-table-card"] = menuPages - 1;
+const menus = buildMenus();
+pages["cocktail-menu"] = menus.cocktail;
+pages["food-menu"] = menus.food;
 void markers;
 verifyCodes();
 writeReadme(pages, t.count);

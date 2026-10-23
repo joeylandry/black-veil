@@ -45,7 +45,7 @@ Everything repeated in this document wears the same label.
 
 | When | What happens | What you do |
 |---|---|---|
-| Before 8:00 | Guests arrive and get a black envelope: sheet, carried items, starting bills (survivors also: unsigned invitation, marker, sealed flap). Phones show nothing yet. | Hand out envelopes. |
+| Before 8:00 | Guests arrive and get a black envelope: card, carried items, slips, starting bills (survivors' cards also hold their secret page and marker). Phones show nothing yet. | Hand out envelopes. |
 | **8:00** | **The game opens by itself.** Phones show five tabs: *Public*, *Background*, *Private* (secrets, clues, five objectives, race), *Answers* (nine questions, survivors picker, bills box) and *Results* (locked). | Tend bar. |
 | 8:00 to 8:30 | Mingle. Guests work objectives: find tagged objects, swap items, earn secrets, collect race slips, earn money. They learn the mystery by trading clue lines. | Give approval words as you see tasks done. |
 | Before 8:30 | Josh tells you the minute he thinks the scream will come. | Write it down, seal it. |

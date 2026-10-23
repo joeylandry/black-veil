@@ -4,62 +4,58 @@
 
 ## 1. Print these
 
-**Easiest:** print `PRINT-EVERYTHING.pdf` once, double-sided (flip on the long edge). It holds every file below in order, with a contents page that says which sheets are which, and a blank back on every single-sided page so the character cards line up. (Rebuild it with `python3 scripts/print/combine.py` after `npm run game:print`.) The table below is for printing files one at a time.
+**Easiest:** print `PRINT-EVERYTHING.pdf` once, single-sided (60 pages). It holds every file below in order, with a contents page. (Rebuild it with `python3 scripts/print/combine.py` after `npm run game:print`.) The table below is for printing files one at a time. Not needed: `tag-key.pdf` and `exhibits-index.pdf` are only extra references.
 
 Letter paper. Turn on "background graphics" when printing so the black tags and cards come out.
 
 | File | Pages | How | Then |
 |---|---|---|---|
-| `character-cards.pdf` | 48 | Double-sided, flip on the long edge. Card stock if you have it. | Do not cut. One card per guest, in alphabetical order (2 pages each). Goes in that guest's envelope. |
-| `envelope-sheets.pdf` | 24 | Single-sided, plain or cream paper. | One page per guest, alphabetical. Folds into that guest's envelope. |
-| `house-invitations.pdf` | 10 | Single-sided, cream card stock if you have it. | Cut along the dotted line (2 per page). Each is addressed to a guest by name: it goes in that guest's envelope (the 19 non-survivors). |
-| `survivor-kit.pdf` | 11 | Single-sided. HOST ONLY: contains the solution. | Page 1 stays with you. For each survivor: the Flap (their secret page) plus a cut sheet with Cassie's unsigned invitation, their marker and an address label. The strip across the top names the survivor. |
-| `slips.pdf` | 16 | Single-sided, cream or white. Print ALL pages. | Cut on the dashed lines. The line above each slip says whose envelope it goes in. The second half (marked STANDBY) is the spare set: it goes in the standby tray at the bar. |
-| `tags.pdf` | 7 | Single-sided. Matte paper; a laser printer is best. | Cut on the dashed grid. The small line under each tag says where it goes; trim that line off after you match it. Spares go in the standby tray. |
-| `tag-key.pdf` | 2 | Single-sided. HOST ONLY. | Keep it. It lists every tag code and what it goes on. |
-| `exhibits.pdf` | 16 | Single-sided. Cream paper. | Cut each page along its edges. Every page says at the foot where it goes (binder, black table, scene, or a guest's sealed envelope). The last page is the secret tie-breaker stub. |
-| `exhibits-index.pdf` | 1 | Single-sided. HOST ONLY. | Keep it. It lists every exhibit and where it goes. |
-| `door-cards.pdf` | 4 | Single-sided. | Pages 1 and 2: the brief and the rules, one each, for the door. Pages 3 and 4: two copies per sheet for the tables. |
-| `fortune-cards.pdf` | 3 | Single-sided, card stock. | Cut apart. Keep at the bar: Josh collects them from you for his fortunes objective. |
-| `menu.pdf` | 1 | Single-sided. | One copy on the bar. |
-| `menu-table-card.pdf` | 1 | Single-sided. | A small card for the tables. |
-| `vial-labels.pdf` | 1 | Single-sided, cream paper. | Cut one "House Stock" label (row 1) and glue it round the small water bottle. The other rows are optional decoys. |
+| `guest-cards.pdf` | 24 | Single-sided. Plain paper is fine. | One sheet per guest, alphabetical; everything the guest needs is on it. Goes in that guest's envelope. Survivors' sheets have their secret page and a marker to cut out at the bottom. |
+| `slips.pdf` | 8 | Single-sided, cream or white. | Cut on the dashed lines. The line above each slip says whose envelope it goes in. |
+| `tags.pdf` | 3 | Single-sided. Matte paper; a laser printer is best. | Cut on the dashed grid. The small line under each tag says where it goes; trim that line off after you match it. |
+| `exhibits.pdf` | 16 | Single-sided. Cream paper. Landscape pages. | Cut each page along its edges. The foot of every page says where it goes (binder, black table, scene, or a guest's sealed envelope). The last page is the secret tie-breaker stub. |
+| `fortune-cards.pdf` | 1 | Single-sided, card stock if you have it. | Cut apart. Keep at the bar: Josh collects them from you for his fortunes objective. |
+| `vial-labels.pdf` | 1 | Single-sided, cream paper. | Cut one "House Stock" label (row 1) and glue it round the small water bottle. The other rows are optional. |
+| `door-cards.pdf` | 2 | Single-sided. | Page 1 (the brief) and page 2 (the rules): one of each, at the door. |
+| `cocktail-menu.pdf` | 1 | Single-sided, cream paper. | Two menus per sheet: cut across the dashed line. Put them on the bar. |
+| `food-menu.pdf` | 1 | Single-sided, cream paper. | Two menus per sheet: cut across the dashed line. Put them by the food. |
+| `survivor-kit.pdf` | 1 | Single-sided. HOST ONLY: contains the solution. | One page for you: the five markers and who holds them. Each survivor's secret page and marker are on their own guest card. |
 | `host-sheet.pdf` | 1 | Single-sided. HOST ONLY. | Keep behind the bar. It has every approval word. |
 
 ## 2. What goes in each guest's envelope
 
-24 black envelopes, one per guest (the five survivors' envelope is the unsigned one with the address label). Write the guest's name on the outside.
+24 black envelopes, one per guest. Write the guest's name on the outside.
 
-Every envelope holds: the **character card** (2 pages, front and back), the **envelope sheet**, and the starting **bills**. Then:
+Every envelope holds: the **guest card** (1 page, from guest-cards.pdf) and the starting **bills**. Then:
 
-| Guest | Bills | Card pages | Item they carry (tag on it) | Slips (cut, with the line above) | Sealed pages | Plus |
-|---|---|---|---|---|---|---|
-| **Adam Holdsfire** | 10 ($1,000) | 1–2 | none | none | none | Flap, Cassie's unsigned invitation, marker No. 21 (from survivor-kit.pdf) |
-| **Ananya Codru and Charlie Wakem** | 10 ($1,000) | 3–4 | none | blank telegram form (YUGWA); Tool token (PGYF8) | The delivery slip | House invitation (house-invitations.pdf, addressed to them) |
-| **Angelos Bowles** | 12 ($1,200) | 5–6 | House chip (the casino chip), tag YYRM4 | Reply slip (EN2W3) | none | House invitation (house-invitations.pdf, addressed to them) |
-| **Anika Mahns of Mahns Manor** | 30 ($3,000) | 7–8 | Mahns crested spoon (the metal spoon), tag EV6M4 | Mahns Manor voucher (844M9); Trade slip (24R94) | none | House invitation (house-invitations.pdf, addressed to them) |
-| **Anthony Hung, Esq.** | 12 ($1,200) | 9–10 | none | Tool token (WKXWT) | none | House invitation (house-invitations.pdf, addressed to them) |
-| **Arjun Bat** | 8 ($800) | 11–12 | lucky ball (the ball), tag YY72H | Witness slip (6GPMF) | none | House invitation (house-invitations.pdf, addressed to them) |
-| **Diwakar Sandbagg** | 10 ($1,000) | 13–14 | carnival giraffe (the giraffe whittling), tag JJGXP | Witness slip (62G9X) | none | House invitation (house-invitations.pdf, addressed to them) |
-| **Dr. Emmerich Sunner** | 10 ($1,000) | 15–16 | none | Trade slip (94K7V) | none | House invitation (house-invitations.pdf, addressed to them) |
-| **Erika Lamm** | 6 ($600) | 17–18 | none | set of false papers (ERYTJ); Reply slip (PXT7K) | none | House invitation (house-invitations.pdf, addressed to them) |
-| **J. Bruce Wayne** | 30 ($3,000) | 19–20 | none | Tool token (NPKM4) | none | House invitation (house-invitations.pdf, addressed to them) |
-| **Joshua Kamin-Sky** | 8 ($800) | 21–22 | soothsayer's charm (a small charm, bead or stone), tag DTF7R | Witness slip (M73EX) | A torn register page, 31 October 1924 | House invitation (house-invitations.pdf, addressed to them); (fortune cards are collected at the bar, not in the envelope) |
-| **Judge Eric Leeway** | 15 ($1,500) | 23–24 | none | notice of dismissal (VMX7X); Reply slip (D6DDT) | none | House invitation (house-invitations.pdf, addressed to them) |
-| **Krrish Vermouth** | 12 ($1,200) | 25–26 | Silent Partner's brass key (the key), tag AFPEP | crate receipt (ATCTU); Reply slip (UHN7C) | none | House invitation (house-invitations.pdf, addressed to them) |
-| **Leon Gee of WFEA** | 10 ($1,000) | 27–28 | none | Witness slip (D4JFG) | Cassie's roll | House invitation (house-invitations.pdf, addressed to them) |
-| **Luke Shelldon** | 10 ($1,000) | 29–30 | none | none | none | Flap, Cassie's unsigned invitation, marker No. 19 (from survivor-kit.pdf) |
-| **Mihir Nagarkatti of Nag Oil** | 30 ($3,000) | 31–32 | none | Tool token (DC92C) | none | Flap, Cassie's unsigned invitation, marker No. 18 (from survivor-kit.pdf) |
-| **Molly Daniel of the Manchester Union** | 9 ($900) | 33–34 | none | Trade slip (DAFF2) | none | Flap, Cassie's unsigned invitation, marker No. 22 (from survivor-kit.pdf) |
-| **Rebecca Chow, Butler of the Black Veil** | 12 ($1,200) | 35–36 | none | none | Cassie's note, left in Room 3; A boarding-house page, November 1924; The House Book (the Butler's) | House invitation (house-invitations.pdf, addressed to them); At the bar, not the envelope: the House Tin |
-| **Rhea Mallya of Mallya's Emporium** | 15 ($1,500) | 37–38 | none | none | none | Flap, Cassie's unsigned invitation, marker No. 20 (from survivor-kit.pdf) |
-| **Sheriff Theodor Farrago** | 10 ($1,000) | 39–40 | none | Nuisance Citation (MKPAE); Reply slip (RW4H6) | The Coroner's report | House invitation (house-invitations.pdf, addressed to them) |
-| **Sidd Airwind** | 14 ($1,400) | 41–42 | none | Witness slip (KW9K2) | none | House invitation (house-invitations.pdf, addressed to them) |
-| **Silas Palmer of the Palm Court** | 12 ($1,200) | 43–44 | none | request card (RKRGA); Trade slip (6K64E) | none | House invitation (house-invitations.pdf, addressed to them) |
-| **Tiffany Liu of the Lamps** | 10 ($1,000) | 45–46 | earring (the earring), tag 66M4W | Pardon slip (U7WNK); go-between's receipt (RU647); Trade slip (2P946) | none | House invitation (house-invitations.pdf, addressed to them) |
-| **Tim McGinley, Baron of Bathtub Gin** | 15 ($1,500) | 47–48 | jar of bathtub gin (the little jar), tag P4PD3 | Tool token (32CDE) | none | House invitation (house-invitations.pdf, addressed to them) |
+| Guest | Bills | Item they carry (tag on it) | Slips (cut, with the line above) | Sealed pages | Plus |
+|---|---|---|---|---|---|
+| **Adam Holdsfire** | 10 ($1,000) | none | none | none | their secret page and marker No. 21 are on the guest card (cut the marker out) |
+| **Ananya Codru and Charlie Wakem** | 10 ($1,000) | none | blank telegram form (YUGWA); Tool token (PGYF8) | The delivery slip |  |
+| **Angelos Bowles** | 12 ($1,200) | House chip (the casino chip), tag YYRM4 | Reply slip (EN2W3) | none |  |
+| **Anika Mahns of Mahns Manor** | 30 ($3,000) | Mahns crested spoon (the metal spoon), tag EV6M4 | Mahns Manor voucher (844M9); Trade slip (24R94) | none |  |
+| **Anthony Hung, Esq.** | 12 ($1,200) | none | Tool token (WKXWT) | none |  |
+| **Arjun Bat** | 8 ($800) | lucky ball (the ball), tag YY72H | Witness slip (6GPMF) | none |  |
+| **Diwakar Sandbagg** | 10 ($1,000) | carnival giraffe (the giraffe whittling), tag JJGXP | Witness slip (62G9X) | none |  |
+| **Dr. Emmerich Sunner** | 10 ($1,000) | none | Trade slip (94K7V) | none |  |
+| **Erika Lamm** | 6 ($600) | none | set of false papers (ERYTJ); Reply slip (PXT7K) | none |  |
+| **J. Bruce Wayne** | 30 ($3,000) | none | Tool token (NPKM4) | none |  |
+| **Joshua Kamin-Sky** | 8 ($800) | soothsayer's charm (a small charm, bead or stone), tag DTF7R | Witness slip (M73EX) | A torn register page, 31 October 1924 | (fortune cards are collected at the bar, not in the envelope) |
+| **Judge Eric Leeway** | 15 ($1,500) | none | notice of dismissal (VMX7X); Reply slip (D6DDT) | none |  |
+| **Krrish Vermouth** | 12 ($1,200) | Silent Partner's brass key (the key), tag AFPEP | crate receipt (ATCTU); Reply slip (UHN7C) | none |  |
+| **Leon Gee of WFEA** | 10 ($1,000) | none | Witness slip (D4JFG) | Cassie's roll |  |
+| **Luke Shelldon** | 10 ($1,000) | none | none | none | their secret page and marker No. 19 are on the guest card (cut the marker out) |
+| **Mihir Nagarkatti of Nag Oil** | 30 ($3,000) | none | Tool token (DC92C) | none | their secret page and marker No. 18 are on the guest card (cut the marker out) |
+| **Molly Daniel of the Manchester Union** | 9 ($900) | none | Trade slip (DAFF2) | none | their secret page and marker No. 22 are on the guest card (cut the marker out) |
+| **Rebecca Chow, Butler of the Black Veil** | 12 ($1,200) | none | none | Cassie's note, left in Room 3; A boarding-house page, November 1924; The House Book (the Butler's) | At the bar, not the envelope: the House Tin |
+| **Rhea Mallya of Mallya's Emporium** | 15 ($1,500) | none | none | none | their secret page and marker No. 20 are on the guest card (cut the marker out) |
+| **Sheriff Theodor Farrago** | 10 ($1,000) | none | Nuisance Citation (MKPAE); Reply slip (RW4H6) | The Coroner's report |  |
+| **Sidd Airwind** | 14 ($1,400) | none | Witness slip (KW9K2) | none |  |
+| **Silas Palmer of the Palm Court** | 12 ($1,200) | none | request card (RKRGA); Trade slip (6K64E) | none |  |
+| **Tiffany Liu of the Lamps** | 10 ($1,000) | earring (the earring), tag 66M4W | Pardon slip (U7WNK); go-between's receipt (RU647); Trade slip (2P946) | none |  |
+| **Tim McGinley, Baron of Bathtub Gin** | 15 ($1,500) | jar of bathtub gin (the little jar), tag P4PD3 | Tool token (32CDE) | none |  |
 
-*Card pages are the page numbers inside `character-cards.pdf`.* Slips and tags are labelled with the guest, so cutting them is a matter of reading the line above each one.
+Slips and tags are labelled, so cutting them is a matter of reading the line above each slip or under each tag.
 
 ## 3. Where everything else goes
 
@@ -120,27 +116,25 @@ Tape the tag on or beside the object. Do not move the object. Use shared rooms o
 
 - The **House Tin** (a small round tin) and the **House Book**; Rebecca runs them
 - The **vial** (a small bottle of water with the House Stock label)
-- The **menu** and the **fortune cards** (for Josh)
-- The **standby tray**: the second set of slips and the spare tags, for any guest whose swap partner did not come
+- The **cocktail menu**, the **food menu** and the **fortune cards** (for Josh)
 - Your **400 $100 bills**: starting bills go in envelopes; keep the rest in the House Tin
 - **host-sheet.pdf** (approval words), out of sight
 
-### 3f. At the door and the tables
+### 3f. At the door
 
-- Door: the brief poster and the rules poster (door-cards pages 1 and 2)
-- Tables: the table copies of the brief and rules (door-cards pages 3 and 4), the menu table card
+- The brief poster and the rules poster (door-cards pages 1 and 2)
 
 ## 4. At home, in this order
 
 | # | Do this | About |
 |---|---|---|
-| 1 | Print everything in section 1 (about 140 sheets). Print `slips.pdf` and `tags.pdf` last, they use the most ink. | 15 min |
-| 2 | Cut the slips, tags, house invitations, survivor cut sheets and exhibit pages. Read the line above each slip or under each tag. | 30 min |
+| 1 | Print `PRINT-EVERYTHING.pdf` (60 pages, single-sided). Tags use the most ink. | 15 min |
+| 2 | Cut the slips, tags, the five markers and the exhibit pages. Read the line above each slip or under each tag. | 30 min |
 | 3 | Walk the house and tape each tag from section 3a. Use the check list in `09-house-check.md`. | 15 min |
 | 4 | Prepare the carried items: tape each tag on its item (section 2) and keep them in piles by guest. | 10 min |
-| 5 | Stuff the 24 envelopes from the table in section 2: card, envelope sheet, bills, invitation or survivor kit, item, slips, sealed pages. Check the five survivors twice. | 30 min |
+| 5 | Stuff the 24 envelopes from the table in section 2: guest card, bills, item, slips, sealed pages. The five survivors' sheets also hold their secret page and a marker to cut out: check those five twice. | 30 min |
 | 6 | Lay out the black table, then the bar (sections 3b, 3c, 3e). Put the scene pieces and the jacket aside for 9:05. | 15 min |
-| 7 | Put the second rail stub in the jacket lining. Put the door cards at the door and tables. | 5 min |
+| 7 | Put the second rail stub in the jacket lining. Put the door posters at the door. | 5 min |
 | 8 | Phone check: open `/game` on a phone and `/admin` on your laptop. Run the database migration once (`drizzle-kit migrate`). | 5 min |
 
 Total about two hours. The game opens by itself at 8:00; the Start game button on /admin only opens it early.

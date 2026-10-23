@@ -387,3 +387,17 @@ body { font-family: var(--serif); color: var(--ink); font-size: 11pt; -webkit-pr
 .mcard .bitesrow b { color: #6e1e1e; letter-spacing: .15em; text-transform: uppercase; font-style: normal; font-size: 9.5pt; }
 .mcard .foot { bottom: .1in; font-size: 9.5pt; }
 .cutpage { position: absolute; left: 0; right: 0; top: 5.5in; height: 0; border-top: 1.2px dashed #8d8d8d; }
+
+/* half-sheet menus with pictures */
+.mhalf { position: absolute; left: .2in; width: 8.1in; height: 5.2in; border: 1px solid #8a6a22; background: #f3e8cc; overflow: hidden; inset: auto; }
+.mhalf { left: .2in; }
+.mhalf .band { padding: .12in .3in .08in; }
+.mhalf .band h1 { font-size: 24pt; }
+.mhalf .band .by { font-size: 11pt; }
+.mhalf h2 { margin: .1in .6in .06in; font-size: 14pt; }
+.mhalf .mbody { padding: 0 .6in; }
+.mhalf .mrow { display: flex; align-items: center; gap: .22in; margin-bottom: .1in; }
+.mhalf .mico { font-size: 30pt; width: .6in; text-align: center; font-family: "Noto Color Emoji", sans-serif; }
+.mhalf .nm { font: bold 15pt var(--serif); }
+.mhalf .ds { font: italic 11pt/1.2 var(--serif); color: #4a3826; margin: 0; }
+.mhalf .foot { position: absolute; left: .6in; right: .6in; bottom: .1in; text-align: center; font: italic 9pt var(--serif); color: #4a3826; border-top: 1px solid #8a6a22; padding-top: .04in; }

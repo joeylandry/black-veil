@@ -6,13 +6,13 @@
 
 | When | What |
 |---|---|
-| Today | Print everything in `docs/print/game/` (see its README), including `host-sheet.pdf`, your one page with every approval word. Keep it behind the bar. Cut and sort. Tag every hidden and carried object (`tag-key.pdf` says which code goes on what). Empty the essential-oil bottles and fill them with water, then stick on the vial labels. |
-| Today | Fill each guest's black envelope: the envelope sheet, any carried item or slips (see `05-print-list.md`), their starting bills (the $100 bills; the count is on `05-print-list.md`). Keep the rest of your 400 in the House Tin at the bar: it is where clue money is dropped, and your change, and for the 19 non-survivors the House invitation. For the five survivors instead: Cassie's unsigned invitation, the marker, and the Flap. **Check the survivors' envelopes twice.** |
+| Today | Print `docs/print/game/PRINT-EVERYTHING.pdf` (60 pages, single-sided; see `10-setup-guide.md`). It includes the host sheet, your one page with every approval word: keep it behind the bar. Cut and sort. Tag every hidden object and carried item (each tag says what it goes on). Empty the essential-oil bottles and fill them with water, then stick on the vial labels. |
+| Today | Fill each guest's black envelope: their one-page guest card, any carried item and slips (the table in `10-setup-guide.md` lists each guest), and their starting bills. Keep the rest of your 400 in the House Tin at the bar: it is where clue money is dropped, and your change. The five survivors' sheets also hold their secret page and a marker to cut out. **Check the survivors' envelopes twice.** |
 | Tomorrow afternoon | Tape the code tags on the 18 hidden objects where they already are (see `09-house-check.md` and `10-setup-guide.md`), in shared rooms only (never bedrooms, bathrooms, closets or drawers). |
 | Tomorrow afternoon | Lay out the **Keeper's table** (the black table): the binder (the List, the hitmen's receipts, the 1923 books, the vault memorandum, the forged orders, the rent counterfoils, the 1 Nov 1924 Farrago clipping), the nightcap chart, the **Roll of the Veil**, a glass on a coaster with code **8YUR2** taped underneath, dice and cards. Put the **scene card** (AYTHC) in your pocket. |
 | Tomorrow afternoon | At the bar: the **House Tin** (small round tin) and the House Book, the menu, and the one real vial (a small bottle of water, real label). Decoy bottles beside it are optional dressing: nothing in the game depends on them. Give Rebecca the House Book and the tin. |
 | Tomorrow afternoon | The dummy's **jacket**: pocket watch stopped at 11:47, the Boston-to-Manchester rail stub, the jacket note. **Sew or tape the second rail stub (Manchester to Boston, 11:12 PM) inside the lining**, where only someone searching will find it. This is the secret tie-breaker. |
-| Tomorrow afternoon | Lay out the **standby tray** at the bar: a spare copy of every slip and carried item, for any guest whose partner did not come. |
+| Optional | If you want spares for absent guests, print `slips.pdf` a second time and keep the extra set at the bar. |
 
 ## The night
 
@@ -26,7 +26,7 @@
 | **~9:05** | Stage the scene in the chair section: the dummy in the jacket, the glass tipped, the empty vial, **the buyer's marker from the House Tin placed under it**, then lay out the scene pages (watch, vial, rail stub, jacket note). Tape. Your scene card goes on the black table. | ~3 minutes |
 | **~9:15** | The Butler finds him and screams. The Sheriff takes charge; the Doctor examines. Open Josh's envelope afterward. | nothing |
 | 9:15 to ~10:15 | Investigation. No town hall, no deliberation. The Sheriff names an arrest by 10:15. | tend bar |
-| 9:15 | A guest whose source is absent can ask you at the bar: hand over the standby copy (spare slip or tag). | open the standby tray |
+| 9:15 | A guest whose source is absent can ask you at the bar: hand over a spare slip if you printed a second set. | spare slips (optional) |
 | 10:00 | **The wrap-up.** Gather everyone. Read Cassie's letter. | ~3 minutes |
 | 10:05 | Music flips to 2026. | tap |
 | **10:30** | The book closes by itself. Start grading. | see below |
@@ -67,8 +67,8 @@ The staff page has one button, so these use the command line (`npm run game:grad
 | The Butler is absent | Ask the survivor who comes to the bar for their marker, then run `npm run game:grade -- assign-vial <slug>` for the first one. The Butler's own sale and scream objectives are stranded: skip them. |
 | Nobody buys the vial by 9:00 | `npm run game:grade -- assign-vial <slug>`. The game needs a killer to publish. |
 | A survivor is absent | Their marker is simply never offered. |
-| **Tim is absent** | Nothing breaks. You stand in for Tim for **Arjun's** swap: you hold the little jar from the standby tray and Arjun trades his ball with you. His clue lines are each held by three others. |
-| Any other guest is absent | A guest whose swap or deal partner did not come trades with you at the bar using the standby copy (the slip or carried item). Objectives that name an absent guest as a source also name a second source. A kept secret whose chosen seeker did not come is scored in the keeper's favour. A race slip held by an absent guest: hand over the standby copy. |
+| **Tim is absent** | Nothing breaks, but **Arjun's** swap cannot finish (one point). If you like, you stand in for Tim: hold a spare little jar and let Arjun trade his ball with you. Tim's clue lines are each held by three others. |
+| Any other guest is absent | A guest whose swap or deal partner did not come cannot finish that one objective (one point); a spare slip, if you printed a second set, lets them finish a deal. Objectives that name an absent guest as a source also name a second source. A kept secret whose chosen seeker did not come is scored in the keeper's favour. A race slip held by an absent guest: the race still works, because five slips exist and three are needed. |
 | A guest forgot to RSVP or has no character | They appear in the cast list on /admin with "No character matched". Hand-cast them from the database, or have them watch the first hour. |
 | A phone does not work | They can write answers on paper and read them to you; type them in for them by signing in as them from /admin (**Sign in as**), or tell them to sign in with /resume. |
 | Phones lose signal | Answers sync when it returns; only the newest per item counts. |
