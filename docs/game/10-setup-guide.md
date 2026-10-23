@@ -4,6 +4,8 @@
 
 ## 1. Print these
 
+**Easiest:** print `PRINT-EVERYTHING.pdf` once, double-sided (flip on the long edge). It holds every file below in order, with a contents page that says which sheets are which, and a blank back on every single-sided page so the character cards line up. (Rebuild it with `python3 scripts/print/combine.py` after `npm run game:print`.) The table below is for printing files one at a time.
+
 Letter paper. Turn on "background graphics" when printing so the black tags and cards come out.
 
 | File | Pages | How | Then |
