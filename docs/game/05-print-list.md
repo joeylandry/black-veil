@@ -246,7 +246,7 @@ Filing code: 4CXUR
 ```
 A small brown apothecary vial, empty, cork beside it.
 Label: “HOUSE STOCK · Tincture of Nux Vomica · Not to be taken.”
-Under it, a torn scrap with the House's words.
+Under it, a torn scrap of paper.
 
 Filing code: TXFHE
 ```

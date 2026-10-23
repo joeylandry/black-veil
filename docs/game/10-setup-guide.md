@@ -109,7 +109,7 @@ Tape the tag on or beside the object. Do not move the object. Use shared rooms o
 - The pocket watch
 - The empty vial
 - A rail stub
-- The jacket (on a chair or the dummy), the tipped glass, and the torn scrap with the House's words placed under it
+- The jacket (on a chair or the dummy), and the tipped glass
 - **Second rail stub: put it in the LINING of the jacket now.** It is the tie-breaker and is on the last page of exhibits.pdf. Do not lay it out.
 
 ### 3e. At the bar
