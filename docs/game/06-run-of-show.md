@@ -6,12 +6,12 @@
 
 | When | What |
 |---|---|
-| Today | Print `docs/print/game/PRINT-EVERYTHING.pdf` (60 pages, single-sided; see `10-setup-guide.md`). It includes the host sheet, your one page with every approval word: keep it behind the bar. Cut and sort. Tag every hidden object and carried item (each tag says what it goes on). Empty the essential-oil bottles and fill them with water, then stick on the vial labels. |
+| Today | Print the two files `docs/print/game/PRINT-1-GUEST-CARDS-print-DOUBLE-SIDED.pdf` (24 sheets) and `PRINT-2-EVERYTHING-ELSE-print-SINGLE-SIDED.pdf` (36 pages); see `10-setup-guide.md`. It includes the host sheet, your one page with every approval word: keep it behind the bar. Cut and sort. Tag every hidden object and carried item (each tag says what it goes on). Empty the essential-oil bottles and fill them with water, then stick on the vial labels. |
 | Today | Fill each guest's black envelope: their one-page guest card, any carried item and slips (the table in `10-setup-guide.md` lists each guest), and their starting bills. Keep the rest of your 400 in the House Tin at the bar: it is where clue money is dropped, and your change. The five survivors' sheets also hold their secret page and a marker to cut out. **Check the survivors' envelopes twice.** |
 | Tomorrow afternoon | Tape the code tags on the 18 hidden objects where they already are (see `09-house-check.md` and `10-setup-guide.md`), in shared rooms only (never bedrooms, bathrooms, closets or drawers). |
 | Tomorrow afternoon | Lay out the **Keeper's table** (the black table): the binder (the List, the hitmen's receipts, the 1923 books, the vault memorandum, the forged orders, the rent counterfoils, the 1 Nov 1924 Farrago clipping), the nightcap chart, the **Roll of the Veil**, a glass on a coaster with code **8YUR2** taped underneath, dice and cards. Put the **scene card** (AYTHC) in your pocket. |
 | Tomorrow afternoon | At the bar: the **House Tin** (small round tin) and the House Book, the menu, and the one real vial (a small bottle of water, real label). Decoy bottles beside it are optional dressing: nothing in the game depends on them. Give Rebecca the House Book and the tin. |
-| Tomorrow afternoon | The dummy's **jacket**: pocket watch stopped at 11:47, the Boston-to-Manchester rail stub, the jacket note. **Sew or tape the second rail stub (Manchester to Boston, 11:12 PM) inside the lining**, where only someone searching will find it. This is the secret tie-breaker. |
+| Tomorrow afternoon | The dummy's **jacket**: the jacket note and the Boston-to-Manchester rail stub (the pocket watch is a printed scene page, so no real watch is needed). **Sew or tape the second rail stub (Manchester to Boston, 11:12 PM) inside the lining**, where only someone searching will find it. This is the secret tie-breaker. |
 | Optional | If you want spares for absent guests, print `slips.pdf` a second time and keep the extra set at the bar. |
 
 ## The night

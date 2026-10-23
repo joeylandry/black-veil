@@ -369,7 +369,7 @@ Everyone answers nine: old-1 to old-3, new-1 to new-3 and con-1 to con-3. **The 
 
 ## 11. Your checklist
 
-- [ ] Printed `PRINT-EVERYTHING.pdf` (60 pages, single-sided)
+- [ ] Printed the two print files: guest cards (double-sided, 24 sheets) and everything else (single-sided, 36 pages)
 - [ ] Every black envelope has the guest card, starting bills, carried item and slips (survivors' sheets include their secret page and marker; checked twice)
 - [ ] Every tag code on the right object (section 6) and in shared rooms only
 - [ ] Race slips in the right hands (section 5)

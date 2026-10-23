@@ -4,13 +4,13 @@
 
 ## 1. Print these
 
-**Easiest:** print `PRINT-EVERYTHING.pdf` once, single-sided (60 pages). It holds every file below in order, with a contents page. (Rebuild it with `python3 scripts/print/combine.py` after `npm run game:print`.) The table below is for printing files one at a time. Not needed: `tag-key.pdf` and `exhibits-index.pdf` are only extra references.
+**Easiest:** print the two combined files. `PRINT-1-GUEST-CARDS-print-DOUBLE-SIDED.pdf` (24 sheets, front and back, flip on the long edge) and `PRINT-2-EVERYTHING-ELSE-print-SINGLE-SIDED.pdf` (36 pages, with a contents page). Rebuild them with `python3 scripts/print/combine.py` after `npm run game:print`. The table below is for printing files one at a time. Not needed: `tag-key.pdf` and `exhibits-index.pdf` are only extra references.
 
 Letter paper. Turn on "background graphics" when printing so the black tags and cards come out.
 
 | File | Pages | How | Then |
 |---|---|---|---|
-| `guest-cards.pdf` | 24 | Single-sided. Plain paper is fine. | One sheet per guest, alphabetical; everything the guest needs is on it. Goes in that guest's envelope. Survivors' sheets have their secret page and a marker to cut out at the bottom. |
+| `guest-cards.pdf` | 48 | DOUBLE-SIDED, flip on the long edge. Plain or cream paper. | Front and back per guest, alphabetical (front: who you are, the town's story, your race; back: objectives and clues). Goes in that guest's envelope. Survivors' sheets have their secret page and a marker to cut out at the bottom. |
 | `slips.pdf` | 8 | Single-sided, cream or white. | Cut on the dashed lines. The line above each slip says whose envelope it goes in. |
 | `tags.pdf` | 3 | Single-sided. Matte paper; a laser printer is best. | Cut on the dashed grid. The small line under each tag says where it goes; trim that line off after you match it. |
 | `exhibits.pdf` | 16 | Single-sided. Cream paper. Landscape pages. | Cut each page along its edges. The foot of every page says where it goes (binder, black table, scene, or a guest's sealed envelope). The last page is the secret tie-breaker stub. |
@@ -128,7 +128,7 @@ Tape the tag on or beside the object. Do not move the object. Use shared rooms o
 
 | # | Do this | About |
 |---|---|---|
-| 1 | Print `PRINT-EVERYTHING.pdf` (60 pages, single-sided). Tags use the most ink. | 15 min |
+| 1 | Print the two PRINT files (24 double-sided sheets plus 36 single-sided pages). Tags use the most ink. | 15 min |
 | 2 | Cut the slips, tags, the five markers and the exhibit pages. Read the line above each slip or under each tag. | 30 min |
 | 3 | Walk the house and tape each tag from section 3a. Use the check list in `09-house-check.md`. | 15 min |
 | 4 | Prepare the carried items: tape each tag on its item (section 2) and keep them in piles by guest. | 10 min |

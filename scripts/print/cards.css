@@ -155,3 +155,9 @@ ol.rules { padding-left: 1.4em; margin: 0; } ol.rules li { margin-bottom: .32em;
 .gcmarker .mk { font-weight: bold; letter-spacing: .16em; font-size: .95em; }
 .gcmarker .mc { font: bold 2.4em "FreeMono", monospace; letter-spacing: .12em; color: #f0d27a; line-height: 1.1; }
 .gcmarker .ml { font-style: italic; font-size: .85em; color: #e8d9a8; }
+.cgroup { break-inside: avoid-column; margin-bottom: .3em; }
+.cglabel { margin: 0 0 .15em; }
+.cglabel .tag { font-size: .66em; }
+.errand .ty { font-size: .92em; color: var(--ink2); white-space: nowrap; }
+.errand .ty em { color: var(--wine); }
+.cglabel .tag { display: block; white-space: normal; margin-right: 0; line-height: 1.25; padding: .12em .5em; }

@@ -54,42 +54,61 @@ const typeOfRendered = (o: CardView["private"]["objectives"][number]): string =>
   return "LEARN A STORY";
 };
 const clueGroups = [
-  ["free", "SAY FREELY"],
-  ["trade", "TRADE IT (a line for a line)"],
-  ["paid", "COSTS $100 AT THE BAR (drop a bill in the House Tin first)"],
-  ["secret", "KEEP CLOSE"],
+  ["free", "SAY FREELY: anyone may be told", "free"],
+  ["trade", "TRADE IT: tell it only if they tell you a clue in return", "trade"],
+  ["paid", "COSTS $100: tell it only after they drop a $100 bill in the House Tin at the bar", "paid"],
+  ["secret", "KEEP CLOSE: do not tell unless you choose to", "secret"],
 ] as const;
+const summaryHtml = () =>
+  `<div class="summary">${brief1924
+    .filter((b) => b.heading !== "A word to the survivors")
+    .map((b) => `<h4>${esc(b.heading)}</h4>${b.bullets.map((t) => `<p>${esc(t)}</p>`).join("")}`)
+    .join("")}</div>`;
 function guestCardPages(): string[] {
-  return sorted.map((c) => {
+  const pages: string[] = [];
+  for (const c of sorted) {
     const k = buildCard(c.id)!;
     const p = k.private;
     const clues = [...p.secrets, ...p.knows];
     const entrusted = clues.filter((line) => /^About /.test(line.text));
-    const groups: { label: string; lines: typeof clues }[] = clueGroups.map(([tag, label]) => ({ label: label as string, lines: clues.filter((line) => line.share === tag && !/^About /.test(line.text)) }));
-    groups.push({ label: "ENTRUSTED SECRETS (another guest's small secret, held for them)", lines: entrusted });
+    const groups: { label: string; chip: string; lines: typeof clues }[] = clueGroups.map(([tag, label, chip]) => ({ label: label as string, chip: chip as string, lines: clues.filter((line) => line.share === tag && !/^About /.test(line.text)) }));
+    groups.push({ label: "ENTRUSTED SECRET: another guest's small secret that you hold for them", chip: "secret", lines: entrusted });
     const shown = groups.filter((group) => group.lines.length);
-    const objectives = p.objectives
-      .map((o, index) => `<li><b>${index + 1}. ${typeOfRendered(o)}.</b> ${esc(o.text)}${o.withNames.length ? ` <i>Seek out: ${esc(o.withNames.join(", "))}.</i>` : ""} <span class="gcask">Type: ${esc(o.ask)}.</span></li>`)
+    const errands = p.objectives
+      .map((o, index) => `<div class="errand"><div class="t"><span class="lab">${index + 1}. ${typeOfRendered(o)}</span>${esc(o.title)}</div><div>${esc(o.text)}${o.withNames.length ? ` <i>Seek out: ${esc(o.withNames.join(", "))}.</i>` : ""} <span class="ty">Type: <em>${esc(o.ask)}</em></span></div></div>`)
       .join("");
-    return `<div class="page gcpage"><div class="gcbox"><div class="fit" data-max="1" data-min="0.7" style="--base:10.6pt">
-      <div class="gchead"><span class="gcname">${esc(k.name)}</span><span class="gcocc">${esc(k.occupation)}</span></div>
-      <div class="gcstrip"><b>BILLS:</b> ${p.startingCash / 100} ($${p.startingCash.toLocaleString("en-US")}) &nbsp;·&nbsp; <b>CARRIES:</b> ${p.carries.length ? esc(p.carries.join(", ")) + " (keep on you)" : "nothing"} &nbsp;·&nbsp; <b>ANSWERS:</b> on your phone${SITE ? ` at ${esc(SITE)}` : ""}, closes 10:30</div>
-      <h3>WHO YOU ARE</h3>
-      <p><b>The room sees:</b> ${esc(k.publicBio)} <b>You:</b> ${esc(k.background.history)} <b>You know:</b> ${esc(k.background.people.join(" "))}${p.habit ? ` <b>Habit:</b> ${esc(p.habit)}` : ""}</p>
-      ${p.role ? `<p><b>${esc(p.role.title)}:</b> ${esc(p.role.rules.join(" "))}</p>` : ""}
-      <h3>YOUR FIVE OBJECTIVES (1 point each)</h3>
-      <ol class="gcobj">${objectives}</ol>
-      <h3>YOUR RACE: ${esc(p.race.title)} (+1 to the first to finish)</h3>
-      <p>${esc(p.race.text)}${p.race.slips.length ? ` <b>You carry for others:</b> ${esc(p.race.slips.join(" "))}` : ""}</p>
-      ${c.survivor ? `<h3>YOUR SECRET: YOU ARE ONE WHO GOT AWAY (${esc(c.survivor.veilName)}, ${esc(c.survivor.veilTitle)})</h3>
-      <p><b>Who you were:</b> ${esc(c.survivor.realStory)} <b>How you got away:</b> ${esc(c.survivor.escape)} <b>Your tell:</b> ${esc(c.survivor.tell)} <b>Do it at least three times before the nightcap.</b> <b>What leaks through:</b> ${esc(c.survivor.skillLeak)}</p>
-      <p><b>Your rules:</b> ${survivorRules(c.survivor.markerNo).map((r, i) => `${i + 1}. ${esc(r)}`).join(" ")}</p>` : ""}
-      <h3>WHAT YOU KNOW (tell, trade or sell as marked)</h3>
-      <div class="gcclues">${shown.map((group) => `<div class="gcgroup"><div class="gclabel">${esc(group.label)}</div>${group.lines.map((line) => `<div class="gcline">${esc(line.text)}</div>`).join("")}</div>`).join("")}</div>
-      ${c.survivor ? `<div class="gcmarker"><span class="gccut">&#9986; cut out</span><div class="mk">THE BLACK VEIL &nbsp;·&nbsp; MARKER No. ${c.survivor.markerNo}</div><div class="mc">${esc(c.survivor.markerCode)}</div><div class="ml">Hand it to the Butler at the bar to buy the vial. Honoured once, by its owner.</div></div>` : ""}
-      <p class="gcfoot">The town's story is on the door poster and your phone. Bartend Joe gives the word for any HOST TASK once he has seen it done. At the end, count your bills and type the total.</p>
-    </div></div></div>`;
-  });
+    const v = c.survivor;
+    const raceHtml = `<h2>Act fast or lose this point: ${esc(p.race.title)}</h2><p><b>The first to complete this task gets the point.</b> ${esc(p.race.text)}${p.race.slips.length ? ` <b>You carry for others:</b> ${esc(p.race.slips.join(" "))}` : ""}</p>`;
+    const secretHtml = v
+      ? `<h2>Your secret: you are one who got away (${esc(v.veilName)}, ${esc(v.veilTitle)})</h2>
+      <p><b>Who you were:</b> ${esc(v.realStory)} <b>How you got away:</b> ${esc(v.escape)} <b>Your tell:</b> ${esc(v.tell)} <b>Do it at least three times before the nightcap.</b> <b>What leaks through:</b> ${esc(v.skillLeak)}</p>
+      <p><b>Your rules:</b> ${survivorRules(v.markerNo).map((r, i) => `${i + 1}. ${esc(r)}`).join(" ")}</p>
+      <div class="gcmarker"><span class="gccut">&#9986; cut out</span><div class="mk">THE BLACK VEIL &nbsp;·&nbsp; MARKER No. ${v.markerNo}</div><div class="mc">${esc(v.markerCode)}</div><div class="ml">Hand it to the Butler at the bar to buy the vial. Honoured once, by its owner.</div></div>`
+      : "";
+    // FRONT: who you are, what the whole town knows, your race and (for the five survivors) your secret
+    pages.push(`<div class="page"><div class="sheet">${banner("Manchester, N.H. · All Hallows' Eve, 1926")}<div class="fit" data-max="1.12" data-min="0.7" style="--base:10.8pt">
+      <div class="name">${esc(k.name)}</div><div class="occ">${esc(k.occupation)}</div><div class="rule" style="margin:.25em 1.2in .4em"></div>
+      <div class="cash"><span class="t">You start with</span><span class="amt">$${p.startingCash.toLocaleString("en-US")}</span><span class="t">${p.startingCash / 100} House bills of $100</span></div>
+      ${p.carries.length ? `<div class="box">You carry: ${esc(p.carries.join(", "))}. Keep ${p.carries.length > 1 ? "them" : "it"} on you all night.</div>` : ""}
+      <h2>What the town knows</h2>${summaryHtml()}
+      <h2>Your public face</h2><p>${esc(k.publicBio)}</p>
+      <h2>Your background</h2><p>${esc(k.background.history)}</p>
+      <ul>${k.background.people.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>
+      ${p.habit ? `<p><span class="lab">Your habit</span> &nbsp;${esc(p.habit)}</p>` : ""}
+      ${p.role ? `<h2>${esc(p.role.title)}</h2><p>${esc(p.role.rules.join(" "))}</p>` : ""}
+      ${raceHtml}
+      ${secretHtml}
+      <div class="flapbox">Turn over: your five objectives and everything you know.</div>
+    </div></div></div>`);
+    // BACK: the private page
+    pages.push(`<div class="page"><div class="sheet">${banner(`${k.name} · Private`)}<div class="fit" data-max="1.12" data-min="0.7" style="--base:11pt">
+      <h2>Your five objectives (1 point each)</h2>${errands}
+      <h2>What you know: tell, trade or sell as marked</h2>
+      <div class="cols2">${shown.map((group) => `<div class="cgroup"><div class="cglabel"><span class="tag ${group.chip}">${esc(group.label)}</span></div>${group.lines.map((line) => `<div class="line">${esc(line.text)}</div>`).join("")}</div>`).join("")}</div>
+      <div class="type">Type your answers on your phone${SITE ? ` at <b>${esc(SITE)}</b>` : ""}. Bartend Joe gives the word for a HOST TASK once he has seen it done. At the end, count your bills and type the total.</div>
+    </div></div></div>`);
+  }
+  return pages;
 }
 
 // ------------------------------------------------------------------ 3. survivor kit
@@ -132,7 +151,7 @@ function doorPages(): string[] {
 
 // ------------------------------------------------------------------ build
 const outputs: { file: string; title: string; comment: string; pages: string[] }[] = [
-  { file: "guest-cards", title: "Guest cards", comment: "One sheet per guest, single-sided, alphabetical (24 pages). Everything the guest needs is on it.", pages: guestCardPages() },
+  { file: "guest-cards", title: "Guest cards", comment: "PRINT DOUBLE-SIDED, flip on the long edge: page 1 is the front of guest 1, page 2 its back, and so on (24 guests, 48 pages).", pages: guestCardPages() },
   { file: "survivor-kit", title: "Survivor kit (HOST ONLY)", comment: "HOST ONLY. Spoilers. One page: the markers and who holds them.", pages: kitPages() },
   { file: "door-cards", title: "Door cards", comment: "Page 1: the brief poster. Page 2: the rules poster. One of each, at the door.", pages: doorPages() },
 ];

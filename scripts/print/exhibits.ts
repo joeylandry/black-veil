@@ -10,7 +10,7 @@
  * Needs headless Chromium (CHROME env var overrides the path) and pdftotext/pdfinfo for the checks.
  */
 import { execFileSync } from "node:child_process";
-import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { characterById, characters, exhibits, markers, props } from "@/data/game";
 import { tieBreaker } from "@/data/game/story";
@@ -22,18 +22,18 @@ import { tieBreaker } from "@/data/game/story";
 const menuTitle = "THE BLACK VEIL";
 const menuBy = "by the House";
 const menuNotice = "Every beverage dispensed for medicinal use only";
-const menuDrinks: { name: string; desc: string }[] = [
-  { name: "The Bee's Knees", desc: "Gin \u00b7 Fresh Lemon \u00b7 Honey Syrup" },
-  { name: "Whiskey Sour", desc: "Bourbon \u00b7 Citrus \u00b7 Orange" },
-  { name: "Espresso Martini", desc: "Orange Vodka \u00b7 Espresso \u00b7 Coffee Liqueur" },
-  { name: "The Bloody Scary", desc: "Blood Orange \u00b7 Prosecco \u00b7 Campari \u00b7 Black Vodka" },
+const menuDrinks: { slug: string; name: string; desc: string }[] = [
+  { slug: "bees-knees", name: "The Bee's Knees", desc: "Gin \u00b7 Fresh Lemon \u00b7 Honey Syrup" },
+  { slug: "whiskey-sour", name: "Whiskey Sour", desc: "Bourbon \u00b7 Citrus \u00b7 Orange" },
+  { slug: "espresso-martini", name: "Espresso Martini", desc: "Orange Vodka \u00b7 Espresso \u00b7 Coffee Liqueur" },
+  { slug: "bloody-scary", name: "The Bloody Scary", desc: "Blood Orange \u00b7 Prosecco \u00b7 Campari \u00b7 Black Vodka" },
 ];
-const menuBites: { name: string; desc: string }[] = [
-  { name: "Sausage-Stuffed Mushrooms", desc: "Savory Italian Sausage \u00b7 Mascarpone \u00b7 Parmesan \u00b7 Herbs" },
-  { name: "Smoked Salmon Tea Sandwiches", desc: "Smoked Salmon \u00b7 Herbed Butter \u00b7 21 Grain Bread" },
-  { name: "Mini Italian Meatballs", desc: "Tender Italian-Style Meatballs" },
-  { name: "Classic Shrimp Cocktail", desc: "Chilled Shrimp \u00b7 Cocktail Sauce" },
-  { name: "The Black Veil Charcuterie Board", desc: "Artisan Cheeses \u00b7 Cured Meats \u00b7 Crackers \u00b7 Pepper Jam" },
+const menuBites: { slug: string; name: string; desc: string }[] = [
+  { slug: "stuffed-mushrooms", name: "Sausage-Stuffed Mushrooms", desc: "Savory Italian Sausage \u00b7 Mascarpone \u00b7 Parmesan \u00b7 Herbs" },
+  { slug: "salmon-sandwiches", name: "Smoked Salmon Tea Sandwiches", desc: "Smoked Salmon \u00b7 Herbed Butter \u00b7 21 Grain Bread" },
+  { slug: "meatballs", name: "Mini Italian Meatballs", desc: "Tender Italian-Style Meatballs" },
+  { slug: "shrimp-cocktail", name: "Classic Shrimp Cocktail", desc: "Chilled Shrimp \u00b7 Cocktail Sauce" },
+  { slug: "charcuterie", name: "The Black Veil Charcuterie Board", desc: "Artisan Cheeses \u00b7 Cured Meats \u00b7 Crackers \u00b7 Pepper Jam" },
 ];
 
 // =====================================================================================================
@@ -604,17 +604,39 @@ function buildFortunes() {
 }
 
 // ---------------------------------------------------------------- menu
-const drinkIcons = ["\u{1F41D}", "\u{1F943}", "\u2615", "\u{1F377}"];
-const foodIcons = ["\u{1F344}", "\u{1F96A}", "\u{1F9C6}", "\u{1F364}", "\u{1F9C0}"];
-/** One half-sheet menu: the title band, a heading, and each item with a picture (a colour emoji). */
-function menuHalf(top: string, heading: string, items: { name: string; desc: string }[], icons: string[], foot: string) {
-  const rows = items.map((m, i) => `<div class="mrow"><span class="mico">${icons[i] ?? ""}</span><div><div class="nm">${esc(m.name)}</div><div class="ds">${esc(m.desc)}</div></div></div>`).join("");
-  return `<div class="menu mhalf chk" style="top:${top}"><div class="band"><h1>${esc(menuTitle)}</h1><div class="by">${esc(menuBy)}</div></div><h2>${esc(heading)}</h2><div class="mbody">${rows}</div><div class="foot">${esc(foot)}</div></div>`;
+/**
+ * Menu pictures. Drop your own picture (png, jpg or webp) into scripts/print/menu-images/ named after the item
+ * (bees-knees.png, whiskey-sour.png, ... see MENU-IMAGES.md) and it is used instead of the drawn one.
+ */
+const svg = (inner: string) => `<svg viewBox="0 0 100 100" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">${inner}</svg>`;
+const drawn: Record<string, string> = {
+  "bees-knees": svg(`<path d="M22 28 H78 Q76 56 50 62 Q24 56 22 28Z" fill="#f2d675" stroke="#5a4310" stroke-width="2.2"/><path d="M26 34 H74 Q72 52 50 57 Q28 52 26 34Z" fill="#f7e49a"/><line x1="50" y1="62" x2="50" y2="86" stroke="#5a4310" stroke-width="3"/><ellipse cx="50" cy="88" rx="17" ry="3.5" fill="none" stroke="#5a4310" stroke-width="2.6"/><path d="M68 24 Q84 20 82 36 Q74 30 68 24Z" fill="#f5c542" stroke="#8a6a1a" stroke-width="1.6"/><ellipse cx="38" cy="22" rx="7" ry="4" fill="#e8c52a" stroke="#6b5410" stroke-width="1.4"/><path d="M33 22 H43 M35 19.5 V24.5 M41 19.5 V24.5" stroke="#3a2a08" stroke-width="1.6"/>`),
+  "whiskey-sour": svg(`<path d="M26 30 H74 L70 82 Q70 86 66 86 H34 Q30 86 30 82Z" fill="#fdf3dc" fill-opacity=".55" stroke="#4a3826" stroke-width="2.4"/><path d="M29 44 H71 L68 82 Q68 84 66 84 H34 Q32 84 32 82Z" fill="#d68a24"/><rect x="40" y="52" width="9" height="9" rx="1.5" fill="#f4f4f0" fill-opacity=".85"/><rect x="52" y="62" width="9" height="9" rx="1.5" fill="#f4f4f0" fill-opacity=".85"/><circle cx="62" cy="32" r="12" fill="#f28c1e" stroke="#a85a08" stroke-width="2"/><path d="M62 32 L62 20 M62 32 L72 26 M62 32 L72 38 M62 32 L62 44 M62 32 L52 38 M62 32 L52 26" stroke="#fbd28a" stroke-width="1.5"/><circle cx="40" cy="30" r="5" fill="#a3122a"/><path d="M40 25 Q44 16 50 14" fill="none" stroke="#3a5a2a" stroke-width="1.8"/>`),
+  "espresso-martini": svg(`<path d="M14 24 H86 L50 62Z" fill="#3a2214" stroke="#2a1a10" stroke-width="2.4"/><path d="M14 24 H86 L80 30 H20Z" fill="#e9d2a8"/><line x1="50" y1="62" x2="50" y2="86" stroke="#2a1a10" stroke-width="3"/><ellipse cx="50" cy="88" rx="18" ry="3.5" fill="none" stroke="#2a1a10" stroke-width="2.6"/><ellipse cx="40" cy="27" rx="4" ry="2.6" fill="#4a2a14" stroke="#2a1608" stroke-width="1" transform="rotate(-20 40 27)"/><ellipse cx="50" cy="27" rx="4" ry="2.6" fill="#4a2a14" stroke="#2a1608" stroke-width="1"/><ellipse cx="60" cy="27" rx="4" ry="2.6" fill="#4a2a14" stroke="#2a1608" stroke-width="1" transform="rotate(20 60 27)"/>`),
+  "bloody-scary": svg(`<path d="M38 12 H62 L60 52 Q58 64 50 66 Q42 64 40 52Z" fill="#fdf3dc" fill-opacity=".5" stroke="#3a1a1a" stroke-width="2.4"/><path d="M40 28 H60 L59 52 Q57 62 50 64 Q43 62 41 52Z" fill="#b3201a"/><path d="M41 44 H59 L58.5 52 Q57 62 50 64 Q43 62 41.5 52Z" fill="#241012"/><line x1="50" y1="66" x2="50" y2="86" stroke="#3a1a1a" stroke-width="3"/><ellipse cx="50" cy="88" rx="15" ry="3.5" fill="none" stroke="#3a1a1a" stroke-width="2.6"/><circle cx="64" cy="18" r="11" fill="#d1401a" stroke="#8a2408" stroke-width="2"/><path d="M64 18 L64 8 M64 18 L72 13 M64 18 L72 24 M64 18 L64 28 M64 18 L56 24 M64 18 L56 13" stroke="#f3a07a" stroke-width="1.4"/><path d="M30 20 Q34 14 40 16" stroke="#3a1a1a" stroke-width="1.8" fill="none"/>`),
+  "stuffed-mushrooms": svg(`<g><path d="M14 52 Q14 26 38 26 Q62 26 62 52Z" fill="#c79a6a" stroke="#6b4a26" stroke-width="2.2"/><ellipse cx="38" cy="51" rx="21" ry="5" fill="#8a5a2e"/><circle cx="30" cy="48" r="3" fill="#a8421e"/><circle cx="40" cy="47" r="3.4" fill="#d9c37a"/><circle cx="47" cy="49" r="2.6" fill="#a8421e"/><rect x="34" y="52" width="9" height="14" rx="3" fill="#e8d3b0" stroke="#6b4a26" stroke-width="1.6"/></g><g><path d="M46 78 Q46 56 66 56 Q86 56 86 78Z" fill="#c79a6a" stroke="#6b4a26" stroke-width="2.2"/><ellipse cx="66" cy="77" rx="18" ry="4.5" fill="#8a5a2e"/><circle cx="60" cy="74" r="2.8" fill="#a8421e"/><circle cx="69" cy="73" r="3" fill="#d9c37a"/><circle cx="75" cy="75" r="2.4" fill="#4a7a2a"/></g>`),
+  "salmon-sandwiches": svg(`<g><path d="M10 70 L40 18 L70 70Z" fill="#f1e2bf" stroke="#8a6a2a" stroke-width="2.2"/><path d="M16 66 L40 26 L64 66Z" fill="#e87a5a"/><path d="M20 64 L40 31 L60 64Z" fill="#f0a58a"/><circle cx="40" cy="48" r="3" fill="#4a7a2a"/></g><g><path d="M40 90 L70 38 L98 90Z" fill="#f1e2bf" stroke="#8a6a2a" stroke-width="2.2" transform="translate(-6 -6)"/><path d="M46 86 L70 46 L92 86Z" fill="#e87a5a" transform="translate(-6 -6)"/><path d="M50 84 L70 51 L88 84Z" fill="#f0a58a" transform="translate(-6 -6)"/><circle cx="64" cy="68" r="3" fill="#4a7a2a"/></g>`),
+  "meatballs": svg(`<ellipse cx="50" cy="74" rx="40" ry="14" fill="#f4f0e6" stroke="#8a8a8a" stroke-width="2"/><ellipse cx="50" cy="72" rx="32" ry="9" fill="#c7391f"/><circle cx="36" cy="58" r="14" fill="#7a3a1a" stroke="#4a200c" stroke-width="2"/><circle cx="62" cy="58" r="14" fill="#8a4620" stroke="#4a200c" stroke-width="2"/><circle cx="50" cy="42" r="14" fill="#6e3216" stroke="#4a200c" stroke-width="2"/><path d="M44 30 Q52 18 62 24 Q56 34 44 30Z" fill="#3f8a2e" stroke="#25601a" stroke-width="1.4"/>`),
+  "shrimp-cocktail": svg(`<path d="M24 38 H76 L66 66 Q64 72 56 72 H44 Q36 72 34 66Z" fill="#fdf3dc" fill-opacity=".55" stroke="#3a3a3a" stroke-width="2.4"/><path d="M28 48 H72 L65 66 Q63 70 56 70 H44 Q37 70 35 66Z" fill="#c42a1a"/><line x1="50" y1="72" x2="50" y2="86" stroke="#3a3a3a" stroke-width="3"/><ellipse cx="50" cy="88" rx="16" ry="3.5" fill="none" stroke="#3a3a3a" stroke-width="2.6"/><path d="M26 38 Q22 18 40 20 Q50 22 42 34 Q34 30 34 38Z" fill="#f08a6a" stroke="#b5502a" stroke-width="1.8"/><path d="M74 38 Q80 16 60 20 Q50 22 58 34 Q66 30 66 38Z" fill="#f08a6a" stroke="#b5502a" stroke-width="1.8"/><path d="M82 70 L96 56 Q98 76 84 80Z" fill="#f3d94a" stroke="#a88a10" stroke-width="1.8"/>`),
+  "charcuterie": svg(`<ellipse cx="50" cy="56" rx="46" ry="34" fill="#a8743a" stroke="#6b4720" stroke-width="2.4"/><path d="M22 40 L44 30 L44 50Z" fill="#f6d65a" stroke="#a8861a" stroke-width="1.8"/><circle cx="32" cy="42" r="1.6" fill="#d9b030"/><circle cx="38" cy="40" r="1.6" fill="#d9b030"/><circle cx="58" cy="36" r="9" fill="#b02a2a" stroke="#6a1212" stroke-width="1.6"/><circle cx="72" cy="46" r="9" fill="#c23a3a" stroke="#6a1212" stroke-width="1.6"/><circle cx="62" cy="52" r="3" fill="#f1c0c0"/><rect x="26" y="58" width="13" height="13" rx="2" fill="#e9c98a" stroke="#8a6a2a" stroke-width="1.6"/><rect x="42" y="62" width="13" height="13" rx="2" fill="#e9c98a" stroke="#8a6a2a" stroke-width="1.6"/><circle cx="70" cy="66" r="8" fill="#5a1a3a" stroke="#2a0a1a" stroke-width="1.6"/><circle cx="70" cy="66" r="4.5" fill="#8a2a5a"/>`),
+};
+function menuPicture(slug: string): string {
+  const dir = path.join(ROOT, "scripts/print/menu-images");
+  for (const ext of ["png", "jpg", "jpeg", "webp"]) {
+    const file = path.join(dir, `${slug}.${ext}`);
+    if (existsSync(file)) return `<img src="data:image/${ext === "jpg" ? "jpeg" : ext};base64,${readFileSync(file).toString("base64")}" style="width:100%;height:100%;object-fit:cover;border-radius:.08in">`;
+  }
+  return drawn[slug] ?? "";
+}
+/** One half-sheet menu: the title band, a heading, and each item with its picture. */
+function menuHalf(top: string, heading: string, items: { slug: string; name: string; desc: string }[], foot: string) {
+  const rows = items.map((m) => `<div class="mrow"><span class="mico">${menuPicture(m.slug)}</span><div><div class="nm">${esc(m.name)}</div><div class="ds">${esc(m.desc)}</div></div></div>`).join("");
+  return `<div class="menu mhalf chk${items.length > 4 ? " dense" : ""}" style="top:${top}"><div class="band"><h1>${esc(menuTitle)}</h1><div class="by">${esc(menuBy)}</div></div><h2>${esc(heading)}</h2><div class="mbody">${rows}</div><div class="foot">${esc(foot)}</div></div>`;
 }
 function buildMenus() {
-  const make = (file: string, heading: string, items: { name: string; desc: string }[], icons: string[], foot: string) =>
-    build(file, doc(`Black Veil ${heading}`, `<div class="page">${menuHalf(".15in", heading, items, icons, foot)}<div class="cutpage"></div>${menuHalf("5.65in", heading, items, icons, foot)}</div>`));
-  return { cocktail: make("cocktail-menu", "Cocktail Menu", menuDrinks, drinkIcons, menuNotice), food: make("food-menu", "Food Menu", menuBites, foodIcons, "The House reserves the right to ask no questions") };
+  const make = (file: string, heading: string, items: { slug: string; name: string; desc: string }[], foot: string) =>
+    build(file, doc(`Black Veil ${heading}`, `<div class="page">${menuHalf(".15in", heading, items, foot)}<div class="cutpage"></div>${menuHalf("5.65in", heading, items, foot)}</div>`));
+  return { cocktail: make("cocktail-menu", "Cocktail Menu", menuDrinks, menuNotice), food: make("food-menu", "Food Menu", menuBites, "The House reserves the right to ask no questions") };
 }
 
 // ---------------------------------------------------------------- verification

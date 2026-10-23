@@ -50,7 +50,7 @@ A guest finds the object, reads the small tag taped on or beside it, and types t
 
 - [ ] The House Tin (a small round tin) and the House Book, at the bar
 - [ ] The one real vial (small bottle of water, real label). Decoy bottles are optional: the game never checks them
-- [ ] The dummy in a jacket, with a pocket watch stopped at 11:47; the second rail stub sewn into the lining
+- [ ] The dead man: a jacket on a chair or a dummy (no real watch needed: the pocket watch is a printed scene page); the second rail stub in the lining
 - [ ] The black table for the Keeper's binder, with a glass on a coaster (code taped underneath)
 - [ ] 400 $100 bills; each guest's starting count is on their envelope sheet
 - [ ] A way to print: letter paper, cream or white; card stock for the character cards if you have it

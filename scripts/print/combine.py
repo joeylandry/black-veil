@@ -12,13 +12,12 @@ from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
 
 SRC = "docs/print/game"
-OUT = f"{SRC}/PRINT-EVERYTHING.pdf"
+OUT_CARDS = f"{SRC}/PRINT-1-GUEST-CARDS-print-DOUBLE-SIDED.pdf"
+OUT = f"{SRC}/PRINT-2-EVERYTHING-ELSE-print-SINGLE-SIDED.pdf"
 
 # (file, title, how to use it)
 PARTS = [
-    ("A. FOR THE GUESTS", None, None),
-    ("guest-cards.pdf", "Guest cards", "Do not cut (survivors: cut out the marker at the bottom of their sheet, or leave it for them). One sheet per guest, alphabetical. Everything the guest needs is on it."),
-    ("B. THINGS TO CUT OUT AND PLACE", None, None),
+    ("THINGS TO CUT OUT AND PLACE", None, None),
     ("slips.pdf", "Slips", "Cut on the dashed lines. The line above each slip says whose envelope it goes in."),
     ("tags.pdf", "Code tags", "Cut on the dashed grid. The line under each tag says what it goes on; trim it off after matching."),
     ("exhibits.pdf", "Exhibits (binder, black table, scene, sealed pages)", "Cut each page out. The foot of each page says where it goes. Last page: the secret tie-breaker stub for the jacket lining. These pages are landscape."),
@@ -27,7 +26,7 @@ PARTS = [
     ("door-cards.pdf", "Door posters", "Page 1 (the brief) and page 2 (the rules): one of each, at the door."),
     ("cocktail-menu.pdf", "Cocktail menu", "Two menus per sheet: cut across the dashed line. Put them on the bar."),
     ("food-menu.pdf", "Food menu", "Two menus per sheet: cut across the dashed line. Put them by the food."),
-    ("C. HOST ONLY (spoilers: keep these)", None, None),
+    ("HOST ONLY (spoilers: keep these)", None, None),
     ("survivor-kit.pdf", "Survivor kit", "One page for you: the five markers and who holds them. (Each survivor's secret page and marker are on their own guest card.)"),
     ("host-sheet.pdf", "Host sheet", "Every approval word. Keep behind the bar."),
 ]
@@ -50,10 +49,12 @@ def contents_page(rows, total):
     width, height = letter
     y = height - 54
     pdf.setFont("Helvetica-Bold", 16)
-    pdf.drawString(48, y, "THE BLACK VEIL: everything to print")
+    pdf.drawString(48, y, "THE BLACK VEIL: everything to print (file 2 of 2)")
     y -= 18
     pdf.setFont("Helvetica", 9.5)
-    pdf.drawString(48, y, f"Print this whole file SINGLE-SIDED on letter paper, background graphics ON, no 'fit to page'. {total} pages.")
+    pdf.drawString(48, y, f"Print this file SINGLE-SIDED on letter paper, background graphics ON, no 'fit to page'. {total} pages.")
+    y -= 13
+    pdf.drawString(48, y, "The guest cards are in the other file (PRINT-1, double-sided, 24 sheets): one per guest, alphabetical, into that guest's envelope.")
     y -= 24
     for kind, title, how, page, pages in rows:
         if kind == "section":
@@ -92,6 +93,12 @@ for file, title, _ in PARTS:
     for page in PdfReader(f"{SRC}/{file}").pages:
         writer.add_page(page)
     writer.add_outline_item(title, first)
+cards = PdfWriter()
+for page in PdfReader(f"{SRC}/guest-cards.pdf").pages:
+    cards.add_page(page)
+with open(OUT_CARDS, "wb") as handle:
+    cards.write(handle)
+print(f"wrote {OUT_CARDS}: {len(cards.pages)} pages = {len(cards.pages) // 2} sheets, double-sided")
 with open(OUT, "wb") as handle:
     writer.write(handle)
 print(f"wrote {OUT}: {len(writer.pages)} pages (contents said {total})")

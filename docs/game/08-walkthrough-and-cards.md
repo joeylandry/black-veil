@@ -25,7 +25,7 @@ Everything repeated in this document wears the same label.
 | Tag | Meaning |
 |---|---|
 | **SAY FREELY** | Anyone may be told this. No cost. |
-| **TRADE IT** | Give this only in exchange for another line. |
+| **TRADE IT** | Tell this only if the other guest tells you a clue in return. It makes people talk to each other: nobody gets everything just by asking. |
 | **COSTS $100 AT THE BAR** | Told only after the other guest drops a $100 bill in the House Tin. |
 | **KEEP CLOSE** | Never said aloud unless the guest chooses to; some are their own small secret. |
 | **ENTRUSTED SECRET** | A line about another guest's small secret (it starts with "About ..."). The guest holds it as that guest's confidant. This is one of the two ways a LEARN A SECRET objective gets solved. |
