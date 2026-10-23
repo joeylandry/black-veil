@@ -314,7 +314,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 - History: Your late father was the Black Veil's Silent Partner from the first night: the standing reservation upstairs, the drafts paid to a vault and never to a bank. He left you the Manor, its mortgage, and a brass key on a ribbon he called “the Silent Partner's tooth.”
 - People: Silas Palmer: the bandleader whose band you quietly underwrite. Molly Daniel: rents your cellar for a still of her own, and pays you in gossip. J. Bruce Wayne: the playboy who holds your mortgage and has never once mentioned it.
-- Wear: A black velvet ribbon at the throat, gloves, and the airs of a woman who does not need to count.
+- Costume idea (optional): A black velvet ribbon at the throat, gloves, and the airs of a woman who does not need to count.
 
 **CLUES THIS GUEST HOLDS**
 
@@ -382,7 +382,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 - History: J. Bruce Wayne is in every society column and in no office. You bought the Mahns mortgage the week you arrived in Manchester in 1925, and nobody has asked why.
 - People: Anika Mahns: your mortgage, and your reason to be seen at her parties. Mihir Nagarkatti: the oilman whose money is louder than yours, and older. Krrish Vermouth: delivers your vermouth and has never once been paid on time.
-- Wear: Dinner jacket, a cigar you never light, and a black mask that does not quite cover your eyes.
+- Costume idea (optional): Dinner jacket, a cigar you never light, and a black mask that does not quite cover your eyes.
 
 **CLUES THIS GUEST HOLDS**
 
@@ -445,7 +445,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 - History: Nag Oil struck one gusher in 1923 and the whole town has heard the story twice. The wells have run dry since, and you have kept that quiet.
 - People: Angelos Bowles: the card sharp who owes you for a night you both remember differently. Diwakar Sandbagg: the prizefighter whose purses you stake, and are curious about. Eric Leeway: the judge who rules on your drilling leases, and on little else you do.
-- Wear: An oilman's cream suit with a derrick-shaped tie pin, a pocket full of bills in a tidy roll, and a black half-mask.
+- Costume idea (optional): An oilman's cream suit with a derrick-shaped tie pin, a pocket full of bills in a tidy roll, and a black half-mask.
 
 **CLUES THIS GUEST HOLDS**
 
@@ -509,7 +509,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 - History: Fine wine and vermouth reach Manchester by the crate, and you are the reason, no questions asked and none answered. You keep your invoices in four languages and your customers in three social classes.
 - People: Eric Leeway: a regular at your cellar door on Fridays, for reasons neither of you states. J. Bruce Wayne: buys your vermouth and pays in compliments. Anika Mahns: the Manor's cellar is the best customer you cannot say you have.
-- Wear: A wine merchant's grey frock coat, a corkscrew on a chain, and a half-mask the colour of burgundy.
+- Costume idea (optional): A wine merchant's grey frock coat, a corkscrew on a chain, and a half-mask the colour of burgundy.
 
 **CLUES THIS GUEST HOLDS**
 
@@ -581,7 +581,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 - History: You read tells for a living: a twitch, a hesitation, a glass left untouched. You deal fast and bet faster, and you have sat across a table from every guest here at least once.
 - People: Mihir Nagarkatti: your backer, and your best friend, in that order. Diwakar Sandbagg: the prizefighter whose hands you cannot stop watching. Silas Palmer: plays the room where you work the back table.
-- Wear: A bowler hat, a waistcoat full of loose coin, and a casino chip you roll across your knuckles.
+- Costume idea (optional): A bowler hat, a waistcoat full of loose coin, and a casino chip you roll across your knuckles.
 
 **HABIT** You roll a casino chip across your knuckles and count the pot with your thumb across your fingertips, a card sharp's habit. Do it whenever chips or money are on the table.
 
@@ -643,7 +643,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 - History: You have held the star for six years and your county has never been quiet. A feud with Leon Gee, who mocks your department on the radio every night, has become the best entertainment in the county.
 - People: Leon Gee: you would happily arrest him for being insufferable on the radio, and he knows what that is worth. Emmerich Sunner: the county physician reports to you and examines every body you find. Tiffany Liu: the windows of your office are hers, and so, you suspect, is some of the gossip about you.
-- Wear: A black cowboy hat, a tin star, handcuffs on your belt, and a stern face for the photographs.
+- Costume idea (optional): A black cowboy hat, a tin star, handcuffs on your belt, and a stern face for the photographs.
 
 **HABIT** You check the exits of every room you enter, a lawman's habit. Let people see you do it.
 
@@ -718,7 +718,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 - History: You came to the bench in 1925 with excellent references and no previous court record anywhere. Your gavel falls like a metronome and the docket moves faster than any in the state.
 - People: Anthony Hung: argues before you and has never won an acquittal. Theodor Farrago: the Sheriff, who watches your bench more closely than he admits. Krrish Vermouth: sends the bench a crate of wine every Friday, and you never ask why.
-- Wear: Judge's black robes, a powdered wig if you can find one, and a small half-mask.
+- Costume idea (optional): Judge's black robes, a powdered wig if you can find one, and a small half-mask.
 
 **CLUES THIS GUEST HOLDS**
 
@@ -787,7 +787,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 - History: You practise from a second-floor office above a dentist and read every contract twice. You have drawn papers for half the people in this room and remember what each of them tried to hide.
 - People: Rhea Mallya: the Emporium's counsel is you; you read her leases and are not telling anyone what is in them. Eric Leeway: the judge who dismisses your cases and has never read your briefs. Tim McGinley: a client you have defended three times and billed once.
-- Wear: A lawyer's three-piece suit, a flourish of a signature on every page, and a mask with an air of reasonable doubt.
+- Costume idea (optional): A lawyer's three-piece suit, a flourish of a signature on every page, and a mask with an air of reasonable doubt.
 
 **CLUES THIS GUEST HOLDS**
 
@@ -856,7 +856,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 - History: You have been the county physician for four years and the Sheriff's examiner for three. You have seen what a stage looks like and what a body looks like, and you can tell the two apart.
 - People: Theodor Farrago: the Sheriff, who asks you what killed them and rarely likes the answer. Rhea Mallya: the Emporium's druggist fills your prescriptions. Silas Palmer: the bandleader whose throat you treat.
-- Wear: A doctor's bag, a stethoscope, a white coat over a dinner jacket, and a small black mask.
+- Costume idea (optional): A doctor's bag, a stethoscope, a white coat over a dinner jacket, and a small black mask.
 
 **HABIT** You dot every i with a tiny ring when you write, as you were taught writing prescriptions. Do it on anything you sign or note.
 
@@ -932,7 +932,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 - History: You have sold the Farrago on the corner of Elm and Hanover since 1919, and your papers reach every door in this room. A still in the Mahns Manor cellar pays for the dress you are wearing.
 - People: Anika Mahns: your landlady in the cellar, and your best customer. Leon Gee: your headlines run on his radio the next morning, without credit. Eric Leeway: pays you to keep his name off the court column.
-- Wear: A newsboy cap, a satchel of papers, and a bundle of the Extra to sell at the right moment.
+- Costume idea (optional): A newsboy cap, a satchel of papers, and a bundle of the Extra to sell at the right moment.
 
 **CLUES THIS GUEST HOLDS**
 
@@ -1000,7 +1000,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 - History: You came from Canton by way of Boston. A certain lady sponsored your papers and your radio licence, and you owe her everything. You read the news at ten and the weather at eleven, and you are fond of both.
 - People: Theodor Farrago: the Sheriff, who thinks you are insufferable on the air and is correct. Ananya Codru: your friend at the telegraph office; she keeps your secrets and you keep hers. Silas Palmer: the bandleader whose scat you recognise from somewhere you cannot place.
-- Wear: A microphone prop if you have one, a headset, a snappy suit, and a white carnation.
+- Costume idea (optional): A microphone prop if you have one, a headset, a snappy suit, and a white carnation.
 
 **CLUES THIS GUEST HOLDS**
 
@@ -1067,7 +1067,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 - History: Every wire that goes in or out of Manchester after dark passes through your hands. You decoded one in 1924 and were told to forget it. You wrote it down instead. Charlie, who works the key beside you, keeps the night shift company.
 - People: Leon Gee: your friend at WFEA, who sends messages that look innocent and are not. J. Bruce Wayne: wires his tailor in London, and tips like a man who wants to be remembered. Erika Lamm: wanted; has bought a telegram form from you and does not say why.
-- Wear: A clerk's visor and sleeve garters, a telegraph pencil behind the ear, and a single green glove.
+- Costume idea (optional): A clerk's visor and sleeve garters, a telegraph pencil behind the ear, and a single green glove.
 
 **CLUES THIS GUEST HOLDS**
 
@@ -1139,7 +1139,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 - History: You have run the carnival's midway for six summers, and you hand-paint every handbill yourself. In October 1924 you built stage blood and breakaway furniture for a “private masquerade” and billed a post-office box. You never asked what it was for.
 - People: Angelos Bowles: sits at the back table of every midway you have worked, and reads the marks. Silas Palmer: leads the band that plays your carnival, and cannot play a Charleston. Ananya Codru: sends your wires to the carnival's other towns and keeps your accounts straight.
-- Wear: A barker's straw boater, a striped coat, a cane, and a mask with a painted grin.
+- Costume idea (optional): A barker's straw boater, a striped coat, a cane, and a mask with a painted grin.
 
 **CLUES THIS GUEST HOLDS**
 
@@ -1198,7 +1198,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 - History: You lead the band at the Palm Court and sing the scat that carries over any room. The papers like you; the booking agents like you more, because you never ask to be paid in anything but cash.
 - People: Leon Gee: broadcasts your records on WFEA, and says the scat reminds him of someone. Anika Mahns: a patron of the band, and not one who explains herself. Luke Shelldon: books your orchestra for the carnival.
-- Wear: White tie and tails, a long cigarette holder, a hat you tip to everyone, and a mask in black lace.
+- Costume idea (optional): White tie and tails, a long cigarette holder, a hat you tip to everyone, and a mask in black lace.
 
 **HABIT** You tip your hat to everyone you pass and set it straight by the brim afterward, a bandleader's courtesy. Do it at every greeting.
 
@@ -1270,7 +1270,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 - History: You barnstorm the county's fairs and carry mail when the roads are mud. You are always the first to ask which way the door is, and the last to say why.
 - People: Krrish Vermouth: ships you the vermouth you pour over the fairgrounds on a good day. Tiffany Liu: sold you a lamp for your hangar, and a story for it. Leon Gee: reads your weather on the air, wrongly.
-- Wear: A flying jacket and leather helmet, goggles pushed up on your forehead, a wristwatch you glance at constantly, and a white silk scarf.
+- Costume idea (optional): A flying jacket and leather helmet, goggles pushed up on your forehead, a wristwatch you glance at constantly, and a white silk scarf.
 
 **HABIT** You glance at your wristwatch every time a door opens, a flier's habit. Do it whenever someone comes or goes.
 
@@ -1343,7 +1343,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 - History: You read palms, clouds and the bottom of a teacup, and now and then the soot in a chimney. Your family came from Poland to work the mills, and a star-marked box of salt is on your mother's shelf. A soothsayer notices what people burn.
 - People: Tiffany Liu: your partner in windows and roofs; you read the glass, she makes it. Arjun Bat: a fellow mill family; you have known him since you were both small. Adam Holdsfire: you read the soot in his shop's chimney and he reads your debts.
-- Wear: A shawl of rich colours, a turban, a crystal you do not believe in, and a six-pointed star pinned to your lapel. It is a Friday night, so you feel the Sabbath keenly.
+- Costume idea (optional): A shawl of rich colours, a turban, a crystal you do not believe in, and a six-pointed star pinned to your lapel. It is a Friday night, so you feel the Sabbath keenly.
 
 **CLUES THIS GUEST HOLDS**
 
@@ -1415,7 +1415,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 - History: You grew up in a mill family and hauled bricks as a boy. You were offered $500 to strike out in the 1925 mill championship and never quite decided whether the money was taken.
 - People: Joshua Kamin-Sky: a boyhood friend and the only person who laughs at your jokes. Mihir Nagarkatti: the oilman whose offer you took, or did not. Adam Holdsfire: sold you your first glove and has opinions about your swing.
-- Wear: A Textiles team jersey, a cap, and a bat you insist is for sentimental reasons.
+- Costume idea (optional): A Textiles team jersey, a cap, and a bat you insist is for sentimental reasons.
 
 **CLUES THIS GUEST HOLDS**
 
@@ -1483,7 +1483,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 - History: You sell guns, locks and nails. You keep a register of every poison and every cartridge you have ever sold, and you have a very long memory for who bought what.
 - People: Theodor Farrago: the Sheriff whose revolver you built and who has never loaded it. Joshua Kamin-Sky: reads the soot in your chimney; taught you a Yiddish word you are proud of. Arjun Bat: bought his bat from your hardware counter.
-- Wear: A gunsmith's leather apron over a good shirt, a monocle, and a half-mask with a brass finish.
+- Costume idea (optional): A gunsmith's leather apron over a good shirt, a monocle, and a half-mask with a brass finish.
 
 **CLUES THIS GUEST HOLDS**
 
@@ -1553,7 +1553,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 - History: You have your own glass studio and a loupe you never leave behind. Your lamps hang in the Sheriff's office and your windows hang in the churches, and you have cut a brass plate or two for the Veil itself.
 - People: Leon Gee: a neighbour in the glass, who reads the Sheriff's mail aloud and your lamps' prices with equal pleasure. Joshua Kamin-Sky: reads the glass you make. Theodor Farrago: the Sheriff's office windows are yours.
-- Wear: A glassworker's apron, a loupe on a ribbon, and a mask of stained-glass shards.
+- Costume idea (optional): A glassworker's apron, a loupe on a ribbon, and a mask of stained-glass shards.
 
 **CLUES THIS GUEST HOLDS**
 
@@ -1621,7 +1621,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 - History: You fight the river-town circuit and nobody has ever seen you in the Manchester ring. You are a man who loses in the third round exactly when the odds say you should.
 - People: Mihir Nagarkatti: the oilman who stakes your fights, and does not ask why. Angelos Bowles: studies you at every table. Arjun Bat: a fellow sportsman who trades stories and bruises.
-- Wear: A boxer's robe over a dinner jacket, taped knuckles, and a mask that is not meant to hide a broken nose.
+- Costume idea (optional): A boxer's robe over a dinner jacket, taped knuckles, and a mask that is not meant to hide a broken nose.
 
 **CLUES THIS GUEST HOLDS**
 
@@ -1687,7 +1687,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 - History: You are in your second year of going straight, which means your gin now has a license plate. You ran the launch at the foot of the river steps in 1924 and have been trying to forget what you saw.
 - People: Rebecca Chow: the House's Butler; you supply the House, and what it does not know about your gin is little. Rhea Mallya: stocks your gin in the Emporium's back room under the label of a tonic. Anthony Hung: your lawyer; you do not pay him on time.
-- Wear: A gangster's pinstripe, a flask-shaped bulge, and a black half-mask with a gin-green ribbon.
+- Costume idea (optional): A gangster's pinstripe, a flask-shaped bulge, and a black half-mask with a gin-green ribbon.
 
 **CLUES THIS GUEST HOLDS**
 
@@ -1761,7 +1761,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 - History: You run the House: the bar, the locks, the tin box that holds the night's takings. You also keep a boarding house on the West Side, which is where a certain lady hid on the night of 31 October 1924 with a bandaged shoulder. Someone paid you $200 to forget her.
 - People: Tim McGinley: supplies the House, and has seen what is under your bar. Leon Gee: you have a message of his you have never delivered. Erika Lamm: a boarder you hid at the House once, and would again, for the right fee.
-- Wear: A Butler's black coat with silver buttons, white gloves, a ring of keys, and an expression of discretion for hire.
+- Costume idea (optional): A Butler's black coat with silver buttons, white gloves, a ring of keys, and an expression of discretion for hire.
 
 **ROLE RULES (The Butler)** You are the Butler. At the bar you hold the House Tin, the House Book and a single bottle of the House's own tincture for “river rats.” The bottle sells once a night, and only against a numbered marker handed to you by its owner. When a guest offers a marker, open the House panel on your phone, type the five-character code printed on it, and the phone tells you whether to sell. If it says sold, hand over the vial. If it says sold out, hand the marker back. The House counts every offer. Whatever you do, never reveal who bought the tincture until after the body is found. After that, you may sell the answer or keep it: $100 is a fair price. At a quarter past nine you take the Keeper his rye. You will find him. Scream. Nobody takes the marker from you, and you take nothing from anyone: it is all deals, always.
 
@@ -1835,7 +1835,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 - History: Mallya's Emporium has three floors, a druggist's counter, and a standing account with half this room. You know what everyone buys, which is more than most of them know about themselves.
 - People: Tim McGinley: you stock his gin in the back room under the label of a tonic. Anika Mahns: an unpaid account the size of a small house. Silas Palmer: dresses his band at your counter.
-- Wear: The newest silk you stock, a mask in a matching shade, and an air of closing a sale.
+- Costume idea (optional): The newest silk you stock, a mask in a matching shade, and an air of closing a sale.
 
 **CLUES THIS GUEST HOLDS**
 
@@ -1894,7 +1894,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 - History: You bought a false name from a masked man at the river steps on 31 October 1924 and you have been using a different one every season since. You hid at Rebecca's boarding house more than once.
 - People: Rebecca Chow: has hidden you, for money, and will again. Ananya Codru: sold you a blank telegram form without asking why. Theodor Farrago: the Sheriff who wants you, and has never recognised you in a hat.
-- Wear: A travelling coat with the collar up, a hat pulled low, and a false moustache you may or may not wear.
+- Costume idea (optional): A travelling coat with the collar up, a hat pulled low, and a false moustache you may or may not wear.
 
 **HABIT** You check the exits wherever you go and sit where you can see the door. A fugitive's habit.
 

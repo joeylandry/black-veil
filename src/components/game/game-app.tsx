@@ -96,7 +96,7 @@ export function GameApp() {
         <BlackVeilInsignia />
         <p className="eyebrow">Your night · October 23, 1926</p>
         <h1>Characters coming very soon.</h1>
-        <p>Management is still choosing who everyone will be. Your identity for the evening, your history and what to wear will appear on this page the moment the cast is released. Nothing here needs doing yet.</p>
+        <p>Management is still choosing who everyone will be. Your identity for the evening, your history and some optional costume ideas will appear on this page the moment the cast is released. Nothing here needs doing yet.</p>
         <p className="game-soon-note">This page checks for itself every few seconds. There is no need to refresh.</p>
       </section>
     );
@@ -145,7 +145,7 @@ export function GameApp() {
             <p>{card.background.history}</p>
             <h4>The people you know</h4>
             <ul>{card.background.people.map((line) => <li key={line}>{line}</li>)}</ul>
-            <h4>What to wear or bring</h4>
+            <h4>Costume ideas (all optional; nothing is required)</h4>
             <p>{card.background.wardrobe}</p>
             <p className="game-note">Your Private tab, with your secrets and objectives, unlocks when the host starts the game.</p>
           </section>

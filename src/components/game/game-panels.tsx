@@ -104,7 +104,7 @@ export function PrivateTab({ card, secretsReleased, open, saved, onSaved }: { ca
       <section className="game-panel game-locked">
         <p className="eyebrow">Sealed until the night</p>
         <h3>Your private card opens when the host starts the game.</h3>
-        <p>Your secrets, your five objectives and everything you must not say aloud arrive the moment the host starts the game. Until then, read your Public and Background tabs and decide what to wear.</p>
+        <p>Your secrets, your five objectives and everything you must not say aloud arrive the moment the host starts the game. Until then, read your Public and Background tabs and pick a costume if you like (it is optional).</p>
       </section>
     );
   }
@@ -155,7 +155,7 @@ export function PrivateTab({ card, secretsReleased, open, saved, onSaved }: { ca
       </section>
       <section className="game-panel">
         <p className="eyebrow">In your pockets</p>
-        <p>You start the night with ${p.startingCash.toLocaleString("en-US")} in House bills ({p.startingCash / 100} bills of $100). A clue tagged &ldquo;Costs $100 at the bar&rdquo; is told only after you drop a bill in the House Tin; a secret of yours can be sold to a guest for $200.{p.carries.length > 0 && <> You also carry: {p.carries.join(", ")}.</>}</p>
+        <p>You start the night with ${p.startingCash.toLocaleString("en-US")} in House bills ({p.startingCash / 100} bills of $100). A clue tagged &ldquo;Costs $100 at the bar&rdquo; is told only after you drop a bill in the House Tin; a secret of yours can be sold to a guest for $200.{p.carries.length > 0 && <> You also carry: {p.carries.join(", ")}. Keep these on you (in a pocket or your hand) all night so others can trade with you.</>}</p>
         {p.habit && <p className="game-tell"><strong>A habit of yours.</strong> {p.habit}</p>}
       </section>
       <section className="game-panel">
