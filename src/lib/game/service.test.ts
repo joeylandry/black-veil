@@ -140,6 +140,10 @@ describe("release flags", () => {
     assert.equal(deriveState({}, BEFORE).identitiesReleased, false);
     assert.equal(deriveState({}, BEFORE).secretsReleased, false);
     assert.equal(deriveState({}, BEFORE).submissionsOpen, false);
+    // "Show names" on the cast page deals the characters, but private cards stay sealed until the start
+    const shown = deriveState({ rosterReleased: true }, BEFORE);
+    assert.equal(shown.identitiesReleased, true);
+    assert.equal(shown.secretsReleased, false);
     const early = deriveState({}, new Date("2026-10-23T19:59:00-04:00"));
     assert.equal(early.secretsReleased, false);
     const doors = deriveState({}, new Date("2026-10-23T20:00:00-04:00"));
