@@ -426,9 +426,10 @@ function buildIndex() {
 
 // ---------------------------------------------------------------- tags
 function buildTags() {
-  const cells: { id: string; code: string }[] = [];
-  for (const p of props.filter((q) => q.placement === "hidden")) cells.push({ id: p.id, code: p.code }, { id: p.id, code: p.code });
-  for (const p of props.filter((q) => q.placement !== "hidden")) cells.push({ id: p.id, code: p.code });
+  const cells: { id: string; code: string; label: string }[] = [];
+  const holderFirst = (id: string | undefined) => (id ? publicName(id).split(" ")[0].replace(/,$/, "") : "?");
+  for (const p of props.filter((q) => q.placement === "hidden")) cells.push({ id: p.id, code: p.code, label: `TAPE ON: ${p.generic}` }, { id: p.id, code: p.code, label: `SPARE for: ${p.generic}` });
+  for (const p of props.filter((q) => q.placement !== "hidden")) cells.push({ id: p.id, code: p.code, label: p.placement === "carried" ? `ON ITEM: ${p.name} (${holderFirst(p.carriedBy)})` : `HOST: ${p.name}` });
   const pages: string[] = [];
   const nPages = Math.ceil(cells.length / 12);
   for (let pg = 0; pg < nPages; pg++) {
@@ -436,10 +437,10 @@ function buildTags() {
     const html = Array.from({ length: 12 }, (_, i) => {
       const c = slice[i];
       return c
-        ? `<div class="tcell"><div class="tag chk"><div class="tt">THE BLACK VEIL</div><div class="tr"></div><div class="tc" data-pid="${c.id}" data-code="${c.code}">${c.code}</div><div class="tb"></div></div></div>`
+        ? `<div class="tcell"><div class="tag chk"><div class="tt">THE BLACK VEIL</div><div class="tr"></div><div class="tc" data-pid="${c.id}" data-code="${c.code}">${c.code}</div><div class="tb"></div></div><div class="tdest">${esc(c.label)}</div></div>`
         : `<div class="tcell empty"></div>`;
     }).join("");
-    pages.push(`<div class="page"><div class="sheettop">Tag sheet ${pg + 1} of ${nPages}: cut along the dashed lines</div><div class="tagsheet">${html}</div><div class="sheetnote">THE BLACK VEIL · code tags · matte or plain paper, black ink fill · see tag-key.pdf for which tag goes on which object</div></div>`);
+    pages.push(`<div class="page"><div class="sheettop">Tag sheet ${pg + 1} of ${nPages}: cut along the dashed lines. The small line under each tag says where it goes: trim it off after you have matched it</div><div class="tagsheet">${html}</div><div class="sheetnote">THE BLACK VEIL · code tags · matte or plain paper, black ink fill · see tag-key.pdf for which tag goes on which object</div></div>`);
   }
   return { pages: build("tags", doc("Black Veil tags", pages.join(""))), count: cells.length };
 }
@@ -510,7 +511,9 @@ function slipHtml(id: (typeof slipIds)[number], copy: number): string {
   const p = props.find((q) => q.id === id) ?? fail(`prop ${id} missing`);
   const cl = `<div class="codeline">Code:<span class="code" data-pid="${p.id}" data-code="${p.code}" data-copy="${copy}">${p.code}</span></div>`;
   const leon = publicName("leon");
-  const wrap = (cls: string, inner: string) => `<div class="scell"><div class="sl chk ${cls}">${inner}${cl}</div></div>`;
+  const holderName = p.carriedBy ? publicName(p.carriedBy).split(" ")[0].replace(/,$/, "") : "";
+  const dest = copy === 2 ? "STANDBY TRAY (at the bar)" : id === "charter" ? "HOST: keep it; hand to Eric at 10:00" : holderName ? `GOES TO: ${holderName}'s envelope` : "";
+  const wrap = (cls: string, inner: string) => `<div class="scell"><div class="sdest">${esc(dest)}</div><div class="sl chk ${cls}">${inner}${cl}</div></div>`;
   switch (id) {
     case "fee-voucher":
       return wrap("cheque", `<h1>Mahns Manor</h1><h2>Voucher</h2><div class="rule"></div><p style="text-align:center">Pay to the order of</p><p style="text-align:center;font:bold 17pt var(--serif);letter-spacing:.2em;margin-top:.02in">THE BEARER</p><div class="amt">$30</div><p style="text-align:center">Thirty dollars, good at the House of Mahns.</p><div class="grow"></div><div class="sigline">Mahns Manor</div>`);
@@ -563,7 +566,7 @@ function buildSlips() {
   const mk = (copy: number) => {
     for (let i = 0; i < slipIds.length; i += 4) {
       const chunk = slipIds.slice(i, i + 4);
-      pages.push(`<div class="page">${copy === 2 ? `<div class="standby">STANDBY COPIES</div>` : ""}<div class="slipgrid">${chunk.map((id) => slipHtml(id, copy)).join("")}</div><div class="slipnote">${copy === 2 ? "STANDBY COPIES: spare set for the host's stand-in tray, if a guest is absent. " : ""}Cut on the dashed lines. Print on cream or white paper. Slips page ${pages.length + 1}</div></div>`);
+      pages.push(`<div class="page">${copy === 2 ? `<div class="standby">STANDBY COPIES</div>` : ""}<div class="slipgrid">${chunk.map((id) => slipHtml(id, copy)).join("")}</div><div class="slipnote">${copy === 2 ? "STANDBY COPIES: spare set for the host's stand-in tray, if a guest is absent. " : ""}Cut on the dashed lines (the line above each slip says whose envelope it goes in). Print on cream or white paper. Slips page ${pages.length + 1}</div></div>`);
     }
   };
   mk(1);

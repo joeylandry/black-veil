@@ -43,7 +43,7 @@ const PROFILES: Profile[] = [
   { name: "casual", targeted: 0.1, read: 0.15, talk: 0.7, effort: 0.5 },
 ];
 
-type Conditions = { seed: number; absent: number; talks: number; secretShare: number; earn: number; fixedProfile?: string; butlerAbsent?: boolean };
+type Conditions = { seed: number; absent: number; talks: number; secretShare: number; earn: number; fixedProfile?: string; butlerAbsent?: boolean; human?: boolean };
 
 type GuestState = { id: string; profile: Profile; known: Set<string>; lines: Set<string>; trail: string[] };
 
@@ -84,6 +84,17 @@ export function runNight(conditions: Conditions): RunResult {
   const absentSet = new Set(shuffle(characters.map((c) => c.id).filter((id) => id !== "rebecca"), random).slice(0, conditions.butlerAbsent ? Math.max(0, conditions.absent - 1) : conditions.absent));
   if (conditions.butlerAbsent) absentSet.add("rebecca");
   const present = characters.filter((c) => !absentSet.has(c.id));
+  // people are not perfect: a typed answer can have a typo, be wrong, or never get typed at all
+  const typo = (text: string) => (text.length > 3 ? `${text.slice(0, 2)}${text.slice(3)}` : text);
+  const typed = (answer: string, kind: "code" | "word" | "money" | "text"): string | null => {
+    if (!conditions.human) return answer;
+    const roll = random();
+    if (roll < 0.04) return null;
+    if (kind === "code") return roll < 0.09 ? typo(answer) : answer;
+    if (kind === "word") return roll < 0.08 ? typo(answer) : roll < 0.1 ? "no idea" : answer;
+    if (kind === "money") return roll < 0.14 ? String(Math.max(0, Number(answer.replace(/[^0-9.]/g, "")) - 100)) : answer;
+    return answer;
+  };
   const presentIds = new Set(present.map((c) => c.id));
   // the killer is whichever present survivor reaches the Butler first
   const livingSurvivors = survivorIds.filter((id) => presentIds.has(id));
@@ -269,8 +280,11 @@ export function runNight(conditions: Conditions): RunResult {
       if (have.length + missing.length >= race.need && random() < 0.85) {
         const at = 2_000_000 + Math.floor(random() * 600_000);
         const best = racers.get(race.circle);
-        submissions.push({ guest: member.id, kind: "objective", itemId: "race", answer: race.tokens.slice(0, race.need).map((token) => propById.get(token)!.code).join(" "), proof: "", at });
-        if (!best || at < best.at) racers.set(race.circle, { at, guest: member.id });
+        const codes = race.tokens.slice(0, race.need).map((token) => propById.get(token)!.code);
+        // a human mistypes a race code now and then; a wrong entry never wins
+        const wrongCode = conditions.human && random() < 0.06;
+        submissions.push({ guest: member.id, kind: "objective", itemId: "race", answer: (wrongCode ? [typo(codes[0]), ...codes.slice(1)] : codes).join(" "), proof: "", at });
+        if (!wrongCode && (!best || at < best.at)) racers.set(race.circle, { at, guest: member.id });
       }
     }
     raceWin[race.circle] = racers.get(race.circle)?.guest ?? null;
@@ -301,10 +315,13 @@ export function runNight(conditions: Conditions): RunResult {
         }
         continue;
       }
-      submissions.push({ guest: guest.id, kind: "objective", itemId: objective.id, answer: correctAnswer(guest, objective), proof: "", at: (clock += 100) });
+      const kind = objective.check.kind === "code" ? "code" : objective.check.kind === "money" ? "money" : "word";
+      const answer = typed(correctAnswer(guest, objective), kind);
+      if (answer !== null) submissions.push({ guest: guest.id, kind: "objective", itemId: objective.id, answer, proof: "", at: (clock += 100) });
     }
     // the wallet bonus: everyone counts their bills
-    submissions.push({ guest: guest.id, kind: "objective", itemId: "cash", answer: String(Math.round(cash.get(guest.id) ?? 0)), proof: "", at: (clock += 100) });
+    const reported = typed(String(Math.round(cash.get(guest.id) ?? 0)), "money");
+    if (reported !== null) submissions.push({ guest: guest.id, kind: "objective", itemId: "cash", answer: reported, proof: "", at: (clock += 100) });
     // the mysteries
     for (const question of questions) {
       if (!insiderAsked(guest, question)) continue;
@@ -324,7 +341,8 @@ export function runNight(conditions: Conditions): RunResult {
           .map((element) => element.all.map((group) => group[0]).join(" "))
           .join(". ");
       }
-      if (answer) submissions.push({ guest: guest.id, kind: "mystery", itemId: question.id, answer, proof: "", at: (clock += 100) });
+      const written = answer ? (conditions.human && random() < 0.07 ? "" : answer) : "";
+      if (written) submissions.push({ guest: guest.id, kind: "mystery", itemId: question.id, answer: written, proof: "", at: (clock += 100) });
     }
     // the survivors guess: a diligent guest knows the tells they have heard
     const known = survivorIds.filter((id) => id !== guest.id && presentIds.has(id) && (me.known.has(`tell-${characterById.get(id)!.survivor!.markerNo}`) || me.known.has(`crack-${characterById.get(id)!.survivor!.markerNo}`)));
@@ -511,7 +529,22 @@ function fullReport(results: RunResult[]): string {
   return lines.join("\n");
 }
 
-if (process.argv[2] === "full") {
+/** Fifty nights, nearly everyone there, the Butler always, and people who make the mistakes people make. */
+export function humanFifty(runs = 50) {
+  const absences = [0, 0, 0, 0, 1, 1, 1, 2, 2, 3];
+  const talks = [7, 9, 11, 13, 15, 8, 10, 12, 14, 6];
+  const results: RunResult[] = [];
+  for (let index = 0; index < runs; index += 1) {
+    results.push(runNight({ seed: 21000 + index * 37, absent: absences[index % absences.length], talks: talks[index % talks.length], secretShare: 0.3, earn: 0.85, human: true }));
+  }
+  return results;
+}
+
+if (process.argv[2] === "human") {
+  const text = fullReport(humanFifty(Number(process.argv[3] ?? 50)));
+  console.log(text);
+  if (process.argv[4]) writeFileSync(process.argv[4], `${text}\n`);
+} else if (process.argv[2] === "full") {
   const results = fullHouse(Number(process.argv[3] ?? 20));
   const text = fullReport(results);
   console.log(text);

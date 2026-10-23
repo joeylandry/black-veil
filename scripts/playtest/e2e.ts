@@ -115,11 +115,13 @@ async function main() {
     };
 
     // the night's plan: who stays home, who plays how, what each guest types
-    const absences = [0, 0, 1, 2, 2, 3, 3, 4, 5, 5][(run - 1) % 10];
-    const talks = [12, 16, 10, 14, 18, 12, 10, 15, 11, 9][(run - 1) % 10];
+    // HUMAN=1: nearly everyone comes, the Butler always does, and guests make the mistakes people make
+    const human = process.env.HUMAN === "1";
+    const absences = (human ? [0, 0, 0, 0, 1, 1, 1, 2, 2, 3] : [0, 0, 1, 2, 2, 3, 3, 4, 5, 5])[(run - 1) % 10];
+    const talks = (human ? [7, 9, 11, 13, 15, 8, 10, 12, 14, 6] : [12, 16, 10, 14, 18, 12, 10, 15, 11, 9])[(run - 1) % 10];
     // night 7: the Butler stays home, so the host has to hand the vial to the first survivor by hand afterwards
-    const butlerAbsent = run === 7;
-    const night = runNight({ seed: 7000 + run * 101, absent: absences, talks, secretShare: 0.3, earn: 0.85, butlerAbsent });
+    const butlerAbsent = !human && run === 7;
+    const night = runNight({ seed: 7000 + run * 101, absent: absences, talks, secretShare: 0.3, earn: 0.85, butlerAbsent, human });
     const presentIds = new Set(night.present);
 
     await resetDatabase();

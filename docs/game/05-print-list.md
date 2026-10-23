@@ -357,7 +357,7 @@ House bills: $100 each. Cash in the room at the start: $32,000 (320 bills, so th
 - Rhea Mallya of Mallya's Emporium: 15 bills ($1500)
 - Erika Lamm: 6 bills ($600)
 
-## Standby slips (the Dead Letter box, opened at 9:15)
+## Standby slips (the standby tray at the bar)
 
 One slip per clue errand. Hand it to a guest whose named sources did not come.
 

@@ -23,7 +23,7 @@
 | 8:35 to 9:00 | The Butler sells the vial once to the first marker | Watch the House panel |
 | **9:00** | The House closes by itself; the nightcap is served | Note the buyer; stage the body at ~9:05 |
 | ~9:15 | The Butler finds him and screams; the Sheriff takes charge | Open Josh's envelope afterwards |
-| 9:15 to 10:15 | Investigation; the Sheriff arrests by 10:15 | Open the Dead Letter box for guests whose source is absent |
+| 9:15 to 10:15 | Investigation; the Sheriff arrests by 10:15 | Standby tray at the bar for guests whose source is absent |
 | 10:00 | Wrap-up: read Cassie's letter. Give Eric the charter; give Leon a bulletin to read aloud | ~3 minutes |
 | **10:30** | The book closes by itself | Start grading |
 
