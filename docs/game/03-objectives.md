@@ -38,7 +38,7 @@ mihir-why. **Why you?** (motive, 1) Find out what the Keeper did to you: what he
    - answer: [share | own money | advance | savings | pocket | hitman | hitmen | killer | killers | assassin | murder | killings | killed]; from Krrish Vermouth, Anthony Hung, Esq., Tim McGinley, Baron of Bathtub Gin
 mihir-hour. **The old man's hour** (chain, 1) The Keeper takes a nightcap at a fixed hour, in a fixed room. Until then the glass on his table is only a glass. Learn the hour, so you know how long you have.
    - answer: [nine | 9 | 9:00 | 900 | 9 00 | nine oclock | 9 oclock | 9pm | 9 pm]; from Rebecca Chow, Butler of the Black Veil, Anika Mahns of Mahns Manor, Silas Palmer of the Palm Court
-mihir-offer. **Make your offer to the House** (chain, 1) The House keeps one bottle for those who can pay in a marker. Before the nightcap is served at nine o'clock, take your marker to the Butler at the bar and make your offer. The House counts every offer, whether the answer is yes or no.
+mihir-offer. **Make your offer to the House** (chain, 1) The House keeps one bottle for the one who knows its words. The words are on a slip hidden in the kitchen under a cactus. Find it, keep it, and after a quarter to nine and before the nightcap is served at nine o'clock, say the words to the Butler at the bar and make your offer. The House counts every offer, whether the answer is yes or no.
    - answer: vial-attempt; from Rebecca Chow, Butler of the Black Veil
 
 ## Krrish Vermouth
@@ -129,7 +129,7 @@ molly-why. **Why you?** (motive, 1) Find out what the Keeper did to you: what he
    - answer: [runner | runners | messenger | messengers | courier | couriers | partner | killed | drowned | murdered | murder | thrown]; from Tim McGinley, Baron of Bathtub Gin, Sheriff Theodor Farrago, Erika Lamm
 molly-hour. **The old man's hour** (chain, 1) The Keeper takes a nightcap at a fixed hour, in a fixed room. Until then the glass on his table is only a glass. Learn the hour, so you know how long you have.
    - answer: [nine | 9 | 9:00 | 900 | 9 00 | nine oclock | 9 oclock | 9pm | 9 pm]; from Rebecca Chow, Butler of the Black Veil, Anika Mahns of Mahns Manor, Silas Palmer of the Palm Court
-molly-offer. **Make your offer to the House** (chain, 1) The House keeps one bottle for those who can pay in a marker. Before the nightcap is served at nine o'clock, take your marker to the Butler at the bar and make your offer. The House counts every offer, whether the answer is yes or no.
+molly-offer. **Make your offer to the House** (chain, 1) The House keeps one bottle for the one who knows its words. The words are on a slip hidden in the kitchen under a cactus. Find it, keep it, and after a quarter to nine and before the nightcap is served at nine o'clock, say the words to the Butler at the bar and make your offer. The House counts every offer, whether the answer is yes or no.
    - answer: vial-attempt; from Rebecca Chow, Butler of the Black Veil
 
 ## Leon Gee of WFEA
@@ -168,7 +168,7 @@ luke-why. **Why you?** (motive, 1) Find out what the Keeper did to you: what he 
    - answer: [forged | forge | forger | forgery | forging | orders | order | cassie | framed | frame | blame | blamed]; from Anthony Hung, Esq., Ananya Codru and Charlie Wakem, Joshua Kamin-Sky
 luke-hour. **The old man's hour** (chain, 1) The Keeper takes a nightcap at a fixed hour, in a fixed room. Until then the glass on his table is only a glass. Learn the hour, so you know how long you have.
    - answer: [nine | 9 | 9:00 | 900 | 9 00 | nine oclock | 9 oclock | 9pm | 9 pm]; from Rebecca Chow, Butler of the Black Veil, Anika Mahns of Mahns Manor, Silas Palmer of the Palm Court
-luke-offer. **Make your offer to the House** (chain, 1) The House keeps one bottle for those who can pay in a marker. Before the nightcap is served at nine o'clock, take your marker to the Butler at the bar and make your offer. The House counts every offer, whether the answer is yes or no.
+luke-offer. **Make your offer to the House** (chain, 1) The House keeps one bottle for the one who knows its words. The words are on a slip hidden in the kitchen under a cactus. Find it, keep it, and after a quarter to nine and before the nightcap is served at nine o'clock, say the words to the Butler at the bar and make your offer. The House counts every offer, whether the answer is yes or no.
    - answer: vial-attempt; from Rebecca Chow, Butler of the Black Veil
 
 ## Silas Palmer of the Palm Court
@@ -233,7 +233,7 @@ adam-why. **Why you?** (motive, 1) Find out what the Keeper did to you: what he 
    - answer: [partner | bell | ignatius | friend | second door | second doorman | killed | shot | murdered | murder]; from Sheriff Theodor Farrago, Sidd Airwind, Angelos Bowles
 adam-hour. **The old man's hour** (chain, 1) The Keeper takes a nightcap at a fixed hour, in a fixed room. Until then the glass on his table is only a glass. Learn the hour, so you know how long you have.
    - answer: [nine | 9 | 9:00 | 900 | 9 00 | nine oclock | 9 oclock | 9pm | 9 pm]; from Rebecca Chow, Butler of the Black Veil, Anika Mahns of Mahns Manor, Silas Palmer of the Palm Court
-adam-offer. **Make your offer to the House** (chain, 1) The House keeps one bottle for those who can pay in a marker. Before the nightcap is served at nine o'clock, take your marker to the Butler at the bar and make your offer. The House counts every offer, whether the answer is yes or no.
+adam-offer. **Make your offer to the House** (chain, 1) The House keeps one bottle for the one who knows its words. The words are on a slip hidden in the kitchen under a cactus. Find it, keep it, and after a quarter to nine and before the nightcap is served at nine o'clock, say the words to the Butler at the bar and make your offer. The House counts every offer, whether the answer is yes or no.
    - answer: vial-attempt; from Rebecca Chow, Butler of the Black Veil
 
 ## Tiffany Liu of the Lamps
@@ -283,7 +283,7 @@ rebecca-secret. **What Sheriff Theodor Farrago is hiding** (learn, 1) Everyone h
    - answer: [shoebox | shoe box]; from Sheriff Theodor Farrago, Molly Daniel of the Manchester Union
 rebecca-keep. **Your own secret** (keep, 1) Your small secret is worth two halves. Let Tiffany Liu of the Lamps earn it from you (half a point), and make sure Ananya Codru and Charlie Wakem never does (half a point). You will not be asked anything: it is scored from what they each learn. You may also sell it to anyone for $200 in House bills, but a sale to Ananya Codru and Charlie Wakem costs you that half.
    - answer: Tiffany Liu of the Lamps learns it (tiffany-secret) and Ananya Codru and Charlie Wakem does not (ananya-secret); from Tiffany Liu of the Lamps
-rebecca-sale. **The House's one sale** (role, 1) Sell the House's single bottle to the owner of a numbered marker, once, before the nightcap is served at nine o'clock. Record the sale on your House panel.
+rebecca-sale. **The House's one sale** (role, 1) Sell the House's single bottle, once, between a quarter to nine and nine o'clock, to the survivor who says the House's words. Record the sale on your House panel.
    - answer: butler-sale
 rebecca-scream. **The scream** (approval, 1) At a quarter past nine, go to the Merrimack Room, find the Keeper and scream. Then tap Claim this point and go to Bartend Joe at the bar for your approval word.
    - answer: the host confirms it in person and gives the approval word "lavender"
@@ -298,7 +298,7 @@ rhea-why. **Why you?** (motive, 1) Find out what the Keeper did to you: what he 
    - answer: [seamstress | seamstresses | girls | milliner | costume | dressmaker | tailor | sewing | masks | killed | murdered | dead | died | killings | murder]; from Anika Mahns of Mahns Manor, Dr. Emmerich Sunner, Silas Palmer of the Palm Court
 rhea-hour. **The old man's hour** (chain, 1) The Keeper takes a nightcap at a fixed hour, in a fixed room. Until then the glass on his table is only a glass. Learn the hour, so you know how long you have.
    - answer: [nine | 9 | 9:00 | 900 | 9 00 | nine oclock | 9 oclock | 9pm | 9 pm]; from Rebecca Chow, Butler of the Black Veil, Anika Mahns of Mahns Manor, Silas Palmer of the Palm Court
-rhea-offer. **Make your offer to the House** (chain, 1) The House keeps one bottle for those who can pay in a marker. Before the nightcap is served at nine o'clock, take your marker to the Butler at the bar and make your offer. The House counts every offer, whether the answer is yes or no.
+rhea-offer. **Make your offer to the House** (chain, 1) The House keeps one bottle for the one who knows its words. The words are on a slip hidden in the kitchen under a cactus. Find it, keep it, and after a quarter to nine and before the nightcap is served at nine o'clock, say the words to the Butler at the bar and make your offer. The House counts every offer, whether the answer is yes or no.
    - answer: vial-attempt; from Rebecca Chow, Butler of the Black Veil
 
 ## Erika Lamm

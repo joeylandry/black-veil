@@ -41,7 +41,7 @@ const listBody = [
   ),
   "",
   "In a later hand: “They report all twenty-two settled. Five they cannot show me. No bodies. I do not believe them.”",
-  "In the margin: “Markers 18 to 22 never came back to the House. Whoever holds one still has a claim on it.”",
+  "In the margin: “Numbers 18 to 22 never came back to the House. Whoever holds one still has a claim on it.”",
 ];
 
 export const exhibits: Exhibit[] = [
@@ -296,9 +296,9 @@ export const exhibits: Exhibit[] = [
     appears: "start",
     body: [
       "THE HOUSE BOOK · the Butler's",
-      "House rules: a marker is honoured once, by its owner, at the bar. One bottle of the House tincture, one sale a night.",
-      "Markers on the House: 18, 19, 20, 21, 22.",
-      "Tonight's sale: marker no. ______  (the Butler fills this in)",
+      "House rules: the House tincture is sold once a night, after a quarter to nine, to a member who says the House's words. One bottle, one sale.",
+      "Members who never came back: 18, 19, 20, 21, 22.",
+      "Tonight's sale: to ______  (the Butler fills this in)",
       "",
       "Filing code: MPVY2",
     ],
@@ -347,7 +347,7 @@ export const exhibits: Exhibit[] = [
     body: [
       "A small brown apothecary vial, empty, cork beside it.",
       "Label: “HOUSE STOCK · Tincture of Nux Vomica · Not to be taken.”",
-      "Under it, the marker that paid for it.",
+      "Under it, a torn scrap with the House's words.",
       "",
       "Filing code: TXFHE",
     ],

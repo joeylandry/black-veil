@@ -12,7 +12,7 @@
 import { execFileSync } from "node:child_process";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
-import { characterById, characters, exhibits, markers, props } from "@/data/game";
+import { characterById, characters, exhibits, markers, props, vialWords } from "@/data/game";
 import { tieBreaker } from "@/data/game/story";
 
 // =====================================================================================================
@@ -326,7 +326,7 @@ function renderNamed(ex: Ex, L: string[], f: string, P: (cls: string, inner: str
     case "housebook": {
       const [head, rules, markersLine, sale] = L;
       const [t, sub] = head.split(" · ");
-      const sm = sale.match(/^(Tonight's sale: marker no\.) _+\s*(\(.*\))?$/);
+      const sm = sale.match(/^(Tonight's sale: to) _+\s*(\(.*\))?$/);
       const html = `<div class="hb"><h1>${esc(t)}</h1><div class="sub">${esc(sub ?? "")}</div></div><div class="pad"><div class="rule">${esc(rules)}</div><div class="rule">${esc(markersLine)}</div>
         <div class="rule hand">${esc(sm ? sm[1] : sale)} <span class="blank"></span> ${sm && sm[2] ? `<span class="pen">${esc(sm[2])}</span>` : ""}</div>${f}</div>`;
       return P("housebook", html, { w: 7.1, edges: "tb", amp: 2 });
@@ -445,7 +445,7 @@ function buildTagKey() {
     return `<tr><td><span class="code" data-pid="${p.id}" data-code="${p.code}">${p.code}</span></td><td>${esc(p.name)}</td><td>${esc(p.generic)}</td><td>${p.placement}${p.placement === "hidden" ? " (2 tags)" : ""}</td><td>${esc(who)}</td></tr>`;
   };
   const html = `<div style="padding:.45in .5in"><h1>HOST KEY: which tag goes on which object</h1>
-    <p>HOST ONLY. ${props.length} codes. &ldquo;Hidden&rdquo; props: tape the tag to or beside the object; two tags are printed, one is a spare. &ldquo;Carried&rdquo; props: hand the object to the named guest at the door, with its tag taped on or inside the envelope (printed slips and cards already carry their code, a tag is optional). The five survivor markers are not tags.</p>
+    <p>HOST ONLY. ${props.length} codes. &ldquo;Hidden&rdquo; props: tape the tag to or beside the object; two tags are printed, one is a spare. &ldquo;Carried&rdquo; props: hand the object to the named guest at the door, with its tag taped on or inside the envelope (printed slips and cards already carry their code, a tag is optional). The vial words are on their own slip in slips.pdf, not a tag.</p>
     <table><thead><tr><th>Code</th><th>Prop</th><th>The object in your house</th><th>Placement</th><th>Carried by / hiding hint</th></tr></thead><tbody>${sorted.map(row).join("")}</tbody></table></div>`;
   const css = `body{font-family:"Liberation Sans",Arial,sans-serif;font-size:9pt;color:#000}h1{font-size:14pt;margin:0 0 .06in}p{font-size:9pt;margin:.04in 0}table{border-collapse:collapse;width:100%;margin-top:.08in}th,td{border:.6px solid #777;padding:2px 4px;text-align:left;vertical-align:top;font-size:8.5pt}th{background:#e8e8e8}tr{break-inside:avoid}thead{display:table-header-group}.code{font:bold 11pt "FreeMono",monospace}@page{size:Letter;margin:.4in}`;
   // plain page: no .page divs, so build() cannot count; render directly
@@ -481,13 +481,13 @@ function buildHostSheet() {
       <li><b>When a guest comes to the bar to claim a point,</b> check it really happened (the table below), then tell them the approval word. Say a word to nobody else.</li>
       <li><b>Fortune cards:</b> Josh collects his four fortune cards from you.</li>
       <li><b>Josh's minute:</b> before 8:30 he tells you the minute he expects the scream. Seal it in an envelope.</li>
-      <li><b>About 9:05:</b> stage the scene (jacket, glass, empty vial, the buyer's marker from the tin, scene pages).</li>
+      <li><b>About 9:05:</b> stage the scene (jacket, glass, empty vial, the torn scrap with the House's words, scene pages).</li>
       <li><b>10:00 wrap-up:</b> hand Eric the <b>charter</b> (he signs it, the code is on it). Give Leon the <b>bulletin</b> to read aloud:<br><i>&ldquo;This evening the Keeper of the Black Veil was found dead at his table. The House has lifted its veil, the dead are not dead, and Manchester will hear the rest in the morning.&rdquo;</i> Then read Cassie's letter.</li>
       <li><b>10:30:</b> everything closes. Then grade (see the run of show).</li>
     </ol>
     <h2>The approval words</h2>
     <table><thead><tr><th>Guest</th><th>Claim</th><th>Check first</th><th>Word</th></tr></thead><tbody>${rows}</tbody></table>
-    <p class="note">The group races need nothing from you: the first member of each group to type all three slip codes wins the point on their own phone, and the survivors race for the vial through the Butler.</p></div>`;
+    <p class="note">The group races need nothing from you: the first member of each group to type all three slip codes wins the point on their own phone, and the survivors race to the cactus slip, then to the Butler (after 8:45).</p></div>`;
   const css = `body{font-family:"Liberation Sans",Arial,sans-serif;font-size:10.5pt;color:#000}h1{font-size:17pt;margin:0 0 .08in}h2{font-size:12.5pt;margin:.18in 0 .06in}p,li{margin:.04in 0}ol{padding-left:.25in}table{border-collapse:collapse;width:100%;margin-top:.06in}th,td{border:.6px solid #777;padding:4px 6px;text-align:left;vertical-align:top;font-size:10pt}th{background:#e8e8e8}.w{font:bold 13pt "FreeMono",monospace}.note{font-size:9.5pt;color:#333;margin-top:.14in}@page{size:Letter;margin:.4in}`;
   const htmlPath = path.join(OUT, "host-sheet.html");
   writeFileSync(htmlPath, doc("Bartend Joe's host sheet", html, css, true));
@@ -553,12 +553,15 @@ function slipHtml(id: (typeof slipIds)[number], copy: number): string {
       return wrap("wiref", `<h1>TELEGRAM</h1><div class="fld">To:</div><div class="fld">&nbsp;</div><div class="fld">Message:</div><div class="fld">&nbsp;</div><div class="fld">&nbsp;</div><div class="fld">Sender:</div><div class="grow"></div>`);
   }
 }
+/** The one slip that is not for an envelope: it is hidden in the kitchen, and whoever finds it can buy the vial. */
+const vialSlipHtml = () => `<div class="scell"><div class="sdest">HIDE THIS ONE: under the cactus in the kitchen (not in any envelope)</div><div class="sl chk note"><div class="tape"></div><h1 style="font-size:13pt">The House</h1><div class="rule"></div><p style="text-align:center;font:bold 17pt var(--serif);letter-spacing:.06em;line-height:1.15">${esc(vialWords)}</p><div class="grow"></div><div class="sigline">Say it to the Butler</div></div></div>`;
 function buildSlips() {
   const pages: string[] = [];
   const mk = (copy: number) => {
     for (let i = 0; i < slipIds.length; i += 4) {
       const chunk = slipIds.slice(i, i + 4);
-      pages.push(`<div class="page">${copy === 2 ? `<div class="standby">STANDBY COPIES</div>` : ""}<div class="slipgrid">${chunk.map((id) => slipHtml(id, copy)).join("")}</div><div class="slipnote">${copy === 2 ? "STANDBY COPIES: spare set for the host's stand-in tray, if a guest is absent. " : ""}Cut on the dashed lines (the line above each slip says whose envelope it goes in). Print on cream or white paper. Slips page ${pages.length + 1}</div></div>`);
+      const extra = i + 4 >= slipIds.length && chunk.length < 4 ? vialSlipHtml() : "";
+      pages.push(`<div class="page">${copy === 2 ? `<div class="standby">STANDBY COPIES</div>` : ""}<div class="slipgrid">${chunk.map((id) => slipHtml(id, copy)).join("")}${extra}</div><div class="slipnote">${copy === 2 ? "STANDBY COPIES: spare set for the host's stand-in tray, if a guest is absent. " : ""}Cut on the dashed lines (the line above each slip says whose envelope it goes in). Print on cream or white paper. Slips page ${pages.length + 1}</div></div>`);
     }
   };
   mk(1);
@@ -668,6 +671,7 @@ function verifyCodes() {
   for (const p of props.filter((q) => q.placement === "hidden" || !(slipIds as readonly string[]).includes(q.id))) if (!tagT.includes(p.code)) fail(`tags.pdf text lacks ${p.code}`);
   const slipT = text("slips");
   for (const id of slipIds) if (!slipT.includes(props.find((p) => p.id === id)!.code)) fail(`slips.pdf text lacks ${id}`);
+  if (!slipT.includes(vialWords.replace(/\s+/g, ""))) fail("slips.pdf lacks the vial words slip");
   if (exT.includes("11:12PM") === false) fail("tie-breaker stub missing 11:12 PM");
   // the tie-breaker must have no filing code, and the HTML must not mention it twice
   console.log(`  verified ${checked} printed codes against the data`);
@@ -686,8 +690,8 @@ All PDFs are US Letter. Print at 100% / "Actual size" (not "Fit to page"), with 
 | \`exhibits.pdf\` | ${pages.exhibits} | 1 | Cream or ivory 24 lb paper (a tea-stained look is welcome) | Every exhibit as its in-world document. Cut pieces apart on the dotted lines, tear or trim round the ragged edges by hand. **Trim the tiny grey line at the bottom of each page off**: it says where the prop goes. The List is printed landscape (page 1); the printer may rotate it. The last page is the HOST ONLY tie-breaker stub: it goes in the LINING of the dead man's jacket, never on a table. |
 | \`exhibits-index.pdf\` | ${pages["exhibits-index"]} | 1 | Plain | HOST ONLY. Every exhibit: page, id, code, where it goes, who holds it, and the tie-breaker question and answer. |
 | \`tags.pdf\` | ${pages.tags} | 1 | Matte white or cream card stock (65 lb) | ${tagCount} tags (3 x 4 per sheet): two of every hidden prop (one spare), one of each carried and table prop. Black fill uses a lot of ink; a laser printer is best. Cut along the dashed grid, tape each tag to or beside its object. No object name is on a tag. |
-| \`tag-key.pdf\` | ${pages["tag-key"]} | 1 | Plain | HOST ONLY. Code, prop, the object in your house, placement, carrier or hiding hint. The five survivor markers (numbers 18 to 22) are not tags and are not in this file. |
-| \`slips.pdf\` | ${pages.slips} | 1 set + a STANDBY set (last ${pages.slips / 2} pages) | Cream paper or light card | The 30 printed slips, each with its own code, exactly once: the deal slips and carried items, the twenty group-race slips (witness, reply, tool, trade: five of each) and the charter Eric signs. Pages ${pages.slips / 2 + 1} to ${pages.slips} are STANDBY COPIES for the stand-in tray, marked in the top margin (trim it off). |
+| \`tag-key.pdf\` | ${pages["tag-key"]} | 1 | Plain | HOST ONLY. Code, prop, the object in your house, placement, carrier or hiding hint. The vial words slip is not a tag; it is in slips.pdf. |
+| \`slips.pdf\` | ${pages.slips} | 1 set + a STANDBY set (last ${pages.slips / 2} pages) | Cream paper or light card | The 30 printed slips plus the one vial words slip (hide it under the kitchen cactus; it goes in no envelope), each with its own code, exactly once: the deal slips and carried items, the twenty group-race slips (witness, reply, tool, trade: five of each) and the charter Eric signs. Pages ${pages.slips / 2 + 1} to ${pages.slips} are STANDBY COPIES for the stand-in tray, marked in the top margin (trim it off). |
 | \`host-sheet.pdf\` | ${pages["host-sheet"]} | 1 | Plain | HOST ONLY. Bartend Joe's one page: what to hand out and when, and every approval word with what to check before you give it. |
 | \`vial-labels.pdf\` | ${pages["vial-labels"]} | 1 | Cream paper; use a glue stick or double-sided tape | Row 1: the real HOUSE STOCK label (2 copies). Rows 2 to 4: OPTIONAL decoys, skip them if you have no spare bottles (Camphor Spirits, Spirits of Hartshorn, Oil of Wintergreen), 2 each. Bottles hold WATER ONLY, never oils. |
 | \`fortune-cards.pdf\` | ${pages["fortune-cards"]} | 1 | Card stock (65 to 80 lb), cream or white | 12 cards, 4 per sheet. Joshua Kamin-Sky reads four guests; each guest keeps the card. Cut on the dashed lines. |

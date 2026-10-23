@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function GamePage() {
   return (
     <div className="page-wrap game-page">
-      <GameApp />
+      <GameApp town={brief1924} />
       <section className="game-brief" aria-labelledby="game-brief-title">
         <p className="eyebrow">The Black Veil</p>
         <h2 id="game-brief-title">A private supper club above the Merrimack.</h2>

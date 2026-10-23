@@ -150,14 +150,11 @@ ol.rules { padding-left: 1.4em; margin: 0; } ol.rules li { margin-bottom: .32em;
 .gcline::before { content: "\2022 "; }
 .gcfoot { margin-top: .4em; font-style: italic; font-size: .9em; }
 .markerwho { position: absolute; font: 8pt "Liberation Sans", Arial, sans-serif; color: #444; }
-.gcmarker { position: relative; margin: .35em auto 0; width: 4.2in; border: 1.5px dashed #444; background: #141010; color: #d8b85a; text-align: center; padding: .08in; }
-.gcmarker .gccut { position: absolute; left: -.05in; top: -.16in; background: #fff; color: #444; font-size: .8em; padding: 0 3px; }
-.gcmarker .mk { font-weight: bold; letter-spacing: .16em; font-size: .95em; }
-.gcmarker .mc { font: bold 2.4em "FreeMono", monospace; letter-spacing: .12em; color: #f0d27a; line-height: 1.1; }
-.gcmarker .ml { font-style: italic; font-size: .85em; color: #e8d9a8; }
 .cgroup { break-inside: avoid-column; margin-bottom: .3em; }
 .cglabel { margin: 0 0 .15em; }
 .cglabel .tag { font-size: .66em; }
 .errand .ty { font-size: .92em; color: var(--ink2); white-space: nowrap; }
 .errand .ty em { color: var(--wine); }
 .cglabel .tag { display: block; white-space: normal; margin-right: 0; line-height: 1.25; padding: .12em .5em; }
+
+.gcnote { margin: .4em 0 0; font-size: .9em; }

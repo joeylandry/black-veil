@@ -14,7 +14,7 @@ type Load = { phase: "loading" } | { phase: "signed-out" } | { phase: "ready"; d
  * Everything private arrives from the server only when the night begins; before that the
  * browser holds nothing to peek at.
  */
-export function GameApp() {
+export function GameApp({ town = [] }: { town?: { heading: string; bullets: string[] }[] }) {
   const [load, setLoad] = useState<Load>({ phase: "loading" });
   const [tab, setTab] = useState<Tab>("public");
   const [saved, setSaved] = useState<Map<string, SavedAnswer>>(new Map());
@@ -121,6 +121,12 @@ export function GameApp() {
         <p className="eyebrow">Your identity for the evening</p>
         <h1>{card.name}</h1>
         <p className="game-occupation">{card.occupation}</p>
+        {secretsReleased && (
+          <p className="game-strip">
+            <span><b>${card.private.startingCash.toLocaleString("en-US")}</b> to start</span>
+            <span><b>{card.private.objectives.filter((errand) => saved.has(`objective|${errand.id}`)).length}/5</b> objectives answered</span>
+          </p>
+        )}
       </header>
 
       <nav className="game-tabs" role="tablist" aria-label="Your card">
@@ -139,6 +145,17 @@ export function GameApp() {
             <p className="game-note">Anyone may read this. It is how the room will know who you are.</p>
           </section>
         )}
+        {tab === "public" && town.length > 0 && (
+          <section className="game-panel game-town">
+            <p className="eyebrow">What the town knows</p>
+            {town.filter((part) => part.heading !== "A word to the survivors").map((part) => (
+              <div key={part.heading}>
+                <h4>{part.heading}</h4>
+                {part.bullets.map((text) => <p key={text}>{text}</p>)}
+              </div>
+            ))}
+          </section>
+        )}
         {tab === "background" && (
           <section className="game-panel">
             <p className="eyebrow">Your history · for your eyes</p>
@@ -148,7 +165,7 @@ export function GameApp() {
             <p className="game-note">Your Private tab, with your secrets and objectives, unlocks when the host starts the game.</p>
           </section>
         )}
-        {tab === "private" && <PrivateTab card={card} secretsReleased={secretsReleased} open={open} saved={saved} onSaved={onSaved} />}
+        {tab === "private" && <PrivateTab directory={data.directory?.filter((entry) => entry.id !== card.id)} card={card} secretsReleased={secretsReleased} open={open} saved={saved} onSaved={onSaved} />}
         {tab === "answers" && (
           <AnswersTab
             secretsReleased={secretsReleased}

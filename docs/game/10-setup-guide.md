@@ -10,7 +10,7 @@ Letter paper. Turn on "background graphics" when printing so the black tags and 
 
 | File | Pages | How | Then |
 |---|---|---|---|
-| `guest-cards.pdf` | 48 | DOUBLE-SIDED, flip on the long edge. Plain or cream paper. | Front and back per guest, alphabetical (front: who you are, the town's story, your race; back: objectives and clues). Goes in that guest's envelope. Survivors' sheets have their secret page and a marker to cut out at the bottom. |
+| `guest-cards.pdf` | 48 | DOUBLE-SIDED, flip on the long edge. Plain or cream paper. | Front and back per guest, alphabetical (front: who you are, the town's story, your race; back: objectives and clues). Goes in that guest's envelope. Survivors' sheets also have their secret page. Nothing is cut out of any card. |
 | `slips.pdf` | 8 | Single-sided, cream or white. | Cut on the dashed lines. The line above each slip says whose envelope it goes in. |
 | `tags.pdf` | 3 | Single-sided. Matte paper; a laser printer is best. | Cut on the dashed grid. The small line under each tag says where it goes; trim that line off after you match it. |
 | `exhibits.pdf` | 16 | Single-sided. Cream paper. Landscape pages. | Cut each page along its edges. The foot of every page says where it goes (binder, black table, scene, or a guest's sealed envelope). The last page is the secret tie-breaker stub. |
@@ -19,7 +19,7 @@ Letter paper. Turn on "background graphics" when printing so the black tags and 
 | `door-cards.pdf` | 2 | Single-sided. | Page 1 (the brief) and page 2 (the rules): one of each, at the door. |
 | `cocktail-menu.pdf` | 1 | Single-sided, cream paper. | Two menus per sheet: cut across the dashed line. Put them on the bar. |
 | `food-menu.pdf` | 1 | Single-sided, cream paper. | Two menus per sheet: cut across the dashed line. Put them by the food. |
-| `survivor-kit.pdf` | 1 | Single-sided. HOST ONLY: contains the solution. | One page for you: the five markers and who holds them. Each survivor's secret page and marker are on their own guest card. |
+| `survivor-kit.pdf` | 1 | Single-sided. HOST ONLY: contains the solution. | One page for you: the five survivors, their numbers on the List, and how the vial is bought. Each survivor's secret page is on their own guest card. |
 | `host-sheet.pdf` | 1 | Single-sided. HOST ONLY. | Keep behind the bar. It has every approval word. |
 
 ## 2. What goes in each guest's envelope
@@ -30,7 +30,7 @@ Every envelope holds: the **guest card** (1 page, from guest-cards.pdf) and the 
 
 | Guest | Bills | Item they carry (tag on it) | Slips (cut, with the line above) | Sealed pages | Plus |
 |---|---|---|---|---|---|
-| **Adam Holdsfire** | 10 ($1,000) | none | none | none | their secret page and marker No. 21 are on the guest card (cut the marker out) |
+| **Adam Holdsfire** | 10 ($1,000) | none | none | none | their secret page is on the guest card (nothing to cut out) |
 | **Ananya Codru and Charlie Wakem** | 10 ($1,000) | none | blank telegram form (YUGWA); Tool token (PGYF8) | The delivery slip |  |
 | **Angelos Bowles** | 12 ($1,200) | House chip (the casino chip), tag YYRM4 | Reply slip (EN2W3) | none |  |
 | **Anika Mahns of Mahns Manor** | 30 ($3,000) | Mahns crested spoon (the metal spoon), tag EV6M4 | Mahns Manor voucher (844M9); Trade slip (24R94) | none |  |
@@ -44,11 +44,11 @@ Every envelope holds: the **guest card** (1 page, from guest-cards.pdf) and the 
 | **Judge Eric Leeway** | 15 ($1,500) | none | notice of dismissal (VMX7X); Reply slip (D6DDT) | none |  |
 | **Krrish Vermouth** | 12 ($1,200) | Silent Partner's brass key (the key), tag AFPEP | crate receipt (ATCTU); Reply slip (UHN7C) | none |  |
 | **Leon Gee of WFEA** | 10 ($1,000) | none | Witness slip (D4JFG) | Cassie's roll |  |
-| **Luke Shelldon** | 10 ($1,000) | none | none | none | their secret page and marker No. 19 are on the guest card (cut the marker out) |
-| **Mihir Nagarkatti of Nag Oil** | 30 ($3,000) | none | Tool token (DC92C) | none | their secret page and marker No. 18 are on the guest card (cut the marker out) |
-| **Molly Daniel of the Manchester Union** | 9 ($900) | none | Trade slip (DAFF2) | none | their secret page and marker No. 22 are on the guest card (cut the marker out) |
+| **Luke Shelldon** | 10 ($1,000) | none | none | none | their secret page is on the guest card (nothing to cut out) |
+| **Mihir Nagarkatti of Nag Oil** | 30 ($3,000) | none | Tool token (DC92C) | none | their secret page is on the guest card (nothing to cut out) |
+| **Molly Daniel of the Manchester Union** | 9 ($900) | none | Trade slip (DAFF2) | none | their secret page is on the guest card (nothing to cut out) |
 | **Rebecca Chow, Butler of the Black Veil** | 12 ($1,200) | none | none | Cassie's note, left in Room 3; A boarding-house page, November 1924; The House Book (the Butler's) | At the bar, not the envelope: the House Tin |
-| **Rhea Mallya of Mallya's Emporium** | 15 ($1,500) | none | none | none | their secret page and marker No. 20 are on the guest card (cut the marker out) |
+| **Rhea Mallya of Mallya's Emporium** | 15 ($1,500) | none | none | none | their secret page is on the guest card (nothing to cut out) |
 | **Sheriff Theodor Farrago** | 10 ($1,000) | none | Nuisance Citation (MKPAE); Reply slip (RW4H6) | The Coroner's report |  |
 | **Sidd Airwind** | 14 ($1,400) | none | Witness slip (KW9K2) | none |  |
 | **Silas Palmer of the Palm Court** | 12 ($1,200) | none | request card (RKRGA); Trade slip (6K64E) | none |  |
@@ -109,7 +109,7 @@ Tape the tag on or beside the object. Do not move the object. Use shared rooms o
 - The pocket watch
 - The empty vial
 - A rail stub
-- The jacket (on a chair or the dummy), the tipped glass, and the buyer's marker from the House Tin placed under it
+- The jacket (on a chair or the dummy), the tipped glass, and the torn scrap with the House's words placed under it
 - **Second rail stub: put it in the LINING of the jacket now.** It is the tie-breaker and is on the last page of exhibits.pdf. Do not lay it out.
 
 ### 3e. At the bar
@@ -129,10 +129,10 @@ Tape the tag on or beside the object. Do not move the object. Use shared rooms o
 | # | Do this | About |
 |---|---|---|
 | 1 | Print the two PRINT files (24 double-sided sheets plus 36 single-sided pages). Tags use the most ink. | 15 min |
-| 2 | Cut the slips, tags, the five markers and the exhibit pages. Read the line above each slip or under each tag. | 30 min |
+| 2 | Cut the slips, tags and the exhibit pages. One slip (THE BUTLER KNOWS WHO DID IT) is not for an envelope: hide it under the cactus in the kitchen. Read the line above each slip or under each tag. | 30 min |
 | 3 | Walk the house and tape each tag from section 3a. Use the check list in `09-house-check.md`. | 15 min |
 | 4 | Prepare the carried items: tape each tag on its item (section 2) and keep them in piles by guest. | 10 min |
-| 5 | Stuff the 24 envelopes from the table in section 2: guest card, bills, item, slips, sealed pages. The five survivors' sheets also hold their secret page and a marker to cut out: check those five twice. | 30 min |
+| 5 | Stuff the 24 envelopes from the table in section 2: guest card, bills, item, slips, sealed pages. The five survivors' sheets hold their secret page: check those five twice. | 30 min |
 | 6 | Lay out the black table, then the bar (sections 3b, 3c, 3e). Put the scene pieces and the jacket aside for 9:05. | 15 min |
 | 7 | Put the second rail stub in the jacket lining. Put the door posters at the door. | 5 min |
 | 8 | Phone check: open `/game` on a phone and `/admin` on your laptop. Run the database migration once (`drizzle-kit migrate`). | 5 min |

@@ -20,7 +20,7 @@
 | **8:00** | Every card, objective and group race opens by itself | Tend bar. (The **Start game** button on /admin only opens early.) |
 | Before 8:30 | Josh tells you the minute he thinks the scream will come | Write it on a card, seal it |
 | **8:30** | Silas's five-minute spotlight (and Anika's request) | Enjoy it, give Silas his word after |
-| 8:35 to 9:00 | The Butler sells the vial once to the first marker | Watch the House panel |
+| 8:45 to 9:00 | The Butler sells the vial once, to the first survivor who says the words from the cactus slip | Watch the House panel |
 | **9:00** | The House closes by itself; the nightcap is served | Note the buyer; stage the body at ~9:05 |
 | ~9:15 | The Butler finds him and screams; the Sheriff takes charge | Open Josh's envelope afterwards |
 | 9:15 to 10:15 | Investigation; the Sheriff arrests by 10:15 | Optional spare slips at the bar for guests whose source is absent |
@@ -56,49 +56,49 @@ Each objective is tagged with its type. What the types mean:
 | **LEARN A STORY** | Get one piece of a story from named guests and type the key word or name. |
 | **DEAL** | Do a small deal with a named guest; a printed slip proves it and you type its code. |
 | **HOST TASK** | Do something for real in the room, tap Claim this point, then ask Bartend Joe for the word. |
-| **VIAL** | A survivor offers a marker to the Butler, or the Butler sells the House's single vial. |
+| **VIAL** | A survivor says the House's words to the Butler (after 8:45), or the Butler sells the House's single vial. |
 
 ### The Survivors
 
-**Mihir Nagarkatti of Nag Oil** (Mihir Nagarkatti), SURVIVOR: really Bertrand “Barty” Crane, The Teller, marker 18. Starts with 30 bills ($3,000); carries Tool token.
+**Mihir Nagarkatti of Nag Oil** (Mihir Nagarkatti), SURVIVOR: really Bertrand “Barty” Crane, The Teller, No. 18 on the List. Starts with 30 bills ($3,000); carries Tool token.
 
 1. **[FIND]** Find the Silent Partner's elephant (the golden elephant on the book)
 2. **[LEARN A STORY]** Learn: Who were you?
 3. **[LEARN A STORY]** Learn: Why you?
 4. **[LEARN A STORY]** Learn: The old man's hour
-5. **[VIAL]** Offer a marker to the Butler (the vial)
+5. **[VIAL]** Say the House's words to the Butler (the vial)
 
-**Molly Daniel of the Manchester Union** (Molly Daniel), SURVIVOR: really Winifred “Winnie” Pike, The Runner, marker 22. Starts with 9 bills ($900); carries Trade slip.
+**Molly Daniel of the Manchester Union** (Molly Daniel), SURVIVOR: really Winifred “Winnie” Pike, The Runner, No. 22 on the List. Starts with 9 bills ($900); carries Trade slip.
 
 1. **[FIND]** Find the masquerade mask (the carved mask sculpture)
 2. **[LEARN A STORY]** Learn: Who were you?
 3. **[LEARN A STORY]** Learn: Why you?
 4. **[LEARN A STORY]** Learn: The old man's hour
-5. **[VIAL]** Offer a marker to the Butler (the vial)
+5. **[VIAL]** Say the House's words to the Butler (the vial)
 
-**Luke Shelldon** (Luke Sheldon), SURVIVOR: really Edmund Lyle, The Notary, marker 19. Starts with 10 bills ($1,000).
+**Luke Shelldon** (Luke Sheldon), SURVIVOR: really Edmund Lyle, The Notary, No. 19 on the List. Starts with 10 bills ($1,000).
 
 1. **[FIND]** Find the river lantern (the white lantern on the front balcony)
 2. **[LEARN A STORY]** Learn: Who were you?
 3. **[LEARN A STORY]** Learn: Why you?
 4. **[LEARN A STORY]** Learn: The old man's hour
-5. **[VIAL]** Offer a marker to the Butler (the vial)
+5. **[VIAL]** Say the House's words to the Butler (the vial)
 
-**Adam Holdsfire** (Adam Ouldsfiya), SURVIVOR: really Dominic Marek, The Doorman, marker 21. Starts with 10 bills ($1,000).
+**Adam Holdsfire** (Adam Ouldsfiya), SURVIVOR: really Dominic Marek, The Doorman, No. 21 on the List. Starts with 10 bills ($1,000).
 
 1. **[FIND]** Find the pirate sign (the "Swab the deck or walk the plank" sign)
 2. **[LEARN A STORY]** Learn: Who were you?
 3. **[LEARN A STORY]** Learn: Why you?
 4. **[LEARN A STORY]** Learn: The old man's hour
-5. **[VIAL]** Offer a marker to the Butler (the vial)
+5. **[VIAL]** Say the House's words to the Butler (the vial)
 
-**Rhea Mallya of Mallya's Emporium** (Rhea Mallya), SURVIVOR: really Sylvia Ballard, The Milliner, marker 20. Starts with 15 bills ($1,500).
+**Rhea Mallya of Mallya's Emporium** (Rhea Mallya), SURVIVOR: really Sylvia Ballard, The Milliner, No. 20 on the List. Starts with 15 bills ($1,500).
 
 1. **[FIND]** Find the decoy duck (the carved wooden duck with a lid)
 2. **[LEARN A STORY]** Learn: Who were you?
 3. **[LEARN A STORY]** Learn: Why you?
 4. **[LEARN A STORY]** Learn: The old man's hour
-5. **[VIAL]** Offer a marker to the Butler (the vial)
+5. **[VIAL]** Say the House's words to the Butler (the vial)
 
 ### Order & Letters
 
@@ -264,7 +264,7 @@ Each objective is tagged with its type. What the types mean:
 
 | Group | Race | Slips (who carries them) |
 |---|---|---|
-| The Survivors | The vial | the House's vial: the first marker the Butler accepts |
+| The Survivors | The vial | the House's vial: find the cactus slip, then say its words to the Butler after 8:45 |
 | Order & Letters | Three witnesses | 5 slips, need 3: Arjun Bat, Diwakar Sandbagg, Joshua Kamin-Sky, Leon Gee of WFEA, Sidd Airwind |
 | The Wire & the Stage | The reply | 5 slips, need 3: Angelos Bowles, Judge Eric Leeway, Erika Lamm, Krrish Vermouth, Sheriff Theodor Farrago |
 | The Working Folk | Three tools | 5 slips, need 3: Ananya Codru and Charlie Wakem, Anthony Hung, Esq., J. Bruce Wayne, Mihir Nagarkatti of Nag Oil, Tim McGinley, Baron of Bathtub Gin |
@@ -361,7 +361,7 @@ Everyone answers nine: old-1 to old-3, new-1 to new-3 and con-1 to con-3. **The 
 |---|---|
 | The Butler is absent | `npm run game:grade -- assign-vial <slug>` for the first survivor who asks at the bar. The Butler's own errands are stranded. |
 | Nobody buys the vial by 9:00 | `npm run game:grade -- assign-vial <slug>`. |
-| A survivor is absent | Their marker is never offered. |
+| A survivor is absent | They never reach the Butler. |
 | Any other guest is absent | Their swap or deal partner cannot finish that one objective (one point). If you printed a second set of slips, hand the partner a spare at the bar. A guest with no submissions and no House events counts as absent. |
 | A phone does not work | They write answers on paper; type them in with **Sign in as** on /admin, or tell them to sign in with /resume. |
 | You pressed Start too early | `npm run game:grade -- stop` seals everything again. |
@@ -370,7 +370,7 @@ Everyone answers nine: old-1 to old-3, new-1 to new-3 and con-1 to con-3. **The 
 ## 11. Your checklist
 
 - [ ] Printed the two print files: guest cards (double-sided, 24 sheets) and everything else (single-sided, 36 pages)
-- [ ] Every black envelope has the guest card, starting bills, carried item and slips (survivors' sheets include their secret page and marker; checked twice)
+- [ ] Every black envelope has the guest card, starting bills, carried item and slips (survivors' sheets include their secret page; nothing is cut out)
 - [ ] Every tag code on the right object (section 6) and in shared rooms only
 - [ ] Race slips in the right hands (section 5)
 - [ ] The House Tin, the House Book and the one vial are at the bar (decoy bottles are optional set dressing)

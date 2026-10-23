@@ -4,7 +4,7 @@ import { PGlite } from "@electric-sql/pglite";
 import { drizzle } from "drizzle-orm/pglite";
 import { eq } from "drizzle-orm";
 import { migrate } from "drizzle-orm/pglite/migrator";
-import { characters, circles, markers, survivorIds, questions, characterById, alternateOf, races } from "@/data/game";
+import { characters, circles, vialWords, survivorIds, questions, characterById, alternateOf, races } from "@/data/game";
 import { propById } from "@/data/game/props";
 import { guests, gameSubmissions, rsvps } from "@/lib/db/schema";
 import { correctAnswer, correctMystery } from "./sim";
@@ -43,6 +43,8 @@ import {
 
 const BEFORE = new Date("2026-10-20T12:00:00-04:00");
 const NIGHT = new Date("2026-10-23T20:10:00-04:00");
+const SALE = new Date("2026-10-23T20:50:00-04:00");
+const holderOf = (no: number) => survivorIds.find((id) => characterById.get(id)!.survivor!.markerNo === no)!;
 const LATE = new Date("2026-10-23T23:30:00-04:00");
 
 async function freshDb() {
@@ -296,7 +298,7 @@ describe("the guest's card", () => {
     for (const id of replaced) assert.ok(!butler.includes(id), `the Butler is not asked ${id}`);
     assert.equal(butler.length, counted.length);
     // the vial buyer joins them
-    await butlerSell(ctx.db, null, markers.find((marker) => marker.no === characterById.get(SURVIVOR)!.survivor!.markerNo)!.code, NIGHT);
+    await butlerSell(ctx.db, null, vialWords, SURVIVOR, SALE);
     const buyer = await asked(SURVIVOR);
     for (const id of replacements) assert.ok(buyer.includes(id), `the buyer is asked ${id}`);
     for (const id of replaced) assert.ok(!buyer.includes(id), `the buyer is not asked ${id}`);
@@ -433,7 +435,6 @@ describe("submissions", () => {
 
 describe("the House: one bottle, one sale", () => {
   let ctx: Awaited<ReturnType<typeof freshDb>>;
-  const code = (no: number) => markers.find((marker) => marker.no === no)!.code;
   const survivorAt = (no: number) => survivorIds.find((id) => characterById.get(id)!.survivor!.markerNo === no)!;
   before(async () => {
     ctx = await freshDb();
@@ -442,19 +443,23 @@ describe("the House: one bottle, one sale", () => {
   });
   after(async () => ctx.client.close());
 
-  it("refuses a code that is not a marker, and names no one when it does", async () => {
-    const result = await butlerSell(ctx.db, null, "ABCDE", NIGHT);
-    assert.equal(result.status, "unknown");
-    assert.doesNotMatch(result.message, new RegExp(`survivor|${survivorIds.join("|")}`, "i"));
+  it("refuses wrong words, a guest who is not a survivor, and a visit before 8:45, and names no one", async () => {
+    const wrong = await butlerSell(ctx.db, null, "ABCDE", survivorAt(20), SALE);
+    assert.equal(wrong.status, "unknown");
+    assert.doesNotMatch(wrong.message, new RegExp(`survivor|${survivorIds.join("|")}`, "i"));
+    assert.equal((await butlerSell(ctx.db, null, vialWords, "anika", SALE)).status, "unknown", "only a survivor can buy");
+    assert.equal((await butlerSell(ctx.db, null, vialWords, survivorAt(20), NIGHT)).status, "early", "nothing is sold before a quarter to nine");
+    assert.equal((await butlerSell(ctx.db, null, "the butler knows who did it", survivorAt(20), SALE)).status, "sold", "the words are read loosely");
+    await resetVial(ctx.db);
   });
 
   it("sells to the first marker and tells everyone after that the House has none left", async () => {
     const rebecca = await idOf(ctx.db, "rebecca");
-    const first = await butlerSell(ctx.db, rebecca, code(20), NIGHT);
+    const first = await butlerSell(ctx.db, rebecca, vialWords, survivorAt(20), SALE);
     assert.equal(first.status, "sold");
-    const second = await butlerSell(ctx.db, rebecca, code(22), NIGHT);
+    const second = await butlerSell(ctx.db, rebecca, vialWords, survivorAt(22), SALE);
     assert.equal(second.status, "sold-out");
-    const again = await butlerSell(ctx.db, rebecca, code(20), NIGHT);
+    const again = await butlerSell(ctx.db, rebecca, vialWords, survivorAt(20), SALE);
     assert.equal(again.status, "sold-out", "even the buyer cannot buy twice");
     const overview = await adminOverview(ctx.db);
     assert.equal(overview.vial.soldTo?.slug, survivorAt(20));
@@ -465,7 +470,7 @@ describe("the House: one bottle, one sale", () => {
   it("allows exactly one sale when five phones tap at once", async () => {
     await resetVial(ctx.db);
     const rebecca = await idOf(ctx.db, "rebecca");
-    const results = await Promise.all(markers.map((marker) => butlerSell(ctx.db, rebecca, marker.code, NIGHT)));
+    const results = await Promise.all([18, 19, 20, 21, 22].map((no) => butlerSell(ctx.db, rebecca, vialWords, survivorAt(no), SALE)));
     assert.equal(results.filter((result) => result.status === "sold").length, 1);
     assert.equal(results.filter((result) => result.status === "sold-out").length, 4);
     const overview = await adminOverview(ctx.db);
@@ -476,14 +481,14 @@ describe("the House: one bottle, one sale", () => {
   it("closes the House once the nightcap is served", async () => {
     await resetVial(ctx.db);
     await writeFlag(ctx.db, "nightcapServed", true);
-    const result = await butlerSell(ctx.db, null, code(18), NIGHT);
+    const result = await butlerSell(ctx.db, null, vialWords, survivorAt(18), SALE);
     assert.equal(result.status, "closed");
     await writeFlag(ctx.db, "nightcapServed", false);
   });
 
   it("lets only the buyer dose the nightcap, and says nothing either way", async () => {
     await resetVial(ctx.db);
-    await butlerSell(ctx.db, null, code(19), NIGHT);
+    await butlerSell(ctx.db, null, vialWords, survivorAt(19), SALE);
     const buyer = await idOf(ctx.db, survivorAt(19));
     const rival = await idOf(ctx.db, survivorAt(18));
     await dose(ctx.db, rival, "8YUR2", NIGHT);
@@ -512,7 +517,7 @@ describe("the House: one bottle, one sale", () => {
   it("treats a survivor who never registered as unknown, never as a crash", async () => {
     const { db, client } = await freshDb();
     await seedCast(db);
-    const result = await butlerSell(db, null, code(21), NIGHT);
+    const result = await butlerSell(db, null, vialWords, holderOf(21), SALE);
     assert.equal(result.status, "unknown");
     await client.close();
   });
@@ -526,8 +531,8 @@ describe("grading the night, end to end", () => {
     await seedGuests(ctx.db);
     await startGame(ctx.db, NIGHT);
     // the night: the Doorman (marker 21) buys the vial
-    await butlerSell(ctx.db, await idOf(ctx.db, "rebecca"), markers.find((marker) => marker.no === 21)!.code, NIGHT);
-    for (const id of survivorIds.filter((id) => id !== KILLER)) await butlerSell(ctx.db, null, markers.find((marker) => marker.no === characterById.get(id)!.survivor!.markerNo)!.code, NIGHT);
+    await butlerSell(ctx.db, await idOf(ctx.db, "rebecca"), vialWords, holderOf(21), SALE);
+    for (const id of survivorIds.filter((id) => id !== KILLER)) await butlerSell(ctx.db, null, vialWords, id, SALE);
     // every guest does their errands; a few mystery answers
     for (const character of characters) {
       const guestId = await idOf(ctx.db, character.id);
@@ -650,7 +655,7 @@ describe("guests who stayed home", () => {
     await seedGuests(db);
     await startGame(db, NIGHT);
     await submit(db, await idOf(db, "anika"), { kind: "objective", itemId: "anika-find", answer: "A8NKR" }, NIGHT);
-    await butlerSell(db, await idOf(db, "rebecca"), markers.find((marker) => marker.no === 21)!.code, NIGHT);
+    await butlerSell(db, await idOf(db, "rebecca"), vialWords, holderOf(21), SALE);
     await runGrading(db);
     const { standings } = await standingsNow(db);
     const graded = standings.standings.map((row) => row.guest).sort();
@@ -707,7 +712,7 @@ describe("the guest ledger", () => {
   });
 
   it("stays at zero while the night is graded, and shows final scores only once published", async () => {
-    await butlerSell(ctx.db, null, markers.find((marker) => marker.no === 21)!.code, NIGHT);
+    await butlerSell(ctx.db, null, vialWords, holderOf(21), SALE);
     await submit(ctx.db, await idOf(ctx.db, "anika"), { kind: "objective", itemId: "anika-find", answer: "A8NKR" }, NIGHT);
     await runGrading(ctx.db);
     assert.ok((await ledgerFor(ctx.db, await idOf(ctx.db, "anika"), NIGHT)).rows.every((row) => row.points === 0), "grading alone changes nothing a guest can see");

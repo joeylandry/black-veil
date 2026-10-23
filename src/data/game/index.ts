@@ -11,11 +11,11 @@ import { stage } from "./cast-stage";
 import { working } from "./cast-working";
 import { exhibits } from "./exhibits";
 import { facts } from "./facts";
-import { markers, propById, props } from "./props";
+import { markers, propById, props, vialWords } from "./props";
 import { alternateOf, MYSTERY_POINTS, questionById, questions } from "./questions";
 import type { Character, Circle, CircleId, Line, Objective, Share } from "./types";
 
-export { alternateOf, circles, exhibits, facts, markers, MYSTERY_POINTS, props, questionById, questions, races };
+export { alternateOf, circles, exhibits, facts, markers, vialWords, MYSTERY_POINTS, props, questionById, questions, races };
 export * from "./types";
 
 export const characters: Character[] = [...gilded, ...order, ...stage, ...working, ...river];
@@ -157,9 +157,9 @@ export function survivorRules(markerNo: number): string[] {
   return [
     "You are one who got away. You know the old man hunted you and the people you trusted, and you know who he is. Others probably escaped too, but you do not know how many or who. Everyone else has been told only that survivors are in the room. Your cover is your public card. Keep it.",
     "Your invitation came unsigned, and it knew the new name you have used ever since. Only one person could have known it. Working out who is one of your errands.",
-    `You carry marker No. ${markerNo}. It is yours alone: never trade it, never give it away. It is how you pay the House.`,
+    `You are No. ${markerNo} on the List. You carry nothing and cut nothing out. To buy the vial you must say the House's own words to the Butler, and they are written on a slip someone hid in the kitchen, under a cactus. Find it and keep it to yourself.`,
     "You have told yourself so many stories since 1925 that you are no longer certain of your real reason for coming. You only know that you must be the one. Somebody in this room saw what he did to you; finding out is one of your errands.",
-    "The House keeps one bottle of tincture and sells it once a night, to whoever shows the Butler a marker first. Make your offer before the nightcap is served at nine o'clock. Only one of you can be the one.",
+    "The House keeps one bottle of tincture and sells it once a night. The Butler will not see anyone about it before 8:45 p.m., and will sell only to a survivor who says the House's words. Make your offer before the nightcap is served at nine o'clock. Only one of you can be the one.",
     "If the Butler sells to you, the Keeper's nightcap waits in a glass on his table in the Merrimack Room. Pour the vial in unseen, then type the short code printed under the glass's coaster into the nightcap box on this page. Only the buyer's code counts, and the page will say only “Noted.”",
     "Do your tell, a small habit you no longer notice, at least three times before the nightcap. Do not overdo it.",
     "Whoever finishes him takes Cassie's seat and the Veil. You are competing with others you cannot name, and every one of you has the right to try.",

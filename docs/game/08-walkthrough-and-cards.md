@@ -18,7 +18,7 @@ Everything repeated in this document wears the same label.
 | **LEARN A STORY** | Get one piece of a story from named guests and type the key word or name. |
 | **DEAL** | Do a small deal with a named guest; a printed slip proves it and you type its code. |
 | **HOST TASK** | Do something for real in the room, tap Claim this point, then ask Bartend Joe for the word. |
-| **VIAL** | A survivor offers a marker to the Butler, or the Butler sells the House's single vial. |
+| **VIAL** | A survivor says the House's words to the Butler (after 8:45), or the Butler sells the House's single vial. |
 
 ### Tags on the clues a guest holds
 
@@ -45,12 +45,12 @@ Everything repeated in this document wears the same label.
 
 | When | What happens | What you do |
 |---|---|---|
-| Before 8:00 | Guests arrive and get a black envelope: card, carried items, slips, starting bills (survivors' cards also hold their secret page and marker). Phones show nothing yet. | Hand out envelopes. |
+| Before 8:00 | Guests arrive and get a black envelope: card, carried items, slips, starting bills (survivors' cards also hold their secret page). Phones show nothing yet. | Hand out envelopes. |
 | **8:00** | **The game opens by itself.** Phones show five tabs: *Public*, *Background*, *Private* (secrets, clues, five objectives, race), *Answers* (nine questions, survivors picker, bills box) and *Results* (locked). | Tend bar. |
 | 8:00 to 8:30 | Mingle. Guests work objectives: find tagged objects, swap items, earn secrets, collect race slips, earn money. They learn the mystery by trading clue lines. | Give approval words as you see tasks done. |
 | Before 8:30 | Josh tells you the minute he thinks the scream will come. | Write it down, seal it. |
 | **8:30** | Silas's five-minute spotlight (plus Anika's request). | Give Silas his word after. |
-| 8:35 to 9:00 | The Butler sells the House's one vial to the first survivor marker. That buyer is the killer and wins the survivors' race. | Watch. |
+| 8:45 to 9:00 | The Butler sells the House's one vial to the first survivor who says the House's words (found on the slip under the kitchen cactus). That buyer is the killer and wins the survivors' race. | Watch. |
 | **9:00** | The House closes; the nightcap is served. | Note the buyer; stage the body about 9:05. |
 | ~9:15 | Rebecca screams. The Sheriff takes charge; the Doctor examines. Investigation until 10:15. | Open Josh's envelope. |
 | **10:00** | Wrap-up: Cassie's letter; Eric signs the charter; Leon reads a bulletin; the Sheriff names an arrest by 10:15. | Gather everyone. |
@@ -72,7 +72,7 @@ Everything repeated in this document wears the same label.
 
 | Kind | What their night is |
 |---|---|
-| The five survivors | They know who they really are (Cassie invited them) and do not know each other. Their goal is the vial: first marker the Butler accepts is the killer. Their objectives include learning why they are on the Veil's List. |
+| The five survivors | They know who they really are (Cassie invited them) and do not know each other. Their goal is the vial: the first survivor to find the cactus slip and say its words to the Butler after 8:45 is the killer. Their objectives include learning why they are on the Veil's List. |
 | The Butler (Rebecca) | Runs the bar, sells the vial, screams at 9:15. |
 | Sheriff, Doctor, Judge, lawyer and the rest | Ordinary guests with a real job in the room: arrest, examine, advise. Five errands like everyone else. |
 | Everyone | Five errands, one race, secrets to trade, and a mystery to piece together from scraps. |
@@ -253,7 +253,7 @@ Read one type at a time to see what the game asks of people.
 
 ### VIAL (6)
 
-*A survivor offers a marker to the Butler, or the Butler sells the House's single vial.*
+*A survivor says the House's words to the Butler (after 8:45), or the Butler sells the House's single vial.*
 
 | Guest | # | What | Involves | When |
 |---|---|---|---|---|
@@ -448,7 +448,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 *SAY FREELY (1)*
 
-- A Veil marker was a number and a promise. The old members carried them, and the House honoured one, once, from its owner only.
+- The House sold its tincture once a night, and only to a member who knew the House's own words.
 
 *COSTS $100 AT THE BAR (1)*
 
@@ -473,7 +473,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 4. **[LEARN A STORY]** The Keeper takes a nightcap at a fixed hour, in a fixed room. Until then the glass on his table is only a glass. Learn the hour, so you know how long you have. *INVOLVES:* Rebecca, Anika, Silas.
 
-5. **[VIAL]** The House keeps one bottle for those who can pay in a marker. Before the nightcap is served at nine o'clock, take your marker to the Butler at the bar and make your offer. The House counts every offer, whether the answer is yes or no. *INVOLVES:* Rebecca.
+5. **[VIAL]** The House keeps one bottle for the one who knows its words. The words are on a slip hidden in the kitchen under a cactus. Find it, keep it, and after a quarter to nine and before the nightcap is served at nine o'clock, say the words to the Butler at the bar and make your offer. The House counts every offer, whether the answer is yes or no. *INVOLVES:* Rebecca.
 
 **RACE** Buy the House's vial from the Butler before anyone else does. The House's own log decides it. *CARRIES for others:* Tool token: hand it to anyone who asks for it by name.
 
@@ -484,7 +484,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 3. **[LEARN A STORY]** Who were you?: ask Eric or Anthony or Emre.
 4. **[LEARN A STORY]** Why you?: ask Krrish or Anthony or Tim.
 5. **[LEARN A STORY]** The old man's hour: ask Rebecca or Anika or Silas.
-6. **[VIAL]** hand a marker to the Butler.
+6. **[VIAL]** say the House's words to the Butler after 8:45.
 7. **[RACE]** ask around for the slips. The first to type three valid codes wins; if the box closes, move on.
 8. All night: trade, buy and sell clues, and compare what you learn.
 9. By 10:30: answer the nine questions, name up to four survivors, and type your bills.
@@ -584,7 +584,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 *TRADE IT (2)*
 
-- Markers are the House's own currency. You have seen the Butler take one in place of cash for something that was on no menu.
+- You have seen the Butler sell something that was on no menu to a guest who whispered a few words to her first.
 - Ignatius Bell, who held the second door at the Veil, owed you twenty dollars. He was shot in a Granite Street shed, and the big man who worked the other door was never found.
 
 *COSTS $100 AT THE BAR (1)*
@@ -957,7 +957,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 4. **[LEARN A STORY]** The Keeper takes a nightcap at a fixed hour, in a fixed room. Until then the glass on his table is only a glass. Learn the hour, so you know how long you have. *INVOLVES:* Rebecca, Anika, Silas.
 
-5. **[VIAL]** The House keeps one bottle for those who can pay in a marker. Before the nightcap is served at nine o'clock, take your marker to the Butler at the bar and make your offer. The House counts every offer, whether the answer is yes or no. *INVOLVES:* Rebecca.
+5. **[VIAL]** The House keeps one bottle for the one who knows its words. The words are on a slip hidden in the kitchen under a cactus. Find it, keep it, and after a quarter to nine and before the nightcap is served at nine o'clock, say the words to the Butler at the bar and make your offer. The House counts every offer, whether the answer is yes or no. *INVOLVES:* Rebecca.
 
 **RACE** Buy the House's vial from the Butler before anyone else does. The House's own log decides it. *CARRIES for others:* Trade slip: hand it to anyone who asks for it by name.
 
@@ -968,7 +968,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 3. **[LEARN A STORY]** Who were you?: ask Diwakar or Tim or Sidd.
 4. **[LEARN A STORY]** Why you?: ask Tim or Theodor or Erika.
 5. **[LEARN A STORY]** The old man's hour: ask Rebecca or Anika or Silas.
-6. **[VIAL]** hand a marker to the Butler.
+6. **[VIAL]** say the House's words to the Butler after 8:45.
 7. **[RACE]** ask around for the slips. The first to type three valid codes wins; if the box closes, move on.
 8. All night: trade, buy and sell clues, and compare what you learn.
 9. By 10:30: answer the nine questions, name up to four survivors, and type your bills.
@@ -1007,7 +1007,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 *COSTS $100 AT THE BAR (1)*
 
-- Cassie's own roll names the five who may still live: Ballard, Crane, Lyle, Marek and Pike. Markers 18 to 22 are theirs.
+- Cassie's own roll names the five who may still live: Ballard, Crane, Lyle, Marek and Pike. Numbers 18 to 22 are theirs.
 
 *KEEP CLOSE (1)*
 
@@ -1152,7 +1152,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 4. **[LEARN A STORY]** The Keeper takes a nightcap at a fixed hour, in a fixed room. Until then the glass on his table is only a glass. Learn the hour, so you know how long you have. *INVOLVES:* Rebecca, Anika, Silas.
 
-5. **[VIAL]** The House keeps one bottle for those who can pay in a marker. Before the nightcap is served at nine o'clock, take your marker to the Butler at the bar and make your offer. The House counts every offer, whether the answer is yes or no. *INVOLVES:* Rebecca.
+5. **[VIAL]** The House keeps one bottle for the one who knows its words. The words are on a slip hidden in the kitchen under a cactus. Find it, keep it, and after a quarter to nine and before the nightcap is served at nine o'clock, say the words to the Butler at the bar and make your offer. The House counts every offer, whether the answer is yes or no. *INVOLVES:* Rebecca.
 
 **RACE** Buy the House's vial from the Butler before anyone else does. The House's own log decides it.
 
@@ -1163,7 +1163,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 3. **[LEARN A STORY]** Who were you?: ask Anthony or Erika or Silas.
 4. **[LEARN A STORY]** Why you?: ask Anthony or Ananya or Josh.
 5. **[LEARN A STORY]** The old man's hour: ask Rebecca or Anika or Silas.
-6. **[VIAL]** hand a marker to the Butler.
+6. **[VIAL]** say the House's words to the Butler after 8:45.
 7. **[RACE]** ask around for the slips. The first to type three valid codes wins; if the box closes, move on.
 8. All night: trade, buy and sell clues, and compare what you learn.
 9. By 10:30: answer the nine questions, name up to four survivors, and type your bills.
@@ -1340,7 +1340,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 *TRADE IT (4)*
 
 - In the flue of an empty room above the river you read the soot off half-burned pages: “C. is out. K. holds the books. Place them as I wrote.” You still have a torn register page.
-- The burned sign-out slips from the flue all carried marker numbers. The unburned five, 18 to 22, were never signed back.
+- The burned sign-out slips from the flue all carried member numbers. The unburned five, 18 to 22, were never signed back.
 - In 1925 an old man hired you to read the soot in the Merrimack Room flue and asked, more than once, how thick the wall was behind the window.
 - You read a half-burned notary's seal out of the flue, ringed with the letters E.L., together with scraps of forged orders signed in Cassie's name.
 
@@ -1502,7 +1502,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 4. **[LEARN A STORY]** The Keeper takes a nightcap at a fixed hour, in a fixed room. Until then the glass on his table is only a glass. Learn the hour, so you know how long you have. *INVOLVES:* Rebecca, Anika, Silas.
 
-5. **[VIAL]** The House keeps one bottle for those who can pay in a marker. Before the nightcap is served at nine o'clock, take your marker to the Butler at the bar and make your offer. The House counts every offer, whether the answer is yes or no. *INVOLVES:* Rebecca.
+5. **[VIAL]** The House keeps one bottle for the one who knows its words. The words are on a slip hidden in the kitchen under a cactus. Find it, keep it, and after a quarter to nine and before the nightcap is served at nine o'clock, say the words to the Butler at the bar and make your offer. The House counts every offer, whether the answer is yes or no. *INVOLVES:* Rebecca.
 
 **RACE** Buy the House's vial from the Butler before anyone else does. The House's own log decides it.
 
@@ -1513,7 +1513,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 3. **[LEARN A STORY]** Who were you?: ask Theodor or Arjun or Joel.
 4. **[LEARN A STORY]** Why you?: ask Theodor or Sidd or Angelos.
 5. **[LEARN A STORY]** The old man's hour: ask Rebecca or Anika or Silas.
-6. **[VIAL]** hand a marker to the Butler.
+6. **[VIAL]** say the House's words to the Butler after 8:45.
 7. **[RACE]** ask around for the slips. The first to type three valid codes wins; if the box closes, move on.
 8. All night: trade, buy and sell clues, and compare what you learn.
 9. By 10:30: answer the nine questions, name up to four survivors, and type your bills.
@@ -1672,7 +1672,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 *SAY FREELY (3)*
 
-- The House keeps a bottle of “rat tincture” under the bar for the river rats. You have seen the Butler lock it away: one sale a night, markers only.
+- The House keeps a bottle of “rat tincture” under the bar for the river rats. You have seen the Butler lock it away: one sale a night, and only to someone who whispers the right words.
 - You have lost to Angelos at cards since 1919. The way he counts chips with his thumb is just the trade.
 - She once walked from the river steps to Elm Street in four minutes by streets that are not on any map. A courier's trick.
 
@@ -1741,7 +1741,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 - History: You run the House: the bar, the locks, the tin box that holds the night's takings. You also keep a boarding house on the West Side, which is where a certain lady hid on the night of 31 October 1924 with a bandaged shoulder. Someone paid you $200 to forget her.
 - People: Tim McGinley: supplies the House, and has seen what is under your bar. Leon Gee: you have a message of his you have never delivered. Erika Lamm: a boarder you hid at the House once, and would again, for the right fee.
 
-**ROLE RULES (The Butler)** You are the Butler. At the bar you hold the House Tin, the House Book and a single bottle of the House's own tincture for “river rats.” The bottle sells once a night, and only against a numbered marker handed to you by its owner. When a guest offers a marker, open the House panel on your phone, type the five-character code printed on it, and the phone tells you whether to sell. If it says sold, hand over the vial. If it says sold out, hand the marker back. The House counts every offer. Whatever you do, never reveal who bought the tincture until after the body is found. After that, you may sell the answer or keep it: $100 is a fair price. At a quarter past nine you take the Keeper his rye. You will find him. Scream. Nobody takes the marker from you, and you take nothing from anyone: it is all deals, always.
+**ROLE RULES (The Butler)** You are the Butler. At the bar you hold the House Tin, the House Book and a single bottle of the House's own tincture for “river rats.” The bottle sells once a night, only after a quarter to nine, and only to a guest who says the House's words to you: THE BUTLER KNOWS WHO DID IT. They are written on a slip hidden in the kitchen under a cactus; only whoever finds it will know them. When a guest says them, open the House panel on your phone, type the words, pick the guest who said them from the list, and the phone tells you whether to sell. If it says sold, hand over the vial. If it says sold out, send them away. The House counts every offer. Before a quarter to nine, turn everyone away. Whatever you do, never reveal who bought the tincture until after the body is found. After that, you may sell the answer or keep it: $100 is a fair price. At a quarter past nine you take the Keeper his rye. You will find him. Scream. Nobody takes anything from you, and you take nothing from anyone: it is all deals, always.
 
 **CLUES THIS GUEST HOLDS**
 
@@ -1755,7 +1755,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 *COSTS $100 AT THE BAR (1)*
 
-- Every marker carries the number of its owner on the Keeper's List. Markers 18 to 22 never came back to the House.
+- Every member carries a number on the Keeper's List. Numbers 18 to 22 never came back to the House.
 
 *KEEP CLOSE (5)*
 
@@ -1763,7 +1763,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 - On 1 November 1924 you took $200 from “Mr. K.” to forget the lady in Room 3. You took it.
 - Your boarding-house register still has a page for Room 3 on 31 October 1924: a lady with a bandaged shoulder, and a margin note that “Mr. K.” paid you $200 to forget her.
 - Cassie hid in your boarding house on the night of 31 October with a bandaged shoulder. She lived, and left a note on your pillow.
-- You alone sell the House's tincture. One bottle, one sale a night, and only against a numbered marker handed to you by its owner at the bar.
+- You alone sell the House's tincture. One bottle, one sale a night, and only after a quarter to nine, to a survivor who says the House's own words to you: THE BUTLER KNOWS WHO DID IT.
 
 *ENTRUSTED SECRET (2)*
 
@@ -1778,7 +1778,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 3. **[KEEP A SECRET]** Your small secret is worth two halves. Let Tiffany Liu of the Lamps earn it from you (half a point), and make sure Ananya Codru and Charlie Wakem never does (half a point). You will not be asked anything: it is scored from what they each learn. You may also sell it to anyone for $200 in House bills, but a sale to Ananya Codru and Charlie Wakem costs you that half. *INVOLVES:* Tiffany.
 
-4. **[VIAL]** Sell the House's single bottle to the owner of a numbered marker, once, before the nightcap is served at nine o'clock. Record the sale on your House panel.
+4. **[VIAL]** Sell the House's single bottle, once, between a quarter to nine and nine o'clock, to the survivor who says the House's words. Record the sale on your House panel.
 
 5. **[HOST TASK]** At a quarter past nine, go to the Merrimack Room, find the Keeper and scream. Then tap Claim this point and go to Bartend Joe at the bar for your approval word. *WHEN:* 9:15.
 
@@ -1790,7 +1790,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 2. **[FIND]** find salt lamp: read the tag and type its code.
 3. **[LEARN A SECRET]** What Sheriff Theodor Farrago is hiding: ask Theodor or Molly.
 4. **[KEEP A SECRET]** keep your small secret (nothing to type; you may sell it for $200).
-5. **[VIAL]** sell the vial to the first marker.
+5. **[VIAL]** sell the vial to the first survivor who says the words.
 6. **[HOST TASK]** do the task, tap Claim, then ask Bartend Joe for your word (9:15).
 7. **[RACE]** ask around for the slips. The first to type three valid codes wins; if the box closes, move on.
 8. All night: trade, buy and sell clues, and compare what you learn.
@@ -1838,7 +1838,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 4. **[LEARN A STORY]** The Keeper takes a nightcap at a fixed hour, in a fixed room. Until then the glass on his table is only a glass. Learn the hour, so you know how long you have. *INVOLVES:* Rebecca, Anika, Silas.
 
-5. **[VIAL]** The House keeps one bottle for those who can pay in a marker. Before the nightcap is served at nine o'clock, take your marker to the Butler at the bar and make your offer. The House counts every offer, whether the answer is yes or no. *INVOLVES:* Rebecca.
+5. **[VIAL]** The House keeps one bottle for the one who knows its words. The words are on a slip hidden in the kitchen under a cactus. Find it, keep it, and after a quarter to nine and before the nightcap is served at nine o'clock, say the words to the Butler at the bar and make your offer. The House counts every offer, whether the answer is yes or no. *INVOLVES:* Rebecca.
 
 **RACE** Buy the House's vial from the Butler before anyone else does. The House's own log decides it.
 
@@ -1849,7 +1849,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 3. **[LEARN A STORY]** Who were you?: ask Tiffany or Silas or Emre.
 4. **[LEARN A STORY]** Why you?: ask Anika or Emre or Silas.
 5. **[LEARN A STORY]** The old man's hour: ask Rebecca or Anika or Silas.
-6. **[VIAL]** hand a marker to the Butler.
+6. **[VIAL]** say the House's words to the Butler after 8:45.
 7. **[RACE]** ask around for the slips. The first to type three valid codes wins; if the box closes, move on.
 8. All night: trade, buy and sell clues, and compare what you learn.
 9. By 10:30: answer the nine questions, name up to four survivors, and type your bills.

@@ -133,7 +133,7 @@ export function offerChain(id: string): Objective {
     id,
     kind: "chain",
     title: "Make your offer to the House",
-    text: "The House keeps one bottle for those who can pay in a marker. Before the nightcap is served at nine o'clock, take your marker to the Butler at the bar and make your offer. The House counts every offer, whether the answer is yes or no.",
+    text: "The House keeps one bottle for the one who knows its words. The words are on a slip hidden in the kitchen under a cactus. Find it, keep it, and after a quarter to nine and before the nightcap is served at nine o'clock, say the words to the Butler at the bar and make your offer. The House counts every offer, whether the answer is yes or no.",
     ask: "In a sentence, what did the Butler say?",
     points: POINTS,
     with: ["rebecca"],

@@ -10,7 +10,7 @@
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { spawnSync } from "node:child_process";
-import { characters, buildCard, survivors, survivorRules, type CardView } from "@/data/game";
+import { characters, buildCard, survivors, survivorRules, vialWords, type CardView } from "@/data/game";
 import { brief1924, rulesCard } from "@/data/game/story";
 
 const CHROME = process.env.CHROME ?? "/opt/pw-browsers/chromium-1194/chrome-linux/chrome";
@@ -83,7 +83,7 @@ function guestCardPages(): string[] {
       ? `<h2>Your secret: you are one who got away (${esc(v.veilName)}, ${esc(v.veilTitle)})</h2>
       <p><b>Who you were:</b> ${esc(v.realStory)} <b>How you got away:</b> ${esc(v.escape)} <b>Your tell:</b> ${esc(v.tell)} <b>Do it at least three times before the nightcap.</b> <b>What leaks through:</b> ${esc(v.skillLeak)}</p>
       <p><b>Your rules:</b> ${survivorRules(v.markerNo).map((r, i) => `${i + 1}. ${esc(r)}`).join(" ")}</p>
-      <div class="gcmarker"><span class="gccut">&#9986; cut out</span><div class="mk">THE BLACK VEIL &nbsp;·&nbsp; MARKER No. ${v.markerNo}</div><div class="mc">${esc(v.markerCode)}</div><div class="ml">Hand it to the Butler at the bar to buy the vial. Honoured once, by its owner.</div></div>`
+      <p class="gcnote"><b>Nothing to cut out.</b> The vial is bought with words, not a card: after 8:45 p.m., say the House&rsquo;s words to the Butler.</p>`
       : "";
     // FRONT: who you are, what the whole town knows, your race and (for the five survivors) your secret
     pages.push(`<div class="page"><div class="sheet">${banner("Manchester, N.H. · All Hallows' Eve, 1926")}<div class="fit" data-max="1.12" data-min="0.7" style="--base:10.8pt">
@@ -119,13 +119,13 @@ function kitPages(): string[] {
   pages.push(`<div class="page"><div class="sheet">${banner("Host copy")}<div class="fit" style="--base:12pt">
     <div class="hostmark">HOST COPY: do not hand out</div>
     <div class="name" style="font-size:2em">The five who got away</div><div class="rule"></div>
-    <table><tr><th>Marker</th><th>Code</th><th>Guest card (cover name)</th><th>Real identity</th><th>The tell</th></tr>
-    ${survivorList.map((s) => `<tr><td><b>No. ${s.survivor!.markerNo}</b></td><td class="mono"><b>${esc(s.survivor!.markerCode)}</b></td><td><b>${esc(s.name)}</b></td><td>${esc(s.survivor!.veilName)}, ${esc(s.survivor!.veilTitle)}</td><td>${esc(s.survivor!.tell)}</td></tr>`).join("")}
+    <table><tr><th>No. on the List</th><th>Guest card (cover name)</th><th>Real identity</th><th>The tell</th></tr>
+    ${survivorList.map((s) => `<tr><td><b>No. ${s.survivor!.markerNo}</b></td><td><b>${esc(s.name)}</b></td><td>${esc(s.survivor!.veilName)}, ${esc(s.survivor!.veilTitle)}</td><td>${esc(s.survivor!.tell)}</td></tr>`).join("")}
     </table>
     <h2 style="margin-top:1.1em">How it works</h2>
     <ul>
-    <li>Each survivor gets <b>one sheet</b>: their guest card, which also holds their secret page and, at the bottom, their marker to cut out.</li>
-    <li>The marker is honoured once, at the bar, by its owner. Its code is in the table above; the Butler types it.</li>
+    <li>Each survivor gets <b>one sheet</b>: their guest card, which also holds their secret page. Nothing is cut out of it.</li>
+    <li>The vial is bought with words. Print the one slip that says <b>${esc(vialWords)}</b> (it is on page 1 of the slips) and hide it <b>under the cactus in the kitchen</b>. Whoever finds it keeps it. After 8:45 p.m. they say the words to the Butler, who types them on her House panel and picks the guest. One sale only, to a survivor.</li>
     <li>Print this page on its own and keep it. Do not leave it on the printer.</li>
     </ul>
   </div></div></div>`);

@@ -6,7 +6,7 @@
  */
 import { execFileSync } from "node:child_process";
 import { existsSync, writeFileSync } from "node:fs";
-import { characters, circles, exhibits, facts, props, questions, races, survivors, markers } from "@/data/game";
+import { characters, circles, exhibits, facts, props, questions, races, survivors, vialWords } from "@/data/game";
 import { buildCard, renderObjective } from "@/data/game";
 import { timeline } from "@/data/game/story";
 import { formatReport, runValidation } from "@/lib/game/validate";
@@ -26,7 +26,7 @@ const TYPE_MEANING: Record<TypeLabel, string> = {
   "LEARN A STORY": "Get one piece of a story from named guests and type the key word or name.",
   DEAL: "Do a small deal with a named guest; a printed slip proves it and you type its code.",
   "HOST TASK": "Do something for real in the room, tap Claim this point, then ask Bartend Joe for the word.",
-  VIAL: "A survivor offers a marker to the Butler, or the Butler sells the House's single vial.",
+  VIAL: "A survivor says the House's words to the Butler (after 8:45), or the Butler sells the House's single vial.",
 };
 function typeOf(objective: { id: string; kind: string; check: { kind: string } }): TypeLabel {
   switch (objective.check.kind) {
@@ -55,7 +55,7 @@ const ENTRUSTED = ["ENTRUSTED SECRET", "A line about another guest's small secre
     lines.push(`## ${circle.name}`, `*${circle.blurb}*`, "");
     lines.push("| Character | Real guest | Role | Starts with | Small secret (what others can learn) |", "|---|---|---|---|---|");
     for (const character of characters.filter((entry) => entry.circle === circle.id)) {
-      const role = character.survivor ? `**SURVIVOR** ${character.survivor.veilName}, ${character.survivor.veilTitle}, marker ${character.survivor.markerNo}` : character.role ? character.role : "";
+      const role = character.survivor ? `**SURVIVOR** ${character.survivor.veilName}, ${character.survivor.veilTitle}, No. ${character.survivor.markerNo} on the List` : character.role ? character.role : "";
       lines.push(`| **${character.name}**<br>${character.occupation} | ${character.realNames[0]} | ${role} | $${character.startingCash}${character.carries.length ? `; ${character.carries.join(", ")}` : ""} | ${character.smallSecret.text} (confidant: ${cname(character.smallSecret.confidant)}) |`);
     }
     lines.push("");
@@ -64,7 +64,7 @@ const ENTRUSTED = ["ENTRUSTED SECRET", "A line about another guest's small secre
   lines.push("| Cover | Real identity | Tell (do it 3 times) | Skill that leaks | Why they want him dead (their errand to learn) |", "|---|---|---|---|---|");
   for (const survivor of survivors) {
     const info = survivor.survivor!;
-    lines.push(`| ${survivor.name} | ${info.veilName}, ${info.veilTitle} (marker ${info.markerNo}) | ${info.tell} | ${info.skillLeak} | ${info.grievance} |`);
+    lines.push(`| ${survivor.name} | ${info.veilName}, ${info.veilTitle} (No. ${info.markerNo} on the List) | ${info.tell} | ${info.skillLeak} | ${info.grievance} |`);
   }
   lines.push("", "## Decoys (innocent people with a survivor's habit)", "");
   for (const character of characters.filter((entry) => entry.habit)) lines.push(`- **${character.name}**: ${character.habit}`);
@@ -124,8 +124,8 @@ const ENTRUSTED = ["ENTRUSTED SECRET", "A line about another guest's small secre
   lines.push("", "## Props (fill in `assigned` and the hints after the house scan)", "");
   lines.push("| Code | Prop | Could be | Where | Hint or carrier |", "|---|---|---|---|---|");
   for (const prop of props) lines.push(`| ${prop.code} | ${prop.name} | ${prop.generic} | ${prop.placement} | ${prop.placement === "carried" ? cname(prop.carriedBy!) : prop.hint} |`);
-  lines.push("", "## Markers (one per survivor)", "", "| Marker | Code | Belongs to |", "|---|---|---|");
-  for (const marker of markers) lines.push(`| ${marker.no} | ${marker.code} | ${survivors.find((s) => s.survivor!.markerNo === marker.no)!.name} |`);
+  lines.push("", "## The five survivors by number on the List", "", "| No. | Belongs to |", "|---|---|");
+  for (const s of [...survivors].sort((a, b) => a.survivor!.markerNo - b.survivor!.markerNo)) lines.push(`| ${s.survivor!.markerNo} | ${s.name} |`);
   out("04-clues-and-props.md", lines.join("\n"));
 }
 
@@ -136,7 +136,7 @@ const ENTRUSTED = ["ENTRUSTED SECRET", "A line about another guest's small secre
     lines.push(`### ${exhibit.title} — ${exhibit.where}${exhibit.heldBy ? `, in ${cname(exhibit.heldBy)}'s envelope` : ""}${exhibit.appears === "scene" ? " (lay out at 8:35)" : ""}`, "", "```", ...exhibit.body, "```", "");
   }
   lines.push("## Tags (small black stickers or folded paper, one per object)", "", ...props.map((prop) => `- ${prop.code}: ${prop.name}`), "");
-  lines.push("## Markers (five cards, black, gold No.)", "", ...markers.map((marker) => `- MARKER No. ${marker.no} — code ${marker.code} — “Honoured by the House”`), "");
+  lines.push("## The vial words (one slip, hidden)", "", `- One slip reading “${vialWords}”: hide it under the cactus in the kitchen. It goes in no envelope. Whoever finds it keeps it and says the words to the Butler after 8:45.`, "");
   lines.push("## Currency", "", `House bills: $100 each. Cash in the room at the start: $${characters.reduce((sum, character) => sum + character.startingCash, 0).toLocaleString("en-US")} (${characters.reduce((sum, character) => sum + character.startingCash, 0) / 100} bills, so the rest of your 400 stay with Bartend Joe for change and winnings).`, ...characters.map((character) => `- ${character.name}: ${character.startingCash / 100} bills ($${character.startingCash})`), "");
   lines.push("## Spare slips (optional)", "", "Print `slips.pdf` a second time if you want spares. Hand one to a guest whose named sources did not come.", "");
   for (const character of characters) {
@@ -147,7 +147,7 @@ const ENTRUSTED = ["ENTRUSTED SECRET", "A line about another guest's small secre
       lines.push(`- **${objective.id}** (${character.name}): ${answer ?? "see " + objective.id + " in 03-objectives.md"}`);
     }
   }
-  lines.push("", "## Each guest's envelope", "", ...characters.map((character) => `- ${character.name}: ${[`${character.startingCash / 100} bills ($${character.startingCash})`, ...character.carries.map((id) => props.find((p) => p.id === id)!.name), character.survivor ? `marker No. ${character.survivor.markerNo}` : ""].filter(Boolean).join(", ")}`));
+  lines.push("", "## Each guest's envelope", "", ...characters.map((character) => `- ${character.name}: ${[`${character.startingCash / 100} bills ($${character.startingCash})`, ...character.carries.map((id) => props.find((p) => p.id === id)!.name)].filter(Boolean).join(", ")}`));
   out("05-print-list.md", lines.join("\n"));
 }
 
@@ -170,7 +170,7 @@ out("07-validation-report.md", `# Validation report\n\n*Generated by \`npm run g
       case "money": return `Money: finish with at least $${check.min.toLocaleString("en-US")}`;
       case "approval": return `Host task: ${objective.title} (word: **${check.word}**)`;
       case "keep": return `Keep a secret: tell ${cname(check.seeker)}, hide it from ${cname(check.rival)} (sellable, $200)`;
-      case "vial-attempt": return "Offer a marker to the Butler (the vial)";
+      case "vial-attempt": return "Say the House's words to the Butler (the vial)";
       case "butler-sale": return "Sell the vial (the Butler)";
       case "pattern": return objective.kind === "learn" && objective.id.endsWith("-secret") ? `Learn ${partner}'s small secret` : `Learn: ${objective.title}`;
       case "code":
@@ -195,7 +195,7 @@ out("07-validation-report.md", `# Validation report\n\n*Generated by \`npm run g
   lines.push("| **8:00** | Every card, objective and group race opens by itself | Tend bar. (The **Start game** button on /admin only opens early.) |");
   lines.push("| Before 8:30 | Josh tells you the minute he thinks the scream will come | Write it on a card, seal it |");
   lines.push("| **8:30** | Silas's five-minute spotlight (and Anika's request) | Enjoy it, give Silas his word after |");
-  lines.push("| 8:35 to 9:00 | The Butler sells the vial once to the first marker | Watch the House panel |");
+  lines.push("| 8:45 to 9:00 | The Butler sells the vial once, to the first survivor who says the words from the cactus slip | Watch the House panel |");
   lines.push("| **9:00** | The House closes by itself; the nightcap is served | Note the buyer; stage the body at ~9:05 |");
   lines.push("| ~9:15 | The Butler finds him and screams; the Sheriff takes charge | Open Josh's envelope afterwards |");
   lines.push("| 9:15 to 10:15 | Investigation; the Sheriff arrests by 10:15 | Optional spare slips at the bar for guests whose source is absent |");
@@ -208,14 +208,14 @@ out("07-validation-report.md", `# Validation report\n\n*Generated by \`npm run g
   for (const circle of circles) {
     lines.push(`### ${circle.name}`, "");
     for (const character of characters.filter((entry) => entry.circle === circle.id)) {
-      const role = character.survivor ? `SURVIVOR: really ${character.survivor.veilName}, ${character.survivor.veilTitle}, marker ${character.survivor.markerNo}` : character.role ? character.role : character.occupation;
+      const role = character.survivor ? `SURVIVOR: really ${character.survivor.veilName}, ${character.survivor.veilTitle}, No. ${character.survivor.markerNo} on the List` : character.role ? character.role : character.occupation;
       lines.push(`**${character.name}** (${character.realNames[0]}), ${role}. Starts with ${bills(character.startingCash)}${character.carries.length ? `; carries ${character.carries.map((id) => props.find((item) => item.id === id)?.name ?? id).join(", ")}` : ""}.`, "");
       character.objectives.forEach((objective, index) => lines.push(`${index + 1}. **[${typeOf(objective)}]** ${label(character, objective)}`));
       lines.push("");
     }
   }
   lines.push("## 5. The group races", "", "| Group | Race | Slips (who carries them) |", "|---|---|---|");
-  for (const race of races) lines.push(`| ${circles.find((circle) => circle.id === race.circle)?.name} | ${race.title} | ${race.tokens.length ? `${race.tokens.length} slips, need ${race.need}: ${race.tokens.map((token) => cname(props.find((item) => item.id === token)?.carriedBy ?? "")).join(", ")}` : "the House's vial: the first marker the Butler accepts"} |`);
+  for (const race of races) lines.push(`| ${circles.find((circle) => circle.id === race.circle)?.name} | ${race.title} | ${race.tokens.length ? `${race.tokens.length} slips, need ${race.need}: ${race.tokens.map((token) => cname(props.find((item) => item.id === token)?.carriedBy ?? "")).join(", ")}` : "the House's vial: find the cactus slip, then say its words to the Butler after 8:45"} |`);
   lines.push("");
   lines.push("## 6. Objects", "", "**Hidden finds** (the tag stays on the object; nobody moves anything):", "", "| Tag code | Game name | Real object | Who must find it |", "|---|---|---|---|");
   for (const prop of props.filter((item) => item.placement === "hidden")) {
@@ -230,11 +230,11 @@ out("07-validation-report.md", `# Validation report\n\n*Generated by \`npm run g
   lines.push("");
   lines.push("## 8. Money, in one place", "", `- Cash in the room: $${characters.reduce((sum, character) => sum + character.startingCash, 0).toLocaleString("en-US")} (${characters.reduce((sum, character) => sum + character.startingCash, 0) / 100} bills). Keep the rest of your 400 in the House Tin at the bar for change.`, "- A clue tagged **Costs $100 at the bar**: the guest drops a bill in the House Tin, then the holder tells them. Honour system.", "- A kept secret can be sold for $200. A sale to the keeper's rival costs the keeper half a point; a sale to the seeker costs nothing.", "- At the end everyone types the bills they hold. You do not count; at grading you ask to see the bills of the people the packet lists.", "");
   lines.push("## 9. Grading, about fifteen minutes", "", "1. `npm run game:grade -- grade`", "2. `npm run game:grade -- packet`, then judge it and write `verdicts.json`.", "3. `npm run game:grade -- verdicts verdicts.json`", "4. `npm run game:grade -- standings`. If it says TIED FOR FIRST, ask the secret tie-breaker aloud (the second rail stub in the jacket lining).", "5. Check the bills of the guests the packet lists under money claims and wallet bonus.", "6. `npm run game:grade -- publish`, then read out the winner.", "");
-  lines.push("## 10. If something goes wrong", "", "| Problem | What to do |", "|---|---|", "| The Butler is absent | `npm run game:grade -- assign-vial <slug>` for the first survivor who asks at the bar. The Butler's own errands are stranded. |", "| Nobody buys the vial by 9:00 | `npm run game:grade -- assign-vial <slug>`. |", "| A survivor is absent | Their marker is never offered. |", "| Any other guest is absent | Their swap or deal partner cannot finish that one objective (one point). If you printed a second set of slips, hand the partner a spare at the bar. A guest with no submissions and no House events counts as absent. |", "| A phone does not work | They write answers on paper; type them in with **Sign in as** on /admin, or tell them to sign in with /resume. |", "| You pressed Start too early | `npm run game:grade -- stop` seals everything again. |", "| Before the night, once | Run the database migration (`drizzle-kit migrate`): half points will not save without it. |", "");
+  lines.push("## 10. If something goes wrong", "", "| Problem | What to do |", "|---|---|", "| The Butler is absent | `npm run game:grade -- assign-vial <slug>` for the first survivor who asks at the bar. The Butler's own errands are stranded. |", "| Nobody buys the vial by 9:00 | `npm run game:grade -- assign-vial <slug>`. |", "| A survivor is absent | They never reach the Butler. |", "| Any other guest is absent | Their swap or deal partner cannot finish that one objective (one point). If you printed a second set of slips, hand the partner a spare at the bar. A guest with no submissions and no House events counts as absent. |", "| A phone does not work | They write answers on paper; type them in with **Sign in as** on /admin, or tell them to sign in with /resume. |", "| You pressed Start too early | `npm run game:grade -- stop` seals everything again. |", "| Before the night, once | Run the database migration (`drizzle-kit migrate`): half points will not save without it. |", "");
   lines.push("## 11. Your checklist", "");
   for (const item of [
     "Printed the two print files: guest cards (double-sided, 24 sheets) and everything else (single-sided, 36 pages)",
-    "Every black envelope has the guest card, starting bills, carried item and slips (survivors' sheets include their secret page and marker; checked twice)",
+    "Every black envelope has the guest card, starting bills, carried item and slips (survivors' sheets include their secret page; nothing is cut out)",
     "Every tag code on the right object (section 6) and in shared rooms only",
     "Race slips in the right hands (section 5)",
     "The House Tin, the House Book and the one vial are at the bar (decoy bottles are optional set dressing)",
@@ -269,19 +269,19 @@ out("07-validation-report.md", `# Validation report\n\n*Generated by \`npm run g
 
   lines.push("## Part 1. How the night goes", "");
   lines.push("| When | What happens | What you do |", "|---|---|---|");
-  lines.push("| Before 8:00 | Guests arrive and get a black envelope: card, carried items, slips, starting bills (survivors' cards also hold their secret page and marker). Phones show nothing yet. | Hand out envelopes. |");
+  lines.push("| Before 8:00 | Guests arrive and get a black envelope: card, carried items, slips, starting bills (survivors' cards also hold their secret page). Phones show nothing yet. | Hand out envelopes. |");
   lines.push("| **8:00** | **The game opens by itself.** Phones show five tabs: *Public*, *Background*, *Private* (secrets, clues, five objectives, race), *Answers* (nine questions, survivors picker, bills box) and *Results* (locked). | Tend bar. |");
   lines.push("| 8:00 to 8:30 | Mingle. Guests work objectives: find tagged objects, swap items, earn secrets, collect race slips, earn money. They learn the mystery by trading clue lines. | Give approval words as you see tasks done. |");
   lines.push("| Before 8:30 | Josh tells you the minute he thinks the scream will come. | Write it down, seal it. |");
   lines.push("| **8:30** | Silas's five-minute spotlight (plus Anika's request). | Give Silas his word after. |");
-  lines.push("| 8:35 to 9:00 | The Butler sells the House's one vial to the first survivor marker. That buyer is the killer and wins the survivors' race. | Watch. |");
+  lines.push("| 8:45 to 9:00 | The Butler sells the House's one vial to the first survivor who says the House's words (found on the slip under the kitchen cactus). That buyer is the killer and wins the survivors' race. | Watch. |");
   lines.push("| **9:00** | The House closes; the nightcap is served. | Note the buyer; stage the body about 9:05. |");
   lines.push("| ~9:15 | Rebecca screams. The Sheriff takes charge; the Doctor examines. Investigation until 10:15. | Open Josh's envelope. |");
   lines.push("| **10:00** | Wrap-up: Cassie's letter; Eric signs the charter; Leon reads a bulletin; the Sheriff names an arrest by 10:15. | Gather everyone. |");
   lines.push("| **10:30** | **The book closes by itself.** Nine questions answered (Butler and killer answer two replacement ones), up to four survivors named, bills typed. | Start grading. |");
   lines.push("| After | You grade (about 15 minutes) and publish. Each guest sees their score and where each point came from. | Read out the winner. |", "");
   lines.push("### How the points add up", "", "| Source | Points |", "|---|---|", "| Five objectives | 5 |", "| Name up to four survivors (+1 right, -0.5 wrong) | 4 |", "| Nine mystery questions | 10 |", "| RACE: first in your task to finish (once only) | 1 |", "| Wallet bonus: best off against where you started (not the Butler) | 1 |", "| **Maximum** | **21** |", "");
-  lines.push("### How it feels for each kind of guest", "", "| Kind | What their night is |", "|---|---|", "| The five survivors | They know who they really are (Cassie invited them) and do not know each other. Their goal is the vial: first marker the Butler accepts is the killer. Their objectives include learning why they are on the Veil's List. |", "| The Butler (Rebecca) | Runs the bar, sells the vial, screams at 9:15. |", "| Sheriff, Doctor, Judge, lawyer and the rest | Ordinary guests with a real job in the room: arrest, examine, advise. Five errands like everyone else. |", "| Everyone | Five errands, one race, secrets to trade, and a mystery to piece together from scraps. |", "");
+  lines.push("### How it feels for each kind of guest", "", "| Kind | What their night is |", "|---|---|", "| The five survivors | They know who they really are (Cassie invited them) and do not know each other. Their goal is the vial: the first survivor to find the cactus slip and say its words to the Butler after 8:45 is the killer. Their objectives include learning why they are on the Veil's List. |", "| The Butler (Rebecca) | Runs the bar, sells the vial, screams at 9:15. |", "| Sheriff, Doctor, Judge, lawyer and the rest | Ordinary guests with a real job in the room: arrest, examine, advise. Five errands like everyone else. |", "| Everyone | Five errands, one race, secrets to trade, and a mystery to piece together from scraps. |", "");
 
   lines.push("## Part 2. Every objective, sorted by type", "", "Read one type at a time to see what the game asks of people.", "");
   for (const type of TYPE_ORDER) {
@@ -346,7 +346,7 @@ out("07-validation-report.md", `# Validation report\n\n*Generated by \`npm run g
       const shownTitle = card.private.objectives[index].title;
       const partners = [...objective.with, ...(objective.alsoFrom ?? [])].map(first);
       const type = typeOf(objective);
-      const doThis = type === "MONEY" ? `earn money: finish with at least $${(objective.check as { min: number }).min.toLocaleString("en-US")}` : type === "KEEP A SECRET" ? "keep your small secret (nothing to type; you may sell it for $200)" : type === "HOST TASK" ? `do the task, tap Claim, then ask Bartend Joe for your word (${when[objective.id] ?? "any time"})` : objective.check.kind === "vial-attempt" ? "hand a marker to the Butler" : objective.check.kind === "butler-sale" ? "sell the vial to the first marker" : type === "FIND" ? `find ${card.private.objectives[index].prop?.name ?? "the object"}: read the tag and type its code` : type === "SWAP" ? `swap with ${partners[0]} and type the code on what you receive` : `${shownTitle}${partners.length ? `: ask ${partners.join(" or ")}` : ""}`;
+      const doThis = type === "MONEY" ? `earn money: finish with at least $${(objective.check as { min: number }).min.toLocaleString("en-US")}` : type === "KEEP A SECRET" ? "keep your small secret (nothing to type; you may sell it for $200)" : type === "HOST TASK" ? `do the task, tap Claim, then ask Bartend Joe for your word (${when[objective.id] ?? "any time"})` : objective.check.kind === "vial-attempt" ? "say the House's words to the Butler after 8:45" : objective.check.kind === "butler-sale" ? "sell the vial to the first survivor who says the words" : type === "FIND" ? `find ${card.private.objectives[index].prop?.name ?? "the object"}: read the tag and type its code` : type === "SWAP" ? `swap with ${partners[0]} and type the code on what you receive` : `${shownTitle}${partners.length ? `: ask ${partners.join(" or ")}` : ""}`;
       lines.push(`${step}. **[${type}]** ${doThis}.`);
       step += 1;
     }
@@ -407,7 +407,7 @@ out("07-validation-report.md", `# Validation report\n\n*Generated by \`npm run g
 
   lines.push("## 1. Print these", "", "**Easiest:** print the two combined files. `PRINT-1-GUEST-CARDS-print-DOUBLE-SIDED.pdf` (24 sheets, front and back, flip on the long edge) and `PRINT-2-EVERYTHING-ELSE-print-SINGLE-SIDED.pdf` (36 pages, with a contents page). Rebuild them with `python3 scripts/print/combine.py` after `npm run game:print`. The table below is for printing files one at a time. Not needed: `tag-key.pdf` and `exhibits-index.pdf` are only extra references.", "", "Letter paper. Turn on \"background graphics\" when printing so the black tags and cards come out.", "", "| File | Pages | How | Then |", "|---|---|---|---|");
   const printRows: [string, string, string][] = [
-    ["guest-cards.pdf", "DOUBLE-SIDED, flip on the long edge. Plain or cream paper.", "Front and back per guest, alphabetical (front: who you are, the town's story, your race; back: objectives and clues). Goes in that guest's envelope. Survivors' sheets have their secret page and a marker to cut out at the bottom."],
+    ["guest-cards.pdf", "DOUBLE-SIDED, flip on the long edge. Plain or cream paper.", "Front and back per guest, alphabetical (front: who you are, the town's story, your race; back: objectives and clues). Goes in that guest's envelope. Survivors' sheets also have their secret page. Nothing is cut out of any card."],
     ["slips.pdf", "Single-sided, cream or white.", "Cut on the dashed lines. The line above each slip says whose envelope it goes in."],
     ["tags.pdf", "Single-sided. Matte paper; a laser printer is best.", "Cut on the dashed grid. The small line under each tag says where it goes; trim that line off after you match it."],
     ["exhibits.pdf", "Single-sided. Cream paper. Landscape pages.", "Cut each page along its edges. The foot of every page says where it goes (binder, black table, scene, or a guest's sealed envelope). The last page is the secret tie-breaker stub."],
@@ -416,7 +416,7 @@ out("07-validation-report.md", `# Validation report\n\n*Generated by \`npm run g
     ["door-cards.pdf", "Single-sided.", "Page 1 (the brief) and page 2 (the rules): one of each, at the door."],
     ["cocktail-menu.pdf", "Single-sided, cream paper.", "Two menus per sheet: cut across the dashed line. Put them on the bar."],
     ["food-menu.pdf", "Single-sided, cream paper.", "Two menus per sheet: cut across the dashed line. Put them by the food."],
-    ["survivor-kit.pdf", "Single-sided. HOST ONLY: contains the solution.", "One page for you: the five markers and who holds them. Each survivor's secret page and marker are on their own guest card."],
+    ["survivor-kit.pdf", "Single-sided. HOST ONLY: contains the solution.", "One page for you: the five survivors, their numbers on the List, and how the vial is bought. Each survivor's secret page is on their own guest card."],
     ["host-sheet.pdf", "Single-sided. HOST ONLY.", "Keep behind the bar. It has every approval word."],
   ];
   for (const [file, how, then] of printRows) lines.push(`| \`${file}\` | ${pagesOf(file)} | ${how} | ${then} |`);
@@ -431,7 +431,7 @@ out("07-validation-report.md", `# Validation report\n\n*Generated by \`npm run g
     const papers = carried.filter((item) => !real.includes(item));
     const held = exhibits.filter((entry) => entry.where === "held" && (entry as { heldBy?: string }).heldBy === character.id);
     const extra: string[] = [];
-    if (character.survivor) extra.push(`their secret page and marker No. ${character.survivor.markerNo} are on the guest card (cut the marker out)`);
+    if (character.survivor) extra.push(`their secret page is on the guest card (nothing to cut out)`);
     if (character.id === "josh") extra.push("(fortune cards are collected at the bar, not in the envelope)");
     if (character.id === "rebecca") extra.push("At the bar, not the envelope: the House Tin");
     lines.push(`| **${character.name}** | ${character.startingCash / 100} ($${character.startingCash.toLocaleString("en-US")}) | ${real.length ? real.map((item) => `${item.name} (${item.generic}), tag ${item.code}`).join("; ") : "none"} | ${papers.length ? papers.map((item) => `${item.name} (${item.code})`).join("; ") : "none"} | ${held.length ? held.map((entry) => entry.title).join("; ") : "none"} | ${extra.join("; ")} |`);
@@ -449,17 +449,17 @@ out("07-validation-report.md", `# Validation report\n\n*Generated by \`npm run g
   lines.push("- The glass on a coaster, with its tag taped underneath", "- Dice and cards", "");
   lines.push("### 3d. The scene (laid out at about 9:05, near the chair section)", "");
   for (const entry of exhibits.filter((item) => item.where === "scene")) lines.push(`- ${entry.title}`);
-  lines.push("- The jacket (on a chair or the dummy), the tipped glass, and the buyer's marker from the House Tin placed under it", "- **Second rail stub: put it in the LINING of the jacket now.** It is the tie-breaker and is on the last page of exhibits.pdf. Do not lay it out.", "");
+  lines.push("- The jacket (on a chair or the dummy), the tipped glass, and the torn scrap with the House's words placed under it", "- **Second rail stub: put it in the LINING of the jacket now.** It is the tie-breaker and is on the last page of exhibits.pdf. Do not lay it out.", "");
   lines.push("### 3e. At the bar", "", "- The **House Tin** (a small round tin) and the **House Book**; Rebecca runs them", "- The **vial** (a small bottle of water with the House Stock label)", "- The **cocktail menu**, the **food menu** and the **fortune cards** (for Josh)", "- Your **400 $100 bills**: starting bills go in envelopes; keep the rest in the House Tin", "- **host-sheet.pdf** (approval words), out of sight", "");
   lines.push("### 3f. At the door", "", "- The brief poster and the rules poster (door-cards pages 1 and 2)", "");
 
   lines.push("## 4. At home, in this order", "", "| # | Do this | About |", "|---|---|---|");
   const steps: [string, string][] = [
     ["Print the two PRINT files (24 double-sided sheets plus 36 single-sided pages). Tags use the most ink.", "15 min"],
-    ["Cut the slips, tags, the five markers and the exhibit pages. Read the line above each slip or under each tag.", "30 min"],
+    ["Cut the slips, tags and the exhibit pages. One slip (THE BUTLER KNOWS WHO DID IT) is not for an envelope: hide it under the cactus in the kitchen. Read the line above each slip or under each tag.", "30 min"],
     ["Walk the house and tape each tag from section 3a. Use the check list in `09-house-check.md`.", "15 min"],
     ["Prepare the carried items: tape each tag on its item (section 2) and keep them in piles by guest.", "10 min"],
-    ["Stuff the 24 envelopes from the table in section 2: guest card, bills, item, slips, sealed pages. The five survivors' sheets also hold their secret page and a marker to cut out: check those five twice.", "30 min"],
+    ["Stuff the 24 envelopes from the table in section 2: guest card, bills, item, slips, sealed pages. The five survivors' sheets hold their secret page: check those five twice.", "30 min"],
     ["Lay out the black table, then the bar (sections 3b, 3c, 3e). Put the scene pieces and the jacket aside for 9:05.", "15 min"],
     ["Put the second rail stub in the jacket lining. Put the door posters at the door.", "5 min"],
     ["Phone check: open `/game` on a phone and `/admin` on your laptop. Run the database migration once (`drizzle-kit migrate`).", "5 min"],

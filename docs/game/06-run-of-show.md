@@ -7,7 +7,7 @@
 | When | What |
 |---|---|
 | Today | Print the two files `docs/print/game/PRINT-1-GUEST-CARDS-print-DOUBLE-SIDED.pdf` (24 sheets) and `PRINT-2-EVERYTHING-ELSE-print-SINGLE-SIDED.pdf` (36 pages); see `10-setup-guide.md`. It includes the host sheet, your one page with every approval word: keep it behind the bar. Cut and sort. Tag every hidden object and carried item (each tag says what it goes on). Empty the essential-oil bottles and fill them with water, then stick on the vial labels. |
-| Today | Fill each guest's black envelope: their one-page guest card, any carried item and slips (the table in `10-setup-guide.md` lists each guest), and their starting bills. Keep the rest of your 400 in the House Tin at the bar: it is where clue money is dropped, and your change. The five survivors' sheets also hold their secret page and a marker to cut out. **Check the survivors' envelopes twice.** |
+| Today | Fill each guest's black envelope: their one-page guest card, any carried item and slips (the table in `10-setup-guide.md` lists each guest), and their starting bills. Keep the rest of your 400 in the House Tin at the bar: it is where clue money is dropped, and your change. The five survivors' sheets also hold their secret page; nothing is cut out of them. **Before guests arrive, hide the one slip that reads THE BUTLER KNOWS WHO DID IT under the cactus in the kitchen.** **Check the survivors' envelopes twice.** |
 | Tomorrow afternoon | Tape the code tags on the 18 hidden objects where they already are (see `09-house-check.md` and `10-setup-guide.md`), in shared rooms only (never bedrooms, bathrooms, closets or drawers). |
 | Tomorrow afternoon | Lay out the **Keeper's table** (the black table): the binder (the List, the hitmen's receipts, the 1923 books, the vault memorandum, the forged orders, the rent counterfoils, the 1 Nov 1924 Farrago clipping), the nightcap chart, the **Roll of the Veil**, a glass on a coaster with code **8YUR2** taped underneath, dice and cards. Put the **scene card** (AYTHC) in your pocket. |
 | Tomorrow afternoon | At the bar: the **House Tin** (small round tin) and the House Book, the menu, and the one real vial (a small bottle of water, real label). Decoy bottles beside it are optional dressing: nothing in the game depends on them. Give Rebecca the House Book and the tin. |
@@ -21,9 +21,9 @@
 | 8:00 | Doors. The brief card and the rules card are at the door. Hand each guest their black envelope. At 8:00 every guest's public card, private card, objectives and group race open by themselves on their phone (the **Start game** button on /admin only opens it early). Cocktails. Objectives begin. | tend bar |
 | Before 8:30 | **Josh** tells you the minute he thinks the scream will come. Write it on a card, seal it in an envelope and keep it. | seal it |
 | **8:30** | **Silas's five-minute spotlight** (and Anika's request, which he plays for her). | enjoy it |
-| About 8:35 to 9:00 | The Butler sells the vial once, to the first marker. If the Butler is absent, use *Sell as the Butler* in /admin. | watch the House panel |
+| About 8:45 to 9:00 | The Butler sells the vial once, to the first survivor who says the words from the cactus slip (the panel refuses before 8:45). If the Butler is absent, use *Sell as the Butler* in /admin. | watch the House panel |
 | **~9:00** | The House closes: the nightcap is served. Note the buyer in /admin (House panel). | 10 seconds |
-| **~9:05** | Stage the scene in the chair section: the dummy in the jacket, the glass tipped, the empty vial, **the buyer's marker from the House Tin placed under it**, then lay out the scene pages (watch, vial, rail stub, jacket note). Tape. Your scene card goes on the black table. | ~3 minutes |
+| **~9:05** | Stage the scene in the chair section: the dummy in the jacket, the glass tipped, the empty vial, **the torn scrap with the House's words placed under it**, then lay out the scene pages (watch, vial, rail stub, jacket note). Tape. Your scene card goes on the black table. | ~3 minutes |
 | **~9:15** | The Butler finds him and screams. The Sheriff takes charge; the Doctor examines. Open Josh's envelope afterward. | nothing |
 | 9:15 to ~10:15 | Investigation. No town hall, no deliberation. The Sheriff names an arrest by 10:15. | tend bar |
 | 9:15 | A guest whose source is absent can ask you at the bar: hand over a spare slip if you printed a second set. | spare slips (optional) |
@@ -64,9 +64,9 @@ The staff page has one button, so these use the command line (`npm run game:grad
 
 | Problem | What to do |
 |---|---|
-| The Butler is absent | Ask the survivor who comes to the bar for their marker, then run `npm run game:grade -- assign-vial <slug>` for the first one. The Butler's own sale and scream objectives are stranded: skip them. |
+| The Butler is absent | Ask the survivor who comes to the bar for the House's words, then run `npm run game:grade -- assign-vial <slug>` for the first one. The Butler's own sale and scream objectives are stranded: skip them. |
 | Nobody buys the vial by 9:00 | `npm run game:grade -- assign-vial <slug>`. The game needs a killer to publish. |
-| A survivor is absent | Their marker is simply never offered. |
+| A survivor is absent | They simply never reach the Butler. |
 | **Tim is absent** | Nothing breaks, but **Arjun's** swap cannot finish (one point). If you like, you stand in for Tim: hold a spare little jar and let Arjun trade his ball with you. Tim's clue lines are each held by three others. |
 | Any other guest is absent | A guest whose swap or deal partner did not come cannot finish that one objective (one point); a spare slip, if you printed a second set, lets them finish a deal. Objectives that name an absent guest as a source also name a second source. A kept secret whose chosen seeker did not come is scored in the keeper's favour. A race slip held by an absent guest: the race still works, because five slips exist and three are needed. |
 | A guest forgot to RSVP or has no character | They appear in the cast list on /admin with "No character matched". Hand-cast them from the database, or have them watch the first hour. |

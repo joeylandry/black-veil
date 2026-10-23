@@ -5,18 +5,31 @@ import type { Card, DirectoryEntry, Errand, FinalQuestion, Line, Results, SavedA
 import { SubmitBox } from "./submit-box";
 
 const shareLabel: Record<Line["share"], string> = { free: "Say it freely", trade: "Trade it", paid: "Costs $100 at the bar", secret: "Keep it close" };
+const shareHelp: Record<Line["share"] | "entrusted", string> = {
+  free: "Anyone may be told.",
+  trade: "Tell it only if they tell you a clue in return.",
+  paid: "Tell it only after they drop a $100 bill in the House Tin at the bar.",
+  secret: "Do not tell unless you choose to.",
+  entrusted: "Another guest's small secret that you hold for them.",
+};
 
 export function Lines({ lines }: { lines: Line[] }) {
   if (!lines.length) return null;
+  const entrusted = lines.filter((line) => /^About /.test(line.text));
+  const groups = (["free", "trade", "paid", "secret"] as const)
+    .map((share) => ({ key: share, chip: share, label: shareLabel[share], help: shareHelp[share], lines: lines.filter((line) => line.share === share && !/^About /.test(line.text)) }))
+    .concat([{ key: "entrusted" as never, chip: "secret", label: "Entrusted secret", help: shareHelp.entrusted, lines: entrusted }]);
   return (
-    <ul className="game-lines">
-      {lines.map((line) => (
-        <li key={line.text}>
-          <span className={`game-chip game-chip-${line.share}`}>{shareLabel[line.share]}</span>
-          {line.text}
-        </li>
+    <div className="game-clues">
+      {groups.filter((group) => group.lines.length).map((group) => (
+        <div className="game-clue-group" key={group.key}>
+          <p className="game-clue-head"><span className={`game-chip game-chip-${group.chip}`}>{group.label}</span> <small>{group.help}</small></p>
+          <ul className="game-lines">
+            {group.lines.map((line) => <li key={line.text}>{line.text}</li>)}
+          </ul>
+        </div>
       ))}
-    </ul>
+    </div>
   );
 }
 
@@ -37,16 +50,16 @@ function ClaimBox({ errand, saved, open, onSaved }: { errand: Errand; saved?: Sa
 function ErrandCard({ errand, index, saved, open, onSaved }: { errand: Errand; index: number; saved?: SavedAnswer; open: boolean; onSaved: (entry: SavedAnswer) => void }) {
   const decidedElsewhere = errand.house;
   return (
-    <li className="game-errand">
+    <li className={`game-errand${saved ? " done" : ""}`} id={`errand-${errand.id}`}>
       <header>
-        <span className="game-errand-no">{index + 1}</span>
+        <span className="game-errand-no">{saved ? "\u2713" : index + 1}</span>
         <div>
           <h4>{errand.title}</h4>
-          <small>{errand.points} point · {errandLabel(errand.kind)}</small>
+          <small><span className="game-pill">{errandLabel(errand.kind)}</span> {errand.points} point{saved ? " · answer saved" : ""}</small>
         </div>
       </header>
       <p>{errand.text}</p>
-      {errand.withNames.length > 0 && <p className="game-with">Seek out: {errand.withNames.join(" · ")}</p>}
+      {errand.withNames.length > 0 && <p className="game-with"><span>Seek out</span> {errand.withNames.join(" · ")}</p>}
       {errand.automatic ? (
         <p className="game-note">Nothing to type. This one is scored for you from what the others learn.</p>
       ) : errand.approval ? (
@@ -69,17 +82,18 @@ function ErrandCard({ errand, index, saved, open, onSaved }: { errand: Errand; i
 const errandLabel = (kind: string) =>
   ({ find: "a thing to find", learn: "a secret to learn", swap: "a trade to make", money: "money to make", story: "a clue to chase", chain: "the House", motive: "your own story", role: "your office", keep: "a secret to spend", approval: "Bartend Joe will confirm" })[kind] ?? kind;
 
-/** A small box that sends one code to a House endpoint and shows the reply, whatever it is. */
-function CodeBox({ endpoint, label, button, placeholder }: { endpoint: string; label: string; button: string; placeholder: string }) {
+/** A small box that sends one code (and, optionally, a chosen guest) to a House endpoint and shows the reply, whatever it is. */
+function CodeBox({ endpoint, label, button, placeholder, guests }: { endpoint: string; label: string; button: string; placeholder: string; guests?: DirectoryEntry[] }) {
   const [code, setCode] = useState("");
+  const [buyer, setBuyer] = useState("");
   const [reply, setReply] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
 
   async function send(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (!code.trim()) return;
+    if (!code.trim() || (guests && !buyer)) return;
     setBusy(true);
-    const response = await fetch(endpoint, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ code }) }).catch(() => null);
+    const response = await fetch(endpoint, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ code, buyer }) }).catch(() => null);
     const body = await response?.json().catch(() => null);
     setReply(body?.message ?? body?.error ?? "That did not go through.");
     setCode("");
@@ -90,15 +104,24 @@ function CodeBox({ endpoint, label, button, placeholder }: { endpoint: string; l
     <form className="game-codebox" onSubmit={send}>
       <label>
         <span>{label}</span>
-        <input value={code} onChange={(event) => setCode(event.target.value)} placeholder={placeholder} autoComplete="off" autoCapitalize="characters" maxLength={12} />
+        <input value={code} onChange={(event) => setCode(event.target.value)} placeholder={placeholder} autoComplete="off" autoCapitalize="characters" maxLength={60} />
       </label>
-      <button type="submit" disabled={busy || !code.trim()}>{button}</button>
+      {guests && (
+        <label>
+          <span>Who said it?</span>
+          <select value={buyer} onChange={(event) => setBuyer(event.target.value)}>
+            <option value="">Choose a guest…</option>
+            {guests.map((entry) => <option key={entry.id} value={entry.id}>{entry.name}</option>)}
+          </select>
+        </label>
+      )}
+      <button type="submit" disabled={busy || !code.trim() || (Boolean(guests) && !buyer)}>{button}</button>
       {reply && <p className="game-reply" role="status">{reply}</p>}
     </form>
   );
 }
 
-export function PrivateTab({ card, secretsReleased, open, saved, onSaved }: { card: Card; secretsReleased: boolean; open: boolean; saved: Map<string, SavedAnswer>; onSaved: (entry: SavedAnswer) => void }) {
+export function PrivateTab({ card, secretsReleased, open, saved, onSaved, directory }: { directory?: DirectoryEntry[] | null; card: Card; secretsReleased: boolean; open: boolean; saved: Map<string, SavedAnswer>; onSaved: (entry: SavedAnswer) => void }) {
   if (!secretsReleased) {
     return (
       <section className="game-panel game-locked">
@@ -110,12 +133,28 @@ export function PrivateTab({ card, secretsReleased, open, saved, onSaved }: { ca
   }
   const p = card.private;
   const isButler = p.role?.title === "The Butler";
+  const racePending = !p.race.house && !p.race.closed && !saved.has("objective|race");
+  const doneCount = p.objectives.filter((errand) => saved.has(`objective|${errand.id}`)).length;
   return (
     <>
+      <section className="game-panel game-glance">
+        <p className="eyebrow">Your night at a glance</p>
+        <p className="game-glance-count"><strong>{doneCount}</strong> of {p.objectives.length} objectives answered</p>
+        <ol className="game-glance-list">
+          {p.objectives.map((errand, index) => (
+            <li key={errand.id} className={saved.has(`objective|${errand.id}`) ? "done" : undefined}>
+              <a href={`#errand-${errand.id}`}><span>{saved.has(`objective|${errand.id}`) ? "\u2713" : index + 1}</span>{errand.title}</a>
+            </li>
+          ))}
+        </ol>
+        <p className="game-glance-more">
+          {racePending ? "Plus the race point below. " : ""}Then open <strong>Answers</strong> for the three mysteries, the survivors and your bills.
+        </p>
+      </section>
       {p.survivor && (
         <section className="game-panel game-survivor">
           <p className="eyebrow">You are one of the five</p>
-          <h3>{p.survivor.veilName}, <em>{p.survivor.veilTitle}</em> · marker No. {p.survivor.markerNo}</h3>
+          <h3>{p.survivor.veilName}, <em>{p.survivor.veilTitle}</em> · No. {p.survivor.markerNo} on the List</h3>
           <p>{p.survivor.realStory}</p>
           <p>{p.survivor.escape}</p>
           <p className="game-tell"><strong>Your tell.</strong> {p.survivor.tell}</p>
@@ -135,7 +174,7 @@ export function PrivateTab({ card, secretsReleased, open, saved, onSaved }: { ca
           <p className="eyebrow">Your office</p>
           <h3>{p.role.title}</h3>
           <ul>{p.role.rules.map((rule) => <li key={rule}>{rule}</li>)}</ul>
-          {isButler && <CodeBox endpoint="/api/game/butler" label="The House panel: the code printed on a marker" button="Offer" placeholder="Marker code" />}
+          {isButler && <CodeBox endpoint="/api/game/butler" label="The House panel: the words the guest said to you" button="Offer" placeholder="The words" guests={directory ?? []} />}
         </section>
       )}
       <section className="game-panel">
@@ -146,8 +185,9 @@ export function PrivateTab({ card, secretsReleased, open, saved, onSaved }: { ca
           ))}
         </ol>
       </section>
-      <section className="game-panel">
+      <section className="game-panel game-race">
         <p className="eyebrow">Act fast or lose this point</p>
+        <h3>{p.race.title}</h3>
         <p><strong>The first to complete this task gets the point.</strong> {p.race.text}</p>
         {!p.race.house && p.race.closed && <p className="game-note"><strong>{p.race.wonByYou ? "You finished first. This point is yours." : "Closed. Someone else already won this point."}</strong></p>}
         {!p.race.house && (!p.race.closed || p.race.wonByYou) && <SubmitBox kind="objective" itemId="race" label={p.race.ask} initial={saved.get("objective|race")} disabled={!open} onSaved={onSaved} />}
@@ -155,14 +195,20 @@ export function PrivateTab({ card, secretsReleased, open, saved, onSaved }: { ca
       </section>
       <section className="game-panel">
         <p className="eyebrow">In your pockets</p>
-        <p>You start the night with ${p.startingCash.toLocaleString("en-US")} in House bills ({p.startingCash / 100} bills of $100). A clue tagged &ldquo;Costs $100 at the bar&rdquo; is told only after you drop a bill in the House Tin; a secret of yours can be sold to a guest for $200.{p.carries.length > 0 && <> You also carry: {p.carries.join(", ")}. Keep these on you (in a pocket or your hand) all night so others can trade with you.</>}</p>
+        <p className="game-cash"><strong>${p.startingCash.toLocaleString("en-US")}</strong> <span>{p.startingCash / 100} House bills of $100</span></p>
+        <p>A clue marked &ldquo;Costs $100&rdquo; is told only after you drop a bill in the House Tin. One of your secrets may be sold to a guest for $200.</p>
+        {p.carries.length > 0 && (
+          <>
+            <h4>You carry</h4>
+            <ul className="game-carry">{p.carries.map((item) => <li key={item}>{item}</li>)}</ul>
+            <p className="game-note">Keep {p.carries.length > 1 ? "these" : "this"} on you (in a pocket or your hand) all night so others can trade with you.</p>
+          </>
+        )}
         {p.habit && <p className="game-tell"><strong>A habit of yours.</strong> {p.habit}</p>}
       </section>
       <section className="game-panel">
         <p className="eyebrow">What you know, and what you are hiding</p>
-        <Lines lines={p.secrets} />
-        <Lines lines={p.knows} />
-        <p className="game-note">Some of this is yours to trade or tell; some is not. The tag on each line says which.</p>
+        <Lines lines={[...p.secrets, ...p.knows]} />
       </section>
     </>
   );
@@ -207,6 +253,7 @@ export function AnswersTab({
       <section className="game-panel">
         <p className="eyebrow">The book stays open until the night ends</p>
         <h3>Answer as you learn. Only your last answer to each question counts.</h3>
+        <p className="game-answered"><strong>{questions.filter((question) => saved.has(`mystery|${question.id}`)).length}</strong> of {questions.length} mystery questions answered</p>
         <p>Nothing on this page tells you whether you are right. The three mysteries are worth double every objective put together, so finishing your objectives and never working out the story cannot win the night.</p>
       </section>
 
@@ -217,7 +264,7 @@ export function AnswersTab({
             .filter((question) => question.mystery === group.id)
             .map((question) => (
               <div className="game-question" key={question.id}>
-                <h4>{question.prompt} <small>{question.points} points</small></h4>
+                <h4>{question.prompt} <small className="game-points">{question.points} points</small></h4>
                 {question.type === "guest" ? (
                   <GuestPicker question={question} directory={directory} me={me} initial={saved.get(`mystery|${question.id}`)} open={open} onSaved={onSaved} />
                 ) : (
@@ -235,7 +282,13 @@ export function AnswersTab({
 
       <section className="game-panel">
         <p className="eyebrow">Your bills</p>
-        <p>When the night ends, count the House bills in your pocket and type the total in dollars. The quarter of the room that ends the night best off against where they started (the most gained, or the least spent) earns one point. If you have a money errand, you are counted from its target, because that errand already pays you for earning. Spend wisely: clues at the bar and secrets you buy cost money, a secret you sell earns it. Bartend Joe may ask to see your bills.{butler && " The Butler runs the House's money, so you are not in this bonus; type your bills anyway."}</p>
+        <p>At the end of the night, count the House bills in your pocket and type the total in dollars.</p>
+        <ul>
+          <li>The quarter of the room that ends best off against where they started earns one point.</li>
+          <li>Clues bought at the bar and secrets you buy cost money; a secret you sell earns it.</li>
+          <li>If you have a money errand, you are counted from its target.</li>
+          <li>Bartend Joe may ask to see your bills.{butler && " The Butler runs the House's money, so you are not in this bonus; type your bills anyway."}</li>
+        </ul>
         <SubmitBox kind="objective" itemId="cash" label="Dollars in your pocket at the end" initial={saved.get("objective|cash")} disabled={!open} onSaved={onSaved} />
       </section>
     </>
@@ -340,7 +393,7 @@ export function ResultsTab({ results }: { results: Results | null }) {
         <p className="eyebrow">What really happened</p>
         {solution.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
         <h4>The five</h4>
-        <ul>{solution.survivors.map((entry) => <li key={entry.markerNo}><strong>{entry.cover}</strong> was {entry.real}, {entry.title} (marker {entry.markerNo}).</li>)}</ul>
+        <ul>{solution.survivors.map((entry) => <li key={entry.markerNo}><strong>{entry.cover}</strong> was {entry.real}, {entry.title} (No. {entry.markerNo} on the List).</li>)}</ul>
       </section>
       <section className="game-panel game-letter">
         <p className="eyebrow">Cassie&rsquo;s letter</p>

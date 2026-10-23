@@ -27,7 +27,7 @@ PARTS = [
     ("cocktail-menu.pdf", "Cocktail menu", "Two menus per sheet: cut across the dashed line. Put them on the bar."),
     ("food-menu.pdf", "Food menu", "Two menus per sheet: cut across the dashed line. Put them by the food."),
     ("HOST ONLY (spoilers: keep these)", None, None),
-    ("survivor-kit.pdf", "Survivor kit", "One page for you: the five markers and who holds them. (Each survivor's secret page and marker are on their own guest card.)"),
+    ("survivor-kit.pdf", "Survivor kit", "One page for you: the five survivors, their numbers, and how the vial is bought. (Nothing is cut out of any survivor's card.)"),
     ("host-sheet.pdf", "Host sheet", "Every approval word. Keep behind the bar."),
 ]
 

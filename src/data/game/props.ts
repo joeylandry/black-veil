@@ -95,7 +95,10 @@ export const props: Prop[] = [
   { id: "scene-card", code: "AYTHC", name: "scene card", generic: "a printed card on the black table", placement: "table", hint: "" },
 ];
 
-/** The five survivors' markers. The Butler types the code; the guest keeps the card. */
+/** The words on the single slip hidden under the kitchen cactus. A survivor who finds it keeps it and, after 8:45, says these words to the Butler to buy the vial. */
+export const vialWords = "THE BUTLER KNOWS WHO DID IT";
+
+/** The five survivors' numbers on the List. They are only numbers now: nothing is cut out or carried, and no code is typed. */
 export const markers: { no: number; code: string }[] = [
   { no: 18, code: "JCPP2" },
   { no: 19, code: "PKCA9" },

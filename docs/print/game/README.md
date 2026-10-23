@@ -9,8 +9,8 @@ Rebuild them with `python3 scripts/print/combine.py` after `npm run game:print`.
 
 | File | Pages | What it is |
 |---|---|---|
-| `guest-cards.pdf` | 48 | Front and back per guest, alphabetical. Front: who you are, the town's story, your race (survivors: secret and a marker to cut out). Back: objectives and clues. |
-| `slips.pdf` | 8 | Deal slips and race slips. Cut; the line above each says whose envelope. |
+| `guest-cards.pdf` | 48 | Front and back per guest, alphabetical. Front: who you are, the town's story, your race (survivors: their secret; nothing is cut out). Back: objectives and clues. |
+| `slips.pdf` | 8 | Deal slips and race slips. Cut; the line above each says whose envelope. One slip (THE BUTLER KNOWS WHO DID IT) goes in no envelope: hide it under the kitchen cactus. |
 | `tags.pdf` | 3 | Code tags for the hidden objects and carried items. The line under each says what it goes on. |
 | `exhibits.pdf` | 16 | Binder pages, black table pages, scene pages and sealed pages (landscape). |
 | `fortune-cards.pdf` | 1 | Josh's four fortune cards (keep at the bar). |
@@ -18,7 +18,7 @@ Rebuild them with `python3 scripts/print/combine.py` after `npm run game:print`.
 | `door-cards.pdf` | 2 | The brief and rules posters. |
 | `cocktail-menu.pdf` | 1 | Cocktail menu, two per sheet (cut). |
 | `food-menu.pdf` | 1 | Food menu, two per sheet (cut). |
-| `survivor-kit.pdf` | 1 | HOST ONLY. The five markers and who holds them. |
+| `survivor-kit.pdf` | 1 | HOST ONLY. The five survivors, their numbers, and how the vial is bought. |
 | `host-sheet.pdf` | 1 | HOST ONLY. Every approval word. |
 
 Not needed (extra references): `tag-key.pdf`, `exhibits-index.pdf`, `README-props.md`.

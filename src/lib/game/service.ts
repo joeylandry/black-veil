@@ -15,7 +15,7 @@ import {
   characters,
   alternateOf,
   listDirectory,
-  markers,
+  vialWords,
   objectiveById,
   questionById,
   questions,
@@ -461,26 +461,28 @@ export async function mySubmissions(db: GameDb, guestId: string) {
 
 // ---------------------------------------------------------------- the House: the Butler's sale and the dose
 
-export type SaleStatus = "sold" | "sold-out" | "unknown" | "closed";
+export type SaleStatus = "sold" | "sold-out" | "unknown" | "closed" | "early";
 export type SaleResult = { status: SaleStatus; message: string };
 
 /**
- * A guest hands the Butler a marker; the Butler types its code. Whether she says yes depends only
- * on the code and on whether the House still has its bottle: the database's unique index
+ * A guest says the House's words to the Butler, and the Butler types them and picks who said them.
+ * The House answers only after 8:45 p.m., only to the right words, and only for a survivor. Whether
+ * it says yes then depends on whether the House still has its bottle: the database's unique index
  * allows exactly one sale, so two phones tapping at once cannot both succeed. Every offer is
  * logged, so a survivor who arrives too late still scores their errand.
  */
-export async function butlerSell(db: GameDb, actorGuestId: string | null, rawCode: string, now = new Date()): Promise<SaleResult> {
+export async function butlerSell(db: GameDb, actorGuestId: string | null, words: string, buyerSlug: string, now = new Date()): Promise<SaleResult> {
   const state = await getState(db, now);
   if (state.nightcapServed) return { status: "closed", message: "The nightcap has been served. The House is closed for the night." };
-  const code = normalizeCode(rawCode);
-  const marker = markers.find((candidate) => normalizeCode(candidate.code) === code);
-  if (!marker) return { status: "unknown", message: "That is not a House marker." };
-  const owner = survivors.find((character) => character.survivor!.markerNo === marker.no);
+  if (now.getTime() < new Date(eventConfig.vialOpensAt).getTime()) return { status: "early", message: "The House does not see anyone about this before a quarter to nine." };
+  const unknown = { status: "unknown" as const, message: "Those are not the House's words, or that guest has no business with the House." };
+  if (normalizeCode(words) !== normalizeCode(vialWords)) return unknown;
+  const owner = survivors.find((character) => character.id === buyerSlug);
+  if (!owner) return unknown;
   if (state.identitiesReleased) await castMissing(db);
   const roster = await loadRoster(db);
-  const buyerGuestId = owner ? maps(roster).guestOf.get(owner.id) : undefined;
-  if (!buyerGuestId) return { status: "unknown", message: "That is not a House marker." };
+  const buyerGuestId = maps(roster).guestOf.get(owner.id);
+  if (!buyerGuestId) return unknown;
 
   return db.transaction(async (tx) => {
     const sale = await tx
@@ -491,8 +493,8 @@ export async function butlerSell(db: GameDb, actorGuestId: string | null, rawCod
     const sold = sale.length > 0;
     await tx.insert(gameEvents).values({ kind: "vial-attempt", guestId: buyerGuestId, byGuestId: actorGuestId, sold, createdAt: now });
     return sold
-      ? { status: "sold" as const, message: "Sold. Hand over the vial and keep the marker in the House Tin." }
-      : { status: "sold-out" as const, message: "The House has none left tonight. Hand the marker back." };
+      ? { status: "sold" as const, message: "Sold. Hand over the vial and keep the slip." }
+      : { status: "sold-out" as const, message: "The House has none left tonight. Hand the slip back." };
   });
 }
 

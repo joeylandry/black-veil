@@ -23,7 +23,7 @@ import { createRequire } from "node:module";
 import { mkdirSync, writeFileSync } from "node:fs";
 import postgres from "postgres";
 import { characterById, characters, questions, survivorIds } from "@/data/game";
-import { glassCode, markers } from "@/data/game/props";
+import { glassCode, vialWords } from "@/data/game/props";
 import { autoGrade } from "@/lib/game/grading";
 import { computeStandings } from "@/lib/game/scoring";
 import { round2 } from "@/lib/game/text";
@@ -349,22 +349,27 @@ async function main() {
       await silas.close();
     }
 
-    // 20:40 the Butler sells the vial to the first marker (the order the survivors arrive)
+    // 20:40 the Butler turns the survivors away: the House opens at a quarter to nine
     await setClock("20:40:00");
     const butlerId = idOf("rebecca");
+    if (!butlerAbsent) {
+      const tooEarly = await call(butlerId, "POST", "/api/game/butler", { code: vialWords, buyer: night.killer });
+      check(tooEarly.json?.status === "early", `the House should be shut before 8:45, said ${JSON.stringify(tooEarly.json)}`);
+    }
+    // 20:50 the Butler sells the vial to whoever reached the cactus slip first (the order the survivors arrive)
+    await setClock("20:50:00");
     // the buyer reaches the Butler first, then the others arrive in turn
     const arrivals = night.events.filter((e) => e.kind === "vial-attempt").map((e) => e.guest);
     const livingSurvivors = [night.killer, ...arrivals.filter((id) => id !== night.killer)];
     let firstSale: string | null = null;
     for (const survivor of butlerAbsent ? [] : livingSurvivors) {
-      const marker = markers.find((m) => m.no === characterById.get(survivor)!.survivor!.markerNo)!;
-      const reply = await call(butlerId, "POST", "/api/game/butler", { code: marker.code });
+      const reply = await call(butlerId, "POST", "/api/game/butler", { code: vialWords, buyer: survivor });
       if (!firstSale && reply.json?.status === "sold") firstSale = survivor;
       check(reply.status === 200, `the Butler's panel failed for ${survivor}: ${reply.status}`);
       if (full && survivor === livingSurvivors[0]) {
         const page = await openGame("rebecca");
         await openTab(page, "Private");
-        await snapEl(page.locator(".game-panel", { hasText: "The House panel" }).first(), "rebecca-house-panel", "8:40 p.m. The House panel on the Butler's phone, ready for a marker code.");
+        await snapEl(page.locator(".game-panel", { hasText: "The House panel" }).first(), "rebecca-house-panel", "8:50 p.m. The House panel on the Butler's phone: type the words the guest said, pick who said them.");
         await page.close();
       }
     }
@@ -373,20 +378,21 @@ async function main() {
     const pour = await call(idOf(night.killer), "POST", "/api/game/dose", { code: glassCode });
     check(pour.status === 200, "the dose call failed");
 
-    // 20:50 the claims (Bartend Joe's words) arrive through the evening
-    await setClock("20:50:00");
+    // 20:52 the claims (Bartend Joe's words) arrive through the evening
+    await setClock("20:52:00");
     for (const submission of approvals) await post(submission);
 
     // 21:00:10 the House closes by itself
     await setClock("21:00:10");
     if (!butlerAbsent) {
-      const closedSale = await call(butlerId, "POST", "/api/game/butler", { code: markers[0].code });
+      const closedSale = await call(butlerId, "POST", "/api/game/butler", { code: vialWords, buyer: night.killer });
       check(closedSale.json?.status === "closed", `the House should be closed at nine, said ${JSON.stringify(closedSale.json)}`);
     }
     if (full) {
       const page = await openGame("rebecca");
       await openTab(page, "Private");
-      await page.getByPlaceholder("Marker code").fill(markers[0].code);
+      await page.getByPlaceholder("The words").fill(vialWords);
+      await page.locator(".game-codebox select").selectOption(night.killer);
       await page.getByRole("button", { name: "Offer" }).click();
       await page.waitForSelector(".game-reply", { timeout: 5000 }).catch(() => undefined);
       await snapEl(page.locator(".game-panel", { hasText: "The House panel" }).first(), "rebecca-house-closed", "9:00 p.m. The House closed by itself. The Butler's panel says so; nothing else can be sold.");

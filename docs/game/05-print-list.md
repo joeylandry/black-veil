@@ -34,7 +34,7 @@ No. 21 · Marek, D. · The Doorman · placed: River shed, Granite St. · UNSETTL
 No. 22 · Pike, W. · The Runner · placed: Merchants' Row, rooms · UNSETTLED. Notes: “glances at the clock whenever a door opens.”
 
 In a later hand: “They report all twenty-two settled. Five they cannot show me. No bodies. I do not believe them.”
-In the margin: “Markers 18 to 22 never came back to the House. Whoever holds one still has a claim on it.”
+In the margin: “Numbers 18 to 22 never came back to the House. Whoever holds one still has a claim on it.”
 
 Filing code: EWWXP
 ```
@@ -213,9 +213,9 @@ Filing code: HC9YN
 
 ```
 THE HOUSE BOOK · the Butler's
-House rules: a marker is honoured once, by its owner, at the bar. One bottle of the House tincture, one sale a night.
-Markers on the House: 18, 19, 20, 21, 22.
-Tonight's sale: marker no. ______  (the Butler fills this in)
+House rules: the House tincture is sold once a night, after a quarter to nine, to a member who says the House's words. One bottle, one sale.
+Members who never came back: 18, 19, 20, 21, 22.
+Tonight's sale: to ______  (the Butler fills this in)
 
 Filing code: MPVY2
 ```
@@ -246,7 +246,7 @@ Filing code: 4CXUR
 ```
 A small brown apothecary vial, empty, cork beside it.
 Label: “HOUSE STOCK · Tincture of Nux Vomica · Not to be taken.”
-Under it, the marker that paid for it.
+Under it, a torn scrap with the House's words.
 
 Filing code: TXFHE
 ```
@@ -321,13 +321,9 @@ Filing code: 3N8VD
 - 4JNW7: charter
 - AYTHC: scene card
 
-## Markers (five cards, black, gold No.)
+## The vial words (one slip, hidden)
 
-- MARKER No. 18 — code JCPP2 — “Honoured by the House”
-- MARKER No. 19 — code PKCA9 — “Honoured by the House”
-- MARKER No. 20 — code 22RDE — “Honoured by the House”
-- MARKER No. 21 — code H3T4V — “Honoured by the House”
-- MARKER No. 22 — code XRTG9 — “Honoured by the House”
+- One slip reading “THE BUTLER KNOWS WHO DID IT”: hide it under the cactus in the kitchen. It goes in no envelope. Whoever finds it keeps it and says the words to the Butler after 8:45.
 
 ## Currency
 
@@ -408,25 +404,25 @@ Print `slips.pdf` a second time if you want spares. Hand one to a guest whose na
 
 - Anika Mahns of Mahns Manor: 30 bills ($3000), Mahns crested spoon, Mahns Manor voucher, Trade slip
 - J. Bruce Wayne: 30 bills ($3000), Tool token
-- Mihir Nagarkatti of Nag Oil: 30 bills ($3000), Tool token, marker No. 18
+- Mihir Nagarkatti of Nag Oil: 30 bills ($3000), Tool token
 - Krrish Vermouth: 12 bills ($1200), Silent Partner's brass key, crate receipt, Reply slip
 - Angelos Bowles: 12 bills ($1200), House chip, Reply slip
 - Sheriff Theodor Farrago: 10 bills ($1000), Nuisance Citation, Reply slip
 - Judge Eric Leeway: 15 bills ($1500), notice of dismissal, Reply slip
 - Anthony Hung, Esq.: 12 bills ($1200), Tool token
 - Dr. Emmerich Sunner: 10 bills ($1000), Trade slip
-- Molly Daniel of the Manchester Union: 9 bills ($900), Trade slip, marker No. 22
+- Molly Daniel of the Manchester Union: 9 bills ($900), Trade slip
 - Leon Gee of WFEA: 10 bills ($1000), Witness slip
 - Ananya Codru and Charlie Wakem: 10 bills ($1000), blank telegram form, Tool token
-- Luke Shelldon: 10 bills ($1000), marker No. 19
+- Luke Shelldon: 10 bills ($1000)
 - Silas Palmer of the Palm Court: 12 bills ($1200), request card, Trade slip
 - Sidd Airwind: 14 bills ($1400), Witness slip
 - Joshua Kamin-Sky: 8 bills ($800), soothsayer's charm, Witness slip
 - Arjun Bat: 8 bills ($800), lucky ball, Witness slip
-- Adam Holdsfire: 10 bills ($1000), marker No. 21
+- Adam Holdsfire: 10 bills ($1000)
 - Tiffany Liu of the Lamps: 10 bills ($1000), earring, Pardon slip, go-between's receipt, Trade slip
 - Diwakar Sandbagg: 10 bills ($1000), carnival giraffe, Witness slip
 - Tim McGinley, Baron of Bathtub Gin: 15 bills ($1500), jar of bathtub gin, Tool token
 - Rebecca Chow, Butler of the Black Veil: 12 bills ($1200)
-- Rhea Mallya of Mallya's Emporium: 15 bills ($1500), marker No. 20
+- Rhea Mallya of Mallya's Emporium: 15 bills ($1500)
 - Erika Lamm: 6 bills ($600), set of false papers, Reply slip

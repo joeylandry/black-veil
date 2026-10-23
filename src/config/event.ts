@@ -35,6 +35,7 @@ export const eventConfig = {
    */
   secretsReleaseAt: "2026-10-23T20:00:00-04:00",
   /** The House closes and the nightcap is served at this moment; the Butler can sell no more. */
+  vialOpensAt: "2026-10-23T20:45:00-04:00",
   nightcapServedAt: "2026-10-23T21:00:00-04:00",
   /** Answers stop being accepted at this moment, unless staff reopen them from /admin. */
   submissionsCloseAt: "2026-10-23T22:30:00-04:00",

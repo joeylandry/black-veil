@@ -101,20 +101,20 @@ He died of strychnine, taken as tincture of nux vomica, in his rye whiskey.
 - printed: report, vial
 
 ### vial (new)
-The poison was the House's own stock. The Butler sold the single vial to one survivor, who paid with a marker.
+The poison was the House's own stock. The Butler sold the single vial to one survivor, who knew the House's words.
 
-- **Rebecca Chow, Butler of the Black Veil** [secret]: You alone sell the House's tincture. One bottle, one sale a night, and only against a numbered marker handed to you by its owner at the bar.
-- **Tim McGinley, Baron of Bathtub Gin** [free]: The House keeps a bottle of “rat tincture” under the bar for the river rats. You have seen the Butler lock it away: one sale a night, markers only.
-- **Angelos Bowles** [trade]: Markers are the House's own currency. You have seen the Butler take one in place of cash for something that was on no menu.
-- **Mihir Nagarkatti of Nag Oil** [free]: A Veil marker was a number and a promise. The old members carried them, and the House honoured one, once, from its owner only.
+- **Rebecca Chow, Butler of the Black Veil** [secret]: You alone sell the House's tincture. One bottle, one sale a night, and only after a quarter to nine, to a survivor who says the House's own words to you: THE BUTLER KNOWS WHO DID IT.
+- **Tim McGinley, Baron of Bathtub Gin** [free]: The House keeps a bottle of “rat tincture” under the bar for the river rats. You have seen the Butler lock it away: one sale a night, and only to someone who whispers the right words.
+- **Angelos Bowles** [trade]: You have seen the Butler sell something that was on no menu to a guest who whispered a few words to her first.
+- **Mihir Nagarkatti of Nag Oil** [free]: The House sold its tincture once a night, and only to a member who knew the House's own words.
 - printed: housebook, vial
 
 ### marker-map (new)
-A marker's number is the member's number on the List; the five markers 18 to 22 belong to the five who escaped.
+A member's number is their number on the List; the five numbers 18 to 22 belong to the five who escaped.
 
-- **Rebecca Chow, Butler of the Black Veil** [paid]: Every marker carries the number of its owner on the Keeper's List. Markers 18 to 22 never came back to the House.
-- **Leon Gee of WFEA** [paid]: Cassie's own roll names the five who may still live: Ballard, Crane, Lyle, Marek and Pike. Markers 18 to 22 are theirs.
-- **Joshua Kamin-Sky** [trade]: The burned sign-out slips from the flue all carried marker numbers. The unburned five, 18 to 22, were never signed back.
+- **Rebecca Chow, Butler of the Black Veil** [paid]: Every member carries a number on the Keeper's List. Numbers 18 to 22 never came back to the House.
+- **Leon Gee of WFEA** [paid]: Cassie's own roll names the five who may still live: Ballard, Crane, Lyle, Marek and Pike. Numbers 18 to 22 are theirs.
+- **Joshua Kamin-Sky** [trade]: The burned sign-out slips from the flue all carried member numbers. The unburned five, 18 to 22, were never signed back.
 - printed: list, roll
 
 ### list-prepared (connection)
@@ -418,12 +418,12 @@ Kit had the Veil's runners killed one at a time, the last thrown into the river 
 | 4JNW7 | charter | a printed charter card, signed at the wrap-up | table |  |
 | AYTHC | scene card | a printed card on the black table | table |  |
 
-## Markers (one per survivor)
+## The five survivors by number on the List
 
-| Marker | Code | Belongs to |
-|---|---|---|
-| 18 | JCPP2 | Mihir Nagarkatti of Nag Oil |
-| 19 | PKCA9 | Luke Shelldon |
-| 20 | 22RDE | Rhea Mallya of Mallya's Emporium |
-| 21 | H3T4V | Adam Holdsfire |
-| 22 | XRTG9 | Molly Daniel of the Manchester Union |
+| No. | Belongs to |
+|---|---|
+| 18 | Mihir Nagarkatti of Nag Oil |
+| 19 | Luke Shelldon |
+| 20 | Rhea Mallya of Mallya's Emporium |
+| 21 | Adam Holdsfire |
+| 22 | Molly Daniel of the Manchester Union |

@@ -17,6 +17,7 @@ import {
   findGuests,
   knowsFor,
   markers,
+  vialWords,
   props,
   questions,
   races,
@@ -719,6 +720,7 @@ export function runValidation(root = process.cwd()): Report {
       statSync(staticDir);
       const forbidden = [
         ...markers.map((marker) => marker.code),
+        vialWords,
         ...exhibits.map((exhibit) => exhibit.code),
         ...survivors.map((survivor) => survivor.survivor!.veilName),
         "Kessler",
