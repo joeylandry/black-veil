@@ -147,7 +147,7 @@ leon-bulletin. **Read the bulletin** (approval, 1) At the wrap-up, collect the b
 
 ## Ananya Codru and Charlie Wakem
 
-ananya-find. **A thing to find** (find, 1) Find the vault cloche. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. A glass dome over a marble stand hides what the House keeps under glass.
+ananya-find. **A thing to find** (find, 1) Find the vault lamp. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. A rough block of rose-coloured rock glows softly where the House keeps its lights low.
    - answer: code J84CN
 ananya-swap. **A fair trade** (swap, 1) Strike a bargain with Erika Lamm: your blank telegram form for their set of false papers. It must be a deal, never a grab. When you hold it, read the code on its tag.
    - answer: code ERYTJ; from Erika Lamm
@@ -277,7 +277,7 @@ tim-keep. **Your own secret** (keep, 1) Your small secret is worth two halves. L
 
 ## Rebecca Chow, Butler of the Black Veil
 
-rebecca-find. **A thing to find** (find, 1) Find the vault cloche. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. A glass dome over a marble stand hides what the House keeps under glass.
+rebecca-find. **A thing to find** (find, 1) Find the vault lamp. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. A rough block of rose-coloured rock glows softly where the House keeps its lights low.
    - answer: code J84CN
 rebecca-secret. **What Sheriff Theodor Farrago is hiding** (learn, 1) Everyone has something they would rather not say. Learn Sheriff Theodor Farrago's small secret, not by being told it is a secret, but by earning it. Someone is guarding this one, so expect a harder time: a real try still earns half a point.
    - answer: [shoebox | shoe box]; from Sheriff Theodor Farrago, Molly Daniel of the Manchester Union

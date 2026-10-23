@@ -269,7 +269,7 @@ Filing code: 3N8VD
 - XAN9D: masquerade mask
 - A8NKR: sugar dish
 - AJTN9: red bird
-- J84CN: vault cloche
+- J84CN: vault lamp
 - PWKGP: Kraken Cove candle stand
 - DF46N: decoy duck
 - E3HTT: route globe

@@ -366,7 +366,7 @@ Kit had the Veil's runners killed one at a time, the last thrown into the river 
 | XAN9D | masquerade mask | the carved mask sculpture | hidden | A carved face from the night of the masquerade watches the room from the shelves. |
 | A8NKR | sugar dish | the lidded glass candy jar | hidden | A glass dish with a lid sits where the sweets go. The tag is under the lid. |
 | AJTN9 | red bird | the red bird above a lamp on the main table | hidden | A small red bird perches above one of the lamps on the main table and looks down on the room. |
-| J84CN | vault cloche | the glass cake dome on its marble stand | hidden | A glass dome over a marble stand hides what the House keeps under glass. |
+| J84CN | vault lamp | the glowing salt lamp | hidden | A rough block of rose-coloured rock glows softly where the House keeps its lights low. |
 | PWKGP | Kraken Cove candle stand | the octopus candle holder | hidden | Eight arms hold up a single candle, in the cabinet with the good glass. |
 | DF46N | decoy duck | the carved wooden duck with a lid | hidden | A decoy that is hollow inside sits in the cabinet. Lift its head. |
 | E3HTT | route globe | the lit globe on its stand | hidden | The whole world turns on a stand by the window, with the hours marked round its rim. |
