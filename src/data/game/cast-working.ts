@@ -102,7 +102,7 @@ export const working: Character[] = [
     },
     objectives: [
       find("adam-find", "veil-candle"),
-      who("adam-who", "You have worn this cover for a year. Learn what you really were before you took this name: some guests have noticed what a cover cannot hide.", ["theodor", "arjun", "joel"], [["bouncer", "doorman", "door", "face", "faces"]]),
+      who("adam-who", "Find out what your real job was before you took this cover. The guest named below noticed something about you that a cover cannot hide.", ["theodor", "arjun", "joel"], [["bouncer", "doorman", "door", "face", "faces"]]),
       motiveChain("adam-why", ["theodor", "sidd", "angelos"], [["partner", "bell", "ignatius", "friend", "second door", "second doorman"], ["killed", "shot", "murdered", "murder"]]),
       nightcapChain("adam-hour"),
       offerChain("adam-offer"),

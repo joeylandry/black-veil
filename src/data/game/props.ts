@@ -6,13 +6,13 @@
  */
 import type { Prop } from "./types";
 
-const H = (id: string, code: string, name: string, generic: string, hint: string): Prop => ({
+const H = (id: string, code: string, name: string, generic: string): Prop => ({
   id,
   code,
   name,
   generic,
   placement: "hidden",
-  hint,
+  hint: `Look for ${generic}.`,
 });
 
 const C = (id: string, code: string, name: string, generic: string, carriedBy: string): Prop => ({
@@ -27,24 +27,24 @@ const C = (id: string, code: string, name: string, generic: string, carriedBy: s
 
 export const props: Prop[] = [
   // ---- hidden in shared rooms: the tag is taped to or beside the object ----
-  H("veil-candle", "N8CM8", "Veil candle", "the brass candlestick with salt in its dish", "A brass candlestick burns beside her portrait, and a ring of salt keeps it company."),
-  H("lantern", "K6NRA", "river lantern", "the white lantern on the front balcony", "A white lantern waits out on the front balcony, where the river wind would find it."),
-  H("elephant", "D9X6N", "Silent Partner's elephant", "the golden elephant on the book", "A gilded elephant, who never forgets, leans on a book by the old globe."),
-  H("conch", "V23EE", "launch's fog horn", "the conch shell", "Something that once sounded a warning across the water now sits on the bookshelf."),
-  H("mask", "XAN9D", "masquerade mask", "the carved mask sculpture", "A carved face from the night of the masquerade watches the room from the shelves."),
-  H("sugar-dish", "A8NKR", "sugar dish", "the lidded glass candy jar", "A glass dish with a lid sits where the sweets go. The tag is under the lid."),
-  H("red-bird", "AJTN9", "red bird", "the red bird above a lamp on the main table", "A small red bird perches above one of the lamps on the main table and looks down on the room."),
-  H("cloche", "J84CN", "vault lamp", "the glowing salt lamp", "A rough block of rose-coloured rock glows softly where the House keeps its lights low."),
-  H("octopus", "PWKGP", "Kraken Cove candle stand", "the octopus candle holder", "Eight arms hold up a single candle, in the cabinet with the good glass."),
-  H("duck", "DF46N", "decoy duck", "the carved wooden duck with a lid", "A decoy that is hollow inside sits in the cabinet. Lift its head."),
-  H("globe", "E3HTT", "route globe", "the lit globe on its stand", "The whole world turns on a stand by the window, with the hours marked round its rim."),
-  H("opera-bill", "EFCKF", "opera bill", "the Falstaff poster in the hall", "A fat knight with his cup hangs in the hall. The tag is at the corner of the frame."),
-  H("chess-box", "NCPMX", "Judge's board", "the folding chess box", "A board in a box on the black table, with one white piece missing from its rank."),
-  H("constitution", "2Y34A", "Eighteenth Amendment", "the pocket Constitution", "A little green book of the nation's laws, the one that made the Veil necessary."),
-  H("bill-of-rights", "U8GVW", "Bill of Rights", "the pocket Bill of Rights", "The little book beside it, with the rights every defendant has."),
-  H("dumbbell", "GXG4U", "champion's weight", "the golden dumbbell", "A prize weight that nobody is lifting. Look where a heavy thing sits quietly."),
-  H("star-salt", "X8WCT", "star-marked salt", "the blue kosher salt box with the star", "A blue box with a six-pointed star, in the pantry where the salt is kept."),
-  H("lit-bottle", "RD99K", "glowing bottle", "the lit-up wine bottle", "A bottle of wine that glows in the dark, though nobody lit it."),
+  H("veil-candle", "N8CM8", "Veil candle", "the brass candlestick with salt in its dish"),
+  H("lantern", "K6NRA", "river lantern", "the white lantern on the front balcony"),
+  H("elephant", "D9X6N", "Silent Partner's elephant", "the golden elephant on the book"),
+  H("conch", "V23EE", "launch's fog horn", "the conch shell"),
+  H("mask", "XAN9D", "masquerade mask", "the carved mask sculpture"),
+  H("sugar-dish", "A8NKR", "sugar dish", "the lidded glass candy jar"),
+  H("red-bird", "AJTN9", "red bird", "the red bird above a lamp on the main table"),
+  H("cloche", "J84CN", "vault lamp", "the glowing salt lamp"),
+  H("octopus", "PWKGP", "Kraken Cove candle stand", "the octopus candle holder"),
+  H("duck", "DF46N", "decoy duck", "the carved wooden duck with a lid"),
+  H("globe", "E3HTT", "route globe", "the lit globe on its stand"),
+  H("opera-bill", "EFCKF", "opera bill", "the Falstaff poster in the hall"),
+  H("chess-box", "NCPMX", "Judge's board", "the folding chess box"),
+  H("constitution", "2Y34A", "Eighteenth Amendment", "the pocket Constitution"),
+  H("bill-of-rights", "U8GVW", "Bill of Rights", "the pocket Bill of Rights"),
+  H("dumbbell", "GXG4U", "champion's weight", "the golden dumbbell"),
+  H("star-salt", "X8WCT", "star-marked salt", "the blue kosher salt box with the star"),
+  H("lit-bottle", "RD99K", "glowing bottle", "the lit-up wine bottle"),
 
   // ---- carried by a guest in a deal: handed over at the door ----
   C("mahns-spoon", "EV6M4", "Mahns crested spoon", "the metal spoon", "anika"),

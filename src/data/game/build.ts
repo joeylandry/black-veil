@@ -23,7 +23,7 @@ export function find(id: string, prop: PropId): Objective {
     id,
     kind: "find",
     title: "A thing to find",
-    text: "Find the {prop}. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. {hint}",
+    text: "Find the {prop}. It stays where it is, in a shared room, with a small black tag taped on or beside it. {hint} Read the tag and type its code.",
     ask: "The code on the tag",
     points: POINTS,
     with: [],
@@ -147,12 +147,13 @@ export function motiveChain(id: string, holders: GuestId[], keys: Pattern): Obje
     id,
     kind: "motive",
     title: "Why you?",
-    text: "You came to be the one, and you are not sure you remember why. Find out what the Keeper took from you. Someone here saw part of it.",
+    text: "Find out what the Keeper did to you: what he took, or who he used to do it. The guest named below saw part of it. Either answer counts.",
     ask: "What did he do?",
     points: POINTS,
     with: [holders[0]],
     alsoFrom: holders.slice(1),
-    check: { kind: "pattern", all: keys },
+    // either half of the answer is enough: what he took, or who he used
+    check: { kind: "pattern", all: [keys.flat()] },
   };
 }
 

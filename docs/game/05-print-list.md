@@ -377,13 +377,13 @@ One slip per clue errand. Hand it to a guest whose named sources did not come.
 - **anthony-story2** (Anthony Hung, Esq.): You reviewed several of those “accidents” and noticed the same thing in each: a small number sewn inside the coat lining, running from 1 to 17 and never beyond.
 - **emre-secret** (Dr. Emmerich Sunner): You built stage blood for a “private masquerade” billed to a post-office box.
 - **molly-who** (Molly Daniel of the Manchester Union): You asked her for a short cut to the ring, and she named the back stair behind the Farrago's pressroom that runs straight down to the river road. That is a runner's knowledge, not a newsie's.
-- **molly-why** (Molly Daniel of the Manchester Union): That winter the Veil's runners died one at a time. The last was thrown into the river off the Granite Street steps, and the boatman who did it bragged that it was paid for out of the other runner's own share.
+- **molly-why** (Molly Daniel of the Manchester Union): She once walked from the river steps to Elm Street in four minutes by streets that are not on any map. A courier's trick.
 - **molly-hour** (Molly Daniel of the Manchester Union): On 1 November 1924 you took $200 from “Mr. K.” to forget the lady in Room 3. You took it.
 - **leon-secret** (Leon Gee of WFEA): You ate beet sandwiches for a week to prove the “blood” was beets and sugar.
 - **ananya-secret** (Ananya Codru and Charlie Wakem): The House whiskey is cold tea, and you took $200 to forget Room 3.
 - **ananya-story** (Ananya Codru and Charlie Wakem): Cassie signed with a plain “C.” and never a ring. She called anyone who dotted an i with a ring a show-off.
 - **luke-who** (Luke Shelldon): In 1925 the court showed you three “orders in Cassie's hand.” You noticed the i's were dotted with tiny rings and the signature was too neat to be hers.
-- **luke-why** (Luke Shelldon): The three forged orders carry the smudge of a notary's embossing seal, as if a notary had been made to sign them against his will.
+- **luke-why** (Luke Shelldon): In 1925 the court showed you three “orders in Cassie's hand.” You noticed the i's were dotted with tiny rings and the signature was too neat to be hers.
 - **luke-hour** (Luke Shelldon): On 1 November 1924 you took $200 from “Mr. K.” to forget the lady in Room 3. You took it.
 - **silas-secret** (Silas Palmer of the Palm Court): You let three “orders in C.C.'s hand” stand, though the clerk swore the i's had rings.
 - **sidd-secret** (Sidd Airwind): You let three “orders in C.C.'s hand” stand, though the clerk swore the i's had rings.

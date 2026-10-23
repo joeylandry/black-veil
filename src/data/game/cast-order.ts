@@ -175,7 +175,7 @@ export const order: Character[] = [
     },
     objectives: [
       find("molly-find", "mask"),
-      who("molly-who", "You have worn this cover for a year. Learn what you really were before you took this name: some guests have noticed what a cover cannot hide.", ["diwakar", "tim", "sidd"], [["courier", "runner"]]),
+      who("molly-who", "Find out what your real job was before you took this cover. The guest named below noticed something about you that a cover cannot hide.", ["diwakar", "tim", "sidd"], [["courier", "runner"]]),
       motiveChain("molly-why", ["tim", "theodor", "erika"], [["runner", "runners", "messenger", "messengers", "courier", "couriers", "partner"], ["killed", "drowned", "murdered", "murder", "thrown"]]),
       nightcapChain("molly-hour"),
       offerChain("molly-offer"),

@@ -342,7 +342,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 1. **[MONEY]** A fortune is kept by spending it wisely. Make the room pay you back. Leave with at least $3,600. Count your bills at the end and submit the total. Bartend Joe may ask to see them.
 
-2. **[FIND]** Find the sugar dish. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. A glass dish with a lid sits where the sweets go. The tag is under the lid.
+2. **[FIND]** Find the sugar dish. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the lidded glass candy jar. Read the tag and type its code.
 
 3. **[SWAP]** Strike a bargain with Krrish Vermouth: your Mahns crested spoon for their Silent Partner's brass key. It must be a deal, never a grab. When you hold it, read the code on its tag. *INVOLVES:* Krrish.
 
@@ -404,7 +404,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 1. **[MONEY]** Let the room pay for your charm: win a hand, sell a story, collect a favour in cash. Leave with at least $3,600. Count your bills at the end and submit the total. Bartend Joe may ask to see them.
 
-2. **[FIND]** Find the red bird. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. A small red bird perches above one of the lamps on the main table and looks down on the room.
+2. **[FIND]** Find the red bird. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the red bird above a lamp on the main table. Read the tag and type its code.
 
 3. **[LEARN A SECRET]** Everyone has something they would rather not say. Learn Krrish Vermouth's small secret, not by being told it is a secret, but by earning it. *INVOLVES:* Krrish, Emre.
 
@@ -465,11 +465,11 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 **OBJECTIVES**
 
-1. **[FIND]** Find the Silent Partner's elephant. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. A gilded elephant, who never forgets, leans on a book by the old globe.
+1. **[FIND]** Find the Silent Partner's elephant. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the golden elephant on the book. Read the tag and type its code.
 
-2. **[LEARN A STORY]** You have worn this cover for a year. Learn what you really were before you took this name: some guests have noticed what a cover cannot hide. *INVOLVES:* Eric, Anthony, Emre.
+2. **[LEARN A STORY]** Find out what your real job was before you took this cover. The guest named below noticed something about you that a cover cannot hide. *INVOLVES:* Eric, Anthony, Emre.
 
-3. **[LEARN A STORY]** You came to be the one, and you are not sure you remember why. Find out what the Keeper took from you. Someone here saw part of it. *INVOLVES:* Krrish, Anthony, Tim.
+3. **[LEARN A STORY]** Find out what the Keeper did to you: what he took, or who he used to do it. The guest named below saw part of it. Either answer counts. *INVOLVES:* Krrish, Anthony, Tim.
 
 4. **[LEARN A STORY]** The Keeper takes a nightcap at a fixed hour, in a fixed room. Until then the glass on his table is only a glass. Learn the hour, so you know how long you have. *INVOLVES:* Rebecca, Anika, Silas.
 
@@ -536,7 +536,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 **OBJECTIVES**
 
-1. **[FIND]** Find the glowing bottle. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. A bottle of wine that glows in the dark, though nobody lit it.
+1. **[FIND]** Find the glowing bottle. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the lit-up wine bottle. Read the tag and type its code.
 
 2. **[SWAP]** Strike a bargain with Anika Mahns of Mahns Manor: your Silent Partner's brass key for their Mahns crested spoon. It must be a deal, never a grab. When you hold it, read the code on its tag. *INVOLVES:* Anika.
 
@@ -599,7 +599,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 1. **[MONEY]** Win a few hands, a few bets, a few boules. Leave with at least $1,800. Count your bills at the end and submit the total. Bartend Joe may ask to see them.
 
-2. **[FIND]** Find the Veil candle. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. A brass candlestick burns beside her portrait, and a ring of salt keeps it company.
+2. **[FIND]** Find the Veil candle. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the brass candlestick with salt in its dish. Read the tag and type its code.
 
 3. **[SWAP]** Strike a bargain with Diwakar Sandbagg: your House chip for their carnival giraffe. It must be a deal, never a grab. When you hold it, read the code on its tag. *INVOLVES:* Diwakar.
 
@@ -671,7 +671,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 **OBJECTIVES**
 
-1. **[FIND]** Find the Eighteenth Amendment. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. A little green book of the nation's laws, the one that made the Veil necessary.
+1. **[FIND]** Find the Eighteenth Amendment. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the pocket Constitution. Read the tag and type its code.
 
 2. **[DEAL]** You hold a Nuisance Citation against Leon Gee for being insufferable. Take a bribe from a go-between and tear the citation up: the go-between hands you a Pardon slip. Type the code on the slip. *INVOLVES:* Leon, Tiffany.
 
@@ -739,7 +739,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 **OBJECTIVES**
 
-1. **[FIND]** Find the Judge's board. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. A board in a box on the black table, with one white piece missing from its rank.
+1. **[FIND]** Find the Judge's board. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the folding chess box. Read the tag and type its code.
 
 2. **[DEAL]** Accept Krrish Vermouth's Friday crate of wine and quietly dismiss his cases. Keep his crate receipt and hand him a notice of dismissal: read the code on the receipt. Nobody is to know. *INVOLVES:* Krrish.
 
@@ -809,7 +809,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 1. **[MONEY]** Charge by the word. Sell advice, draw a paper, collect a retainer. Leave with at least $1,800. Count your bills at the end and submit the total. Bartend Joe may ask to see them.
 
-2. **[FIND]** Find the Bill of Rights. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. The little book beside it, with the rights every defendant has.
+2. **[FIND]** Find the Bill of Rights. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the pocket Bill of Rights. Read the tag and type its code.
 
 3. **[LEARN A SECRET]** Everyone has something they would rather not say. Learn Sheriff Theodor Farrago's small secret, not by being told it is a secret, but by earning it. *INVOLVES:* Theodor, Molly.
 
@@ -882,7 +882,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 **OBJECTIVES**
 
-1. **[FIND]** Find the decoy duck. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. A decoy that is hollow inside sits in the cabinet. Lift its head.
+1. **[FIND]** Find the decoy duck. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the carved wooden duck with a lid. Read the tag and type its code.
 
 2. **[LEARN A SECRET]** Everyone has something they would rather not say. Learn Luke Shelldon's small secret, not by being told it is a secret, but by earning it. *INVOLVES:* Luke, Diwakar.
 
@@ -949,11 +949,11 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 **OBJECTIVES**
 
-1. **[FIND]** Find the masquerade mask. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. A carved face from the night of the masquerade watches the room from the shelves.
+1. **[FIND]** Find the masquerade mask. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the carved mask sculpture. Read the tag and type its code.
 
-2. **[LEARN A STORY]** You have worn this cover for a year. Learn what you really were before you took this name: some guests have noticed what a cover cannot hide. *INVOLVES:* Diwakar, Tim, Sidd.
+2. **[LEARN A STORY]** Find out what your real job was before you took this cover. The guest named below noticed something about you that a cover cannot hide. *INVOLVES:* Diwakar, Tim, Sidd.
 
-3. **[LEARN A STORY]** You came to be the one, and you are not sure you remember why. Find out what the Keeper took from you. Someone here saw part of it. *INVOLVES:* Tim, Theodor, Erika.
+3. **[LEARN A STORY]** Find out what the Keeper did to you: what he took, or who he used to do it. The guest named below saw part of it. Either answer counts. *INVOLVES:* Tim, Theodor, Erika.
 
 4. **[LEARN A STORY]** The Keeper takes a nightcap at a fixed hour, in a fixed room. Until then the glass on his table is only a glass. Learn the hour, so you know how long you have. *INVOLVES:* Rebecca, Anika, Silas.
 
@@ -1015,7 +1015,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 **OBJECTIVES**
 
-1. **[FIND]** Find the launch's fog horn. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. Something that once sounded a warning across the water now sits on the bookshelf.
+1. **[FIND]** Find the launch's fog horn. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the conch shell. Read the tag and type its code.
 
 2. **[DEAL]** Sheriff Farrago holds a citation against you, for being insufferable on the air. Pay a go-between at least $100 in House bills to broker a pardon. Tiffany Liu is the best choice. She hands you a go-between's receipt: read its code. *INVOLVES:* Tiffany, Theodor.
 
@@ -1086,7 +1086,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 **OBJECTIVES**
 
-1. **[FIND]** Find the vault lamp. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. A rough block of rose-coloured rock glows softly where the House keeps its lights low.
+1. **[FIND]** Find the vault lamp. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the glowing salt lamp. Read the tag and type its code.
 
 2. **[SWAP]** Strike a bargain with Erika Lamm: your blank telegram form for their set of false papers. It must be a deal, never a grab. When you hold it, read the code on its tag. *INVOLVES:* Erika.
 
@@ -1144,11 +1144,11 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 **OBJECTIVES**
 
-1. **[FIND]** Find the river lantern. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. A white lantern waits out on the front balcony, where the river wind would find it.
+1. **[FIND]** Find the river lantern. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the white lantern on the front balcony. Read the tag and type its code.
 
-2. **[LEARN A STORY]** You have worn this cover for a year. Learn what you really were before you took this name: some guests have noticed what a cover cannot hide. *INVOLVES:* Anthony, Erika, Silas.
+2. **[LEARN A STORY]** Find out what your real job was before you took this cover. The guest named below noticed something about you that a cover cannot hide. *INVOLVES:* Anthony, Erika, Silas.
 
-3. **[LEARN A STORY]** You came to be the one, and you are not sure you remember why. Find out what the Keeper took from you. Someone here saw part of it. *INVOLVES:* Anthony, Ananya, Josh.
+3. **[LEARN A STORY]** Find out what the Keeper did to you: what he took, or who he used to do it. The guest named below saw part of it. Either answer counts. *INVOLVES:* Anthony, Ananya, Josh.
 
 4. **[LEARN A STORY]** The Keeper takes a nightcap at a fixed hour, in a fixed room. Until then the glass on his table is only a glass. Learn the hour, so you know how long you have. *INVOLVES:* Rebecca, Anika, Silas.
 
@@ -1217,7 +1217,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 1. **[MONEY]** Sing for your supper, and pass the hat. Leave with at least $1,800. Count your bills at the end and submit the total. Bartend Joe may ask to see them.
 
-2. **[FIND]** Find the opera bill. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. A fat knight with his cup hangs in the hall. The tag is at the corner of the frame.
+2. **[FIND]** Find the opera bill. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the Falstaff poster in the hall. Read the tag and type its code.
 
 3. **[DEAL]** Anika Mahns wants to know who in this room knew her father. Take her $30 voucher, play her father's signature tune around half past eight, and call it a request from the room. Hand her the request card and keep the voucher: read its code. Nobody is to know. *INVOLVES:* Anika.
 
@@ -1289,7 +1289,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 1. **[MONEY]** Sell rides in your plane to anyone with a dollar. Leave with at least $2,000. Count your bills at the end and submit the total. Bartend Joe may ask to see them.
 
-2. **[FIND]** Find the route globe. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. The whole world turns on a stand by the window, with the hours marked round its rim.
+2. **[FIND]** Find the route globe. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the lit globe on its stand. Read the tag and type its code.
 
 3. **[LEARN A SECRET]** Everyone has something they would rather not say. Learn Judge Eric Leeway's small secret, not by being told it is a secret, but by earning it. Someone is guarding this one, so expect a harder time: a real try still earns half a point. *INVOLVES:* Eric, Anthony.
 
@@ -1358,7 +1358,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 **OBJECTIVES**
 
-1. **[FIND]** Find the star-marked salt. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. A blue box with a six-pointed star, in the pantry where the salt is kept.
+1. **[FIND]** Find the star-marked salt. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the blue kosher salt box with the star. Read the tag and type its code.
 
 2. **[SWAP]** Strike a bargain with Tiffany Liu of the Lamps: your soothsayer's charm for their earring. It must be a deal, never a grab. When you hold it, read the code on its tag. *INVOLVES:* Tiffany.
 
@@ -1427,7 +1427,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 1. **[MONEY]** Win a wager on a swing, a pitch or a bet. Leave with at least $1,400. Count your bills at the end and submit the total. Bartend Joe may ask to see them.
 
-2. **[FIND]** Find the Kraken Cove candle stand. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. Eight arms hold up a single candle, in the cabinet with the good glass.
+2. **[FIND]** Find the Kraken Cove candle stand. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the octopus candle holder. Read the tag and type its code.
 
 3. **[SWAP]** Strike a bargain with Tim McGinley, Baron of Bathtub Gin: your lucky ball for their jar of bathtub gin. It must be a deal, never a grab. When you hold it, read the code on its tag. *INVOLVES:* Tim.
 
@@ -1494,11 +1494,11 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 **OBJECTIVES**
 
-1. **[FIND]** Find the Veil candle. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. A brass candlestick burns beside her portrait, and a ring of salt keeps it company.
+1. **[FIND]** Find the Veil candle. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the brass candlestick with salt in its dish. Read the tag and type its code.
 
-2. **[LEARN A STORY]** You have worn this cover for a year. Learn what you really were before you took this name: some guests have noticed what a cover cannot hide. *INVOLVES:* Theodor, Arjun, Joel.
+2. **[LEARN A STORY]** Find out what your real job was before you took this cover. The guest named below noticed something about you that a cover cannot hide. *INVOLVES:* Theodor, Arjun, Joel.
 
-3. **[LEARN A STORY]** You came to be the one, and you are not sure you remember why. Find out what the Keeper took from you. Someone here saw part of it. *INVOLVES:* Theodor, Sidd, Angelos.
+3. **[LEARN A STORY]** Find out what the Keeper did to you: what he took, or who he used to do it. The guest named below saw part of it. Either answer counts. *INVOLVES:* Theodor, Sidd, Angelos.
 
 4. **[LEARN A STORY]** The Keeper takes a nightcap at a fixed hour, in a fixed room. Until then the glass on his table is only a glass. Learn the hour, so you know how long you have. *INVOLVES:* Rebecca, Anika, Silas.
 
@@ -1561,7 +1561,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 **OBJECTIVES**
 
-1. **[FIND]** Find the glowing bottle. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. A bottle of wine that glows in the dark, though nobody lit it.
+1. **[FIND]** Find the glowing bottle. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the lit-up wine bottle. Read the tag and type its code.
 
 2. **[SWAP]** Strike a bargain with Joshua Kamin-Sky: your earring for their soothsayer's charm. It must be a deal, never a grab. When you hold it, read the code on its tag. *INVOLVES:* Josh.
 
@@ -1628,7 +1628,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 1. **[MONEY]** Win a purse: a bet, an arm-wrestle, a wager. Leave with at least $1,600. Count your bills at the end and submit the total. Bartend Joe may ask to see them.
 
-2. **[FIND]** Find the champion's weight. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. A prize weight that nobody is lifting. Look where a heavy thing sits quietly.
+2. **[FIND]** Find the champion's weight. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the golden dumbbell. Read the tag and type its code.
 
 3. **[SWAP]** Strike a bargain with Angelos Bowles: your carnival giraffe for their House chip. It must be a deal, never a grab. When you hold it, read the code on its tag. *INVOLVES:* Angelos.
 
@@ -1701,7 +1701,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 1. **[MONEY]** A baron's business is the margin. Sell, trade and bargain. Leave with at least $2,100. Count your bills at the end and submit the total. Bartend Joe may ask to see them.
 
-2. **[FIND]** Find the launch's fog horn. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. Something that once sounded a warning across the water now sits on the bookshelf.
+2. **[FIND]** Find the launch's fog horn. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the conch shell. Read the tag and type its code.
 
 3. **[SWAP]** Strike a bargain with Arjun Bat: your jar of bathtub gin for their lucky ball. It must be a deal, never a grab. When you hold it, read the code on its tag. *INVOLVES:* Arjun.
 
@@ -1772,7 +1772,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 **OBJECTIVES**
 
-1. **[FIND]** Find the vault lamp. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. A rough block of rose-coloured rock glows softly where the House keeps its lights low.
+1. **[FIND]** Find the vault lamp. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the glowing salt lamp. Read the tag and type its code.
 
 2. **[LEARN A SECRET]** Everyone has something they would rather not say. Learn Sheriff Theodor Farrago's small secret, not by being told it is a secret, but by earning it. Someone is guarding this one, so expect a harder time: a real try still earns half a point. *INVOLVES:* Theodor, Molly.
 
@@ -1830,11 +1830,11 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 **OBJECTIVES**
 
-1. **[FIND]** Find the decoy duck. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. A decoy that is hollow inside sits in the cabinet. Lift its head.
+1. **[FIND]** Find the decoy duck. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the carved wooden duck with a lid. Read the tag and type its code.
 
-2. **[LEARN A STORY]** You have worn this cover for a year. Learn what you really were before you took this name: some guests have noticed what a cover cannot hide. *INVOLVES:* Tiffany, Silas, Emre.
+2. **[LEARN A STORY]** Find out what your real job was before you took this cover. The guest named below noticed something about you that a cover cannot hide. *INVOLVES:* Tiffany, Silas, Emre.
 
-3. **[LEARN A STORY]** You came to be the one, and you are not sure you remember why. Find out what the Keeper took from you. Someone here saw part of it. *INVOLVES:* Anika, Emre, Silas.
+3. **[LEARN A STORY]** Find out what the Keeper did to you: what he took, or who he used to do it. The guest named below saw part of it. Either answer counts. *INVOLVES:* Anika, Emre, Silas.
 
 4. **[LEARN A STORY]** The Keeper takes a nightcap at a fixed hour, in a fixed room. Until then the glass on his table is only a glass. Learn the hour, so you know how long you have. *INVOLVES:* Rebecca, Anika, Silas.
 
@@ -1895,7 +1895,7 @@ For every guest: who will come to them, and why. This is what makes the room mov
 
 1. **[MONEY]** Earn a little without being noticed. Leave with at least $1,200. Count your bills at the end and submit the total. Bartend Joe may ask to see them.
 
-2. **[FIND]** Find the masquerade mask. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. A carved face from the night of the masquerade watches the room from the shelves.
+2. **[FIND]** Find the masquerade mask. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the carved mask sculpture. Read the tag and type its code.
 
 3. **[SWAP]** Strike a bargain with Ananya Codru and Charlie Wakem: your set of false papers for their blank telegram form. It must be a deal, never a grab. When you hold it, read the code on its tag. *INVOLVES:* Ananya.
 

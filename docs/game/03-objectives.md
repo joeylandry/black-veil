@@ -6,7 +6,7 @@
 
 anika-money. **Money to make** (money, 1) A fortune is kept by spending it wisely. Make the room pay you back. Leave with at least $3,600. Count your bills at the end and submit the total. Bartend Joe may ask to see them.
    - answer: at least $3600
-anika-find. **A thing to find** (find, 1) Find the sugar dish. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. A glass dish with a lid sits where the sweets go. The tag is under the lid.
+anika-find. **A thing to find** (find, 1) Find the sugar dish. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the lidded glass candy jar. Read the tag and type its code.
    - answer: code A8NKR
 anika-swap. **A fair trade** (swap, 1) Strike a bargain with Krrish Vermouth: your Mahns crested spoon for their Silent Partner's brass key. It must be a deal, never a grab. When you hold it, read the code on its tag.
    - answer: code AFPEP; from Krrish Vermouth
@@ -19,7 +19,7 @@ anika-secret. **What Ananya Codru and Charlie Wakem is hiding** (learn, 1) Every
 
 joel-money. **Money to make** (money, 1) Let the room pay for your charm: win a hand, sell a story, collect a favour in cash. Leave with at least $3,600. Count your bills at the end and submit the total. Bartend Joe may ask to see them.
    - answer: at least $3600
-joel-find. **A thing to find** (find, 1) Find the red bird. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. A small red bird perches above one of the lamps on the main table and looks down on the room.
+joel-find. **A thing to find** (find, 1) Find the red bird. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the red bird above a lamp on the main table. Read the tag and type its code.
    - answer: code AJTN9
 joel-secret. **What Krrish Vermouth is hiding** (learn, 1) Everyone has something they would rather not say. Learn Krrish Vermouth's small secret, not by being told it is a secret, but by earning it.
    - answer: [grey hudson | grey]; from Krrish Vermouth, Dr. Emmerich Sunner
@@ -30,12 +30,12 @@ joel-story. **Whose name was on the draft?** (story, 1) A Hudson was bought with
 
 ## Mihir Nagarkatti of Nag Oil
 
-mihir-find. **A thing to find** (find, 1) Find the Silent Partner's elephant. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. A gilded elephant, who never forgets, leans on a book by the old globe.
+mihir-find. **A thing to find** (find, 1) Find the Silent Partner's elephant. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the golden elephant on the book. Read the tag and type its code.
    - answer: code D9X6N
-mihir-who. **Who were you?** (learn, 1) You have worn this cover for a year. Learn what you really were before you took this name: some guests have noticed what a cover cannot hide.
+mihir-who. **Who were you?** (learn, 1) Find out what your real job was before you took this cover. The guest named below noticed something about you that a cover cannot hide.
    - answer: [banker | clerk | teller | counted | counting]; from Judge Eric Leeway, Anthony Hung, Esq., Dr. Emmerich Sunner
-mihir-why. **Why you?** (motive, 1) You came to be the one, and you are not sure you remember why. Find out what the Keeper took from you. Someone here saw part of it.
-   - answer: [share | own money | advance | savings | pocket] AND [hitman | hitmen | killer | killers | assassin | murder | killings | killed]; from Krrish Vermouth, Anthony Hung, Esq., Tim McGinley, Baron of Bathtub Gin
+mihir-why. **Why you?** (motive, 1) Find out what the Keeper did to you: what he took, or who he used to do it. The guest named below saw part of it. Either answer counts.
+   - answer: [share | own money | advance | savings | pocket | hitman | hitmen | killer | killers | assassin | murder | killings | killed]; from Krrish Vermouth, Anthony Hung, Esq., Tim McGinley, Baron of Bathtub Gin
 mihir-hour. **The old man's hour** (chain, 1) The Keeper takes a nightcap at a fixed hour, in a fixed room. Until then the glass on his table is only a glass. Learn the hour, so you know how long you have.
    - answer: [nine | 9 | 9:00 | 900 | 9 00 | nine oclock | 9 oclock | 9pm | 9 pm]; from Rebecca Chow, Butler of the Black Veil, Anika Mahns of Mahns Manor, Silas Palmer of the Palm Court
 mihir-offer. **Make your offer to the House** (chain, 1) The House keeps one bottle for those who can pay in a marker. Before the nightcap is served at nine o'clock, take your marker to the Butler at the bar and make your offer. The House counts every offer, whether the answer is yes or no.
@@ -43,7 +43,7 @@ mihir-offer. **Make your offer to the House** (chain, 1) The House keeps one bot
 
 ## Krrish Vermouth
 
-krrish-find. **A thing to find** (find, 1) Find the glowing bottle. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. A bottle of wine that glows in the dark, though nobody lit it.
+krrish-find. **A thing to find** (find, 1) Find the glowing bottle. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the lit-up wine bottle. Read the tag and type its code.
    - answer: code RD99K
 krrish-swap. **A fair trade** (swap, 1) Strike a bargain with Anika Mahns of Mahns Manor: your Silent Partner's brass key for their Mahns crested spoon. It must be a deal, never a grab. When you hold it, read the code on its tag.
    - answer: code EV6M4; from Anika Mahns of Mahns Manor
@@ -58,7 +58,7 @@ krrish-keep. **Your own secret** (keep, 1) Your small secret is worth two halves
 
 angelos-money. **Money to make** (money, 1) Win a few hands, a few bets, a few boules. Leave with at least $1,800. Count your bills at the end and submit the total. Bartend Joe may ask to see them.
    - answer: at least $1800
-angelos-find. **A thing to find** (find, 1) Find the Veil candle. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. A brass candlestick burns beside her portrait, and a ring of salt keeps it company.
+angelos-find. **A thing to find** (find, 1) Find the Veil candle. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the brass candlestick with salt in its dish. Read the tag and type its code.
    - answer: code N8CM8
 angelos-swap. **A fair trade** (swap, 1) Strike a bargain with Diwakar Sandbagg: your House chip for their carnival giraffe. It must be a deal, never a grab. When you hold it, read the code on its tag.
    - answer: code JJGXP; from Diwakar Sandbagg
@@ -69,7 +69,7 @@ angelos-cards. **Deal them in** (approval, 1) Run a card game for at least three
 
 ## Sheriff Theodor Farrago
 
-theodor-find. **A thing to find** (find, 1) Find the Eighteenth Amendment. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. A little green book of the nation's laws, the one that made the Veil necessary.
+theodor-find. **A thing to find** (find, 1) Find the Eighteenth Amendment. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the pocket Constitution. Read the tag and type its code.
    - answer: code 2Y34A
 theodor-deal. **The Leon matter** (role, 1) You hold a Nuisance Citation against Leon Gee for being insufferable. Take a bribe from a go-between and tear the citation up: the go-between hands you a Pardon slip. Type the code on the slip.
    - answer: code U7WNK; from Leon Gee of WFEA, Tiffany Liu of the Lamps
@@ -82,7 +82,7 @@ theodor-arrest. **Make the arrest** (approval, 1) When the body is found, take c
 
 ## Judge Eric Leeway
 
-eric-find. **A thing to find** (find, 1) Find the Judge's board. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. A board in a box on the black table, with one white piece missing from its rank.
+eric-find. **A thing to find** (find, 1) Find the Judge's board. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the folding chess box. Read the tag and type its code.
    - answer: code NCPMX
 eric-deal. **The Friday crate** (role, 1) Accept Krrish Vermouth's Friday crate of wine and quietly dismiss his cases. Keep his crate receipt and hand him a notice of dismissal: read the code on the receipt. Nobody is to know.
    - answer: code ATCTU; from Krrish Vermouth
@@ -97,7 +97,7 @@ eric-charter. **Sign the charter** (role, 1) At the wrap-up Bartend Joe hands yo
 
 anthony-money. **Money to make** (money, 1) Charge by the word. Sell advice, draw a paper, collect a retainer. Leave with at least $1,800. Count your bills at the end and submit the total. Bartend Joe may ask to see them.
    - answer: at least $1800
-anthony-find. **A thing to find** (find, 1) Find the Bill of Rights. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. The little book beside it, with the rights every defendant has.
+anthony-find. **A thing to find** (find, 1) Find the Bill of Rights. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the pocket Bill of Rights. Read the tag and type its code.
    - answer: code U8GVW
 anthony-secret. **What Sheriff Theodor Farrago is hiding** (learn, 1) Everyone has something they would rather not say. Learn Sheriff Theodor Farrago's small secret, not by being told it is a secret, but by earning it.
    - answer: [shoebox | shoe box]; from Sheriff Theodor Farrago, Molly Daniel of the Manchester Union
@@ -108,7 +108,7 @@ anthony-story2. **How many were there?** (story, 1) Seventeen strangers died in 
 
 ## Dr. Emmerich Sunner
 
-emre-find. **A thing to find** (find, 1) Find the decoy duck. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. A decoy that is hollow inside sits in the cabinet. Lift its head.
+emre-find. **A thing to find** (find, 1) Find the decoy duck. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the carved wooden duck with a lid. Read the tag and type its code.
    - answer: code DF46N
 emre-secret. **What Luke Shelldon is hiding** (learn, 1) Everyone has something they would rather not say. Learn Luke Shelldon's small secret, not by being told it is a secret, but by earning it.
    - answer: [post-office box | post office box | postoffice box]; from Luke Shelldon, Diwakar Sandbagg
@@ -121,12 +121,12 @@ emre-time. **The time** (role, 1) State when the poison was taken, as closely as
 
 ## Molly Daniel of the Manchester Union
 
-molly-find. **A thing to find** (find, 1) Find the masquerade mask. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. A carved face from the night of the masquerade watches the room from the shelves.
+molly-find. **A thing to find** (find, 1) Find the masquerade mask. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the carved mask sculpture. Read the tag and type its code.
    - answer: code XAN9D
-molly-who. **Who were you?** (learn, 1) You have worn this cover for a year. Learn what you really were before you took this name: some guests have noticed what a cover cannot hide.
+molly-who. **Who were you?** (learn, 1) Find out what your real job was before you took this cover. The guest named below noticed something about you that a cover cannot hide.
    - answer: [courier | runner]; from Diwakar Sandbagg, Tim McGinley, Baron of Bathtub Gin, Sidd Airwind
-molly-why. **Why you?** (motive, 1) You came to be the one, and you are not sure you remember why. Find out what the Keeper took from you. Someone here saw part of it.
-   - answer: [runner | runners | messenger | messengers | courier | couriers | partner] AND [killed | drowned | murdered | murder | thrown]; from Tim McGinley, Baron of Bathtub Gin, Sheriff Theodor Farrago, Erika Lamm
+molly-why. **Why you?** (motive, 1) Find out what the Keeper did to you: what he took, or who he used to do it. The guest named below saw part of it. Either answer counts.
+   - answer: [runner | runners | messenger | messengers | courier | couriers | partner | killed | drowned | murdered | murder | thrown]; from Tim McGinley, Baron of Bathtub Gin, Sheriff Theodor Farrago, Erika Lamm
 molly-hour. **The old man's hour** (chain, 1) The Keeper takes a nightcap at a fixed hour, in a fixed room. Until then the glass on his table is only a glass. Learn the hour, so you know how long you have.
    - answer: [nine | 9 | 9:00 | 900 | 9 00 | nine oclock | 9 oclock | 9pm | 9 pm]; from Rebecca Chow, Butler of the Black Veil, Anika Mahns of Mahns Manor, Silas Palmer of the Palm Court
 molly-offer. **Make your offer to the House** (chain, 1) The House keeps one bottle for those who can pay in a marker. Before the nightcap is served at nine o'clock, take your marker to the Butler at the bar and make your offer. The House counts every offer, whether the answer is yes or no.
@@ -134,7 +134,7 @@ molly-offer. **Make your offer to the House** (chain, 1) The House keeps one bot
 
 ## Leon Gee of WFEA
 
-leon-find. **A thing to find** (find, 1) Find the launch's fog horn. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. Something that once sounded a warning across the water now sits on the bookshelf.
+leon-find. **A thing to find** (find, 1) Find the launch's fog horn. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the conch shell. Read the tag and type its code.
    - answer: code V23EE
 leon-deal. **Out of the cell** (role, 1) Sheriff Farrago holds a citation against you, for being insufferable on the air. Pay a go-between at least $100 in House bills to broker a pardon. Tiffany Liu is the best choice. She hands you a go-between's receipt: read its code.
    - answer: code RU647; from Tiffany Liu of the Lamps, Sheriff Theodor Farrago
@@ -147,7 +147,7 @@ leon-bulletin. **Read the bulletin** (approval, 1) At the wrap-up, collect the b
 
 ## Ananya Codru and Charlie Wakem
 
-ananya-find. **A thing to find** (find, 1) Find the vault lamp. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. A rough block of rose-coloured rock glows softly where the House keeps its lights low.
+ananya-find. **A thing to find** (find, 1) Find the vault lamp. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the glowing salt lamp. Read the tag and type its code.
    - answer: code J84CN
 ananya-swap. **A fair trade** (swap, 1) Strike a bargain with Erika Lamm: your blank telegram form for their set of false papers. It must be a deal, never a grab. When you hold it, read the code on its tag.
    - answer: code ERYTJ; from Erika Lamm
@@ -160,12 +160,12 @@ ananya-story. **Cassie's hand** (story, 1) Cassie signed her notes in a particul
 
 ## Luke Shelldon
 
-luke-find. **A thing to find** (find, 1) Find the river lantern. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. A white lantern waits out on the front balcony, where the river wind would find it.
+luke-find. **A thing to find** (find, 1) Find the river lantern. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the white lantern on the front balcony. Read the tag and type its code.
    - answer: code K6NRA
-luke-who. **Who were you?** (learn, 1) You have worn this cover for a year. Learn what you really were before you took this name: some guests have noticed what a cover cannot hide.
+luke-who. **Who were you?** (learn, 1) Find out what your real job was before you took this cover. The guest named below noticed something about you that a cover cannot hide.
    - answer: [notary | forger | forgers | forge | signature | statute]; from Anthony Hung, Esq., Erika Lamm, Silas Palmer of the Palm Court
-luke-why. **Why you?** (motive, 1) You came to be the one, and you are not sure you remember why. Find out what the Keeper took from you. Someone here saw part of it.
-   - answer: [forged | forge | forger | forgery | forging] AND [orders | order | cassie | framed | frame | blame | blamed]; from Anthony Hung, Esq., Ananya Codru and Charlie Wakem, Joshua Kamin-Sky
+luke-why. **Why you?** (motive, 1) Find out what the Keeper did to you: what he took, or who he used to do it. The guest named below saw part of it. Either answer counts.
+   - answer: [forged | forge | forger | forgery | forging | orders | order | cassie | framed | frame | blame | blamed]; from Anthony Hung, Esq., Ananya Codru and Charlie Wakem, Joshua Kamin-Sky
 luke-hour. **The old man's hour** (chain, 1) The Keeper takes a nightcap at a fixed hour, in a fixed room. Until then the glass on his table is only a glass. Learn the hour, so you know how long you have.
    - answer: [nine | 9 | 9:00 | 900 | 9 00 | nine oclock | 9 oclock | 9pm | 9 pm]; from Rebecca Chow, Butler of the Black Veil, Anika Mahns of Mahns Manor, Silas Palmer of the Palm Court
 luke-offer. **Make your offer to the House** (chain, 1) The House keeps one bottle for those who can pay in a marker. Before the nightcap is served at nine o'clock, take your marker to the Butler at the bar and make your offer. The House counts every offer, whether the answer is yes or no.
@@ -175,7 +175,7 @@ luke-offer. **Make your offer to the House** (chain, 1) The House keeps one bott
 
 silas-money. **Money to make** (money, 1) Sing for your supper, and pass the hat. Leave with at least $1,800. Count your bills at the end and submit the total. Bartend Joe may ask to see them.
    - answer: at least $1800
-silas-find. **A thing to find** (find, 1) Find the opera bill. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. A fat knight with his cup hangs in the hall. The tag is at the corner of the frame.
+silas-find. **A thing to find** (find, 1) Find the opera bill. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the Falstaff poster in the hall. Read the tag and type its code.
    - answer: code EFCKF
 silas-deal. **A sneaky request** (role, 1) Anika Mahns wants to know who in this room knew her father. Take her $30 voucher, play her father's signature tune around half past eight, and call it a request from the room. Hand her the request card and keep the voucher: read its code. Nobody is to know.
    - answer: code 844M9; from Anika Mahns of Mahns Manor
@@ -188,7 +188,7 @@ silas-spotlight. **The spotlight** (approval, 1) Around half past eight, take th
 
 sidd-money. **Money to make** (money, 1) Sell rides in your plane to anyone with a dollar. Leave with at least $2,000. Count your bills at the end and submit the total. Bartend Joe may ask to see them.
    - answer: at least $2000
-sidd-find. **A thing to find** (find, 1) Find the route globe. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. The whole world turns on a stand by the window, with the hours marked round its rim.
+sidd-find. **A thing to find** (find, 1) Find the route globe. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the lit globe on its stand. Read the tag and type its code.
    - answer: code E3HTT
 sidd-secret. **What Judge Eric Leeway is hiding** (learn, 1) Everyone has something they would rather not say. Learn Judge Eric Leeway's small secret, not by being told it is a secret, but by earning it. Someone is guarding this one, so expect a harder time: a real try still earns half a point.
    - answer: [clerk]; from Judge Eric Leeway, Anthony Hung, Esq.
@@ -199,7 +199,7 @@ sidd-story. **How many were there?** (story, 1) Seventeen strangers died in acci
 
 ## Joshua Kamin-Sky
 
-josh-find. **A thing to find** (find, 1) Find the star-marked salt. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. A blue box with a six-pointed star, in the pantry where the salt is kept.
+josh-find. **A thing to find** (find, 1) Find the star-marked salt. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the blue kosher salt box with the star. Read the tag and type its code.
    - answer: code X8WCT
 josh-swap. **A fair trade** (swap, 1) Strike a bargain with Tiffany Liu of the Lamps: your soothsayer's charm for their earring. It must be a deal, never a grab. When you hold it, read the code on its tag.
    - answer: code 66M4W; from Tiffany Liu of the Lamps
@@ -214,7 +214,7 @@ josh-fortunes. **The fortunes** (approval, 1) Read the fortunes of four differen
 
 arjun-money. **Money to make** (money, 1) Win a wager on a swing, a pitch or a bet. Leave with at least $1,400. Count your bills at the end and submit the total. Bartend Joe may ask to see them.
    - answer: at least $1400
-arjun-find. **A thing to find** (find, 1) Find the Kraken Cove candle stand. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. Eight arms hold up a single candle, in the cabinet with the good glass.
+arjun-find. **A thing to find** (find, 1) Find the Kraken Cove candle stand. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the octopus candle holder. Read the tag and type its code.
    - answer: code PWKGP
 arjun-swap. **A fair trade** (swap, 1) Strike a bargain with Tim McGinley, Baron of Bathtub Gin: your lucky ball for their jar of bathtub gin. It must be a deal, never a grab. When you hold it, read the code on its tag.
    - answer: code P4PD3; from Tim McGinley, Baron of Bathtub Gin
@@ -225,12 +225,12 @@ arjun-story. **A word for the umpire** (story, 1) You want a Yiddish word to sho
 
 ## Adam Holdsfire
 
-adam-find. **A thing to find** (find, 1) Find the Veil candle. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. A brass candlestick burns beside her portrait, and a ring of salt keeps it company.
+adam-find. **A thing to find** (find, 1) Find the Veil candle. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the brass candlestick with salt in its dish. Read the tag and type its code.
    - answer: code N8CM8
-adam-who. **Who were you?** (learn, 1) You have worn this cover for a year. Learn what you really were before you took this name: some guests have noticed what a cover cannot hide.
+adam-who. **Who were you?** (learn, 1) Find out what your real job was before you took this cover. The guest named below noticed something about you that a cover cannot hide.
    - answer: [bouncer | doorman | door | face | faces]; from Sheriff Theodor Farrago, Arjun Bat, J. Bruce Wayne
-adam-why. **Why you?** (motive, 1) You came to be the one, and you are not sure you remember why. Find out what the Keeper took from you. Someone here saw part of it.
-   - answer: [partner | bell | ignatius | friend | second door | second doorman] AND [killed | shot | murdered | murder]; from Sheriff Theodor Farrago, Sidd Airwind, Angelos Bowles
+adam-why. **Why you?** (motive, 1) Find out what the Keeper did to you: what he took, or who he used to do it. The guest named below saw part of it. Either answer counts.
+   - answer: [partner | bell | ignatius | friend | second door | second doorman | killed | shot | murdered | murder]; from Sheriff Theodor Farrago, Sidd Airwind, Angelos Bowles
 adam-hour. **The old man's hour** (chain, 1) The Keeper takes a nightcap at a fixed hour, in a fixed room. Until then the glass on his table is only a glass. Learn the hour, so you know how long you have.
    - answer: [nine | 9 | 9:00 | 900 | 9 00 | nine oclock | 9 oclock | 9pm | 9 pm]; from Rebecca Chow, Butler of the Black Veil, Anika Mahns of Mahns Manor, Silas Palmer of the Palm Court
 adam-offer. **Make your offer to the House** (chain, 1) The House keeps one bottle for those who can pay in a marker. Before the nightcap is served at nine o'clock, take your marker to the Butler at the bar and make your offer. The House counts every offer, whether the answer is yes or no.
@@ -238,7 +238,7 @@ adam-offer. **Make your offer to the House** (chain, 1) The House keeps one bott
 
 ## Tiffany Liu of the Lamps
 
-tiffany-find. **A thing to find** (find, 1) Find the glowing bottle. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. A bottle of wine that glows in the dark, though nobody lit it.
+tiffany-find. **A thing to find** (find, 1) Find the glowing bottle. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the lit-up wine bottle. Read the tag and type its code.
    - answer: code RD99K
 tiffany-swap. **A fair trade** (swap, 1) Strike a bargain with Joshua Kamin-Sky: your earring for their soothsayer's charm. It must be a deal, never a grab. When you hold it, read the code on its tag.
    - answer: code DTF7R; from Joshua Kamin-Sky
@@ -253,7 +253,7 @@ tiffany-keep. **Your own secret** (keep, 1) Your small secret is worth two halve
 
 diwakar-money. **Money to make** (money, 1) Win a purse: a bet, an arm-wrestle, a wager. Leave with at least $1,600. Count your bills at the end and submit the total. Bartend Joe may ask to see them.
    - answer: at least $1600
-diwakar-find. **A thing to find** (find, 1) Find the champion's weight. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. A prize weight that nobody is lifting. Look where a heavy thing sits quietly.
+diwakar-find. **A thing to find** (find, 1) Find the champion's weight. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the golden dumbbell. Read the tag and type its code.
    - answer: code GXG4U
 diwakar-swap. **A fair trade** (swap, 1) Strike a bargain with Angelos Bowles: your carnival giraffe for their House chip. It must be a deal, never a grab. When you hold it, read the code on its tag.
    - answer: code YYRM4; from Angelos Bowles
@@ -266,7 +266,7 @@ diwakar-keep. **Your own secret** (keep, 1) Your small secret is worth two halve
 
 tim-money. **Money to make** (money, 1) A baron's business is the margin. Sell, trade and bargain. Leave with at least $2,100. Count your bills at the end and submit the total. Bartend Joe may ask to see them.
    - answer: at least $2100
-tim-find. **A thing to find** (find, 1) Find the launch's fog horn. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. Something that once sounded a warning across the water now sits on the bookshelf.
+tim-find. **A thing to find** (find, 1) Find the launch's fog horn. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the conch shell. Read the tag and type its code.
    - answer: code V23EE
 tim-swap. **A fair trade** (swap, 1) Strike a bargain with Arjun Bat: your jar of bathtub gin for their lucky ball. It must be a deal, never a grab. When you hold it, read the code on its tag.
    - answer: code YY72H; from Arjun Bat
@@ -277,7 +277,7 @@ tim-keep. **Your own secret** (keep, 1) Your small secret is worth two halves. L
 
 ## Rebecca Chow, Butler of the Black Veil
 
-rebecca-find. **A thing to find** (find, 1) Find the vault lamp. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. A rough block of rose-coloured rock glows softly where the House keeps its lights low.
+rebecca-find. **A thing to find** (find, 1) Find the vault lamp. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the glowing salt lamp. Read the tag and type its code.
    - answer: code J84CN
 rebecca-secret. **What Sheriff Theodor Farrago is hiding** (learn, 1) Everyone has something they would rather not say. Learn Sheriff Theodor Farrago's small secret, not by being told it is a secret, but by earning it. Someone is guarding this one, so expect a harder time: a real try still earns half a point.
    - answer: [shoebox | shoe box]; from Sheriff Theodor Farrago, Molly Daniel of the Manchester Union
@@ -290,12 +290,12 @@ rebecca-scream. **The scream** (approval, 1) At a quarter past nine, go to the M
 
 ## Rhea Mallya of Mallya's Emporium
 
-rhea-find. **A thing to find** (find, 1) Find the decoy duck. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. A decoy that is hollow inside sits in the cabinet. Lift its head.
+rhea-find. **A thing to find** (find, 1) Find the decoy duck. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the carved wooden duck with a lid. Read the tag and type its code.
    - answer: code DF46N
-rhea-who. **Who were you?** (learn, 1) You have worn this cover for a year. Learn what you really were before you took this name: some guests have noticed what a cover cannot hide.
+rhea-who. **Who were you?** (learn, 1) Find out what your real job was before you took this cover. The guest named below noticed something about you that a cover cannot hide.
    - answer: [seamstress | dressmaker | tailor | dye lot | stitch | pin-pricks | cut]; from Tiffany Liu of the Lamps, Silas Palmer of the Palm Court, Dr. Emmerich Sunner
-rhea-why. **Why you?** (motive, 1) You came to be the one, and you are not sure you remember why. Find out what the Keeper took from you. Someone here saw part of it.
-   - answer: [seamstress | seamstresses | girls | milliner | costume | dressmaker | tailor | sewing | masks] AND [killed | murdered | dead | died | killings | murder]; from Anika Mahns of Mahns Manor, Dr. Emmerich Sunner, Silas Palmer of the Palm Court
+rhea-why. **Why you?** (motive, 1) Find out what the Keeper did to you: what he took, or who he used to do it. The guest named below saw part of it. Either answer counts.
+   - answer: [seamstress | seamstresses | girls | milliner | costume | dressmaker | tailor | sewing | masks | killed | murdered | dead | died | killings | murder]; from Anika Mahns of Mahns Manor, Dr. Emmerich Sunner, Silas Palmer of the Palm Court
 rhea-hour. **The old man's hour** (chain, 1) The Keeper takes a nightcap at a fixed hour, in a fixed room. Until then the glass on his table is only a glass. Learn the hour, so you know how long you have.
    - answer: [nine | 9 | 9:00 | 900 | 9 00 | nine oclock | 9 oclock | 9pm | 9 pm]; from Rebecca Chow, Butler of the Black Veil, Anika Mahns of Mahns Manor, Silas Palmer of the Palm Court
 rhea-offer. **Make your offer to the House** (chain, 1) The House keeps one bottle for those who can pay in a marker. Before the nightcap is served at nine o'clock, take your marker to the Butler at the bar and make your offer. The House counts every offer, whether the answer is yes or no.
@@ -305,7 +305,7 @@ rhea-offer. **Make your offer to the House** (chain, 1) The House keeps one bott
 
 erika-money. **Money to make** (money, 1) Earn a little without being noticed. Leave with at least $1,200. Count your bills at the end and submit the total. Bartend Joe may ask to see them.
    - answer: at least $1200
-erika-find. **A thing to find** (find, 1) Find the masquerade mask. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. A carved face from the night of the masquerade watches the room from the shelves.
+erika-find. **A thing to find** (find, 1) Find the masquerade mask. It stays where it is, in a shared room, with a small black tag taped on or beside it. Look for the carved mask sculpture. Read the tag and type its code.
    - answer: code XAN9D
 erika-swap. **A fair trade** (swap, 1) Strike a bargain with Ananya Codru and Charlie Wakem: your set of false papers for their blank telegram form. It must be a deal, never a grab. When you hold it, read the code on its tag.
    - answer: code YUGWA; from Ananya Codru and Charlie Wakem

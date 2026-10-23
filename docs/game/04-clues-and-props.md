@@ -359,24 +359,24 @@ Kit had the Veil's runners killed one at a time, the last thrown into the river 
 
 | Code | Prop | Could be | Where | Hint or carrier |
 |---|---|---|---|---|
-| N8CM8 | Veil candle | the brass candlestick with salt in its dish | hidden | A brass candlestick burns beside her portrait, and a ring of salt keeps it company. |
-| K6NRA | river lantern | the white lantern on the front balcony | hidden | A white lantern waits out on the front balcony, where the river wind would find it. |
-| D9X6N | Silent Partner's elephant | the golden elephant on the book | hidden | A gilded elephant, who never forgets, leans on a book by the old globe. |
-| V23EE | launch's fog horn | the conch shell | hidden | Something that once sounded a warning across the water now sits on the bookshelf. |
-| XAN9D | masquerade mask | the carved mask sculpture | hidden | A carved face from the night of the masquerade watches the room from the shelves. |
-| A8NKR | sugar dish | the lidded glass candy jar | hidden | A glass dish with a lid sits where the sweets go. The tag is under the lid. |
-| AJTN9 | red bird | the red bird above a lamp on the main table | hidden | A small red bird perches above one of the lamps on the main table and looks down on the room. |
-| J84CN | vault lamp | the glowing salt lamp | hidden | A rough block of rose-coloured rock glows softly where the House keeps its lights low. |
-| PWKGP | Kraken Cove candle stand | the octopus candle holder | hidden | Eight arms hold up a single candle, in the cabinet with the good glass. |
-| DF46N | decoy duck | the carved wooden duck with a lid | hidden | A decoy that is hollow inside sits in the cabinet. Lift its head. |
-| E3HTT | route globe | the lit globe on its stand | hidden | The whole world turns on a stand by the window, with the hours marked round its rim. |
-| EFCKF | opera bill | the Falstaff poster in the hall | hidden | A fat knight with his cup hangs in the hall. The tag is at the corner of the frame. |
-| NCPMX | Judge's board | the folding chess box | hidden | A board in a box on the black table, with one white piece missing from its rank. |
-| 2Y34A | Eighteenth Amendment | the pocket Constitution | hidden | A little green book of the nation's laws, the one that made the Veil necessary. |
-| U8GVW | Bill of Rights | the pocket Bill of Rights | hidden | The little book beside it, with the rights every defendant has. |
-| GXG4U | champion's weight | the golden dumbbell | hidden | A prize weight that nobody is lifting. Look where a heavy thing sits quietly. |
-| X8WCT | star-marked salt | the blue kosher salt box with the star | hidden | A blue box with a six-pointed star, in the pantry where the salt is kept. |
-| RD99K | glowing bottle | the lit-up wine bottle | hidden | A bottle of wine that glows in the dark, though nobody lit it. |
+| N8CM8 | Veil candle | the brass candlestick with salt in its dish | hidden | Look for the brass candlestick with salt in its dish. |
+| K6NRA | river lantern | the white lantern on the front balcony | hidden | Look for the white lantern on the front balcony. |
+| D9X6N | Silent Partner's elephant | the golden elephant on the book | hidden | Look for the golden elephant on the book. |
+| V23EE | launch's fog horn | the conch shell | hidden | Look for the conch shell. |
+| XAN9D | masquerade mask | the carved mask sculpture | hidden | Look for the carved mask sculpture. |
+| A8NKR | sugar dish | the lidded glass candy jar | hidden | Look for the lidded glass candy jar. |
+| AJTN9 | red bird | the red bird above a lamp on the main table | hidden | Look for the red bird above a lamp on the main table. |
+| J84CN | vault lamp | the glowing salt lamp | hidden | Look for the glowing salt lamp. |
+| PWKGP | Kraken Cove candle stand | the octopus candle holder | hidden | Look for the octopus candle holder. |
+| DF46N | decoy duck | the carved wooden duck with a lid | hidden | Look for the carved wooden duck with a lid. |
+| E3HTT | route globe | the lit globe on its stand | hidden | Look for the lit globe on its stand. |
+| EFCKF | opera bill | the Falstaff poster in the hall | hidden | Look for the Falstaff poster in the hall. |
+| NCPMX | Judge's board | the folding chess box | hidden | Look for the folding chess box. |
+| 2Y34A | Eighteenth Amendment | the pocket Constitution | hidden | Look for the pocket Constitution. |
+| U8GVW | Bill of Rights | the pocket Bill of Rights | hidden | Look for the pocket Bill of Rights. |
+| GXG4U | champion's weight | the golden dumbbell | hidden | Look for the golden dumbbell. |
+| X8WCT | star-marked salt | the blue kosher salt box with the star | hidden | Look for the blue kosher salt box with the star. |
+| RD99K | glowing bottle | the lit-up wine bottle | hidden | Look for the lit-up wine bottle. |
 | EV6M4 | Mahns crested spoon | the metal spoon | carried | Anika Mahns of Mahns Manor |
 | AFPEP | Silent Partner's brass key | the key | carried | Krrish Vermouth |
 | YYRM4 | House chip | the casino chip | carried | Angelos Bowles |

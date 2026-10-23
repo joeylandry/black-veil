@@ -110,7 +110,7 @@ export const river: Character[] = [
     },
     objectives: [
       find("rhea-find", "duck"),
-      who("rhea-who", "You have worn this cover for a year. Learn what you really were before you took this name: some guests have noticed what a cover cannot hide.", ["tiffany", "silas", "emre"], [["seamstress", "dressmaker", "tailor", "dye lot", "stitch", "pin-pricks", "cut"]]),
+      who("rhea-who", "Find out what your real job was before you took this cover. The guest named below noticed something about you that a cover cannot hide.", ["tiffany", "silas", "emre"], [["seamstress", "dressmaker", "tailor", "dye lot", "stitch", "pin-pricks", "cut"]]),
       motiveChain("rhea-why", ["anika", "emre", "silas"], [["seamstress", "seamstresses", "girls", "milliner", "costume", "dressmaker", "tailor", "sewing", "masks"], ["killed", "murdered", "dead", "died", "killings", "murder"]]),
       nightcapChain("rhea-hour"),
       offerChain("rhea-offer"),

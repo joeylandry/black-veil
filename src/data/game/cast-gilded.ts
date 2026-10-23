@@ -100,7 +100,7 @@ export const gilded: Character[] = [
     },
     objectives: [
       find("mihir-find", "elephant"),
-      who("mihir-who", "You have worn this cover for a year. Learn what you really were before you took this name: some guests have noticed what a cover cannot hide.", ["eric", "anthony", "emre"], [["banker", "clerk", "teller", "counted", "counting"]]),
+      who("mihir-who", "Find out what your real job was before you took this cover. The guest named below noticed something about you that a cover cannot hide.", ["eric", "anthony", "emre"], [["banker", "clerk", "teller", "counted", "counting"]]),
       motiveChain("mihir-why", ["krrish", "anthony", "tim"], [["share", "own money", "advance", "savings", "pocket"], ["hitman", "hitmen", "killer", "killers", "assassin", "murder", "killings", "killed"]]),
       nightcapChain("mihir-hour"),
       offerChain("mihir-offer"),

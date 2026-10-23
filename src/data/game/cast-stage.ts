@@ -100,7 +100,7 @@ export const stage: Character[] = [
     },
     objectives: [
       find("luke-find", "lantern"),
-      who("luke-who", "You have worn this cover for a year. Learn what you really were before you took this name: some guests have noticed what a cover cannot hide.", ["anthony", "erika", "silas"], [["notary", "forger", "forgers", "forge", "signature", "statute"]]),
+      who("luke-who", "Find out what your real job was before you took this cover. The guest named below noticed something about you that a cover cannot hide.", ["anthony", "erika", "silas"], [["notary", "forger", "forgers", "forge", "signature", "statute"]]),
       motiveChain("luke-why", ["anthony", "ananya", "josh"], [["forged", "forge", "forger", "forgery", "forging"], ["orders", "order", "cassie", "framed", "frame", "blame", "blamed"]]),
       nightcapChain("luke-hour"),
       offerChain("luke-offer"),
