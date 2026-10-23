@@ -289,11 +289,14 @@ function gradeCash(input: GradingInput, latest: Map<string, Submission>, present
     const baseline = target?.min ?? character.startingCash;
     return { character, amount, believable, baseline, gain: believable ? amount - baseline : -Infinity, at: submission?.at ?? Infinity };
   });
-  const slots = Math.max(1, Math.ceil(present.length * POINTS.cashShare));
-  const ranked = [...rows].sort((a, b) => b.gain - a.gain || (tieHash(input.truth.seed, a.character.id) < tieHash(input.truth.seed, b.character.id) ? -1 : 1));
+  // the Butler runs the House's money (the tin and the vial sale), so she stands outside this bonus
+  const contenders = rows.filter((row) => row.character.role !== "butler");
+  const slots = Math.max(1, Math.ceil(contenders.length * POINTS.cashShare));
+  const ranked = [...contenders].sort((a, b) => b.gain - a.gain || (tieHash(input.truth.seed, a.character.id) < tieHash(input.truth.seed, b.character.id) ? -1 : 1));
   const winners = new Set(ranked.filter((row) => row.believable).slice(0, slots).map((row) => row.character.id));
   return rows.map((row) => {
     const guest = row.character.id;
+    if (row.character.role === "butler") return item(guest, "bonus", "cash", "reject", 0, POINTS.cash, "The Butler runs the House's money, so she is not in the wallet bonus.");
     if (row.amount === null) return none(guest, "bonus", "cash", POINTS.cash, "No bills were reported.");
     if (!row.believable) return item(guest, "bonus", "cash", "reject", 0, POINTS.cash, `$${row.amount} is more than all the cash in the room.`, true);
     const gain = row.gain;

@@ -157,6 +157,7 @@ export function GameApp() {
             directory={data.directory}
             me={card.id}
             survivor={Boolean(card.private.survivor)}
+            butler={card.private.role?.title === "The Butler"}
             saved={saved}
             onSaved={onSaved}
           />

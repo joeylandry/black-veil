@@ -65,7 +65,7 @@ Everything repeated in this document wears the same label.
 | Name up to four survivors (+1 right, -0.5 wrong) | 4 |
 | Nine mystery questions | 10 |
 | RACE: first in your task to finish (once only) | 1 |
-| Wallet bonus: best off against where you started | 1 |
+| Wallet bonus: best off against where you started (not the Butler) | 1 |
 | **Maximum** | **21** |
 
 ### How it feels for each kind of guest

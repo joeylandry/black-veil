@@ -431,6 +431,15 @@ describe("the wallet bonus", () => {
     assert.deepEqual(present.map((guest) => cashOf(first, guest).points), present.map((guest) => cashOf(again, guest).points));
   });
 
+  it("keeps the Butler out of the wallet bonus, however much she holds", () => {
+    const present = ["rebecca", "tim", "erika", "emre"];
+    const submissions = [sub("rebecca", "objective", "cash", String(start("rebecca") + 900)), sub("tim", "objective", "cash", String(start("tim") - 300)), sub("erika", "objective", "cash", String(start("erika") - 500)), sub("emre", "objective", "cash", String(start("emre") - 400))];
+    const items = autoGrade({ submissions, events: [], truth: truth({ present, killer: "tim" }) });
+    assert.equal(cashOf(items, "rebecca").points, 0);
+    assert.match(cashOf(items, "rebecca").rationale, /runs the House's money/);
+    assert.equal(cashOf(items, "tim").points, 1, "the bonus goes to the best of the others");
+  });
+
   it("pays a spender who still ends best off, even with no gain", () => {
     const present = ["tim", "erika"];
     const submissions = [sub("tim", "objective", "cash", String(start("tim") - 100)), sub("erika", "objective", "cash", String(start("erika") - 300))];

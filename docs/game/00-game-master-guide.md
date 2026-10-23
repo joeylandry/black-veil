@@ -7,7 +7,7 @@
 - 24 guests, 5 groups: the five survivors (secret), and four trades (order, stage, working, river). The Butler (Rebecca) is in the river group.
 - Each guest has **5 objectives** (1 point each) and answers **9 mystery questions** (10 points). They also **name up to 4 survivors** (+1 right, -0.5 wrong).
 - Each group has a **race**: the first to type any 3 of its 5 slip codes gets +1. The survivors' race is buying the House's vial. **Once someone in a group finishes, that group's box closes for everyone else** (the card says so), so the point can be won only once.
-- **Wallet bonus**: the quarter of the room that ends best off against where they started (most gained, or least spent) gets +1. A money errand counts from its target.
+- **Wallet bonus**: the quarter of the room that ends best off against where they started (most gained, or least spent) gets +1. A money errand counts from its target. The Butler is not in it (she runs the House's money).
 - **Maximum 21**: objectives 5 + survivors 4 + mysteries 10 + race 1 + wallet 1.
 - **Money**: everyone starts with $100 bills. Some clues cost a bill in the House Tin at the bar. A kept secret can be sold for $200 (a sale to the keeper's rival costs the keeper half a point).
 - **The game runs itself**: it opens at 8:00, the House closes at 9:00, the book closes at 10:30. You use /admin only at the end.

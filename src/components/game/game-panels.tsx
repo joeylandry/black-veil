@@ -175,6 +175,7 @@ export function AnswersTab({
   directory,
   me,
   survivor,
+  butler,
   saved,
   onSaved,
 }: {
@@ -184,6 +185,7 @@ export function AnswersTab({
   directory: DirectoryEntry[] | null;
   me: string;
   survivor: boolean;
+  butler?: boolean;
   saved: Map<string, SavedAnswer>;
   onSaved: (entry: SavedAnswer) => void;
 }) {
@@ -233,7 +235,7 @@ export function AnswersTab({
 
       <section className="game-panel">
         <p className="eyebrow">Your bills</p>
-        <p>When the night ends, count the House bills in your pocket and type the total in dollars. The quarter of the room that ends the night best off against where they started (the most gained, or the least spent) earns one point. If you have a money errand, you are counted from its target, because that errand already pays you for earning. Spend wisely: clues at the bar and secrets you buy cost money, a secret you sell earns it. Bartend Joe may ask to see your bills.</p>
+        <p>When the night ends, count the House bills in your pocket and type the total in dollars. The quarter of the room that ends the night best off against where they started (the most gained, or the least spent) earns one point. If you have a money errand, you are counted from its target, because that errand already pays you for earning. Spend wisely: clues at the bar and secrets you buy cost money, a secret you sell earns it. Bartend Joe may ask to see your bills.{butler && " The Butler runs the House's money, so you are not in this bonus; type your bills anyway."}</p>
         <SubmitBox kind="objective" itemId="cash" label="Dollars in your pocket at the end" initial={saved.get("objective|cash")} disabled={!open} onSaved={onSaved} />
       </section>
     </>

@@ -31,7 +31,7 @@ Cassie has been in hiding ever since, believed dead. **She knows the five lived.
 | The three mysteries | 10 | **double the objectives**: nine questions, 1 point each, except "who poisoned him" (2). Rubric graded; survivors get 70% on what they lived |
 | Survivors named | 4 | every guest, survivors included, names up to **four**: +1 for each right, -0.5 for each wrong, never below zero. Being named costs a survivor nothing |
 | Group race | 1 | the first member of each of the five groups to finish its race |
-| Wallet bonus | 1 | the quarter of the room that ends best off against their own starting bills (the most gained or the least spent; a money errand counts from its target; ties by the seeded hash) |
+| Wallet bonus | 1 | the quarter of the room that ends best off against their own starting bills (the most gained or the least spent; a money errand counts from its target; ties by the seeded hash; the Butler is not in it) |
 
 **The mysteries** (10 points, double all the objectives together):
 
