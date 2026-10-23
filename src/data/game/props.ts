@@ -28,12 +28,12 @@ const C = (id: string, code: string, name: string, generic: string, carriedBy: s
 export const props: Prop[] = [
   // ---- hidden in shared rooms: the tag is taped to or beside the object ----
   H("veil-candle", "N8CM8", "Veil candle", "the brass candlestick with salt in its dish", "A brass candlestick burns beside her portrait, and a ring of salt keeps it company."),
-  H("lantern", "K6NRA", "river lantern", "the jack-o'-lantern", "A grinning lantern keeps the dining table lit. Look where it glows."),
+  H("lantern", "K6NRA", "river lantern", "the white lantern on the front balcony", "A white lantern waits out on the front balcony, where the river wind would find it."),
   H("elephant", "D9X6N", "Silent Partner's elephant", "the golden elephant on the book", "A gilded elephant, who never forgets, leans on a book by the old globe."),
   H("conch", "V23EE", "launch's fog horn", "the conch shell", "Something that once sounded a warning across the water now sits on the bookshelf."),
   H("mask", "XAN9D", "masquerade mask", "the carved mask sculpture", "A carved face from the night of the masquerade watches the room from the shelves."),
   H("sugar-dish", "A8NKR", "sugar dish", "the lidded glass candy jar", "A glass dish with a lid sits where the sweets go. The tag is under the lid."),
-  H("red-bird", "AJTN9", "red bird", "the cardinal ornament", "A small red bird perches somewhere it should not, away from its lamp."),
+  H("red-bird", "AJTN9", "red bird", "the red bird above a lamp on the main table", "A small red bird perches above one of the lamps on the main table and looks down on the room."),
   H("cloche", "J84CN", "vault cloche", "the glass cake dome on its marble stand", "A glass dome over a marble stand hides what the House keeps under glass."),
   H("octopus", "PWKGP", "Kraken Cove candle stand", "the octopus candle holder", "Eight arms hold up a single candle, in the cabinet with the good glass."),
   H("duck", "DF46N", "decoy duck", "the carved wooden duck with a lid", "A decoy that is hollow inside sits in the cabinet. Lift its head."),

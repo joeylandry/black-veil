@@ -360,12 +360,12 @@ Kit had the Veil's runners killed one at a time, the last thrown into the river 
 | Code | Prop | Could be | Where | Hint or carrier |
 |---|---|---|---|---|
 | N8CM8 | Veil candle | the brass candlestick with salt in its dish | hidden | A brass candlestick burns beside her portrait, and a ring of salt keeps it company. |
-| K6NRA | river lantern | the jack-o'-lantern | hidden | A grinning lantern keeps the dining table lit. Look where it glows. |
+| K6NRA | river lantern | the white lantern on the front balcony | hidden | A white lantern waits out on the front balcony, where the river wind would find it. |
 | D9X6N | Silent Partner's elephant | the golden elephant on the book | hidden | A gilded elephant, who never forgets, leans on a book by the old globe. |
 | V23EE | launch's fog horn | the conch shell | hidden | Something that once sounded a warning across the water now sits on the bookshelf. |
 | XAN9D | masquerade mask | the carved mask sculpture | hidden | A carved face from the night of the masquerade watches the room from the shelves. |
 | A8NKR | sugar dish | the lidded glass candy jar | hidden | A glass dish with a lid sits where the sweets go. The tag is under the lid. |
-| AJTN9 | red bird | the cardinal ornament | hidden | A small red bird perches somewhere it should not, away from its lamp. |
+| AJTN9 | red bird | the red bird above a lamp on the main table | hidden | A small red bird perches above one of the lamps on the main table and looks down on the room. |
 | J84CN | vault cloche | the glass cake dome on its marble stand | hidden | A glass dome over a marble stand hides what the House keeps under glass. |
 | PWKGP | Kraken Cove candle stand | the octopus candle holder | hidden | Eight arms hold up a single candle, in the cabinet with the good glass. |
 | DF46N | decoy duck | the carved wooden duck with a lid | hidden | A decoy that is hollow inside sits in the cabinet. Lift its head. |

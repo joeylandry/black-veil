@@ -19,7 +19,7 @@ anika-secret. **What Ananya Codru and Charlie Wakem is hiding** (learn, 1) Every
 
 joel-money. **Money to make** (money, 1) Let the room pay for your charm: win a hand, sell a story, collect a favour in cash. Leave with at least $3,600. Count your bills at the end and submit the total. Bartend Joe may ask to see them.
    - answer: at least $3600
-joel-find. **A thing to find** (find, 1) Find the red bird. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. A small red bird perches somewhere it should not, away from its lamp.
+joel-find. **A thing to find** (find, 1) Find the red bird. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. A small red bird perches above one of the lamps on the main table and looks down on the room.
    - answer: code AJTN9
 joel-secret. **What Krrish Vermouth is hiding** (learn, 1) Everyone has something they would rather not say. Learn Krrish Vermouth's small secret, not by being told it is a secret, but by earning it.
    - answer: [grey hudson | grey]; from Krrish Vermouth, Dr. Emmerich Sunner
@@ -160,7 +160,7 @@ ananya-story. **Cassie's hand** (story, 1) Cassie signed her notes in a particul
 
 ## Luke Shelldon
 
-luke-find. **A thing to find** (find, 1) Find the river lantern. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. A grinning lantern keeps the dining table lit. Look where it glows.
+luke-find. **A thing to find** (find, 1) Find the river lantern. It is hidden in a shared room, never in anyone's belongings, and it carries a small black tag with a code. A white lantern waits out on the front balcony, where the river wind would find it.
    - answer: code K6NRA
 luke-who. **Who were you?** (learn, 1) You have worn this cover for a year. Learn what you really were before you took this name: some guests have noticed what a cover cannot hide.
    - answer: [notary | forger | forgers | forge | signature | statute]; from Anthony Hung, Esq., Erika Lamm, Silas Palmer of the Palm Court
