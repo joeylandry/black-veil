@@ -2,6 +2,7 @@
 
 import { FormEvent, useEffect, useState } from "react";
 import { AdminCast } from "./admin-cast";
+import { AdminGrading } from "./admin-grading";
 
 const adminSecretKey = "black-veil-admin-secret";
 
@@ -104,6 +105,7 @@ export function AdminClaims() {
   return (
     <div className="admin-claims">
       <AdminCast secret={secret} />
+      <AdminGrading secret={secret} />
     </div>
   );
 }
