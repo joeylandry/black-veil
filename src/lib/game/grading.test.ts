@@ -376,6 +376,13 @@ describe("the room", () => {
     assert.ok(!items.some((entry) => entry.guest === "luke" || entry.guest === "joel"));
     assert.ok(items.some((entry) => entry.guest === "anika"));
   });
+  it("gives the point when every partner for an objective stayed home", () => {
+    const present = everyone.filter((id) => id !== "tim");
+    const items = autoGrade({ submissions: [], events: [], truth: truth({ present }) });
+    assert.equal(objectiveItem(items, "arjun-swap").verdict, "accept", "Tim was Arjun's only swap partner");
+    assert.equal(objectiveItem(items, "erika-secret").verdict, "accept", "Tim's own secret: Tim stayed home");
+    assert.equal(objectiveItem(items, "anika-find").verdict, "reject", "a find needs nobody, so nothing is given");
+  });
   it("is deterministic however the submissions are ordered", () => {
     const random = mulberry(7);
     const base = perfectErrands(() => random() < 0.3);

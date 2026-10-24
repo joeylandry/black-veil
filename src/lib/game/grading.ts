@@ -70,6 +70,11 @@ function gradeObjective(guest: string, objective: Objective, context: Context): 
   const check = objective.check;
   const id = objective.id;
 
+  // house rule: when every guest who could help with this objective stayed home, the point is yours
+  if (check.kind !== "keep" && objective.with.length > 0 && !objective.with.some((partner) => context.truth.present.includes(partner))) {
+    return item(guest, "objective", id, "accept", max, max, "Everyone who could help with this one stayed home, so the point is yours.");
+  }
+
   switch (check.kind) {
     case "vial-attempt": {
       const attempts = context.events.filter((event) => event.kind === "vial-attempt" && event.guest === guest).length;
