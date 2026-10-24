@@ -45,7 +45,7 @@ const BEFORE = new Date("2026-10-20T12:00:00-04:00");
 const NIGHT = new Date("2026-10-23T20:10:00-04:00");
 const SALE = new Date("2026-10-23T20:50:00-04:00");
 const holderOf = (no: number) => survivorIds.find((id) => characterById.get(id)!.survivor!.markerNo === no)!;
-const LATE = new Date("2026-10-23T23:30:00-04:00");
+const LATE = new Date("2026-10-24T03:00:00-04:00");
 
 async function freshDb() {
   const client = new PGlite();
@@ -156,7 +156,7 @@ describe("release flags", () => {
     assert.equal(deriveState({ identitiesReleased: true, secretsReleased: true }, BEFORE).secretsReleased, true, "started early means started");
     assert.equal(deriveState({ identitiesReleased: true, secretsReleased: false }, NIGHT).secretsReleased, false, "staff can hold it");
     assert.equal(deriveState({ identitiesReleased: true, secretsReleased: true, submissionsClosed: true }, NIGHT).submissionsOpen, false);
-    assert.equal(deriveState({ identitiesReleased: true, secretsReleased: true }, LATE).submissionsOpen, false, "the book closes on its own at 10:30");
+    assert.equal(deriveState({ identitiesReleased: true, secretsReleased: true }, LATE).submissionsOpen, false, "the book closes on its own at 2:00 a.m.");
     assert.equal(deriveState({ identitiesReleased: true, secretsReleased: true, submissionsClosed: false }, LATE).submissionsOpen, true, "staff can reopen it");
     assert.equal(deriveState({ identitiesReleased: true, secretsReleased: true, resultsPublished: true }, NIGHT).submissionsOpen, false);
   });
