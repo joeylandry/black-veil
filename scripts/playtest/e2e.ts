@@ -44,7 +44,8 @@ const outDir = process.argv[3] ?? "/tmp/black-veil-playtest";
 const sql = postgres(DATABASE_URL, { max: 4, onnotice: () => undefined });
 
 // ---------------------------------------------------------------- the clock, the session, the calls
-const at = (time: string) => new Date(`2026-10-23T${time}-04:00`).getTime();
+// a leading "+1 " means the next morning (the book now closes at 2:00 a.m.)
+const at = (time: string) => new Date(time.startsWith("+1 ") ? `2026-10-24T${time.slice(3)}-04:00` : `2026-10-23T${time}-04:00`).getTime();
 /** Moves the app's clock, then waits long enough for it to notice (it re-reads the offset every 25 ms). */
 async function setClock(time: string) {
   writeFileSync(CLOCK_FILE, String(at(time) - Date.now()));
@@ -422,13 +423,13 @@ async function main() {
     }
 
     // 22:30:10 the book closes by itself
-    await setClock("22:30:10");
+    await setClock("+1 02:00:10");
     const closedBook = await call(idOf("anika"), "POST", "/api/game/submit", { kind: "mystery", itemId: "old-1", answer: "changed my mind" });
     check(closedBook.status !== 200, "an answer was accepted after the book closed");
     if (full) {
       const page = await openGame("anika");
       await openTab(page, "Answers");
-      await snapEl(page.locator(".game-question").first(), "anika-book-closed", "10:30 p.m. The book closes by itself: the box is locked and says so.");
+      await snapEl(page.locator(".game-question").first(), "anika-book-closed", "2:00 a.m. The book closes by itself: the box is locked and says so.");
       await page.close();
     }
 
