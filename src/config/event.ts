@@ -38,7 +38,7 @@ export const eventConfig = {
   vialOpensAt: "2026-10-23T20:45:00-04:00",
   nightcapServedAt: "2026-10-23T21:00:00-04:00",
   /** Answers stop being accepted at this moment, unless staff reopen them from /admin. */
-  submissionsCloseAt: "2026-10-24T02:00:00-04:00",
+  submissionsCloseAt: "2026-10-24T12:00:00-04:00",
   /**
    * The Restoration Bench (engineering track) is not advertised while this is false: no
    * footer link, no link from the trials, no conservation slips in the newspapers.
