@@ -39,6 +39,9 @@ export function AdminGrading({ secret }: { secret: string }) {
 
   const grade = () =>
     run("Grading", async () => {
+      // the grades table and half points may never have been migrated on this deployment: create them first (safe to repeat)
+      const setup = await act("setup-database");
+      if (!setup.ok) return setNotice(setup.body?.error ?? "The database could not be set up for grading.");
       const graded = await act("grade");
       if (!graded.ok) return setNotice(graded.body?.error ?? "Grading failed.");
       await showStandings();
