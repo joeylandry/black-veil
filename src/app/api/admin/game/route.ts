@@ -10,6 +10,7 @@ import {
   butlerSell,
   castByName,
   editCharacter,
+  makePacket,
   publishResults,
   resetGrades,
   resetVial,
@@ -124,6 +125,8 @@ export async function POST(request: NextRequest) {
           rows: standings.standings.map((row) => ({ rank: row.rank, circleRank: row.circleRank, guest: row.guest, name: row.name, circle: row.circle, survivor: row.survivor, total: row.total, tiers: row.tiers })),
         });
       }
+      case "packet":
+        return reply({ ok: true, packet: await makePacket(db) });
       case "verdicts": {
         const source = body.source === "staff" ? "staff" : "claude";
         return reply({ ok: true, ...(await applyVerdictFile(db, body.verdicts, source)) });
