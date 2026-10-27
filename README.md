@@ -31,6 +31,7 @@ npm run build
 - `/game` — the guest's night: three-tab character card ("Characters coming very soon" until the host presses Start game), objectives, final answers, results. See `docs/game/README.md`
 - `/black-frog` — the seven-trial CTF (server-verified flags) and in-person point claims
 - `/postscript` — the unlisted bonus flag (footer link once the register is unsealed; the flag is in the unlocked terminal ledger)
+- `/reading-room`, `/bindery` — the two apprentice desks (LEAP analyst and engineer tracks), ten tickets each; `/reading-room/[ticket]`, `/bindery/[ticket]` — one ticket
 - `/bench/[ticket]` — one restoration bench: a graded engineering exercise (RST-01 … RST-12)
 - `/resume` — request a magic-link sign-in to restore your register on a new device
 - `/admin` — staff-only, passcode-gated cast page: who is coming, their character, sign in as them, and the one **Start game** button that releases every card and objective (linked from the footer)
@@ -89,6 +90,21 @@ npm run bench:check
 ```
 
 `scripts/bench-selftest.ts` works all twelve labs correctly and then submits all twelve untouched, asserting that the first passes and the second fails. Run it after touching any lab's starting material or grader.
+
+### The apprentice desks: the Reading Room and the Bindery
+
+Two more tracks in the same fiction and the same workbench as the Restoration Bench, written for the LEAP onboarding programme: one ticket per curriculum week, about thirty minutes each, worked in pairs. The **Reading Room** (`RR-01` … `RR-10`) is the analyst track — define and validate; the **Bindery** (`BD-01` … `BD-10`) is the engineering track — build and deliver. Their shared material is the Lantern Room *wire book*: the orders patrons placed by private wire to a Boston brokerage in 1924, normalised into four tables (`src/data/desks/wire-book.ts`).
+
+- `src/data/desks/reading-room.ts`, `src/data/desks/bindery.ts` — public copy and starting material only, like `src/data/bench.ts`.
+- `src/lib/desks/graders.ts` and `src/lib/desks/shells.ts` — server-only answers and console fixtures. Consoles are replayed from the whole history on every request, as RST-01's repository is.
+- `POST /api/desk/[ticket]` — `run` and `submit`, graded with the same named checks as the bench. Unlike the bench there is no sign-in, no bench word and no score: closed tickets are remembered in this browser only (`storageKeys.deskClosed`). SQL tickets run in a throwaway PGlite, as RST-10 does.
+- Not linked from the site chrome; reach them by address.
+
+```bash
+npm run desk:check
+```
+
+`scripts/desk-selftest.ts` works all twenty tickets correctly and submits each untouched, asserting the first passes and the second fails, and that every grader's check names match the published list.
 
 ### Guest accounts and resuming
 

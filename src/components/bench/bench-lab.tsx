@@ -2,13 +2,38 @@
 
 import Link from "next/link";
 import { FormEvent, useMemo, useRef, useState } from "react";
-import { BenchLab, benchSolveId } from "@/data/bench";
+import { BenchField, BenchFile, BenchLab, BenchShell, benchSolveId } from "@/data/bench";
 import { eventConfig } from "@/config/event";
-import { BenchGradeResult, benchService, isSessionLost } from "@/lib/bench-service";
+import { BenchCheckResult, benchService, isSessionLost } from "@/lib/bench-service";
 import { CtfProgress, emptyCtfProgress } from "@/lib/ctf-service";
 import { useStorageValue } from "@/lib/use-storage-value";
 
 type ConsoleLine = { kind: "command" | "output"; text: string };
+
+/** What a workbench needs to show and grade one piece of work: a bench lab or a desk ticket. */
+export type WorkbenchLab = {
+  id: string;
+  ticket: string;
+  sprint: string;
+  title: string;
+  topic: string;
+  brief: string;
+  manual?: string[];
+  task: string[];
+  shell?: BenchShell;
+  files?: BenchFile[];
+  fields?: BenchField[];
+  checks: string[];
+  recordSlug?: string;
+  recordTitle?: string;
+};
+
+export type WorkbenchResult = { passed: boolean; checks: BenchCheckResult[]; log: string[]; flag?: string | null };
+
+export type WorkbenchService = {
+  run(ticket: string, history: string[]): Promise<string[]>;
+  submit(ticket: string, submission: { files: Record<string, string>; fields: Record<string, string>; history: string[] }): Promise<WorkbenchResult>;
+};
 
 function parseProgress(raw: string | null | undefined): CtfProgress {
   if (!raw) return emptyCtfProgress;
@@ -19,49 +44,79 @@ function parseProgress(raw: string | null | undefined): CtfProgress {
   }
 }
 
-export function BenchLabWorkbench({ lab }: { lab: BenchLab }) {
-  const savedProgress = useStorageValue(eventConfig.storageKeys.ctfProgress);
-  const storedProgress = useMemo(() => parseProgress(savedProgress), [savedProgress]);
+/** `code` in copy, rendered as code. */
+function Inline({ text }: { text: string }) {
+  return (
+    <>
+      {text.split(/(`[^`]+`)/g).map((part, index) =>
+        part.startsWith("`") && part.endsWith("`") && part.length > 1 ? <code key={index}>{part.slice(1, -1)}</code> : part,
+      )}
+    </>
+  );
+}
 
+export function Workbench({
+  lab,
+  service,
+  eyebrow,
+  meta,
+  alreadySolved,
+  acceptedNote,
+  onPassed,
+  backHref,
+  backLabel,
+  resumeOnError,
+}: {
+  lab: WorkbenchLab;
+  service: WorkbenchService;
+  eyebrow: string;
+  meta: string[];
+  alreadySolved: boolean;
+  acceptedNote: string;
+  onPassed?: () => void;
+  backHref: string;
+  backLabel: string;
+  /** Bench work is graded against a signed-in guest, so its errors offer a way back in. */
+  resumeOnError?: boolean;
+}) {
   const [files, setFiles] = useState<Record<string, string>>(() =>
     Object.fromEntries((lab.files ?? []).filter((file) => !file.readOnly).map((file) => [file.name, file.content])),
   );
-  const [fields, setFields] = useState<Record<string, string>>(() =>
-    Object.fromEntries((lab.fields ?? []).map((field) => [field.name, ""])),
-  );
+  const [fields, setFields] = useState<Record<string, string>>(() => Object.fromEntries((lab.fields ?? []).map((field) => [field.name, ""])));
   const [history, setHistory] = useState<string[]>([]);
-  const [lines, setLines] = useState<ConsoleLine[]>(() =>
-    (lab.shell?.intro ?? []).map((text) => ({ kind: "output" as const, text })),
-  );
+  const [lines, setLines] = useState<ConsoleLine[]>(() => (lab.shell?.intro ?? []).map((text) => ({ kind: "output" as const, text })));
   const [busy, setBusy] = useState(false);
-  const [result, setResult] = useState<BenchGradeResult | null>(null);
+  const [result, setResult] = useState<WorkbenchResult | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [sessionLost, setSessionLost] = useState(false);
   const consoleEnd = useRef<HTMLDivElement>(null);
 
-  const solved = result?.passed || storedProgress.solved.includes(benchSolveId(lab.id));
+  const solved = result?.passed || alreadySolved;
+  const reference = (lab.files ?? []).filter((file) => file.readOnly);
+  const editable = (lab.files ?? []).filter((file) => !file.readOnly);
 
   async function runCommand(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = event.currentTarget;
-    const input = new FormData(form).get("command");
-    const command = String(input ?? "").trim();
+    const command = String(new FormData(form).get("command") ?? "").trim();
     if (!command || busy) return;
     form.reset();
+
+    if (command === "clear") {
+      setLines([]);
+      return;
+    }
 
     const nextHistory = [...history, command];
     setHistory(nextHistory);
     setLines((current) => [...current, { kind: "command", text: command }]);
     setBusy(true);
     try {
-      const output = await benchService.run(lab.ticket, nextHistory);
+      const output = await service.run(lab.ticket, nextHistory);
       setLines((current) => [...current, ...output.map((text) => ({ kind: "output" as const, text }))]);
     } catch (runError) {
       if (isSessionLost(runError)) setSessionLost(true);
-      setLines((current) => [
-        ...current,
-        { kind: "output", text: runError instanceof Error ? runError.message : "The bench did not respond." },
-      ]);
+      setLines((current) => [...current, { kind: "output", text: runError instanceof Error ? runError.message : "The bench did not respond." }]);
     } finally {
       setBusy(false);
       window.requestAnimationFrame(() => consoleEnd.current?.scrollIntoView({ block: "nearest" }));
@@ -72,7 +127,9 @@ export function BenchLabWorkbench({ lab }: { lab: BenchLab }) {
     setBusy(true);
     setError(null);
     try {
-      setResult(await benchService.submit(lab.ticket, { files, fields, history }));
+      const graded = await service.submit(lab.ticket, { files, fields, history });
+      setResult(graded);
+      if (graded.passed) onPassed?.();
     } catch (submitError) {
       if (isSessionLost(submitError)) setSessionLost(true);
       setError(submitError instanceof Error ? submitError.message : "The bench could not grade that submission.");
@@ -84,17 +141,19 @@ export function BenchLabWorkbench({ lab }: { lab: BenchLab }) {
   return (
     <div className="bench-lab">
       <header className="bench-lab-header">
-        <p className="eyebrow">
-          Restoration ticket {lab.ticket} · {lab.sprint}
-        </p>
+        <p className="eyebrow">{eyebrow}</p>
         <h1>{lab.title}</h1>
         <p className="bench-topic">{lab.topic}</p>
         <div className="bench-meta">
-          <span>{lab.points} points</span>
+          {meta.map((item) => (
+            <span key={item}>{item}</span>
+          ))}
           <span>{solved ? "Work accepted" : "Open"}</span>
-          <span>
-            Filed against <Link href={`/archive/${lab.recordSlug}`}>{lab.recordTitle}</Link>
-          </span>
+          {lab.recordSlug && lab.recordTitle && (
+            <span>
+              Filed against <Link href={`/archive/${lab.recordSlug}`}>{lab.recordTitle}</Link>
+            </span>
+          )}
         </div>
       </header>
 
@@ -106,14 +165,43 @@ export function BenchLabWorkbench({ lab }: { lab: BenchLab }) {
       )}
 
       <section className="bench-brief">
-        <p>{lab.brief}</p>
+        <p className="bench-brief-lead">{lab.brief}</p>
+        {lab.manual && lab.manual.length > 0 && (
+          <aside className="bench-manual" aria-label="From the bench manual">
+            <h2>From the bench manual</h2>
+            <ul>
+              {lab.manual.map((note) => (
+                <li key={note}>
+                  <Inline text={note} />
+                </li>
+              ))}
+            </ul>
+          </aside>
+        )}
         <h2>The work</h2>
-        <ol>
+        <ol className="bench-steps">
           {lab.task.map((step) => (
-            <li key={step}>{step}</li>
+            <li key={step}>
+              <Inline text={step} />
+            </li>
           ))}
         </ol>
       </section>
+
+      {reference.length > 0 && (
+        <section className="bench-reference" aria-label="Reference">
+          <h2>On the bench</h2>
+          {reference.map((file) => (
+            <div className="bench-file" key={file.name}>
+              <h3>
+                {file.name}
+                <span className="bench-readonly">read only</span>
+              </h3>
+              <pre className="bench-source">{file.content}</pre>
+            </div>
+          ))}
+        </section>
+      )}
 
       {lab.shell && (
         <section className="bench-console" aria-label="Bench console">
@@ -128,14 +216,7 @@ export function BenchLabWorkbench({ lab }: { lab: BenchLab }) {
           </div>
           <form onSubmit={runCommand} className="bench-console-entry">
             <label htmlFor={`command-${lab.id}`}>{lab.shell.prompt}</label>
-            <input
-              id={`command-${lab.id}`}
-              name="command"
-              autoComplete="off"
-              spellCheck={false}
-              placeholder="help"
-              disabled={busy}
-            />
+            <input id={`command-${lab.id}`} name="command" autoComplete="off" autoCapitalize="off" spellCheck={false} placeholder="help" disabled={busy} />
             <button type="submit" disabled={busy}>
               Run
             </button>
@@ -144,30 +225,26 @@ export function BenchLabWorkbench({ lab }: { lab: BenchLab }) {
             <summary>Commands this bench accepts</summary>
             <ul>
               {lab.shell.commands.map((command) => (
-                <li key={command}>{command}</li>
+                <li key={command}>
+                  <code>{command}</code>
+                </li>
               ))}
             </ul>
           </details>
         </section>
       )}
 
-      {(lab.files ?? []).map((file) => (
+      {editable.map((file) => (
         <section className="bench-file" key={file.name}>
-          <h2>
-            {file.name}
-            {file.readOnly && <span className="bench-readonly">read only</span>}
-          </h2>
-          {file.readOnly ? (
-            <pre className="bench-source">{file.content}</pre>
-          ) : (
-            <textarea
-              aria-label={file.name}
-              spellCheck={false}
-              value={files[file.name] ?? ""}
-              onChange={(event) => setFiles((current) => ({ ...current, [file.name]: event.target.value }))}
-              rows={Math.min(Math.max(file.content.split("\n").length + 4, 8), 30)}
-            />
-          )}
+          <h2>{file.name}</h2>
+          <textarea
+            aria-label={file.name}
+            spellCheck={false}
+            autoCapitalize="off"
+            value={files[file.name] ?? ""}
+            onChange={(event) => setFiles((current) => ({ ...current, [file.name]: event.target.value }))}
+            rows={Math.min(Math.max(file.content.split("\n").length + 3, 8), 26)}
+          />
         </section>
       ))}
 
@@ -224,13 +301,19 @@ export function BenchLabWorkbench({ lab }: { lab: BenchLab }) {
 
         {error && (
           <p className="field-error" role="alert">
-            {error} <Link href="/resume">Resume from another device</Link>.
+            {error}
+            {resumeOnError && (
+              <>
+                {" "}
+                <Link href="/resume">Resume from another device</Link>.
+              </>
+            )}
           </p>
         )}
 
         {solved ? (
           <p className="bench-accepted" role="status">
-            ◆ Work accepted · {lab.points} points entered
+            ◆ Work accepted · {acceptedNote}
             {result?.flag ? (
               <>
                 {" "}
@@ -252,10 +335,29 @@ export function BenchLabWorkbench({ lab }: { lab: BenchLab }) {
       </section>
 
       <footer className="bench-footer">
-        <Link href="/bench" className="button-link">
-          Return to the bench
+        <Link href={backHref} className="button-link">
+          {backLabel}
         </Link>
       </footer>
     </div>
+  );
+}
+
+/** A Restoration Bench lab: graded and scored in /api/bench/[ticket] against the signed-in guest. */
+export function BenchLabWorkbench({ lab }: { lab: BenchLab }) {
+  const savedProgress = useStorageValue(eventConfig.storageKeys.ctfProgress);
+  const storedProgress = useMemo(() => parseProgress(savedProgress), [savedProgress]);
+  return (
+    <Workbench
+      lab={lab}
+      service={benchService}
+      eyebrow={`Restoration ticket ${lab.ticket} · ${lab.sprint}`}
+      meta={[`${lab.points} points`]}
+      alreadySolved={storedProgress.solved.includes(benchSolveId(lab.id))}
+      acceptedNote={`${lab.points} points entered`}
+      backHref="/bench"
+      backLabel="Return to the bench"
+      resumeOnError
+    />
   );
 }
