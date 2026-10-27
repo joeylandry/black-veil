@@ -52,6 +52,8 @@ export const eventConfig = {
     ctfProgress: "black-veil:ctf-progress",
     registerUnlocked: "black-veil:register-unlocked",
     benchUnlocked: "black-veil:bench-unlocked",
+    /** Reading Room and Bindery tickets closed in this browser. Desk work is not scored. */
+    deskClosed: "black-veil:desk-closed",
   },
 } as const;
 
