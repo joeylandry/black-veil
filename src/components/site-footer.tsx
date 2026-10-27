@@ -1,12 +1,15 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { eventConfig } from "@/config/event";
 import { useStorageValue } from "@/lib/use-storage-value";
 import { BlackVeilInsignia } from "./black-veil-insignia";
 
 export function SiteFooter() {
   const registerUnlocked = useStorageValue(eventConfig.storageKeys.registerUnlocked) === "true";
+  // LEAP Labs bring their own footer.
+  if (usePathname()?.startsWith("/leap")) return null;
 
   return (
     <footer className="site-footer">
