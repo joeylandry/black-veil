@@ -31,6 +31,7 @@ npm run build
 - `/game` — the guest's night: three-tab character card ("Characters coming very soon" until the host presses Start game), objectives, final answers, results. See `docs/game/README.md`
 - `/black-frog` — the seven-trial CTF (server-verified flags) and in-person point claims
 - `/postscript` — the unlisted bonus flag (footer link once the register is unsealed; the flag is in the unlocked terminal ledger)
+- `/leap` — LEAP Labs: twenty hands-on training simulations (see "LEAP Labs" below)
 - `/bench/[ticket]` — one restoration bench: a graded engineering exercise (RST-01 … RST-12)
 - `/resume` — request a magic-link sign-in to restore your register on a new device
 - `/admin` — staff-only, passcode-gated cast page: who is coming, their character, sign in as them, and the one **Start game** button that releases every card and objective (linked from the footer)
@@ -121,6 +122,22 @@ The same passphrase opens the rest of the Staff Office at `/admin`. `GET /api/ad
 `GET /api/standings` ranks every guest by the same score as `GET /api/me` (solves plus approved claims) for the Guest Ledger leaderboard. It is signed-in only; other guests appear by first name and initial. The leaderboard and the /admin dashboard poll every five seconds, so flags submitted anywhere show up on open screens without a reload.
 
 The model supports a primary 1926 murder and an optional advanced investigation into Cassandra and the 1924 masquerade without choosing how those mysteries connect.
+
+## LEAP Labs (training simulations)
+
+`/leap` hosts twenty hands-on, pair-friendly simulations for the LEAP onboarding program: one per week for each of two tracks, each about 30 minutes. They are independent of the Black Veil story — on `/leap` routes the Black Veil header and footer step aside for a clean training layout (`src/app/leap/layout.tsx`, `src/app/leap/leap.css`).
+
+- `/leap` — program home; `/leap/systems-analyst` and `/leap/software-engineer` — each track's ten labs by phase; `/leap/[track]/[sim]` — one lab
+- `src/data/leap/story.ts` — every firm, platform and character name the labs use, plus the sample trading database. Rename here and every lab follows.
+- `src/data/leap/systems-analyst.ts`, `src/data/leap/software-engineer.ts` — the labs: missions, field notes, tasks, hints, debriefs. Task kinds are typed in `src/data/leap/types.ts`: quiz, sort, match, answers, console (scripted terminal), editor (named checks), code (real JavaScript run in a Web Worker against tests), sql (real Postgres) and spot (flag the wrong lines of AI output or code).
+- `POST /api/leap/sql` — runs a single read-only query against a throwaway in-memory PGlite seeded with the sample data, like RST-10. No sign-in.
+- Progress, stars and partner names live in `localStorage` only. Answers are client-side on purpose: these are training labs, not a competition.
+
+```bash
+npm run leap:check
+```
+
+`scripts/leap-check.ts` solves every task (console walkthroughs, reference editor/code solutions, SQL solutions) and asserts untouched starters fail. Run it after editing a lab.
 
 ## The murder-mystery game
 
