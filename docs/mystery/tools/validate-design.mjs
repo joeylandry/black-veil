@@ -6,7 +6,7 @@
 import { createHash } from "node:crypto";
 
 // --- 1. NETWORK -------------------------------------------------------------------------------
-// The 20 confirmed attendees (Oct 16 guest list) plus Silas (the scat singer) Rhea and Emre (confirmed Oct 16), and Tim McGinley (all four are yes; not on the site's register yet). Circles: River Trade, Elm Street, Wire (press/telegraph),
+// The 20 confirmed attendees (Oct 16 guest list) plus Silas (the scat singer) Rhea and Emre (confirmed Oct 16), and Tim McGinley (all four are yes; not on the site's register yet), and Krrish (confirmed). Circles: River Trade, Elm Street, Wire (press/telegraph),
 // Law, West Side (the boarding house), Mill (mill families and workers).
 const circle = {
   tim: "River", adam: "River", molly: "River", luke: "River", angelos: "River", diwakar: "River", erika: "River", mihir: "River",
@@ -14,6 +14,7 @@ const circle = {
   ananya: "Wire", leon: "Wire",
   eric: "Law", anthony: "Law", theodor: "Law",
   rebecca: "WestSide",
+  krrish: "House",
   silas: "Orchestra",
   josh: "Mill", arjun: "Mill",
 };
@@ -134,6 +135,16 @@ tim-rebecca|B|gin for the boarding house
 tim-silas|B|gin for the band
 tim-theodor|L|the Sheriff wants his books
 tim-emre|$|pays in gin for treatments
+krrish-anika|$|serves her first drink; her tab
+krrish-angelos|B|bar tabs
+krrish-tim|B|waters his gin
+krrish-silas|W|the band's bar
+krrish-rebecca|W|household and staff gossip
+krrish-molly|W|papers for the bar
+krrish-luke|$|trick bottles for the bar
+krrish-diwakar|24|bartender and doorman in 1924
+krrish-theodor|L|the bar's license
+krrish-mihir|$|Mihir's regular table
 ananya-leon|W|wire to radio
 ananya-theodor|W|police wires
 ananya-eric|W|the Judge's private wires
@@ -213,7 +224,7 @@ const shapes = {
   detective: { obj: 36, web: 12, case: 8, hunt: 14, recSolve: 1.0 },
   hybrid:    { obj: 48, web: 14, case: 6, hunt: 11, recSolve: 0.75 },
 };
-function game({ players = 24, solveBase, escape, decay, sheriffAccuracy }) {
+function game({ players = 25, solveBase, escape, decay, sheriffAccuracy }) {
   const names = Object.keys(shapes);
   const rows = [];
   for (let i = 0; i < players; i++) {
@@ -235,7 +246,7 @@ function game({ players = 24, solveBase, escape, decay, sheriffAccuracy }) {
   const w = eligible[0];
   return { culpritWon: w.culprit, winnerSolved: w.solved, K };
 }
-console.log("culprit win share / winners who never named the culprit / mean correct accusers  (24 players, 3000 games each)");
+console.log("culprit win share / winners who never named the culprit / mean correct accusers  (25 players, 3000 games each)");
 for (const solveBase of [0.12, 0.25, 0.4]) {
   for (const [escape, decay] of [[28, 2], [32, 2], [36, 2]]) {
     let cw = 0, nonSolve = 0, k = 0, n = 3000;
