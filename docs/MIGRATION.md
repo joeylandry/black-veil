@@ -44,12 +44,12 @@ The print PDFs (about 21 MB) were not carried over. They are in the original rep
 |---|---|
 | Manchester, N.H., mills, Merrimack | Boston, 245 Summer Street, Fort Point Channel |
 | The Black Veil (club) | The Black Toad (club) |
-| Archive drawers by year | One exhibit per week, ten weeks |
+| Invitation, RSVP, guest ledger, archive drawers by year | No invitation at all: a leaked case file, one exhibit per week |
 | Restoration Bench tickets RST-01…12 | Weekly work orders WO-245-01…10 (labs assigned per week) |
 | Guests (RSVP by email) | Members (join with a room access code) |
 | Individual CTF score | Team score = member average + room awards |
 | Five survivors, the vial | Replaced by the room game (draft: `docs/story/04-room-game-draft.md`) |
-| Cassie's ousting in 1924 | **Kept** (the backstory of Week 5) |
+| Cassie's ousting at a 1924 Halloween masquerade | **Kept** as backstory (Week 5), moved to an ordinary Friday in December 1924; no Halloween anywhere |
 | Kit Kessler, the Keeper | **Kept**, now the victim in 1926 |
 
 ## Moving to a new repository

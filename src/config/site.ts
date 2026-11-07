@@ -10,8 +10,8 @@ export const siteConfig = {
   fileNumber: "245",
   address: "245 Summer Street, Boston",
   /** In-world: the 1926 impoundment order ran out at midnight on this date. */
-  unsealedOn: "October 31, 2026",
-  impoundedOn: "November 9, 1926",
+  unsealedOn: "March 22, 2026",
+  impoundedOn: "March 22, 1926",
   /** Ten sprints, one exhibit and one simulation each. */
   weeks: 10,
   /** Points for answering a week's finding correctly. Simulations carry their own points. */

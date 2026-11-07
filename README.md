@@ -1,6 +1,6 @@
 # The Black Toad: File 245
 
-A ten-week, team-based story site for the program's 2027 runs. In 1926 a Boston court sealed every paper about a death in a speakeasy beneath **245 Summer Street** for a hundred years. The seal ran out on October 31, 2026. Each week a new exhibit from the file unseals with that sprint's simulation, the same moment for every room. Teams answer what the file says, do the restoration work, and climb a live board. At the end, the room game.
+A ten-week, team-based story site for the program's 2027 runs. In 1926 a Boston court sealed every paper about a death in a speakeasy beneath **245 Summer Street** for a hundred years. The seal ran out on March 22, 2026. Each week a new exhibit from the file unseals with that sprint's simulation, the same moment for every room. Teams answer what the file says, do the restoration work, and climb a live board. At the end, the room game.
 
 Rebuilt from The Black Veil (2026 party). See **[docs/MIGRATION.md](docs/MIGRATION.md)** for the handoff and **[docs/story/01-bible.md](docs/story/01-bible.md)** for the story.
 

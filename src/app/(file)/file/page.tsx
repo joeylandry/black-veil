@@ -28,7 +28,7 @@ export default async function FilePage() {
         <p className="eyebrow">Suffolk Superior Court · File {siteConfig.fileNumber}</p>
         <h1 className="cover-title">The Black Toad</h1>
         <p className="cover-lede">
-          What happened beneath {siteConfig.address} on the night of October 31, 1926, and who made sure nobody found out.
+          What happened beneath {siteConfig.address} on the night of March 12, 1926, and who made sure nobody found out.
         </p>
       </section>
 
@@ -42,7 +42,7 @@ export default async function FilePage() {
         <section className="panel briefing" aria-labelledby="briefing-title">
           <h2 id="briefing-title">Read this first</h2>
           <p>
-            In November 1926 a Boston judge sealed every paper about one death for a hundred years. The seal ran out on{" "}
+            In March 1926 a Boston judge sealed every paper about one death for a hundred years. The seal ran out on{" "}
             {siteConfig.unsealedOn}. The box has been opened, scanned and put here, and it is in rough shape.
           </p>
           <p>

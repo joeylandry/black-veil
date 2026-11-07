@@ -8,12 +8,14 @@ Everything here is fiction. The Black Toad, the Hollis & Crane Leather Exchange 
 
 There is no organization in the frame. The site **is** the file.
 
-- In November 1926 a Boston judge impounded every paper about one death "for one hundred years."
-- The seal ran out at midnight on **October 31, 2026**. The box has been opened, scanned and put online, and the scans are damaged.
+- In March 1926 a Boston judge impounded every paper about one death "for one hundred years."
+- The seal ran out on **March 22, 2026**. The box has been opened, scanned and put online, and the scans are damaged.
 - Whoever opens the site is a modern-day reader: part reporter, part technologist. They read what the city wasn't allowed to read in 1926, and they do the restoration work (the weekly simulation) that makes each damaged scan readable.
 - The site opens on a **full-screen black terminal**. Type anything and press Enter, and you're in.
 
 Why the simulations "belong": each exhibit has a **Condition of the scan** line (split plate, faded carbon, mis-pasted telegraph strips, a skewed ledger column…). The week's simulation is pitched as the **work order** that fixes it. The tie-in is cosmetic on purpose: the curriculum drives the simulation, and the fiction just frames it.
+
+No Halloween and no masquerades: the dates are ordinary nights on purpose, so the story stands apart from the 2026 party. Change them freely; only `src/config/site.ts`, the exhibits and this page carry dates.
 
 ## 2. The place: 245 Summer Street
 
@@ -33,13 +35,13 @@ Look before you leap · the toad mid-leap · ten steps down · sixty cards at a 
 |---|---|
 | Dec 14, 1921 | Cassandra "Cassie" Castello, lately of New York, opens The Black Toad with money from the North End (the **Delvecchio** family). Kit Kessler, a bookkeeper at the Exchange upstairs, becomes **the Keeper** of the books. |
 | 1922–24 | The Toad thrives. The **Fogarty brothers** (South Boston harbor men) run cases in through the Channel Door. Capt. **Ambrose Thayer** of the Summer Street station is paid to look away. |
-| Oct 31, 1924 | **The ousting (kept from the Black Veil story).** Federal pressure is closing in, so Cassie plans "the Exit": a staged massacre at the All Hallows' masquerade (blanks, stage blood) so the club can vanish. At **11:47** the music stops. At the Channel Door, Kit ambushes her, takes the books and the vault key, and Cassie escapes wounded by boat. The Courier runs "Terror at the Black Toad?" No bodies, just "a red that came off like paint." Kit tells reporters, "Miss Castello has gone, and the money with her." |
+| Dec 12, 1924 | **The ousting (kept from the Black Veil story, minus the Halloween masquerade).** Federal pressure is closing in, so Cassie plans "the Exit": a staged massacre on a busy Friday night (blanks, stage blood) so the club can vanish. At **11:47** the music stops. At the Channel Door, Kit ambushes her, takes the books and the vault key, and Cassie escapes wounded by boat. The Courier runs "Terror at the Black Toad?" No bodies, just "a red that came off like paint." Kit tells reporters, "Miss Castello has gone, and the money with her." |
 | Apr 1925 | The Toad reopens. Kit runs it, backed by the Delvecchios. He keeps a ledger of everyone's secrets: who he pays for silence, and who pays him. |
-| Oct 24, 1926 | A wire from Montreal reaches the Keeper: "YOU KEPT THE BOOKS I KEPT THE KEY STOP ELEVEN FORTY SEVEN STOP C." |
-| Oct 30, 1926 | A second Montreal wire, to **B. Lorne, coat room**: "ARRIVE NORTH STATION SUNDAY EVENING TRAIN · LEAVE THE CHANNEL DOOR ON THE LATCH · BRING NOTHING." |
-| Oct 31, 1926 | **Nightmare on Summer Street.** A masquerade. At 11:40 Artie Moss pours Kit's rye, and Kit carries it to the Counting Room himself. At **11:47** (two years to the minute) every light fails for four minutes. The piano plays three notes of Cassie's song with nobody at it. A woman in a black veil crosses the Lily Pad. At 11:58 Moss forces the bolted Counting Room door. Kit is dead at his desk. The clock stopped at 11:47, page 245 of the ledger is cut out, there are wet marks from the Channel Door, and coat-check tag No. 60 is in his fist. |
-| Nov 1, 1926 | Capt. Thayer: "heart failure, no inquest." Cellar padlocked. Dr. Pratt's cyanide memo is suppressed. |
-| Nov 9, 1926 | Judge Horace B. Whitcomb (the ledger's "Judge H.W.") impounds everything until Oct 31, 2026. A slip in the box from N. Shaw: "The page is not in here. It never left the Toad." |
+| Mar 5, 1926 | A wire from Montreal reaches the Keeper: "YOU KEPT THE BOOKS I KEPT THE KEY STOP ELEVEN FORTY SEVEN STOP C." |
+| Mar 11, 1926 | A second Montreal wire, to **B. Lorne, coat room**: "ARRIVE NORTH STATION FRIDAY EVENING TRAIN · LEAVE THE CHANNEL DOOR ON THE LATCH · BRING NOTHING." |
+| Fri Mar 12, 1926 | **Nightmare on Summer Street.** An ordinary Friday, a full house. At 11:40 Artie Moss pours Kit's rye, and Kit carries it to the Counting Room himself. At **11:47** (the same minute the music stopped in 1924) every light fails for four minutes. The piano plays three notes of Cassie's song with nobody at it. A woman in a black veil crosses the Lily Pad. At 11:58 Moss forces the bolted Counting Room door. Kit is dead at his desk. The clock stopped at 11:47, page 245 of the ledger is cut out, there are wet marks from the Channel Door, and coat-check tag No. 60 is in his fist. |
+| Mar 13, 1926 | Capt. Thayer: "heart failure, no inquest." Cellar padlocked. Dr. Pratt's cyanide memo is suppressed. |
+| Mar 22, 1926 | Judge Horace B. Whitcomb (the ledger's "Judge H.W.") impounds everything until Mar 22, 2026. A slip in the box from N. Shaw: "The page is not in here. It never left the Toad." |
 
 ## 4. People
 
@@ -64,11 +66,11 @@ Full text lives in `src/data/case/exhibits.ts`. A readable copy with answers is 
 
 | Week | Exhibit | What it adds | Finding (answer) |
 |---|---|---|---|
-| 1 | Courier extra, Nov 1 1926: "Nightmare on Summer Street" | The death, 11:47, the veiled woman, the padlock | Time the lights failed (11:47) |
+| 1 | Courier extra, Mar 13 1926: "Nightmare on Summer Street" | The death, 11:47, the veiled woman, the padlock | Time the lights failed (11:47) |
 | 2 | Police Form 12 | Rye, stopped clock, cut page, tag, wet marks, "natural" | Who signed the cause (Thayer) |
 | 3 | Society column 1921: "Miss Castello Receives" | Cassie, the Toad, LOOK BEFORE YOU LEAP, Kit as bookkeeper | Words over the bar |
 | 4 | Member's card No. 060 + matchbook | The four rooms, house rules, the Channel Door tunnel | The Keeper's room (Counting Room) |
-| 5 | Courier 1924: "Terror at the Black Toad?" | The ousting, stage blood, Kit's lie | Who said "and the money with her" (Kessler) |
+| 5 | Courier, Dec 1924: "Terror at the Black Toad?" | The ousting, stage blood, Kit's lie | Who said "and the money with her" (Kessler) |
 | 6 | Two wires from Montreal | Cassie is alive; B. Lorne is her contact | City (Montreal) |
 | 7 | Ledger page 244 | Payments, motives, page 245 "the names that matter" | Largest payment (Capt. A.T. / Thayer) |
 | 8 | Dr. Pratt's memo, not filed | Cyanide, within minutes, rye at 11:40 | Poison (cyanide) |

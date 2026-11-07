@@ -18,11 +18,11 @@ export const exhibits: Exhibit[] = [
     number: "Exhibit 245-01",
     kind: "newspaper",
     title: "Nightmare on Summer Street",
-    dated: "Monday, November 1, 1926",
+    dated: "Saturday, March 13, 1926",
     summary: "The Courier's extra: the Keeper of a cellar club found dead behind a bolted door.",
     damage: "Scanned from a water-stained copy. The plate split along the fold and the two halves were filed apart.",
     notes: [
-      "On the night of October 31, 1926, a masquerade was held at The Black Toad, a club in the sub-cellar of 245 Summer Street.",
+      "On the night of Friday, March 12, 1926, The Black Toad, a club in the sub-cellar of 245 Summer Street, was full.",
       "At 11:47 p.m. every light in the club failed for about four minutes.",
       "At 11:58 p.m. the club's Keeper, Kit Kessler, was found dead in his office, the Counting Room, behind a door bolted from the inside.",
       "Guests said a woman in a black veil crossed the room while the lights were out.",
@@ -38,7 +38,7 @@ export const exhibits: Exhibit[] = [
       help: "As the Courier prints it. Hours and minutes.",
     },
     blocks: [
-      { t: "masthead", name: "The Boston Night Courier", line: "EXTRA · Monday, November 1, 1926 · Two Cents" },
+      { t: "masthead", name: "The Boston Night Courier", line: "EXTRA · Saturday, March 13, 1926 · Two Cents" },
       { t: "headline", text: "Nightmare on Summer Street", size: "xl" },
       {
         t: "deck",
@@ -47,11 +47,11 @@ export const exhibits: Exhibit[] = [
       { t: "byline", text: "By N. Shaw, of the Courier staff, who was present" },
       {
         t: "p",
-        text: "Christopher Kessler, thirty-eight, known to two hundred masked guests last night as Kit and to the rest of the city as nobody in particular, was found dead at two minutes before midnight in a locked office beneath the Hollis & Crane Leather Exchange, 245 Summer Street.",
+        text: "Christopher Kessler, thirty-eight, known to two hundred guests last night as Kit and to the rest of the city as nobody in particular, was found dead at two minutes before midnight in a locked office beneath the Hollis & Crane Leather Exchange, 245 Summer Street.",
       },
       {
         t: "p",
-        text: "The office lies at the back of a cellar resort its patrons call The Black Toad, reached through the Exchange's freight lift and ten steps down. Last night the Toad held a masquerade. At 11:47 by the clock over the bar, every light in the place went out at once.",
+        text: "The office lies at the back of a cellar resort its patrons call The Black Toad, reached through the Exchange's freight lift and ten steps down. Last night the Toad was full: a Friday, the band in good form, two hundred in the room. At 11:47 by the clock over the bar, every light in the place went out at once.",
       },
       {
         t: "p",
@@ -71,9 +71,9 @@ export const exhibits: Exhibit[] = [
       },
       {
         t: "box",
-        title: "Two Years to the Minute",
+        title: "The Same Minute",
         text: [
-          "Older patrons of the Toad were quick to point out the hour. On All Hallows' Eve 1924, the club's last masquerade under its founder, Miss Cassandra Castello, ended in shots, screams and a cellar emptied into the street. That night, too, the music stopped at 11:47.",
+          "Older patrons of the Toad were quick to point out the hour. On a Friday night in December 1924, the club's last night under its founder, Miss Cassandra Castello, ended in shots, screams and a cellar emptied into the street. That night, too, the music stopped at 11:47.",
           "Miss Castello was not seen again. Mr. Kessler, who kept her books, kept her club.",
         ],
       },
@@ -91,7 +91,7 @@ export const exhibits: Exhibit[] = [
     number: "Exhibit 245-02",
     kind: "report",
     title: "Report of Death, Form 12",
-    dated: "November 1, 1926, 12:20 a.m.",
+    dated: "March 13, 1926, 12:20 a.m.",
     summary: "The police report: a bolted door, a glass of rye, a stopped clock and a page cut from the ledger.",
     damage: "Carbon copy. Lines of the original were blacked out by hand before filing, and the carbon has faded unevenly.",
     notes: [
@@ -110,7 +110,7 @@ export const exhibits: Exhibit[] = [
       {
         t: "fields",
         rows: [
-          ["Date and hour", "November 1, 1926 · 12:20 a.m."],
+          ["Date and hour", "March 13, 1926 · 12:20 a.m."],
           ["Place", "245 Summer Street, sub-cellar, rear office known as “the Counting Room”"],
           ["Deceased", "Christopher J. Kessler, aged 38, of {{x:22}}"],
           ["Occupation", "Manager of premises"],
@@ -125,7 +125,7 @@ export const exhibits: Exhibit[] = [
       },
       { t: "margin", text: "Dr. Pratt asks to keep the glass. Refused. — A.T." },
       { t: "sign", name: "Ambrose Thayer", title: "Captain, Summer Street Station" },
-      { t: "stamp", text: "CLOSED · NOV 1 1926", tone: "red" },
+      { t: "stamp", text: "CLOSED · MAR 13 1926", tone: "red" },
     ],
   },
   {
@@ -144,7 +144,7 @@ export const exhibits: Exhibit[] = [
       "Its money came from unnamed backers in the North End.",
     ],
     persons: [
-      { name: "Cassandra “Cassie” Castello", role: "Founder of The Black Toad", note: "Opened the club in December 1921. Missing since October 31, 1924." },
+      { name: "Cassandra “Cassie” Castello", role: "Founder of The Black Toad", note: "Opened the club in December 1921. Missing since December 12, 1924." },
     ],
     finding: { prompt: "What words are carved over the bar at The Black Toad?" },
     blocks: [
@@ -211,7 +211,7 @@ export const exhibits: Exhibit[] = [
         rows: [
           ["I", "Knock once. Wait. Knock twice."],
           ["II", "Ten steps down. Count them."],
-          ["III", "Masks are welcome. Names are not."],
+          ["III", "Leave your name at the door."],
           ["IV", "The Counting Room is the Keeper's alone."],
           ["V", "The Channel Door is for deliveries, and for no one else."],
           ["VI", "Look before you leap."],
@@ -235,11 +235,11 @@ export const exhibits: Exhibit[] = [
     number: "Exhibit 245-05",
     kind: "newspaper",
     title: "Terror at the Black Toad?",
-    dated: "Saturday, November 1, 1924",
-    summary: "Two years earlier: shots at the 1924 masquerade, no bodies, and the founder gone.",
+    dated: "Saturday, December 13, 1924",
+    summary: "Fifteen months earlier: shots on a Friday night in 1924, no bodies, and the founder gone.",
     damage: "Microfilmed in 1931 at the wrong exposure. The photograph is nearly black and the columns have drifted.",
     notes: [
-      "On October 31, 1924, the Toad's masquerade ended in gunfire and panic. The music stopped at 11:47.",
+      "On the night of December 12, 1924, a full house at the Toad ended in gunfire and panic. The music stopped at 11:47.",
       "Police found no bodies, only a red that came off on a handkerchief like paint.",
       "Cassie Castello vanished that night. Kit Kessler told the Courier she had gone, and the money with her.",
       "By spring 1925 the Toad had reopened with Kessler in charge.",
@@ -247,13 +247,13 @@ export const exhibits: Exhibit[] = [
     persons: [],
     finding: { prompt: "Who told the Courier that Miss Castello had gone “and the money with her”?", help: "Surname is enough." },
     blocks: [
-      { t: "masthead", name: "The Boston Night Courier", line: "Saturday, November 1, 1924 · Two Cents" },
+      { t: "masthead", name: "The Boston Night Courier", line: "Saturday, December 13, 1924 · Two Cents" },
       { t: "headline", text: "Terror at the Black Toad?", size: "xl" },
-      { t: "deck", text: "Shots and Screams in Summer Street Cellar · Masked Guests Flee Into the Night · No Bodies Found · Proprietress Missing" },
+      { t: "deck", text: "Shots and Screams in Summer Street Cellar · Guests Flee Into the Night · No Bodies Found · Proprietress Missing" },
       {
         t: "image",
         src: "/evidence/raid-1924.png",
-        alt: "Police officers stand among overturned chairs and scattered masks in an empty ballroom.",
+        alt: "Police officers stand among overturned chairs and scattered belongings in an empty ballroom.",
         caption: "The Lily Pad after the guests had fled. Courier photograph.",
       },
       {
@@ -262,11 +262,11 @@ export const exhibits: Exhibit[] = [
       },
       {
         t: "p",
-        text: "Guests at the All Hallows' masquerade of the club called The Black Toad say that at 11:47 the orchestra stopped mid-bar, the lights dropped, and shots were fired from the direction of the back rooms. Masked men and women poured up the freight lift and into Summer Street, some of them swearing they had seen bodies on the floor.",
+        text: "Guests at the club called The Black Toad say that at 11:47 the orchestra stopped mid-bar, the lights dropped, and shots were fired from the direction of the back rooms. Men and women in evening clothes poured up the freight lift and into Summer Street, some of them swearing they had seen bodies on the floor.",
       },
       {
         t: "p",
-        text: "Police who went down at one o'clock found overturned chairs, a great many masks, and no bodies at all. Patrolman Joseph Healey showed this reporter a handkerchief he had pressed to a stain on the dance floor. The red came off on it like paint.",
+        text: "Police who went down at one o'clock found overturned chairs, a great many abandoned hats, and no bodies at all. Patrolman Joseph Healey showed this reporter a handkerchief he had pressed to a stain on the dance floor. The red came off on it like paint.",
       },
       {
         t: "p",
@@ -281,29 +281,29 @@ export const exhibits: Exhibit[] = [
     number: "Exhibit 245-06",
     kind: "wire",
     title: "Two Wires from Montreal",
-    dated: "October 24 and October 30, 1926",
+    dated: "March 5 and March 11, 1926",
     summary: "Two telegrams in the week before the murder: one to the Keeper, one to the coat room.",
     damage: "Telegraph strips pasted onto backing card. Several strips lifted and were re-pasted out of order.",
     notes: [
       "A week before his death, Kit Kessler received a wire from Montreal: “You kept the books, I kept the key.” It was signed C.",
-      "The day before the masquerade, a second wire from Montreal reached the coat room at 245 Summer Street, addressed to B. Lorne.",
-      "The second wire announced an arrival at North Station on the evening train on Sunday, October 31.",
+      "The day before the murder, a second wire from Montreal reached the coat room at 245 Summer Street, addressed to B. Lorne.",
+      "The second wire announced an arrival at North Station on the evening train on Friday, March 12.",
     ],
     persons: [
-      { name: "B. Lorne", role: "Coat room, The Black Toad", note: "Received a wire from Montreal the day before the masquerade." },
+      { name: "B. Lorne", role: "Coat room, The Black Toad", note: "Received a wire from Montreal the day before the murder." },
     ],
     finding: { prompt: "From which city were both wires sent?" },
     blocks: [
       { t: "masthead", name: "Dominion Wire & Cable", line: "Received at Boston · Two messages" },
       {
         t: "wire",
-        meta: "MONTREAL QUE OCT 24 1926 · TO THE KEEPER 245 SUMMER ST BOSTON MASS",
-        lines: ["TWO YEARS ON STOP THE TOAD REMEMBERS STOP", "YOU KEPT THE BOOKS I KEPT THE KEY STOP", "ELEVEN FORTY SEVEN STOP", "C"],
+        meta: "MONTREAL QUE MAR 5 1926 · TO THE KEEPER 245 SUMMER ST BOSTON MASS",
+        lines: ["THE TOAD REMEMBERS STOP", "YOU KEPT THE BOOKS I KEPT THE KEY STOP", "ELEVEN FORTY SEVEN STOP", "C"],
       },
       {
         t: "wire",
-        meta: "MONTREAL QUE OCT 30 1926 · TO B LORNE CARE OF COAT ROOM 245 SUMMER ST BOSTON MASS",
-        lines: ["ARRIVE NORTH STATION SUNDAY EVENING TRAIN STOP", "LEAVE THE CHANNEL DOOR ON THE LATCH STOP", "BRING NOTHING STOP"],
+        meta: "MONTREAL QUE MAR 11 1926 · TO B LORNE CARE OF COAT ROOM 245 SUMMER ST BOSTON MASS",
+        lines: ["ARRIVE NORTH STATION FRIDAY EVENING TRAIN STOP", "LEAVE THE CHANNEL DOOR ON THE LATCH STOP", "BRING NOTHING STOP"],
       },
       {
         t: "image",
@@ -319,11 +319,11 @@ export const exhibits: Exhibit[] = [
     number: "Exhibit 245-07",
     kind: "ledger",
     title: "The Keeper's Ledger, Page 244",
-    dated: "October 1926",
+    dated: "February 1926",
     summary: "The page before the one that was cut out: who the Keeper paid, and who paid him.",
     damage: "Bound ledger photographed open. The gutter is in shadow and the right-hand column is skewed off the frame.",
     notes: [
-      "Kit Kessler's ledger shows payments for silence. The largest in October 1926 went to “Capt. A.T.”",
+      "Kit Kessler's ledger shows payments for silence. The largest in February 1926 went to “Capt. A.T.”",
       "He was holding back the North End backers' share and owed the Fogarty brothers money for the use of the Channel Door.",
       "He wrote that page 245 held “the names that matter” and that he kept it on him. That page was cut out on the night he died.",
     ],
@@ -332,9 +332,9 @@ export const exhibits: Exhibit[] = [
       { name: "The Fogarty brothers", role: "Harbor men", note: "Ran boats to the Channel Door. Owed $300." },
       { name: "Judge H. W.", role: "Named in the ledger", note: "Paid $250 for “papers.”" },
     ],
-    finding: { prompt: "Who received the largest payment in October 1926?", help: "As the ledger names them." },
+    finding: { prompt: "Who received the largest payment in February 1926?", help: "As the ledger names them." },
     blocks: [
-      { t: "masthead", name: "Ledger · K. Kessler", line: "Page 244 · October 1926" },
+      { t: "masthead", name: "Ledger · K. Kessler", line: "Page 244 · February 1926" },
       {
         t: "table",
         head: ["Name", "Paid", "For"],
@@ -358,7 +358,7 @@ export const exhibits: Exhibit[] = [
     number: "Exhibit 245-08",
     kind: "memo",
     title: "Memorandum, Not Filed",
-    dated: "November 1, 1926",
+    dated: "March 13, 1926",
     summary: "The medical examiner's six minutes with the body, and why his notes never reached a file.",
     damage: "Typed on onionskin and folded into eighths. The creases have worn through whole words.",
     notes: [
@@ -403,7 +403,7 @@ export const exhibits: Exhibit[] = [
     number: "Exhibit 245-09",
     kind: "notebook",
     title: "Shaw's Notebook: Five Statements",
-    dated: "November 1, 1926, 12:30 to 12:50 a.m.",
+    dated: "March 13, 1926, 12:30 to 12:50 a.m.",
     summary: "The Courier reporter's notes from the twenty minutes before the guests were sent home.",
     damage: "Pencil on cheap paper, smudged by a wet sleeve. Two pages were scanned twice and one not at all.",
     notes: [
@@ -421,7 +421,7 @@ export const exhibits: Exhibit[] = [
     ],
     finding: { prompt: "What number was on the coat-check tag in the Keeper's hand?" },
     blocks: [
-      { t: "masthead", name: "Notebook · N. Shaw", line: "Taken in the Lily Pad, Nov. 1, 12:30–12:50 a.m. Not printed." },
+      { t: "masthead", name: "Notebook · N. Shaw", line: "Taken in the Lily Pad, Mar. 13, 12:30–12:50 a.m. Not printed." },
       {
         t: "statement",
         who: "Artie Moss",
@@ -470,11 +470,11 @@ export const exhibits: Exhibit[] = [
     number: "Exhibit 245-10",
     kind: "order",
     title: "Order of Impoundment",
-    dated: "Tuesday, November 9, 1926",
+    dated: "Monday, March 22, 1926",
     summary: "The court order that sealed everything for a hundred years, and a note left in the box.",
     damage: "The last sheet in the box. Foxed, torn at the seal, and stuck to a second slip of paper that has to be lifted off without losing either.",
     notes: [
-      "On November 9, 1926, Judge Horace B. Whitcomb impounded every paper about Kessler's death until October 31, 2026.",
+      "On March 22, 1926, Judge Horace B. Whitcomb impounded every paper about Kessler's death until March 22, 2026.",
       "A note in the box, initialed N.S., says the missing ledger page never left the Toad.",
       "The file is open. Whoever reads it now knows more than the city was allowed to know in 1926.",
     ],
@@ -487,9 +487,9 @@ export const exhibits: Exhibit[] = [
       { t: "headline", text: "Order of Impoundment", size: "l" },
       {
         t: "p",
-        text: "Upon the motion of the Police Commissioner, and the Court finding that publication would endanger the public order, it is ORDERED that every report, statement, photograph, ledger and paper of any kind touching the death of Christopher J. Kessler at 245 Summer Street be placed under seal, and be opened to no person, until the thirty-first day of October, in the year two thousand and twenty-six, one hundred years hence.",
+        text: "Upon the motion of the Police Commissioner, and the Court finding that publication would endanger the public order, it is ORDERED that every report, statement, photograph, ledger and paper of any kind touching the death of Christopher J. Kessler at 245 Summer Street be placed under seal, and be opened to no person, until the twenty-second day of March, in the year two thousand and twenty-six, one hundred years hence.",
       },
-      { t: "sign", name: "Horace B. Whitcomb", title: "Justice of the Superior Court · November 9, 1926" },
+      { t: "sign", name: "Horace B. Whitcomb", title: "Justice of the Superior Court · March 22, 1926" },
       { t: "stamp", text: "IMPOUNDED", tone: "red" },
       { t: "rule" },
       {
