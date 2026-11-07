@@ -1,5 +1,5 @@
 {
-  "name": "black-veil",
+  "name": "black-toad",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -8,15 +8,13 @@
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
+    "test": "tsx --test \"src/lib/**/*.test.ts\"",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "db:studio": "drizzle-kit studio",
-    "bench:check": "tsx scripts/bench-selftest.ts",
-    "game:check": "tsx scripts/game-check.ts",
-    "game:test": "tsx --test \"src/lib/game/**/*.test.ts\"",
-    "game:grade": "tsx --env-file-if-exists=.env.local scripts/game-grade.ts",
-    "game:docs": "tsx scripts/game-docs.ts",
-    "game:print": "tsx scripts/print/cards.ts && tsx scripts/print/exhibits.ts"
+    "case:docs": "tsx scripts/case-docs.ts",
+    "case:seed": "tsx --env-file-if-exists=.env.local scripts/case-seed.ts",
+    "bench:check": "tsx scripts/bench-selftest.ts"
   },
   "dependencies": {
     "@electric-sql/pglite": "^0.5.8",

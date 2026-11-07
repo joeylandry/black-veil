@@ -1,8 +1,9 @@
 import { createHmac, timingSafeEqual } from "crypto";
 import { cookies } from "next/headers";
+import { siteConfig } from "@/config/site";
 
-const cookieName = "black-veil-session";
-const sessionTtlSeconds = 60 * 60 * 24 * 180; // 180 days — the event is a year out; a guest should stay signed in.
+const memberTtlSeconds = 60 * 60 * 24 * 120; // a ten-week run, with room either side
+const staffTtlSeconds = 60 * 60 * 12; // one working day
 
 function getSecret() {
   const secret = process.env.SESSION_SECRET;
@@ -16,53 +17,68 @@ function sign(payload: string) {
   return createHmac("sha256", getSecret()).update(payload).digest("base64url");
 }
 
-export function createSessionToken(guestId: string) {
-  const payload = JSON.stringify({ guestId, exp: Date.now() + sessionTtlSeconds * 1000 });
-  const encodedPayload = Buffer.from(payload).toString("base64url");
-  return `${encodedPayload}.${sign(encodedPayload)}`;
+function createToken(subject: string, ttlSeconds: number) {
+  const payload = Buffer.from(JSON.stringify({ sub: subject, exp: Date.now() + ttlSeconds * 1000 })).toString("base64url");
+  return `${payload}.${sign(payload)}`;
 }
 
-function verifySessionToken(token: string): { guestId: string } | null {
-  const [encodedPayload, signature] = token.split(".");
-  if (!encodedPayload || !signature) return null;
-
-  const expected = sign(encodedPayload);
+function verifyToken(token: string | undefined): string | null {
+  if (!token) return null;
+  const [payload, signature] = token.split(".");
+  if (!payload || !signature) return null;
   const a = Buffer.from(signature);
-  const b = Buffer.from(expected);
+  const b = Buffer.from(sign(payload));
   if (a.length !== b.length || !timingSafeEqual(a, b)) return null;
-
   try {
-    const payload = JSON.parse(Buffer.from(encodedPayload, "base64url").toString("utf8")) as {
-      guestId: string;
-      exp: number;
-    };
-    if (typeof payload.guestId !== "string" || Date.now() > payload.exp) return null;
-    return { guestId: payload.guestId };
+    const parsed = JSON.parse(Buffer.from(payload, "base64url").toString("utf8")) as { sub: unknown; exp: unknown };
+    if (typeof parsed.sub !== "string" || typeof parsed.exp !== "number" || Date.now() > parsed.exp) return null;
+    return parsed.sub;
   } catch {
     return null;
   }
 }
 
-export async function setSessionCookie(guestId: string) {
+const cookieOptions = (maxAge: number) => ({
+  httpOnly: true,
+  secure: process.env.NODE_ENV === "production",
+  sameSite: "lax" as const,
+  path: "/",
+  maxAge,
+});
+
+export async function setSessionCookie(memberId: string) {
   const store = await cookies();
-  store.set(cookieName, createSessionToken(guestId), {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "lax",
-    path: "/",
-    maxAge: sessionTtlSeconds,
-  });
+  store.set(siteConfig.sessionCookie, createToken(`member:${memberId}`, memberTtlSeconds), cookieOptions(memberTtlSeconds));
+  // A member who signs in by link has, in effect, come through the door.
+  store.set(siteConfig.enteredCookie, "1", { path: "/", sameSite: "lax", maxAge: memberTtlSeconds });
 }
 
 export async function clearSessionCookie() {
   const store = await cookies();
-  store.delete(cookieName);
+  store.delete(siteConfig.sessionCookie);
 }
 
-/** Reads and verifies the session cookie for the current request. Null if signed out or the cookie is invalid/expired. */
-export async function getSessionGuestId(): Promise<string | null> {
+/** The signed-in member's id, or null. */
+export async function getSessionMemberId(): Promise<string | null> {
   const store = await cookies();
-  const token = store.get(cookieName)?.value;
-  if (!token) return null;
-  return verifySessionToken(token)?.guestId ?? null;
+  const subject = verifyToken(store.get(siteConfig.sessionCookie)?.value);
+  return subject?.startsWith("member:") ? subject.slice("member:".length) : null;
+}
+
+/** Staff sign in at /admin with ADMIN_SECRET; the cookie lets them preview every week. */
+export async function setStaffCookie() {
+  const store = await cookies();
+  store.set(siteConfig.staffCookie, createToken("staff", staffTtlSeconds), cookieOptions(staffTtlSeconds));
+  store.set(siteConfig.enteredCookie, "1", { path: "/", sameSite: "lax", maxAge: staffTtlSeconds });
+}
+
+export async function clearStaffCookie() {
+  const store = await cookies();
+  store.delete(siteConfig.staffCookie);
+}
+
+export async function isStaff(): Promise<boolean> {
+  if (!process.env.SESSION_SECRET) return false;
+  const store = await cookies();
+  return verifyToken(store.get(siteConfig.staffCookie)?.value) === "staff";
 }

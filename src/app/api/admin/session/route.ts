@@ -1,21 +1,26 @@
 import { NextRequest, NextResponse } from "next/server";
-import { sql } from "drizzle-orm";
-import { getDb } from "@/lib/db/client";
-import { guests } from "@/lib/db/schema";
-import { adminDatabaseError, adminGuard } from "@/lib/auth/admin";
+import { passphraseMatches } from "@/lib/auth/admin";
+import { clearStaffCookie, isStaff, setStaffCookie } from "@/lib/auth/session";
 
-/**
- * What the /admin unlock form calls: checks the passphrase, then that the database is
- * reachable and migrated, so a failure names its real cause instead of blaming the
- * passphrase.
- */
-export async function GET(request: NextRequest) {
-  const denied = adminGuard(request);
-  if (denied) return denied;
-  try {
-    await getDb().select({ count: sql<number>`count(*)` }).from(guests);
-  } catch (error) {
-    return adminDatabaseError("unlock check", error);
+export async function GET() {
+  return NextResponse.json({ staff: await isStaff(), configured: Boolean(process.env.ADMIN_SECRET && process.env.SESSION_SECRET) });
+}
+
+/** Staff sign-in. The cookie it sets opens /api/admin/* and lets staff read every week. */
+export async function POST(request: NextRequest) {
+  if (!process.env.ADMIN_SECRET || !process.env.SESSION_SECRET) {
+    return NextResponse.json({ error: "ADMIN_SECRET and SESSION_SECRET must both be set on this deployment.", code: "not-configured" }, { status: 503 });
   }
+  const body = await request.json().catch(() => null);
+  const passphrase = typeof body?.passphrase === "string" ? body.passphrase : "";
+  if (!passphraseMatches(passphrase)) {
+    return NextResponse.json({ error: "That passphrase was rejected.", code: "bad-passphrase" }, { status: 401 });
+  }
+  await setStaffCookie();
+  return NextResponse.json({ ok: true });
+}
+
+export async function DELETE() {
+  await clearStaffCookie();
   return NextResponse.json({ ok: true });
 }

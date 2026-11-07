@@ -7,16 +7,17 @@ export async function POST(request: NextRequest) {
   const body = await request.json().catch(() => null);
   const email = typeof body?.email === "string" ? body.email.trim() : "";
   if (!/^\S+@\S+\.\S+$/.test(email)) {
-    return NextResponse.json({ error: "A valid email is required." }, { status: 400 });
+    return NextResponse.json({ error: "A valid email address, please." }, { status: 400 });
   }
 
-  const issued = await issueMagicLink(email);
-  if (issued) {
-    const url = `${getSiteUrl()}/api/auth/verify?token=${issued.token}`;
-    await sendMagicLinkEmail(email, url);
+  try {
+    const issued = await issueMagicLink(email);
+    if (issued) await sendMagicLinkEmail(email, `${getSiteUrl()}/api/auth/verify?token=${issued.token}`);
+  } catch (error) {
+    console.error("[request-link]", error);
+    return NextResponse.json({ error: "The link could not be sent just now. Try again in a minute." }, { status: 503 });
   }
 
-  // Always respond ok, whether or not the email is already registered, so this
-  // endpoint can't be used to test which emails have RSVP'd.
+  // Same answer whether or not the email is on the file, so this can't be used to test addresses.
   return NextResponse.json({ ok: true });
 }
