@@ -470,19 +470,35 @@ textarea:focus {
   margin: 0;
 }
 
+.jacket-re {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: 2ch;
+  align-items: baseline;
+  margin: 0 0 1.75em;
+}
+
 .jacket-title {
   font-family: inherit;
   font-weight: 700;
   font-size: clamp(1.3rem, 3.6vw, 1.75rem);
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  margin: 0 0 1.75em;
+  margin: 0;
 }
 
 .typed-label {
-  font-weight: 400;
+  font-size: clamp(1.3rem, 3.6vw, 1.75rem);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   color: var(--muted);
-  margin-right: 1ch;
+}
+
+.jacket-sub {
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text);
+  margin: 0.5em 0 0;
 }
 
 .typed-under {
@@ -531,6 +547,11 @@ textarea:focus {
 }
 
 @media (max-width: 560px) {
+  .jacket-sub {
+    font-size: 0.88rem;
+    letter-spacing: 0;
+  }
+
   .jacket-class {
     font-size: 1.3rem;
     letter-spacing: 0.1em;

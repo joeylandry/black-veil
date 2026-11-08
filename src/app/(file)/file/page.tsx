@@ -29,9 +29,21 @@ export default async function FilePage() {
           <p className="jacket-class">Highly confidential</p>
           <p className="jacket-no">Case file No. {siteConfig.fileNumber}</p>
         </div>
-        <h1 id="jacket-title" className="jacket-title">
-          <span className="typed-label">Re:</span> <span className="typed-under">The Black Toad</span>
-        </h1>
+        <div className="jacket-re">
+          <span className="typed-label" aria-hidden="true">
+            Re:
+          </span>
+          <div>
+            <h1 id="jacket-title" className="jacket-title">
+              <span className="typed-under">The Black Toad</span>
+            </h1>
+            <p className="jacket-sub">
+              Summer Street massacre, 1924
+              <br />
+              Death of the Keeper, 1926
+            </p>
+          </div>
+        </div>
 
         <section className="docket" aria-labelledby="docket-title">
           <h2 id="docket-title" className="docket-title">
