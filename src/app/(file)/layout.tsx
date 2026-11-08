@@ -26,8 +26,8 @@ export default async function FileLayout({ children }: { children: ReactNode }) 
         <Link href="/file" className="file-brand">
           <ToadMark size={34} />
           <span>
-            <span className="file-brand-name">Suffolk Superior Court, Boston</span>
-            <span className="file-brand-sub">File {siteConfig.fileNumber}</span>
+            <span className="file-brand-name">Commonwealth of Massachusetts</span>
+            <span className="file-brand-sub">Suffolk, ss. · Superior Court · File {siteConfig.fileNumber}</span>
           </span>
         </Link>
         <nav className="file-nav" aria-label="File">

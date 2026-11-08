@@ -25,8 +25,10 @@ export default async function FilePage() {
   return (
     <div className="file-page">
       <section className="jacket" aria-labelledby="jacket-title">
-        <p className="jacket-class">Highly confidential</p>
-        <p className="jacket-no">Case file No. {siteConfig.fileNumber}</p>
+        <div className="jacket-top">
+          <p className="jacket-class">Highly confidential</p>
+          <p className="jacket-no">Case file No. {siteConfig.fileNumber}</p>
+        </div>
         <h1 id="jacket-title" className="jacket-title">
           The Black Toad
         </h1>

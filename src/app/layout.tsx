@@ -5,7 +5,6 @@ import "./globals.css";
 
 const sans = localFont({ src: "./fonts/geist-latin.woff2", variable: "--font-sans", display: "swap" });
 const mono = localFont({ src: "./fonts/geist-mono-latin.woff2", variable: "--font-mono", display: "swap" });
-const typewriter = localFont({ src: "./fonts/special-elite-latin.woff2", variable: "--font-typewriter", display: "swap" });
 const display = localFont({ src: "./fonts/bodoni-moda-display-600.ttf", variable: "--font-display", display: "swap" });
 
 export const metadata: Metadata = {
@@ -27,7 +26,7 @@ export const viewport: Viewport = { themeColor: "#0e0e0e", colorScheme: "dark" }
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={`${sans.variable} ${mono.variable} ${display.variable} ${typewriter.variable}`}>
+    <html lang="en" className={`${sans.variable} ${mono.variable} ${display.variable}`}>
       <body>{children}</body>
     </html>
   );
