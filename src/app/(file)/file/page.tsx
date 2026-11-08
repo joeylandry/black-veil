@@ -6,6 +6,10 @@ import { findingKey, getMemberProgress, getTeamRoster, getViewer, shortName, sim
 import { weekOpensAt } from "@/lib/case/release";
 import { formatBostonDateTime } from "@/lib/case/format";
 import { siteConfig } from "@/config/site";
+import { docket } from "@/data/case/docket";
+
+const formatDocketDate = (date: Date) =>
+  date.toLocaleDateString("en-US", { timeZone: "America/New_York", month: "short", day: "numeric", year: "numeric" });
 
 export const metadata: Metadata = { title: "The file" };
 
@@ -20,16 +24,61 @@ export default async function FilePage() {
 
   return (
     <div className="file-page">
-      <section className="cover">
-        <div className="cover-stamps" aria-hidden="true">
-          <span className="stamp stamp-red">Impounded 1926</span>
-          <span className="stamp stamp-ink">Unsealed 2026</span>
+      <section className="jacket" aria-labelledby="jacket-title">
+        <div className="jacket-strip">
+          <span>Suffolk Superior Court · Boston · Records Division</span>
+          <span>
+            Classification <strong className="jacket-class">Highly confidential</strong>
+          </span>
         </div>
-        <p className="eyebrow">Suffolk Superior Court · File {siteConfig.fileNumber}</p>
-        <h1 className="cover-title">The Black Toad</h1>
-        <p className="cover-lede">
-          What happened beneath {siteConfig.address} on the night of March 12, 1926, and who made sure nobody found out.
-        </p>
+
+        <div className="jacket-head">
+          <p className="jacket-no">Case file No. {siteConfig.fileNumber}</p>
+          <h1 id="jacket-title" className="jacket-title">
+            The Black Toad
+          </h1>
+        </div>
+
+        <dl className="jacket-fields">
+          <div>
+            <dt>Subject</dt>
+            <dd>Death of C. J. Kessler</dd>
+          </div>
+          <div>
+            <dt>Premises</dt>
+            <dd>{siteConfig.address}</dd>
+          </div>
+          <div>
+            <dt>Sealed</dt>
+            <dd>
+              {siteConfig.impoundedOn} – {siteConfig.unsealedOn}
+            </dd>
+          </div>
+          <div>
+            <dt>Exhibits</dt>
+            <dd>
+              {siteConfig.weeks} recovered · {open} released
+            </dd>
+          </div>
+        </dl>
+
+        <section className="docket" aria-labelledby="docket-title">
+          <h2 id="docket-title" className="docket-title">
+            File notes
+          </h2>
+          <ol className="docket-list">
+            {docket.map((line) => (
+              <li key={line.date}>
+                <span className="docket-date">{line.date}</span>
+                <span>{line.entry}</span>
+              </li>
+            ))}
+            <li className="docket-latest">
+              <span className="docket-date">{viewer.run ? formatDocketDate(viewer.run.week1At) : "Current"}</span>
+              <span>Reopened for restoration and review. Access by authorization only.</span>
+            </li>
+          </ol>
+        </section>
       </section>
 
       {viewer.problem && (
