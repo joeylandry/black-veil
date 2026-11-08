@@ -456,8 +456,8 @@ textarea:focus {
 
 .jacket-class {
   font-weight: 700;
-  font-size: clamp(1.3rem, 3.6vw, 1.75rem);
-  letter-spacing: 0.3em;
+  font-size: clamp(1.5rem, 4.2vw, 2.1rem);
+  letter-spacing: 0.38em;
   text-transform: uppercase;
   color: var(--stamp);
   margin: 0;
@@ -536,8 +536,8 @@ textarea:focus {
 
 @media (max-width: 560px) {
   .jacket-class {
-    font-size: 1.05rem;
-    letter-spacing: 0.16em;
+    font-size: 1.15rem;
+    letter-spacing: 0.2em;
     white-space: nowrap;
   }
 
