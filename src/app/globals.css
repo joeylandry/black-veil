@@ -456,16 +456,12 @@ textarea:focus {
 
 .jacket-class {
   font-weight: 700;
-  font-size: clamp(1.5rem, 4.2vw, 2.1rem);
-  letter-spacing: 0.38em;
+  font-size: clamp(1.9rem, 5vw, 2.75rem);
+  letter-spacing: 0.25em;
+  line-height: 1.2;
   text-transform: uppercase;
   color: var(--stamp);
   margin: 0;
-  /* Taller letters, same width: stretched like a condensed stamp face. */
-  display: inline-block;
-  transform: scaleY(1.7);
-  transform-origin: center;
-  padding: 0.35em 0;
 }
 
 .jacket-no {
@@ -536,8 +532,8 @@ textarea:focus {
 
 @media (max-width: 560px) {
   .jacket-class {
-    font-size: 1.15rem;
-    letter-spacing: 0.2em;
+    font-size: 1.3rem;
+    letter-spacing: 0.1em;
     white-space: nowrap;
   }
 
