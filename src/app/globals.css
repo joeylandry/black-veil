@@ -497,7 +497,7 @@ textarea:focus {
 .jacket-sub {
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  color: var(--text);
+  color: var(--muted);
   margin: 0.5em 0 0;
 }
 
