@@ -25,46 +25,15 @@ export default async function FilePage() {
   return (
     <div className="file-page">
       <section className="jacket" aria-labelledby="jacket-title">
-        <div className="jacket-strip">
-          <span>Suffolk Superior Court · Boston · Records Division</span>
-          <span>
-            Classification <strong className="jacket-class">Highly confidential</strong>
-          </span>
-        </div>
-
-        <div className="jacket-head">
-          <p className="jacket-no">Case file No. {siteConfig.fileNumber}</p>
-          <h1 id="jacket-title" className="jacket-title">
-            The Black Toad
-          </h1>
-        </div>
-
-        <dl className="jacket-fields">
-          <div>
-            <dt>Subject</dt>
-            <dd>Death of C. J. Kessler</dd>
-          </div>
-          <div>
-            <dt>Premises</dt>
-            <dd>{siteConfig.address}</dd>
-          </div>
-          <div>
-            <dt>Sealed</dt>
-            <dd>
-              {siteConfig.impoundedOn} – {siteConfig.unsealedOn}
-            </dd>
-          </div>
-          <div>
-            <dt>Exhibits</dt>
-            <dd>
-              {siteConfig.weeks} recovered · {open} released
-            </dd>
-          </div>
-        </dl>
+        <p className="jacket-class">Highly confidential</p>
+        <p className="jacket-no">Case file No. {siteConfig.fileNumber}</p>
+        <h1 id="jacket-title" className="jacket-title">
+          The Black Toad
+        </h1>
 
         <section className="docket" aria-labelledby="docket-title">
           <h2 id="docket-title" className="docket-title">
-            File notes
+            Notes
           </h2>
           <ol className="docket-list">
             {docket.map((line) => (
@@ -74,7 +43,7 @@ export default async function FilePage() {
               </li>
             ))}
             <li className="docket-latest">
-              <span className="docket-date">{viewer.run ? formatDocketDate(viewer.run.week1At) : "Current"}</span>
+              <span className="docket-date">{viewer.run ? formatDocketDate(viewer.run.week1At) : siteConfig.reopenedOn}</span>
               <span>Reopened for restoration and review. Access by authorization only.</span>
             </li>
           </ol>
