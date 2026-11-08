@@ -16,7 +16,7 @@ export const siteConfig = {
    * Last line of the file notes for anyone not in a run yet. Signed-in readers see their own
    * run's Week 1 date instead.
    */
-  reopenedOn: "Jan 11, 2027",
+  reopenedOn: "Jan. 11, 2027",
   /** Ten sprints, one exhibit and one simulation each. */
   weeks: 10,
   /** Points for answering a week's finding correctly. Simulations carry their own points. */

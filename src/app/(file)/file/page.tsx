@@ -9,7 +9,7 @@ import { siteConfig } from "@/config/site";
 import { docket } from "@/data/case/docket";
 
 const formatDocketDate = (date: Date) =>
-  date.toLocaleDateString("en-US", { timeZone: "America/New_York", month: "short", day: "numeric", year: "numeric" });
+  date.toLocaleDateString("en-US", { timeZone: "America/New_York", month: "short", day: "numeric", year: "numeric" }).replace(/^(\w{3})/, "$1.");
 
 export const metadata: Metadata = { title: "The file" };
 
@@ -24,18 +24,18 @@ export default async function FilePage() {
 
   return (
     <div className="file-page">
-      <section className="jacket" aria-labelledby="jacket-title">
+      <section className="jacket typed" aria-labelledby="jacket-title">
         <div className="jacket-top">
           <p className="jacket-class">Highly confidential</p>
           <p className="jacket-no">Case file No. {siteConfig.fileNumber}</p>
         </div>
         <h1 id="jacket-title" className="jacket-title">
-          The Black Toad
+          <span className="typed-label">Re:</span> <span className="typed-under">The Black Toad</span>
         </h1>
 
         <section className="docket" aria-labelledby="docket-title">
           <h2 id="docket-title" className="docket-title">
-            Notes
+            Notes:
           </h2>
           <ol className="docket-list">
             {docket.map((line) => (
