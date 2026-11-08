@@ -460,10 +460,12 @@ textarea:focus {
   letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--stamp);
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.25em;
   margin: 0;
+  /* Taller letters, same width: stretched like a condensed stamp face. */
+  display: inline-block;
+  transform: scaleY(1.7);
+  transform-origin: center;
+  padding: 0.35em 0;
 }
 
 .jacket-no {
