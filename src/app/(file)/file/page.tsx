@@ -7,6 +7,8 @@ import { weekOpensAt } from "@/lib/case/release";
 import { formatBostonDateTime } from "@/lib/case/format";
 import { siteConfig } from "@/config/site";
 import { docket } from "@/data/case/docket";
+import { personsOfInterest, records } from "@/data/case/records";
+import Image from "next/image";
 
 const formatDocketDate = (date: Date) =>
   date.toLocaleDateString("en-US", { timeZone: "America/New_York", month: "short", day: "numeric", year: "numeric" }).replace(/^(\w{3})/, "$1.");
@@ -37,11 +39,11 @@ export default async function FilePage() {
             <h1 id="jacket-title" className="jacket-title">
               <span className="typed-under">The Black Toad</span>
             </h1>
-            <p className="jacket-sub">
-              Summer Street massacre, 1924
-              <br />
-              Death of the Keeper, 1926
-            </p>
+            <ul className="jacket-sub">
+              <li>245 Summer Street massacre, 1924</li>
+              <li>Disappearance of proprietress Cassandra Castello, 1924</li>
+              <li>Death of the Keeper, 1926</li>
+            </ul>
           </div>
         </div>
 
@@ -62,6 +64,43 @@ export default async function FilePage() {
             </li>
           </ol>
         </section>
+      </section>
+
+      <section className="poi typed" aria-labelledby="poi-title">
+        <h2 id="poi-title" className="typed-heading">
+          Persons of interest:
+        </h2>
+        <ul className="poi-list">
+          {personsOfInterest.map((person) => (
+            <li key={person.name} className="poi-card">
+              <div className="poi-photo">
+                {person.photo ? (
+                  <Image src={person.photo} alt={`Photograph of ${person.name}`} width={240} height={300} sizes="120px" />
+                ) : (
+                  <span>No photograph on file</span>
+                )}
+              </div>
+              <div className="poi-body">
+                <p className="poi-name">{person.name}</p>
+                <p className="poi-role">{person.role}</p>
+                <p className="poi-status">{person.status}</p>
+                {person.recordSlug && <Link href={`/file/record/${person.recordSlug}`}>Missing persons report</Link>}
+              </div>
+            </li>
+          ))}
+        </ul>
+
+        <h2 className="typed-heading">Also in the file:</h2>
+        <ul className="records-list">
+          {records.map((record) => (
+            <li key={record.slug}>
+              <span className="docket-date">{record.filed ?? record.dated}</span>
+              <span>
+                <Link href={`/file/record/${record.slug}`}>{record.title}</Link>. {record.summary}
+              </span>
+            </li>
+          ))}
+        </ul>
       </section>
 
       {viewer.problem && (

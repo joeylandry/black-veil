@@ -495,6 +495,8 @@ textarea:focus {
 }
 
 .jacket-sub {
+  list-style: none;
+  padding: 0;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   color: var(--muted);
@@ -835,6 +837,112 @@ a.index-body:hover .index-title {
   text-align: center;
 }
 
+/* ---------- persons of interest, front matter ---------- */
+
+.poi {
+  border: 1px solid var(--line);
+  background: var(--desk-1);
+  padding: 22px clamp(18px, 3vw, 28px) 24px;
+}
+
+.typed-heading {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: var(--text);
+  margin: 0 0 0.75em;
+}
+
+.typed-heading:not(:first-child) {
+  margin-top: 1.75em;
+}
+
+.poi-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.poi-card {
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+  border: 1px solid var(--line);
+  padding: 12px;
+}
+
+.poi-photo {
+  aspect-ratio: 4 / 5;
+  background: var(--desk-0);
+  border: 1px solid var(--line);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.poi-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.05);
+}
+
+.poi-photo span {
+  font-size: 0.7rem;
+  color: var(--date);
+  text-align: center;
+  text-transform: uppercase;
+  padding: 6px;
+}
+
+.poi-body p {
+  margin: 0;
+}
+
+.poi-name {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.poi-role {
+  color: var(--muted);
+}
+
+.poi-status {
+  color: var(--stamp);
+  text-transform: uppercase;
+  margin: 0.4em 0 0.6em !important;
+}
+
+.poi-body a,
+.records-list a {
+  color: var(--text);
+}
+
+.records-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.5em;
+}
+
+.records-list li {
+  display: grid;
+  grid-template-columns: 15ch minmax(0, 1fr);
+  gap: 2ch;
+  color: var(--muted);
+}
+
+.record-doc {
+  max-width: 760px;
+}
+
 /* ---------- the documents ---------- */
 
 .doc {
@@ -1025,6 +1133,16 @@ a.index-body:hover .index-title {
   filter: sepia(0.35) contrast(1.05);
   border: 6px solid #fbf6e7;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+.doc-image-small {
+  float: right;
+  width: min(180px, 40%);
+  margin: 0 0 12px 18px;
+}
+
+.doc-image-small img {
+  border-width: 4px;
 }
 
 .doc-image figcaption {
@@ -1647,5 +1765,16 @@ details summary {
 @media (prefers-reduced-motion: reduce) {
   * {
     scroll-behavior: auto !important;
+  }
+}
+
+@media (max-width: 560px) {
+  .records-list li {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+
+  .poi-card {
+    grid-template-columns: 80px minmax(0, 1fr);
   }
 }

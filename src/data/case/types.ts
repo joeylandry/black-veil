@@ -16,7 +16,7 @@ export type Block =
   | { t: "p"; text: string }
   | { t: "fields"; rows: [label: string, value: string][] }
   | { t: "table"; head: string[]; rows: string[][]; note?: string }
-  | { t: "image"; src: string; alt: string; caption: string }
+  | { t: "image"; src: string; alt: string; caption: string; size?: "small" }
   | { t: "stamp"; text: string; tone?: "red" | "ink" }
   | { t: "sign"; name: string; title: string }
   | { t: "margin"; text: string }
@@ -58,6 +58,12 @@ export type Exhibit = {
   persons: Person[];
   /** The week's question. The answer lives server-side in answers.ts. */
   finding: { prompt: string; help?: string };
+};
+
+/** A paper from the file's front matter: open to every reader, not tied to a week. */
+export type CaseRecord = Pick<Exhibit, "slug" | "number" | "kind" | "title" | "dated" | "summary" | "blocks"> & {
+  /** Short date for lists, typed the way the notes are: "DEC. 15, 1924". */
+  filed?: string;
 };
 
 export type Sprint = {

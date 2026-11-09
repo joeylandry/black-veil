@@ -1,6 +1,6 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
-import type { Block, Exhibit } from "@/data/case/types";
+import type { Block, CaseRecord } from "@/data/case/types";
 
 /** Renders `{{x:12}}` as a redaction bar roughly twelve characters wide. */
 export function RichText({ text }: { text: string }) {
@@ -85,8 +85,8 @@ function BlockView({ block }: { block: Block }) {
       );
     case "image":
       return (
-        <figure className="doc-image">
-          <Image src={block.src} alt={block.alt} width={1200} height={800} sizes="(max-width: 760px) 100vw, 720px" />
+        <figure className={block.size === "small" ? "doc-image doc-image-small" : "doc-image"}>
+          <Image src={block.src} alt={block.alt} width={1200} height={800} sizes={block.size === "small" ? "200px" : "(max-width: 760px) 100vw, 720px"} />
           <figcaption>{block.caption}</figcaption>
         </figure>
       );
@@ -140,7 +140,7 @@ function BlockView({ block }: { block: Block }) {
 }
 
 /** One exhibit as a physical document. Server-rendered; never import exhibit data client-side. */
-export function ExhibitDocument({ exhibit }: { exhibit: Exhibit }) {
+export function ExhibitDocument({ exhibit }: { exhibit: CaseRecord }) {
   return (
     <article className={`doc doc-${exhibit.kind}`} aria-label={`${exhibit.number}: ${exhibit.title}`}>
       <p className="doc-tag">

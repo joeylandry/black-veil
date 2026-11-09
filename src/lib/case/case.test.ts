@@ -101,3 +101,18 @@ test("every finding's first accepted answer appears in its exhibit's visible tex
     assert.ok(found, `week ${exhibit.week}: an accepted answer is readable in the exhibit`);
   }
 });
+
+test("front-matter records are unique and point at real images", async () => {
+  const { records, personsOfInterest } = await import("@/data/case/records");
+  const { existsSync } = await import("node:fs");
+  assert.equal(new Set(records.map((r) => r.slug)).size, records.length);
+  for (const record of records) {
+    for (const block of record.blocks) {
+      if (block.t === "image") assert.ok(existsSync(`public${block.src}`), block.src);
+    }
+  }
+  for (const person of personsOfInterest) {
+    if (person.recordSlug) assert.ok(records.some((r) => r.slug === person.recordSlug), person.name);
+    if (person.photo) assert.ok(existsSync(`public${person.photo}`), person.photo);
+  }
+});
