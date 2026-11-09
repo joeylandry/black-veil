@@ -5,29 +5,8 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1789657634740,
-      "tag": "0000_equal_maddog",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "7",
-      "when": 1789659379351,
-      "tag": "0001_clean_puck",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "7",
-      "when": 1792435795624,
-      "tag": "0002_game_engine",
-      "breakpoints": true
-    },
-    {
-      "idx": 3,
-      "version": "7",
-      "when": 1792693940632,
-      "tag": "0003_half_points",
+      "when": 1794020010568,
+      "tag": "0000_black_toad",
       "breakpoints": true
     }
   ]
