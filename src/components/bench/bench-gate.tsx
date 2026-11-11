@@ -22,6 +22,11 @@ type SessionState = "checking" | "signed-in" | "signed-out" | "unknown";
  * the ticket list does not.
  */
 export function BenchAccessGate({ ticket, children }: { ticket?: string; children: ReactNode }) {
+  if (eventConfig.benchOpen) return <>{children}</>;
+  return <GuardedBench ticket={ticket}>{children}</GuardedBench>;
+}
+
+function GuardedBench({ ticket, children }: { ticket?: string; children: ReactNode }) {
   const access = useStorageValue(eventConfig.storageKeys.puzzleComplete);
   const savedRsvp = useStorageValue(eventConfig.storageKeys.rsvp);
   const [session, setSession] = useState<SessionState>(ticket ? "checking" : "unknown");
@@ -103,6 +108,11 @@ function parseSolved(raw: string | null | undefined): string[] {
  * in the browser. A ticket already closed stays open.
  */
 function BenchWordLock({ lab, children }: { lab: BenchLab; children: ReactNode }) {
+  if (eventConfig.benchOpen) return <>{children}</>;
+  return <WordLockedTicket lab={lab}>{children}</WordLockedTicket>;
+}
+
+function WordLockedTicket({ lab, children }: { lab: BenchLab; children: ReactNode }) {
   const savedUnlocked = useStorageValue(eventConfig.storageKeys.benchUnlocked);
   const savedProgress = useStorageValue(eventConfig.storageKeys.ctfProgress);
   const unlocked = useMemo(() => parseList(savedUnlocked), [savedUnlocked]);

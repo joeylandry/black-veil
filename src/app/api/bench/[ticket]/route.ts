@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { eventConfig } from "@/config/event";
 import { eq } from "drizzle-orm";
+import { eventConfig } from "@/config/event";
 import { getDb } from "@/lib/db/client";
 import { ctfSolves } from "@/lib/db/schema";
 import { getSessionGuestId } from "@/lib/auth/session";
@@ -34,7 +35,7 @@ function readHistory(value: unknown) {
 export async function POST(request: NextRequest, ctx: RouteContext<"/api/bench/[ticket]">) {
   if (!eventConfig.ctfOpen) return NextResponse.json({ error: "The trials are closed for now.", code: "closed" }, { status: 410 });
   const guestId = await getSessionGuestId();
-  if (!guestId) {
+  if (!guestId && !eventConfig.benchOpen) {
     return NextResponse.json({ error: "Sign in again to work this bench.", code: "unauthenticated" }, { status: 401 });
   }
 
@@ -73,14 +74,29 @@ export async function POST(request: NextRequest, ctx: RouteContext<"/api/bench/[
     return NextResponse.json({ error: "This bench cannot be graded yet." }, { status: 500 });
   }
 
+  const solveId = benchSolveId(lab.id);
+  const solvedIds = new Set<string>();
+
+  // An open demo bench grades visitors with no session; there is no register entry to record against.
+  if (!guestId) {
+    if (graded.passed) solvedIds.add(solveId);
+    const solved = [...solvedIds];
+    return NextResponse.json({
+      passed: graded.passed,
+      checks: graded.checks,
+      log: graded.log,
+      flag: graded.passed ? benchFlags[lab.id] ?? null : null,
+      progress: { solved, score: scoreForSolvedIds(solved), updatedAt: new Date().toISOString() },
+    });
+  }
+
   const db = getDb();
   const existing = await db
     .select({ challengeId: ctfSolves.challengeId })
     .from(ctfSolves)
     .where(eq(ctfSolves.guestId, guestId));
-  const solvedIds = new Set(existing.map((solve) => solve.challengeId));
+  for (const solve of existing) solvedIds.add(solve.challengeId);
 
-  const solveId = benchSolveId(lab.id);
   if (graded.passed && !solvedIds.has(solveId)) {
     await db.insert(ctfSolves).values({ guestId, challengeId: solveId }).onConflictDoNothing();
     solvedIds.add(solveId);
